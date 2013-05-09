@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 15711a21fc96aa502a39260ea8f2b2bda1120f69
+  revision: 02f07c6478d8eba2d498126a68bc14c7ffc268e5
   specs:
     curate (0.2.0)
       active-fedora (~> 5.6.2)
@@ -461,7 +461,7 @@ GEM
       libv8 (~> 3.11.8.12)
       ref
     thor (0.18.1)
-    tilt (1.4.0)
+    tilt (1.4.1)
     timecop (0.6.1)
     treetop (1.4.12)
       polyglot
