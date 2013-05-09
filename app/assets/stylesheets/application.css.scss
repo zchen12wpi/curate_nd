@@ -13,3 +13,22 @@
  *= require 'curate'
  *= require_self
  */
+
+/* Accordion Overrides */
+.accordion-heading {
+  background-color:#f9f9f9;
+}
+
+.accordion-heading h3 {
+  margin:0;
+}
+
+/* Inline form fields */
+.control-group.inline {
+  margin-bottom:0;
+}
+
+.control-group.inline input {
+  padding-bottom:.1em;
+  padding-top:.1em;
+}
