@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 02f07c6478d8eba2d498126a68bc14c7ffc268e5
+  revision: 0e79abebf9c28222dfbc04d3c6c0b941516d646c
   specs:
-    curate (0.2.0)
+    curate (0.3.0)
       active-fedora (~> 5.6.2)
       active_attr
       bootstrap-datepicker-rails
