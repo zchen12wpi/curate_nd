@@ -42,8 +42,7 @@ describe 'admin queues behavior', describe_options do
   end
 
   describe 'admin user' do
-    # Making the assumption, that in test, an admin username is ENV['USER']
-    let(:user) { FactoryGirl.create(:user, username: ENV['USER'].dup) }
+    let(:user) { FactoryGirl.create(:user, username: 'an_admin_username') }
     it 'cannot see the /admin/queues' do
       login_as(user)
       visit('/admin/queues')
