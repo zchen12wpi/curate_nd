@@ -27,7 +27,7 @@ describe 'admin queues behavior', describe_options do
     it 'cannot see the /admin/queues' do
       visit('/admin/queues')
       expect(page).to have_tag('h1', text: 'Page Not Found')
-      expect(page).to_not have_tag('h1', text: 'Queues')
+      expect(page).to_not have_content('Queue')
     end
   end
 
@@ -37,7 +37,7 @@ describe 'admin queues behavior', describe_options do
       login_as(user)
       visit('/admin/queues')
       expect(page).to have_tag('h1', text: 'Page Not Found')
-      expect(page).to_not have_tag('h1', text: 'Queues')
+      expect(page).to_not have_content('Queue')
     end
   end
 
@@ -46,8 +46,8 @@ describe 'admin queues behavior', describe_options do
     it 'cannot see the /admin/queues' do
       login_as(user)
       visit('/admin/queues')
-      expect(page).to_not have_content('Page Not Found')
-      expect(page).to have_tag('h1', text: 'Queues')
+      expect(page).to_not have_tag('h1', text: 'Page Not Found')
+      expect(page).to have_content('Queue')
     end
   end
 end
