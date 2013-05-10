@@ -211,6 +211,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
     fastercsv (1.5.5)
     ffi (1.4.0)
     font-awesome-sass-rails (2.0.0.0)
@@ -219,6 +221,7 @@ GEM
     foreigner (1.4.1)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
+    hashie (2.0.4)
     highline (1.6.15)
     hike (1.2.2)
     hooks (0.2.2)
@@ -284,6 +287,7 @@ GEM
       subexec (~> 0.2.1)
     morphine (0.1.1)
     multi_json (1.7.3)
+    multipart-post (1.2.0)
     mysql2 (0.3.11)
     namae (0.7.1)
     nest (1.1.1)
@@ -426,6 +430,11 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    sentry-raven (0.4.6)
+      faraday (>= 0.7.6)
+      hashie
+      multi_json (~> 1.0)
+      uuidtools
     sexp_processor (4.1.5)
     sextant (0.2.3)
       activesupport (>= 3.2)
@@ -472,6 +481,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicode (0.4.4)
+    uuidtools (2.1.4)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.2.1)
@@ -518,6 +528,7 @@ DEPENDENCIES
   rspec-html-matchers
   rspec-rails
   sass-rails (~> 3.2.3)
+  sentry-raven
   sextant
   simplecov
   sufia!
