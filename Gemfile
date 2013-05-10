@@ -25,6 +25,10 @@ group :default do
   gem 'namae'
 end
 
+group :pre_production, :production do
+  gem "sentry-raven"
+end
+
 group :headless do
   gem 'clamav'
 end
