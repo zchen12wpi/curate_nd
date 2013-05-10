@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 1f7818b1690df2a1a41b1c24af56d8aea891d8f1
+  revision: 1cf0ad45969d620215561cb8f904998b6f452145
   specs:
     curate (0.3.0)
       active-fedora (~> 5.6.2)
