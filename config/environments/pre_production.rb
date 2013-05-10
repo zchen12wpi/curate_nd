@@ -70,15 +70,17 @@ CurateNd::Application.configure do
 
   config.fits_path = '/opt/fits-0.6.1/fits.sh'
 
-  if defined? ClamAV
+  begin
+    # Why the explicit require? Because the headless workers of pre-production
+    # are not explicitly requiring clamav; This is because the web application
+    # portion of pre-production doesn't know about clamav. Instead of mixing
+    # environments, we are going to let the workers fail.
+    require 'clamav'
     ClamAV.instance.loaddb
     config.default_antivirus_instance = lambda {|file_path|
       ClamAV.instance.scanfile(file_path)
     }
-  else
-    # This is a work around for the time being.
-    config.default_antivirus_instance = lambda {|file_path|
-      AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
-    }
+  rescue LoadError => e
+    logger.error("#{e.class}: #{e}")
   end
 end
