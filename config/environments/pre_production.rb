@@ -68,6 +68,8 @@ CurateNd::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  config.fits_path = '/opt/fits-0.6.1/fits.sh'
+
   if defined? ClamAV
     ClamAV.instance.loaddb
     config.default_antivirus_instance = lambda {|file_path|
