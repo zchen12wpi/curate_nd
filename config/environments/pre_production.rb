@@ -73,5 +73,10 @@ CurateNd::Application.configure do
     config.default_antivirus_instance = lambda {|file_path|
       ClamAV.instance.scanfile(file_path)
     }
+  else
+    # This is a work around for the time being.
+    config.default_antivirus_instance = lambda {|file_path|
+      AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
+    }
   end
 end
