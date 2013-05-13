@@ -132,7 +132,7 @@ describe 'end to end behavior', describe_options do
         visit('/concern/senior_theses/new')
         create_senior_thesis(
           'Embargo Release Date' => embargo_release_date_formatted,
-          'Visibility' => 'visibility_open',
+          'Visibility' => 'visibility_embargo',
           'Contributors' => ['Dante'],
           'I Agree' => true
         )
