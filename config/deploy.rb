@@ -69,6 +69,7 @@ namespace :deploy do
     run "rake --version"
     run "which bundle"
     run "bundle --version"
+    run "which git"
   end
 
   desc "Start application in Passenger"
@@ -184,12 +185,13 @@ task :pre_production_cluster do
   set :rails_env,   'pre_production'
   set :deploy_to,   '/shared/ruby_pprd/data/app_home/curate'
   set :ruby_bin,    '/shared/ruby_pprd/ruby/1.9.3/bin'
+  set :git_bin,    '/shared/git/bin'
 
   set :user,        'rbpprd'
   set :domain,      'curatepprd.library.nd.edu'
   set :without_bundle_environments, 'headless development test'
 
-  default_environment['PATH'] = "#{ruby_bin}:$PATH"
+  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
   after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
@@ -212,12 +214,13 @@ task :production_cluster do
   set :rails_env,   'production'
   set :deploy_to,   '/shared/ruby_prod/data/app_home/curate'
   set :ruby_bin,    '/shared/ruby_prod/ruby/1.9.3/bin'
+  set :git_bin,    '/shared/git/bin'
 
   set :user,        'rbprod'
   set :domain,      'curateprod.library.nd.edu'
   set :without_bundle_environments, 'headless development test'
 
-  default_environment['PATH'] = "#{ruby_bin}:$PATH"
+  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
   after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
@@ -241,7 +244,7 @@ def common_worker_things
   set :without_bundle_environments, 'development test'
   set :group_writable, false
 
-  default_environment['PATH'] = "#{ruby_bin}:$PATH"
+  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
   after 'deploy', 'worker:start'
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
