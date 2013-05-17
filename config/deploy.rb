@@ -17,7 +17,7 @@ ssh_options[:paranoid] = false
 
 set :scm, :git
 set :deploy_via, :remote_cache
-set :scm_command, '/usr/bin/git'
+set :scm_command, '/shared/git/bin/git'
 
 #############################################################
 #  Environment
