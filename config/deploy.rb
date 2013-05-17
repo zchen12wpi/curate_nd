@@ -244,7 +244,7 @@ def common_worker_things
   set :without_bundle_environments, 'development test'
   set :group_writable, false
 
-  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
+  default_environment['PATH'] = "#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
   after 'deploy', 'worker:start'
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
