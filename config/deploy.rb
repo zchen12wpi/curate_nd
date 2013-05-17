@@ -241,6 +241,7 @@ def common_worker_things
   end
   set :deploy_to,   '/home/curatend'
   set :ruby_bin,    '/usr/local/ruby/bin'
+  set :git_bin,    '/shared/git/bin'
   set :without_bundle_environments, 'development test'
   set :group_writable, false
 
