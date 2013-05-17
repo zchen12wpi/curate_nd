@@ -14,7 +14,7 @@ if [ -d $secret_repo ]; then
     rm -rf $secret_repo
 fi
 echo "=-=-=-=-=-=-=-= git clone $secret_repo"
-/shared/git/bin/git clone "git@git.library.nd.edu:$secret_repo"
+git clone "git@git.library.nd.edu:$secret_repo"
 
 for f in database.yml admin_usernames.yml doi.yml solr.yml fedora.yml redis.yml recipients_list.yml smtp_config.yml; do
     echo "=-=-=-=-=-=-=-= copy $f"
