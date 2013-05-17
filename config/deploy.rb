@@ -239,6 +239,7 @@ def common_worker_things
       [ '/vendor/bundle', '/vendor/bundle', '/vendor/bundle'],
     ]
   end
+  set :scm_command, '/usr/bin/git'
   set :deploy_to,   '/home/curatend'
   set :ruby_bin,    '/usr/local/ruby/bin'
   set :without_bundle_environments, 'development test'
