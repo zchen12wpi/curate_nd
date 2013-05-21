@@ -135,6 +135,17 @@ namespace :worker do
   end
 end
 
+namespace :maintenance do
+  task :delete_index_solr, :roles => :app do
+    solr_core_url = Psych.load_file(Rails.root.join("config/solr.yml")).fetch(rails_env).fetch('url')
+    run "curl #{File.join(solr_core_url, 'update')}?commit=true -H 'Content-Type:application/xml' -d '<delete><query>*:*</query></delete>'"
+  end
+  task :reindex_solr, :roles => :app do
+    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Sufia.queue.push(ResolrizeJob.new)' -e #{rails_env}"
+  end
+  before 'maintenance:reindex_solr', 'maintenance:delete_index_solr'
+end
+
 set(:secret_repo_name) {
   case rails_env
   when 'staging' then 'secret_staging'

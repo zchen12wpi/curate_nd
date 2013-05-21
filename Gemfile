@@ -4,8 +4,9 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'sufia', git: 'git://github.com/ndlib/sufia.git', branch: 'sufia-for-curate-nd'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git'
+  gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
+  gem 'rsolr'
+#  gem 'hydra-head', git: 'git://github.com/jeremyf/hydra-head.git', branch: 'fix-embargo-release-date-to-solr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
