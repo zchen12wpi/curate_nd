@@ -320,7 +320,7 @@ describe 'end to end behavior', FeatureSupport.options do
     options['Visibility'] ||= 'visibility_restricted'
     options["Button to click"] ||= "Create Senior thesis"
     options["Contributors"] ||= ["Dante"]
-    options["Content License"] ||= Sufia::Engine.config.cc_licenses.keys.first
+    options["Content License"] ||= Sufia.config.cc_licenses.keys.first
 
     page.should have_content('Describe Your Senior Thesis')
     # Without accepting agreement
@@ -369,9 +369,10 @@ describe 'end to end behavior', FeatureSupport.options do
     within(".control-group.senior_thesis_#{method_name}.multi_value") do
       elements = [options[:with]].flatten.compact
       if with_javascript?
-        elements.each_with_index do |contributor, i|
-          within(all('.input-append').last) do
-            fill_in(field_name, with: contributor)
+        elements.each_with_index do |element, i|
+          container = all('.input-append').last
+          within(container) do
+            fill_in(field_name, with: element)
             click_on('Add')
           end
         end

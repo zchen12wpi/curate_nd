@@ -133,7 +133,7 @@ describe CurationConcern::SeniorThesisActor do
         }
       }
       describe 'valid attributes' do
-        before do
+        before(:each) do
           curation_concern.apply_depositor_metadata(user.user_key)
         end
         it do
