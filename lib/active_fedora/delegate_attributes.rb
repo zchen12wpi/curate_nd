@@ -1,24 +1,60 @@
 require 'active_attr'
 module ActiveFedora
   module DelegateAttributes
-    extend ActiveSupport::Concern
+    class Attribute
 
+      attr_reader :name, :datastream, :validates
+      delegate :[], to: :options
+
+      def initialize(name, options = {})
+        @options = options.symbolize_keys
+        @name = name
+        @options[:multiple] = true unless @options.key?(:multiple)
+      end
+
+      def options_for_delegation
+        {
+          to: options[:datastream],
+          at: options[:at],
+          unique: !options[:multiple]
+        }
+      end
+
+      def options_for_validation
+        options[:validates] || {}
+      end
+
+      def default(context)
+        this_default = options[:default]
+        case
+        when this_default.respond_to?(:call) then context.instance_exec(&this_default)
+        when this_default.duplicable? then this_default.dup
+        else this_default
+        end
+      end
+
+      private
+
+      def options
+        @options
+      end
+
+    end
+
+    extend ActiveSupport::Concern
     included do
       class_attribute :delegate_attributes, instance_writer: false, instance_reader: false
     end
 
     module ClassMethods
       def attribute(attribute_name, options ={})
-        options.symbolize_keys!
-        options[:multiple] = true unless options.key?(:multiple)
-        self.delegate_attributes ||= {}
-        self.delegate_attributes[attribute_name.to_sym] = options
+        attribute = Attribute.new(attribute_name, options)
 
-        if validate_option = options.delete(:validates)
-          validates(attribute_name, validate_option)
-        end
-        options[:unique] = !options[:multiple]
-        delegate_to(options[:datastream], [attribute_name], options)
+        self.delegate_attributes ||= []
+        self.delegate_attributes += [attribute]
+
+        validates(attribute.name, attribute.options_for_validation) if attribute.options_for_validation.present?
+        delegate(attribute.name, attribute.options_for_delegation)
       end
     end
 
@@ -40,33 +76,13 @@ module ActiveFedora
     #
     # @return [Hash{String => Object}] the attribute defaults
     def attribute_defaults
-      delegate_attributes_map { |name| _attribute_default name }
+      self.class.delegate_attributes.collect { |attribute| [attribute.name, attribute.default(self)] }
     end
 
     # Applies attribute default values
     def initialize(*)
       super
       apply_defaults
-    end
-
-    private
-
-    # Calculates an attribute default
-    #
-    # @private
-    # @since 0.5.0
-    def _attribute_default(attribute_name)
-      default = self.class.delegate_attributes[attribute_name][:default]
-
-      case
-      when default.respond_to?(:call) then instance_exec(&default)
-      when default.duplicable? then default.dup
-      else default
-      end
-    end
-
-    def delegate_attributes_map
-      Hash[ self.class.delegate_attributes.map { |name, options| [name, yield(name)] } ]
     end
 
   end
