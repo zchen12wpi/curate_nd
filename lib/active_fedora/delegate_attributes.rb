@@ -50,8 +50,8 @@ module ActiveFedora
       def attribute(attribute_name, options ={})
         attribute = Attribute.new(attribute_name, options)
 
-        self.delegate_attributes ||= []
-        self.delegate_attributes += [attribute]
+        self.delegate_attributes ||= {}
+        self.delegate_attributes[attribute.name] = attribute
 
         validates(attribute.name, attribute.options_for_validation) if attribute.options_for_validation.present?
         delegate(attribute.name, attribute.options_for_delegation)
@@ -76,7 +76,7 @@ module ActiveFedora
     #
     # @return [Hash{String => Object}] the attribute defaults
     def attribute_defaults
-      self.class.delegate_attributes.collect { |attribute| [attribute.name, attribute.default(self)] }
+      self.class.delegate_attributes.collect { |name, attribute| [name, attribute.default(self)] }
     end
 
     # Applies attribute default values
