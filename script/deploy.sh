@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-# Invoked by the CurateND-Integration Jenkins project
-# Setup and run capistrano to deploy the preproduction application and workers
+# Invoked by the CurateND Jenkins projects
+# Setup and run capistrano to deploy the application and workers.
+#
+# $0 - this script
+# $1 - the environment to run this under
 #
 # This runs on the same host as jenkins
 #
