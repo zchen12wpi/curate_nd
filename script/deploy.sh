@@ -12,4 +12,4 @@ echo "=-=-=-=-=-=-=-= start $0 $1"
 
 source $WORKSPACE/script/common-deploy.sh
 
-do_deploy pre_production
+do_deploy $1
