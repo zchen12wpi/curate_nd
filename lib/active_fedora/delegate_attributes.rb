@@ -33,11 +33,71 @@ module ActiveFedora
         end
       end
 
+      def create_writer(klass)
+        if writer = options[:writer]
+          writer_method_name = "#{name}="
+          writer_instance =  klass.instance_method(writer_method_name)
+          if writer.respond_to?(:call)
+            if multiple?
+              klass.send(:define_method, writer_method_name) do |values|
+                writer_instance.bind(self).call(values.collect{|v| writer.call(v)})
+              end
+            else
+              klass.send(:define_method, writer_method_name) do |value|
+                writer_instance.bind(self).call(writer.call(value))
+              end
+            end
+          else
+            if multiple?
+              klass.send(:define_method, writer_method_name) do |values|
+                writer_instance.bind(self).call(values.collect{|value| send(writer,value)})
+              end
+            else
+              klass.send(:define_method, writer_method_name) do |value|
+                writer_instance.bind(self).call(send(writer, value))
+              end
+            end
+          end
+        end
+      end
+
+      def create_reader(klass)
+        if reader = options[:reader]
+          reader_method_name = "#{name}"
+          reader_instance =  klass.instance_method(reader_method_name)
+          if reader.respond_to?(:call)
+            if multiple?
+              klass.send(:define_method, reader_method_name) do
+                reader_instance.bind(self).call.collect{|value| reader.call(value)}
+              end
+            else
+              klass.send(:define_method, reader_method_name) do
+                reader.call(reader_instance.bind(self).call)
+              end
+            end
+          else
+            if multiple?
+              klass.send(:define_method, reader_method_name) do
+                reader_instance.bind(self).call.collect{|value| send(reader, value)}
+              end
+            else
+              klass.send(:define_method, reader_method_name) do
+                send(reader, reader_instance.bind(self).call)
+              end
+            end
+          end
+        end
+      end
+
       private
 
-      def options
-        @options
-      end
+        def multiple?
+          options[:multiple]
+        end
+
+        def options
+          @options
+        end
 
     end
 
@@ -55,6 +115,8 @@ module ActiveFedora
 
         validates(attribute.name, attribute.options_for_validation) if attribute.options_for_validation.present?
         delegate(attribute.name, attribute.options_for_delegation)
+        attribute.create_writer(self)
+        attribute.create_reader(self)
       end
     end
 

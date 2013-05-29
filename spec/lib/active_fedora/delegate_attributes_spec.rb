@@ -8,6 +8,11 @@ describe 'ActiveFedora::DelegateAttributes' do
     has_metadata :name => "properties", :type => ActiveFedora::SimpleDatastream do |m|
       m.field "title",  :string
       m.field "description",  :string
+      m.field "creator", :string
+      m.field "file_names", :string
+      m.field "locations", :string
+      m.field "created_on", :date
+      m.field "modified_on", :date
     end
 
     attribute :title, {
@@ -19,6 +24,45 @@ describe 'ActiveFedora::DelegateAttributes' do
     attribute :description, {
       datastream: 'properties',
       default: ['One two']
+    }
+
+    attribute :creator, {
+      datastream: 'properties',
+      multiple: false,
+      writer: lambda{|value| value.reverse }
+    }
+
+    attribute :file_names, {
+      datastream: 'properties',
+      multiple: true,
+      writer: lambda{|value| value.reverse }
+    }
+
+    def set_locations(value)
+      "LOCATION: #{value}"
+    end
+    protected :set_locations
+
+    attribute :locations, {
+      datastream: 'properties',
+      multiple: true,
+      writer: :set_locations
+    }
+
+    attribute :created_on, {
+      datastream: 'properties',
+      multiple: false,
+      reader: lambda {|value|
+        "DATE: #{value}"
+      }
+    }
+
+    attribute :modified_on, {
+      datastream: 'properties',
+      multiple: true,
+      reader: lambda {|value|
+        "DATE: #{value}"
+      }
     }
   end
   subject { MockDelegateAttribute.new() }
@@ -39,6 +83,42 @@ describe 'ActiveFedora::DelegateAttributes' do
 
     it "allows for default" do
       expect(subject.description).to eq(['One two'])
+    end
+
+    it "allows for a reader to intercept the returning of values" do
+      date = Date.today
+      subject.created_on = date
+      expect(subject.properties.created_on).to eq([date])
+      expect(subject.created_on).to eq("DATE: #{date}")
+    end
+
+    it "allows for a reader to intercept the returning of values" do
+      date = Date.today
+      subject.created_on = date
+      expect(subject.properties.created_on).to eq([date])
+      expect(subject.created_on).to eq("DATE: #{date}")
+    end
+
+    it "allows for a writer to intercept the setting of values" do
+      text = 'hello world'
+      subject.creator = 'hello world'
+      expect(subject.properties.creator).to eq([text.reverse])
+      expect(subject.creator).to eq(text.reverse)
+    end
+
+    it "allows for a writer to intercept the setting of values" do
+      values = ['foo.rb', 'bar.rb']
+      subject.file_names = values
+      expect(subject.properties.file_names).to eq(values.collect(&:reverse))
+      expect(subject.file_names).to eq(values.collect(&:reverse))
+    end
+
+    it "allows for a writer that is a symbol" do
+      values = ['South Bend', 'State College', 'Minneapolis']
+      expected_values = values.collect{|v| "LOCATION: #{v}"}
+      subject.locations = values
+      expect(subject.properties.locations).to eq(expected_values)
+      expect(subject.locations).to eq(expected_values)
     end
   end
 
