@@ -1,18 +1,11 @@
 require 'spec_helper'
+require 'capybara/poltergeist'
+require 'compass-rails'
+require 'compass'
+require 'bootstrap-datepicker-rails'
+require 'timecop'
 
-require 'casclient'
-require 'casclient/frameworks/rails/filter'
-
-describe_options = {type: :feature}
-if ENV['JS']
-  describe_options[:js] = true
-end
-
-describe 'end to end behavior', describe_options do
-  def with_javascript?
-    @example.metadata[:js] || @example.metadata[:javascript]
-  end
-
+describe 'end to end behavior', FeatureSupport.options do
   before(:each) do
     Warden.test_mode!
     @old_resque_inline_value = Resque.inline
