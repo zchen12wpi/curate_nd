@@ -20,23 +20,7 @@ class Citation
   private
 
   def authors_in_apa
-    authors_list = ""
-    if authors.size == 1
-      authors_list += name_format(authors.first.strip)
-    elsif authors.size >= 2
-      authors.each_with_index do |name, index|
-        if index == 0
-          authors_list += name_format(name.strip)
-        else
-          if(index == authors.size - 1)
-            authors_list += ", & " + name_format(name.strip)
-          else
-            authors_list += ", " + name_format(name.strip)
-          end
-        end
-      end
-    end
-    authors_list
+    authors.collect {|name| name_format(name.strip) }.to_sentence(:last_word_connector => ', & ', :two_words_connector => ', & ')
   end
 
   def name_format(name)
@@ -65,15 +49,7 @@ class Citation
     if @curation_concern.publisher.size == 1
       return @curation_concern.publisher.first
     end
-    publishers = ""
-    @curation_concern.publisher.each_with_index do |pblisher, index|
-      if index == (@curation_concern.publisher.size - 1)
-        publishers += pblisher.strip
-      else
-        publishers += pblisher.strip + ", "
-      end
-    end
-    publishers
+    @curation_concern.publisher.join(", ")
   end
 
   def doi_apa
