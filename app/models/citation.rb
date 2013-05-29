@@ -1,4 +1,6 @@
 class Citation
+  include Rails.application.routes.url_helpers
+
   def initialize(curation_concern)
     @curation_concern = curation_concern
   end
@@ -8,7 +10,7 @@ class Citation
   end
 
   def to_apa
-    authors_in_apa + published_date_in_apa + @curation_concern.title + ". " + publishers_in_apa + ". " + @curation_concern.identifier
+    authors_in_apa + published_date_in_apa + @curation_concern.title.strip + ". " + publishers_in_apa + ". " + doi_apa
   end
 
   def authors
@@ -20,16 +22,16 @@ class Citation
   def authors_in_apa
     authors_list = ""
     if authors.size == 1
-      authors_list += name_format(authors.first)
+      authors_list += name_format(authors.first.strip)
     elsif authors.size >= 2
       authors.each_with_index do |name, index|
         if index == 0
-          authors_list += name_format(name)
+          authors_list += name_format(name.strip)
         else
           if(index == authors.size - 1)
-            authors_list += ", & " + name_format(name)
+            authors_list += ", & " + name_format(name.strip)
           else
-            authors_list += ", " + name_format(name)
+            authors_list += ", " + name_format(name.strip)
           end
         end
       end
@@ -55,11 +57,8 @@ class Citation
     if @curation_concern.created.blank?
       return " "
     end
-    date_arr = @curation_concern.created.split("-")
-    date = "(#{date_arr.first}"
-    date += ", #{I18n.t("date.month_names")[date_arr[1].to_i]}"
-    date += " #{date_arr.last}"
-    date += "). "
+    date = Date.parse(@curation_concern.created)
+    date.strftime("(%Y, %B %d). ")
   end
 
   def publishers_in_apa
@@ -69,13 +68,20 @@ class Citation
     publishers = ""
     @curation_concern.publisher.each_with_index do |pblisher, index|
       if index == (@curation_concern.publisher.size - 1)
-        publishers += pblisher
+        publishers += pblisher.strip
       else
-        publishers += pblisher + ", "
+        publishers += pblisher.strip + ", "
       end
     end
     publishers
   end
 
+  def doi_apa
+    @curation_concern.identifier.nil? ? no_doi : @curation_concern.identifier
+  end
+
+  def no_doi
+    "Retrieved from #{File.join(Rails.configuration.application_url, common_object_path(@curation_concern.to_param))}"
+  end
 end
 
