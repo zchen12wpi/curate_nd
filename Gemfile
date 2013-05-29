@@ -51,6 +51,7 @@ group :test do
   gem 'rspec-rails'
   gem 'webmock'
   gem 'timecop'
+  gem 'poltergeist'
 end
 
 group :development do
