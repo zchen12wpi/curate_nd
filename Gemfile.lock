@@ -204,6 +204,7 @@ GEM
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -214,6 +215,8 @@ GEM
     faraday (0.8.7)
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     ffi (1.4.0)
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
@@ -225,6 +228,7 @@ GEM
     highline (1.6.15)
     hike (1.2.2)
     hooks (0.2.2)
+    http_parser.rb (0.5.3)
     hydra-access-controls (5.4.0)
       active-fedora
       activesupport
@@ -320,6 +324,10 @@ GEM
       mime-types
     parslet (1.5.0)
       blankslate (~> 2.0)
+    poltergeist (1.1.2)
+      capybara (~> 2.0.1)
+      faye-websocket (~> 0.4.4)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -520,6 +528,7 @@ DEPENDENCIES
   morphine
   mysql2
   namae
+  poltergeist
   rails_best_practices
   rake
   resque-pool
