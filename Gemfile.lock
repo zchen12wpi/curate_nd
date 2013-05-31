@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/jeremyf/rsolr.git
-  revision: ab3b1f9342502154c9ca5b24187918b6658e6f34
-  branch: adding-connection-information-to-error-handling
-  specs:
-    rsolr (1.0.8)
-      builder (>= 2.1.2)
-
-GIT
   remote: git://github.com/ndlib/curate.git
   revision: 54ddc8a420a2edde114c18a84635b5fb8e5b2c4e
   specs:
@@ -393,6 +385,8 @@ GEM
     roboto (0.1.0)
       actionpack (>= 3.0.0)
       rails (>= 3.1.0)
+    rsolr (1.0.9)
+      builder (>= 2.1.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -532,7 +526,6 @@ DEPENDENCIES
   rails_best_practices
   rake
   resque-pool
-  rsolr!
   rspec-html-matchers
   rspec-rails
   sass-rails (~> 3.2.3)
