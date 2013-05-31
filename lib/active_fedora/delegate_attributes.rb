@@ -8,7 +8,7 @@ module ActiveFedora
 
       def initialize(name, options = {})
         @options = options.symbolize_keys
-        @options.assert_valid_keys(:default, :datastream, :validates, :at, :multiple, :writer, :reader)
+        @options.assert_valid_keys(:default, :datastream, :validates, :at, :multiple, :writer, :reader, :label, :hint)
         @name = name
         @options[:multiple] = true unless @options.key?(:multiple)
       end
