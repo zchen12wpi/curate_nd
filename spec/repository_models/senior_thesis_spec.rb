@@ -17,7 +17,6 @@ describe SeniorThesis do
   it('has a creator') { subject.should respond_to(:creator) }
   it('has a date_uploaded') { subject.should respond_to(:date_uploaded) }
   it('has a date_modified') { subject.should respond_to(:date_modified) }
-  it('has a available') { subject.should respond_to(:available) }
   it('has a publisher') { subject.should respond_to(:publisher) }
   it('has a bibliographic_citation') { subject.should respond_to(:bibliographic_citation) }
   it('has a source') { subject.should respond_to(:source) }
