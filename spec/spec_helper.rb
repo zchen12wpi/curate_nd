@@ -62,7 +62,7 @@ RSpec.configure do |config|
   end
 
   config.around(:each) do |example|
-    Timeout::timeout(5) {
+    Timeout::timeout(120) {
       example.run
     }
   end
