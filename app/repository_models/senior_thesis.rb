@@ -81,7 +81,11 @@ class SeniorThesis < ActiveFedora::Base
   attribute :requires,
     datastream: :descMetadata, multiple: true
 
-  attr_accessor :files, :assign_doi
+  attribute :files,
+    multiple: true, as: :file, label: "Upload Files",
+    hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
+
+  attr_accessor :assign_doi
 
   def doi_url
     File.join(Rails.configuration.doi_url, self.identifier)

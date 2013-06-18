@@ -14,8 +14,17 @@ module ActiveFedora
         self.delegate_attributes ||= {}
         self.delegate_attributes[attribute.name] = attribute
 
-        validates(attribute.name, attribute.options_for_validation) if attribute.options_for_validation.present?
-        delegate(attribute.name, attribute.options_for_delegation)
+        attribute.with_validation_options do |name, opts|
+          validates(name, opts)
+        end
+
+        attribute.with_accession_options do |name, opts|
+          attr_accessor name
+        end
+
+        attribute.with_delegation_options do |name, opts|
+          delegate(name, opts)
+        end
 
         attribute.wrap_writer_method(self)
         attribute.wrap_reader_method(self)

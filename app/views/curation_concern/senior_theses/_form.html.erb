@@ -15,7 +15,7 @@
                     input_html: { class: 'input-xxlarge'}
         %>
         <%= f.input :creator,
-                    input_html: { class: 'input-xlarge', placeholder: 'George Washington', multiple: 'multiple' }
+                    input_html: { class: 'input-xlarge', placeholder: 'George Washington' }
         %>
         <%= f.input :description,
                     input_html: { class: 'input-xxxlarge', rows: '9' }
@@ -33,22 +33,22 @@
       <fieldset class="optional prompt">
         <legend>Any additional information is optional, but helpful for others looking to find your work.</legend>
         <%= f.input :advisor,
-                    input_html: { placeholder: 'Prof. Roy Hinkley', class: 'input-xlarge', multiple: 'multiple' }
+                    input_html: { placeholder: 'Prof. Roy Hinkley', class: 'input-xlarge' }
         %>
         <%= f.input :contributor,
-                    input_html: { class: 'input-xlarge', multiple: 'multiple' }
+                    input_html: { class: 'input-xlarge' }
         %>
         <%= f.input :subject,
-                    input_html: { class: 'input-xlarge', multiple: 'multiple' }
+                    input_html: { class: 'input-xlarge' }
         %>
         <%= f.input :bibliographic_citation,
-                    input_html: { class: 'input-xlarge', multiple: 'multiple' }
+                    input_html: { class: 'input-xlarge' }
         %>
         <%= f.input :language,
-                    input_html: { class: 'input-xlarge', multiple: 'multiple'}
+                    input_html: { class: 'input-xlarge'}
         %>
         <%= f.input :publisher,
-                    input_html: { class: 'input-xlarge', multiple: 'multiple' }
+                    input_html: { class: 'input-xlarge' }
         %>
       </fieldset>
     <% end %>

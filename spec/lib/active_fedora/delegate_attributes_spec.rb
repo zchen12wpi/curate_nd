@@ -73,8 +73,6 @@ describe 'ActiveFedora::DelegateAttributes' do
   describe '#attribute_config' do
     let(:attribute_config) { subject.attribute_config(:title) }
     it do
-      expect(attribute_config.options_for_delegation).to be_instance_of(Hash)
-      expect(attribute_config.options_for_validation).to be_instance_of(Hash)
       expect(attribute_config.options_for_input).to be_instance_of(Hash)
     end
   end
