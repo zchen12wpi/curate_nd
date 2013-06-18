@@ -53,7 +53,7 @@ group :test do
   gem 'poltergeist'
 end
 
-group :development do
+group :debug do
   gem 'debugger', ">= 1.4"
   gem 'rails_best_practices'
   gem 'sextant'
