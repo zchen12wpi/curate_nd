@@ -6,30 +6,30 @@ module ActiveFedora
 
       def initialize(name, options = {})
         @options = options.symbolize_keys
-        @options.assert_valid_keys(:default, :form, :datastream, :validates, :at, :multiple, :writer, :reader, :label, :hint)
-        @datastream = @options.fetch(:datastream)
+        @options.assert_valid_keys(:default, :form, :datastream, :validates, :at, :as, :multiple, :writer, :reader, :label, :hint)
+        @datastream = @options.fetch(:datastream, false)
         @name = name
         @options[:multiple] = true unless @options.key?(:multiple)
         @options[:form] ||= {}
       end
 
-      def options_for_delegation
-        {
-          to: datastream,
-          unique: !options[:multiple]
-        }.tap {|hash|
-          hash[:at] = options[:at] if options.key?(:at)
-        }
+      def with_delegation_options
+        yield(name, options_for_delegation) if datastream
       end
 
-      def options_for_validation
-        options[:validates] || {}
+      def with_validation_options
+        yield(name, options[:validates]) if options[:validates]
+      end
+
+      def with_accession_options
+        yield(name, {}) if !datastream
       end
 
       def options_for_input(overrides = {})
         options[:form].tap {|hash|
-          hash[:hint] = options[:hint] if options[:hint]
-          hash[:label] = options[:label] if options[:label]
+          hash[:hint] ||= options[:hint] if options[:hint]
+          hash[:label] ||= options[:label] if options[:label]
+          hash[:as] ||= options[:as] if options[:as]
           if options[:multiple]
             hash[:as] = 'multi_value'
             hash[:input_html] ||= {}
@@ -70,6 +70,15 @@ module ActiveFedora
       end
 
       private
+
+        def options_for_delegation
+          {
+            to: datastream,
+            unique: !options[:multiple]
+          }.tap {|hash|
+            hash[:at] = options[:at] if options.key?(:at)
+          }
+        end
 
         def with_writer_method_wrap
           if writer = options[:writer]
