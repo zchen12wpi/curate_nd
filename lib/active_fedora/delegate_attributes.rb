@@ -41,6 +41,12 @@ module ActiveFedora
       self.class.delegate_attributes.fetch(name)
     end
 
+    def label_for(name)
+      attribute_config(name).label
+    rescue KeyError
+      name.to_s.titleize
+    end
+
     # Applies the attribute defaults
     #
     # Applies all the default values to any attributes not yet set, avoiding
