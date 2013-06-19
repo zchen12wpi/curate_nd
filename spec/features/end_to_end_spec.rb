@@ -370,7 +370,7 @@ describe 'end to end behavior', FeatureSupport.options do
       elements = [options[:with]].flatten.compact
       if with_javascript?
         elements.each_with_index do |contributor, i|
-          within('.input-append:last') do
+          within(all('.input-append').last) do
             fill_in(field_name, with: contributor)
             click_on('Add')
           end

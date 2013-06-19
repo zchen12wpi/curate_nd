@@ -7,6 +7,7 @@ group :default do
   gem 'mysql2'
   gem 'sufia', git: 'git://github.com/ndlib/sufia.git', branch: 'sufia-for-curate-nd'
   gem 'curate', git: 'git://github.com/ndlib/curate.git'
+  gem 'nokogiri', "~>1.5.9"
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'decent_exposure'
@@ -43,7 +44,7 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', "~> 2.1"
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-html-matchers'
