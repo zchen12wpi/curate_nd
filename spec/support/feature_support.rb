@@ -16,6 +16,10 @@ module FeatureSupport
     else
       Capybara.javascript_driver = default.fetch(:javascript_driver, :poltergeist)
     end
+
+    if ENV['LOCAL']
+      Capybara.current_driver = default.fetch(:javascript_driver, :poltergeist_debug)
+    end
     default
   end
 
