@@ -13,6 +13,10 @@ module ActiveFedora
         @options[:form] ||= {}
       end
 
+      def label
+        options[:label] || name.to_s.titleize
+      end
+
       def with_delegation_options
         yield(name, options_for_delegation) if datastream
       end
