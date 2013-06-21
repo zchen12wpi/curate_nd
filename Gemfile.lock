@@ -124,7 +124,7 @@ GEM
     blankslate (2.1.2.4)
     block_helpers (0.3.3)
       activesupport (>= 2.0)
-    bootstrap-datepicker-rails (1.1.0.1)
+    bootstrap-datepicker-rails (1.1.1.1)
       railties (>= 3.0)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
@@ -213,7 +213,7 @@ GEM
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foreigner (1.4.1)
+    foreigner (1.4.2)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
     hashie (2.0.5)
@@ -280,6 +280,7 @@ GEM
     mime-types (1.23)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
+    mini_portile (0.5.0)
     morphine (0.1.1)
     multi_json (1.7.7)
     multipart-post (1.2.0)
@@ -296,7 +297,8 @@ GEM
       net-ssh (>= 2.6.5)
     noid (0.5.5)
       backports
-    nokogiri (1.5.10)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nom-xml (0.5.1)
       activesupport
       i18n
@@ -340,7 +342,7 @@ GEM
       railties (= 3.2.13)
     rails_autolink (1.0.9)
       rails (~> 3.1)
-    rails_best_practices (1.13.7)
+    rails_best_practices (1.13.8)
       activesupport
       awesome_print
       code_analyzer
@@ -356,7 +358,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rainbow (1.1.4)
-    rake (10.0.4)
+    rake (10.1.0)
     rdf (1.0.7)
       addressable (>= 2.2)
     rdf-rdfxml (0.3.9)
@@ -419,8 +421,8 @@ GEM
       nokogiri
       rest-client
     safe_yaml (0.9.3)
-    sanitize (2.0.3)
-      nokogiri (>= 1.4.4, < 1.6)
+    sanitize (2.0.4)
+      nokogiri (~> 1.6.0)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -515,7 +517,7 @@ DEPENDENCIES
   morphine
   mysql2
   namae
-  nokogiri (~> 1.5.9)
+  nokogiri (~> 1.6.0)
   poltergeist
   rails_best_practices
   rake
