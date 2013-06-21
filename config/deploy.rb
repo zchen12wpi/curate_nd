@@ -119,6 +119,7 @@ namespace :bundle do
     switches << " --path=#{release_path}/vendor/bundle"
     switches << " --gemfile='#{release_path}/Gemfile'"
     switches << " --deployment"
+    switches << " --path='vendor/.bundle'"
     switches << " --without #{without_bundle_environments}"
     run "#{bundler} install #{switches}"
   end
@@ -189,7 +190,7 @@ task :pre_production_cluster do
 
   set :user,        'rbpprd'
   set :domain,      'curatepprd.library.nd.edu'
-  set :without_bundle_environments, 'headless development test'
+  set :without_bundle_environments, 'headless development test debug'
 
   default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
@@ -218,7 +219,7 @@ task :production_cluster do
 
   set :user,        'rbprod'
   set :domain,      'curateprod.library.nd.edu'
-  set :without_bundle_environments, 'headless development test'
+  set :without_bundle_environments, 'headless development test debug'
 
   default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
@@ -242,7 +243,7 @@ def common_worker_things
   set :scm_command, '/usr/bin/git'
   set :deploy_to,   '/home/curatend'
   set :ruby_bin,    '/usr/local/ruby/bin'
-  set :without_bundle_environments, 'development test'
+  set :without_bundle_environments, 'development test debug'
   set :group_writable, false
 
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
