@@ -1,0 +1,40 @@
+id: curatend
+name: CurateND
+owner: jfriesen
+developers:
+  - jfriesen
+  - dbrubak1
+  - blakshmi
+  - dbrower
+  - rbalekai
+purpose: >
+
+audience: >
+
+dependencies:
+  - directory.nd.edu
+  - login.nd.edu
+  - solr41
+  - fedora46
+  - mysql
+  - redis
+hosts: # These can be pulled from the Capistrano file?
+  - curate.library.nd.edu
+  - curatepprd.library.nd.edu
+  - curatepprdw1.library.nd.edu
+  - curateprodw1.library.nd.edu
+urls:
+  - "https://curate.library.nd.edu"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Integration/"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Preproduction/"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Production/"
+  - "https://travis-ci.org/ndlib/curate_nd/"
+setup: >
+
+deploy: >
+  Deployed via Jenkins and Capistrano (see URLs)
+notes: >
+
+last_review:
+  date: 2013-06-24
+  reviewer: jfriesen
