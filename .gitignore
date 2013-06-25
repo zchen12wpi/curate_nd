@@ -27,3 +27,5 @@ coverage/
 rails_best_practice*
 .ruby-gemset
 .ruby-version
+jetty/*
+spec/*.zip
