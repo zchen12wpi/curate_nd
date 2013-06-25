@@ -4,7 +4,17 @@ This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
 
 It's primary function is to be a self-deposit interface for our institutional digital repository.
 
-The initial use case is for ETDs.
+## Testing
+
+First, you will need a running a specific instance of Fedora & SOLR - there are
+XACML policy changes in Fedora related to soft-deletes. This can be done via the
+following commands:
+
+    rake curatend:jetty:start
+
+Once jetty is started, run either of the following
+
+`rake` or `rspec`
 
 ## Application Status
 

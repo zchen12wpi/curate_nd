@@ -33,6 +33,16 @@ namespace :curatend do
 
       desc 'Download the appropriate jetty instance and install it with proper configuration'
       task :init => ["curatend:jetty:download", "curatend:jetty:clean", "curatend:jetty:unzip"]
+
+      desc 'Download jetty instance and start it'
+      task :start => ['curatend:jetty:init'] do
+        Rake::Task['jetty:start'].invoke
+      end
+
+      desc 'Stop the jetty instance'
+      task :stop do
+        Rake::Task['jetty:stop'].invoke
+      end
     end
 
     desc 'Run specs on travis'
