@@ -8,10 +8,29 @@ describe CharacterizeJob do
   describe '#run' do
     let(:user) { FactoryGirl.create(:user) }
     let(:senior_thesis) { FactoryGirl.create_curation_concern(:senior_thesis, user)}
-    let(:generic_file) {
-      FactoryGirl.create_generic_file(senior_thesis, user)
+    let(:image_file) {
+      Rack::Test::UploadedFile.new(
+        File.expand_path('../../fixtures/files/image.png', __FILE__),
+        'image/png',
+        false
+      )
     }
+    let(:generic_file) {
+      begin
+        FactoryGirl.create_generic_file(senior_thesis, user, image_file)
+      rescue NoMethodError => e
+        require 'debugger'; debugger; true
+      end
+    }
+
     subject { CharacterizeJob.new(generic_file.pid) }
+
+    it 'should create a thumbnail' do
+      expect(generic_file.datastreams['thumbnail'].mimeType).to eq(nil)
+      GenericFile.any_instance.stub(:image?).and_return(true)
+      subject.run
+      expect(generic_file.reload.datastreams['thumbnail'].mimeType).to eq('image/jpeg')
+    end
 
     it 'deletes the generic file when I upload a virus' do
       EnvironmentOverride.with_anti_virus_scanner(false) do

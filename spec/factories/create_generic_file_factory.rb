@@ -7,8 +7,15 @@ def FactoryGirl.create_generic_file(container_factory_name_or_object, user, file
   end
 
   generic_file = GenericFile.new
-  generic_file.batch = curation_concern
+
+  yield(generic_file) if block_given?
+
+  generic_file.visibility ||= AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
+
   file ||= Rack::Test::UploadedFile.new(__FILE__, 'text/plain', false)
+  generic_file.file ||= file
+
+  generic_file.batch = curation_concern
 
   actor = CurationConcern::GenericFileActor.new(
     generic_file,
