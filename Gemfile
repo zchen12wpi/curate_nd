@@ -8,7 +8,7 @@ group :default do
   gem 'active-fedora', git: 'git://github.com/projecthydra/active_fedora.git'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency'
   gem 'rsolr'
-#  gem 'hydra-head', git: 'git://github.com/jeremyf/hydra-head.git', branch: 'fix-embargo-release-date-to-solr'
+  gem 'psych'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
