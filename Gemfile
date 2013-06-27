@@ -6,6 +6,7 @@ group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
   gem 'active-fedora', git: 'git://github.com/projecthydra/active_fedora.git'
+  gem 'sufia', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency'
   gem 'rsolr'
 #  gem 'hydra-head', git: 'git://github.com/jeremyf/hydra-head.git', branch: 'fix-embargo-release-date-to-solr'
   gem 'nokogiri', "~>1.6.0"
