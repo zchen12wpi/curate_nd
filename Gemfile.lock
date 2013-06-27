@@ -1,20 +1,4 @@
 GIT
-  remote: git://github.com/jeremyf/active_fedora.git
-  revision: 563bc0b14e8700fdef3081f605eacc0c89eb4305
-  branch: adding-yaml-adaptor
-  specs:
-    active-fedora (6.4.0.rc4)
-      activesupport (>= 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf
-      rdf-rdfxml (~> 1.0.0)
-      rsolr
-      rubydora (~> 1.6, >= 1.6.5)
-
-GIT
   remote: git://github.com/jeremyf/curate.git
   revision: 8a6162016238b7f92ae7cbce32e2a0a9aad51fd9
   branch: refactoring-towards-sufia-models
@@ -58,6 +42,21 @@ GIT
       resque (~> 1.23.0)
       resque-pool (= 0.3.0)
       zipruby (= 0.3.6)
+
+GIT
+  remote: git://github.com/projecthydra/active_fedora.git
+  revision: e1d14b1148069157af1365a19f98e7106fd79a6a
+  specs:
+    active-fedora (6.4.0.rc4)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 3.0.0)
+      rdf
+      rdf-rdfxml (~> 1.0.0)
+      rsolr
+      rubydora (~> 1.6, >= 1.6.5)
 
 GEM
   remote: https://rubygems.org/
