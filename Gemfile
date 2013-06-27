@@ -5,10 +5,9 @@ source 'https://rubygems.org'
 group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
-  gem 'active-fedora', git: 'git://github.com/projecthydra/active_fedora.git'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency'
+  gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'adding-yaml-adaptor'
   gem 'rsolr'
-  gem 'psych', "~>1.3.4"
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
