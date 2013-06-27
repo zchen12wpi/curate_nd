@@ -16,11 +16,7 @@ describe CharacterizeJob do
       )
     }
     let(:generic_file) {
-      begin
-        FactoryGirl.create_generic_file(senior_thesis, user, image_file)
-      rescue NoMethodError => e
-        require 'debugger'; debugger; true
-      end
+      FactoryGirl.create_generic_file(senior_thesis, user, image_file)
     }
 
     subject { CharacterizeJob.new(generic_file.pid) }
