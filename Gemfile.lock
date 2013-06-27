@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: git://github.com/jeremyf/sufia.git
-  revision: 7a97bc78673f1ef916cc392cdda937467bae3ce2
+  revision: 431063eef3f44bd0958b61fdb858e869eae06043
   branch: remove-rmagick-dependency
   specs:
     sufia-models (0.1.2)
