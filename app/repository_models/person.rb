@@ -31,6 +31,5 @@ class Person < ActiveFedora::Base
 
   def update_user!(user)
     user.update_column(:repository_id, self.pid)
-    user.save!
   end
 end
