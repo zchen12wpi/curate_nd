@@ -9,18 +9,56 @@ module ActiveFedora
 
     class AttributeCollection < DelegateClass(HashWithIndifferentAccess)
       attr_accessor :context
-      def initialize(context, &block)
+      def initialize(context)
         @context = context
         super(HashWithIndifferentAccess.new)
       end
+
+      def register(attribute)
+        self[attribute.name] = attribute
+      end
+
+      # Calculates the attribute defaults from the attribute definitions
+      #
+      # @return [Hash{String => Object}] the attribute defaults
+      def attribute_defaults
+        collect { |name, attribute| [name, attribute.default(self)] }
+      end
+
+      def attribute_config(name)
+        fetch(name)
+      end
+
+      def input_options_for(attribute_name, override_options)
+        attribute_config(attribute_name).options_for_input(override_options)
+      rescue KeyError
+        override_options
+      end
+
+      def label_for(name)
+        attribute_config(name).label
+      rescue KeyError
+        name.to_s.titleize
+      end
     end
+
+
+    delegate :attribute_defaults, to: :delegate_attribute_registry
+    delegate :attribute_config, to: :delegate_attribute_registry
+    delegate :input_options_for, to: :delegate_attribute_registry
+    delegate :label_for, to: :delegate_attribute_registry
+
+    def delegate_attribute_registry
+      self.class.delegate_attributes
+    end
+    private :delegate_attribute_registry
 
     module ClassMethods
       def attribute(attribute_name, options ={})
         attribute = Attribute.new(attribute_name, options)
 
         self.delegate_attributes ||= AttributeCollection.new(self)
-        self.delegate_attributes[attribute.name] = attribute
+        self.delegate_attributes.register(attribute)
 
         attribute.with_validation_options do |name, opts|
           validates(name, opts)
@@ -39,21 +77,6 @@ module ActiveFedora
       end
     end
 
-    def input_options_for(attribute_name, override_options)
-      attribute_config(attribute_name).options_for_input(override_options)
-    rescue KeyError
-      override_options
-    end
-
-    def attribute_config(name)
-      self.class.delegate_attributes.fetch(name)
-    end
-
-    def label_for(name)
-      attribute_config(name).label
-    rescue KeyError
-      name.to_s.titleize
-    end
 
     # Applies the attribute defaults
     #
@@ -67,13 +90,6 @@ module ActiveFedora
           send("#{name}=", value) unless send("#{name}").present?
         end
       end
-    end
-
-    # Calculates the attribute defaults from the attribute definitions
-    #
-    # @return [Hash{String => Object}] the attribute defaults
-    def attribute_defaults
-      self.class.delegate_attributes.collect { |name, attribute| [name, attribute.default(self)] }
     end
 
     # Applies attribute default values
