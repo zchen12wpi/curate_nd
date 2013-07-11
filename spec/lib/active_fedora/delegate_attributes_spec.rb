@@ -47,6 +47,7 @@ describe 'ActiveFedora::DelegateAttributes' do
 
     attribute :locations, {
       datastream: 'properties',
+      displayable: false,
       multiple: true,
       writer: :set_locations
     }
@@ -62,12 +63,33 @@ describe 'ActiveFedora::DelegateAttributes' do
     attribute :modified_on, {
       datastream: 'properties',
       multiple: true,
+      editable: false,
       reader: lambda {|value|
         "DATE: #{value}"
       }
     }
   end
   subject { MockDelegateAttribute.new() }
+
+  describe '#editable_attributes' do
+    let(:expected_attribute_names) {
+      [ :title, :description, :creator, :file_names, :locations, :created_on ]
+    }
+    it 'is all of the attributes that are editable' do
+      actual_editable_attributes = subject.editable_attributes.collect {|a| a.name }
+      expect(actual_editable_attributes).to eq(expected_attribute_names)
+    end
+  end
+
+  describe '#displayable_attributes' do
+    let(:expected_attribute_names) {
+      [ :title, :description, :creator, :file_names, :created_on, :modified_on ]
+    }
+    it 'is all of the attributes that are displayable' do
+      actual_displayable_attributes = subject.displayable_attributes.collect {|a| a.name }
+      expect(actual_displayable_attributes).to eq(expected_attribute_names)
+    end
+  end
 
   let(:reloaded_subject) { subject.class.find(subject.pid) }
   describe '#attribute_config' do
