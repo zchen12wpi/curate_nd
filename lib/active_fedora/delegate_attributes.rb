@@ -7,11 +7,19 @@ module ActiveFedora
       class_attribute :delegate_attributes, instance_writer: false, instance_reader: false
     end
 
+    class AttributeCollection < DelegateClass(HashWithIndifferentAccess)
+      attr_accessor :context
+      def initialize(context, &block)
+        @context = context
+        super(HashWithIndifferentAccess.new)
+      end
+    end
+
     module ClassMethods
       def attribute(attribute_name, options ={})
         attribute = Attribute.new(attribute_name, options)
 
-        self.delegate_attributes ||= {}
+        self.delegate_attributes ||= AttributeCollection.new(self)
         self.delegate_attributes[attribute.name] = attribute
 
         attribute.with_validation_options do |name, opts|

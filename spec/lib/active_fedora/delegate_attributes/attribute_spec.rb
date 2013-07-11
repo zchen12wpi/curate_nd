@@ -8,10 +8,15 @@ describe ActiveFedora::DelegateAttributes::Attribute do
     {
       datastream: datastream, hint: 'Your title',
       form: { input_html: {style: 'title-picker'}},
+      displayable: true,
+      editable: true,
       validates: validation_options
     }
   }
   subject { ActiveFedora::DelegateAttributes::Attribute.new(name, options) }
+
+  its (:displayable?) { should be_true }
+  its (:editable?) { should be_true }
 
   it 'has #options_for_input' do
     expect(subject.options_for_input(input_html: {size: 10})).to eq(
