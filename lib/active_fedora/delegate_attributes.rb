@@ -18,6 +18,18 @@ module ActiveFedora
         self[attribute.name] = attribute
       end
 
+      def editable_attributes
+        @editable_attributes ||= each_with_object([]) {|(name, attribute),m|
+          m << attribute if attribute.editable?
+        }
+      end
+
+      def displayable_attributes
+        @displayable_attributes ||= each_with_object([]) {|(name, attribute),m|
+          m << attribute if attribute.displayable?
+        }
+      end
+
       # Calculates the attribute defaults from the attribute definitions
       #
       # @return [Hash{String => Object}] the attribute defaults
@@ -47,6 +59,8 @@ module ActiveFedora
     delegate :attribute_config, to: :delegate_attribute_registry
     delegate :input_options_for, to: :delegate_attribute_registry
     delegate :label_for, to: :delegate_attribute_registry
+    delegate :editable_attributes, to: :delegate_attribute_registry
+    delegate :displayable_attributes, to: :delegate_attribute_registry
 
     def delegate_attribute_registry
       self.class.delegate_attributes
