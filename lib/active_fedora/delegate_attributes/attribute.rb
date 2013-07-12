@@ -8,19 +8,17 @@ module ActiveFedora
         @options = options.symbolize_keys
         @options.assert_valid_keys(:default, :displayable, :editable, :form, :datastream, :validates, :at, :as, :multiple, :writer, :reader, :label, :hint)
         @datastream = @options.fetch(:datastream, false)
-        @displayable = @options.fetch(:displayable, true)
-        @editable = @options.fetch(:editable, true)
         @name = name
         @options[:multiple] = true unless @options.key?(:multiple)
         @options[:form] ||= {}
       end
 
       def displayable?
-        @displayable
+        @options.fetch(:displayable, true)
       end
 
       def editable?
-        @editable
+        @options.fetch(:editable, true)
       end
 
       def label
