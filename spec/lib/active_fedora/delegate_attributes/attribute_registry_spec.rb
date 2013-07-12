@@ -37,15 +37,44 @@ describe ActiveFedora::DelegateAttributes::AttributeRegistry do
     end
   end
   describe '#attribute_defaults' do
-    xit "assigns default on registry's context context"
-  end
-  describe '#attribute_config' do
-    xit "assigns default on registry's context context"
+    let(:context) { double }
+    let(:default_options) { { default: '1234' } }
+    let(:default_field_name) { 'something' }
+    it "assigns default on registry's context context" do
+      subject.register(default_field_name, default_options)
+      expect(subject.attribute_defaults).to eq([[default_field_name, default_options.fetch(:default)]])
+    end
   end
   describe '#input_options_for' do
-    xit "returns input options"
+    let(:editable_options) { { editable: true, displayable: false } }
+
+    before(:each) do
+      @editable_attribute = subject.register('editable', editable_options)
+    end
+
+    it "returns input options for existing attribute" do
+      expect(subject.input_options_for('editable')).to eq({as: "multi_value",input_html: {multiple:"multiple"}})
+    end
+
+    it "returns default options for existing attribute" do
+      options = {hello: :world}
+      expect(subject.input_options_for('hello', options)).to eq(options)
+    end
   end
   describe '#label_for' do
-    xit "handles forms"
+    let(:label_options) { { label: "Hello World" } }
+    let(:field_name) { 'thing' }
+
+    before(:each) do
+      subject.register(field_name, label_options)
+    end
+
+    it "handles label for existing field" do
+      expect(subject.label_for(field_name)).to eq(label_options.fetch(:label))
+    end
+
+    it "handles missing field's label" do
+      expect(subject.label_for("hydra_field")).to eq("Hydra Field")
+    end
   end
 end
