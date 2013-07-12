@@ -35,18 +35,14 @@ module ActiveFedora
         collect { |name, attribute| [name, attribute.default(context)] }
       end
 
-      def attribute_config(name)
-        fetch(name)
-      end
-
-      def input_options_for(attribute_name, override_options)
-        attribute_config(attribute_name).options_for_input(override_options)
+      def input_options_for(attribute_name, override_options = {})
+        fetch(attribute_name).options_for_input(override_options)
       rescue KeyError
         override_options
       end
 
       def label_for(name)
-        attribute_config(name).label
+        fetch(name).label
       rescue KeyError
         name.to_s.titleize
       end
