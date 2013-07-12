@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe ActiveFedora::DelegateAttributes::Attribute do
-  let(:name) { :title }
+  class Something < ActiveFedora::Base
+    extend ActiveModel::Translation
+  end
+  let(:context) { Something }
+  let(:field_name) { :title }
   let(:datastream) { 'SourApple' }
   let(:validation_options) {{ presence: true }}
   let(:options) {
@@ -13,10 +17,25 @@ describe ActiveFedora::DelegateAttributes::Attribute do
       validates: validation_options
     }
   }
-  subject { ActiveFedora::DelegateAttributes::Attribute.new(name, options) }
+  subject { ActiveFedora::DelegateAttributes::Attribute.new(context, field_name, options) }
 
   its (:displayable?) { should be_true }
   its (:editable?) { should be_true }
+
+  describe '#label' do
+    describe 'with explicit model level label' do
+      it 'uses the explicit label' do
+        expect(subject.label).to eq(field_name.to_s.titleize)
+      end
+    end
+
+    describe 'with internationalized label' do
+      let(:field_name) { 'internationalized_field' }
+      it 'uses the explicit label' do
+        expect(subject.label).to eq(Something.human_attribute_name(field_name))
+      end
+    end
+  end
 
   it 'has #options_for_input' do
     expect(subject.options_for_input(input_html: {size: 10})).to eq(
@@ -32,7 +51,7 @@ describe ActiveFedora::DelegateAttributes::Attribute do
   it 'yields name and options for #validations' do
     @yielded = false
     subject.with_validation_options do |name, opts|
-      expect(name).to eq(name)
+      expect(name).to eq(field_name)
       expect(opts).to eq(validation_options)
       @yielded = true
     end
@@ -45,7 +64,7 @@ describe ActiveFedora::DelegateAttributes::Attribute do
       @yielded = false
       subject.with_delegation_options {|name,opts|
         @yielded = true
-        expect(name).to eq(name)
+        expect(name).to eq(field_name)
         expect(opts).to eq(subject.send(:options_for_delegation))
       }
       expect(@yielded).to eq(true)
@@ -75,7 +94,7 @@ describe ActiveFedora::DelegateAttributes::Attribute do
       @yielded = false
       subject.with_accession_options {|name,opts|
         @yielded = true
-        expect(name).to eq(name)
+        expect(name).to eq(field_name)
         expect(opts).to eq({})
       }
       expect(@yielded).to eq(true)
