@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ActiveFedora::DelegateAttributes::AttributeRegistry do
-  let(:context) { Object.new }
+  let(:context) { ActiveFedora::Base }
   let(:name) { "My Name" }
   let(:options) { {} }
   subject { ActiveFedora::DelegateAttributes::AttributeRegistry.new(context) }

@@ -2,9 +2,11 @@ module ActiveFedora
   module DelegateAttributes
     class Attribute
 
-      attr_reader :name, :datastream
+      attr_reader :context_class, :name, :datastream
+      private :context_class
 
-      def initialize(name, options = {})
+      def initialize(context_class, name, options = {})
+        @context_class = context_class
         @options = options.symbolize_keys
         @options.assert_valid_keys(:default, :displayable, :editable, :form, :datastream, :validates, :at, :as, :multiple, :writer, :reader, :label, :hint)
         @datastream = @options.fetch(:datastream, false)
@@ -22,7 +24,8 @@ module ActiveFedora
       end
 
       def label
-        options[:label] || name.to_s.titleize
+        default = options[:label] || name.to_s.titleize
+        context_class.human_attribute_name(name, default: default)
       end
 
       def with_delegation_options

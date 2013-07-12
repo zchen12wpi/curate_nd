@@ -1,14 +1,14 @@
 module ActiveFedora
   module DelegateAttributes
     class AttributeRegistry < DelegateClass(HashWithIndifferentAccess)
-      attr_accessor :context
-      def initialize(context)
-        @context = context
+      attr_accessor :context_class
+      def initialize(context_class)
+        @context_class = context_class
         super(HashWithIndifferentAccess.new)
       end
 
       def register(attribute_name, options)
-        attribute = Attribute.new(attribute_name, options)
+        attribute = Attribute.new(context_class, attribute_name, options)
         self[attribute.name] = attribute
         yield(attribute) if block_given?
         attribute
@@ -32,7 +32,7 @@ module ActiveFedora
       #
       # @return [Hash{String => Object}] the attribute defaults
       def attribute_defaults
-        collect { |name, attribute| [name, attribute.default(context)] }
+        collect { |name, attribute| [name, attribute.default(context_class)] }
       end
 
       def input_options_for(attribute_name, override_options = {})
