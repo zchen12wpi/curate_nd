@@ -6,7 +6,7 @@ group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency'
-  gem 'active-fedora', '~>6.4.2'
+  gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'fix-active-fedora-find-on-blank'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
