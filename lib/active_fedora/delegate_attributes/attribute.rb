@@ -7,7 +7,7 @@ module ActiveFedora
 
       def initialize(context_class, name, options = {})
         @context_class = context_class
-        @options = options.symbolize_keys
+        @options = options.hash_with_indifferent_access
         @options.assert_valid_keys(:default, :displayable, :editable, :form, :datastream, :validates, :at, :as, :multiple, :writer, :reader, :label, :hint)
         @datastream = @options.fetch(:datastream, false)
         @name = name
