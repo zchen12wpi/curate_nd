@@ -17,7 +17,12 @@ describe CharacterizeJob do
     begin
       subject.run
     rescue Exception => e
+      file = GenericFile.find(generic_file.pid)
       $stderr.puts "*" * 80
+      $stderr.puts "pid: #{generic_file.pid}"
+      $stderr.puts "mime_type: #{file.mime_type.inspect}"
+      $stderr.puts "format_label: #{file.format_label.inspect}"
+      $stderr.puts "-" * 80
       $stderr.puts e
       $stderr.puts "-" * 80
       $stderr.puts e.backtrace.join("\n")
