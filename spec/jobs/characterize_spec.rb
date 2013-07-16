@@ -15,8 +15,4 @@ describe CharacterizeJob do
   it 'should use create a thumbnail' do
     subject.run
   end
-
-  it 'checking characterization runner' do
-    expect(FileContentDatastream.new.run_fits!(image_file_path)).to eq("")
-  end
 end
