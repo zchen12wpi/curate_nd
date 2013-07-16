@@ -1,14 +1,14 @@
 #require 'datastreams/properties_datastream'
 #require_relative './generic_file'
 require 'curation_concern/model'
-require 'active_fedora/delegate_attributes'
+require 'active_fedora/registered_attributes'
 
 class SeniorThesis < ActiveFedora::Base
   include CurationConcern::Model
   include CurationConcern::WithGenericFiles
   include CurationConcern::Embargoable
   include CurationConcern::WithAccessRight
-  include ActiveFedora::DelegateAttributes
+  include ActiveFedora::RegisteredAttributes
 
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'active_fedora/delegate_attributes'
+require 'active_fedora/registered_attributes'
 
-describe 'ActiveFedora::DelegateAttributes' do
+describe 'ActiveFedora::RegisteredAttributes' do
   class MockDelegateAttribute < ActiveFedora::Base
-    include ActiveFedora::DelegateAttributes
+    include ActiveFedora::RegisteredAttributes
 
     has_metadata :name => "properties", :type => ActiveFedora::SimpleDatastream do |m|
       m.field "title",  :string

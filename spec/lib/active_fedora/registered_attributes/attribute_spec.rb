@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActiveFedora::DelegateAttributes::Attribute do
+describe ActiveFedora::RegisteredAttributes::Attribute do
   class Something < ActiveFedora::Base
     extend ActiveModel::Translation
   end
@@ -17,7 +17,7 @@ describe ActiveFedora::DelegateAttributes::Attribute do
       validates: validation_options
     }
   }
-  subject { ActiveFedora::DelegateAttributes::Attribute.new(context, field_name, options) }
+  subject { ActiveFedora::RegisteredAttributes::Attribute.new(context, field_name, options) }
 
   its (:displayable?) { should be_true }
   its (:editable?) { should be_true }
