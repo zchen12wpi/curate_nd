@@ -67,12 +67,12 @@ describe Citation do
 
   let(:curation_concern_with_no_doi){
     @curation_concern = mock_model(SeniorThesis)
-    @curation_concern.stub!(:to_param).and_return("jq085h7459h")
-    @curation_concern.stub!(:title).and_return("This is a test title for generating test citation")
-    @curation_concern.stub!(:publisher).and_return(["University of Notre Dame"])
-    @curation_concern.stub!(:authors_for_citation).and_return(["John Michael Smith"] | ["Mohammed Ahmed Sultan"])
-    @curation_concern.stub!(:created).and_return(nil)
-    @curation_concern.stub!(:identifier).and_return(nil)
+    @curation_concern.stub(:to_param).and_return("jq085h7459h")
+    @curation_concern.stub(:title).and_return("This is a test title for generating test citation")
+    @curation_concern.stub(:publisher).and_return(["University of Notre Dame"])
+    @curation_concern.stub(:authors_for_citation).and_return(["John Michael Smith"] | ["Mohammed Ahmed Sultan"])
+    @curation_concern.stub(:created).and_return(nil)
+    @curation_concern.stub(:identifier).and_return(nil)
     @curation_concern
   }
 

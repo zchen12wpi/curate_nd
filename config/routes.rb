@@ -1,5 +1,6 @@
 CurateNd::Application.routes.draw do
-  devise_for :users do
+  devise_for :users
+  devise_scope :users do
     get 'dashboard', to: 'dashboard#index', as: :user_root
   end
 
