@@ -14,6 +14,15 @@ describe CharacterizeJob do
   subject { CharacterizeJob.new(generic_file.pid) }
 
   it 'should use create a thumbnail' do
-    subject.run
+    begin
+      subject.run
+    rescue Exception => e
+      $stderr.puts "*" * 80
+      $stderr.puts e
+      $stderr.puts "-" * 80
+      $stderr.puts e.backtrace.join("\n")
+      $stderr.puts "*" * 80
+      raise e
+    end
   end
 end
