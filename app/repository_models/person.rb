@@ -1,7 +1,7 @@
-require 'active_fedora/delegate_attributes'
+require 'active_fedora/registered_attributes'
 
 class Person < ActiveFedora::Base
-  include ActiveFedora::DelegateAttributes
+  include ActiveFedora::RegisteredAttributes
 
   has_metadata name: "descMetadata", type: ActiveFedora::QualifiedDublinCoreDatastream do |ds|
     ds.field :display_name, :string

@@ -1,5 +1,5 @@
 module ActiveFedora
-  module DelegateAttributes
+  module RegisteredAttributes
     class AttributeRegistry < DelegateClass(HashWithIndifferentAccess)
       attr_accessor :context_class
       def initialize(context_class)

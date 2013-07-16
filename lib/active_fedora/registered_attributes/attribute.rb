@@ -1,5 +1,5 @@
 module ActiveFedora
-  module DelegateAttributes
+  module RegisteredAttributes
     class Attribute
 
       attr_reader :context_class, :name, :datastream

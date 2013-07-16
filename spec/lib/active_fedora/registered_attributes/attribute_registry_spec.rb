@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe ActiveFedora::DelegateAttributes::AttributeRegistry do
+describe ActiveFedora::RegisteredAttributes::AttributeRegistry do
   let(:context) { ActiveFedora::Base }
   let(:name) { "My Name" }
   let(:options) { {} }
-  subject { ActiveFedora::DelegateAttributes::AttributeRegistry.new(context) }
+  subject { ActiveFedora::RegisteredAttributes::AttributeRegistry.new(context) }
 
   describe '#register' do
     it 'yields an attribute' do
@@ -16,7 +16,7 @@ describe ActiveFedora::DelegateAttributes::AttributeRegistry do
     end
     it 'stores the attribute' do
       subject.register(name, options)
-      expect(subject.fetch(name)).to be_kind_of(ActiveFedora::DelegateAttributes::Attribute)
+      expect(subject.fetch(name)).to be_kind_of(ActiveFedora::RegisteredAttributes::Attribute)
     end
   end
   describe 'editable and displayable attributes' do

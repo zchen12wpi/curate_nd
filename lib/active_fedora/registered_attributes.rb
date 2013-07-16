@@ -1,28 +1,28 @@
 require 'active_attr'
-require File.expand_path('../delegate_attributes/attribute', __FILE__)
-require File.expand_path('../delegate_attributes/attribute_registry', __FILE__)
+require File.expand_path('../registered_attributes/attribute', __FILE__)
+require File.expand_path('../registered_attributes/attribute_registry', __FILE__)
 module ActiveFedora
-  module DelegateAttributes
+  module RegisteredAttributes
     extend ActiveSupport::Concern
     included do
-      class_attribute :delegate_attributes, instance_writer: false, instance_reader: false
+      class_attribute :attribute_registry, instance_writer: false, instance_reader: false
     end
 
-    delegate :attribute_defaults, to: :delegate_attribute_registry
-    delegate :input_options_for, to: :delegate_attribute_registry
-    delegate :label_for, to: :delegate_attribute_registry
-    delegate :editable_attributes, to: :delegate_attribute_registry
-    delegate :displayable_attributes, to: :delegate_attribute_registry
+    delegate :attribute_defaults, to: :attribute_registry
+    delegate :input_options_for, to: :attribute_registry
+    delegate :label_for, to: :attribute_registry
+    delegate :editable_attributes, to: :attribute_registry
+    delegate :displayable_attributes, to: :attribute_registry
 
-    def delegate_attribute_registry
-      self.class.delegate_attributes
+    def attribute_registry
+      self.class.attribute_registry
     end
-    private :delegate_attribute_registry
+    private :attribute_registry
 
     module ClassMethods
       def attribute(attribute_name, options ={})
-        self.delegate_attributes ||= AttributeRegistry.new(self)
-        self.delegate_attributes.register(attribute_name, options) do |attribute|
+        self.attribute_registry ||= AttributeRegistry.new(self)
+        self.attribute_registry.register(attribute_name, options) do |attribute|
 
           attribute.with_validation_options do |name, opts|
             validates(name, opts)
