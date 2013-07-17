@@ -43,21 +43,6 @@ GIT
       resque-pool (= 0.3.0)
       zipruby (= 0.3.6)
 
-GIT
-  remote: git://github.com/projecthydra/active_fedora.git
-  revision: 7b108b6df56e8fc8128816d18a94025b3352a757
-  specs:
-    active-fedora (6.4.2)
-      activesupport (>= 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf
-      rdf-rdfxml (= 1.0.1)
-      rsolr
-      rubydora (~> 1.6, >= 1.6.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +59,16 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active-fedora (6.4.3)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 3.0.0)
+      rdf
+      rdf-rdfxml (= 1.0.1)
+      rsolr
+      rubydora (~> 1.6, >= 1.6.5)
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
@@ -478,7 +473,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active-fedora!
+  active-fedora (~> 6.4.3)
   active_fedora-registered_attributes
   bootstrap-datepicker-rails
   bootstrap-sass (~> 2.2.0)
