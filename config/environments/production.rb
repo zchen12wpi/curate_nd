@@ -68,7 +68,7 @@ CurateNd::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.fits_path = '/opt/fits-0.6.1/fits.sh'
+  config.fits_path = '/opt/current/fits.sh'
 
   begin
     # Why the explicit require? Because the headless workers of pre-production

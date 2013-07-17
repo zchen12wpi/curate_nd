@@ -1,20 +1,4 @@
 GIT
-  remote: git://github.com/jeremyf/active_fedora.git
-  revision: ce670ed7ed421ff3d6027f91461012d6a2bc2aea
-  branch: fix-active-fedora-find-on-blank
-  specs:
-    active-fedora (6.4.2)
-      activesupport (>= 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf
-      rdf-rdfxml (~> 1.0.0)
-      rsolr
-      rubydora (~> 1.6, >= 1.6.5)
-
-GIT
   remote: git://github.com/jeremyf/curate.git
   revision: 8a6162016238b7f92ae7cbce32e2a0a9aad51fd9
   branch: refactoring-towards-sufia-models
@@ -59,6 +43,21 @@ GIT
       resque-pool (= 0.3.0)
       zipruby (= 0.3.6)
 
+GIT
+  remote: git://github.com/projecthydra/active_fedora.git
+  revision: 7b108b6df56e8fc8128816d18a94025b3352a757
+  specs:
+    active-fedora (6.4.2)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 3.0.0)
+      rdf
+      rdf-rdfxml (= 1.0.1)
+      rsolr
+      rubydora (~> 1.6, >= 1.6.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,6 +77,9 @@ GEM
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
+    active_fedora-registered_attributes (0.0.1)
+      active-fedora (>= 6.4)
+      active_attr (~> 0.8.2)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -290,7 +292,7 @@ GEM
       activesupport
       i18n
       nokogiri
-    om (3.0.1)
+    om (3.0.2)
       activemodel
       activesupport
       deprecation
@@ -346,7 +348,7 @@ GEM
     rake (10.1.0)
     rdf (1.0.7)
       addressable (>= 2.2)
-    rdf-rdfxml (1.0.2)
+    rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
       rdf-xsd (>= 1.0)
     rdf-xsd (1.0.2.1)
@@ -477,6 +479,7 @@ PLATFORMS
 
 DEPENDENCIES
   active-fedora!
+  active_fedora-registered_attributes
   bootstrap-datepicker-rails
   bootstrap-sass (~> 2.2.0)
   capistrano
