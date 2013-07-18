@@ -6,7 +6,8 @@ group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
-  gem 'active-fedora', '~> 6.4.3'
+  # gem 'active-fedora', '~> 6.4.3'
+  gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'allow_reindex_everything_to_take_a_query_string'
   gem 'active_fedora-registered_attributes'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
