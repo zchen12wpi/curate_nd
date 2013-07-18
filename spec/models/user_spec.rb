@@ -51,8 +51,8 @@ describe User do
     @user = User.new
     @user.username = "jsmith.test"
     @user.save!
-    @user.stub!(:display_name).and_return("John Smith")
-    @user.stub!(:email).and_return("John.Smith@example.com")
+    @user.stub(:display_name).and_return("John Smith")
+    @user.stub(:email).and_return("John.Smith@example.com")
     @user
   }
 
