@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/jeremyf/curate.git
-  revision: 8a6162016238b7f92ae7cbce32e2a0a9aad51fd9
+  revision: 14d3f39d473c4b5e9e847937918dc147eba200b3
   branch: refactoring-towards-sufia-models
   specs:
-    curate (0.3.1)
+    curate (0.3.2)
       active_attr
       blacklight (~> 4.0)
       blacklight_advanced_search
@@ -13,7 +13,7 @@ GIT
       devise
       devise
       devise-guests (~> 0.3)
-      hydra-batch-edit (~> 1.0)
+      hydra-batch-edit (~> 0.1.0)
       hydra-head (~> 6.0)
       method_decorators
       mini_magick
@@ -27,6 +27,7 @@ GIT
 GIT
   remote: git://github.com/jeremyf/sufia.git
   revision: 431063eef3f44bd0958b61fdb858e869eae06043
+  ref: 431063eef3f44bd0958b61fdb858e869eae06043
   branch: remove-rmagick-dependency
   specs:
     sufia-models (0.1.2)
@@ -159,7 +160,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    crack (0.4.0)
+    crack (0.4.1)
       safe_yaml (~> 0.9.0)
     daemons (1.1.9)
     database_cleaner (1.0.1)
@@ -177,7 +178,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
-    devise-guests (0.3.1)
+    devise-guests (0.3.2)
       devise
     devise_cas_authenticatable (1.3.0)
       devise (>= 1.2.0)
@@ -214,12 +215,8 @@ GEM
       blacklight (~> 4.0)
       cancan
       deprecation
-    hydra-batch-edit (1.0.1)
+    hydra-batch-edit (0.1.0)
       blacklight
-      hydra-collections
-    hydra-collections (1.0.0)
-      blacklight
-      hydra-head
     hydra-core (6.3.1)
       active-fedora
       blacklight (~> 4.0)
@@ -267,7 +264,7 @@ GEM
     morphine (0.1.1)
     multi_json (1.7.7)
     multipart-post (1.2.0)
-    mysql2 (0.3.11)
+    mysql2 (0.3.13)
     namae (0.7.1)
     nest (1.1.2)
       redis
@@ -408,10 +405,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sentry-raven (0.5.0)
+    sentry-raven (0.6.0)
       faraday (>= 0.7.6)
       hashie (>= 1.1.0)
-      multi_json (~> 1.0)
       uuidtools
     sexp_processor (4.2.1)
     sextant (0.2.4)
