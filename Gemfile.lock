@@ -1,4 +1,20 @@
 GIT
+  remote: git://github.com/jeremyf/active_fedora.git
+  revision: 72aa31e688c11c93dc03d05f2435b3d436949298
+  branch: allow_reindex_everything_to_take_a_query_string
+  specs:
+    active-fedora (6.4.3)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 3.0.0)
+      rdf
+      rdf-rdfxml (= 1.0.1)
+      rsolr
+      rubydora (~> 1.6, >= 1.6.5)
+
+GIT
   remote: git://github.com/jeremyf/curate.git
   revision: 14d3f39d473c4b5e9e847937918dc147eba200b3
   branch: refactoring-towards-sufia-models
@@ -60,16 +76,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active-fedora (6.4.3)
-      activesupport (>= 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf
-      rdf-rdfxml (= 1.0.1)
-      rsolr
-      rubydora (~> 1.6, >= 1.6.5)
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
@@ -469,7 +475,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active-fedora (~> 6.4.3)
+  active-fedora!
   active_fedora-registered_attributes
   bootstrap-datepicker-rails
   bootstrap-sass (~> 2.2.0)
