@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/jeremyf/curate.git', branch: 'refactoring-towards-sufia-models'
-  gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency'
+  gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
   gem 'active-fedora', '~> 6.4.3'
   gem 'active_fedora-registered_attributes'
   gem 'rsolr'
