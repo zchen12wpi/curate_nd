@@ -15,9 +15,29 @@ GIT
       rubydora (~> 1.6, >= 1.6.5)
 
 GIT
-  remote: git://github.com/jeremyf/curate.git
-  revision: 14d3f39d473c4b5e9e847937918dc147eba200b3
-  branch: refactoring-towards-sufia-models
+  remote: git://github.com/jeremyf/sufia.git
+  revision: 431063eef3f44bd0958b61fdb858e869eae06043
+  ref: 431063eef3f44bd0958b61fdb858e869eae06043
+  branch: remove-rmagick-dependency
+  specs:
+    sufia-models (0.1.2)
+      activerecord-import (= 0.3.0)
+      acts_as_follower (= 0.1.1)
+      devise
+      hydra-head (~> 6.0)
+      mailboxer (= 0.8.0)
+      nest (~> 1.1.1)
+      noid (~> 0.6.6)
+      paperclip (= 3.3.0)
+      rails (~> 3.2.13)
+      resque (~> 1.23.0)
+      resque-pool (= 0.3.0)
+      zipruby (= 0.3.6)
+
+GIT
+  remote: git://github.com/ndlib/curate.git
+  revision: c44376cd88733768da44593ec4da4265690b6ce5
+  branch: master
   specs:
     curate (0.3.2)
       active_attr
@@ -39,26 +59,6 @@ GIT
       simple_form
       solrizer (~> 3.0)
       sufia-models
-
-GIT
-  remote: git://github.com/jeremyf/sufia.git
-  revision: 431063eef3f44bd0958b61fdb858e869eae06043
-  ref: 431063eef3f44bd0958b61fdb858e869eae06043
-  branch: remove-rmagick-dependency
-  specs:
-    sufia-models (0.1.2)
-      activerecord-import (= 0.3.0)
-      acts_as_follower (= 0.1.1)
-      devise
-      hydra-head (~> 6.0)
-      mailboxer (= 0.8.0)
-      nest (~> 1.1.1)
-      noid (~> 0.6.6)
-      paperclip (= 3.3.0)
-      rails (~> 3.2.13)
-      resque (~> 1.23.0)
-      resque-pool (= 0.3.0)
-      zipruby (= 0.3.6)
 
 GEM
   remote: https://rubygems.org/
