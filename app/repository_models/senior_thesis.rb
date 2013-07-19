@@ -29,6 +29,7 @@ class SeniorThesis < ActiveFedora::Base
     label: "Abstract or Summary of Senior Thesis",
     datastream: :descMetadata, multiple: false
   attribute :date_created,
+    default: Date.today.to_s("%Y-%m-%d"),
     label: "When did your finish your Senior Thesis",
     hint: "This does not need to be exact, but your best guess.",
     datastream: :descMetadata, multiple: false
@@ -58,11 +59,26 @@ class SeniorThesis < ActiveFedora::Base
     default: ["University of Notre Dame"],
     datastream: :descMetadata, multiple: true
   attribute :identifier,
-    datastream: :descMetadata, multiple: false
+    datastream: :descMetadata, multiple: false,
+    editable: false
+  attribute :assign_doi,
+    label: 'Assign Digital Object Identifier (DOI)',
+    hint: "A Digital Object Identifier (DOI) is a permanent link to your Senior Thesis. It's an easy way for other people to cite your work",
+    displayable: false, multiple: false,
+    default: true
   attribute :rights,
     datastream: :descMetadata, multiple: false,
+    default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
-
+  attribute :visibility,
+    multiple: false,
+    default: AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+  validates: {
+    inclusion: {
+      in: ->(senior_thesis) { AccessRight.valid_visibility_values },
+      allow_nil: true
+    }
+  }
   attribute :created,
     datastream: :descMetadata, multiple: false
   attribute :date_uploaded,
@@ -84,8 +100,6 @@ class SeniorThesis < ActiveFedora::Base
   attribute :files,
     multiple: true, as: :file, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
-
-  attr_accessor :assign_doi
 
   def doi_url
     File.join(Rails.configuration.doi_url, self.identifier)
