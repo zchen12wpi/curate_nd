@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/jeremyf/active_fedora.git
-  revision: 72aa31e688c11c93dc03d05f2435b3d436949298
-  branch: allow_reindex_everything_to_take_a_query_string
+  revision: e8a624a3eb9f51197830d6366c01c9552ddcb97e
+  branch: adding-lint-validation-to-active-fedora
   specs:
     active-fedora (6.4.3)
       activesupport (>= 3.0.0)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c44376cd88733768da44593ec4da4265690b6ce5
+  revision: c6da0f2ac10ab05490534a1ebb18b2417f4b85ba
   branch: master
   specs:
     curate (0.3.2)
@@ -290,7 +290,7 @@ GEM
       activesupport
       i18n
       nokogiri
-    om (3.0.2)
+    om (3.0.3)
       activemodel
       activesupport
       deprecation
