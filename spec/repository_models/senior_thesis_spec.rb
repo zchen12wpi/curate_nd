@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe SeniorThesis do
+  it_behaves_like "ActiveModel"
   subject { FactoryGirl.build(:senior_thesis, title: 'Title') }
 
   include_examples('with_access_rights')
@@ -28,6 +29,7 @@ describe SeniorThesis do
   it('has a subject') { subject.should respond_to(:subject) }
 
   it 'uses #noid for #to_param' do
+    subject.stub(:persisted?).and_return(true)
     subject.to_param.should == subject.noid
   end
 

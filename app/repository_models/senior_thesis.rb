@@ -91,6 +91,10 @@ class SeniorThesis < ActiveFedora::Base
     File.join(Rails.configuration.doi_url, self.identifier)
   end
 
+  def to_param
+    persisted? ? super : nil
+  end
+
   def authors_for_citation
     creator | advisor | contributor
   end
