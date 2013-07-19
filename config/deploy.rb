@@ -137,7 +137,8 @@ end
 
 namespace :maintenance do
   task :delete_index_solr, :roles => :app do
-    solr_core_url = Psych.load_file(File.expand_path("../../config/solr.yml", __FILE__)).fetch(rails_env).fetch('url')
+    config = capture("cat #{current_path}/config/solr.yml")
+    solr_core_url = Psych.load(config).fetch(rails_env).fetch('url')
     run "curl #{File.join(solr_core_url, 'update')}?commit=true -H 'Content-Type:application/xml' -d '<delete><query>*:*</query></delete>'"
   end
   task :reindex_solr, :roles => :app do
