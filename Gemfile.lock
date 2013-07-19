@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jeremyf/active_fedora.git
-  revision: e8a624a3eb9f51197830d6366c01c9552ddcb97e
+  revision: 62b8200914622ea207f696292fa84dc0e7664e35
   branch: adding-lint-validation-to-active-fedora
   specs:
     active-fedora (6.4.3)
@@ -36,10 +36,10 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c6da0f2ac10ab05490534a1ebb18b2417f4b85ba
+  revision: 8400a9146fa8c7808783c48b112178d40f3460e7
   branch: master
   specs:
-    curate (0.3.2)
+    curate (0.4.0)
       active_attr
       blacklight (~> 4.0)
       blacklight_advanced_search
@@ -79,7 +79,7 @@ GEM
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
-    active_fedora-registered_attributes (0.0.1)
+    active_fedora-registered_attributes (0.0.2)
       active-fedora (>= 6.4)
       active_attr (~> 0.8.2)
     activemodel (3.2.13)
@@ -381,7 +381,7 @@ GEM
     rspec-core (2.14.3)
     rspec-expectations (2.14.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-html-matchers (0.4.1)
+    rspec-html-matchers (0.4.3)
       nokogiri (>= 1.4.4)
       rspec (>= 2.0.0)
     rspec-mocks (2.14.1)
