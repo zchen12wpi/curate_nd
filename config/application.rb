@@ -18,6 +18,7 @@ end
 module CurateNd
   class Application < Rails::Application
     require 'curate'
+    require 'activity_engine'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
