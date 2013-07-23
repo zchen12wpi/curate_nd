@@ -9,7 +9,6 @@
 
 default_run_options[:pty] = true
 set :use_sudo, false
-ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
 ssh_options[:paranoid] = false
 
 #############################################################
@@ -189,6 +188,8 @@ set :build_identifier, Time.now.strftime("%Y-%m-%d %H:%M:%S")
 #############################################################
 
 def set_common_cluster_variables(cluster_directory_slug)
+  ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
+
   set :symlink_targets do
     [
       ['/bundle/config','/.bundle/config', '/.bundle'],
