@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   private
 
   def update_user!
+    user.user_does_not_require_profile_update = true
     user.update_attributes(params['user'])
     user.save!
   end
