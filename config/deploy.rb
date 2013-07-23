@@ -252,7 +252,7 @@ def common_worker_things
 
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
-  after 'deploy', 'worker:start'
+  after 'deploy', 'worker:start', 'deploy:cleanup'
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
 end
 
