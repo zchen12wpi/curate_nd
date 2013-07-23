@@ -12,6 +12,7 @@ require 'database_cleaner'
 require 'capybara/rspec'
 require 'webmock/rspec'
 require 'timeout'
+require 'active_fedora/test_support'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,

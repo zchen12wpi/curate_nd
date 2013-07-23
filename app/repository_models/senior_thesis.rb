@@ -98,7 +98,7 @@ class SeniorThesis < ActiveFedora::Base
     datastream: :descMetadata, multiple: true
 
   attribute :files,
-    multiple: true, as: :file, label: "Upload Files",
+    multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
 
   def doi_url
