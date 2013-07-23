@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
+  gem 'activity_engine', "~>0.0.3"
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
