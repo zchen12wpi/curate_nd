@@ -50,6 +50,17 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  config.before(:each, type: :feature) do
+    Warden.test_mode!
+    @old_resque_inline_value = Resque.inline
+    Resque.inline = true
+  end
+  config.after(:each, type: :feature) do
+    Warden.test_reset!
+    Resque.inline = @old_resque_inline_value
+  end
+
+
   config.before(:all) do
     WebMock.allow_net_connect!
   end

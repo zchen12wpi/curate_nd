@@ -36,10 +36,10 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 8400a9146fa8c7808783c48b112178d40f3460e7
+  revision: 26b525643519d990ae0da1ffb1f99a72e07ea053
   branch: master
   specs:
-    curate (0.4.0)
+    curate (0.4.1)
       active_attr
       blacklight (~> 4.0)
       blacklight_advanced_search

@@ -1,20 +1,6 @@
-require 'spec_helper'
-require 'capybara/poltergeist'
-require 'compass-rails'
-require 'compass'
-require 'bootstrap-datepicker-rails'
-require 'timecop'
+require 'spec_helper_features'
 
 describe 'end to end behavior', FeatureSupport.options do
-  before(:each) do
-    Warden.test_mode!
-    @old_resque_inline_value = Resque.inline
-    Resque.inline = true
-  end
-  after(:each) do
-    Warden.test_reset!
-    Resque.inline = @old_resque_inline_value
-  end
   let(:sign_in_count) { 0 }
   let(:user) {
     FactoryGirl.create(
