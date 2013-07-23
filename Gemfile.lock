@@ -79,7 +79,7 @@ GEM
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
-    active_fedora-registered_attributes (0.0.2)
+    active_fedora-registered_attributes (0.0.3)
       active-fedora (>= 6.4)
       active_attr (~> 0.8.2)
     activemodel (3.2.13)
