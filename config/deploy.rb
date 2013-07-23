@@ -136,6 +136,9 @@ namespace :worker do
 end
 
 namespace :maintenance do
+  task :create_person_records, :roles => :app do
+    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
+  end
   task :delete_index_solr, :roles => :app do
     config = capture("cat #{current_path}/config/solr.yml")
     solr_core_url = Psych.load(config).fetch(rails_env).fetch('url')
