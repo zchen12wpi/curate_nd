@@ -46,12 +46,7 @@ class Citation
   end
 
   def given_name_in_apa(name)
-    initials_arr = name.split(" ").collect {|x| x.first}
-    initials = ""
-    initials_arr.each do |initial|
-      initials << initial + "."
-    end
-    initials
+    name.split(" ").each_with_object("") {|n,mem| mem << n.first << "." }
   end
 
   def published_date_in_apa
@@ -59,7 +54,7 @@ class Citation
       return " "
     end
     date = Date.parse(curation_concern.created)
-    date.strftime("(%Y, %B %d). ")
+    date.strftime(" (%Y, %B %d). ")
   end
 
   def doi_apa
