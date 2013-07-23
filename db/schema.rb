@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723153719) do
+ActiveRecord::Schema.define(:version => 20130723174755) do
+
+  create_table "activity_engine_activities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject_type",  :null => false
+    t.string   "subject_id",    :null => false
+    t.string   "activity_type", :null => false
+    t.text     "message"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "activity_engine_activities", ["user_id"], :name => "index_activity_engine_activities_on_user_id"
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
