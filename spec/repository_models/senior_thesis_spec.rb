@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'active_fedora/test_support'
+
 describe SeniorThesis do
   it_behaves_like "An ActiveModel"
   subject { FactoryGirl.build(:senior_thesis, title: 'Title') }
