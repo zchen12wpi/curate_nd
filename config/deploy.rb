@@ -9,6 +9,7 @@
 
 default_run_options[:pty] = true
 set :use_sudo, false
+ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
 ssh_options[:paranoid] = false
 
 #############################################################
