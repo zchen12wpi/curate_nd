@@ -35,6 +35,13 @@ GIT
       zipruby (= 0.3.6)
 
 GIT
+  remote: git://github.com/ndlib/activity_engine.git
+  revision: dde0c8ca68bbed3e73c873966a356642b0862cac
+  specs:
+    activity_engine (0.0.5)
+      rails (~> 3.2.13)
+
+GIT
   remote: git://github.com/ndlib/curate.git
   revision: ad4e0f051f1a51bd28f9c1e7a794d9cf5e52e5d4
   branch: master
@@ -59,12 +66,6 @@ GIT
       simple_form
       solrizer (~> 3.0)
       sufia-models
-
-PATH
-  remote: ../activity_engine
-  specs:
-    activity_engine (0.0.5)
-      rails (~> 3.2.13)
 
 GEM
   remote: https://rubygems.org/

@@ -8,7 +8,6 @@ group :default do
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
   # gem 'active-fedora', '~>6.4.3'
   gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'adding-lint-validation-to-active-fedora'
-  gem 'active_fedora-registered_attributes'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
@@ -27,8 +26,8 @@ group :default do
   gem 'bootstrap-datepicker-rails'
   gem 'namae'
   gem 'net-ldap'
-  gem 'activity_engine', path: '../activity_engine' #git: 'git://github.com/ndlib/activity_engine.git'
-
+  gem 'activity_engine', git: 'git://github.com/ndlib/activity_engine.git'
+  gem 'active_fedora-registered_attributes'
 end
 
 group :pre_production, :production do
