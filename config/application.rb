@@ -18,7 +18,6 @@ end
 module CurateNd
   class Application < Rails::Application
     require 'curate'
-    require 'activity_engine'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -101,6 +100,12 @@ module CurateNd
       authentication:       SMTP_CONFIG['smtp_authentication_type'],
       enable_starttls_auto: SMTP_CONFIG['smtp_enable_starttls_auto']
     }
+
+    # http://guides.rubyonrails.org/configuring.html#initialization-events
+    config.after_initialize do
+      require 'activity_engine'
+      require File.expand_path('../post_initializers/activity_engine_config.rb', __FILE__)
+    end
 
   end
 end
