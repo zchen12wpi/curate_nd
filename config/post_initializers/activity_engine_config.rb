@@ -7,7 +7,7 @@ ActivityEngine.register_controller('DownloadsController', 'show')
 ActivityEngine.register_controller('CurationConcern::SeniorThesesController', 'create')
 
 ActivityEngine.register('DownloadsController', 'show') do |activity,context|
-  activity.subject = context.curation_concern
+  activity.subject = context.generic_file
   activity.current_user = context.current_user
-  activity.activity_type = "Download"
+  activity.activity_type = "downloads#show"
 end
