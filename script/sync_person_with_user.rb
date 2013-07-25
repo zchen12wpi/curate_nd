@@ -6,7 +6,7 @@ module SyncPersonWithUser
       begin
         Person.find_or_create_by_user(user)
       rescue LdapService::UserNotFoundError => e
-        @failures << e.to_s
+        @exceptions << e.to_s
       end
     end
     $stderr.put(@exceptions.join("\n"))
