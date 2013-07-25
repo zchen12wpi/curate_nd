@@ -9,8 +9,10 @@ module SyncPersonWithUser
         @exceptions << e.to_s
       end
     end
-    $stderr.put(@exceptions.join("\n"))
-    logger.error(@exceptions.join("\n"))
+    if @exceptions.size > 0
+      $stderr.puts(@exceptions.join("\n"))
+      logger.error(@exceptions.join("\n"))
+    end
   end
 end
 
