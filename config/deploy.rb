@@ -9,6 +9,7 @@
 
 default_run_options[:pty] = true
 set :use_sudo, false
+ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
 ssh_options[:paranoid] = false
 
 #############################################################
@@ -141,7 +142,7 @@ namespace :maintenance do
   end
   task :delete_index_solr, :roles => :app do
     config = capture("cat #{current_path}/config/solr.yml")
-    solr_core_url = Psych.load(config).fetch(rails_env).fetch('url')
+    solr_core_url = YAML.load(config).fetch(rails_env).fetch('url')
     run "curl #{File.join(solr_core_url, 'update')}?commit=true -H 'Content-Type:application/xml' -d '<delete><query>*:*</query></delete>'"
   end
   task :reindex_solr, :roles => :app do
