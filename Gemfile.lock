@@ -35,13 +35,6 @@ GIT
       zipruby (= 0.3.6)
 
 GIT
-  remote: git://github.com/ndlib/activity_engine.git
-  revision: dacf0c3364d0841e4db389ccb4465223f039ddf6
-  specs:
-    activity_engine (0.0.8)
-      rails (~> 3.2.13)
-
-GIT
   remote: git://github.com/ndlib/curate.git
   revision: 35e230e0d89a97fa4a125b91b4052fd97fde03c8
   branch: master
@@ -106,6 +99,8 @@ GEM
     activesupport (3.2.14)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    activity_engine (0.0.8)
+      rails (~> 3.2.13)
     acts_as_follower (0.1.1)
     addressable (2.3.5)
     arel (3.0.2)
@@ -485,7 +480,7 @@ PLATFORMS
 DEPENDENCIES
   active-fedora!
   active_fedora-registered_attributes
-  activity_engine!
+  activity_engine (~> 0.0.8)
   bootstrap-datepicker-rails
   bootstrap-sass (~> 2.2.0)
   capistrano
