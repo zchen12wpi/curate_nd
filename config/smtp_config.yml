@@ -12,6 +12,9 @@ test: &test
   <<: *development
   smtp_delivery_method: test
 
+deploy:
+  <<: *test
+
 ci:
   <<: *test
 

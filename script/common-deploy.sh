@@ -22,7 +22,7 @@ function do_deploy() {
 
     export PATH=/shared/git/bin:$PATH
     export PATH=/global/soft/fits/current:/shared/fedora_prod36/java/bin:$PATH
-    export RAILS_ENV=$target_env
+    export RAILS_ENV=deploy #$target_env
 
     # fetch capistrano
     echo "=-=-=-=-=-=-=-= bundle install"
