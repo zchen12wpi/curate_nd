@@ -26,7 +26,7 @@ group :default do
   gem 'bootstrap-datepicker-rails'
   gem 'namae'
   gem 'net-ldap'
-  gem 'activity_engine', git: 'git://github.com/ndlib/activity_engine.git'
+  gem 'activity_engine', '~>0.0.8'
   gem 'active_fedora-registered_attributes'
 end
 
