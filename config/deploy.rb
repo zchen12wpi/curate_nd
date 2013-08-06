@@ -17,7 +17,7 @@ ssh_options[:paranoid] = false
 
 set :scm, :git
 set :deploy_via, :remote_cache
-set :scm_command, '/shared/git/bin/git'
+#set :scm_command, '/shared/git/bin/git'
 
 #############################################################
 #  Environment
@@ -171,6 +171,23 @@ set :build_identifier, Time.now.strftime("%Y-%m-%d %H:%M:%S")
 #############################################################
 #  Environments
 #############################################################
+
+desc "Setup for staging VM"
+task :staging do
+  set :branch,    'vm-deploy'
+  set :rails_env, 'staging'
+  set :deploy_to, '/home/app/curatend'
+  set :user,      'app'
+  set :domain,    'libvirt6.library.nd.edu'
+  set :without_bundle_environments, 'headless development test'
+
+  server "#{user}@#{domain}", :app, :web, :db, :primary => true
+
+  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy', 'deploy:cleanup'
+  after 'deploy', 'deploy:restart'
+  after 'deploy', 'deploy:kickstart'
+end
 
 desc "Setup for the Pre-Production environment"
 task :pre_production_cluster do
