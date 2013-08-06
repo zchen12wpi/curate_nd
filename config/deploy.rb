@@ -3,6 +3,32 @@
 # NOTE: The SCM command expects to be at the same path on both the local and
 # remote machines. The default git path is: '/shared/git/bin/git'.
 
+set :bundle_roles, [:app, :work]
+set :bundle_flags, "--deployment"
+require 'bundler/capistrano'
+# see http://gembundler.com/v1.3/deploying.html
+# copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
+#
+# Install the current Bundler environment. By default, gems will be \
+#  installed to the shared/bundle path. Gems in the development and \
+#  test group will not be installed. The install command is executed \
+#  with the --deployment and --quiet flags. If the bundle cmd cannot \
+#  be found then you can override the bundle_cmd variable to specifiy \
+#  which one it should use. The base path to the app is fetched from \
+#  the :latest_release variable. Set it for custom deploy layouts.
+#
+#  You can override any of these defaults by setting the variables shown below.
+#
+#  N.B. bundle_roles must be defined before you require 'bundler/#{context_name}' \
+#  in your deploy.rb file.
+#
+#    set :bundle_gemfile,  "Gemfile"
+#    set :bundle_dir,      File.join(fetch(:shared_path), 'bundle')
+#    set :bundle_flags,    "--deployment --quiet"
+#    set :bundle_without,  [:development, :test]
+#    set :bundle_cmd,      "bundle" # e.g. "/opt/ruby/bin/bundle"
+#    set :bundle_roles,    #{role_default} # e.g. [:app, :batch]
+
 #############################################################
 #  Settings
 #############################################################
@@ -10,6 +36,7 @@
 default_run_options[:pty] = true
 set :use_sudo, false
 ssh_options[:paranoid] = false
+set :default_shell, '/bin/bash'
 
 #############################################################
 #  SCM
@@ -17,7 +44,6 @@ ssh_options[:paranoid] = false
 
 set :scm, :git
 set :deploy_via, :remote_cache
-#set :scm_command, '/shared/git/bin/git'
 
 #############################################################
 #  Environment
@@ -26,9 +52,10 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    set :ruby,      File.join(ruby_bin, 'ruby')
-    set :bundler,   File.join(ruby_bin, 'bundle')
-    set :rake,      "#{bundler} exec #{File.join(shared_path, 'vendor/bundle/bin/rake')}"
+    #set :ruby,      File.join(ruby_bin, 'ruby')
+    #set :bundler,   File.join(ruby_bin, 'bundle')
+    set :bundle_cmd, 'bundle'
+    set :rake,      "#{bundle_cmd} exec rake"
   end
 end
 
@@ -99,30 +126,43 @@ namespace :deploy do
     end
   end
 
-  desc "Spool up Passenger spawner to keep user experience speedy"
+  desc "Spool up a request to keep user experience speedy"
   task :kickstart do
-    run "curl -I http://#{domain}"
+    run "curl -I http://localhost"
   end
 
   desc "Precompile assets"
   task :precompile do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} RAILS_GROUPS=assets assets:precompile"
   end
-end
 
-namespace :bundle do
-  desc "Install gems in Gemfile"
-  task :install, :roles => [:app, :work] do
-    switches = ""
-    switches << " --binstubs='#{release_path}/vendor/bundle/bin'"
-    switches << " --shebang '#{ruby}'"
-    switches << " --path=#{release_path}/vendor/bundle"
-    switches << " --gemfile='#{release_path}/Gemfile'"
-    switches << " --deployment"
-    switches << " --without #{without_bundle_environments}"
-    run "#{bundler} install #{switches}"
+  desc "Setup application symlinks for shared assets"
+  task :symlink_setup, :roles => [:app, :web] do
+    shared_directories.each { |link| run "mkdir -p #{shared_path}/#{link}" }
+  end
+
+  desc "Link assets for current deploy to the shared location"
+  task :symlink_update, :roles => [:app, :web] do
+    (shared_directories + shared_files).each do |link|
+      run "ln -nfs #{shared_path}/#{link} #{release_path}/#{link}"
+    end
   end
 end
+
+
+#namespace :bundle do
+#  desc "Install gems in Gemfile"
+#  task :install, :roles => [:app, :work] do
+#    switches = ""
+#    switches << " --binstubs='#{release_path}/vendor/bundle/bin'"
+#    switches << " --shebang '#{ruby}'"
+#    switches << " --path=#{release_path}/vendor/bundle"
+#    switches << " --gemfile='#{release_path}/Gemfile'"
+#    switches << " --deployment"
+#    switches << " --without #{without_bundle_environments}"
+#    run "#{bundler} install #{switches}"
+#  end
+#end
 
 namespace :worker do
   task :start, :roles => :work do
@@ -150,6 +190,11 @@ namespace :und do
 
   task :write_build_identifier, :roles => :app do
     run "cd #{release_path} && echo '#{build_identifier}' > config/bundle-identifier.txt"
+  end
+
+  task :puppet, :roles => [:app, :work] do
+    ### TODO: Fix the module path!
+    run %Q{sudo puppet apply --modulepath=/global/home/msuhovec/Gitrepos/puppet_standalone/modules -e "class { 'lib_ruby': }"}
   end
 end
 
@@ -180,10 +225,12 @@ task :staging do
   set :user,      'app'
   set :domain,    'libvirt6.library.nd.edu'
   set :without_bundle_environments, 'headless development test'
+  set :shared_directories,  %w(log)
+  set :shared_files,        %w(config/database.yml config/fedora.yml config/solr.yml config/redis.yml)
 
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
-  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
