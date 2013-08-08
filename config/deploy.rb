@@ -193,8 +193,8 @@ namespace :und do
   end
 
   task :puppet, :roles => [:app, :work] do
-    ### TODO: Fix the module path!
-    run %Q{sudo puppet apply --modulepath=/global/home/msuhovec/Gitrepos/puppet_standalone/modules -e "class { 'lib_ruby': }"}
+    local_module_path = File.join(release_path, 'puppet', 'modules')
+    run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate': }"}
   end
 end
 
@@ -230,6 +230,7 @@ task :staging do
 
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
+  after 'deploy:update', 'und:puppet'
   after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
