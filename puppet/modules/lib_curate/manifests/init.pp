@@ -21,6 +21,7 @@ class lib_curate {
     "libwmf-lite",
     "libxml2-devel",
     "libxslt-devel",
+    "mysql-devel",
     "sgml-common",
     "htop",
     "tmux" ]
