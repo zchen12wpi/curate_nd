@@ -13,7 +13,7 @@ class lib_curate {
     "ORBit2",
     "libIDL",
     "libcroco",
-    "libgcrpyt-devel",
+    "libgcrypt-devel",
     "libgpg-error-devel",
     "libgsf",
     "librsvg2",
@@ -28,4 +28,6 @@ class lib_curate {
 	package { $packagelist:
         	ensure => installed
 	}
+
+  include mysql
 }
