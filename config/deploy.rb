@@ -54,7 +54,7 @@ namespace :env do
   task :set_paths do
     #set :ruby,      File.join(ruby_bin, 'ruby')
     #set :bundler,   File.join(ruby_bin, 'bundle')
-    set :bundle_cmd, 'bundle'
+    set :bundle_cmd, '/opt/ruby/current/bin/bundle'
     set :rake,      "#{bundle_cmd} exec rake"
   end
 end
@@ -230,8 +230,9 @@ task :staging do
 
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
-  after 'deploy:update', 'und:puppet'
-  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  before 'bundle:install', 'und:puppet'
+  # don't update_secrets in staging
+  after 'deploy:update_code', 'und:write_build_identifier', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
