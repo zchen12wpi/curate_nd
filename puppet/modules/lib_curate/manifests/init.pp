@@ -1,8 +1,6 @@
 
 class lib_curate {
 
-    include mysql
-
    # lookup data we need to build this node
    $fedora_admin_mysql = hiera('fedora_admin_mysql')
    $fedora_db_name = hiera('fedora_db_name')
@@ -67,18 +65,20 @@ class lib_curate {
      }	
 
      # Install and Configure mysql for fedora
-     
-     class { 'mysql::config':
-	root_password => $mysql_root_password,
+     class { 'mysql':
 	require => Package[$packagelist],
      }	
 
+     class { 'mysql::server':
+  		config_hash => { 'root_password' =>  $mysql_root_password },
+		require => Package['mysql'],
+     } ->
      mysql::db { "${fedora_db_name}":
 	user => $fedora_admin_mysql,
 	password => $fedora_passwd_mysql,
 	host => 'localhost',
-	grant => ['all'].
-	require => Class['mysql::config'],
+	grant => ['all'],
+	require => Class['mysql::server'],
      }
 
      #Install and start Tomcat6
@@ -88,12 +88,16 @@ class lib_curate {
 
      # Install Fedora after Tomcat and mysql set up
      class { 'lib_fedora':
-	require => Class["lib_tomcat6"], Mysql:Db["${fedora_db_name}"],
+	require => [Class["lib_tomcat6"], Mysql::Db["${fedora_db_name}"]],
      }
 
      # Install SOLR after Fedora- tell tomcat
      class { 'lib_solr':
 	require => Class["lib_fedora"],
+     }
+
+     class { 'lib_nginx':
+	require => Class["lib_solr"],
      }
 
 }
