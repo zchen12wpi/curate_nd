@@ -226,13 +226,13 @@ task :staging do
   set :domain,    'libvirt6.library.nd.edu'
   set :without_bundle_environments, 'headless development test'
   set :shared_directories,  %w(log)
-  set :shared_files,        %w(config/database.yml config/fedora.yml config/solr.yml config/redis.yml)
+  set :shared_files, %w()
 
+  default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  # don't update_secrets in staging
-  after 'deploy:update_code', 'und:write_build_identifier', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
