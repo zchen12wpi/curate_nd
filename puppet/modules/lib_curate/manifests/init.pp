@@ -79,6 +79,13 @@ class lib_curate {
 	host => 'localhost',
 	grant => ['all'],
 	require => Class['mysql::server'],
+     } ->
+     mysql::db { 'curate_staging':
+	user => 'rails',
+	password => 'rails',
+	host => 'localhost',
+	grant => ['all'],
+	require => Class['mysql::server'],
      }
 
      #Install and start Tomcat6
