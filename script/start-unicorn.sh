@@ -3,8 +3,7 @@
 # Starts the application server. It assumes
 # there is an nginx reverse proxy at port 80
 
-source /etc/profile.d/chruby.sh
-chruby 1.9.3-p392
+export PATH=/opt/ruby/current/bin:$PATH
 
 source /home/app/curatend/current/script/get-env.sh
 cd $RAILS_ROOT
