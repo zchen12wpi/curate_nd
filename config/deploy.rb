@@ -178,9 +178,10 @@ end
 
 namespace :worker do
   task :start, :roles => :work do
+    # TODO: this file contains the same information as the env-vars file created in und:write_build_identifier
     target_file = "/home/app/curatend/resque-pool-info"
     run [
-      "echo \"RESQUE_POOL_ROOT=$(pwd)/current\" > #{target_file}",
+      "echo \"RESQUE_POOL_ROOT=#{current_path}\" > #{target_file}",
       "echo \"RESQUE_POOL_ENV=#{fetch(:rails_env)}\" >> #{target_file}",
       "sudo /sbin/service resque-poold restart"
     ].join(" && ")
@@ -257,6 +258,7 @@ task :staging do
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
+  after 'deploy', 'worker:start'
 end
 
 desc "Setup for the Pre-Production environment"
