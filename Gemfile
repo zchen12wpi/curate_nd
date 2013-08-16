@@ -22,6 +22,7 @@ group :default do
   gem 'therubyracer', :platforms => :ruby
   gem 'bootstrap-datepicker-rails'
   gem 'namae'
+  gem 'unicorn', '~> 4.0'
 end
 
 group :pre_production, :production do
