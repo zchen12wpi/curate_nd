@@ -107,4 +107,13 @@ class lib_curate {
 	require => Class["lib_solr"],
      }
 
+     file { '/etc/nginx/conf.d/curatend.conf':
+       content => template('lib_curate/curatend.conf.erb'),
+       owner => 'root',
+       group => 'root',
+       mode => '644',
+       notify => Service['nginx'],
+       require => Class['lib_nginx'],
+     }
+
 }
