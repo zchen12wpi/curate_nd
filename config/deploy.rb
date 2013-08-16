@@ -245,7 +245,7 @@ task :staging do
   set :rails_env, 'staging'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
-  set :domain,    'libvirt6.library.nd.edu'
+  set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
   set :without_bundle_environments, 'headless development test'
   set :shared_directories,  %w(log)
   set :shared_files, %w()
