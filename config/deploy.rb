@@ -60,10 +60,14 @@ namespace :env do
 end
 
 #############################################################
-#  Passenger
+#  Unicorn
 #############################################################
 
 desc "Restart Application"
+task :restart_unicorn do
+  run "#{current_path}/script/reload-unicorn.sh"
+end
+
 task :restart_passenger do
   run "touch #{current_path}/tmp/restart.txt"
 end
@@ -101,12 +105,20 @@ namespace :deploy do
 
   desc "Start application in Passenger"
   task :start, :roles => :app do
-    restart_passenger
+    if rails_env == 'staging'
+      restart_unicorn
+    else
+      restart_passenger
+    end
   end
 
   desc "Restart application in Passenger"
   task :restart, :roles => :app do
-    restart_passenger
+    if rails_env == 'staging'
+      restart_unicorn
+    else
+      restart_passenger
+    end
   end
 
   task :stop, :roles => :app do
@@ -166,7 +178,7 @@ end
 
 namespace :worker do
   task :start, :roles => :work do
-    target_file = "/home/curatend/resque-pool-info"
+    target_file = "/home/app/curatend/resque-pool-info"
     run [
       "echo \"RESQUE_POOL_ROOT=$(pwd)/current\" > #{target_file}",
       "echo \"RESQUE_POOL_ENV=#{fetch(:rails_env)}\" >> #{target_file}",
@@ -192,6 +204,15 @@ namespace :und do
     run "cd #{release_path} && echo '#{build_identifier}' > config/bundle-identifier.txt"
   end
 
+  desc "Write the current environment values to file on targets"
+  task :write_env_vars do
+    run [
+      "echo RAILS_ENV=#{rails_env} > #{release_path}/env-vars",
+      "echo RAILS_ROOT=#{current_path} >> #{release_path}/env-vars"
+    ].join(" && ")
+  end
+
+  desc "Run puppet using the modules supplied by the application"
   task :puppet, :roles => [:app, :work] do
     local_module_path = File.join(release_path, 'puppet', 'modules')
     run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate': }"}
@@ -229,10 +250,10 @@ task :staging do
   set :shared_files, %w()
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server "#{user}@#{domain}", :app, :web, :db, :primary => true
+  server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_build_identifier', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
