@@ -5,8 +5,8 @@ upstream app_server {
     server unix:/tmp/curatend.sock.0;
 }
 server {
-    listen 80 default_server;
-    server_name _;
+    listen 80;
+    server_name <%= fqdn %>;
     location / {
         return 301 https://$host$request_uri;
     }
