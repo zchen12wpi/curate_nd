@@ -36,8 +36,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 1c44bfa35b0276a7ca6306bcd1f2a3739683a2e0
-  branch: master
+  revision: 406c9b10dd8055e3cbfa3fc165e60129aa710a25
+  branch: stable
   specs:
     curate (0.4.1)
       active_attr
@@ -50,7 +50,7 @@ GIT
       devise
       devise
       devise-guests (~> 0.3)
-      hydra-batch-edit (~> 0.1.0)
+      hydra-batch-edit (~> 1.0.0)
       hydra-head (~> 6.0)
       method_decorators
       mini_magick
@@ -126,7 +126,7 @@ GEM
       railties (>= 3.0)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
-    breach-mitigation-rails (0.0.3)
+    breach-mitigation-rails (0.0.4)
     breadcrumbs_on_rails (2.3.0)
     browser (0.2.0)
     builder (3.0.4)
@@ -224,8 +224,12 @@ GEM
       blacklight (~> 4.0)
       cancan
       deprecation
-    hydra-batch-edit (0.1.0)
+    hydra-batch-edit (1.0.2)
       blacklight
+      hydra-collections
+    hydra-collections (1.0.0)
+      blacklight
+      hydra-head
     hydra-core (6.3.2)
       active-fedora
       blacklight (~> 4.0)
