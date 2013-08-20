@@ -1,0 +1,42 @@
+id: curate_nd
+name: CurateND
+owner: jfriesen
+developers:
+  - jfriesen
+  - dbrubak1
+  - blakshmi
+  - dbrower
+  - rbalekai
+purpose: >
+  CurateND is a secure repository service enabling the University of Notre Dame community to share its research and scholarly work with a worldwide audience. Faculty, staff, and students can use CurateND to collect their work in one location and create a durable and citeable record of their papers, presentations, publications, data sets, or other scholarly creations.
+audience: >
+  Students, Faculty, and Staff
+dependencies:
+  - directory.nd.edu
+  - login.nd.edu
+  - solr_4_1
+  - fedora_4_6
+  - mysql
+  - redis
+  - purl
+  - doi
+hosts: # These can be pulled from the Capistrano file?
+  - curate.library.nd.edu
+  - curatepprd.library.nd.edu
+  - curatepprdw1.library.nd.edu
+  - curateprodw1.library.nd.edu
+urls:
+  - "https://curate.library.nd.edu"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Integration/"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Preproduction/"
+  - "https://jenkins.library.nd.edu/jenkins/job/CurateND-Production/"
+  - "https://travis-ci.org/ndlib/curate_nd/"
+  - "https://github.com/ndlib/curate_nd"
+  - "https://github.com/ndlib/curate"
+setup: >
+
+deploy: >
+  Deployed via Jenkins and Capistrano (see URLs)
+last_review:
+  date: 2013-06-24
+  reviewer: jfriesen

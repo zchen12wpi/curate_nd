@@ -11,6 +11,8 @@ require 'rspec/autorun'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'webmock/rspec'
+require 'timeout'
+require 'active_fedora/test_support'
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -48,6 +50,17 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  config.before(:each, type: :feature) do
+    Warden.test_mode!
+    @old_resque_inline_value = Resque.inline
+    Resque.inline = true
+  end
+  config.after(:each, type: :feature) do
+    Warden.test_reset!
+    Resque.inline = @old_resque_inline_value
+  end
+
+
   config.before(:all) do
     WebMock.allow_net_connect!
   end
@@ -59,4 +72,18 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.around(:each) do |example|
+    Timeout::timeout(120) {
+      example.run
+    }
+  end
+
+  config.before(:each) do
+    User.any_instance.stub(:ldap_service).and_return(nil)
+    User.any_instance.stub_chain(:ldap_service, :display_name).and_return(nil)
+    User.any_instance.stub_chain(:ldap_service, :preferred_email).and_return(nil)
+    allow_message_expectations_on_nil
+  end
 end
+

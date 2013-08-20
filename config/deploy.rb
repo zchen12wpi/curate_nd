@@ -35,6 +35,7 @@ require 'bundler/capistrano'
 
 default_run_options[:pty] = true
 set :use_sudo, false
+ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
 ssh_options[:paranoid] = false
 set :default_shell, '/bin/bash'
 
@@ -188,6 +189,21 @@ namespace :worker do
   end
 end
 
+namespace :maintenance do
+  task :create_person_records, :roles => :app do
+    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
+  end
+  task :delete_index_solr, :roles => :app do
+    config = capture("cat #{current_path}/config/solr.yml")
+    solr_core_url = YAML.load(config).fetch(rails_env).fetch('url')
+    run "curl #{File.join(solr_core_url, 'update')}?commit=true -H 'Content-Type:application/xml' -d '<delete><query>*:*</query></delete>'"
+  end
+  task :reindex_solr, :roles => :app do
+    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Sufia.queue.push(ReindexWorker.new)' -e #{rails_env}"
+  end
+  before 'maintenance:reindex_solr', 'maintenance:delete_index_solr'
+end
+
 set(:secret_repo_name) {
   case rails_env
   when 'staging' then 'secret_staging'
@@ -261,8 +277,9 @@ task :staging do
   after 'deploy', 'worker:start'
 end
 
-desc "Setup for the Pre-Production environment"
-task :pre_production_cluster do
+def set_common_cluster_variables(cluster_directory_slug)
+  ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
+
   set :symlink_targets do
     [
       ['/bundle/config','/.bundle/config', '/.bundle'],
@@ -270,15 +287,11 @@ task :pre_production_cluster do
       ['/vendor/bundle','/vendor/bundle','/vendor'],
     ]
   end
-  set :branch, "master"
-  set :rails_env,   'pre_production'
-  set :deploy_to,   '/shared/ruby_pprd/data/app_home/curate'
-  set :ruby_bin,    '/shared/ruby_pprd/ruby/1.9.3/bin'
   set :git_bin,    '/shared/git/bin'
-
-  set :user,        'rbpprd'
-  set :domain,      'curatepprd.library.nd.edu'
   set :without_bundle_environments, 'headless development test'
+
+  set :deploy_to,   "/shared/#{cluster_directory_slug}/data/app_home/curate"
+  set :ruby_bin,    "/shared/#{cluster_directory_slug}/ruby/1.9.3/bin"
 
   default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
@@ -289,33 +302,26 @@ task :pre_production_cluster do
   after 'deploy', 'deploy:kickstart'
 end
 
+desc "Setup for the Pre-Production environment"
+task :pre_production_cluster do
+  set :branch, "master"
+  set :rails_env,   'pre_production'
+
+  set :user,        'rbpprd'
+  set :domain,      'curatepprd.library.nd.edu'
+
+  set_common_cluster_variables('ruby_pprd')
+end
+
 desc "Setup for the Production environment"
 task :production_cluster do
-  set :symlink_targets do
-    [
-      ['/bundle/config','/.bundle/config', '/.bundle'],
-      ['/log','/log','/log'],
-      ['/vendor/bundle','/vendor/bundle','/vendor'],
-      #["/config/role_map_#{rails_env}.yml","/config/role_map_#{rails_env}.yml",'/config'],
-    ]
-  end
   set :branch,      'release'
   set :rails_env,   'production'
-  set :deploy_to,   '/shared/ruby_prod/data/app_home/curate'
-  set :ruby_bin,    '/shared/ruby_prod/ruby/1.9.3/bin'
-  set :git_bin,    '/shared/git/bin'
 
   set :user,        'rbprod'
   set :domain,      'curateprod.library.nd.edu'
-  set :without_bundle_environments, 'headless development test'
 
-  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
-  server "#{user}@#{domain}", :app, :web, :db, :primary => true
-
-  after 'deploy:update_code', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
-  after 'deploy', 'deploy:cleanup'
-  after 'deploy', 'deploy:restart'
-  after 'deploy', 'deploy:kickstart'
+  set_common_cluster_variables('ruby_prod')
 end
 
 
@@ -336,7 +342,7 @@ def common_worker_things
 
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
-  after 'deploy', 'worker:start'
+  after 'deploy', 'worker:start', 'deploy:cleanup'
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
 end
 
@@ -366,4 +372,3 @@ task :production_worker do
   set :branch,      'release'
   common_worker_things
 end
-

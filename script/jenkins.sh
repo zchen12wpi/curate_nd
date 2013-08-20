@@ -17,6 +17,9 @@ export HEADLESS=true
 RUBY=/shared/ruby_prod/ruby/1.9.3/bin/ruby
 BUNDLE=/shared/ruby_prod/ruby/1.9.3/bin/bundle
 
+echo "=-=-=-=-=-=-=-= bundle config nokogiri"
+$BUNDLE config --local build.nokogiri --with-xml2-dir=/shared/libxml2 --with-xslt-dir=/shared/libxlst
+
 echo "=-=-=-=-=-=-=-= bundle install"
 $BUNDLE install --path="$WORKSPACE/vendor/bundle" --binstubs="$WORKSPACE/vendor/bundle/bin" --shebang "$RUBY" --deployment --gemfile="$WORKSPACE/Gemfile" --without=headless
 
