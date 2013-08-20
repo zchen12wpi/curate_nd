@@ -1,28 +1,6 @@
-require 'spec_helper'
+require 'spec_helper_features'
 
-require 'casclient'
-require 'casclient/frameworks/rails/filter'
-
-describe_options = {type: :feature}
-if ENV['JS']
-  describe_options[:js] = true
-end
-
-describe 'admin queues behavior', describe_options do
-  def with_javascript?
-    @example.metadata[:js] || @example.metadata[:javascript]
-  end
-
-  before(:each) do
-    Warden.test_mode!
-    @old_resque_inline_value = Resque.inline
-    Resque.inline = true
-  end
-  after(:each) do
-    Warden.test_reset!
-    Resque.inline = @old_resque_inline_value
-  end
-
+describe 'admin queues behavior', FeatureSupport.options do
   describe 'anonymous user' do
     it 'cannot see the /admin/queues' do
       visit('/admin/queues')

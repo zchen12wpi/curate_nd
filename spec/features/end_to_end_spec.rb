@@ -1,20 +1,6 @@
-require 'spec_helper'
-require 'capybara/poltergeist'
-require 'compass-rails'
-require 'compass'
-require 'bootstrap-datepicker-rails'
-require 'timecop'
+require 'spec_helper_features'
 
 describe 'end to end behavior', FeatureSupport.options do
-  before(:each) do
-    Warden.test_mode!
-    @old_resque_inline_value = Resque.inline
-    Resque.inline = true
-  end
-  after(:each) do
-    Warden.test_reset!
-    Resque.inline = @old_resque_inline_value
-  end
   let(:sign_in_count) { 0 }
   let(:user) {
     FactoryGirl.create(
@@ -45,7 +31,7 @@ describe 'end to end behavior', FeatureSupport.options do
     let(:sign_in_count) { 2 }
     let(:expected_email) { 'hello@world.com' }
     it 'allows me to edit my email' do
-      expect(user.email).to be_empty
+      expect(user.alternate_email).to be_empty
       login_as(user)
       visit('/dashboard')
       within('.page-actions') do
@@ -60,7 +46,7 @@ describe 'end to end behavior', FeatureSupport.options do
         click_link('Profile')
       end
       within('form.edit_user') do
-        expect(find('#user_email').value).to eq(expected_email)
+        expect(find('#user_alternate_email').value).to eq(expected_email)
       end
     end
   end
@@ -320,7 +306,7 @@ describe 'end to end behavior', FeatureSupport.options do
     options['Visibility'] ||= 'visibility_restricted'
     options["Button to click"] ||= "Create Senior thesis"
     options["Contributors"] ||= ["Dante"]
-    options["Content License"] ||= Sufia::Engine.config.cc_licenses.keys.first
+    options["Content License"] ||= Sufia.config.cc_licenses.keys.first
 
     page.should have_content('Describe Your Senior Thesis')
     # Without accepting agreement
@@ -369,9 +355,10 @@ describe 'end to end behavior', FeatureSupport.options do
     within(".control-group.senior_thesis_#{method_name}.multi_value") do
       elements = [options[:with]].flatten.compact
       if with_javascript?
-        elements.each_with_index do |contributor, i|
-          within('.input-append:last') do
-            fill_in(field_name, with: contributor)
+        elements.each_with_index do |element, i|
+          container = all('.input-append').last
+          within(container) do
+            fill_in(field_name, with: element)
             click_on('Add')
           end
         end

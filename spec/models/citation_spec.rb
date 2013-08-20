@@ -67,17 +67,41 @@ describe Citation do
 
   let(:curation_concern_with_no_doi){
     @curation_concern = mock_model(SeniorThesis)
-    @curation_concern.stub!(:to_param).and_return("jq085h7459h")
-    @curation_concern.stub!(:title).and_return("This is a test title for generating test citation")
-    @curation_concern.stub!(:publisher).and_return(["University of Notre Dame"])
-    @curation_concern.stub!(:authors_for_citation).and_return(["John Michael Smith"] | ["Mohammed Ahmed Sultan"])
-    @curation_concern.stub!(:created).and_return(nil)
-    @curation_concern.stub!(:identifier).and_return(nil)
+    @curation_concern.stub(:to_param).and_return("jq085h7459h")
+    @curation_concern.stub(:title).and_return("This is a test title for generating test citation")
+    @curation_concern.stub(:publisher).and_return(["University of Notre Dame"])
+    @curation_concern.stub(:authors_for_citation).and_return(["John Michael Smith"] | ["Mohammed Ahmed Sultan"])
+    @curation_concern.stub(:created).and_return(nil)
+    @curation_concern.stub(:identifier).and_return(nil)
     @curation_concern
   }
 
   let(:expected_citation_with_no_doi){
     "Smith, J.M., & Sultan, M.A. This is a test title for generating test citation. University of Notre Dame. Retrieved from #{File.join(Rails.configuration.application_url, "/show/jq085h7459h")}"
+  }
+
+  let(:curation_concern_with_no_author){
+    OpenStruct.new(
+      {
+        :publisher => ["University of Notre Dame"],
+        :created => "",
+        :title => "This is a test title for generating test citation",
+        :identifier => "doi:10.5072/FK2NS13CS",
+        :authors_for_citation => nil
+      }
+    )
+  }
+
+  let(:curation_concern_with_no_title){
+    OpenStruct.new(
+      {
+        :publisher => ["University of Notre Dame"],
+        :created => "",
+        :title => "",
+        :identifier => "doi:10.5072/FK2NS13CS",
+        :authors_for_citation => ["John Michael Smith"] | ["Mohammed Ahmed Sultan"]
+      }
+    )
   }
 
   describe "to_apa" do
@@ -104,6 +128,14 @@ describe Citation do
     it "should create citation with no doi" do
       citation = Citation.new(curation_concern_with_no_doi)
       citation.to_s.should == expected_citation_with_no_doi
+    end
+
+    it "should not generate citation when no author" do
+      expect { Citation.new(curation_concern_with_no_author) }.to raise_error(Citation::InvalidCurationConcern)
+    end
+
+    it "should not generate citation when no title" do
+      expect { Citation.new(curation_concern_with_no_title) }.to raise_error(Citation::InvalidCurationConcern)
     end
   end
 end

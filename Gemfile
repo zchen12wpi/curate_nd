@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'sufia', git: 'git://github.com/ndlib/sufia.git', branch: 'sufia-for-curate-nd'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
+  gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
+  # gem 'active-fedora', '~>6.4.3'
+  gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'adding-lint-validation-to-active-fedora'
+  gem 'rsolr'
+  gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'decent_exposure'
@@ -23,6 +26,9 @@ group :default do
   gem 'bootstrap-datepicker-rails'
   gem 'namae'
   gem 'unicorn', '~> 4.0'
+  gem 'net-ldap'
+  gem 'activity_engine', '~>0.0.8'
+  gem 'active_fedora-registered_attributes'
 end
 
 group :pre_production, :production do
@@ -44,7 +50,7 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', "~> 2.1"
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-html-matchers'
@@ -54,7 +60,7 @@ group :test do
   gem 'poltergeist'
 end
 
-group :development do
+group :debug do
   gem 'debugger', ">= 1.4"
   gem 'rails_best_practices'
   gem 'sextant'

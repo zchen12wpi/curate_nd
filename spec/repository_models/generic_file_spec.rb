@@ -1,5 +1,7 @@
 require 'spec_helper'
 describe GenericFile do
+  it_behaves_like "An ActiveModel"
+
   subject { GenericFile.new }
 
   include_examples 'with_access_rights'
@@ -14,6 +16,7 @@ describe GenericFile do
   it { should respond_to(:visibility=) }
 
   it 'uses #noid for #to_param' do
+    subject.stub(:persisted?).and_return(true)
     subject.to_param.should == subject.noid
   end
 

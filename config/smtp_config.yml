@@ -3,7 +3,7 @@ development: &development
   smtp_port: 587
   smtp_domain: example.com
   smtp_authentication_type: plain
-  smtp_user_name: <username>
+  smtp_user_name: from@no-reply.com
   smtp_password: <password>
   smtp_enable_starttls_auto: true
   smtp_delivery_method: smtp
@@ -11,6 +11,9 @@ development: &development
 test: &test
   <<: *development
   smtp_delivery_method: test
+
+deploy:
+  <<: *test
 
 ci:
   <<: *test

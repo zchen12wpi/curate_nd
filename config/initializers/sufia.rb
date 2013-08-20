@@ -1,5 +1,4 @@
-require 'sufia'
-gem 'sufia'
+#gem 'sufia-models'
 # Returns an array containing the vhost 'CoSign service' value and URL
 Sufia.config do |config|
   config.id_namespace = "und"

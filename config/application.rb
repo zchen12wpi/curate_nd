@@ -7,6 +7,7 @@ if defined?(Bundler)
   bundle_environment_aliases = Rails.groups(
       default: %w(production pre_production staging development test ci),
       headless: %w(development test ci),
+      debug: %w(development test),
       ci: %w(test),
       test: %w(ci),
       assets: %w(development test)
@@ -87,7 +88,7 @@ module CurateNd
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
-    SMTP_CONFIG = YAML.load_file(Rails.root.join("config/smtp_config.yml"))[Rails.env]
+    SMTP_CONFIG = YAML.load_file(Rails.root.join("config/smtp_config.yml")).fetch(Rails.env)
 
     config.action_mailer.delivery_method = SMTP_CONFIG['smtp_delivery_method'].to_sym
     config.action_mailer.smtp_settings = {
@@ -99,6 +100,12 @@ module CurateNd
       authentication:       SMTP_CONFIG['smtp_authentication_type'],
       enable_starttls_auto: SMTP_CONFIG['smtp_enable_starttls_auto']
     }
+
+    # http://guides.rubyonrails.org/configuring.html#initialization-events
+    config.after_initialize do
+      require 'activity_engine'
+      require File.expand_path('../post_initializers/activity_engine_config.rb', __FILE__)
+    end
 
   end
 end

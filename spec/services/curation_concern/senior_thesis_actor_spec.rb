@@ -25,7 +25,7 @@ describe CurationConcern::SeniorThesisActor do
   describe '#create' do
 
     describe 'invalid attributes' do
-      let(:visibility) { AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
+      let(:visibility) { AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE }
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis_invalid).tap {|a|
           a[:visibility] = visibility
@@ -37,8 +37,8 @@ describe CurationConcern::SeniorThesisActor do
             expect{
               subject.create!
             }.to raise_error(ActiveFedora::RecordInvalid)
-          }.to change(curation_concern, :visibility).from(nil).to(visibility)
-        }.to change(curation_concern, :authenticated_only_access?).from(false).to(true)
+          }.to change(curation_concern, :visibility).to(visibility)
+        }.to change(curation_concern, :private_access?).from(false).to(true)
       end
     end
     describe 'valid attributes' do
@@ -133,7 +133,7 @@ describe CurationConcern::SeniorThesisActor do
         }
       }
       describe 'valid attributes' do
-        before(:all) do
+        before(:each) do
           curation_concern.apply_depositor_metadata(user.user_key)
         end
         it do
