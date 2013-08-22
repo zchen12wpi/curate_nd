@@ -113,7 +113,6 @@ class lib_curate {
        group => 'root',
        mode => '644',
        notify => Service['nginx'],
-       require => Class['lib_nginx'],
      }
 
 }
