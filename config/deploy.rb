@@ -244,7 +244,7 @@ task :staging do
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
   set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
-  set :without_bundle_environments, 'headless development test'
+  set :bundle_without,  [:headless, :development, :test]
   set :shared_directories,  %w(log)
   set :shared_files, %w()
 
@@ -270,7 +270,7 @@ def set_common_cluster_variables(cluster_directory_slug)
     ]
   end
   set :git_bin,    '/shared/git/bin'
-  set :without_bundle_environments, 'headless development test'
+  set :bundle_without,  [:headless, :development, :test]
 
   set :deploy_to,   "/shared/#{cluster_directory_slug}/data/app_home/curate"
   set :ruby_bin,    "/shared/#{cluster_directory_slug}/ruby/1.9.3/bin"
