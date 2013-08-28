@@ -143,7 +143,7 @@ namespace :deploy do
 
   desc "Spool up a request to keep user experience speedy"
   task :kickstart do
-    run "curl -I http://localhost"
+    run "curl -I http://#{domain}"
   end
 
   desc "Precompile assets"
@@ -278,7 +278,7 @@ def set_common_cluster_variables(cluster_directory_slug)
   default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
 
-  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
@@ -325,7 +325,7 @@ def common_worker_things
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
   after 'deploy', 'worker:start', 'deploy:cleanup'
-  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
+  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared'
 end
 
 desc "Setup for the Staging Worker environment"
