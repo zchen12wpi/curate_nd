@@ -5,7 +5,7 @@
 
 set :bundle_roles, [:app, :work]
 set :bundle_flags, "--deployment"
-
+require 'bundler/capistrano'
 # see http://gembundler.com/v1.3/deploying.html
 # copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
 #
@@ -244,10 +244,9 @@ task :staging do
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
   set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
-  set :bundle_without,  [:headless, :development, :test]
+  set :bundle_without,  [:development, :test]
   set :shared_directories,  %w(log)
   set :shared_files, %w()
-  require 'bundler/capistrano'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
@@ -278,13 +277,11 @@ def set_common_cluster_variables(cluster_directory_slug)
 
   default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :app, :web, :db, :primary => true
-  require 'bundler/capistrano'
 
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
-
 end
 
 desc "Setup for the Pre-Production environment"
@@ -327,7 +324,6 @@ def common_worker_things
 
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
   server "#{user}@#{domain}", :work
-  require 'bundler/capistrano'
   after 'deploy', 'worker:start', 'deploy:cleanup'
   after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'bundle:install'
 end
