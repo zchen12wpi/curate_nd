@@ -71,9 +71,11 @@ module CurateNd
     config.doi_url = "http://dx.doi.org/"
 
     config.build_identifier = begin
-      Rails.root.join('config/build-identifier.txt').read.strip
-    rescue Errno::ENOENT => e
-      Time.now.strftime("%Y-%m-%d %H:%M:%S")
+      identifier = Rails.root.join('BUILD_IDENTIFIER').read.strip
+      unless Rails.env.production?
+        identifier += " (#{Rails.env})"
+      end
+      identifier
     end
 
     config.to_prepare do
