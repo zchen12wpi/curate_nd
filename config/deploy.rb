@@ -319,7 +319,11 @@ def common_worker_things
   set :scm_command, '/usr/bin/git'
   set :deploy_to,   '/home/curatend'
   set :ruby_bin,    '/usr/local/ruby/bin'
+<<<<<<< HEAD
   set :bundle_without,  [:development, :test]
+=======
+  set :bundle_without, [:development, :test]
+>>>>>>> "Moving" bundle_without to master.
   set :group_writable, false
 
   default_environment['PATH'] = "#{ruby_bin}:$PATH"
