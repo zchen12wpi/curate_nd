@@ -35,7 +35,6 @@ require 'bundler/capistrano'
 
 default_run_options[:pty] = true
 set :use_sudo, false
-#ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
 ssh_options[:paranoid] = false
 set :default_shell, '/bin/bash'
 
@@ -53,8 +52,6 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    #set :ruby,      File.join(ruby_bin, 'ruby')
-    #set :bundler,   File.join(ruby_bin, 'bundle')
     set :bundle_cmd, '/opt/ruby/current/bin/bundle'
     set :rake,      "#{bundle_cmd} exec rake"
   end
@@ -163,20 +160,6 @@ namespace :deploy do
 end
 
 
-#namespace :bundle do
-#  desc "Install gems in Gemfile"
-#  task :install, :roles => [:app, :work] do
-#    switches = ""
-#    switches << " --binstubs='#{release_path}/vendor/bundle/bin'"
-#    switches << " --shebang '#{ruby}'"
-#    switches << " --path=#{release_path}/vendor/bundle"
-#    switches << " --gemfile='#{release_path}/Gemfile'"
-#    switches << " --deployment"
-#    switches << " --without #{without_bundle_environments}"
-#    run "#{bundler} install #{switches}"
-#  end
-#end
-
 namespace :worker do
   task :start, :roles => :work do
     # TODO: this file contains the same information as the env-vars file created in und:write_build_identifier
@@ -264,7 +247,7 @@ task :staging do
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_build_identifier', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:restart'
   after 'deploy', 'deploy:kickstart'
