@@ -1,7 +1,6 @@
 module Curate::BuildIdentifier
 
   BUILD_ID_FILE_PATH = Rails.root.join("config", "build-identifier.txt")
-  DEFAULT_BUILD_ID = "#{DateTime.now.strftime("%Y")}.0"
 
   module_function
 
@@ -17,10 +16,16 @@ module Curate::BuildIdentifier
   end
 
   def current_id(path=BUILD_ID_FILE_PATH)
-    current_build_id = File.read(path)
-    return current_build_id
+    File.read(path)
   rescue
-    DEFAULT_BUILD_ID
+    # This was a constant, but would cause problems if the application was
+    # started in 2012 then we hit 2013 and the above `File.read` raised an
+    # error.
+    default_build_id
+  end
+
+  def default_build_id
+    "#{DateTime.now.strftime("%Y")}.0"
   end
 
   def next_id(path=BUILD_ID_FILE_PATH)
@@ -44,6 +49,6 @@ module Curate::BuildIdentifier
   end
 
   def check_if_same_year?(current_year, next_year)
-    current_year == next_year ? true : false
+    current_year.to_s == next_year.to_s
   end
 end
