@@ -52,8 +52,13 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    set :bundle_cmd, '/opt/ruby/current/bin/bundle'
-    set :rake,      "#{bundle_cmd} exec rake"
+    if rails_env == 'staging'
+      set :bundle_cmd, '/opt/ruby/current/bin/bundle'
+      set :rake,      "#{bundle_cmd} exec rake"
+    else
+      set :bundle_cmd,   File.join(ruby_bin, 'bundle')
+      set :rake,      "#{bundle_cmd} exec rake"
+    end
   end
 end
 
