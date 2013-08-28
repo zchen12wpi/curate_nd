@@ -12,13 +12,18 @@ class User < ActiveRecord::Base
   devise :cas_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  person_attribute_readers = [:title, :campus_phone_number, :alternate_phone_number, :personal_webpage, :date_of_birth, :gender, :blog]
+  person_attribute_setters =  person_attribute_readers.collect{|method_name| "#{method_name}=".to_sym}
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :remember_me, :username, :name, :alternate_email, :preferred_email
+  attr_accessible :email, :remember_me, :username, :name, :preferred_email, :alternate_email, *person_attribute_readers
 
   attr_accessor :password
 
   # Every User has an associated Person record in Fedora, which is created lazily.
   after_commit :update_person
+
+  delegate :first_name, :last_name, *person_attribute_readers, *person_attribute_setters, to: :person
 
   GRAVATAR_URL = "http://www.gravatar.com/avatar/"
 
@@ -49,12 +54,12 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    @display_name ||= self.attributes['display_name'] || person.display_name || ldap_service.display_name
+    @display_name ||= self.attributes['display_name'] || person.name || ldap_service.display_name
   end
 
   def display_name=(display_name)
     write_attribute(:display_name, display_name)
-    person.display_name= display_name
+    person.name= display_name
   end
 
   def update_with_password(attributes)
@@ -130,7 +135,7 @@ class User < ActiveRecord::Base
   # object (again).
   def create_person
     person = Person.new
-    person.display_name = get_value_from_ldap(:display_name)
+    person.name = get_value_from_ldap(:display_name)
     person.preferred_email = get_value_from_ldap(:preferred_email)
     person.alternate_email = email
     person.save!

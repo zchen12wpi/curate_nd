@@ -3,13 +3,9 @@ require 'active_fedora/registered_attributes'
 class Person < ActiveFedora::Base
   include ActiveFedora::RegisteredAttributes
 
-  has_metadata name: "descMetadata", type: ActiveFedora::QualifiedDublinCoreDatastream do |ds|
-    ds.field :display_name, :string
-    ds.field :preferred_email, :string
-    ds.field :alternate_email, :string
-  end
+  has_metadata name: "descMetadata", type: PersonMetadataDatastream, control_group: 'M'
 
-  attribute :display_name,
+  attribute :name,
       datastream: :descMetadata, multiple: false
 
   attribute :preferred_email,
@@ -17,4 +13,37 @@ class Person < ActiveFedora::Base
 
   attribute :alternate_email,
       datastream: :descMetadata, multiple: false
+
+  attribute :date_of_birth,
+      datastream: :descMetadata, multiple: false
+
+  attribute :title,
+      datastream: :descMetadata, multiple: false
+
+  attribute :campus_phone_number,
+      datastream: :descMetadata, multiple: false
+
+  attribute :alternate_phone_number,
+      datastream: :descMetadata, multiple: false
+
+  attribute :personal_webpage,
+      datastream: :descMetadata, multiple: false
+
+  attribute :blog,
+      datastream: :descMetadata, multiple: false
+
+  attribute :gender,
+      datastream: :descMetadata, multiple: false
+
+  def first_name
+    name_parser.given
+  end
+
+  def last_name
+    name_parser.family
+  end
+
+  def name_parser
+    Namae.parse(self.name).first
+  end
 end

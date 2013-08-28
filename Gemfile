@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master', ref: '35e230e0d89a97fa4a125b91b4052fd97fde03c8'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'stable'
   gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
   # gem 'active-fedora', '~>6.4.3'
   gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'adding-lint-validation-to-active-fedora'
