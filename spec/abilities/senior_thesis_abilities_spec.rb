@@ -6,7 +6,7 @@ describe "User" do
     subject { ability }
     let(:ability) { Ability.new(current_user) }
     let(:senior_thesis) {
-      FactoryGirl.create_curation_concern(:senior_thesis, creating_user)
+      FactoryGirl.create_curation_concern(:senior_thesis, creating_user, visibility: Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
     }
     let(:creating_user) { nil }
     let(:current_user) { nil }

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rdf/qualified_dc'
 
 describe RDF::QualifiedDC do
   subject { RDF::QualifiedDC }
