@@ -168,7 +168,13 @@ end
 namespace :worker do
   task :start, :roles => :work do
     # TODO: this file contains the same information as the env-vars file created in und:write_build_identifier
-    target_file = "/home/app/curatend/resque-pool-info"
+    # make a distinction here until we remove the old cluster stuff
+    target_file =
+      if rails_env == 'staging'
+        '/home/app/curatend/resque-pool-info'
+      else
+        '/home/curatend/resque-pool-info'
+      end
     run [
       "echo \"RESQUE_POOL_ROOT=#{current_path}\" > #{target_file}",
       "echo \"RESQUE_POOL_ENV=#{fetch(:rails_env)}\" >> #{target_file}",
