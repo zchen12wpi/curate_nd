@@ -7,7 +7,6 @@ class SeniorThesis < ActiveFedora::Base
   include CurationConcern::Model
   include CurationConcern::WithGenericFiles
   include CurationConcern::Embargoable
-  include CurationConcern::WithAccessRight
   include ActiveFedora::RegisteredAttributes
 
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"
@@ -71,11 +70,19 @@ class SeniorThesis < ActiveFedora::Base
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
   attribute :visibility,
+    skip_accessor: true,
     multiple: false,
-    default: AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+    default: Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
   validates: {
     inclusion: {
-      in: ->(senior_thesis) { AccessRight.valid_visibility_values },
+      in: ->(senior_thesis) {
+        [
+          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
+          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO,
+          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+        ]
+      },
       allow_nil: true
     }
   }
@@ -114,25 +121,25 @@ class SeniorThesis < ActiveFedora::Base
   end
 
   private
-    def parse_person_names(values)
-      Array(values).each_with_object([]) {|value, collector|
-        Namae.parse(value).each {|name|
-          collector << normalize_contributor(name)
-        }
+  def parse_person_names(values)
+    Array(values).each_with_object([]) {|value, collector|
+      Namae.parse(value).each {|name|
+        collector << normalize_contributor(name)
       }
-    end
+    }
+  end
 
-    def normalize_contributor(name)
-      [
-        name.appellation,
-        name.title,
-        name.given,
-        name.dropping_particle,
-        name.nick,
-        name.particle,
-        name.family,
-        name.suffix
-      ].flatten.compact.join(" ")
-    end
+  def normalize_contributor(name)
+    [
+      name.appellation,
+      name.title,
+      name.given,
+      name.dropping_particle,
+      name.nick,
+      name.particle,
+      name.family,
+      name.suffix
+    ].flatten.compact.join(" ")
+  end
 
 end

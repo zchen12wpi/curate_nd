@@ -5,7 +5,6 @@ class RepoObject < ActiveRecord::Base
   self.establish_connection("#{Rails.env}_remote_purl_database".to_sym)
   self.table_name = "repo_object"
   # this is the id for the record, NOT for the repository object (which is :pid)
-  attr_accessible :add_source_ip
   alias_attribute :pid, :filename
 
   class << self

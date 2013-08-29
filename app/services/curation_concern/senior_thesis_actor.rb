@@ -1,6 +1,5 @@
 module CurationConcern
   class SeniorThesisActor < CurationConcern::BaseActor
-
     def create!
       super
       create_files
@@ -34,14 +33,14 @@ module CurationConcern
           generic_file, user, curation_concern.pid
         )
         generic_file.embargo_release_date = curation_concern.embargo_release_date
-        generic_file.set_visibility(visibility)
+        generic_file.visibility = visibility
         CurationConcern.attach_file(generic_file, user, file)
       end
 
     def update_contained_generic_file_visibility
-      if visibility_may_have_changed?
+      if curation_concern.visibility_changed?
         curation_concern.generic_files.each do |f|
-          f.set_visibility(visibility)
+          f.visibility = visibility
           f.save!
         end
       end
