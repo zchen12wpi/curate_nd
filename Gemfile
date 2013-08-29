@@ -4,10 +4,8 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'stable'
-  gem 'sufia-models', git: 'git://github.com/jeremyf/sufia.git', branch: 'remove-rmagick-dependency', ref: '431063eef3f44bd0958b61fdb858e869eae06043'
-  # gem 'active-fedora', '~>6.4.3'
-  gem 'active-fedora', git: 'git://github.com/jeremyf/active_fedora.git', branch: 'adding-lint-validation-to-active-fedora'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
+  gem 'sufia-models', github:"projecthydra/sufia", ref:'1f0dd1c452d160c28bb106f4138b909b01258333'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
@@ -27,8 +25,7 @@ group :default do
   gem 'namae'
   gem 'unicorn', '~> 4.0'
   gem 'net-ldap'
-  gem 'activity_engine', '~>0.0.8'
-  gem 'active_fedora-registered_attributes'
+  gem 'method_decorators'
 end
 
 # Hack to work around some bundler strangeness
@@ -46,15 +43,11 @@ group :headless do
   gem 'clamav'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'bootstrap-sass', '~> 2.2.0'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'compass-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'bootstrap-sass', '~> 2.2.0'
+gem 'coffee-rails', '~> 4.0'
+gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'sass-rails',   '~> 4.0'
+gem 'uglifier', '>= 1.0.3'
 
 group :test do
   gem 'capybara', "~> 2.1"
@@ -65,6 +58,7 @@ group :test do
   gem 'webmock'
   gem 'timecop'
   gem 'poltergeist'
+  gem 'test_after_commit', :group => :test
 end
 
 group :debug do

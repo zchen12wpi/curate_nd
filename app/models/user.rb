@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
+
   # Connects this user object to Hydra behaviors.
   include Hydra::User
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
   # Connects this user object to Sufia behaviors.
   include Sufia::User
+
+  include Curate::User
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -14,9 +17,6 @@ class User < ActiveRecord::Base
 
   person_attribute_readers = [:title, :campus_phone_number, :alternate_phone_number, :personal_webpage, :date_of_birth, :gender, :blog]
   person_attribute_setters =  person_attribute_readers.collect{|method_name| "#{method_name}=".to_sym}
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :remember_me, :username, :name, :preferred_email, :alternate_email, *person_attribute_readers
 
   attr_accessor :password
 
@@ -96,14 +96,6 @@ class User < ActiveRecord::Base
 
   def to_param
     id
-  end
-
-  def person
-    @person ||= if self.repository_id
-                  Person.find(self.repository_id)
-                else
-                  create_person
-                end
   end
 
   def get_value_from_ldap(attr)

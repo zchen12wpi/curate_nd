@@ -10,7 +10,7 @@ describe CurationConcern::GenericFileActor do
   let(:file_content) { File.read(file)}
   let(:title) { Time.now.to_s }
   let(:attributes) {
-    { file: file, title: title, visibility: AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
+    { file: file, title: title, visibility: Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
   }
 
   subject {
@@ -36,9 +36,11 @@ describe CurationConcern::GenericFileActor do
 
         expect(reloaded_generic_file.to_solr[Hydra.config[:permissions][:read][:group]]).to eq(['registered'])
       end
+    end
 
+    describe 'without a batch' do
+      let(:parent){ nil }
       it 'fails if no batch is provided' do
-        generic_file.batch = nil
         expect {
           expect {
             subject.create!
@@ -52,7 +54,7 @@ describe CurationConcern::GenericFileActor do
       it 'fails if no batch is provided' do
         expect{
           expect {
-            subject.create!
+            expect(subject.create!).to eq false
           }.to raise_error(ActiveFedora::RecordInvalid)
         }.to_not change { GenericFile.count }
       end

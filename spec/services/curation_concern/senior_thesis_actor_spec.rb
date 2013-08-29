@@ -25,7 +25,7 @@ describe CurationConcern::SeniorThesisActor do
   describe '#create' do
 
     describe 'invalid attributes' do
-      let(:visibility) { AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE }
+      let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE }
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis_invalid).tap {|a|
           a[:visibility] = visibility
@@ -43,7 +43,7 @@ describe CurationConcern::SeniorThesisActor do
     end
     describe 'valid attributes' do
       let(:files) { [] }
-      let(:visibility) { AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
+      let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis).tap {|a|
           a[:files] = files
@@ -82,7 +82,7 @@ describe CurationConcern::SeniorThesisActor do
 
         describe 'embargoed file' do
 
-          let(:visibility) { AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO }
+          let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO }
           let(:formatted_embargo_release_date) { 2.days.from_now.strftime('%Y-%m-%d') }
           let(:attributes) {
             FactoryGirl.attributes_for(:senior_thesis).tap {|a|
@@ -127,7 +127,7 @@ describe CurationConcern::SeniorThesisActor do
 
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis).tap {|a|
-          a[:visibility] = AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+          a[:visibility] = Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
           a[:assign_doi] = '1'
           a[:files] = files
         }

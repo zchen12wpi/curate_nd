@@ -9,8 +9,7 @@ if defined?(Bundler)
       headless: %w(development test ci),
       debug: %w(development test),
       ci: %w(test),
-      test: %w(ci),
-      assets: %w(development test)
+      test: %w(ci)
   )
   Bundler.require(*bundle_environment_aliases)
 end
@@ -55,12 +54,6 @@ module CurateNd
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
-    # Enforce whitelist mode for mass assignment.
-    # This will create an empty whitelist of attributes available for mass-assignment for all models
-    # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
-    # parameters by using an attr_accessible or attr_protected declaration.
-    config.active_record.whitelist_attributes = true
-
     # Enable the asset pipeline
     config.assets.enabled = true
     # Default SASS Configuration, check out https://github.com/rails/sass-rails for details
@@ -102,12 +95,6 @@ module CurateNd
       authentication:       SMTP_CONFIG['smtp_authentication_type'],
       enable_starttls_auto: SMTP_CONFIG['smtp_enable_starttls_auto']
     }
-
-    # http://guides.rubyonrails.org/configuring.html#initialization-events
-    config.after_initialize do
-      require 'activity_engine'
-      require File.expand_path('../post_initializers/activity_engine_config.rb', __FILE__)
-    end
 
   end
 end
