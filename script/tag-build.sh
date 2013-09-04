@@ -12,3 +12,4 @@ git add BUILD_IDENTIFIER
 git commit -m "Bumping build identifier to \"$next_build_identifier\""
 git tag $next_build_identifier
 git push --tags
+git push origin
