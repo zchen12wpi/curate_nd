@@ -250,7 +250,11 @@ task :staging do
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
   set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
+<<<<<<< HEAD
   set :bundle_without, [:development, :test]
+=======
+  set :bundle_without,  [:development, :test]
+>>>>>>> origin/vm-deploy
   set :shared_directories,  %w(log)
   set :shared_files, %w()
 
