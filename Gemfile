@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 group :default do
   gem 'mysql2'
   gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
-  gem 'sufia-models', github:"projecthydra/sufia", ref:'1f0dd1c452d160c28bb106f4138b909b01258333'
+  gem 'sufia-models', git:"git://github.com/ndlib/sufia", ref:'a31a3a3d1bc6cbcaffc7b8362812f1a827417dab'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
