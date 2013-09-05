@@ -24,9 +24,9 @@ GIT
       sufia-models (~> 3.1.3)
 
 GIT
-  remote: git://github.com/projecthydra/sufia.git
-  revision: 1f0dd1c452d160c28bb106f4138b909b01258333
-  ref: 1f0dd1c452d160c28bb106f4138b909b01258333
+  remote: git://github.com/ndlib/sufia
+  revision: a31a3a3d1bc6cbcaffc7b8362812f1a827417dab
+  ref: a31a3a3d1bc6cbcaffc7b8362812f1a827417dab
   specs:
     sufia-models (3.1.3)
       active-fedora (~> 6.5.0)
