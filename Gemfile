@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
+  gem 'hydra-derivatives', git:"git://github.com/ndlib/hydra-derivatives", ref: '936b5d20f2659c29cabd507b2d1c15a2213f25e6'
   gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
-  gem 'sufia-models', git:"git://github.com/ndlib/sufia", ref:'a31a3a3d1bc6cbcaffc7b8362812f1a827417dab'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
@@ -16,7 +16,7 @@ group :default do
   gem 'resque-pool'
   gem 'morphine'
   gem "unicode", :platforms => [:mri_18, :mri_19]
-  gem "devise"
+  gem "devise", "~>3.0.3"
   gem "devise-guests", "~> 0.3"
   # Need rubyracer to run integration tests.....really?!?
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
