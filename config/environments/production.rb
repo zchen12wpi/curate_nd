@@ -78,7 +78,7 @@ CurateNd::Application.configure do
     # environments, we are going to let the workers fail.
     require 'clamav'
     ClamAV.instance.loaddb
-    config.default_antivirus_instance = lambda {|file_path|
+    Curate.configuration.default_antivirus_instance = lambda {|file_path|
       ClamAV.instance.scanfile(file_path)
     }
   rescue LoadError => e
