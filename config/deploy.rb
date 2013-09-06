@@ -276,7 +276,7 @@ def set_common_cluster_variables(cluster_directory_slug)
     ]
   end
   set :git_bin,    '/shared/git/bin'
-  set :bundle_without,  [:headless, :development, :test]
+  set :bundle_without, [:headless, :development, :test]
 
   set :deploy_to,   "/shared/#{cluster_directory_slug}/data/app_home/curate"
   set :ruby_bin,    "/shared/#{cluster_directory_slug}/ruby/1.9.3/bin"
