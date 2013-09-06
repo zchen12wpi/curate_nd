@@ -143,7 +143,7 @@ namespace :deploy do
 
   desc "Spool up a request to keep user experience speedy"
   task :kickstart do
-    run "curl -I http://#{domain}"
+    run "curl -I -k https://#{domain}"
   end
 
   desc "Precompile assets"
@@ -260,7 +260,29 @@ task :staging do
   before 'bundle:install', 'und:puppet'
   after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
-  after 'deploy', 'deploy:restart'
+  after 'deploy', 'deploy:kickstart'
+  after 'deploy', 'worker:start'
+end
+
+desc "Setup for pre-production deploy"
+# new one
+task :pre_production do
+  set :branch,    'v2013.3'
+  set :rails_env, 'preproduction'
+  set :bundle_without,  [:development, :test]
+  set :shared_directories,  %w(log)
+  set :shared_files, %w()
+  set :deploy_to, '/home/app/curatend'
+  set :user,      'app'
+  set :domain,    fetch(:host, 'libvirt7.library.nd.edu')
+  default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
+
+  server "app@libvirt7.library.nd.edu", :app, :web, :db, :primary => true
+  server "app@libvirt9.library.nd.edu", :work, :primary => true
+
+  before 'bundle:install', 'und:puppet'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
 end
