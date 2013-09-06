@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: fb2ada61bf52349c4ae7157d152971bb221457c4
+  revision: c187edfc2a1b8b087cfd13d56991b17b34050105
   branch: master
   specs:
     curate (0.4.1)
@@ -24,24 +24,14 @@ GIT
       sufia-models (~> 3.1.3)
 
 GIT
-  remote: git://github.com/ndlib/sufia
-  revision: a31a3a3d1bc6cbcaffc7b8362812f1a827417dab
-  ref: a31a3a3d1bc6cbcaffc7b8362812f1a827417dab
+  remote: git://github.com/ndlib/hydra-derivatives
+  revision: 936b5d20f2659c29cabd507b2d1c15a2213f25e6
+  ref: 936b5d20f2659c29cabd507b2d1c15a2213f25e6
   specs:
-    sufia-models (3.1.3)
-      active-fedora (~> 6.5.0)
-      activeresource
-      acts_as_follower (= 0.1.1)
-      hydra-derivatives (~> 0.0.5)
-      hydra-head (~> 6.3.0)
-      mailboxer (~> 0.11.0)
-      nest (~> 1.1.1)
-      noid (~> 0.6.6)
-      paperclip (~> 3.4.0)
-      rails (>= 3.2.13, < 5.0)
-      resque (~> 1.23.0)
-      resque-pool (= 0.3.0)
-      zipruby (= 0.3.6)
+    hydra-derivatives (0.0.5)
+      active-fedora
+      activesupport (>= 3.2.13, < 5.0)
+      mini_magick
 
 GEM
   remote: https://rubygems.org/
@@ -55,7 +45,7 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    active-fedora (6.5.0)
+    active-fedora (6.4.5)
       activesupport (>= 3.0.0)
       deprecation
       mediashelf-loggable
@@ -222,10 +212,6 @@ GEM
       hydra-access-controls (= 6.3.4)
       jettywrapper (>= 1.4.1)
       rails (>= 3.2.3, < 5)
-    hydra-derivatives (0.0.5)
-      active-fedora
-      activesupport (>= 3.2.13, < 5.0)
-      rmagick
     hydra-head (6.3.4)
       hydra-access-controls (= 6.3.4)
       hydra-core (= 6.3.4)
@@ -300,7 +286,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    poltergeist (1.4.0)
+    poltergeist (1.4.1)
       capybara (~> 2.1.0)
       cliver (~> 0.2.1)
       multi_json (~> 1.0)
@@ -337,7 +323,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
-    rdf (1.0.7)
+    rdf (1.0.8)
       addressable (>= 2.2)
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
@@ -361,7 +347,6 @@ GEM
       trollop (~> 1.16)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rmagick (2.13.2)
     rsolr (1.0.9)
       builder (>= 2.1.2)
     rspec (2.14.1)
@@ -437,6 +422,20 @@ GEM
       sprockets (~> 2.8)
     stomp (1.2.14)
     subexec (0.2.3)
+    sufia-models (3.1.3)
+      active-fedora (~> 6.4.0)
+      activeresource
+      acts_as_follower (= 0.1.1)
+      hydra-derivatives (~> 0.0.5)
+      hydra-head (~> 6.3.0)
+      mailboxer (~> 0.11.0)
+      nest (~> 1.1.1)
+      noid (~> 0.6.6)
+      paperclip (~> 3.4.0)
+      rails (>= 3.2.13, < 5.0)
+      resque (~> 1.23.0)
+      resque-pool (= 0.3.0)
+      zipruby (= 0.3.6)
     test_after_commit (0.2.1)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
@@ -489,10 +488,11 @@ DEPENDENCIES
   database_cleaner
   debugger (>= 1.4)
   decent_exposure
-  devise
+  devise (~> 3.0.3)
   devise-guests (~> 0.3)
   devise_cas_authenticatable
   factory_girl_rails
+  hydra-derivatives!
   jettywrapper
   jquery-rails
   method_decorators
@@ -513,7 +513,6 @@ DEPENDENCIES
   sentry-raven
   sextant
   simplecov
-  sufia-models!
   test_after_commit
   therubyracer
   timecop
