@@ -63,7 +63,7 @@ module CurateNd
 
     config.doi_url = "http://dx.doi.org/"
 
-    config.build_identifier = begin
+    Curate.configuration.build_identifier = begin
       identifier = Rails.root.join('BUILD_IDENTIFIER').read.strip
       unless Rails.env.production?
         identifier += " (#{Rails.env})"
