@@ -32,14 +32,16 @@ CurateNd::Application.configure do
   if ENV['FULL_STACK']
     require 'clamav'
     ClamAV.instance.loaddb
-    config.default_antivirus_instance = lambda {|file_path|
+    Curate.configuration.default_antivirus_instance = lambda {|file_path|
       ClamAV.instance.scanfile(file_path)
     }
   else
-    config.default_antivirus_instance = lambda {|file_path|
+    Curate.configuration.default_antivirus_instance = lambda {|file_path|
+      require 'debugger'; debugger; true;
       AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
     }
-    config.default_characterization_runner = lambda { |file_path|
+    Curate.configuration.characterization_runner = lambda { |file_path|
+      require 'debugger'; debugger; true;
       Rails.root.join('spec/support/files/default_fits_output.xml').read
     }
   end
