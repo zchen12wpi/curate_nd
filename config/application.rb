@@ -70,6 +70,7 @@ module CurateNd
       end
       identifier
     end
+    config.build_identifier = Curate.configuration.build_identifier
 
     config.to_prepare do
       Devise::RegistrationsController.layout('curate_nd/1_column')
