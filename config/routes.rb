@@ -9,7 +9,7 @@ CurateNd::Application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: :user_root
   end
 
-  curate_for containers: [:senior_theses]
+  curate_for containers: [:senior_theses, :datasets, :articles]
 
   resources :users, only: [:update, :show, :edit]
 
