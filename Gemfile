@@ -8,7 +8,7 @@ group :default do
   # gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
   gem 'active-fedora', git: 'git://github.com/projecthydra/active_fedora.git', ref: '3f0a1e30a8ba259891122300a3adc40a71c10a84'
   gem 'sufia-models', git: 'git://github.com/projecthydra/sufia.git', ref: 'b97d8e8970278fad3dc87da265e76f6dc328a580'
-  gem 'curate', path: '../curate'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: 'c46c56003c45ad33d71a123e86539f316a567ade'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
