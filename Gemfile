@@ -4,8 +4,11 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'hydra-derivatives', git:"git://github.com/ndlib/hydra-derivatives", ref: '936b5d20f2659c29cabd507b2d1c15a2213f25e6'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
+  gem 'hydra-derivatives', git:"git://github.com/projecthydra/hydra-derivatives", branch: 'e2a6540044e5bb3045016646663f70a9d627c0aa'
+  # gem 'curate', git: 'git://github.com/ndlib/curate.git', branch: 'master'
+  gem 'active-fedora', git: 'git://github.com/projecthydra/active_fedora.git', ref: '3f0a1e30a8ba259891122300a3adc40a71c10a84'
+  gem 'sufia-models', git: 'git://github.com/projecthydra/sufia.git', ref: 'b97d8e8970278fad3dc87da265e76f6dc328a580'
+  gem 'curate', path: '../curate'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
