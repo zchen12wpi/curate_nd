@@ -37,11 +37,9 @@ CurateNd::Application.configure do
     }
   else
     Curate.configuration.default_antivirus_instance = lambda {|file_path|
-      require 'debugger'; debugger; true;
       AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
     }
     Curate.configuration.characterization_runner = lambda { |file_path|
-      require 'debugger'; debugger; true;
       Rails.root.join('spec/support/files/default_fits_output.xml').read
     }
   end
