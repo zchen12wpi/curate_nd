@@ -245,12 +245,13 @@ set :repository,  "git://github.com/ndlib/curate_nd.git"
 
 desc "Setup for staging VM"
 task :staging do
-  set :branch,    'master'
+  # can also set :branch with the :tag variable
+  set :branch,    fetch(:branch, fetch(:tag, 'master'))
   set :rails_env, 'staging'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
   set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
-  set :bundle_without, [:development, :test]
+  set :bundle_without, [:development, :test, :debug]
   set :shared_directories,  %w(log)
   set :shared_files, %w()
 
