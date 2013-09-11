@@ -6,6 +6,8 @@ if ENV['COVERAGE']
   SimpleCov.command_name "spec"
 end
 require File.expand_path("../../config/environment", __FILE__)
+require 'curate/spec_support'
+
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
@@ -40,10 +42,6 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.use_transactional_fixtures = false
-
-  config.include Devise::TestHelpers, type: :controller
-  config.include Warden::Test::Helpers, type: :feature
-  config.include FeatureSupport, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
