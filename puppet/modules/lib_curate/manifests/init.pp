@@ -78,7 +78,7 @@ class lib_curate {
 
      # Install and Configure mysql for fedora
 
-     exec { 'install-puppet-module":
+     exec { "install-puppet-module":
 	unless => "/usr/bin/stat /etc/puppet/modules/mysql",
 	command => "/usr/bin/puppet module install puppetlabs/mysql",
 	logoutput => on_failure,
