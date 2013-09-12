@@ -5,3 +5,9 @@ Dataset.attribute :assign_doi,
   hint: "A Digital Object Identifier (DOI) is a permanent link to your Dataset. It's an easy way for other people to cite your work",
   displayable: false, multiple: false,
   default: true
+
+class Dataset
+  def doi_url
+    File.join(Rails.configuration.doi_url, self.identifier)
+  end
+end
