@@ -39,6 +39,7 @@ class lib_curate {
     "libwmf-lite",
     "libxml2-devel",
     "libxslt-devel",
+    "readline-devel",
     "mysql-devel",
     "sgml-common",
     "htop",
@@ -65,13 +66,21 @@ class lib_curate {
      }	
 
      # Install and Configure mysql for fedora
+
+     exec { 'install-puppet-module":
+	unless => "/usr/bin/stat /etc/puppet/modules/mysql",
+	command => "/usr/bin/puppet module install puppetlabs/mysql",
+	logoutput => on_failure,
+	user => "root",
+	require => Package[$packagelist],
+     } ->
      class { 'mysql':
 	require => Package[$packagelist],
      }	
 
      class { 'mysql::server':
   		config_hash => { 'root_password' =>  $mysql_root_password },
-		require => Package['mysql'],
+		require => Class['mysql'],
      } ->
      mysql::db { "${fedora_db_name}":
 	user => $fedora_admin_mysql,
