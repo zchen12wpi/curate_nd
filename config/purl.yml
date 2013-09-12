@@ -10,6 +10,9 @@ ci:
 pre_production:
   url: http://repopurlpprd.library.nd.edu/view/
 
+staging:
+  url: http://repopurlpprd.library.nd.edu/view/
+
 production:
   url: http://repository.library.nd.edu/view/
 
