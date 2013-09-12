@@ -65,6 +65,17 @@ class lib_curate {
 	require => Package[$packagelist],
      }	
 
+     # Install app user
+     class { 'lib_app_home':
+	require => Package[$packagelist],
+     }	
+
+     # Install Ruby
+     class { 'lib_ruby':
+	require => Package[$packagelist],
+     }	
+
+
      # Install and Configure mysql for fedora
 
      exec { 'install-puppet-module":
@@ -75,7 +86,7 @@ class lib_curate {
 	require => Package[$packagelist],
      } ->
      class { 'mysql':
-	require => Package[$packagelist],
+	require => [Package[$packagelist], Class["lib_ruby"], Class["lib_app_home"]],
      }	
 
      class { 'mysql::server':
@@ -122,6 +133,7 @@ class lib_curate {
        group => 'root',
        mode => '644',
        notify => Service['nginx'],
+       require => Class["lib_nginx"],
      }
 
 }
