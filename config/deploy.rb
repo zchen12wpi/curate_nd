@@ -6,6 +6,8 @@
 set :bundle_roles, [:app, :work]
 set :bundle_flags, "--deployment"
 require 'bundler/capistrano'
+load 'deploy/assets'
+
 # see http://gembundler.com/v1.3/deploying.html
 # copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
 #
@@ -146,11 +148,6 @@ namespace :deploy do
     run "curl -I -k https://#{domain}"
   end
 
-  desc "Precompile assets"
-  task :precompile do
-    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} RAILS_GROUPS=assets assets:precompile"
-  end
-
   desc "Setup application symlinks for shared assets"
   task :symlink_setup, :roles => [:app, :web] do
     shared_directories.each { |link| run "mkdir -p #{shared_path}/#{link}" }
@@ -259,7 +256,7 @@ task :staging do
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
@@ -282,7 +279,7 @@ task :pre_production do
   server "app@libvirt9.library.nd.edu", :work, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
