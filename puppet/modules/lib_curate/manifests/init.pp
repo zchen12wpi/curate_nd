@@ -135,4 +135,8 @@ class lib_curate {
        notify => Service['nginx'],
      }
 
+     # Install resque worker daemon and service
+     class { 'lib_resque_poold':
+	require => Class["lib_ruby"].
+     }
 }
