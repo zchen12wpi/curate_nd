@@ -38,6 +38,7 @@ class lib_curate::server {
      class { 'lib_redis':
 	require => Package[$packagelist],
 	config => "server",
+	type => "remote",
      }	
 
      # Install SSL Certs
