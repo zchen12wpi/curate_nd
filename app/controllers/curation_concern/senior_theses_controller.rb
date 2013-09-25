@@ -10,7 +10,7 @@ class CurationConcern::SeniorThesesController < CurationConcern::GenericWorksCon
 
   def after_create_response
     flash[:curation_concern_pid] = curation_concern.pid
-    redirect_to dashboard_index_path
+    redirect_to catalog_index_path
   end
 
   def destroy
@@ -18,7 +18,7 @@ class CurationConcern::SeniorThesesController < CurationConcern::GenericWorksCon
     curation_concern.destroy
     flash[:notice] = "Deleted #{title}"
     respond_with { |wants|
-      wants.html { redirect_to dashboard_index_path }
+      wants.html { redirect_to catalog_index_path }
     }
   end
 
