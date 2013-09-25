@@ -16,7 +16,7 @@ describe UsersController do
         put :update, { :id => user.id, :user => { :name => "John Smith" } }
       }.to change{user.reload.name}.from(user.name).to("John Smith")
 
-      response.should redirect_to(dashboard_index_path)
+      response.should redirect_to(catalog_index_path)
     end
 
   end

@@ -6,7 +6,7 @@ CurateNd::Application.routes.draw do
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
 
   devise_scope :users do
-    get 'dashboard', to: 'dashboard#index', as: :user_root
+    get 'dashboard', to: 'catalog#index', as: :user_root
   end
 
   curate_for containers: [:senior_theses, :datasets, :articles]
