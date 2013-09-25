@@ -40,6 +40,7 @@ class lib_curate::worker {
      # Install REDIS
      class { 'lib_redis':
 	require => Package[$packagelist],
+	config => 'client',
      }	
 
      # Install app user
