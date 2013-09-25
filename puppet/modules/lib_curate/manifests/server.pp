@@ -34,9 +34,10 @@ class lib_curate::server {
 	}
 
 
-     # Install REDIS
+     # Install REDIS (client and server)
      class { 'lib_redis':
 	require => Package[$packagelist],
+	config => "server",
      }	
 
      # Install SSL Certs
@@ -55,7 +56,7 @@ class lib_curate::server {
      }	
 
      class { 'lib_nginx':
-	require => Class["lib_certs"],
+	require => Class[["lib_app_home","lib_certs","lib_ruby"]],
      }
 
      file { '/etc/nginx/conf.d/curatend.conf':
