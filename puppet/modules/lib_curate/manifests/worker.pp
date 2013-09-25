@@ -55,6 +55,6 @@ class lib_curate::worker {
 
      # Install resque worker daemon and service
      class { 'lib_resque_poold':
-	require => Class["lib_ruby"],
+	require => Class[["lib_ruby","lib_app_home","lib_redis"]],
      }
 }
