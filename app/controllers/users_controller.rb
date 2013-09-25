@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def update
     update_user!
-    redirect_to dashboard_index_path, :notice =>"You updated your account successfully."
+    redirect_to catalog_index_path, :notice =>"You updated your account successfully."
   end
 
   private

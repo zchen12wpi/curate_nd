@@ -24,7 +24,8 @@ describe 'first time user', FeatureSupport.options do
       fill_in("user[preferred_email]", with: email)
       click_button("Update")
     end
-    page.assert_selector("h2", text: "My Dashboard")
+
+    page.assert_selector("h2", text: "Search CurateND")
 
     logout
     visit('/')

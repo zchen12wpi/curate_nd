@@ -2,13 +2,7 @@ require 'spec_helper_features'
 
 describe 'end to end behavior', FeatureSupport.options do
   let(:sign_in_count) { 0 }
-  let(:user) {
-    FactoryGirl.create(
-      :user,
-      agreed_to_terms_of_service: agreed_to_terms_of_service,
-      sign_in_count: sign_in_count
-    )
-  }
+  let(:user) { FactoryGirl.create(:user_with_person, sign_in_count: sign_in_count, agreed_to_terms_of_service: agreed_to_terms_of_service) }
   let(:another_user) {
     FactoryGirl.create(
       :user,
@@ -24,31 +18,6 @@ describe 'end to end behavior', FeatureSupport.options do
 
   def follow_created_curation_concern_link!
     find('.created_curation_concern').click
-  end
-
-  describe 'user profile' do
-    let(:agreed_to_terms_of_service) { true }
-    let(:sign_in_count) { 2 }
-    let(:expected_email) { 'hello@world.com' }
-    it 'allows me to edit my email' do
-      expect(user.alternate_email).to be_empty
-      login_as(user)
-      visit('/dashboard')
-      within('.page-actions') do
-        click_link('Profile')
-      end
-      within('form.edit_user') do
-        fill_in('Alternate email', with: expected_email)
-        click_button('Update')
-      end
-      page.should have_content('You updated your account successfully.')
-      within('.page-actions') do
-        click_link('Profile')
-      end
-      within('form.edit_user') do
-        expect(find('#user_alternate_email').value).to eq(expected_email)
-      end
-    end
   end
 
   describe 'terms of service' do
@@ -253,15 +222,15 @@ describe 'end to end behavior', FeatureSupport.options do
     end
   end
 
-  describe 'with a user who has not agreed to terms of service' do
+  describe 'full walk through' do
     let(:agreed_to_terms_of_service) { false }
     let(:sign_in_count) { 2 }
-    it "displays the terms of service page after authentication" do
+    it 'an existing user creates a private file and another user cannot see it' do
       login_as(user)
       get_started
       agree_to_terms_of_service
       classify_what_you_are_uploading('Senior Thesis')
-      create_senior_thesis('I Agree' => true, 'Visibility' => 'visibility_open')
+      create_senior_thesis('I Agree' => true, 'Visibility' => "visibility_open")
       follow_created_curation_concern_link!
       path_to_view_thesis = view_your_new_thesis
       path_to_edit_thesis = edit_your_thesis
@@ -269,8 +238,9 @@ describe 'end to end behavior', FeatureSupport.options do
       view_your_dashboard
 
       logout(:user)
+
       login_as(another_user)
-      other_persons_thesis_is_not_in_my_dashboard
+      other_persons_thesis_can_be_filtered_out_of_my_dashboard
       i_can_see_another_users_open_resource(path_to_view_thesis)
       i_cannot_edit_to_another_users_resource(path_to_edit_thesis)
     end
@@ -440,8 +410,8 @@ describe 'end to end behavior', FeatureSupport.options do
     end
   end
 
-  def other_persons_thesis_is_not_in_my_dashboard
-    visit "/dashboard"
+  def other_persons_thesis_can_be_filtered_out_of_my_dashboard
+    visit "/dashboard?works=mine"
     search_term = "\"#{updated_title}\""
     within(".search-form") do
       fill_in("q", with: search_term)
@@ -449,6 +419,16 @@ describe 'end to end behavior', FeatureSupport.options do
     end
     within('#documents') do
       page.should_not have_content(updated_title)
+    end
+
+    visit "/dashboard"
+    within(".search-form") do
+      fill_in("q", with: search_term)
+      click_on("Go")
+    end
+
+    within('#documents') do
+      page.should have_content(updated_title)
     end
   end
 
