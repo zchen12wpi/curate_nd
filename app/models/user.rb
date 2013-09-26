@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   delegate :first_name, :last_name, *person_attribute_readers, *person_attribute_setters, to: :person
 
-  GRAVATAR_URL = "http://www.gravatar.com/avatar/"
+  GRAVATAR_URL = "//www.gravatar.com/avatar/"
 
   def password_required?; false; end
   def email_required?; false; end
