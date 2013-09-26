@@ -52,7 +52,7 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    if rails_env == 'staging'
+    if rails_env == 'staging' || rails_env == 'preproduction'
       set :bundle_cmd, '/opt/ruby/current/bin/bundle'
       set :rake,      "#{bundle_cmd} exec rake"
     else
@@ -108,7 +108,7 @@ namespace :deploy do
 
   desc "Start application in Passenger"
   task :start, :roles => :app do
-    if rails_env == 'staging'
+    if rails_env == 'staging' || rails_env == 'preproduction'
       restart_unicorn
     else
       restart_passenger
@@ -142,12 +142,12 @@ namespace :deploy do
   end
 
   desc "Spool up a request to keep user experience speedy"
-  task :kickstart do
+  task :kickstart, :roles => :app do
     run "curl -I -k https://#{domain}"
   end
 
   desc "Precompile assets"
-  task :precompile do
+  task :precompile, :roles => :app do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} RAILS_GROUPS=assets assets:precompile"
   end
 
@@ -157,7 +157,7 @@ namespace :deploy do
   end
 
   desc "Link assets for current deploy to the shared location"
-  task :symlink_update, :roles => [:app, :web] do
+  task :symlink_update do
     (shared_directories + shared_files).each do |link|
       run "ln -nfs #{shared_path}/#{link} #{release_path}/#{link}"
     end
@@ -170,11 +170,13 @@ namespace :worker do
     # TODO: this file contains the same information as the env-vars file created in und:write_build_identifier
     # make a distinction here until we remove the old cluster stuff
     target_file =
-      if rails_env == 'staging'
+      if %w(staging preproduction).include?(rails_env)
         '/home/app/curatend/resque-pool-info'
       else
         '/home/curatend/resque-pool-info'
       end
+    # the file this writes is essentially the same as the one created
+    # by und:write_env_vars
     run [
       "echo \"RESQUE_POOL_ROOT=#{current_path}\" > #{target_file}",
       "echo \"RESQUE_POOL_ENV=#{fetch(:rails_env)}\" >> #{target_file}",
@@ -206,6 +208,7 @@ set(:secret_repo_name) {
   end
 }
 
+
 namespace :und do
   task :update_secrets do
     run "cd #{release_path} && ./script/update_secrets.sh #{secret_repo_name}"
@@ -213,17 +216,30 @@ namespace :und do
 
   desc "Write the current environment values to file on targets"
   task :write_env_vars do
-    run [
-      "echo RAILS_ENV=#{rails_env} > #{release_path}/env-vars",
-      "echo RAILS_ROOT=#{current_path} >> #{release_path}/env-vars"
-    ].join(" && ")
+    put %Q{RAILS_ENV=#{rails_env}
+RAILS_ROOT=#{current_path}
+}, "#{release_path}/env-vars"
+  end
+
+  def run_puppet(options)
+    local_module_path = File.join(release_path, 'puppet', 'modules')
+    option_string = options.map { |k,v| "#{k} => '#{v}'" }.join(', ')
+    run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate': #{option_string} }"}
   end
 
   desc "Run puppet using the modules supplied by the application"
   task :puppet, :roles => [:app, :work] do
-    local_module_path = File.join(release_path, 'puppet', 'modules')
-    run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate': }"}
+    run_puppet()
   end
+
+  task :puppet_server, :roles => :app do
+    run_puppet(config: 'server')
+  end
+
+  task :puppet_worker, :roles => :work do
+    run_puppet(config: 'worker')
+  end
+
 end
 
 #############################################################
@@ -268,25 +284,29 @@ end
 desc "Setup for pre-production deploy"
 # new one
 task :pre_production do
-  set :branch,    'v2013.3'
+  set :branch,    fetch(:branch, fetch(:tag, 'master'))
   set :rails_env, 'preproduction'
-  set :bundle_without,  [:development, :test]
-  set :shared_directories,  %w(log)
-  set :shared_files, %w()
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
-  set :domain,    fetch(:host, 'libvirt7.library.nd.edu')
+  set :domain,    fetch(:host, 'curatesvrpprd')
+  set :bundle_without,  [:development, :test, :debug]
+  set :shared_directories,  %w(log)
+  set :shared_files, %w()
+
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
+  server "app@curatesvrpprd", :app, :web, :db, :primary => true
+  server "app@curatewkrpprd", :work, :primary => true
 
-  server "app@libvirt7.library.nd.edu", :app, :web, :db, :primary => true
-  server "app@libvirt9.library.nd.edu", :work, :primary => true
-
-  before 'bundle:install', 'und:puppet'
+  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
   after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
 end
+
+#
+# Old things
+#
 
 def set_common_cluster_variables(cluster_directory_slug)
   ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
