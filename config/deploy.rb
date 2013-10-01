@@ -237,11 +237,11 @@ RAILS_ROOT=#{current_path}
   end
 
   task :puppet_server, :roles => :app do
-    run_puppet(config: 'server')
+    run_puppet(:config => 'server')
   end
 
   task :puppet_worker, :roles => :work do
-    run_puppet(config: 'worker')
+    run_puppet(:config => 'worker')
   end
 
 end
