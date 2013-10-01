@@ -279,7 +279,7 @@ task :staging do
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
   before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
