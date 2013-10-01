@@ -69,6 +69,9 @@ module CurateNd
         identifier += " (#{Rails.env})"
       end
       identifier
+    rescue Errno::ENOENT
+      # irreverent message for cats running this on laptops
+      "Moof!"
     end
     config.build_identifier = Curate.configuration.build_identifier
 
