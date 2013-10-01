@@ -225,7 +225,7 @@ RAILS_ROOT=#{current_path}
     put "#{branch}", "#{release_path}/BUILD_IDENTIFIER"
   end
 
-  def run_puppet(options)
+  def run_puppet(options={})
     local_module_path = File.join(release_path, 'puppet', 'modules')
     option_string = options.map { |k,v| "#{k} => '#{v}'" }.join(', ')
     run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate': #{option_string} }"}
