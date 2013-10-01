@@ -52,7 +52,7 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    if rails_env == 'staging' || rails_env == 'preproduction'
+    if rails_env == 'staging' || rails_env == 'pre_production'
       set :bundle_cmd, '/opt/ruby/current/bin/bundle'
       set :rake,      "#{bundle_cmd} exec rake"
     else
@@ -67,11 +67,11 @@ end
 #############################################################
 
 desc "Restart Application"
-task :restart_unicorn do
+task :restart_unicorn, :roles => :app do
   run "#{current_path}/script/reload-unicorn.sh"
 end
 
-task :restart_passenger do
+task :restart_passenger, :roles => :app do
   run "touch #{current_path}/tmp/restart.txt"
 end
 
@@ -108,7 +108,7 @@ namespace :deploy do
 
   desc "Start application in Passenger"
   task :start, :roles => :app do
-    if rails_env == 'staging' || rails_env == 'preproduction'
+    if %w(staging pre_production).include?(rails_env)
       restart_unicorn
     else
       restart_passenger
@@ -117,7 +117,7 @@ namespace :deploy do
 
   desc "Restart application in Passenger"
   task :restart, :roles => :app do
-    if rails_env == 'staging'
+    if %w(staging pre_production).include?(rails_env)
       restart_unicorn
     else
       restart_passenger
@@ -167,10 +167,10 @@ end
 
 namespace :worker do
   task :start, :roles => :work do
-    # TODO: this file contains the same information as the env-vars file created in und:write_build_identifier
+    # TODO: this file contains the same information as the env-vars file created in und:write_env_vars
     # make a distinction here until we remove the old cluster stuff
     target_file =
-      if %w(staging preproduction).include?(rails_env)
+      if %w(staging pre_production).include?(rails_env)
         '/home/app/curatend/resque-pool-info'
       else
         '/home/curatend/resque-pool-info'
@@ -219,6 +219,10 @@ namespace :und do
     put %Q{RAILS_ENV=#{rails_env}
 RAILS_ROOT=#{current_path}
 }, "#{release_path}/env-vars"
+  end
+
+  task :write_build_identifier do
+    put "#{branch}", "#{release_path}/BUILD_IDENTIFIER"
   end
 
   def run_puppet(options)
@@ -285,7 +289,7 @@ desc "Setup for pre-production deploy"
 # new one
 task :pre_production do
   set :branch,    fetch(:branch, fetch(:tag, 'master'))
-  set :rails_env, 'preproduction'
+  set :rails_env, 'pre_production'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
   set :domain,    fetch(:host, 'curatesvrpprd')
@@ -294,11 +298,11 @@ task :pre_production do
   set :shared_files, %w()
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server "app@curatesvrpprd", :app, :web, :db, :primary => true
-  server "app@curatewkrpprd", :work, :primary => true
+  server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
+  server "app@curatewkrpprd.library.nd.edu", :work, :primary => true
 
   before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
