@@ -3,7 +3,7 @@ rvm:
   - "1.9.3"
   - "2.0.0"
 
-script: "rake curatend:travis"
+script: 'rake curatend:travis SPEC_OPTS="--tag ~js:true"'
 
 notifications:
   irc: "irc.freenode.org#ndlib"

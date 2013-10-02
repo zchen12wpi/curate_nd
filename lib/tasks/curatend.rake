@@ -83,7 +83,6 @@ namespace :curatend do
 
     RSpec::Core::RakeTask.new(:ci_spec) do |t|
       t.pattern = "./spec/**/*_spec.rb"
-      t.rspec_opts = ['--tag ~js:true']
     end
   end
 end
