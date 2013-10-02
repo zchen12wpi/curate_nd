@@ -308,6 +308,29 @@ task :pre_production do
   after 'deploy', 'worker:start'
 end
 
+desc "Setup for production deploy"
+# new one
+task :production do
+    set :branch,    fetch(:branch, fetch(:tag, 'master'))
+    set :rails_env, 'production'
+    set :deploy_to, '/home/app/curatend'
+    set :user,      'app'
+    set :domain,    fetch(:host, 'curatesvrprod')
+    set :bundle_without,  [:development, :test, :debug]
+    set :shared_directories,  %w(log)
+    set :shared_files, %w()
+    
+    default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
+    server "app@curatesvrprod.library.nd.edu", :app, :web, :db, :primary => true
+    server "app@curatewkrprod.library.nd.edu", :work, :primary => true
+    
+    before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
+    after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+    after 'deploy', 'deploy:cleanup'
+    after 'deploy', 'deploy:kickstart'
+    after 'deploy', 'worker:start'
+end
+
 #
 # Old things
 #
