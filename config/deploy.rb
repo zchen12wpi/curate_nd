@@ -52,7 +52,7 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    if rails_env == 'staging' || rails_env == 'pre_production'
+    if rails_env == 'staging' || rails_env == 'pre_production' || rails_env == 'production'
       set :bundle_cmd, '/opt/ruby/current/bin/bundle'
       set :rake,      "#{bundle_cmd} exec rake"
     else
@@ -108,7 +108,7 @@ namespace :deploy do
 
   desc "Start application in Passenger"
   task :start, :roles => :app do
-    if %w(staging pre_production).include?(rails_env)
+    if %w(staging pre_production production).include?(rails_env)
       restart_unicorn
     else
       restart_passenger
@@ -117,7 +117,7 @@ namespace :deploy do
 
   desc "Restart application in Passenger"
   task :restart, :roles => :app do
-    if %w(staging pre_production).include?(rails_env)
+    if %w(staging pre_production production).include?(rails_env)
       restart_unicorn
     else
       restart_passenger
@@ -170,7 +170,7 @@ namespace :worker do
     # TODO: this file contains the same information as the env-vars file created in und:write_env_vars
     # make a distinction here until we remove the old cluster stuff
     target_file =
-      if %w(staging pre_production).include?(rails_env)
+      if %w(staging pre_production production).include?(rails_env)
         '/home/app/curatend/resque-pool-info'
       else
         '/home/curatend/resque-pool-info'
