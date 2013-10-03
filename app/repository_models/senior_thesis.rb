@@ -103,6 +103,9 @@ class SeniorThesis < ActiveFedora::Base
     datastream: :descMetadata, multiple: true
   attribute :requires,
     datastream: :descMetadata, multiple: true
+  attribute :resource_type,
+    label: "Archived Content Type",
+    datastream: :descMetadata, multiple: false
 
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",
