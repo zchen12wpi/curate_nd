@@ -6,6 +6,7 @@ require 'active_fedora/registered_attributes'
 class SeniorThesis < ActiveFedora::Base
   include CurationConcern::Model
   include CurationConcern::WithGenericFiles
+  include CurationConcern::WithLinkedResources
   include CurationConcern::Embargoable
   include ActiveFedora::RegisteredAttributes
 
@@ -91,8 +92,6 @@ class SeniorThesis < ActiveFedora::Base
   attribute :date_uploaded,
     datastream: :descMetadata, multiple: false
   attribute :date_modified,
-    datastream: :descMetadata, multiple: false
-  attribute :archived_object_type,
     datastream: :descMetadata, multiple: false
   attribute :content_format,
     datastream: :descMetadata, multiple: false
