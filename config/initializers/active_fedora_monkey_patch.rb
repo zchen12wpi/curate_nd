@@ -1,3 +1,4 @@
+
 require 'rubydora/repository'
 require 'active_fedora/digital_object'
 require 'active_fedora/base'

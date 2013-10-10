@@ -4,28 +4,15 @@ describe CurationConcern::SeniorThesisActor do
   let(:pid) { CurationConcern.mint_a_pid }
   let(:user) { FactoryGirl.create(:user) }
   let(:curation_concern) { SeniorThesis.new(pid: pid)}
-  let(:assigned_doi) { 'abc-123' }
-  let(:mock_doi_minter) {
-    lambda {|pid|
-      object = ActiveFedora::Base.find(pid, cast: true)
-      object.identifier = assigned_doi
-      object.save
-      true
-    }
-  }
 
   subject {
     CurationConcern.actor(curation_concern, user, attributes)
   }
 
-  before(:each) {
-    subject.doi_minter = mock_doi_minter
-  }
-
   describe '#create' do
 
     describe 'invalid attributes' do
-      let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE }
+      let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE }
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis_invalid).tap {|a|
           a[:visibility] = visibility
@@ -43,12 +30,11 @@ describe CurationConcern::SeniorThesisActor do
     end
     describe 'valid attributes' do
       let(:files) { [] }
-      let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
+      let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED }
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis).tap {|a|
           a[:files] = files
           a[:visibility] = visibility
-          a[:assign_doi] = '1'
         }
       }
 
@@ -76,20 +62,18 @@ describe CurationConcern::SeniorThesisActor do
 
             expect(new_curation_concern).to be_authenticated_only_access
             expect(senior_files).to be_authenticated_only_access
-            expect(new_curation_concern.identifier).to eq(assigned_doi)
           end
         end
 
         describe 'embargoed file' do
 
-          let(:visibility) { Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO }
+          let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO }
           let(:formatted_embargo_release_date) { 2.days.from_now.strftime('%Y-%m-%d') }
           let(:attributes) {
             FactoryGirl.attributes_for(:senior_thesis).tap {|a|
               a[:files] = files
               a[:visibility] = visibility
               a[:embargo_release_date] = formatted_embargo_release_date
-              a[:assign_doi] = '1'
             }
           }
 
@@ -120,15 +104,9 @@ describe CurationConcern::SeniorThesisActor do
     describe '#update' do
       let(:files_path) { __FILE__ }
       let(:files) { [Rack::Test::UploadedFile.new(files_path, 'text/plain', false)] }
-
-      before(:each) {
-        subject.doi_minter = mock_doi_minter
-      }
-
       let(:attributes) {
         FactoryGirl.attributes_for(:senior_thesis).tap {|a|
-          a[:visibility] = Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-          a[:assign_doi] = '1'
+          a[:visibility] = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
           a[:files] = files
         }
       }
@@ -142,7 +120,6 @@ describe CurationConcern::SeniorThesisActor do
           expect(curation_concern).to be_persisted
           expect(curation_concern).to be_open_access
           new_curation_concern = curation_concern.class.find(curation_concern.pid)
-          expect(new_curation_concern.identifier).to eq(assigned_doi)
           expect(new_curation_concern.generic_files.count).to eq(1)
           generic_file = new_curation_concern.generic_files.first
           generic_file.content.content.should == files.first.read

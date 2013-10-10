@@ -57,7 +57,8 @@ class SeniorThesis < ActiveFedora::Base
     datastream: :descMetadata, multiple: true
   attribute :publisher,
     default: ["University of Notre Dame"],
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: true,
+    validates: { presence: true }
   attribute :identifier,
     datastream: :descMetadata, multiple: false,
     editable: false
@@ -73,15 +74,15 @@ class SeniorThesis < ActiveFedora::Base
   attribute :visibility,
     skip_accessor: true,
     multiple: false,
-    default: Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+    default: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
   validates: {
     inclusion: {
       in: ->(senior_thesis) {
         [
-          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
-          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO,
-          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
-          Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+          Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
+          Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO,
+          Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+          Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
         ]
       },
       allow_nil: true
@@ -109,10 +110,6 @@ class SeniorThesis < ActiveFedora::Base
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
-
-  def doi_url
-    File.join(Rails.configuration.doi_url, self.identifier)
-  end
 
   def authors_for_citation
     creator | advisor | contributor

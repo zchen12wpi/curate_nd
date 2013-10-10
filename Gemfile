@@ -4,8 +4,9 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'hydra-derivatives', git:"git://github.com/projecthydra/hydra-derivatives", branch: 'e2a6540044e5bb3045016646663f70a9d627c0aa'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: '175b17306ac022550d0030b7c8e51d3d26786af9'
+  gem 'hydra-derivatives', git:"git://github.com/projecthydra/hydra-derivatives", branch: '08b5f214f059f1310d60c007cf7a68953648b24d'
+  # gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: '9bec800f17242d760174fa104200213b480e3e9e'
+  gem 'curate', path: '../curate'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'

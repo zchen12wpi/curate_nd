@@ -14,7 +14,7 @@ describe 'error behavior', FeatureSupport.options do
 
   it 'handles unauthorized pages'do
     user = FactoryGirl.create(:user)
-    curation_concern = FactoryGirl.create_curation_concern(:senior_thesis, user, visibility: Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED)
+    curation_concern = FactoryGirl.create_curation_concern(:senior_thesis, user, visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED)
 
     visit("/concern/senior_theses/#{curation_concern.to_param}")
     expect(page).to have_content("Unauthorized")

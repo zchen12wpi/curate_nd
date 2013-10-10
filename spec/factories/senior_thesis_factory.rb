@@ -6,7 +6,7 @@ FactoryGirl.define do
     sequence(:title) {|n| "Title #{n}"}
     date_uploaded { Date.today }
     date_modified { Date.today }
-    visibility Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
+    visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
     rights { Sufia.config.cc_licenses.keys.first }
     sequence(:creator) {|n|["Creator Name#{n}"]}
     description 'Hello World!'
@@ -22,10 +22,10 @@ FactoryGirl.define do
 
 
   factory :private_senior_thesis do
-    visibility Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+    visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
   end
   factory :public_senior_thesis do
-    visibility Sufia::Models::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+    visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
   end
   factory :senior_thesis_with_files do
     ignore do
