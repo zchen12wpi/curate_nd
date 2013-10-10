@@ -127,7 +127,7 @@ describe 'end to end behavior', FeatureSupport.options do
       login_as(user)
       visit('/')
       click_link("Get Started")
-      click_link "Request Help"
+      click_link "Help!"
       within("#new_help_request") do
         fill_in('How can we help you', with: "I'm trapped in a fortune cookie factory!")
         click_on("Let Us Know")
@@ -139,7 +139,7 @@ describe 'end to end behavior', FeatureSupport.options do
       login_as(user)
       visit('/')
       click_link("Get Started")
-      click_link "Request Help"
+      click_link "Help!"
       within("#new_help_request") do
         fill_in('How can we help you', with: "I'm trapped in a fortune cookie factory!")
         click_on("Let Us Know")
@@ -288,7 +288,7 @@ describe 'end to end behavior', FeatureSupport.options do
       fill_out_form_multi_value_for('creator', with: options['Authors'])
       select(options['Content License'], from: 'Content License')
       if options['Assign DOI']
-        check('senior_thesis_assign_doi')
+        check('senior_thesis_mint_doi')
       end
       click_continue_for_pane(0)
 
@@ -307,7 +307,7 @@ describe 'end to end behavior', FeatureSupport.options do
       # 3rd Pane
       attach_file("Upload Files", options['Upload Files'])
       if options['I Agree']
-        check("I have read and accept the contributor licence agreement")
+        check("I have read and accept the contributor license agreement")
       end
       click_on(options["Button to click"])
     end

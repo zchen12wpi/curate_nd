@@ -6,11 +6,6 @@ describe ContributorAgreement do
   let(:user) { User.new }
   let(:params) { {} }
 
-
-  it 'has legally binding text' do
-    subject.legally_binding_text.should be_kind_of(String)
-  end
-
   it 'has acceptance value' do
     subject.acceptance_value.should == 'accept'
   end

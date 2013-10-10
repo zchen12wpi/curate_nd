@@ -54,6 +54,15 @@ RSpec.configure do |config|
     Resque.inline = true
   end
   config.after(:each, type: :feature) do
+    begin
+      if example.exception.present? && defined?(page)
+        filename = example.location.gsub(/\A\W+/,'').gsub(/\W+/,'-') << '.png'
+        page.save_screenshot(Rails.root.join("tmp/#{filename}"), full: true)
+        `open #{Rails.root.join("tmp/#{filename}")}`
+      end
+    rescue
+      # It could've been so nice.
+    end
     Warden.test_reset!
     Resque.inline = @old_resque_inline_value
   end
@@ -84,4 +93,3 @@ RSpec.configure do |config|
     allow_message_expectations_on_nil
   end
 end
-
