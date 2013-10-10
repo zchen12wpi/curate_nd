@@ -1,15 +1,7 @@
 GIT
-  remote: git://github.com/projecthydra/hydra-derivatives
-  revision: 08b5f214f059f1310d60c007cf7a68953648b24d
-  branch: 08b5f214f059f1310d60c007cf7a68953648b24d
-  specs:
-    hydra-derivatives (0.0.5)
-      active-fedora
-      activesupport (>= 3.2.13, < 5.0)
-      mini_magick
-
-PATH
-  remote: ../curate
+  remote: git://github.com/ndlib/curate.git
+  revision: 302ff276824f89ef7026f6dd151378e7f0182876
+  ref: 302ff276824f89ef7026f6dd151378e7f0182876
   specs:
     curate (0.4.1)
       active-fedora
@@ -23,6 +15,7 @@ PATH
       devise-guests (~> 0.3)
       hydra-batch-edit (~> 1.1.1)
       hydra-collections (~> 1.2.0.rc1)
+      hydra-file_characterization (>= 0.2.3)
       hydra-head (~> 6.4.0.rc4)
       hydra-remote_identifier (~> 0.5)
       mini_magick
@@ -30,6 +23,16 @@ PATH
       rails (~> 4.0.0)
       simple_form (= 3.0.0.rc)
       sufia-models (~> 3.4.0.rc2)
+
+GIT
+  remote: git://github.com/projecthydra/hydra-derivatives
+  revision: 08b5f214f059f1310d60c007cf7a68953648b24d
+  branch: 08b5f214f059f1310d60c007cf7a68953648b24d
+  specs:
+    hydra-derivatives (0.0.5)
+      active-fedora
+      activesupport (>= 3.2.13, < 5.0)
+      mini_magick
 
 GEM
   remote: https://rubygems.org/
@@ -83,7 +86,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    backports (3.3.4)
+    backports (3.3.5)
     bcrypt-ruby (3.1.2)
     blacklight (4.4.2)
       bootstrap-sass (>= 2.2.0, < 2.4)
@@ -210,6 +213,8 @@ GEM
       hydra-access-controls (= 6.4.0.rc4)
       jettywrapper (>= 1.4.1)
       rails (>= 3.2.3, < 5)
+    hydra-file_characterization (0.2.5)
+      activesupport (>= 3.0.0)
     hydra-head (6.4.0.rc4)
       hydra-access-controls (= 6.4.0.rc4)
       hydra-core (= 6.4.0.rc4)
