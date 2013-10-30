@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723174755) do
+ActiveRecord::Schema.define(version: 20131030145448) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -142,6 +142,16 @@ ActiveRecord::Schema.define(version: 20130723174755) do
     t.integer  "repo_object_id"
     t.integer  "purl_id"
   end
+
+  create_table "proxy_deposit_rights", force: true do |t|
+    t.integer  "grantor_id"
+    t.integer  "grantee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id", using: :btree
+  add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id", using: :btree
 
   create_table "purl", primary_key: "purl_id", force: true do |t|
     t.integer  "repo_object_id"
