@@ -12,8 +12,6 @@ CurateNd::Application.routes.draw do
 
   curate_for containers: [:senior_theses, :datasets, :articles, :etds, :images, :documents]
 
-  resources :users, only: [:update, :show, :edit]
-
   namespace :admin do
     constraints CurateND::AdminConstraint do
       mount Resque::Server, :at => "queues"
