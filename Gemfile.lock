@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/jeremyf/rdf.git
+  revision: e231fd65c63e1b3f710b88a2e8768f22811c7d3f
+  ref: e231fd65c63e1b3f710b88a2e8768f22811c7d3f
+  specs:
+    rdf (1.0.10)
+      addressable (>= 2.3)
+
+GIT
   remote: git://github.com/ndlib/curate.git
   revision: 5b6f56d25c7e490ec26cdb76152e3d02a8c489d3
   ref: 5b6f56d25c7e490ec26cdb76152e3d02a8c489d3
@@ -339,8 +347,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
-    rdf (1.0.10)
-      addressable (>= 2.3)
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
       rdf-xsd (>= 1.0)
@@ -527,6 +533,7 @@ DEPENDENCIES
   poltergeist
   rails_best_practices
   rake
+  rdf!
   resque-pool
   rsolr
   rspec-html-matchers
