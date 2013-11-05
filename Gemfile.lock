@@ -1,15 +1,15 @@
 GIT
   remote: git://github.com/jeremyf/rdf.git
-  revision: e231fd65c63e1b3f710b88a2e8768f22811c7d3f
-  ref: e231fd65c63e1b3f710b88a2e8768f22811c7d3f
+  revision: e9746b084d20ec4abf302cd8bb6a45df14d26c22
+  branch: support/1.0.10.1
   specs:
-    rdf (1.0.10)
+    rdf (1.0.10.1)
       addressable (>= 2.3)
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 5b6f56d25c7e490ec26cdb76152e3d02a8c489d3
-  ref: 5b6f56d25c7e490ec26cdb76152e3d02a8c489d3
+  revision: 830d3b33fdb0c196a15a2be1c6e0d4dc0a8c4b79
+  ref: 830d3b33fdb0c196a15a2be1c6e0d4dc0a8c4b79
   specs:
     curate (0.5.1)
       active_attr
@@ -28,7 +28,7 @@ GIT
       hydra-remote_identifier (~> 0.6)
       mini_magick
       morphine
-      rails (~> 4.0.0)
+      rails (= 4.0.0)
       simple_form (= 3.0.0)
       sufia-models (~> 3.4.0.rc4)
       virtus
