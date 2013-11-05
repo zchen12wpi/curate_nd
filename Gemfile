@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: '5b6f56d25c7e490ec26cdb76152e3d02a8c489d3'
-  gem 'rdf', github: 'jeremyf/rdf', ref: 'e231fd65c63e1b3f710b88a2e8768f22811c7d3f'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: '830d3b33fdb0c196a15a2be1c6e0d4dc0a8c4b79'
+  gem 'rdf', github: 'jeremyf/rdf', branch: 'support/1.0.10.1'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
