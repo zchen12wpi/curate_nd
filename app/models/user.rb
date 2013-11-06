@@ -9,11 +9,20 @@ class User < ActiveRecord::Base
 
   include Curate::UserBehavior
 
+  def self.search(query = nil)
+    if query.to_s.strip.present?
+      term = "#{query.to_s.upcase}%"
+      where("UPPER(email) LIKE :term OR UPPER(display_name) LIKE :term OR UPPER(username) LIKE :term", {term: term})
+    else
+      all
+    end.order(:username)
+  end
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :cas_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable, :masqueradable
 
   attr_accessor :password
 
