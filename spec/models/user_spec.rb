@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe User do
 
+  context '.search' do
+    subject { described_class }
+    its(:search) { should be_kind_of ActiveRecord::Relation }
+  end
+
   it 'should set agree to terms of service' do
     User.any_instance.stub(:get_value_from_ldap).and_return(nil)
     user = FactoryGirl.create(:user, agreed_to_terms_of_service: false)
