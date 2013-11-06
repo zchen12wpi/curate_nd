@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 57ea724a0d994f50565acbcd617a623ecbe72d0d
-  ref: 57ea724a0d994f50565acbcd617a623ecbe72d0d
+  revision: ab7ac557e1002a2564c60947261463de591eac81
+  ref: ab7ac557e1002a2564c60947261463de591eac81
   specs:
     curate (0.5.1)
       active_attr
@@ -175,6 +175,9 @@ GEM
     devise_cas_authenticatable (1.3.2)
       devise (>= 1.2.0)
       rubycas-client (>= 2.2.1)
+    devise_masquerade (0.0.9)
+      devise (>= 2.1.0)
+      railties (>= 3.0)
     diff-lcs (1.2.4)
     equalizer (0.0.7)
     equivalent-xml (0.3.0)
@@ -196,7 +199,7 @@ GEM
     hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
-    hooks (0.3.1)
+    hooks (0.3.3)
     hydra-access-controls (6.4.0)
       active-fedora (~> 6.6)
       activesupport
@@ -339,7 +342,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
-    rdf (1.0.10)
+    rdf (1.0.10.1)
       addressable (>= 2.3)
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
@@ -438,7 +441,7 @@ GEM
       sprockets (~> 2.8)
     stomp (1.3.1)
     subexec (0.2.3)
-    sufia-models (3.4.0.rc4)
+    sufia-models (3.4.0)
       active-fedora (~> 6.7.0)
       activerecord-import
       activeresource
@@ -515,6 +518,7 @@ DEPENDENCIES
   devise (~> 3.0.3)
   devise-guests (~> 0.3)
   devise_cas_authenticatable
+  devise_masquerade
   factory_girl_rails
   jettywrapper
   jquery-rails
@@ -527,7 +531,7 @@ DEPENDENCIES
   poltergeist
   rails_best_practices
   rake
-  rdf (~> 1.0.10)
+  rdf (>= 1.0.10.1, < 1.1)
   resque-pool
   rsolr
   rspec-html-matchers
