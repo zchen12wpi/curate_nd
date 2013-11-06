@@ -4,14 +4,15 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: '57ea724a0d994f50565acbcd617a623ecbe72d0d'
-  gem 'rdf', '~> 1.0.10'
+  gem 'curate', git: 'git://github.com/ndlib/curate.git', ref: 'ab7ac557e1002a2564c60947261463de591eac81'
+  gem 'rdf', '>= 1.0.10.1', '< 1.1'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'decent_exposure'
   gem 'devise_cas_authenticatable'
+  gem 'devise_masquerade'
   gem 'rake'
   gem 'resque-pool'
   gem 'morphine'
