@@ -141,7 +141,7 @@ module Migrator
         to = PersonMetadataDatastream.new(build_unsaved_digital_object, ds_name)
         begin
           to.name = from.display_name if from.display_name.present?
-          to.preferred_email = from.preferred_email if from.preferred_email.present?
+          to.email = from.preferred_email if from.preferred_email.present?
           to.alternate_email = from.alternate_email if from.alternate_email.present?
           to.save
         rescue Nokogiri::XML::XPath::SyntaxError
