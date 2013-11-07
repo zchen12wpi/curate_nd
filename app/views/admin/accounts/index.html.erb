@@ -1,0 +1,50 @@
+<% content_for :page_header do %>
+  <h1>Admin view of Accounts</h1>
+<% end %>
+
+<%= form_tag admin_accounts_path, :method => :get, :class => "search-form" do %>
+  <fieldset>
+    <legend class="accessible-hidden">Search Accounts</legend>
+    <%= label_tag :catalog_search, "Search Accounts", :class => "accessible-hidden" %>
+    <%= text_field_tag(
+      :q,
+      params[:q],
+      :class => "q search-query",
+      :id => "account_search",
+      :size => "30",
+      :tabindex => "1",
+      :type => "search",
+    )%><button type="submit" class="search-submit btn btn-primary" id="keyword-search-submit" tabindex="2">
+      <i class="icon-search icon-white"></i><span class="accessible-hidden">Search</span>
+    </button>
+  </fieldset>
+<% end %>
+
+<%= paginate @users %>
+<table class="table table-striped">
+  <caption class="accessible-hidden">List of All Matching Accounts</caption>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Display Name</th>
+      <th>Person Object</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><% if current_user == user %>Current User<% else %>&nbsp;<%end%></td>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= mail_to(user.email) %></td>
+        <td><%= user.display_name %></td>
+        <td><%= user.repository_id.present? ? link_to(user.repository_id, person_path(user.person)) : 'no person object' %></td>
+        <td><%= link_to_if(current_user != user, "Masquerade as #{user.username}", masquerade_path(user)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
