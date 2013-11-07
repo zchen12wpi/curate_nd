@@ -14,6 +14,8 @@ if defined?(Bundler)
   Bundler.require(*bundle_environment_aliases)
 end
 
+require 'bootstrap-sass'
+
 module CurateNd
   class Application < Rails::Application
     require 'curate'
