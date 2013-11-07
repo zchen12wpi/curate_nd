@@ -69,7 +69,7 @@ GEM
       activesupport (>= 2.0)
     bootstrap-datepicker-rails (1.1.1.8)
       railties (>= 3.0)
-    bootstrap-sass (2.2.2.0)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     breach-mitigation-rails (0.0.4)
     breadcrumbs_on_rails (2.3.0)
@@ -498,7 +498,6 @@ PLATFORMS
 DEPENDENCIES
   addressable (~> 2.3.5)
   bootstrap-datepicker-rails
-  bootstrap-sass (~> 2.2.0)
   capistrano (~> 2.15)
   capybara (~> 2.1)
   clamav
