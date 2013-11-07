@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: ab7ac557e1002a2564c60947261463de591eac81
-  ref: ab7ac557e1002a2564c60947261463de591eac81
+  revision: f346ece8bb5edc157cde62511c2ad35a4d5445a3
+  ref: f346ece8bb5edc157cde62511c2ad35a4d5445a3
   specs:
     curate (0.5.1)
       active_attr
@@ -22,7 +22,7 @@ GIT
       morphine
       rails (= 4.0.0)
       simple_form (= 3.0.0)
-      sufia-models (~> 3.4.0.rc4)
+      sufia-models (~> 3.4.0)
       virtus
 
 GEM
