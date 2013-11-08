@@ -474,6 +474,7 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.4)
+    vcr (2.7.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
     virtus (1.0.0)
@@ -539,4 +540,5 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicode
   unicorn (~> 4.0)
+  vcr
   webmock

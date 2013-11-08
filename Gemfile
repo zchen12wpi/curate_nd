@@ -55,6 +55,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rspec-html-matchers'
   gem 'rspec-rails'
+  gem 'vcr'
   gem 'webmock'
   gem 'timecop'
   gem 'poltergeist'

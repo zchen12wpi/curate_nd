@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apitest:apitest@n2t.net/ezid/shoulder/doi:10.5072/FK2
+    body:
+      encoding: US-ASCII
+      string: ! '_target: http://localhost:3000/concern/SeniorThesis/mp48sb39t5x
+
+        datacite.creator: ["Creator Name11"]
+
+        datacite.title: Title 11
+
+        datacite.publisher: An Interesting Chap!
+
+        datacite.publicationyear: 2013'
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '197'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Date:
+      - Fri, 08 Nov 2013 16:09:46 GMT
+      Server:
+      - Apache/2.2.17 (Unix) DAV/2 mod_wsgi/3.3 Python/2.7 mod_ssl/2.2.17 OpenSSL/0.9.8o
+      Vary:
+      - Cookie
+      Set-Cookie:
+      - sessionid=6ee989e30a650378a7961e011eb1e422; Path=/ezid/
+      Content-Length:
+      - '53'
+      Content-Type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ! 'success: doi:10.5072/FK2N87P1C | ark:/b5072/fk2n87p1c'
+    http_version:
+  recorded_at: Fri, 08 Nov 2013 16:09:50 GMT
+recorded_with: VCR 2.7.0
