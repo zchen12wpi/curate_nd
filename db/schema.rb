@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030145448) do
+ActiveRecord::Schema.define(version: 20131108201828) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +24,29 @@ ActiveRecord::Schema.define(version: 20131030145448) do
   end
 
   add_index "activity_engine_activities", ["user_id"], name: "index_activity_engine_activities_on_user_id", using: :btree
+
+  create_table "admin_announcement_dismissals", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "admin_announcement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_announcement_dismissals", ["admin_announcement_id"], name: "index_admin_announcement_dismissals_on_admin_announcement_id", using: :btree
+  add_index "admin_announcement_dismissals", ["user_id", "admin_announcement_id"], name: "[:admin_announcement_dismissals_join_index]", using: :btree
+  add_index "admin_announcement_dismissals", ["user_id"], name: "index_admin_announcement_dismissals_on_user_id", using: :btree
+
+  create_table "admin_announcements", force: true do |t|
+    t.text     "message"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_announcements", ["end_at"], name: "index_admin_announcements_on_end_at", using: :btree
+  add_index "admin_announcements", ["start_at", "end_at"], name: "[:admin_announcements_for_index]", using: :btree
+  add_index "admin_announcements", ["start_at"], name: "index_admin_announcements_on_start_at", using: :btree
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false

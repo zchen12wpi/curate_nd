@@ -1,0 +1,33 @@
+<% content_for :page_header do %>
+  <h1>Admin::Announcements</h1>
+<% end %>
+
+<%= paginate @admin_announcements %>
+<table class="table table-striped">
+  <caption class="accessible-hidden">List of All Administrative Announcments</caption>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_announcements.each do |admin_announcement| %>
+      <tr>
+        <td><%= link_to(truncate(admin_announcement.message, length: 150,omission: '... (continued)'), admin_announcement) %></td>
+        <td><%= admin_announcement.start_at %></td>
+        <td><%= admin_announcement.end_at %></td>
+        <td><%= link_to 'Edit', edit_admin_announcement_path(admin_announcement) %></td>
+        <td><%= link_to 'Destroy', admin_announcement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Announcement', new_admin_announcement_path %>
