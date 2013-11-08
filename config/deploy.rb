@@ -187,7 +187,7 @@ end
 
 namespace :maintenance do
   task :create_person_records, :roles => :app do
-    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
+    run "cd #{current_path} && bundle exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
   end
   task :delete_index_solr, :roles => :app do
     config = capture("cat #{current_path}/config/solr.yml")
@@ -195,12 +195,12 @@ namespace :maintenance do
     run "curl #{File.join(solr_core_url, 'update')}?commit=true -H 'Content-Type:application/xml' -d '<delete><query>*:*</query></delete>'"
   end
   task :reindex_solr, :roles => :app do
-    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Sufia.queue.push(ReindexWorker.new)' -e #{rails_env}"
+    run "cd #{current_path} && bundle exec rails runner 'Sufia.queue.push(ReindexWorker.new)' -e #{rails_env}"
   end
   before 'maintenance:reindex_solr', 'maintenance:delete_index_solr'
 
   task :migrate_person, :roles => :app do
-    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Migrator.enqueue' -e #{rails_env}"
+    run "cd #{current_path} && bundle exec rails runner 'Migrator.enqueue' -e #{rails_env}"
   end
 end
 
