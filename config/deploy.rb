@@ -198,6 +198,10 @@ namespace :maintenance do
     run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Sufia.queue.push(ReindexWorker.new)' -e #{rails_env}"
   end
   before 'maintenance:reindex_solr', 'maintenance:delete_index_solr'
+
+  task :migrate_person, :roles => :app do
+    run "cd #{current_path} && #{File.join(ruby_bin, 'bundle')} exec rails runner 'Migrator.enqueue' -e #{rails_env}"
+  end
 end
 
 set(:secret_repo_name) {
