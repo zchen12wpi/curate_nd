@@ -59,10 +59,13 @@ group :test do
   gem 'webmock'
   gem 'timecop'
   gem 'poltergeist'
-  gem 'test_after_commit', :group => :test
+  gem 'test_after_commit'
 end
 
 group :debug do
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'debugger', ">= 1.4"
   gem 'rails_best_practices'
   gem 'sextant'

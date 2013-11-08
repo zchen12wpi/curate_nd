@@ -57,6 +57,11 @@ GEM
       ice_nine (~> 0.9)
     backports (3.3.5)
     bcrypt-ruby (3.1.2)
+    better_errors (1.0.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     blacklight (4.5.0)
       bootstrap-sass (>= 2.2.0, < 2.4)
       kaminari (~> 0.13)
@@ -104,6 +109,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.3)
       sexp_processor
+    coderay (1.1.0)
     coercible (0.2.0)
       backports (~> 3.0, >= 3.1.0)
       descendants_tracker (~> 0.0.1)
@@ -149,6 +155,7 @@ GEM
       railties (> 3.0)
     daemons (1.1.9)
     database_cleaner (1.2.0)
+    debug_inspector (0.0.2)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -305,6 +312,8 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
@@ -498,6 +507,8 @@ PLATFORMS
 
 DEPENDENCIES
   addressable (~> 2.3.5)
+  better_errors
+  binding_of_caller
   bootstrap-datepicker-rails
   capistrano (~> 2.15)
   capybara (~> 2.1)
@@ -523,6 +534,7 @@ DEPENDENCIES
   net-ldap
   nokogiri (~> 1.6.0)
   poltergeist
+  quiet_assets
   rails_best_practices
   rake
   rdf (>= 1.0.10.1, < 1.1)
