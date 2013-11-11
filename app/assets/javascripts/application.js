@@ -32,4 +32,11 @@ $(function(){
       $.fn.disableAgreeButton(this);
     });
   });
+
+  $('#announcements').on('ajax:success', function(event, xhr, status){
+    var $target = $(event.target),
+        $announcment = $target.parent('.announcement');
+
+    $announcment.fadeOut(100);
+  });
 });

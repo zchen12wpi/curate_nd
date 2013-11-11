@@ -1,0 +1,22 @@
+<%- if Admin::Announcement.for(current_user).any? -%>
+  <div id="announcements" class="container">
+    <div class="row">
+      <div class="span12 announcement-listing">
+        <% Admin::Announcement.for(current_user).each do |announcement| %>
+          <div class="announcement alert alert-info">
+            <span class="announcement-text">
+            <%= announcement %>
+            </span>
+
+            <%= button_to dismiss_announcement_path(id: announcement), method: :delete, remote: true, form_class: 'close', class: 'announcement-dismiss btn btn-link' do %>
+              <span class="icon icon-remove"></span>
+              <span class="visuallyhidden">
+                Dismiss this announcement
+              </span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<%- end -%>

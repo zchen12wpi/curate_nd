@@ -2,12 +2,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :message %>
+    <%= f.input :message, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :start_at %>
     <%= f.input :end_at %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <% unless @admin_announcement.new_record? %>
+      <%= link_to 'View Announcement', @admin_announcement, class: 'btn btn-info pull-right' %>
+    <% end %>
   </div>
 <% end %>
