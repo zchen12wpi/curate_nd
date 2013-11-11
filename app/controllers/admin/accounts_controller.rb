@@ -1,6 +1,6 @@
 # Why accounts? Because Devise likes all things User related
 class Admin::AccountsController < ApplicationController
-  include Curate::IsAnAdminController
+  include CurateND::IsAnAdminController
   with_themed_layout('1_column')
 
   def index

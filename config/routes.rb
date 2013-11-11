@@ -8,14 +8,16 @@ CurateNd::Application.routes.draw do
 
   namespace :admin do
     constraints CurateND::AdminConstraint do
+      get '/', to: 'base#index'
+
       mount Resque::Server, :at => "queues"
       resources :announcements
+      resources :user_whitelists
       resources :accounts, only: [:show, :index] do
         collection { get :start_masquerading }
       end
     end
   end
-
 
   # Due to an apparent bug in devise the following routes should be presented
   # in this order
