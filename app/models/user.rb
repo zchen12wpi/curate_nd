@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def whitelisted?
-    !UserWhitelist.where(username: self.username).blank?
+    Admin::UserWhitelist.whitelisted?(self)
   end
 
   protected
