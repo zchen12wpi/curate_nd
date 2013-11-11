@@ -1,31 +1,78 @@
-# rails runner script/migrations/person-migrator.rb
-module Migrator
-  module_function
-  def call
-    @successes = []
-    @silent_failures = []
-    @failures = []
+class Migrator
 
-    ActiveFedora::Base.send(:connections).each do |connection|
-      connection.search('pid~und:*').each do |rubydora_object|
-        begin
-          if Migration.build(rubydora_object).migrate
-            @successes << rubydora_object.pid
-          else
-            @silent_failures << rubydora_object.pid
+  class Logger < ActiveSupport::Logger
+    def initialize
+      @successes, @failures = 0, 0
+      super(Rails.root.join("log/#{Rails.env}-migrator.log"))
+    end
+
+    def around(context)
+      begin
+        start(context)
+        yield(self)
+        stop(context)
+      rescue Exception => e
+        error("Unable to finish #{context}. Encountered #{e}")
+        raise e
+      ensure
+        finalize(context)
+        exit(-1) if @failures > 0
+      end
+    end
+
+    def success(pid)
+      @successes += 1
+      info("PID=#{pid.inspect}\tSuccess")
+    end
+
+    def failure(pid)
+      @failures += 1
+      error("PID=#{pid.inspect}\tFailure\tfailed but no exception was thrown.")
+    end
+
+    def exception(pid, exception)
+      @failures += 1
+      error("PID=#{pid.inspect}\tFailure with Exception\tfailed with the following exception: #{exception}.")
+    end
+    private
+    def start(context)
+      info("#{Time.now}\tStart #{context}")
+    end
+    def stop(context)
+      info("#{Time.now}\tFinish #{context}")
+    end
+
+    def finalize(context)
+      info("\nActivity for #{context}\n\tSuccesses: #{@successes}\n\tFailures: #{@failures}\n")
+    end
+  end
+
+  def self.enqueue(*args)
+    Sufia.queue.push(self.new(*args))
+  end
+
+  def queue_name
+    :migrator
+  end
+
+  def run(logger = Migrator::Logger.new)
+
+    logger.around("Migrator#run") do |handler|
+      ActiveFedora::Base.send(:connections).each do |connection|
+        connection.search('pid~und:*').each do |rubydora_object|
+          begin
+            if Migration.build(rubydora_object).migrate
+              handler.success(rubydora_object.pid)
+            else
+              handler.failure(rubydora_object.pid)
+            end
+          rescue Exception => e
+            handler.exception(rubydora_object.pid, e)
           end
-        rescue Exception => e
-          @failures << [rubydora_object.pid, e]
         end
       end
     end
 
-    puts "Successes: #{@successes.inspect}"
-    puts "\tCount: #{@successes.size}"
-    puts "Silent Failures: #{@silent_failures.inspect}"
-    puts "\tCount: #{@silent_failures.size}"
-    puts "Failures with Exception: #{@failures.inspect}"
-    puts "\tCount: #{@failures.size}"
   end
 
   class UnsavedDigitalObject < ActiveFedora::UnsavedDigitalObject
@@ -39,7 +86,7 @@ module Migrator
   module Migration
     module_function
 
-    def build(rubydora_object, container_namespace = Migrator::Migrations)
+    def build(rubydora_object, container_namespace = ::Migrator::Migrations)
       active_fedora_object = ActiveFedora::Base.find(rubydora_object.pid, cast: false)
       best_model_match = determine_best_active_fedora_model(active_fedora_object)
 
@@ -77,8 +124,8 @@ module Migrator
 
       def migrate
         load_datastreams &&
-        update_index &&
-        visit
+          update_index &&
+          visit
       end
 
       def inspect
@@ -165,5 +212,3 @@ module Migrator
   end
 
 end
-
-Migrator.call

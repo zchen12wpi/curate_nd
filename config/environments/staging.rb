@@ -1,4 +1,3 @@
-Resque.inline = true
 CurateNd::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -39,7 +38,7 @@ CurateNd::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( modernizr.js )
 
-  config.application_root_url = "http://localhost"
+  config.application_root_url = "https://localhost"
 
   if ENV['FULL_STACK']
     require 'clamav'
