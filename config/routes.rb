@@ -9,6 +9,7 @@ CurateNd::Application.routes.draw do
   namespace :admin do
     constraints CurateND::AdminConstraint do
       mount Resque::Server, :at => "queues"
+      resources :announcements
       resources :accounts, only: [:show, :index] do
         collection { get :start_masquerading }
       end
@@ -24,6 +25,7 @@ CurateNd::Application.routes.draw do
     end
   end
 
+  delete 'dismiss_announcement/:id', to: 'admin/announcements#dismiss', as: 'dismiss_announcement'
 
   devise_scope :user do
     get 'dashboard', to: 'catalog#index', as: :user_root

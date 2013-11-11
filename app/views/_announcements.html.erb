@@ -1,0 +1,14 @@
+<%- if Admin::Announcement.for(current_user).any? -%>
+  <div id="announcements-posting-wrapper">
+    <div id="announcements-posting" class="container">
+      <div class="row">
+        <%# TODO - Insert dom structure and dismiss action %>
+        <% Admin::Announcement.for(current_user).each do |announcement| %>
+          <p><%= announcement %>
+            <span class='dismiss-announcement'>[<%= link_to "hide this message", dismiss_announcement_path(id: announcement), method: :delete, remote: true %>]</span>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<%- end -%>
