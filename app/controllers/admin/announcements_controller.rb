@@ -1,4 +1,5 @@
 class Admin::AnnouncementsController < ApplicationController
+  include Curate::IsAnAdminController
   with_themed_layout('1_column')
 
   before_action :set_admin_announcement, only: [:show, :edit, :update, :destroy]
