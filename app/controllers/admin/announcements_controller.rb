@@ -27,7 +27,7 @@ class Admin::AnnouncementsController < ApplicationController
     @admin_announcement = Admin::Announcement.new(admin_announcement_params)
 
     if @admin_announcement.save
-      redirect_to @admin_announcement, notice: 'Announcement was successfully created.'
+      redirect_to admin_announcements_url, notice: 'Announcement was successfully created.'
     else
       render action: 'new'
     end
@@ -36,7 +36,7 @@ class Admin::AnnouncementsController < ApplicationController
   # PATCH/PUT /admin/announcements/1
   def update
     if @admin_announcement.update(admin_announcement_params)
-      redirect_to @admin_announcement, notice: 'Announcement was successfully updated.'
+      redirect_to admin_announcements_url, notice: 'Announcement was successfully updated.'
     else
       render action: 'edit'
     end

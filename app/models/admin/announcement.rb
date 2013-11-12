@@ -1,5 +1,5 @@
 class Admin::Announcement < ActiveRecord::Base
-  default_scope( {:order => "#{quoted_table_name}.start_at DESC"} )
+  default_scope -> { order("#{quoted_table_name}.start_at DESC") }
 
   has_many :dismissals, class_name: 'Admin::AnnouncementDismissal', dependent: :destroy, foreign_key: :admin_announcement_id
 
