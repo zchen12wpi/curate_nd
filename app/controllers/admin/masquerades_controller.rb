@@ -1,4 +1,6 @@
 class Admin::MasqueradesController < Devise::MasqueradesController
+  include Curate::IsAnAdminController
+
   def back
     super
     flash[:alert] = "Masquerade stopped. You are now acting as yourself."
