@@ -1,5 +1,5 @@
 class Admin::MasqueradesController < Devise::MasqueradesController
-  include Curate::IsAnAdminController
+  include CurateND::IsAnAdminController
 
   def back
     super
