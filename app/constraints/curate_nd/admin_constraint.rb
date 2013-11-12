@@ -5,9 +5,14 @@ module CurateND
 
     def matches?(request)
       current_user = request.env.fetch('warden').user
-      !!admin_usernames.include?(current_user.username)
+      is_admin?(current_user)
     rescue KeyError, NoMethodError
       return false
+    end
+
+    def is_admin?(user)
+      username = user.respond_to?(:username) ? user.username : user.to_s
+      !!admin_usernames.include?(username)
     end
 
     def admin_usernames

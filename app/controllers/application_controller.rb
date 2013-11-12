@@ -24,16 +24,9 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def user_whitelisted?
-    if current_user
-      current_user.whitelisted? || !!admin_usernames.include?(current_user.username)
-    else
-      return false
-    end
-  end
 
   def allow_whitelisted_users
-    if user_whitelisted?
+    if Admin::UserWhitelist.whitelisted?(current_user)
       return true
     else
       if( ["classify_concerns", "cas_sessions", "terms_of_service_agreements", "registrations"].include?(controller_name))

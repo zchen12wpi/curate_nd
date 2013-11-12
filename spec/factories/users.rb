@@ -16,7 +16,7 @@ FactoryGirl.define do
     end
 
     after(:create) do |user, evaluator|
-      UserWhitelist.new(username: user.username).save!
+      Admin::UserWhitelist.new(username: user.username).save!
     end
   end
 
