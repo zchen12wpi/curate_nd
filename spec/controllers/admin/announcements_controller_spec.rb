@@ -77,7 +77,7 @@ describe Admin::AnnouncementsController do
 
       it "redirects to the created admin_announcement" do
         post :create, {:admin_announcement => valid_attributes}, valid_session
-        response.should redirect_to(Admin::Announcement.last)
+        response.should redirect_to(admin_announcements_url)
       end
     end
 
@@ -119,7 +119,7 @@ describe Admin::AnnouncementsController do
       it "redirects to the admin_announcement" do
         announcement = Admin::Announcement.create! valid_attributes
         put :update, {:id => announcement.to_param, :admin_announcement => valid_attributes}, valid_session
-        response.should redirect_to(announcement)
+        response.should redirect_to(admin_announcements_url)
       end
     end
 

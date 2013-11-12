@@ -1,6 +1,7 @@
-<h1>Editing admin_announcement</h1>
+<% content_for :page_header do %>
+  <h1>Edit Announcement</h1>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @admin_announcement %> |
-<%= link_to 'Back', admin_announcements_path %>
+<%= link_to 'Announcements Home', admin_announcements_path, class: 'btn btn-link' %>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "_announcements" do
+describe "application/_announcements" do
 
   let(:current_user) { double }
   before(:each) do
@@ -20,10 +20,10 @@ describe "_announcements" do
   context 'with announcements' do
     let(:announcements) { [FactoryGirl.build_stubbed(:admin_announcement)] }
 
-    it "renders an empty div" do
+    it "renders the announcments" do
       render
-      expect(rendered).to have_tag('#announcements-posting-wrapper #announcements-posting .row') do
-        with_tag("p .dismiss-announcement", count: 1)
+      expect(rendered).to have_tag('#announcements .announcement-listing .announcement') do
+        with_tag(".announcement-dismiss", count: 1)
       end
     end
   end

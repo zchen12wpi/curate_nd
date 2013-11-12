@@ -1,19 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Message:</strong>
-  <%= @admin_announcement.message %>
-</p>
+<dl class="attributes">
+  <dt>Message:</dt>
+  <dd><%= @admin_announcement.message %></dd>
+  <dt>Start at:</dt>
+  <dd><%= @admin_announcement.start_at %></dd>
+  <dt>End at:</dt>
+  <dd><%= @admin_announcement.end_at %></dd>
+</dl>
 
-<p>
-  <strong>Start at:</strong>
-  <%= @admin_announcement.start_at %>
-</p>
-
-<p>
-  <strong>End at:</strong>
-  <%= @admin_announcement.end_at %>
-</p>
-
-<%= link_to 'Edit', edit_admin_announcement_path(@admin_announcement) %> |
-<%= link_to 'Back', admin_announcements_path %>
+<%= link_to 'Edit Announcment', edit_admin_announcement_path(@admin_announcement), class: 'btn' %>
+<%= link_to 'Announcements Home', admin_announcements_path, class: 'btn btn-link' %>
