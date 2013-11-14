@@ -40,19 +40,20 @@ CurateNd::Application.configure do
 
   config.application_root_url = "https://localhost"
 
-  if ENV['FULL_STACK']
+  config.fits_path = '/opt/fits/current/fits.sh'
+
+  begin
+    # Why the explicit require? Because the headless workers of pre-production
+    # are not explicitly requiring clamav; This is because the web application
+    # portion of pre-production doesn't know about clamav. Instead of mixing
+    # environments, we are going to let the workers fail.
     require 'clamav'
     ClamAV.instance.loaddb
     Curate.configuration.default_antivirus_instance = lambda {|file_path|
       ClamAV.instance.scanfile(file_path)
     }
-  else
-    Curate.configuration.default_antivirus_instance = lambda {|file_path|
-      AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
-    }
-    Curate.configuration.characterization_runner = lambda { |file_path|
-      Rails.root.join('spec/support/files/default_fits_output.xml').read
-    }
+  rescue LoadError => e
+    logger.error("#{e.class}: #{e}")
   end
 
 end
