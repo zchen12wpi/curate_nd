@@ -137,6 +137,12 @@ class lib_curate::standalone {
        notify => Service['nginx'],
      }
 
+     file { '/etc/nginx/conf.d/default.conf':
+       ensure => absent,
+       require => File["/etc/nginx/conf.d/curatend.conf"],
+       notify => Service['nginx'],
+     }
+
      # Install resque worker daemon and service
      class { 'lib_resque_poold':
 	require => Class["lib_ruby"],
