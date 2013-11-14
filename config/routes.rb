@@ -4,7 +4,7 @@ CurateNd::Application.routes.draw do
 
   root 'catalog#index'
 
-  curate_for containers: [:senior_theses, :datasets, :articles, :etds, :images, :documents]
+  curate_for containers: [:senior_theses, :datasets, :articles, :images, :documents]
 
   namespace :admin do
     constraints CurateND::AdminConstraint do
