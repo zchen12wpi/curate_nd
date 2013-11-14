@@ -10,5 +10,14 @@ Hydra::RemoteIdentifier.configure do |config|
       map.publicationyear {|o| o.date_uploaded.year }
       map.set_identifier {|o,value| o.identifier = value; o.save }
     end
+
+    doi.register(Article, Dataset, Image, Document) do |map|
+      map.target {|obj| File.join(Rails.configuration.application_root_url, "concern", obj.class.model_name, obj.to_param) }
+      map.creator {|obj| obj.contributors.to_a.collect(&:name).join(", ") }
+      map.title :title
+      map.publisher {|o| Array(o.publisher).join("; ")}
+      map.publicationyear {|o| o.date_uploaded.year }
+      map.set_identifier {|o,value| o.identifier = value; o.save }
+    end
   end
 end
