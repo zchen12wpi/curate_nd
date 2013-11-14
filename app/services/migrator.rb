@@ -200,7 +200,7 @@ class Migrator
       # Assumes application is running at application URL
       def visit
         remote_url = File.join(Rails.configuration.application_root_url, "people/#{rubydora_object.pid}")
-        RestClient.get(remote_url, content_type: :html, accept: :html) do |response, request, result, &block|
+        RestClient.get(remote_url, content_type: :html, accept: :html, verify_ssl: OpenSSL::SSL::VERIFY_NONE) do |response, request, result, &block|
           if [301, 302, 307].include? response.code
             response.follow_redirection(request, result, &block)
           else
