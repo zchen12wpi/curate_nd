@@ -10,6 +10,8 @@ class lib_curate::standalone {
    $fedora_version = hiera('fedora_version')
    $mysql_db_name = hiera('mysql_db_name')
    $mysql_root_password = hiera('mysql_root_password')
+   $ssl_certificate = hiera('ssl_certificate')
+   $ssl_certificate_key = hiera('ssl_certificate_key')
    $solr_conf_dir = hiera('solr_conf_dir')
    $solr_corename = hiera('solr_corename')
    $solr_data_dir = hiera('solr_data_dir')

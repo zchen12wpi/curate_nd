@@ -6,7 +6,7 @@ upstream app_server {
 }
 server {
     listen 80;
-    server_name <%= @fqdn %>;
+    server_name _;
     location / {
         return 301 https://$host$request_uri;
     }
@@ -14,8 +14,8 @@ server {
 server {
     listen 443 ssl default_server deferred;
     server_name _;
-    ssl_certificate      /etc/ssl/thawte/library.nd.edu.crt;
-    ssl_certificate_key  /etc/ssl/thawte/library.nd.edu.key;
+    ssl_certificate      <%= @ssl_certificate %>;
+    ssl_certificate_key  <%= @ssl_certificate_key %>;
     ssl_session_cache shared:SSL:1m;
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
