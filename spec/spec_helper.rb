@@ -43,11 +43,6 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = false
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
   config.before(:each, type: :feature) do
     Warden.test_mode!
     @old_resque_inline_value = Resque.inline
@@ -68,28 +63,29 @@ RSpec.configure do |config|
   end
 
 
+  config.before(:suite) do
+    ActiveFedora::TestCleaner.setup
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.before(:all) do
     WebMock.allow_net_connect!
   end
 
   config.before(:each) do
+    ActiveFedora::TestCleaner.start
     DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-
-  config.around(:each) do |example|
-    Timeout::timeout(120) {
-      example.run
-    }
-  end
-
-  config.before(:each) do
     User.any_instance.stub(:ldap_service).and_return(nil)
     User.any_instance.stub_chain(:ldap_service, :display_name).and_return(nil)
     User.any_instance.stub_chain(:ldap_service, :preferred_email).and_return(nil)
     allow_message_expectations_on_nil
+
   end
+
+  config.after(:each) do
+    ActiveFedora::TestCleaner.clean
+    DatabaseCleaner.clean
+  end
+
 end
