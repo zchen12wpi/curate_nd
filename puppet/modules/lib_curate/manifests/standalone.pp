@@ -139,7 +139,7 @@ class lib_curate::standalone {
 
      file { '/etc/nginx/conf.d/default.conf':
        ensure => absent,
-       require => File["/etc/nginx/conf.d/curatend.conf"],
+       require => File['/etc/nginx/conf.d/curatend.conf'],
        notify => Service['nginx'],
      }
 
