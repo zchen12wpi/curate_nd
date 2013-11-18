@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', '~>0.5.6'
+  gem 'curate', github: "projecthydra/curate", ref: "2488246cf1eb4a51f97052074e3138b5dc3e6445"
   gem 'rdf', '>= 1.0.10.1', '< 1.1'
   gem 'rsolr'
   gem 'nokogiri', "~>1.6.0"
