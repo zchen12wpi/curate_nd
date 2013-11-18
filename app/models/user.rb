@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
   def email_required?; false; end
 
   def update_with_password(attributes)
-    self.email = attributes[:email]
-    self.save
+    self.update(attributes)
   end
 
   def self.audituser
