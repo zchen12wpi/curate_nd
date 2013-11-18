@@ -1,8 +1,5 @@
 <%# TODO: Get bootstrap JS and turbolinks to play nicely %>
-<% if current_user %>
-  <% unless current_user.whitelisted? %>
-    <%= link_to 'Log Out',         destroy_user_session_path,                                             class: 'log-out',        role: 'menuitem' %>
-  <% else %>
+<% if current_user && current_user.whitelisted? %>
   <div class="btn-group add-content">
     <%= link_to new_classify_concern_path, id: "add-content", class: "btn btn-primary dropdown-toggle", data: { toggle: "dropdown"} do %>
       <span class="icon icon-white icon-plus"></span><span class="visuallyhidden">Add</span>
@@ -24,26 +21,26 @@
       </li>
       <li class="divider"></li>
       <li><%= link_to 'Add a Collection',  new_collection_path, class: 'menu-heading new-collection', role: 'menuitem' %></li>
-      <li class="divider"></li>
-      <li><%= link_to 'Add a Section to my Profile', new_collection_path(add_to_profile: true), class: 'menu-heading new-collection', role: 'menuitem' %></li>
     </ul>
   </div>
   <div class="btn-group my-actions">
     <a class="btn btn-primary dropdown-toggle user-display-name" data-toggle="dropdown" href="#">
-      <%= current_user.display_name.blank? ? 'Me' : current_user.display_name %>
+      <%= current_user.name.blank? ? 'Me' : current_user.name %>
     <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" data-no-turbolink="true">
       <li><%= link_to 'My Works',        catalog_index_path(:'f[generic_type_sim][]' => 'Work', works: 'mine'), class: 'my-works',       role: 'menuitem' %></li>
       <li><%= link_to 'My Collections',  collections_path,                                                      class: 'my-collections', role: 'menuitem' %></li>
       <li><%= link_to 'My Profile',      person_path(current_user.person),                                      class: 'my-account',     role: 'menuitem' %></li>
-      <li><%= link_to 'My Proxies',      person_depositors_path(current_user.person),                           class: 'my-proxies',     role: 'menuitem' %></li>
       <li class="divider"></li>
       <li><%= link_to 'Log Out',         destroy_user_session_path,                                             class: 'log-out',        role: 'menuitem' %></li>
     </ul>
   </div>
   <%= link_to 'Help!', new_help_request_path, class: 'btn btn-primary request-help', role: 'menuitem' %>
-  <% end %>
+<% elsif current_user %>
+  <ul class="nav nav-pills">
+    <%= link_to 'Log Out', destroy_user_session_path, class: 'btn btn-primary pull-right log-out', role: 'menuitem' %>
+  </ul>
 <% else %>
   <ul class="nav nav-pills">
     <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary pull-right', role: 'menuitem' %>
