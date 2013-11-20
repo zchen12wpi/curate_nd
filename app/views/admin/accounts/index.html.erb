@@ -29,7 +29,7 @@
       <th>ID</th>
       <th>Username</th>
       <th>Email</th>
-      <th>Display Name</th>
+      <th>Name</th>
       <th>Person Object</th>
       <th>Actions</th>
     </tr>
@@ -41,7 +41,7 @@
         <td><%= user.id %></td>
         <td><%= user.username %></td>
         <td><%= mail_to(user.email) %></td>
-        <td><%= user.display_name %></td>
+        <td><%= user.name %></td>
         <td><%= user.repository_id.present? ? link_to(user.repository_id, person_path(user.person)) : 'no person object' %></td>
         <td><%= link_to_if(current_user != user, "Masquerade as #{user.username}", masquerade_path(user)) %></td>
       </tr>
