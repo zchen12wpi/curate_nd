@@ -253,6 +253,12 @@ ActiveRecord::Schema.define(version: 20131118200932) do
 
   add_index "trophies", ["user_id"], name: "index_trophies_on_user_id", using: :btree
 
+  create_table "user_whitelists", force: true do |t|
+    t.string "username"
+  end
+
+  add_index "user_whitelists", ["username"], name: "index_user_whitelists_on_username", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                                default: "",    null: false
     t.string   "encrypted_password",                   default: "",    null: false
