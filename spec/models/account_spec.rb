@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Account do
-  let(:current_password) { 'password' }
+  let(:password) { 'password' }
   let(:attributes) {
     {
       "name"=>"",
@@ -13,12 +13,11 @@ describe Account do
       "email"=>"jeremy.n.friesen@gmail.com",
       "alternate_email"=>"jeremy.n.friesen@gmail.com",
       "campus_phone_number"=>"5748315926",
-      "alternate_phone_number"=>"5748315926",
-      "current_password"=>current_password
+      "alternate_phone_number"=>"5748315926"
     }
   }
 
-  subject { FactoryGirl.create(:account, password: current_password, password_confirmation: current_password)}
+  subject { FactoryGirl.create(:account, password: password, password_confirmation: password)}
   after(:each) do
     subject.person.destroy rescue true
   end
