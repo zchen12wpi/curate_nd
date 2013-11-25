@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/projecthydra/curate.git
-  revision: 2338a0d8af4c3aa8296b5b9a7fee7ac31b17d3eb
-  ref: 2338a0d8af4c3aa8296b5b9a7fee7ac31b17d3eb
+  revision: 1fbd901ab9f27dc2f9e782d8af9e9a183ba575c7
+  ref: 1fbd901ab9f27dc2f9e782d8af9e9a183ba575c7
   specs:
     curate (0.5.6)
       active_attr
@@ -50,7 +50,7 @@ GEM
     active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
-    active_fedora-registered_attributes (0.2.0)
+    active_fedora-registered_attributes (0.2.1)
       active-fedora (>= 6.7.0)
       active_attr (~> 0.8.2)
     activemodel (4.0.0)
@@ -186,6 +186,7 @@ GEM
       devise (>= 2.1.0)
       railties (>= 3.0)
     diff-lcs (1.2.4)
+    ensure_valid_encoding (0.5.3)
     equalizer (0.0.7)
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
@@ -254,7 +255,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kaminari (0.14.1)
+    kaminari (0.15.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
@@ -267,7 +268,9 @@ GEM
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (> 3.0.0)
-    marc (0.7.1)
+    marc (0.8.0)
+      ensure_valid_encoding
+      unf
     mediashelf-loggable (0.4.9)
     method_locator (0.0.4)
     mime-types (1.25)
@@ -485,6 +488,9 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.1.3)
+      unf_ext
+    unf_ext (0.0.6)
     unicode (0.4.4)
     unicorn (4.6.3)
       kgio (~> 2.6)
