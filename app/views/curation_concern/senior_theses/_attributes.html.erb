@@ -1,28 +1,29 @@
+<% if curation_concern.description.present? %>
+  <h2>Abstract</h2>
+  <%# TODO: resonably convert the abstract to HTML %>
+  <%= curation_concern.description %>
+<% end %>
+
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
   <thead>
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
-  <%= attribute_to_html(curation_concern, :creator) %>
-  <%= attribute_to_html(curation_concern, :description) %>
-  <%= attribute_to_html(curation_concern, :created) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :creator, "Created by") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :created, "Created on") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :advisor, "Advisor") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :bibliographic_citation, "Bibliographic Citation") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
   <tr>
     <th>Access Rights</th>
     <td>
-      <ul class="tabular">
-        <li class="attribute permission"><%= link_to_edit_permissions(curation_concern) %></li>
-      </ul>
+      <%= permission_badge_for(curation_concern) %>
     </td>
   </tr>
-  <%= attribute_to_html(curation_concern, :embargo_release_date) %>
-  <%= attribute_to_html(curation_concern, :identifier) %>
-  <%= attribute_to_html(curation_concern, :advisor) %>
-  <%= attribute_to_html(curation_concern, :contributor) %>
-  <%= attribute_to_html(curation_concern, :subject) %>
-  <%= attribute_to_html(curation_concern, :bibliographic_citation) %>
-  <%= attribute_to_html(curation_concern, :language) %>
-  <%= attribute_to_html(curation_concern, :publisher) %>
-  <%= attribute_to_html(curation_concern, :source) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
   </tbody>
 </table>
