@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/projecthydra/curate.git
-  revision: 1fbd901ab9f27dc2f9e782d8af9e9a183ba575c7
-  ref: 1fbd901ab9f27dc2f9e782d8af9e9a183ba575c7
+  revision: 69bdcea737c19f70ad0f180efbb047d1c5c04429
+  ref: 69bdcea737c19f70ad0f180efbb047d1c5c04429
   specs:
     curate (0.5.6)
       active_attr
@@ -274,7 +274,7 @@ GEM
     mediashelf-loggable (0.4.9)
     method_locator (0.0.4)
     mime-types (1.25)
-    mini_magick (3.6.0)
+    mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
