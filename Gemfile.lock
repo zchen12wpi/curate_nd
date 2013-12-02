@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/projecthydra/curate.git
-  revision: 69bdcea737c19f70ad0f180efbb047d1c5c04429
-  ref: 69bdcea737c19f70ad0f180efbb047d1c5c04429
+  revision: 1c13fc2694177908cd118ec6061048766bda73de
+  ref: 1c13fc2694177908cd118ec6061048766bda73de
   specs:
     curate (0.5.6)
       active_attr
@@ -208,7 +208,7 @@ GEM
     highline (1.6.19)
     hike (1.2.3)
     hooks (0.3.3)
-    hydra-access-controls (6.4.0)
+    hydra-access-controls (6.4.1)
       active-fedora (~> 6.6)
       activesupport
       blacklight (~> 4.0)
@@ -221,12 +221,12 @@ GEM
       active-fedora (>= 6.7.0)
       blacklight
       hydra-head (~> 6.4.0)
-    hydra-core (6.4.0)
+    hydra-core (6.4.1)
       active-fedora
       blacklight (~> 4.0)
       block_helpers
       deprecation (>= 0.0.5)
-      hydra-access-controls (= 6.4.0)
+      hydra-access-controls (= 6.4.1)
       jettywrapper (>= 1.4.1)
       rails (>= 3.2.3, < 5)
     hydra-derivatives (0.0.7)
@@ -236,9 +236,9 @@ GEM
       mini_magick
     hydra-file_characterization (0.3.1)
       activesupport (>= 3.0.0)
-    hydra-head (6.4.0)
-      hydra-access-controls (= 6.4.0)
-      hydra-core (= 6.4.0)
+    hydra-head (6.4.1)
+      hydra-access-controls (= 6.4.1)
+      hydra-core (= 6.4.1)
       rails (>= 3.2.6)
     hydra-remote_identifier (0.6.1)
       activesupport (>= 3.2.13, < 5.0)
@@ -268,7 +268,7 @@ GEM
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (> 3.0.0)
-    marc (0.8.0)
+    marc (0.8.1)
       ensure_valid_encoding
       unf
     mediashelf-loggable (0.4.9)
