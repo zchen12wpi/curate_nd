@@ -52,13 +52,8 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc "Set command paths"
   task :set_paths do
-    if rails_env == 'staging' || rails_env == 'pre_production' || rails_env == 'production'
-      set :bundle_cmd, '/opt/ruby/current/bin/bundle'
-      set :rake,      "#{bundle_cmd} exec rake"
-    else
-      set :bundle_cmd,   File.join(ruby_bin, 'bundle')
-      set :rake,      "#{bundle_cmd} exec rake"
-    end
+    set :bundle_cmd, '/opt/ruby/current/bin/bundle'
+    set :rake,      "#{bundle_cmd} exec rake"
   end
 end
 
@@ -69,10 +64,6 @@ end
 desc "Restart Application"
 task :restart_unicorn, :roles => :app do
   run "#{current_path}/script/reload-unicorn.sh"
-end
-
-task :restart_passenger, :roles => :app do
-  run "touch #{current_path}/tmp/restart.txt"
 end
 
 #############################################################
@@ -108,20 +99,12 @@ namespace :deploy do
 
   desc "Start application in Passenger"
   task :start, :roles => :app do
-    if %w(staging pre_production production).include?(rails_env)
-      restart_unicorn
-    else
-      restart_passenger
-    end
+    restart_unicorn
   end
 
   desc "Restart application in Passenger"
   task :restart, :roles => :app do
-    if %w(staging pre_production production).include?(rails_env)
-      restart_unicorn
-    else
-      restart_passenger
-    end
+    restart_unicorn
   end
 
   task :stop, :roles => :app do
@@ -323,114 +306,14 @@ task :production do
     set :bundle_without,  [:development, :test, :debug]
     set :shared_directories,  %w(log)
     set :shared_files, %w()
-    
+
     default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
     server "app@curatesvrprod.library.nd.edu", :app, :web, :db, :primary => true
     server "app@curatewkrprod.library.nd.edu", :work, :primary => true
-    
+
     before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
     after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
     after 'deploy', 'deploy:kickstart'
     after 'deploy', 'worker:start'
-end
-
-#
-# Old things
-#
-
-def set_common_cluster_variables(cluster_directory_slug)
-  ssh_options[:keys] = %w(/shared/jenkins/.ssh/id_dsa)
-
-  set :symlink_targets do
-    [
-      ['/bundle/config','/.bundle/config', '/.bundle'],
-      ['/log','/log','/log'],
-      ['/vendor/bundle','/vendor/bundle','/vendor'],
-    ]
-  end
-  set :git_bin,    '/shared/git/bin'
-  set :bundle_without, [:headless, :development, :test]
-
-  set :deploy_to,   "/shared/#{cluster_directory_slug}/data/app_home/curate"
-  set :ruby_bin,    "/shared/#{cluster_directory_slug}/ruby/1.9.3/bin"
-
-  default_environment['PATH'] = "#{git_bin}:#{ruby_bin}:$PATH"
-  server "#{user}@#{domain}", :app, :web, :db, :primary => true
-
-  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared', 'deploy:migrate', 'deploy:precompile'
-  after 'deploy', 'deploy:cleanup'
-  after 'deploy', 'deploy:restart'
-  after 'deploy', 'deploy:kickstart'
-end
-
-desc "Setup for the Pre-Production environment"
-task :pre_production_cluster do
-  set :branch, "master"
-  set :rails_env,   'pre_production'
-
-  set :user,        'rbpprd'
-  set :domain,      'curatepprd.library.nd.edu'
-
-  set_common_cluster_variables('ruby_pprd')
-end
-
-desc "Setup for the Production environment"
-task :production_cluster do
-  set :branch,      'release'
-  set :rails_env,   'production'
-
-  set :user,        'rbprod'
-  set :domain,      'curateprod.library.nd.edu'
-
-  set_common_cluster_variables('ruby_prod')
-end
-
-
-# Trying to keep the worker environments as similar as possible
-def common_worker_things
-  set :symlink_targets do
-    [
-      [ '/bundle/config', '/.bundle/config', '/bundle'],
-      [ '/log', '/log', '/log'],
-      [ '/vendor/bundle', '/vendor/bundle', '/vendor/bundle'],
-    ]
-  end
-  set :scm_command, '/usr/bin/git'
-  set :deploy_to,   '/home/curatend'
-  set :ruby_bin,    '/usr/local/ruby/bin'
-  set :bundle_without, [:development, :test]
-  set :group_writable, false
-
-  default_environment['PATH'] = "#{ruby_bin}:$PATH"
-  server "#{user}@#{domain}", :work
-  after 'deploy', 'worker:start', 'deploy:cleanup'
-  after 'deploy:update_code', 'und:update_secrets', 'deploy:symlink_shared'
-end
-
-desc "Setup for the Staging Worker environment"
-task :staging_worker do
-  set :rails_env,   'staging'
-  set :user,        'curatend'
-  set :domain,      'curatestagingw1.library.nd.edu'
-  set :branch, "master"
-  common_worker_things
-end
-
-desc "Setup for the Preproduction Worker environment"
-task :pre_production_worker do
-  set :rails_env,   'pre_production'
-  set :user,        'curatend'
-  set :domain,      'curatepprdw1.library.nd.edu'
-  set :branch, "master"
-  common_worker_things
-end
-
-desc "Setup for the Production Worker environment"
-task :production_worker do
-  set :rails_env,   'production'
-  set :user,        'curatend'
-  set :domain,      'curateprodw1.library.nd.edu'
-  set :branch,      'release'
-  common_worker_things
 end
