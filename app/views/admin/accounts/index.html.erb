@@ -42,8 +42,8 @@
         <td><%= user.username %></td>
         <td><%= mail_to(user.email) %></td>
         <td><%= user.name %></td>
-        <td><%= user.repository_id.present? ? link_to(user.repository_id, person_path(user.person)) : 'no person object' %></td>
-        <td><%= link_to_if(current_user != user, "Masquerade as #{user.username}", masquerade_path(user)) %></td>
+        <td><%= user.repository_noid? ? link_to(user.repository_noid, person_path(user.repository_noid)) : 'no person object' %></td>
+          <td><%= link_to_if(current_user != user, "Masquerade as #{user}", user_masquerade_path(id: user.to_param)) %></td>
       </tr>
     <% end %>
   </tbody>
