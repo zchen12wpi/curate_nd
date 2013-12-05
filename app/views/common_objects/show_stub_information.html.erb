@@ -2,7 +2,7 @@
   <h1>Object Not Available</h1>
 <% end %>
 <% if curation_concern.identifier %>
-  <p><%= curation_concern %> is presently not available.</p>
+  <p><%= curation_concern %><span class="human_readable_type">(<%= curation_concern.human_readable_type %>)</span> is presently not available.</p>
   <p>Digital Object Identifier (DOI): <%= curation_concern.identifier %></p>
 <% else %>
   <p>This object is presently not available.</p>
