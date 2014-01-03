@@ -1,4 +1,3 @@
-
 class lib_curate::standalone {
 
    # lookup data we need to build this node
@@ -87,13 +86,9 @@ class lib_curate::standalone {
 	user => "root",
 	require => Package[$packagelist],
      } ->
-     class { 'mysql':
-	require => [Package[$packagelist], Class["lib_ruby"], Class["lib_app_home"]],
-     }	
-
      class { 'mysql::server':
-  		config_hash => { 'root_password' =>  $mysql_root_password },
-		require => Class['mysql'],
+  		root_password =>  $mysql_root_password,
+		require => [Package[$packagelist], Class["lib_ruby"], Class["lib_app_home"]],
      } ->
      mysql::db { "${fedora_db_name}":
 	user => $fedora_admin_mysql,
