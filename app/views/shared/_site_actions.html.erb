@@ -1,5 +1,7 @@
 <%# TODO: Get bootstrap JS and turbolinks to play nicely %>
-<%= link_to 'About', about_path, class: 'btn btn-link about-page', role: 'menuitem' %>
+<% unless current_page? about_path %>
+  <%= link_to 'About', about_path, class: 'btn btn-link about-page', role: 'menuitem' %>
+<% end %>
 <% if current_user && current_user.whitelisted? %>
   <%= render 'shared/add_content' %>
   <%= render 'shared/my_actions' %>
