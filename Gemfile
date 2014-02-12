@@ -45,7 +45,7 @@ group :headless do
 end
 
 gem 'coffee-rails', '~> 4.0'
-gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'compass-rails', '~> 1.1.2'
 gem 'sass-rails',   '~> 4.0'
 gem 'uglifier', '>= 1.0.3'
 
