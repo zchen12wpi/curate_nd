@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - "2.0.0"
 
-script: 'rake curatend:travis SPEC_OPTS="--tag ~js:true"'
+script: 'bundle exec rake curatend:travis SPEC_OPTS="--tag ~js:true"'
 
 notifications:
   irc: "irc.freenode.org#ndlib"
