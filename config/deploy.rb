@@ -168,6 +168,18 @@ namespace :worker do
   end
 end
 
+########################
+# solr
+#########################
+
+namespace :solr do
+    task :configure do
+        run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
+        run "sudo /sbin/service tomcat6 restart"
+    end
+end
+
+
 namespace :maintenance do
   task :create_person_records, :roles => :app do
     run "cd #{current_path} && bundle exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
@@ -283,12 +295,15 @@ task :pre_production do
   set :bundle_without,  [:development, :test, :debug]
   set :shared_directories,  %w(log)
   set :shared_files, %w()
+  set :src_solr_confdir 'solr_conf/conf'
+  set :dest_solr_confdir '/global/data/solr/pre_production/conf'
+  
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
   server "app@curatewkrpprd.library.nd.edu", :work, :primary => true
 
-  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
+  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -306,12 +321,15 @@ task :production do
     set :bundle_without,  [:development, :test, :debug]
     set :shared_directories,  %w(log)
     set :shared_files, %w()
+    set :src_solr_confdir 'solr_conf/conf'
+    set :dest_solr_confdir '/global/data/solr/production/conf'
+
 
     default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
     server "app@curatesvrprod.library.nd.edu", :app, :web, :db, :primary => true
     server "app@curatewkrprod.library.nd.edu", :work, :primary => true
 
-    before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
+    before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
     after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
     after 'deploy', 'deploy:kickstart'
