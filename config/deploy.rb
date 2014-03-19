@@ -175,7 +175,7 @@ end
 namespace :solr do
     task :configure do
         run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
-        run "sudo /sbin/service tomcat6 restart"
+        run "curl #{solr_url_reload}"
     end
 end
 
@@ -295,9 +295,9 @@ task :pre_production do
   set :bundle_without,  [:development, :test, :debug]
   set :shared_directories,  %w(log)
   set :shared_files, %w()
-  set :src_solr_confdir 'solr_conf/conf'
-  set :dest_solr_confdir '/global/data/solr/pre_production/conf'
-  
+  set :src_solr_confdir, 'solr_conf/conf'
+  set :dest_solr_confdir, '/global/data/solr/pre_production/conf'
+  set :solr_url_reload, 'http://solr41pprd.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
@@ -321,8 +321,9 @@ task :production do
     set :bundle_without,  [:development, :test, :debug]
     set :shared_directories,  %w(log)
     set :shared_files, %w()
-    set :src_solr_confdir 'solr_conf/conf'
-    set :dest_solr_confdir '/global/data/solr/production/conf'
+    set :src_solr_confdir, 'solr_conf/conf'
+    set :dest_solr_confdir, '/global/data/solr/production/conf'
+    set :solr_url_reload, 'http://solr41prod.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
 
     default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
