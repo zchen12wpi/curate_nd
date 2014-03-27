@@ -86,7 +86,7 @@ class Migrator
   module Migration
     module_function
 
-    def build(rubydora_object, container_namespace = ::Migrator::Migrations)
+    def build(rubydora_object, container_namespace = ::Migrator::Migrations::DisplayNameContainer)
       active_fedora_object = ActiveFedora::Base.find(rubydora_object.pid, cast: false)
       best_model_match = determine_best_active_fedora_model(active_fedora_object)
 
@@ -113,7 +113,7 @@ class Migrator
     end
   end
 
-  module Migrations
+  module Migrations::DisplayNameContainer
     class BaseMigrator
       attr_reader :rubydora_object, :active_fedora_object
 
