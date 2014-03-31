@@ -55,13 +55,23 @@ class Migrator
     :migrator
   end
 
-  def run(logger = Migrator::Logger.new)
+  attr_reader :logger
+  def initialize(config = {})
+    @logger = config.fetch(:logger) { Migrator::Logger.new }
+    @container_namespace = config.fetch(:container_namespace) { '::Migrator::Migrations::DisplayNameContainer' }
+  end
 
+  def container_namespace
+    @container_namespace.constantize
+  end
+
+  def run
     logger.around("Migrator#run") do |handler|
       ActiveFedora::Base.send(:connections).each do |connection|
-        connection.search('pid~und:*').each do |rubydora_object|
+        results = connection.search('pid~und:*')
+        results.each do |rubydora_object|
           begin
-            if Migration.build(rubydora_object).migrate
+            if Migration.build(rubydora_object, container_namespace).migrate
               handler.success(rubydora_object.pid)
             else
               handler.failure(rubydora_object.pid)
@@ -86,7 +96,7 @@ class Migrator
   module Migration
     module_function
 
-    def build(rubydora_object, container_namespace = ::Migrator::Migrations)
+    def build(rubydora_object, container_namespace)
       active_fedora_object = ActiveFedora::Base.find(rubydora_object.pid, cast: false)
       best_model_match = determine_best_active_fedora_model(active_fedora_object)
 
@@ -158,6 +168,63 @@ class Migrator
       def visit
         true
       end
+    end
+  end
+
+  module Migrations::RelatedContributorContainer
+    class BaseMigrator < Migrations::BaseMigrator
+    end
+
+    class WorkMigrator < BaseMigrator
+      def migrate
+        active_fedora_object.datastreams.each do |ds_name, ds_object|
+          if ds_name == 'descMetadata'
+            migrate_desc_metadata(ds_name, ds_object)
+          end
+        end
+        super
+      end
+      def migrate_desc_metadata(ds_name, ds_object)
+        content = ds_object.content.dup
+        prefix = %(<info:fedora/#{ds_object.pid}> <http://purl.org/dc/terms/creator>)
+        modified_content = content.split("\n").collect do |line|
+          /^#{Regexp.escape(prefix)} \<info:fedora\/([^\>]*)\> \.$/ =~ line
+          if pid = $1
+            person = Person.find(pid)
+            name = ""
+            if person.name.present?
+              name = person.name
+            elsif user = User.where(repository_id: pid).first
+              name = user.name
+            else
+              name = user.email
+            end
+            if name.present?
+              %(#{prefix} "#{name}" .)
+            else
+              nil
+            end
+          else
+            line
+          end
+        end.compact.join("\n")
+
+        if content != modified_content
+          ds_object.content = modified_content
+          ds_object.save
+        end
+      end
+    end
+
+    (Curate.configuration.registered_curation_concern_types + ['GenericFile']).each do |work_type|
+      # Pardon the crime against security. I can manually add these. But I'm
+      # lazy.
+      class_eval("class #{work_type}Migrator < WorkMigrator\nend")
+    end
+  end
+
+  module Migrations::DisplayNameContainer
+    class BaseMigrator < Migrations::BaseMigrator
     end
 
     class PersonMigrator < BaseMigrator

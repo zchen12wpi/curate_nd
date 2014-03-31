@@ -71,6 +71,7 @@ group :debug do
   gem 'sextant'
   gem 'simplecov'
   gem 'method_locator'
+  gem 'byebug'
 end
 
 group :deploy do
