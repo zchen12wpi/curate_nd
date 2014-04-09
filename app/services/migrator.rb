@@ -55,14 +55,17 @@ class Migrator
     :migrator
   end
 
-  attr_reader :logger
   def initialize(config = {})
-    @logger = config.fetch(:logger) { Migrator::Logger.new }
+    @logger = config[:logger]
     @container_namespace = config.fetch(:container_namespace) { '::Migrator::Migrations::DisplayNameContainer' }
   end
 
   def container_namespace
     @container_namespace.constantize
+  end
+
+  def logger
+    @logger ||= Migrator::Logger.new
   end
 
   def run
