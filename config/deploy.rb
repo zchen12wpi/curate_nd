@@ -28,7 +28,6 @@ require 'bundler/capistrano'
 #    set :bundle_without,  [:development, :test]
 #    set :bundle_cmd,      "bundle" # e.g. "/opt/ruby/bin/bundle"
 #    set :bundle_roles,    #{role_default} # e.g. [:app, :batch]
-G
 #############################################################
 #  Settings
 #############################################################
