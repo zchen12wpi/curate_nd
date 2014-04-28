@@ -20,6 +20,7 @@ server {
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
 
     client_max_body_size 4G;
+    server_tokens off;
     root /home/app/curatend/current/public;
     location ^~ /assets/ {
         # compress things on-the-fly
@@ -32,10 +33,16 @@ server {
         break;
     }
 
-    #try_files /system/maintenance.html $uri @app;
+    error_page 503 /503.html;
+    error_page 500 502 /500.html;
+
     try_files $uri @app;
 
     location @app {
+        if ( -f /home/app/curatend/shared/system/maintenance ) {
+          return 503;
+        }
+
         # proxy_set_header Host $http_host;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
