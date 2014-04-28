@@ -242,6 +242,15 @@ RAILS_ROOT=#{current_path}
     run_puppet(:config => 'worker')
   end
 
+  desc "Have all new requests to be redirected to a 503 page"
+  task :show_maintenance, :roles => :web do
+    run "touch #{shared_path}/system/maintenance"
+  end
+
+  desc "Allow requests to be handled as usual"
+  task :hide_maintenance, :roles => :web do
+    run "rm -f #{shared_path}/system/maintenance"
+  end
 end
 
 #############################################################
