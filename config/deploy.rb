@@ -198,7 +198,7 @@ namespace :maintenance do
     run "cd #{current_path} && bundle exec rails runner 'Migrator.enqueue' -e #{rails_env}"
   end
   task :migrate_metadata, roles: :app do
-    command = "require 'curate/migration_services/runner'; Curate::MigrationServices.run(container_namespace: 'Curate::MigrationServices::MigrationContainers::MetadataNormalization');"
+    command = "Curate::MigrationServices.enqueue(migration_container_module_name: 'MetadataNormalization')"
     run "cd #{current_path} && bundle exec rails runner -e #{rails_env} \"#{command}\""
   end
 end
