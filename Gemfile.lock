@@ -14,8 +14,10 @@ GIT
       rsolr
       rubydora (~> 1.7.4)
 
-PATH
-  remote: ../curate
+GIT
+  remote: git://github.com/ndlib/curate.git
+  revision: 7cf6e8744d99a92d4da8e669cc0b656e1c00412d
+  branch: update-article-metadata
   specs:
     curate (0.6.6)
       active_attr
