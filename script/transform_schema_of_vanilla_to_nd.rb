@@ -3,7 +3,7 @@ module TransformSchemaOfVanillaToNd
   def call
     [
       "ALTER TABLE `users` ADD COLUMN `username` varchar(255);",
-      "CREATE INDEX users_username ON users (name) USING BTREE;",
+      "CREATE INDEX users_username ON users (username) USING BTREE;",
       "UPDATE `users` SET `username` = 'cdeluca1' WHERE `email` = 'cdeluca1@nd.edu'",
       "UPDATE `users` SET `username` = 'jfriesen' WHERE `email` = 'jeremy.n.friesen@gmail.com'"
     ].each do |sql_command|
