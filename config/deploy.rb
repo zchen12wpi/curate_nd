@@ -202,7 +202,7 @@ namespace :maintenance do
   end
 
   task :vanilla_to_nd_schema, :roles => :app do
-    run "cd #{current_path} && bundle exec rails runner -e #{rails_env} ./script/transform_schema_of_vanilla_to_nd.rb"
+    run "cd #{current_path} && bundle exec rails runner -e #{rails_env} script/transform_schema_of_vanilla_to_nd.rb"
   end
 end
 
