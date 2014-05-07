@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   def self.search(query = nil)
     if query.to_s.strip.present?
       term = "#{query.to_s.upcase}%"
-      where("UPPER(email) LIKE :term OR UPPER(display_name) LIKE :term OR UPPER(username) LIKE :term", {term: term})
+      where("UPPER(email) LIKE :term OR UPPER(name) LIKE :term OR UPPER(username) LIKE :term", {term: term})
     else
       all
     end.order(:username)
