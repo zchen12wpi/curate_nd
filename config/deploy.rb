@@ -28,7 +28,6 @@ require 'bundler/capistrano'
 #    set :bundle_without,  [:development, :test]
 #    set :bundle_cmd,      "bundle" # e.g. "/opt/ruby/bin/bundle"
 #    set :bundle_roles,    #{role_default} # e.g. [:app, :batch]
-
 #############################################################
 #  Settings
 #############################################################
@@ -251,6 +250,15 @@ RAILS_ROOT=#{current_path}
     run_puppet(:config => 'worker')
   end
 
+  desc "Have all new requests to be redirected to a 503 page"
+  task :show_maintenance, :roles => :web do
+    run "touch #{shared_path}/system/maintenance"
+  end
+
+  desc "Allow requests to be handled as usual"
+  task :hide_maintenance, :roles => :web do
+    run "rm -f #{shared_path}/system/maintenance"
+  end
 end
 
 #############################################################
@@ -304,7 +312,7 @@ task :pre_production do
   set :shared_directories,  %w(log)
   set :shared_files, %w()
   set :src_solr_confdir, 'solr_conf/conf'
-  set :dest_solr_confdir, '/global/data/solr/pre_production/conf'
+  set :dest_solr_confdir, '/global/data/solr/pre_production/curate/conf'
   set :solr_url_reload, 'http://solr41pprd.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
@@ -327,10 +335,11 @@ task :production do
     set :user,      'app'
     set :domain,    fetch(:host, 'curatesvrprod')
     set :bundle_without,  [:development, :test, :debug]
+
     set :shared_directories,  %w(log)
     set :shared_files, %w()
     set :src_solr_confdir, 'solr_conf/conf'
-    set :dest_solr_confdir, '/global/data/solr/production/conf'
+    set :dest_solr_confdir, '/global/data/solr/production/curate/conf'
     set :solr_url_reload, 'http://solr41prod.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
 
