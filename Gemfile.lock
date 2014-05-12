@@ -1,22 +1,6 @@
 GIT
-  remote: git://github.com/jeremyf/active_fedora.git
-  revision: ac0b0eb8f5c1545024b34682d6626fef9a584689
-  branch: fixing-rdf-datastream-encoding
-  specs:
-    active-fedora (6.7.7)
-      activesupport (>= 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf (~> 1.1.1.1)
-      rdf-rdfxml (= 1.0.1)
-      rsolr
-      rubydora (~> 1.7.4)
-
-GIT
   remote: git://github.com/ndlib/curate.git
-  revision: b00c28b1acd253498312a13b14f452e15a949401
+  revision: 92800fb1c58d40641610597363e10ddad68c7e3d
   branch: update-article-metadata
   specs:
     curate (0.6.6)
@@ -33,7 +17,7 @@ GIT
       httparty
       hydra-batch-edit (~> 1.1.1)
       hydra-collections (~> 1.3.0)
-      hydra-derivatives (>= 0.0.7)
+      hydra-derivatives (~> 0.0.7)
       hydra-file_characterization (>= 0.2.3)
       hydra-remote_identifier (~> 0.6)
       mini_magick
@@ -57,6 +41,16 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active-fedora (6.7.7)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 3.0.0)
+      rdf (~> 1.1.1.1)
+      rdf-rdfxml (= 1.0.1)
+      rsolr
+      rubydora (~> 1.7.4)
     active_attr (0.8.3)
       activemodel (>= 3.0.2, < 4.2)
       activesupport (>= 3.0.2, < 4.2)
@@ -610,7 +604,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active-fedora!
   addressable (~> 2.3.5)
   better_errors
   binding_of_caller

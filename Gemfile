@@ -6,7 +6,7 @@ group :default do
   gem 'mysql2'
   gem 'curate', github: 'ndlib/curate', branch: 'update-article-metadata'
   # gem 'curate', path: '../curate'
-  gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
+  # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
