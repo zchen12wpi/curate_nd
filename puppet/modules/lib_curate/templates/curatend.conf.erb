@@ -39,8 +39,17 @@ server {
     try_files $uri @app;
 
     location @app {
+        internal;
+        # Maintenance mode if file is present
+        # unless request has the header X-Test set to something, e.g. "on"
         if ( -f /home/app/curatend/shared/system/maintenance ) {
-          return 503;
+            set $maintenance "1";
+        }
+        if ( $http_x_test ) {
+            set $maintenance "";
+        }
+        if ( $maintenance ) {
+            return 503;
         }
 
         # proxy_set_header Host $http_host;
