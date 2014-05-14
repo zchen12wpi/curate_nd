@@ -11,9 +11,18 @@ Hydra::RemoteIdentifier.configure do |config|
       map.set_identifier {|o,value| o.identifier = value; o.save }
     end
 
-    doi.register(Article, Dataset, Image, Document) do |map|
+    doi.register(Dataset, Image, Document) do |map|
       map.target {|obj| Curate.permanent_url_for(obj) }
       map.creator {|obj| Array.wrap(obj.contributor).collect(&:to_s).join(", ") }
+      map.title :title
+      map.publisher {|o| Array.wrap(o.publisher).join("; ")}
+      map.publicationyear {|o| o.date_uploaded.year }
+      map.set_identifier {|o,value| o.identifier = value; o.save }
+    end
+
+    doi.register(Article) do |map|
+      map.target {|obj| Curate.permanent_url_for(obj) }
+      map.creator {|obj| Array.wrap(obj.creator).collect(&:to_s).join(", ") }
       map.title :title
       map.publisher {|o| Array.wrap(o.publisher).join("; ")}
       map.publicationyear {|o| o.date_uploaded.year }
