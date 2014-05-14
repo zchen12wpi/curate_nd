@@ -204,6 +204,11 @@ namespace :maintenance do
   task :vanilla_to_nd_schema, :roles => :app do
     run "cd #{current_path} && bundle exec rails runner -e #{rails_env} script/transform_schema_of_vanilla_to_nd.rb"
   end
+
+  task :update_profile_section_to_open_access, :roles => :app do
+    run "cd #{current_path} && bundle exec rails runner -e #{rails_env} script/update_profile_section_to_open_access.rb"
+  end
+
 end
 
 set(:secret_repo_name) {
