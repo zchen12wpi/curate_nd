@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: b96751c2d043c850f20131dde50f3d01391fcbe9
+  revision: cf15cdbe803a789d152dff42f575a3ebf685942f
   branch: update-article-metadata
   specs:
     curate (0.6.6)
@@ -335,7 +335,7 @@ GEM
     mimemagic (0.2.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitest (4.7.5)
     mono_logger (1.1.0)
     morphine (0.1.1)
@@ -356,8 +356,8 @@ GEM
       net-ssh (>= 2.6.5)
     noid (0.6.6)
       backports
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     nom-xml (0.5.1)
       activesupport
       i18n
