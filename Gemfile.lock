@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 0aae6fe207b72a02f6d78758cdbfc67546d388b0
+  revision: dfecee437faea014fb144bc605be56aa3e5e13e1
   branch: update-article-metadata
   specs:
     curate (0.6.6)
