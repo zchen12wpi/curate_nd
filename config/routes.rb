@@ -35,5 +35,6 @@ CurateNd::Application.routes.draw do
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }, skip: :masquerades
 
   get 'about', to: 'static_pages#about'
+  get 'beta',  to: 'static_pages#beta'
 
 end
