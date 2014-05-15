@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 650f7dd1782e3e71f18fb39dbbf84f9c72986b96
+  revision: 0aae6fe207b72a02f6d78758cdbfc67546d388b0
   branch: update-article-metadata
   specs:
     curate (0.6.6)
@@ -230,7 +230,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.3)
-    font-awesome-rails (4.0.3.2)
+    font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
