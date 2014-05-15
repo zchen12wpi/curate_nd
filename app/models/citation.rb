@@ -46,7 +46,7 @@ class Citation
   end
 
   def given_name_in_apa(name)
-    initials_arr = Array.wrap(name).split(" ").collect {|x| x.first}
+    initials_arr = name.to_s.split(" ").collect {|x| x.first}
     initials = ""
     initials_arr.each do |initial|
       initials << initial + "."
