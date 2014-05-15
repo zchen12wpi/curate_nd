@@ -4,11 +4,14 @@ require 'curation_concern/model'
 require 'active_fedora/registered_attributes'
 
 class SeniorThesis < ActiveFedora::Base
+  include ActiveFedora::RegisteredAttributes
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
+  include CurationConcern::WithLinkedResources
+  include CurationConcern::WithLinkedContributors
+  include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
   include CurationConcern::WithEditors
-  include ActiveFedora::RegisteredAttributes
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"
