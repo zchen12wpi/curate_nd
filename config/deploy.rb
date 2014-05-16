@@ -177,7 +177,7 @@ namespace :solr do
     require 'uri'
     solr_core_url = YAML.load(config).fetch(rails_env).fetch('url')
     uri = URI.parse(solr_core_url)
-    solr_url_reload = "#{uri.scheme}://#{uri.host}/solr/admin/cores\?action=RELOAD\&core=curate"
+    solr_url_reload = "#{uri.scheme}://#{uri.host}:#{uri.port}/solr/admin/cores\?action=RELOAD\&core=curate"
     run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
     run "curl #{solr_url_reload}"
   end
