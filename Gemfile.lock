@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: dfecee437faea014fb144bc605be56aa3e5e13e1
+  revision: 1225c76d4c520f82bc5c706a58a241edba11d63e
   branch: update-article-metadata
   specs:
     curate (0.6.6)
@@ -423,7 +423,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
-    rake (10.3.1)
+    rake (10.3.2)
     rdf (1.1.1.1)
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
