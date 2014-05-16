@@ -172,10 +172,15 @@ end
 #########################
 
 namespace :solr do
-    task :configure do
-        run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
-        run "curl #{solr_url_reload}"
-    end
+  task :configure do
+    config = capture("cat #{current_path}/config/solr.yml")
+    require 'uri'
+    solr_core_url = YAML.load(config).fetch(rails_env).fetch('url')
+    uri = URI.parse(solr_core_uri)
+    solr_url_reload = "#{uri.scheme}://#{uri.host}/solr/admin/cores\?action=RELOAD\&core=curate"
+    run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
+    run "curl #{solr_url_reload}"
+  end
 end
 
 
@@ -318,7 +323,6 @@ task :pre_production do
   set :shared_files, %w()
   set :src_solr_confdir, 'solr_conf/conf'
   set :dest_solr_confdir, '/global/data/solr/pre_production/curate/conf'
-  set :solr_url_reload, 'http://solr41pprd.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
@@ -345,7 +349,6 @@ task :production do
     set :shared_files, %w()
     set :src_solr_confdir, 'solr_conf/conf'
     set :dest_solr_confdir, '/global/data/solr/production/curate/conf'
-    set :solr_url_reload, 'http://solr41prod.library.nd.edu:8080/solr/admin/cores\?action=RELOAD\&core=curate'
 
 
     default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
