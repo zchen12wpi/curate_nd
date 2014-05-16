@@ -4,10 +4,14 @@ require 'curation_concern/model'
 require 'active_fedora/registered_attributes'
 
 class SeniorThesis < ActiveFedora::Base
+  include ActiveFedora::RegisteredAttributes
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
+  include CurationConcern::WithLinkedResources
+  include CurationConcern::WithLinkedContributors
+  include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
-  include ActiveFedora::RegisteredAttributes
+  include CurationConcern::WithEditors
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"
@@ -24,7 +28,7 @@ class SeniorThesis < ActiveFedora::Base
     hint: "Enter your preferred name",
     writer: :parse_person_names,
     reader: :parse_person_names,
-    validates: { presence: { message: "You must have an author."} }
+    validates: { multi_value_presence: { message: "You must have an author."} }
   attribute :description,
     label: "Abstract or Summary of Senior Thesis",
     datastream: :descMetadata, multiple: false

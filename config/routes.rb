@@ -4,7 +4,7 @@ CurateNd::Application.routes.draw do
 
   root 'catalog#index'
 
-  curate_for containers: [:senior_theses, :datasets, :articles, :images, :documents]
+  curate_for
 
   namespace :admin do
     constraints CurateND::AdminConstraint do
@@ -12,7 +12,6 @@ CurateNd::Application.routes.draw do
 
       mount Resque::Server, :at => "queues"
       resources :announcements
-      resources :user_whitelists
       resources :accounts, only: [:show, :index] do
         collection { get :start_masquerading }
       end
