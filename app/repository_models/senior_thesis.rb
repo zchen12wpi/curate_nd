@@ -7,6 +7,9 @@ class SeniorThesis < ActiveFedora::Base
   include ActiveFedora::RegisteredAttributes
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
+  include CurationConcern::WithLinkedResources
+  include CurationConcern::WithLinkedContributors
+  include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
   include CurationConcern::WithEditors
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
