@@ -340,7 +340,7 @@ task :production do
     set :user,      'app'
     set :domain,    fetch(:host, 'curatesvrprod')
     set :bundle_without,  [:development, :test, :debug]
-    
+
     set :shared_directories,  %w(log)
     set :shared_files, %w()
     set :src_solr_confdir, 'solr_conf/conf'

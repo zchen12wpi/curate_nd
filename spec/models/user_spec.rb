@@ -5,6 +5,9 @@ describe User do
   context '.search' do
     subject { described_class }
     its(:search) { should be_kind_of ActiveRecord::Relation }
+    it 'should create a valid query' do
+      User.search('h').count
+    end
   end
 
   it 'should set agree to terms of service' do
