@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c0e40aab5a0b49f0e062d2324632ec97fb5747d5
-  branch: update-article-metadata
+  revision: 9a7323cfc9aff38e109f43839da75190e23414d4
+  branch: curate-nd-beta
   specs:
     curate (0.6.6)
       active_attr
