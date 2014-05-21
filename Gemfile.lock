@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 9a7323cfc9aff38e109f43839da75190e23414d4
+  revision: c5c078db2ee853af53156677932a672ea4b7e936
+  ref: c5c078db2ee853af53156677932a672ea4b7e936
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -127,7 +128,7 @@ GEM
       ruby-box
       sass-rails
       skydrive
-    browser (0.4.1)
+    browser (0.5.0)
     builder (3.1.4)
     byebug (2.7.0)
       columnize (~> 0.3)
