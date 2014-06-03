@@ -1,6 +1,7 @@
 Curate.configure do |config|
   # Injected via `rails g curate:work SeniorThesis`
   config.register_curation_concern :senior_thesis
+  config.register_curation_concern :finding_aid
   config.register_curation_concern :dataset
   config.register_curation_concern :article
   config.register_curation_concern :image
