@@ -7,7 +7,4 @@ class CurationConcern::FindingAidsController < CurationConcern::GenericWorksCont
     super
   end
 
-  def setup_form
-    true
-  end
 end
