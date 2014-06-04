@@ -1,5 +1,3 @@
-# Generated via
-#  `rails generate curate:work SeniorThesis`
 require 'spec_helper'
 
 describe CurationConcern::FindingAidsController do

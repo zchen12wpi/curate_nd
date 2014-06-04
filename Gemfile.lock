@@ -623,7 +623,7 @@ DEPENDENCIES
   devise-guests (~> 0.3)
   devise_cas_authenticatable
   devise_masquerade
-  factory_girl_rails
+  factory_girl_rails (~> 4.2.0)
   jettywrapper
   jquery-rails
   method_locator
@@ -637,8 +637,8 @@ DEPENDENCIES
   rails_best_practices
   rake
   resque-pool
-  rspec-html-matchers
-  rspec-rails
+  rspec-html-matchers (~> 0.4)
+  rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0)
   sentry-raven
   sextant
