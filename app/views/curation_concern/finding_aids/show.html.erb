@@ -6,7 +6,7 @@
 <%= render 'attributes', curation_concern: curation_concern %>
 
 <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
-<%# NOTE: SeniorThesis doesn't implment related works or related resources %>
+<%# NOTE: FindingAid doesn't implement related works or related resources %>
 
 <% content_for :second_row do %>
   <% if can?(:edit, curation_concern) %>
