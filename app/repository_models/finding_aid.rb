@@ -13,20 +13,20 @@ class FindingAid < ActiveFedora::Base
   has_metadata "descMetadata", type: FindingAidRdfDatastream, control_group: 'M'
 
   class_attribute :human_readable_short_description
-  self.human_readable_short_description = "Deposit a EAD FindingAid."
+  self.human_readable_short_description = "Deposit a EAD Finding Aid."
 
   attribute :title,
     datastream: :descMetadata, multiple: false,
-    label: "Title of your FindingAid",
-    validates: { presence: { message: 'Your FindingAid must have a title.' } }
+    label: "Title of your Finding Aid",
+    validates: { presence: { message: 'Your Finding Aid must have a title.' } }
   attribute :creator, datastream: :descMetadata, multiple: true, validates: { multi_value_presence: true }
   attribute :contributor,
     datastream: :descMetadata, multiple: true,
     label: "Contributing Author(s)"
   attribute :abstract,
-    label: "Abstract or Summary of the FindingAid",
+    label: "Abstract or Summary of the Finding Aid",
     datastream: :descMetadata, multiple: false,
-    validates: { presence: { message: 'Your FindngAid must have an abstract.' } }
+    validates: { presence: { message: 'Your Finding Aid must have an abstract.' } }
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
