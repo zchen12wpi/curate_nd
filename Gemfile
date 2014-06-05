@@ -52,9 +52,9 @@ gem 'uglifier', '>= 1.0.3'
 group :test do
   gem 'capybara', "~> 2.1"
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'rspec-html-matchers'
-  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~>4.2.0'
+  gem 'rspec-html-matchers', '~>0.4'
+  gem 'rspec-rails', '~>2.14.0'
   gem 'vcr'
   gem 'webmock'
   gem 'timecop'
