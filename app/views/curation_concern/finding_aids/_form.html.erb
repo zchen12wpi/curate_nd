@@ -10,10 +10,11 @@
 
     <%= container.pane("Required Information", class: 'required') do %>
       <fieldset class="required">
-        <legend>This is what we need to know about your FindingAid</legend>
+        <legend>This is what we need to know about your Finding Aid</legend>
         <%= f.input :title, input_html: { class: 'input-xxlarge'}, required: true %>
         <%= f.input :creator, input_html: { class: 'input-xlarge', placeholder: 'George Washington' }, required: true %>
         <%= f.input :abstract, input_html: { class: 'input-xxxlarge', rows: '9' }, as: :text, required: true %>
+        <%= f.hidden_field :visibility, value: 'open' %>
       </fieldset>
     <% end %>
 
@@ -22,7 +23,6 @@
       <fieldset>
         <legend>
           Manage your <%= curation_concern.human_readable_type %> files
-          <small>A PDF copy is preferred.</small>
         </legend>
         <%= f.input :files,
                     as: :file,
