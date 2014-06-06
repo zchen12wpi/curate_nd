@@ -1,6 +1,7 @@
 class lib_curate::standalone {
 
    # lookup data we need to build this node
+   $env = hiera('env')
    $fedora_admin_mysql = hiera('fedora_admin_mysql')
    $fedora_db_name = hiera('fedora_db_name')
    $fedora_passwd = hiera('fedora_passwd')
@@ -40,6 +41,7 @@ class lib_curate::standalone {
     "libwmf-lite",
     "libxml2-devel",
     "libxslt-devel",
+    "noids",
     "readline-devel",
     "mysql-devel",
     "sgml-common",
@@ -142,4 +144,12 @@ class lib_curate::standalone {
      class { 'lib_resque_poold':
 	require => Class["lib_ruby"],
      }
+
+     # Config file for noids server
+     file { '/opt/noids/config.ini':
+	ensure => present,
+	replace => true,
+	source => "puppet:///modules/lib_curate/config.ini.${env}",
+	notify => Service['noids'],
+      }
 }
