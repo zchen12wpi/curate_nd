@@ -150,6 +150,5 @@ class lib_curate::standalone {
 	ensure => present,
 	replace => true,
 	source => "puppet:///modules/lib_curate/config.ini.${env}",
-	notify => Service['noids'],
       }
 }
