@@ -1,0 +1,13 @@
+<% if curation_concern.persisted? && curation_concern.generic_files.present? %>
+  <div class="row">
+    <div class="span12">
+      <fieldset id="representative-image">
+        <legend>
+          Assign an EAD
+        </legend>
+        <p>Select the EAD file which should be displayed for this <%= curation_concern.human_readable_type %>.</p>
+        <%= f.select( :representative, Hash[ curation_concern.generic_files.map {|file| [file.title.first, file.pid] } ] ) %>
+      </fieldset>
+    </div>
+  </div>
+<% end %>
