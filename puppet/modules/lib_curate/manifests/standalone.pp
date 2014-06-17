@@ -127,7 +127,7 @@ class lib_curate::standalone {
      }
 
      file { '/etc/nginx/conf.d/curatend.conf':
-       content => template('lib_curate/curatend.conf.erb'),
+       content => template('lib_curate/curatend.conf.staging.erb'),
        owner => 'root',
        group => 'root',
        mode => '644',
