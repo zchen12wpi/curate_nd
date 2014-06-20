@@ -20,7 +20,8 @@ describe 'create DOIs feature', FeatureSupport.options do
           FactoryGirl.attributes_for(
             "public_#{curation_concern_class_name.underscore}",
             doi_assignment_strategy: :mint_doi,
-            contributor: ['Donald Duck'],
+            creator: ['A Special Creator'],
+            contributor: [],
             publisher: ['University of Notre Dame']
           )
         }
