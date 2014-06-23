@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/harai/kaminari.git
+  revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
+  branch: route_prefix_prototype
+  specs:
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/ndlib/curate.git
   revision: 5d2edc5d2d65115c97a719107d19cac8df123ac3
   ref: 5d2edc5d2d65115c97a719107d19cac8df123ac3
@@ -311,9 +320,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.16.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     kgio (2.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
@@ -626,6 +632,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.0)
   jettywrapper
   jquery-rails
+  kaminari!
   method_locator
   morphine
   mysql2
