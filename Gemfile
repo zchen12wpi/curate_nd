@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 group :default do
   gem 'mysql2'
   gem 'curate', github: 'ndlib/curate', branch: 'curate-nd-beta', ref: '5d2edc5d2d65115c97a719107d19cac8df123ac3'
+  gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'curate', path: '../curate'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
   gem 'nokogiri', "~>1.6.0"
