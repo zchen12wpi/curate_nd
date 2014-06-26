@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 5d2edc5d2d65115c97a719107d19cac8df123ac3
-  ref: 5d2edc5d2d65115c97a719107d19cac8df123ac3
+  revision: 6c5946f58cb30e820c2a41ea64bcfe041923a914
+  ref: 6c5946f58cb30e820c2a41ea64bcfe041923a914
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -51,7 +51,7 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    active-fedora (6.7.7)
+    active-fedora (6.7.8)
       activesupport (>= 3.0.0)
       deprecation
       mediashelf-loggable
@@ -127,7 +127,7 @@ GEM
       activesupport
       rack
     breadcrumbs_on_rails (2.3.0)
-    browse-everything (0.4.4)
+    browse-everything (0.4.5)
       bootstrap-sass
       dropbox-sdk (>= 1.6.2)
       font-awesome-rails
@@ -304,7 +304,7 @@ GEM
       hydra-access-controls (= 6.4.2)
       hydra-core (= 6.4.2)
       rails (>= 3.2.6)
-    hydra-remote_identifier (0.6.4)
+    hydra-remote_identifier (0.6.6)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
     i18n (0.6.9)
@@ -562,7 +562,7 @@ GEM
       resque-pool (= 0.3.0)
       zipruby (= 0.3.6)
     test_after_commit (0.2.1)
-    therubyracer (0.12.0)
+    therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
@@ -633,6 +633,7 @@ DEPENDENCIES
   jettywrapper
   jquery-rails
   kaminari!
+  libv8 (= 3.16.14.3)
   method_locator
   morphine
   mysql2
@@ -651,7 +652,7 @@ DEPENDENCIES
   sextant
   simplecov
   test_after_commit
-  therubyracer
+  therubyracer (= 0.12.1)
   timecop
   uglifier (>= 1.0.3)
   unicode
