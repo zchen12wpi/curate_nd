@@ -10,7 +10,7 @@ class WorkTypePermissions
       case open_to
         when 'all' then true
         when 'nobody' then false
-        else @user.groups.include?( group_id )
+        else @user.groups.include?( open_to )
       end
     rescue KeyError
       false
