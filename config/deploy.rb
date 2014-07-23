@@ -1,4 +1,4 @@
-# List all tasks from RAILS_ROOT using: cap -T
+:quiet# List all tasks from RAILS_ROOT using: cap -T
 #
 # NOTE: The SCM command expects to be at the same path on both the local and
 # remote machines. The default git path is: '/shared/git/bin/git'.
