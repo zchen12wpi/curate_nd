@@ -154,5 +154,5 @@ class lib_curate::standalone {
       }
 
      # set logrotate for application and unicorn log files
-     class { 'lib_logrotate::app_log': postrotate => "pkill -USR1 -u app -f 'unicorn master' || true": }
+     class { 'lib_logrotate::app_log': postrotate => "pkill -USR1 -u app -f 'unicorn master' || true" }
 }
