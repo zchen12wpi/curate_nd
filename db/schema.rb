@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118200932) do
+ActiveRecord::Schema.define(version: 20140729181625) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -100,6 +100,13 @@ ActiveRecord::Schema.define(version: 20131118200932) do
 
   add_index "domain_terms_local_authorities", ["domain_term_id", "local_authority_id"], name: "dtla_by_ids2", using: :btree
   add_index "domain_terms_local_authorities", ["local_authority_id", "domain_term_id"], name: "dtla_by_ids1", using: :btree
+
+  create_table "etd_vocabularies", force: true do |t|
+    t.string   "field_type"
+    t.string   "field_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
@@ -252,12 +259,6 @@ ActiveRecord::Schema.define(version: 20131118200932) do
   end
 
   add_index "trophies", ["user_id"], name: "index_trophies_on_user_id", using: :btree
-
-  create_table "user_whitelists", force: true do |t|
-    t.string "username"
-  end
-
-  add_index "user_whitelists", ["username"], name: "index_user_whitelists_on_username", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                default: "",    null: false
