@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 6c5946f58cb30e820c2a41ea64bcfe041923a914
-  ref: 6c5946f58cb30e820c2a41ea64bcfe041923a914
-  branch: curate-nd-beta
+  revision: 431fce39c07b66c073c558524a191cf3a3c1f58a
+  ref: 431fce39c07b66c073c558524a191cf3a3c1f58a
+  branch: ead-metadata
   specs:
     curate (0.6.6)
       active_attr
@@ -32,6 +32,7 @@ GIT
       hydra-remote_identifier (~> 0.6)
       mini_magick
       morphine
+      qa
       rails (~> 4.0.2)
       rails_autolink
       rubydora (~> 1.7.4)
@@ -61,7 +62,7 @@ GEM
       rdf-rdfxml (= 1.0.1)
       rsolr
       rubydora (~> 1.7.4)
-    active_attr (0.8.3)
+    active_attr (0.8.4)
       activemodel (>= 3.0.2, < 4.2)
       activesupport (>= 3.0.2, < 4.2)
     active_fedora-registered_attributes (0.2.1)
@@ -226,7 +227,7 @@ GEM
       json
     ensure_valid_encoding (0.5.3)
     equalizer (0.0.9)
-    equivalent-xml (0.4.3)
+    equivalent-xml (0.5.1)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -256,7 +257,7 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
-    google_drive (0.3.9)
+    google_drive (0.3.10)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
@@ -265,7 +266,7 @@ GEM
     hike (1.2.3)
     hooks (0.3.6)
       uber (~> 0.0.4)
-    httmultiparty (0.3.14)
+    httmultiparty (0.3.15)
       httparty (>= 0.7.3)
       mimemagic
       multipart-post
@@ -339,7 +340,7 @@ GEM
     method_locator (0.0.4)
     mime-types (1.25.1)
     mimemagic (0.2.1)
-    mini_magick (3.7.0)
+    mini_magick (3.8.0)
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (4.7.5)
@@ -369,7 +370,7 @@ GEM
       i18n
       nokogiri
     oauth (0.4.7)
-    oauth2 (0.9.4)
+    oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
       multi_json (~> 1.3)
@@ -395,6 +396,12 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.4)
+    qa (0.3.0)
+      activerecord-import
+      deprecation
+      nokogiri (~> 1.6.0)
+      rails (>= 3.2.13, < 5.0)
+      rest-client
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -436,6 +443,8 @@ GEM
       rdf-xsd (>= 1.0)
     rdf-xsd (1.1.1)
       rdf (~> 1.1)
+    rdoc (4.1.1)
+      json (~> 1.4)
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
@@ -451,8 +460,9 @@ GEM
       rake
       resque (~> 1.20)
       trollop (~> 1.16)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
     retriable (1.4.1)
     rsolr (1.0.10)
       builder (>= 2.1.2)
@@ -482,7 +492,7 @@ GEM
     ruby-progressbar (1.2.0)
     rubycas-client (2.3.9)
       activesupport
-    rubydora (1.7.4)
+    rubydora (1.7.5)
       activemodel
       activesupport
       deprecation
@@ -574,7 +584,7 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     tzinfo (0.3.39)
-    uber (0.0.6)
+    uber (0.0.7)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -590,18 +600,18 @@ GEM
     vcr (2.7.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
-    virtus (1.0.2)
+    virtus (1.0.3)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
-      descendants_tracker (~> 0.0.3)
-      equalizer (~> 0.0.9)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.15.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
     websocket-driver (0.3.0)
-    xml-simple (1.1.3)
+    xml-simple (1.1.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
     zipruby (0.3.6)
