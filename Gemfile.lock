@@ -39,6 +39,14 @@ GIT
       sufia-models (~> 3.4.0)
       virtus
 
+GIT
+  remote: git://github.com/ndlib/noids_client
+  revision: 7081fab70968d7c47ca3d1db8a74553082517507
+  specs:
+    noids_client (0.0.1)
+      json (~> 1.8)
+      rest-client (~> 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -641,6 +649,7 @@ DEPENDENCIES
   mysql2
   namae
   net-ldap
+  noids_client!
   nokogiri (~> 1.6.0)
   poltergeist
   quiet_assets
