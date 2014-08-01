@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: ceb38cd037ea93400dde5d67146c03d35aa4941f
-  ref: ceb38cd037ea93400dde5d67146c03d35aa4941f
+  revision: 352bece2bb87176c8813865fad45ddc25d4de04e
+  ref: 352bece2bb87176c8813865fad45ddc25d4de04e
   branch: ead-metadata
   specs:
     curate (0.6.6)
@@ -128,7 +128,7 @@ GEM
       activesupport
       rack
     breadcrumbs_on_rails (2.3.0)
-    browse-everything (0.5.1)
+    browse-everything (0.6.1)
       bootstrap-sass
       dropbox-sdk (>= 1.6.2)
       font-awesome-rails
@@ -583,7 +583,7 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     tzinfo (0.3.40)
-    uber (0.0.7)
+    uber (0.0.8)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
