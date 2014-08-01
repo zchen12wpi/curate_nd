@@ -147,7 +147,7 @@ class lib_curate::standalone {
 
      # Make unicorn a service ( unicorn.rb is deployed with the ruby stack
      class { 'lib_unicornd':
-	reguire => Class["lib_resque_poold"],
+	require => Class["lib_resque_poold"],
      }
 
      # Config file for noids server
