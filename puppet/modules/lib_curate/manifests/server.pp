@@ -4,6 +4,7 @@ class lib_curate::server {
    # lookup data we need to build this node
    $ssl_certificate = hiera('ssl_certificate')
    $ssl_certificate_key = hiera('ssl_certificate_key')
+   $env = hiera('env')
 
 
    # Set up the Common Pacakges needed for CurateND
