@@ -14,6 +14,6 @@
 User = rails
 Password = R4ils_d9t9
 Host = dbprod.library.nd.edu
-#Port = 3306
+Port = 3306
 Database = noids_prod
 
