@@ -14,5 +14,5 @@
 User = rails
 Password = R4ils_d9t9
 Host = dbpprd.library.nd.edu
-#Port = 3306
+Port = 3306
 Database = curate_pprd
