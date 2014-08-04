@@ -27,6 +27,7 @@ class lib_curate::server {
     "libxml2-devel",
     "libxslt-devel",
     "readline-devel",
+    "noids",
     "mysql-devel",
     "sgml-common",
     "htop",
@@ -76,5 +77,14 @@ class lib_curate::server {
        require => File['/etc/nginx/conf.d/curatend.conf'],
        notify => Service['nginx'],
      }
+
+     # Config file for noids server
+     file { '/opt/noids/config.ini':
+	ensure => present,
+	replace => true,
+	source => "puppet:///modules/lib_curate/config.ini.${env}",
+	require => Package["noids"],
+      }
+
 
 }

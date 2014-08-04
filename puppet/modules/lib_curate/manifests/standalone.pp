@@ -41,7 +41,6 @@ class lib_curate::standalone {
     "libwmf-lite",
     "libxml2-devel",
     "libxslt-devel",
-    "noids",
     "readline-devel",
     "mysql-devel",
     "sgml-common",
@@ -51,6 +50,10 @@ class lib_curate::standalone {
 	package { $packagelist:
         	ensure => installed
 	}
+
+     package { 'noids':
+	ensure => absent,
+     }
 
      # Install FITS
      class { 'lib_fits':
