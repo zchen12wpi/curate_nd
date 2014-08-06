@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 898514eb5ae1b0e9cbcef113676f1d616d4c0b22
-  ref: 898514eb5ae1b0e9cbcef113676f1d616d4c0b22
+  revision: f7b823b07fdd8b52049961b1c997d00df2a34c6a
+  ref: f7b823b07fdd8b52049961b1c997d00df2a34c6a
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -127,7 +127,7 @@ GEM
       activesupport
       rack
     breadcrumbs_on_rails (2.3.0)
-    browse-everything (0.6.1)
+    browse-everything (0.6.2)
       bootstrap-sass
       dropbox-sdk (>= 1.6.2)
       font-awesome-rails
