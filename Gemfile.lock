@@ -41,6 +41,7 @@ GIT
       hydra-remote_identifier (~> 0.6, >= 0.6.7)
       mini_magick (~> 3.8)
       morphine
+      qa
       rails (~> 4.0.2)
       rails_autolink
       rdiscount (~> 2.1.7.1)
@@ -451,6 +452,12 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    qa (0.3.0)
+      activerecord-import
+      deprecation
+      nokogiri (~> 1.6.0)
+      rails (>= 3.2.13, < 5.0)
+      rest-client
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
