@@ -16,12 +16,6 @@ class Ability
         #Edit can be controlled by access permissions settings for an object
         cannot :create, work_type.constantize
       end
-      #Access is controlled by etd_manager_permission.yml
-      #Users listed the file can add, delete or modify etd vocabulary
-      @etd_vocabulary_permissions ||= EtdVocabularyPermissions.new(current_user)
-      if !@etd_vocabulary_permissions.can_manage_etd?
-        cannot [:manage], EtdVocabulary
-      end
     end
     # Limits deleting objects to a the admin user
     #
