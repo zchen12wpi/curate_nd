@@ -15,6 +15,20 @@ Sufia.config do |config|
 
   config.noid_template = '.reeddeeddedk'
 
+  # try to load a noids server configuration
+  # but it is okay if it doesn't exist
+  config.noids = begin
+                   noids_file = YAML.load_file(Rails.root.join("config/noids.yml")).fetch(Rails.env)
+                   {
+                     server: noids_file.fetch("server"),
+                     pool: noids_file.fetch("pool")
+                   }
+                 rescue Errno::ENOENT, KeyError, NoMethodError
+                   # file doesn't exist
+                   # or yaml file does not define the current environment
+                   nil
+                 end
+
   config.max_days_between_audits = 7
 
   config.cc_licenses = {
