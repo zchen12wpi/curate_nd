@@ -29,6 +29,7 @@ group :default do
   gem 'unicorn', '~> 4.0'
   gem 'net-ldap'
   gem 'custom_configuration'
+  gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
 end
 
 # Hack to work around some bundler strangeness
