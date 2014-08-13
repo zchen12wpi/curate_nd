@@ -4,6 +4,10 @@
 #
 
 # omit development section to use default minter
+#
+#development:
+#  server: localhost:13001
+#  pool:   curate-nd
 
 # omit test section to use default minter
 
