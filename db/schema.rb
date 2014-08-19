@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20140819133854) do
   create_table "harbinger_messages", force: true do |t|
     t.string   "reporters"
     t.string   "state",             limit: 32
-    t.integer  "message_object_id"
+    t.string   "message_object_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -276,12 +276,6 @@ ActiveRecord::Schema.define(version: 20140819133854) do
   end
 
   add_index "trophies", ["user_id"], name: "index_trophies_on_user_id", using: :btree
-
-  create_table "user_whitelists", force: true do |t|
-    t.string "username"
-  end
-
-  add_index "user_whitelists", ["username"], name: "index_user_whitelists_on_username", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                default: "",    null: false
