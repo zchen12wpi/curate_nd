@@ -205,12 +205,7 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
-    debugger (1.6.2)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     decent_exposure (2.3.0)
     deprecation (0.1.0)
       activesupport
@@ -268,7 +263,9 @@ GEM
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    hashie (2.0.5)
+    harbinger (0.2.1)
+      kaminari (~> 0.14s)
+      rails (~> 4.0)
     highline (1.6.19)
     hike (1.2.3)
     hooks (0.3.6)
@@ -509,10 +506,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sentry-raven (0.6.0)
-      faraday (>= 0.7.6)
-      hashie (>= 1.1.0)
-      uuidtools
     sexp_processor (4.3.0)
     sextant (0.2.4)
       rails (>= 3.2)
@@ -633,13 +626,13 @@ DEPENDENCIES
   curate!
   custom_configuration
   database_cleaner
-  debugger (>= 1.4)
   decent_exposure
   devise (~> 3.0.3)
   devise-guests (~> 0.3)
   devise_cas_authenticatable
   devise_masquerade
   factory_girl_rails (~> 4.2.0)
+  harbinger (~> 0.2)
   jettywrapper
   jquery-rails
   kaminari!
@@ -659,7 +652,6 @@ DEPENDENCIES
   rspec-html-matchers (~> 0.4)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0)
-  sentry-raven
   sextant
   simplecov
   test_after_commit
