@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def exception_handler(exception)
+    Harbinger.call(reporters: [exception, current_user, request], channels: [:database, :logger])
+    super(exception)
+  end
+
 end

@@ -37,7 +37,3 @@ for f in $files_to_copy; do
 done
 echo "=-=-=-=-=-=-=-= copy secret_token.rb"
 cp $secret_repo/curate_nd/secret_token.rb config/initializers/secret_token.rb
-
-echo "=-=-=-=-=-=-=-= copy raven.rb"
-cp $secret_repo/curate_nd/raven.rb config/initializers/raven.rb
-
