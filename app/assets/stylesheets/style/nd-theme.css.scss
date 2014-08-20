@@ -45,3 +45,10 @@
   border-color:#C59B2B #A17515 #A17515 #C59B2B;
   color:$blue;
 }
+
+/* fix all icon buttons */
+.btn-primary {
+  [class^="icon-"], [class*=" icon-"],  {
+    background-image: url($iconWhiteSpritePath) !important;
+  }
+}
