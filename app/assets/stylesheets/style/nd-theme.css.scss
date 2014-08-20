@@ -45,3 +45,10 @@
   border-color:#C59B2B #A17515 #A17515 #C59B2B;
   color:$blue;
 }
+
+/* fix folder button */
+.btn {
+  .icon-folder-open {
+    background-image: url($iconWhiteSpritePath) !important;
+  }
+}
