@@ -47,7 +47,7 @@
 }
 
 /* fix all icon buttons */
-.btn {
+.btn-primary {
   [class^="icon-"], [class*=" icon-"],  {
     background-image: url($iconWhiteSpritePath) !important;
   }
