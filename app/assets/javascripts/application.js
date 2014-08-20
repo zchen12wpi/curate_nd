@@ -39,4 +39,9 @@ $(function(){
 
     $announcment.fadeOut(100);
   });
+
+  $("dt.attribute:contains('Date of birth:') + dd").remove();
+  $("dt.attribute:contains('Date of birth:')").remove();
+  $("dt.attribute:contains('Gender:') + dd").remove();
+  $("dt.attribute:contains('Gender:')").remove();
 });
