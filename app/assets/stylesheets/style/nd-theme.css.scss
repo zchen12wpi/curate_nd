@@ -46,9 +46,9 @@
   color:$blue;
 }
 
-/* fix folder button */
+/* fix all icon buttons */
 .btn {
-  .icon-folder-open {
+  [class^="icon-"], [class*=" icon-"],  {
     background-image: url($iconWhiteSpritePath) !important;
   }
 }
