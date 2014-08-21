@@ -22,7 +22,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  after_filter :store_location
+
+  def store_location
+    return true unless request.get?
+    return true if request.xhr?
+    return true if request.path =~ /\A\/users\//
+    session[:previous_url] = request.fullpath
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
   protected
+
   def exception_handler(exception)
     begin
       Harbinger.call(reporters: [exception, current_user, request], channels: [:database, :logger])
