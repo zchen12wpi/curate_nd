@@ -10,7 +10,7 @@ CurateNd::Application.routes.draw do
     constraints CurateND::AdminConstraint do
       get '/', to: 'base#index'
 
-      mount Harbinger::Engine, :at => 'harbinger'
+      mount Harbinger::Engine, at: 'harbinger'
       mount Resque::Server, :at => "queues"
       resources :announcements
       resources :accounts, only: [:show, :index] do
