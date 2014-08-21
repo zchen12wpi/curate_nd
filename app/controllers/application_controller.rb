@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # Adds a few additional behaviors into the application controller
-   include Blacklight::Controller
+  include Blacklight::Controller
   include CurateController
 
   # Please be sure to impelement current_user and user_session. Blacklight depends on
@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+  def exception_handler(exception)
+    begin
+      Harbinger.call(reporters: [exception, current_user, request], channels: [:database, :logger])
+    rescue StandardError => e
+      logger.error("Unable to notify Harbinger. #{e.class}: #{e}")
+    end
+    super(exception)
+  end
 end

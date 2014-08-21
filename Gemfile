@@ -30,6 +30,7 @@ group :default do
   gem 'net-ldap'
   gem 'custom_configuration'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
+  gem 'harbinger', '~> 0.2'
 end
 
 # Hack to work around some bundler strangeness
@@ -38,10 +39,6 @@ end
 # being listed in a `bundle list` command on the staging machine.
 # Explicitly require it here.
 gem 'addressable', '~> 2.3.5'
-
-group :pre_production, :production do
-  gem "sentry-raven"
-end
 
 group :headless do
   gem 'clamav'
@@ -69,7 +66,6 @@ group :debug do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
-  gem 'debugger', ">= 1.4"
   gem 'rails_best_practices'
   gem 'sextant'
   gem 'simplecov'

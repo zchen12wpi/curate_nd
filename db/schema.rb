@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118200932) do
+ActiveRecord::Schema.define(version: 20140819133854) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -113,6 +113,30 @@ ActiveRecord::Schema.define(version: 20131118200932) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "harbinger_message_elements", force: true do |t|
+    t.integer  "message_id"
+    t.string   "key"
+    t.text     "value",      limit: 2147483647
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "harbinger_message_elements", ["key"], name: "index_harbinger_message_elements_on_key", using: :btree
+  add_index "harbinger_message_elements", ["message_id", "key"], name: "index_harbinger_message_elements_on_message_id_and_key", using: :btree
+  add_index "harbinger_message_elements", ["message_id"], name: "index_harbinger_message_elements_on_message_id", using: :btree
+
+  create_table "harbinger_messages", force: true do |t|
+    t.string   "reporters"
+    t.string   "state",             limit: 32
+    t.string   "message_object_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "harbinger_messages", ["message_object_id"], name: "index_harbinger_messages_on_message_object_id", using: :btree
+  add_index "harbinger_messages", ["reporters"], name: "index_harbinger_messages_on_reporters", using: :btree
+  add_index "harbinger_messages", ["state"], name: "index_harbinger_messages_on_state", using: :btree
 
   create_table "help_requests", force: true do |t|
     t.string   "view_port"
@@ -252,12 +276,6 @@ ActiveRecord::Schema.define(version: 20131118200932) do
   end
 
   add_index "trophies", ["user_id"], name: "index_trophies_on_user_id", using: :btree
-
-  create_table "user_whitelists", force: true do |t|
-    t.string "username"
-  end
-
-  add_index "user_whitelists", ["username"], name: "index_user_whitelists_on_username", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                default: "",    null: false
