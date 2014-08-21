@@ -18,20 +18,23 @@ module Sufia
     def self.configure(new_settings)
       if new_settings
         # use the template in the pool instead of the configured one
-        @service = ::NoidsClient::Connection.new(new_settings[:server]).get_pool(new_settings[:pool])
-        @template = @service.template.split("+").first
+        @minter = NoidAdapter.new(new_settings)
+        @template = nil
       else
-        @service = nil
+        # Hack. Noid::Minter doesn't give us the template string directly.
+        # so, save it locally
         @template = Sufia.config.noid_template
+        @minter = ::Noid::Minter.new(template: @template)
       end
-      @minter = ::Noid::Minter.new(template: @template)
       @namespace = Sufia.config.id_namespace
     end
 
     configure(Sufia.config.noids)
 
     def self.noid_template
-      @template
+      # the RHS should only execute if we are using the NoidAdapter.
+      # see hack above
+      @template ||= @minter.template
     end
 
     def self.valid?(identifier)
@@ -50,8 +53,33 @@ module Sufia
     protected
 
     def self.next_id
-      id = @service ? @service.mint.first : @minter.mint
-      "#{@namespace}:#{id}"
+      "#{@namespace}:#{@minter.mint}"
+    end
+
+    # adapt NoidsClient connection to look like Noid::Minter
+    class NoidAdapter
+      def initialize(new_settings)
+        @server = new_settings[:server]
+        @pool = new_settings[:pool]
+      end
+
+      def mint
+        service.mint.first
+      end
+
+      def template
+        @template ||= service.template.split("+").first
+      end
+
+      def valid?(id)
+        ::Noid::Minter.new(template: template).valid?(id)
+      end
+
+      protected
+
+      def service
+        @service ||= ::NoidsClient::Connection.new(@server).get_pool(@pool)
+      end
     end
   end
 end
