@@ -44,4 +44,13 @@ $(function(){
   $("dt.attribute:contains('Date of birth:')").remove();
   $("dt.attribute:contains('Gender:') + dd").remove();
   $("dt.attribute:contains('Gender:')").remove();
+
+  $('table.attributes').ready(function(){
+    $('li.attribute.abstract').each(function(){
+      var str = $(this).html();
+      var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
+      var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+      $(this).html(replaced_text);
+    });
+  });
 });
