@@ -11,6 +11,32 @@ require "noids_client"
 #
 module Sufia
   module IdService
+    # adapt NoidsClient connection to look like Noid::Minter
+    class NoidAdapter
+      def initialize(new_settings)
+        @server = new_settings[:server]
+        @pool = new_settings[:pool]
+      end
+
+      def mint
+        service.mint.first
+      end
+
+      def template
+        @template ||= service.template.split("+").first
+      end
+
+      def valid?(id)
+        ::Noid::Minter.new(template: template).valid?(id)
+      end
+
+      protected
+
+      def service
+        @service ||= ::NoidsClient::Connection.new(@server).get_pool(@pool)
+      end
+    end
+
     # if new_settings is nil, use defaults. Otherwise
     # use :server and :pool keys
     #
