@@ -51,4 +51,21 @@
   [class^="icon-"], [class*=" icon-"],  {
     background-image: url($iconWhiteSpritePath) !important;
   }
+  .icon-folder-open:before,  {
+    background-image: url($iconWhiteSpritePath) !important;
+    background-position: -408px -120px;
+    width: 16px;
+    height: 16px;
+    content: " ";
+  }
+  .icon-folder-open,  {
+    background-image: none;
+    width: auto;
+    padding-left: 16px;
+  }
+}
+
+/* fix whitespace for abstract text on show pages. */
+li.attribute.abstract {
+  white-space: pre-line;
 }
