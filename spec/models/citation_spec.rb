@@ -66,7 +66,7 @@ describe Citation do
   }
 
   let(:curation_concern_with_no_doi){
-    @curation_concern = mock_model(SeniorThesis)
+    @curation_concern = FactoryGirl.build(:senior_thesis)
     @curation_concern.stub(:to_param).and_return("jq085h7459h")
     @curation_concern.stub(:title).and_return("This is a test title for generating test citation")
     @curation_concern.stub(:publisher).and_return(["University of Notre Dame"])
@@ -107,27 +107,27 @@ describe Citation do
   describe "to_apa" do
     it "should create citation text with the given data" do
       citation = Citation.new(curation_concern)
-      citation.to_s.should == expected_citation
+      expect(citation.to_s).to eq(expected_citation)
     end
 
     it "should create citation text with multiple publishers" do
       citation = Citation.new(curation_concern_with_multiple_publisher)
-      citation.to_s.should == expected_citation_when_multiple_publisher
+      expect(citation.to_s).to eq(expected_citation_when_multiple_publisher)
     end
 
     it "should create citation text with one author and adviser" do
       citation = Citation.new(curation_concern_when_one_author_and_adviser)
-      citation.to_s.should == expected_citation_when_one_author_and_adviser
+      expect(citation.to_s).to eq(expected_citation_when_one_author_and_adviser)
     end
 
     it "should create citation without created date" do
       citation = Citation.new(curation_concern_with_out_created_date)
-      citation.to_s.should == expected_citation_with_out_created_date
+      expect(citation.to_s).to eq(expected_citation_with_out_created_date)
     end
 
     it "should create citation with no doi" do
       citation = Citation.new(curation_concern_with_no_doi)
-      citation.to_s.should == expected_citation_with_no_doi
+      expect(citation.to_s).to eq(expected_citation_with_no_doi)
     end
 
     it "should not generate citation when no author" do

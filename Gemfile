@@ -50,15 +50,16 @@ gem 'sass-rails',   '~> 4.0'
 gem 'uglifier', '>= 1.0.3'
 
 group :test do
-  gem 'capybara', "~> 2.1"
+  gem 'capybara', "~> 2.4"
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~>4.2.0'
-  gem 'rspec-html-matchers', '~>0.4'
-  gem 'rspec-rails', '~>2.14.0'
+  gem 'rspec-html-matchers', '~>0.6'
+  gem 'rspec-rails', '~>3.0'
+  gem 'rspec-its', '~> 1.0'
   gem 'vcr'
   gem 'webmock'
   gem 'timecop'
-  gem 'poltergeist'
+  gem 'poltergeist', '~> 1.5'
   gem 'test_after_commit'
 end
 
