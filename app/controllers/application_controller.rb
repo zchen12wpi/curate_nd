@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   def store_location
     return true unless request.get?
     return true if request.xhr?
+    return true if request.path =~ /\A\/downloads\//
     return true if request.path =~ /\A\/users\//
     session[:previous_url] = request.fullpath
   end
