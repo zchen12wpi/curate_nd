@@ -7,8 +7,8 @@ describe "admin/announcements/index" do
   let(:announcements) {
     Kaminari.paginate_array(
       [
-        stub_model(Admin::Announcement,:message => "MyText"),
-        stub_model(Admin::Announcement,:message => "MyText")
+        FactoryGirl.build_stubbed(:admin_announcement, message: "MyText"),
+        FactoryGirl.build_stubbed(:admin_announcement, message: "MyText")
       ]
     ).page(1)
   }
