@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 136c52be25e1b99521b0195ce7337ad15ce8d184
-  ref: 136c52be25e1b99521b0195ce7337ad15ce8d184
+  revision: 31c11bb0d3d437c32bf012ec579993f85e89c15c
+  ref: 31c11bb0d3d437c32bf012ec579993f85e89c15c
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -589,7 +589,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uuidtools (2.1.4)
+    uuidtools (2.1.5)
     vcr (2.7.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
