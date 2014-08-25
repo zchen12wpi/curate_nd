@@ -69,3 +69,9 @@
 li.attribute.abstract {
   white-space: pre-line;
 }
+
+.research-ids {
+  .control-group.string.optional {
+    display: inline-block;
+  }
+}
