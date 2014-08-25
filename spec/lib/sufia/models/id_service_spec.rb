@@ -14,12 +14,20 @@ describe Sufia::IdService do
   end
 
   it "falls back to local minter if no noids server configured" do
-    allow(Sufia.config).to receive(:noid_template) { ".zdd" }
-    allow(Sufia.config).to receive(:id_namespace) { "test" }
-    Sufia::IdService.configure(nil)
-    expect(Sufia::IdService.mint).to eq("test:00")
-    expect(Sufia::IdService.noid_template).to eq(".zdd")
-    expect(Sufia::IdService.valid?("70")).to eq(true)
+    begin
+      old_template = Sufia.config.noid_template
+      old_id_namespace = Sufia.config.id_namespace
+
+      Sufia.config.noid_template = ".zdd"
+      Sufia.config.id_namespace = "test"
+      Sufia::IdService.configure(nil)
+      expect(Sufia::IdService.mint).to eq("test:00")
+      expect(Sufia::IdService.noid_template).to eq(".zdd")
+      expect(Sufia::IdService.valid?("70")).to eq(true)
+    ensure
+      Sufia.config.noid_template = old_template
+      Sufia.config.id_namespace = old_id_namespace
+    end
   end
 
   after(:all) { Sufia::IdService.configure(nil) }

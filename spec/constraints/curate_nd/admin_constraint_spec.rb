@@ -9,12 +9,12 @@ describe CurateND::AdminConstraint do
 
       context 'with username macthing data store' do
         let(:username) { ENV['USER'] }
-        it { should be_true }
+        it { should be_truthy }
       end
 
       context 'with username not macthing data store' do
         let(:username) { "not-#{ENV['USER']}" }
-        it { should be_false }
+        it { should be_falsey }
       end
     end
 
@@ -23,12 +23,12 @@ describe CurateND::AdminConstraint do
 
       context 'with to_s macthing data store' do
         let(:username) { ENV['USER'] }
-        it { should be_true }
+        it { should be_truthy }
       end
 
       context 'with to_s not macthing data store' do
         let(:username) { "not-#{ENV['USER']}" }
-        it { should be_false }
+        it { should be_falsey }
       end
     end
 
