@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819133854) do
+ActiveRecord::Schema.define(version: 20140825150829) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -314,6 +314,9 @@ ActiveRecord::Schema.define(version: 20140819133854) do
     t.boolean  "agreed_to_terms_of_service",           default: false
     t.string   "repository_id"
     t.boolean  "user_does_not_require_profile_update", default: false
+    t.string   "researcher_id"
+    t.string   "scopus_id"
+    t.string   "orcid_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
