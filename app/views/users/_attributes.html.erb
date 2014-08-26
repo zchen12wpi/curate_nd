@@ -1,13 +1,16 @@
 <table class="table table-striped <%= dom_class(current_user) %> attributes">
   <tbody>
-      <tr><th>Given Name: </th><td><ul class='tabular'><%= current_user.first_name %></ul></td></tr>
-      <tr><th>Last Name: </th><td><ul class='tabular'><%= current_user.last_name %></ul></td></tr>
-      <tr><th>Title: </th><td><ul class='tabular'><%= current_user.title %></ul></td></tr>
-      <tr><th>Campus Phone: </th><td><ul class='tabular'><%= current_user.campus_phone_number %></ul></td></tr>
-      <tr><th>Alternate Phone: </th><td><ul class='tabular'><%= current_user.alternate_phone_number %></ul></td></tr>
-      <tr><th>Preferred Email: </th><td><ul class='tabular'><%= current_user.preferred_email %></ul></td></tr>
-      <tr><th>Alternate Email: </th><td><ul class='tabular'><%= current_user.alternate_email %></ul></td></tr>
-      <tr><th>Personal Webpage: </th><td><ul class='tabular'><%= current_user.personal_webpage %></ul></td></tr>
-      <tr><th>Blog: </th><td><ul class='tabular'><%= current_user.blog %></ul></td></tr>
+    <tr><th>Given Name: </th><td><ul class='tabular'><%= current_user.first_name %></ul></td></tr>
+    <tr><th>Last Name: </th><td><ul class='tabular'><%= current_user.last_name %></ul></td></tr>
+    <tr><th>Title: </th><td><ul class='tabular'><%= current_user.title %></ul></td></tr>
+    <tr><th>Campus Phone: </th><td><ul class='tabular'><%= current_user.campus_phone_number %></ul></td></tr>
+    <tr><th>Alternate Phone: </th><td><ul class='tabular'><%= current_user.alternate_phone_number %></ul></td></tr>
+    <tr><th>Preferred Email: </th><td><ul class='tabular'><%= current_user.preferred_email %></ul></td></tr>
+    <tr><th>Alternate Email: </th><td><ul class='tabular'><%= current_user.alternate_email %></ul></td></tr>
+    <tr><th>Personal Webpage: </th><td><ul class='tabular'><%= current_user.personal_webpage %></ul></td></tr>
+    <tr><th>Blog: </th><td><ul class='tabular'><%= current_user.blog %></ul></td></tr>
+    <tr><th>ORCID: </th><td><ul class='tabular'><%= current_user.orcid_id %></ul></td></tr>
+    <tr><th>Researcher ID: </th><td><ul class='tabular'><%= current_user.researcher_id %></ul></td></tr>
+    <tr><th>Scopus ID: </th><td><ul class='tabular'><%= current_user.scopus_id %></ul></td></tr>
   </tbody>
 </table>
