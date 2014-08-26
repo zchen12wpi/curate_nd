@@ -8,15 +8,10 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
-  remote: git://github.com/ndlib/noids_client
-  revision: 7081fab70968d7c47ca3d1db8a74553082517507
-  specs:
-    noids_client (0.0.1)
-      json (~> 1.8)
-      rest-client (~> 1.6)
-
-PATH
-  remote: ../curate
+  remote: git://github.com/ndlib/curate.git
+  revision: e2ee889f01c9700a5f291bd13a8fed4b89a52a29
+  ref: e2ee889f01c9700a5f291bd13a8fed4b89a52a29
+  branch: curate-nd-beta
   specs:
     curate (0.6.6)
       active_attr
@@ -43,6 +38,14 @@ PATH
       simple_form (~> 3.0.1)
       sufia-models (~> 3.4.0)
       virtus
+
+GIT
+  remote: git://github.com/ndlib/noids_client
+  revision: 7081fab70968d7c47ca3d1db8a74553082517507
+  specs:
+    noids_client (0.0.1)
+      json (~> 1.8)
+      rest-client (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
