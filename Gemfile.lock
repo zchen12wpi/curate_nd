@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: e2ee889f01c9700a5f291bd13a8fed4b89a52a29
-  ref: e2ee889f01c9700a5f291bd13a8fed4b89a52a29
+  revision: e6cd96e3f165e6e83af9e21681e7281724af890d
+  ref: e6cd96e3f165e6e83af9e21681e7281724af890d
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -243,7 +243,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.3)
-    font-awesome-rails (4.1.0.0)
+    font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
