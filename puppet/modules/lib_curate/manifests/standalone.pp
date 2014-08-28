@@ -153,13 +153,6 @@ class lib_curate::standalone {
 	require => Class["lib_resque_poold"],
      }
 
-     # Config file for noids server
-     file { '/opt/noids/config.ini':
-	ensure => present,
-	replace => true,
-	source => "puppet:///modules/lib_curate/config.ini.${env}",
-	require => Package["noids"],
-      }
 
      # set logrotate for application and unicorn log files
      class { 'lib_logrotate::app_log': postrotate => "pkill -USR1 -u app -f 'unicorn master' || true" }
