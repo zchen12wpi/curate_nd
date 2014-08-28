@@ -78,13 +78,5 @@ class lib_curate::server {
        notify => Service['nginx'],
      }
 
-     # Config file for noids server
-     file { '/opt/noids/config.ini':
-	ensure => present,
-	replace => true,
-	source => "puppet:///modules/lib_curate/config.ini.${env}",
-	require => Package["noids"],
-      }
-
 
 }
