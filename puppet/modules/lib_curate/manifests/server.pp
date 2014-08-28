@@ -28,7 +28,6 @@ class lib_curate::server {
     "libxml2-devel",
     "libxslt-devel",
     "readline-devel",
-    "noids",
     "mysql-devel",
     "sgml-common",
     "htop",
