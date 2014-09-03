@@ -29,6 +29,7 @@ files_to_copy="
     smtp_config.yml
     solr.yml
     work_type_permissions.yml
+    licensing_permissions.yml
     "
 
 for f in $files_to_copy; do
