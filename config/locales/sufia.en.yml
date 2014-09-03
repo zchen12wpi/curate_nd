@@ -2,6 +2,8 @@ en:
   sufia:
     product_name:        "CurateND"
     account_name:        "Notre Dame NetID"
+    help_email:        "curate@nd.edu"
+    supported_file_upload_size: '50MB'
     institution_name:    "University of Notre Dame"
     institution_homepage_url: "http://www.nd.edu"
     division_name:            "Hesburgh Libraries"
