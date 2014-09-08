@@ -30,7 +30,7 @@ group :default do
   gem 'net-ldap'
   gem 'custom_configuration'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
-  gem 'harbinger', '~> 0.2'
+  gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
 end
 
 # Hack to work around some bundler strangeness

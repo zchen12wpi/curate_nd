@@ -40,6 +40,14 @@ GIT
       virtus
 
 GIT
+  remote: git://github.com/ndlib/harbinger
+  revision: be766edd1e9821bbff25aa442cb1e748495e9b35
+  specs:
+    harbinger (0.2.2)
+      kaminari (~> 0.14s)
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/ndlib/noids_client
   revision: 7081fab70968d7c47ca3d1db8a74553082517507
   specs:
@@ -263,9 +271,6 @@ GEM
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    harbinger (0.2.1)
-      kaminari (~> 0.14s)
-      rails (~> 4.0)
     highline (1.6.19)
     hike (1.2.3)
     hooks (0.3.6)
@@ -640,7 +645,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   devise_masquerade
   factory_girl_rails (~> 4.2.0)
-  harbinger (~> 0.2)
+  harbinger!
   jettywrapper
   jquery-rails
   kaminari!
