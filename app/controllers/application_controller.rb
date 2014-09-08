@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     begin
       Harbinger.call(reporters: [exception, current_user, request], channels: [:database, :logger])
     rescue StandardError => e
-      logger.error("Unable to notify Harbinger. #{e.class}: #{e}")
+      logger.error("Unable to notify Harbinger. #{e.class}: #{e}\n#{e.backtrace.join("\n")}")
     end
     super(exception)
   end
