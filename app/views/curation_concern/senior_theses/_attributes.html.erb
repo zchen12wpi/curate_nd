@@ -1,8 +1,4 @@
-<% if curation_concern.description.present? %>
-  <h2>Abstract</h2>
-  <%# TODO: resonably convert the abstract to HTML %>
-  <%= curation_concern.description %>
-<% end %>
+<%= curation_concern_attribute_to_formatted_text(curation_concern, :description, 'Abstract') %>
 
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>

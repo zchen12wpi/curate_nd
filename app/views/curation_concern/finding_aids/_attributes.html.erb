@@ -1,5 +1,1 @@
-<% if curation_concern.abstract.present? %>
-  <h2>Abstract</h2>
-  <%# TODO: resonably convert the abstract to HTML %>
-  <%= curation_concern.abstract %>
-<% end %>
+<%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract, 'Abstract') %>
