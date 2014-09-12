@@ -130,7 +130,15 @@ class lib_curate::standalone {
      }
 
      file { '/etc/nginx/conf.d/curatend.conf':
-       content => template('lib_curate/curatend.conf.staging.erb'),
+       content => template('lib_curate/curatend.conf.erb'),
+       owner => 'root',
+       group => 'root',
+       mode => '644',
+       notify => Service['nginx'],
+     }
+
+     file { '/etc/nginx/conf.d/solr.conf':
+       content => template('lib_curate/solr.conf.erb'),
        owner => 'root',
        group => 'root',
        mode => '644',
