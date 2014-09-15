@@ -73,8 +73,11 @@ server {
         internal;
         # go to the 502 page
         rewrite ^.*$ /502.html break;
+        proxy_method GET;
+
         # don't bother sending the large file upload along
         proxy_pass_request_body off;
+        proxy_set_header Content-Length "";
 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
