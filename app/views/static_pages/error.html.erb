@@ -1,9 +1,8 @@
 <% content_for :main_column_class, 'span8 offset2' %>
-<% content_for :page_title, construct_page_title("CurateND Request has encountered #{status} error") %>
+<% content_for :page_title, construct_page_title("#{t('sufia.product_name')} has encountered a problem (Error ##{status})") %>
 <% content_for :page_header do %>
-  <h1 class="center">CurateND Error <%= status %></h1>
+  <h1 class="center"><%= t('sufia.product_name') %> has encountered a problem.</h1>
 <% end %>
-<p>Oops!  It seems as if CurateND has encountered a problem.</p>
 <p>
   This could be due to:
   <ul>
@@ -12,8 +11,6 @@
     <li>The request timed out. For example a large file has been selected for upload/download</li>
   </ul>
 </p>
-
-
 
 <p>Please help us to better understand what you were doing so that we can provide you with a better user experience in the future.</p>
 
