@@ -25,7 +25,10 @@ class StaticPagesController < ApplicationController
   private
 
   def build_help_request
-    HelpRequest.new(user: current_user, how_can_we_help_you:"#{t('sufia.product_name')} encountered #{status} error code")
+    HelpRequest.new(
+      user: current_user,
+      how_can_we_help_you:"#{t('sufia.product_name')} encountered a problem (Error ##{status})."
+    )
   end
 
 end
