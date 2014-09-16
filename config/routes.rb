@@ -37,6 +37,10 @@ CurateNd::Application.routes.draw do
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: 'static_pages#beta'
-  get '502', to: 'static_pages#timeout_error'
+  get '500', to: 'static_pages#error'
+  get '502', to: 'static_pages#error', default: { status_code: '502' }
+  get '404', to: 'static_pages#error', default: { status_code: '404' }
+  get '422', to: 'static_pages#error', default: { status_code: '422' }
+  get '413', to: 'static_pages#error', default: { status_code: '413' }
 
 end

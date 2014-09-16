@@ -2,17 +2,30 @@ class StaticPagesController < ApplicationController
   with_themed_layout '1_column'
   respond_to(:html)
 
+  def status
+   @status ||= params[:status_code] || request.path.gsub('/','').to_i
+  end
+
+  helper_method :status
+
   def about
   end
 
   def beta
   end
 
-  def timeout_error
-    @help_request = HelpRequest.new(user: current_user)
+  def error
+    @help_request = build_help_request
     respond_with(@help_request) do |wants|
-      wants.html { render status: 502 }
-      wants.json { render status: 502 }
+      wants.html { render status: status }
+      wants.json { render status: status }
     end
   end
+
+  private
+
+  def build_help_request
+    HelpRequest.new(user: current_user, how_can_we_help_you:"#{t('sufia.product_name')} encountered #{status} error code")
+  end
+
 end

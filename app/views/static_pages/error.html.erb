@@ -1,15 +1,15 @@
 <% content_for :main_column_class, 'span8 offset2' %>
-<% content_for :page_title, construct_page_title('CurateND Request has Timed Out') %>
+<% content_for :page_title, construct_page_title("CurateND Request has encountered #{status} error") %>
 <% content_for :page_header do %>
-  <h1 class="center">CurateND Request has Timed Out</h1>
+  <h1 class="center">CurateND Error <%= status %></h1>
 <% end %>
-<p>Oops!  It seems as if CurateND has timed out.</p>
+<p>Oops!  It seems as if CurateND has encountered a problem.</p>
 <p>
   This could be due to:
   <ul>
-    <li>A large file has been selected for upload</li>
     <li>An internal process is not working correctly</li>
     <li>The connection has been interrupted in some manner</li>
+    <li>The request timed out. For example a large file has been selected for upload/download</li>
   </ul>
 </p>
 
