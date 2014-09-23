@@ -1,6 +1,17 @@
 @import 'compass';
 @import 'global-variables';
 
+/* header changes from curate.css */
+#site-title {
+  h1 {
+    font-size: 48px;
+  }
+}
+#site-search form, #site-actions {
+  margin: 1.9em 0;
+  padding-top: 0;
+}
+
 /* Accordion Overrides */
 .accordion-heading {
   background-color:$tableBackgroundAccent;
@@ -73,5 +84,30 @@ li.attribute.abstract {
 .research-ids {
   .control-group.string.optional {
     display: inline-block;
+  }
+}
+
+/* footer formatting */
+#footer {
+  text-align: left;
+  .footer-right {
+    text-align: right;
+    .hesburgh-logo {
+      width: 180px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  #site-actions {
+    padding-top: 0;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  #footer {
+    .footer-right {
+      margin-top: 2em;
+      text-align: center;
+    }
   }
 }
