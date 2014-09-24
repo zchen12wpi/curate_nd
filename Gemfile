@@ -8,6 +8,7 @@ group :default do
   # gem 'curate', path: '../curate'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
+  gem 'orcid', github: 'projecthydra-labs/orcid'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
@@ -18,7 +19,7 @@ group :default do
   gem 'resque-pool'
   gem 'morphine'
   gem "unicode", :platforms => [:mri_18, :mri_19]
-  gem "devise", "~>3.0.3"
+  gem "devise", "~>3.2.2"
   gem "devise-guests", "~> 0.3"
   # Need rubyracer to run integration tests.....really?!?
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
