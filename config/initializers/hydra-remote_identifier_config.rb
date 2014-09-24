@@ -8,7 +8,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.title :title
       map.publisher {|o| Array(o.publisher).join("; ")}
       map.publicationyear {|o| o.date_uploaded.year }
-      map.set_identifier {|o,value| o.identifier = value; o.save }
+      map.set_identifier { |o,value| o.identifier = value }
     end
 
     doi.register(Dataset, Image, Document, Article) do |map|
@@ -17,7 +17,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.title :title
       map.publisher {|o| Array.wrap(o.publisher).join("; ")}
       map.publicationyear {|o| o.date_uploaded.year }
-      map.set_identifier {|o,value| o.identifier = value; o.save }
+      map.set_identifier { |o,value| o.identifier = value }
     end
 
   end

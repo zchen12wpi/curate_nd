@@ -1,6 +1,5 @@
 require 'spec_helper_features'
 
-
 VCR.configure do |c|
   c.ignore_request do |request|
     doi_uri = URI(Hydra::RemoteIdentifier.configuration.remote_services.fetch(:doi).url)
@@ -31,9 +30,9 @@ describe 'create DOIs feature', FeatureSupport.options do
         }
 
         it 'should mint a remote identifier' do
-          expect {
-            subject.create
-          }.to change { curation_concern.identifier }.from(nil)
+          expect(curation_concern.identifier).to be_nil
+          subject.create
+          expect(curation_concern.reload.identifier).to_not be_nil
         end
       end
     end
