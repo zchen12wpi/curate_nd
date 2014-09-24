@@ -9,6 +9,7 @@ group :default do
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
   gem 'orcid', github: 'projecthydra-labs/orcid'
+  gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
@@ -73,6 +74,7 @@ group :debug do
   gem 'simplecov'
   gem 'method_locator'
   gem 'byebug'
+  gem 'thin'
 end
 
 group :deploy do
