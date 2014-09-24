@@ -3,6 +3,7 @@ en:
     product_name:        "CurateND"
     account_name:        "Notre Dame NetID"
     help_email:        "curate@nd.edu"
+    help_email_subject:        "CurateND Support Request"
     supported_file_upload_size: '50MB'
     institution_name:    "University of Notre Dame"
     institution_homepage_url: "http://www.nd.edu"
