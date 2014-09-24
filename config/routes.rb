@@ -1,4 +1,5 @@
 CurateNd::Application.routes.draw do
+  mount Orcid::Engine => "/orcid"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 

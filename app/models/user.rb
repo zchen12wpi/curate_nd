@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :cas_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :masqueradable
+    :recoverable, :rememberable, :trackable, :validatable, :masqueradable, :omniauthable, :omniauth_providers => [:orcid]
 
   attr_accessor :password
 
