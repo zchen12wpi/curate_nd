@@ -65,3 +65,11 @@
   </div>
 
 <% end %>
+
+<% if defined?(Orcid) %>
+  <div class="row with-headroom"
+    <div class="span12">
+      <%= render partial: 'orcid/profile_connections/orcid_connector', locals: {default_search_text: current_user.name } %>
+    </div>
+  </div>
+<% end %>
