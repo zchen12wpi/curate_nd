@@ -46,4 +46,10 @@ class ApplicationController < ActionController::Base
     end
     super(exception)
   end
+
+  def new_session_path(scope)
+    # Devise gets confused. The new_session_path that is being called does not
+    # appear to be generated. This is a shim.
+    send("new_#{scope}_session_path")
+  end
 end
