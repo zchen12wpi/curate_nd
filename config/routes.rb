@@ -34,7 +34,8 @@ CurateNd::Application.routes.draw do
     get 'dashboard', to: 'catalog#index', as: :user_root
     get 'admin/accounts/stop_masquerading', to: 'admin/masquerades#back', as: 'stop_masquerading'
   end
-  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }, skip: :masquerades
+
+  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: 'static_pages#beta'
