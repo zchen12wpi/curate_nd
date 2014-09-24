@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825150829) do
+ActiveRecord::Schema.define(version: 20140924144406) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -196,6 +196,18 @@ ActiveRecord::Schema.define(version: 20140825150829) do
     t.string   "path_info"
     t.integer  "repo_object_id"
     t.integer  "purl_id"
+  end
+
+  create_table "orcid_profile_requests", force: true do |t|
+    t.integer  "user_id",          null: false
+    t.string   "given_names",      null: false
+    t.string   "family_name",      null: false
+    t.string   "primary_email",    null: false
+    t.string   "orcid_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "response_text"
+    t.string   "response_status"
   end
 
   create_table "proxy_deposit_rights", force: true do |t|
