@@ -47,9 +47,15 @@ class ApplicationController < ActionController::Base
     super(exception)
   end
 
+  # Brought in to resolve a problem with OmniAuth and other authentications.
+  # If we lean entirely on OmniAuth (by migrating Devise-CAS to Omniauth-CAS),
+  # then this can go away.
+  #
+  # https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview#using-omniauth-without-other-authentications
   def new_session_path(scope)
     # Devise gets confused. The new_session_path that is being called does not
     # appear to be generated. This is a shim.
     send("new_#{scope}_session_path")
   end
+  helper_method :new_session_path
 end
