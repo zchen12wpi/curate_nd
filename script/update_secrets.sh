@@ -34,7 +34,13 @@ files_to_copy="
 
 for f in $files_to_copy; do
     echo "=-=-=-=-=-=-=-= copy $f"
-    cp $secret_repo/curate_nd/$f config/$f
+    if [ -f $secret_repo/curate_nd/$f ];
+    then
+        cp $secret_repo/curate_nd/$f config/$f
+    else
+        echo "Fatal Error: File $f does not exist in $secret_repo/curate_nd"
+        exit 1
+    fi
 done
 echo "=-=-=-=-=-=-=-= copy secret_token.rb"
 cp $secret_repo/curate_nd/secret_token.rb config/initializers/secret_token.rb
