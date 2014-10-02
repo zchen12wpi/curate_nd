@@ -17,6 +17,9 @@ CurateNd::Application.routes.draw do
         collection { get :start_masquerading }
       end
     end
+    constraints CurateND::AdminAPIConstraint do
+      post "reindex", to: "reindex#reindex"
+    end
   end
 
   # Due to an apparent bug in devise the following routes should be presented
