@@ -14,6 +14,10 @@ class StaticPagesController < ApplicationController
   def beta
   end
 
+  def home
+    render layout: 'curate_nd_home'
+  end
+
   def error
     @help_request = build_help_request
     respond_with(@help_request) do |wants|

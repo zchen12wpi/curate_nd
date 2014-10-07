@@ -1,15 +1,173 @@
 @import 'compass';
 @import 'global-variables';
 
-/* header changes from curate.css */
-#site-title {
-  h1 {
-    font-size: 48px;
+body {
+  padding:0;
+}
+
+#banner {
+  border-bottom:1px solid rgba(100, 100, 100, 0.7);
+}
+
+/* Brand Bar */
+#brand-bar-wrapper {
+  background-color:#002b5b;
+  background-image:none;
+  border-bottom:none;
+  padding:0;
+  margin:0;
+}
+.top-link {
+  display:inline-block;
+  font-size:.5em;
+  padding:2px 2px 0;
+}
+.top-link a,
+.top-link a:hover,
+.top-link a:visited {
+  color:#FFF;
+}
+#brand-bar-wrapper i {
+  padding:0 .1em;
+}
+.division i {
+  word-spacing:.3em;
+  padding-right:.25em;
+}
+@media (min-width: 600px) {
+  .top-link {
+    font-size:1em;
+    line-height:3;
+    padding:0 .1em;
+  }
+  #brand-bar-wrapper i {
+    padding:0 .2em;
   }
 }
-#site-search form, #site-actions {
-  margin: 1.9em 0;
-  padding-top: 0;
+@media (min-width: 768px) {
+  .top-link {
+    padding:0;
+  }
+}
+
+/* Title Bar */
+#title-bar-wrapper {
+  background-color:#001f42;
+  background-image:none;
+  border-top:none;
+  margin:0;
+  padding-bottom:1em;
+}
+#title-bar-wrapper .row {
+  padding:0 1em;
+}
+@media (min-width: 768px) {
+  #title-bar-wrapper .row {
+    padding:0;
+  }
+}
+$logo_width: 221;
+$logo_height: 48;
+
+#home-link {
+  display:block;
+  width:40%;
+  position:relative;
+  padding:0;
+  padding-top: percentage(($logo_height / $logo_width * 40) / 100);
+  margin:1em 0;
+}
+@media (min-width: 545px) {
+  #home-link {
+    width:200px;
+    padding-top:45px;
+  }
+}
+#home-link .CurateND-logo {
+  height:100%;
+  left:0;
+  position:absolute;
+  top:0;
+  width:100%;
+}
+
+/* Action Bar */
+
+#title-bar-wrapper #action-bar {
+  padding-top:1em;
+}
+#site-title {
+  padding-top:2px;
+  margin-bottom:-1em;
+}
+#site-search {
+  display:inline-block;
+  width:100%;
+  margin-bottom:1em;
+}
+#site-search .search-form {
+  margin:0;
+  width:100%;
+}
+@media (min-width: 545px) {
+  #site-search {
+    width:18.6em;
+    margin-bottom:0;
+  }
+}
+#catalog_search {
+  -webkit-appearance:none;
+}
+#site-actions {
+  display:inline-block;
+  float:right;
+
+  .btn {
+    background-color:#dcb439;
+    background-image:none;
+    color:#002b5b;
+    font-weight:bold;
+    text-shadow:none;
+    border-width:0 0 2px;
+    border-color:#9c802e;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+  }
+  .btn,
+  .dropdown-menu {
+    -webkit-border-radius:0;
+       -moz-border-radius:0;
+            border-radius:0;
+  }
+  .caret {
+    border-top-color:#002b5b;
+  }
+}
+.search-form {
+  .search-submit {
+    background-color:transparent;
+    border:none;
+    height:1.8em;
+    width:2em;
+  }
+  .search-icon {
+    height:100%;
+  }
+}
+#site-actions {
+  margin: 0;
+  padding:0;
+  .dropdown-menu {
+    min-width:168px;
+  }
+}
+@media (min-width: 768px) {
+  #site-actions {
+    padding:0;
+  }
+  #site-search .search-form {
+    margin: 0;
+  }
 }
 
 /* Accordion Overrides */
@@ -97,6 +255,7 @@ li.attribute.abstract {
 /* footer formatting */
 #footer {
   text-align: left;
+  padding:1em;
   .footer-right {
     text-align: right;
     .hesburgh-logo {
@@ -104,13 +263,10 @@ li.attribute.abstract {
     }
   }
 }
+@media (min-width: 768px) {
+  padding:0;
+}
 @media (max-width: 767px) {
-  #site-actions {
-    padding-top: 0;
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
   #footer {
     .footer-right {
       margin-top: 2em;

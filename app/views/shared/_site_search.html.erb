@@ -1,0 +1,29 @@
+<%= form_tag catalog_index_path, :method => :get, :class => "search-form" do %>
+  <fieldset>
+    <legend class="accessible-hidden">Search <%=t('sufia.product_name')%></legend>
+    <%= label_tag :catalog_search, t('sufia.search.form.q.label'), :class => "accessible-hidden" %>
+    <%= search_as_hidden_fields(:search_field=>:all_fields, :omit_keys => [:q, :qt, :page]).html_safe %>
+    <%= text_field_tag(
+      :q,
+      params[:q],
+      :class => "q search-query",
+      :id => "catalog_search",
+      :placeholder => t('sufia.search.form.q.placeholder'),
+      :size => "30",
+      :tabindex => "1",
+      :type => "search",
+    )%><button type="submit" class="search-submit" id="keyword-search-submit">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="search-icon" viewBox="0 0 28 28" preserveAspectRatio="xMinYMin meet">
+        <style type="text/css">
+          .lense {stroke-width:3; fill:none; stroke:#002b5b;}
+          .handle {stroke-width:5; stroke:#002b5b;}
+          .cap {fill:#002b5b; stroke:none;}
+        </style>
+        <circle class="lense" cx="10.73" cy="10.73" r="8.85"/>
+        <line class="handle" x1="16.99" y1="16.99" x2="24.79" y2="24.79"/>
+        <circle class="cap" cx="24.79" cy="24.79" r="2.5"/>
+      </svg>
+      <span class="accessible-hidden">Search</span>
+    </button>
+  </fieldset>
+<% end %>
