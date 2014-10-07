@@ -33,6 +33,7 @@ files_to_copy="
     work_type_permissions.yml
     licensing_permissions.yml
     newrelic.yml
+    etd_manager_usernames.yml
     "
 
 for f in $files_to_copy; do

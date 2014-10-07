@@ -1,0 +1,10 @@
+development:
+  etd_manager_usernames:
+  - etd_manager@example.com
+  - blakshmi@nd.edu
+test:
+  etd_manager_usernames:
+  - etd_manager@example.com
+production:
+  etd_manager_usernames:
+  - etd_manager@example.com
