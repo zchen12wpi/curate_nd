@@ -1,16 +1,18 @@
         <%= render 'announcements' %>
         <div class="container">
-          <div id="brand-bar" class="row">
-            <div class="university span6">
-              <h3><a href="<%= t('sufia.institution_homepage_url') %>" tabindex="-1">University <i>of</i> Notre Dame</a></h3>
-            </div>
-            <div class="division span6">
-              <h2><a href="<%= t('sufia.division_homepage_url') %>" tabindex="-1">Office <i>of&nbsp;&nbsp;the </i> Provost</a></h2>
+          <div class="row">
+            <div id="brand-bar" class="span12">
+              <div class="top-link university">
+                <a href="<%= t('sufia.institution_homepage_url') %>">University <i>of</i> Notre Dame</a>
+              </div>
+              <div class="top-link division">
+                <a href="<%= t('sufia.division_homepage_url') %>">Hesburgh Libraries</a>
+              </div>
             </div>
           </div>
           <div class="ribbon-wrapper">
-          <div class="ribbon">
-            <a href="/beta" class="ribbon-text">Beta</a>
+            <div class="ribbon">
+              <a href="/beta" class="ribbon-text">Beta</a>
+            </div>
           </div>
-        </div>
         </div>
