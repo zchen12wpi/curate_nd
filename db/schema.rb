@@ -114,6 +114,13 @@ ActiveRecord::Schema.define(version: 20141008174017) do
   add_index "domain_terms_local_authorities", ["domain_term_id", "local_authority_id"], name: "dtla_by_ids2", using: :btree
   add_index "domain_terms_local_authorities", ["local_authority_id", "domain_term_id"], name: "dtla_by_ids1", using: :btree
 
+  create_table "etd_vocabularies", force: true do |t|
+    t.string   "field_type"
+    t.string   "field_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false
     t.string   "followable_type",                 null: false
