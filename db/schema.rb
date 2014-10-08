@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825150829) do
+ActiveRecord::Schema.define(version: 20141008174017) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -86,6 +86,19 @@ ActiveRecord::Schema.define(version: 20140825150829) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "devise_multi_auth_authentications", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.string   "provider",      null: false
+    t.string   "uid",           null: false
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "devise_multi_auth_authentications", ["provider", "uid"], name: "index_devise_multi_auth_authentications_on_provider_and_uid", unique: true, using: :btree
+
   create_table "domain_terms", force: true do |t|
     t.string "model"
     t.string "term"
@@ -149,6 +162,8 @@ ActiveRecord::Schema.define(version: 20140825150829) do
     t.datetime "updated_at"
     t.boolean  "javascript_enabled"
     t.string   "release_version"
+    t.string   "name"
+    t.string   "email"
   end
 
   add_index "help_requests", ["created_at"], name: "index_help_requests_on_created_at", using: :btree
@@ -196,6 +211,18 @@ ActiveRecord::Schema.define(version: 20140825150829) do
     t.string   "path_info"
     t.integer  "repo_object_id"
     t.integer  "purl_id"
+  end
+
+  create_table "orcid_profile_requests", force: true do |t|
+    t.integer  "user_id",          null: false
+    t.string   "given_names",      null: false
+    t.string   "family_name",      null: false
+    t.string   "primary_email",    null: false
+    t.string   "orcid_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "response_text"
+    t.string   "response_status"
   end
 
   create_table "proxy_deposit_rights", force: true do |t|
