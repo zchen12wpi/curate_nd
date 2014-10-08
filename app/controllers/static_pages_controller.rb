@@ -22,6 +22,9 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def faqs
+  end
+
   private
 
   def build_help_request
