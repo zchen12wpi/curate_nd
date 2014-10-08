@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 40b6daf1ac3bfc3cb71988aa8391e3f6eb85bec8
-  ref: 40b6daf1ac3bfc3cb71988aa8391e3f6eb85bec8
+  revision: 3fa6029330a19549a244eca8a7347085eff7e941
+  ref: 3fa6029330a19549a244eca8a7347085eff7e941
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -94,7 +94,7 @@ GEM
       activesupport (= 4.0.10)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activerecord-import (0.5.0)
+    activerecord-import (0.6.0)
       activerecord (>= 3.0)
     activeresource (4.0.0)
       activemodel (~> 4.0)
@@ -118,7 +118,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    backports (3.6.2)
+    backports (3.6.3)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
@@ -447,7 +447,7 @@ GEM
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
       rdf-xsd (>= 1.0)
-    rdf-xsd (1.1.1)
+    rdf-xsd (1.1.1.1)
       rdf (~> 1.1)
     rdiscount (2.1.7.1)
     rdoc (4.1.2)
