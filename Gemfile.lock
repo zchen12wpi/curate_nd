@@ -43,9 +43,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/harbinger
-  revision: be766edd1e9821bbff25aa442cb1e748495e9b35
+  revision: f330a0ead6136f9aadbcd0ada1a927b38cec85cd
   specs:
-    harbinger (0.2.2)
+    harbinger (0.2.3)
       kaminari (~> 0.14s)
       rails (~> 4.0)
 
