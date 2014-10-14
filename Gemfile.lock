@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: a7cad6dacb276144988292c63be7230fbe5e1b07
-  ref: a7cad6dacb276144988292c63be7230fbe5e1b07
+  revision: 06279ee59d61bdc3dbb5ac98adb3f2b051c3c93c
+  ref: 06279ee59d61bdc3dbb5ac98adb3f2b051c3c93c
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -270,7 +270,8 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
-    google_drive (0.3.10)
+    google_drive (0.3.11)
+      google-api-client (>= 0.7.0)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
@@ -447,7 +448,7 @@ GEM
     rdf-rdfxml (1.0.1)
       rdf (>= 1.0)
       rdf-xsd (>= 1.0)
-    rdf-xsd (1.1.1.1)
+    rdf-xsd (1.1.2)
       rdf (~> 1.1)
     rdiscount (2.1.7.1)
     rdoc (4.1.2)
