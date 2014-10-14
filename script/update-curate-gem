@@ -100,7 +100,7 @@ end
 $stdout.puts "Moving Curate\n\tfrom:\t#{curate_old_sha_head}\n\tto:\t#{curate_sha_head}"
 
 
-`cd #{CURATE_ND_PATH} && git checkout #{CURATE_ND_BRANCH} && sed -e s/#{curate_old_sha_head}/#{curate_sha_head}/g #{File.join(CURATE_ND_PATH, 'Gemfile')} > #{File.join(CURATE_ND_PATH, 'Gemfile')}`
+`cd #{CURATE_ND_PATH} && git checkout #{CURATE_ND_BRANCH} && sed -i '' -e s/#{curate_old_sha_head}/#{curate_sha_head}/g #{File.join(CURATE_ND_PATH, 'Gemfile')}`
 
 # Run `bundle`
 $stdout.puts "Bundling up Curate"
