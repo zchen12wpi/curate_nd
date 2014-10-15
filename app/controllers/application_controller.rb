@@ -22,13 +22,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  after_filter :store_location
+  before_filter :store_location
 
   def store_location
     return true unless request.get?
     return true if request.xhr?
     return true if request.path =~ /\A\/downloads\//
     return true if request.path =~ /\A\/users\//
+    return true if request.path =~ /\A\/terms_of_service_agreements\//
     session[:previous_url] = request.fullpath
   end
 
