@@ -31,6 +31,7 @@ files_to_copy="
     solr.yml
     work_type_permissions.yml
     licensing_permissions.yml
+    newrelic.yml
     "
 
 for f in $files_to_copy; do
