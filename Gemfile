@@ -31,6 +31,7 @@ group :default do
   gem 'custom_configuration'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
+  gem 'newrelic_rpm'
 end
 
 # Hack to work around some bundler strangeness
