@@ -78,5 +78,7 @@ class lib_curate::server {
        notify => Service['nginx'],
      }
 
+     # Install Fedora download proxy
+     include lib_curate::disadis
 
 }
