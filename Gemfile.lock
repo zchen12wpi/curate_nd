@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c364666d53ddd6add178179ac3c123eb57c0e807
-  ref: c364666d53ddd6add178179ac3c123eb57c0e807
+  revision: c825ccc23eaafcb0f0fa9467ace1b3a53d337218
+  ref: c825ccc23eaafcb0f0fa9467ace1b3a53d337218
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -501,7 +501,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
-    ruby-box (1.14.0)
+    ruby-box (1.15.0)
       addressable
       json
       multipart-post
