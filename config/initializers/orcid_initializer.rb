@@ -1,4 +1,5 @@
 Orcid.configure do |config|
+  config.parent_controller = "::UserProfilesController"
   # # Configure your Orcid Client Application. See URL below for more
   # # information
   # # http://support.orcid.org/knowledgebase/articles/116739-register-a-client-application
