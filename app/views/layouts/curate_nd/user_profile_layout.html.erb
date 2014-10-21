@@ -1,0 +1,19 @@
+<% content_for :layout_name, 'user_profile_layout, ' %>
+<% content_for :main do %>
+
+  <div class="row">
+    <div class="span3">
+      <ul class="nav">
+        <li><%= link_to "Edit My Profile", edit_user_path(current_user.id) %></li>
+        <li><%= link_to "ORCID Settings", orcid_settings_path %></li>
+      </ul>
+    </div>
+
+    <div class="span9">
+      <%= yield %>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render template: "layouts/#{theme}" %>

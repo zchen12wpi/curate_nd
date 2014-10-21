@@ -44,5 +44,6 @@ CurateNd::Application.routes.draw do
   get '404', to: 'static_pages#error', default: { status_code: '404' }
   get '422', to: 'static_pages#error', default: { status_code: '422' }
   get '413', to: 'static_pages#error', default: { status_code: '413' }
+  get 'orcid_settings', to: 'user_profiles#orcid_settings'
 
 end
