@@ -161,6 +161,8 @@ class lib_curate::standalone {
 	require => Class["lib_resque_poold"],
      }
 
+     # Install Fedora download proxy
+     include lib_curate::disadis
 
      # set logrotate for application and unicorn log files
      class { 'lib_logrotate::app_log': postrotate => "pkill -USR1 -u app -f 'unicorn master' || true" }
