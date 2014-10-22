@@ -40,6 +40,11 @@
       <legend>Researcher Identification Information</legend>
         <%= f.input :researcher_id, label: "ResearcherID", input_html: { maxlength: 20 } %>
         <%= f.input :scopus_id, label: "Scopus ID", input_html: { maxlength: 20 } %>
+        <div>
+          <div class="control-group">
+              <%= link_to "ORCID Settings", orcid_settings_path, class: 'btn' %>
+          </div>
+        </div>
     </fieldset>
   </div>
 
