@@ -254,6 +254,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.3)
+    flipper (0.6.2)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     foreigner (1.6.1)
@@ -654,6 +655,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   devise_masquerade
   factory_girl_rails (~> 4.2.0)
+  flipper
   harbinger!
   jettywrapper
   jquery-rails

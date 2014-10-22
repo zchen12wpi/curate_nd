@@ -84,4 +84,6 @@ CurateNd::Application.configure do
   rescue LoadError => e
     logger.error("#{e.class}: #{e}")
   end
+
+  config.use_proxy_for_download.enable
 end
