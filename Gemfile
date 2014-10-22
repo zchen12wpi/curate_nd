@@ -32,6 +32,7 @@ group :default do
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
   gem 'newrelic_rpm'
+  gem 'flipper'
 end
 
 # Hack to work around some bundler strangeness
