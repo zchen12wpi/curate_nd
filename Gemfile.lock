@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 3f69f4cddf575c6df67d70edd9a4f2f6f0b24a6e
-  ref: 3f69f4cddf575c6df67d70edd9a4f2f6f0b24a6e
+  revision: c747d2f2e01d60ef70b12f740f2f866f31738944
+  ref: c747d2f2e01d60ef70b12f740f2f866f31738944
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -599,7 +599,7 @@ GEM
     timecop (0.6.3)
     trollop (1.16.2)
     tzinfo (0.3.41)
-    uber (0.0.9)
+    uber (0.0.10)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
