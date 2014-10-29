@@ -474,6 +474,9 @@ GEM
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
     retriable (1.4.1)
+    roboto (0.2.0)
+      actionpack (>= 3.0.0)
+      rails (>= 3.1.0)
     rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (3.0.0)
@@ -674,6 +677,7 @@ DEPENDENCIES
   rails_best_practices
   rake
   resque-pool
+  roboto
   rspec-html-matchers (~> 0.6)
   rspec-its (~> 1.0)
   rspec-rails (~> 3.0)
