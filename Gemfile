@@ -33,6 +33,7 @@ group :default do
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
   gem 'newrelic_rpm'
   gem 'flipper'
+  gem 'roboto'
 end
 
 # Hack to work around some bundler strangeness
