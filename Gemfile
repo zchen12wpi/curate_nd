@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', github: 'ndlib/curate', branch: 'curate-nd-beta', ref: '04bdb3ecf77732c51c6ee85f43ce3d114d39b6cd'
+  gem 'curate', github: 'ndlib/curate', branch: 'curate-nd-beta', ref: 'b7f6752fbc032d5fe1ece7bd8998d65db3e0a5de'
   # gem 'curate', path: '../curate'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
@@ -33,6 +33,8 @@ group :default do
   gem 'custom_configuration'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
+  gem 'newrelic_rpm'
+  gem 'flipper'
 end
 
 # Hack to work around some bundler strangeness

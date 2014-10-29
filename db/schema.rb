@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924172532) do
+ActiveRecord::Schema.define(version: 20141008174017) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -162,6 +162,8 @@ ActiveRecord::Schema.define(version: 20140924172532) do
     t.datetime "updated_at"
     t.boolean  "javascript_enabled"
     t.string   "release_version"
+    t.string   "name"
+    t.string   "email"
   end
 
   add_index "help_requests", ["created_at"], name: "index_help_requests_on_created_at", using: :btree

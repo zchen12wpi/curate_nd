@@ -15,6 +15,8 @@ if defined?(Bundler)
 end
 
 require 'bootstrap-sass'
+require 'flipper'
+require 'flipper/adapters/memory'
 
 module CurateNd
   class Application < Rails::Application
@@ -101,6 +103,10 @@ module CurateNd
       authentication:       SMTP_CONFIG['smtp_authentication_type'],
       enable_starttls_auto: SMTP_CONFIG['smtp_enable_starttls_auto']
     }
+
+    adapter = Flipper::Adapters::Memory.new
+    flipper = Flipper.new(adapter)
+    config.use_proxy_for_download= flipper[:use_proxy_for_download]
 
   end
 end
