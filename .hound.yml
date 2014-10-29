@@ -11,10 +11,21 @@
 
 ################################################################################
 ##
-## Custom options for Curate
+## Custom options for Hydramata::Works
 ## These options were plucked from below and modified accordingly.
 ##
 ################################################################################
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - lib/**/version.rb
+    - spec/internal/**/*
+    - spec/*_helper.rb
+
 MethodLength:
   Max: 10
   Description: 'Avoid methods longer than 10 lines of code.'
@@ -175,7 +186,7 @@ DefWithParentheses:
 
 Delegate:
   Description: 'Prefer delegate method for delegations.'
-  Enabled: true
+  Enabled: false
 
 DeprecatedHashMethods:
   Description: 'Checks for use of deprecated Hash methods.'
@@ -184,9 +195,13 @@ DeprecatedHashMethods:
 Documentation:
   Description: 'Document classes and non-namespace modules.'
   Enabled: true
+  Exclude:
+  - spec/**/*
+  - lib/**/version.rb
 
 DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
+  EnforcedStyle: trailing
   Enabled: true
 
 DoubleNegation:
@@ -235,7 +250,7 @@ EvenOdd:
 
 FileName:
   Description: 'Use snake_case for source file names.'
-  Enabled: true
+  Enabled: false
 
 FlipFlop:
   Description: 'Checks for flip flops'
@@ -395,6 +410,16 @@ ParenthesesAroundCondition:
 
 PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently'
+  PreferredDelimiters:
+    '%':  ()
+    '%i': ()
+    '%q': ()
+    '%Q': ()
+    '%r': '{}'
+    '%s': ()
+    '%w': ()
+    '%W': ()
+    '%x': ()
   Enabled: true
 
 PerlBackrefs:
@@ -539,7 +564,7 @@ SpecialGlobalVars:
 
 StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
-  Enabled: true
+  Enabled: false
 
 Tab:
   Description: 'No hard tabs.'
