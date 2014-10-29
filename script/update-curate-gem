@@ -1,0 +1,135 @@
+#!/usr/bin/env ruby -wU
+
+#*******************************************************************************
+#
+# CONFIGURATION OPTIONS
+#
+#*******************************************************************************
+
+CONFIG_KEYS = [:CURATE_PATH, :CURATE_ND_PATH, :CURATE_BRANCH, :CURATE_ND_BRANCH, :CURATE_REMOTE].freeze
+
+CURATE_ND_PATH = ENV.fetch('CURATE_ND_PATH', File.join(ENV['HOME'], 'Repositories/curate_nd'))
+CURATE_PATH = ENV.fetch('CURATE_PATH', File.join(ENV['HOME'], 'Repositories/curate'))
+CURATE_BRANCH = ENV.fetch('CURATE_BRANCH', 'curate-nd-beta')
+CURATE_ND_BRANCH = ENV.fetch('CURATE_ND_BRANCH', 'master')
+CURATE_REMOTE = ENV.fetch('CURATE_REMOTE', 'origin')
+
+#*******************************************************************************
+#
+# HELP OPTIONS
+#
+#*******************************************************************************
+
+if ARGV.grep(/-h/i).size == 1
+  $stdout.puts ""
+  $stdout.puts "$ ./#{File.basename(__FILE__)}"
+  $stdout.puts ""
+  $stdout.puts "This script will update the Curate gem reference for CurateND."
+  $stdout.puts ""
+  $stdout.puts "**You** will need to push those changes to the CurateND remote."
+  $stdout.puts ""
+  $stdout.puts "* Get the current SHA for the HEAD of curate gem"
+  $stdout.puts "* Update the SHA used in the CurateND gem"
+  $stdout.puts "* Write a commit message based on the change to Curate"
+  $stdout.puts ""
+  $stdout.puts "Note: There are steps to insure you have a clean working directory."
+  $stdout.puts "Note: If you have spaces in your configuration all bets are off!"
+  $stdout.puts ""
+  $stdout.puts "Current Configuration:"
+  CONFIG_KEYS.each do |key|
+    $stdout.puts "\t#{key}='#{Object.const_get(key)}'"
+  end
+  $stdout.puts ""
+  $stdout.puts "You can override the configuration option by adding the corresponding"
+  $stdout.puts "ENV variable."
+  $stdout.puts ""
+  $stdout.puts "Example:"
+  $stdout.puts "$ CURATE_PATH=my/path/to/curate ./script/update-curate-gem"
+  exit(0)
+end
+
+#*******************************************************************************
+#
+# DO STUFF
+#
+#*******************************************************************************
+
+# Change directory into curate repository
+# Ensure that we have a clean workspace
+if `cd #{CURATE_PATH} && git status --porcelain`.strip.size > 0
+  $stderr.puts "Curate @ #{CURATE_PATH} did not have a clean working directory"
+  exit!(1)
+end
+
+# Checkout out the <curate-nd-beta> branch
+# Pull the changes from <origin>
+`cd #{CURATE_PATH} && git checkout #{CURATE_BRANCH}`
+`cd #{CURATE_PATH} && git pull #{CURATE_REMOTE}`
+curate_sha_head = `cd #{CURATE_PATH} && git log --pretty=format:'%H' -1`.strip
+if curate_sha_head.to_s.strip == ''
+  $stderr.puts "Unable to determine Curate gem's SHA @ #{CURATE_PATH}"
+  exit!(2)
+end
+
+# Change directory into curate_nd
+# Ensure that we have a clean workspace
+if `cd #{CURATE_ND_PATH} && git status --porcelain`.strip.size > 0
+  $stderr.puts "CurateND @ #{CURATE_ND_PATH} did not have a clean working directory"
+  exit!(3)
+end
+
+# Checkout out the <master> branch
+`cd #{CURATE_PATH} && git checkout #{CURATE_ND_BRANCH}`
+
+curate_nd_path_gemfile = File.join(CURATE_ND_PATH, 'Gemfile')
+
+# Capture the previous git version for curate gem
+gemfile_contents = File.read(curate_nd_path_gemfile)
+gemfile_contents =~ /gem ['"]curate['"].*ref: ['"](\w*)['"]/
+curate_old_sha_head = $1.to_s.strip
+if curate_sha_head.to_s.strip == ''
+  $stderr.puts "Unable to find Curate gem's SHA in CurateND @ #{CURATE_ND_PATH}"
+  exit!(4)
+end
+
+if curate_sha_head == curate_old_sha_head
+  $stdout.puts "CurateND is already referencing #{curate_sha_head}"
+  exit!(0)
+end
+
+$stdout.puts "Moving Curate\n\tfrom:\t#{curate_old_sha_head}\n\tto:\t#{curate_sha_head}"
+
+
+`cd #{CURATE_ND_PATH} && git checkout #{CURATE_ND_BRANCH} && sed -i '' -e s/#{curate_old_sha_head}/#{curate_sha_head}/g #{File.join(CURATE_ND_PATH, 'Gemfile')}`
+
+# Run `bundle`
+$stdout.puts "Bundling up Curate"
+`cd #{CURATE_ND_PATH}; bundle`
+
+# Change directory into curate repository
+# Capture git log subjects and shas for previous and new sha (skip merges)
+curate_commit_messages = `cd #{CURATE_PATH} && git log #{curate_old_sha_head}..#{curate_sha_head} --no-merges --pretty="%w(80,0,0)%ad: %s [%cN]%n" --date=short`
+
+# Change directory into curate_nd
+# Write the commit message.
+path_to_commit_message = File.expand_path(File.join(CURATE_ND_PATH, '../COMMIT.msg'))
+begin
+  File.open(path_to_commit_message, 'w+') do |file|
+    file.puts "Updating the Curate gem"
+    file.puts ""
+    file.puts curate_commit_messages.strip
+    file.puts ""
+
+    message = "$ ./script/#{File.basename(__FILE__)}"
+    CONFIG_KEYS.each_with_object(message) do |key, mem|
+      if ENV.key?(key.to_s)
+        mem = "#{key}=\"#{ENV[key.to_s].to_s}\" #{mem}"
+      end
+      mem
+    end
+    file.puts message
+  end
+  $stdout.puts `cd #{CURATE_ND_PATH} && git checkout #{CURATE_ND_BRANCH} && git add Gemfile Gemfile.lock && git commit -F #{path_to_commit_message} && git log -1`
+ensure
+  File.unlink(path_to_commit_message) rescue true
+end

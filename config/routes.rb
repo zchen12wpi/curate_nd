@@ -18,6 +18,9 @@ CurateNd::Application.routes.draw do
         collection { get :start_masquerading }
       end
     end
+    constraints CurateND::AdminAPIConstraint do
+      post "reindex", to: "reindex#reindex"
+    end
   end
 
   # Due to an apparent bug in devise the following routes should be presented
@@ -39,6 +42,7 @@ CurateNd::Application.routes.draw do
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: 'static_pages#beta'
+  get 'faqs',  to: 'static_pages#faqs'
   get '500', to: 'static_pages#error'
   get '502', to: 'static_pages#error', default: { status_code: '502' }
   get '404', to: 'static_pages#error', default: { status_code: '404' }

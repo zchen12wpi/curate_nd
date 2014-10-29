@@ -1,0 +1,7 @@
+development: &DEFAULT
+  - dev
+  - 1234567890
+test: &TEST
+  <<: *DEFAULT
+ci:
+  <<: *TEST

@@ -17,6 +17,7 @@ echo "=-=-=-=-=-=-=-= git clone $secret_repo"
 git clone "git@git.library.nd.edu:$secret_repo"
 
 files_to_copy="
+    admin_api_keys.yml
     admin_usernames.yml
     application.yml
     database.yml
@@ -31,6 +32,7 @@ files_to_copy="
     solr.yml
     work_type_permissions.yml
     licensing_permissions.yml
+    newrelic.yml
     "
 
 for f in $files_to_copy; do

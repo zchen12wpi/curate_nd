@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_filter :filter_notify
 
   def filter_notify
@@ -22,13 +22,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  after_filter :store_location
+  before_filter :store_location
 
   def store_location
     return true unless request.get?
     return true if request.xhr?
     return true if request.path =~ /\A\/downloads\//
     return true if request.path =~ /\A\/users\//
+    return true if request.path =~ /\A\/terms_of_service_agreements\//
     session[:previous_url] = request.fullpath
   end
 
