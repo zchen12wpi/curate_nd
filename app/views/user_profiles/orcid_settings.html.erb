@@ -1,1 +1,6 @@
+<% content_for :page_title, 'Orcid Settings // CurateND' %>
+<% content_for :page_header do %>
+  <h1>ORCID Settings</h1>
+<% end %>
+
 <%= render partial: 'orcid/profile_connections/orcid_connector', locals: {default_search_text: current_user.name } %>
