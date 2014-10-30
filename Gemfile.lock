@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: d7f2008d980855b54e32eab3517d6e04974a09d5
-  ref: d7f2008d980855b54e32eab3517d6e04974a09d5
+  revision: e3247038c0d052843c44f7764c620ebbf507a7f7
+  ref: e3247038c0d052843c44f7764c620ebbf507a7f7
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
