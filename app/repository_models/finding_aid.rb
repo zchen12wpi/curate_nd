@@ -32,9 +32,9 @@ class FindingAid < ActiveFedora::Base
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
   attribute :identifier, datastream: :descMetadata, multiple: false
   attribute :date_uploaded,
-    default: Date.today.to_s("%Y-%m-%d")
+    default: lambda { Date.today.to_s("%Y-%m-%d") }
   attribute :date_modified,
-    default: Date.today.to_s("%Y-%m-%d")
+    default: lambda { Date.today.to_s("%Y-%m-%d") }
   attribute :rights,
     datastream: :descMetadata, multiple: false,
     default: "All rights reserved",

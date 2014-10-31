@@ -33,7 +33,7 @@ class SeniorThesis < ActiveFedora::Base
     label: "Abstract or Summary of Senior Thesis",
     datastream: :descMetadata, multiple: false
   attribute :date_created,
-    default: Date.today.to_s("%Y-%m-%d"),
+    default: lambda { Date.today.to_s("%Y-%m-%d") },
     label: "When did your finish your Senior Thesis",
     hint: "This does not need to be exact, but your best guess.",
     datastream: :descMetadata, multiple: false
