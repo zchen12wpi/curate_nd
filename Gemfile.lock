@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: b7f6752fbc032d5fe1ece7bd8998d65db3e0a5de
-  ref: b7f6752fbc032d5fe1ece7bd8998d65db3e0a5de
+  revision: e3247038c0d052843c44f7764c620ebbf507a7f7
+  ref: e3247038c0d052843c44f7764c620ebbf507a7f7
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -515,6 +515,9 @@ GEM
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
     retriable (1.4.1)
+    roboto (0.2.0)
+      actionpack (>= 3.0.0)
+      rails (>= 3.1.0)
     rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec (3.0.0)
@@ -562,7 +565,7 @@ GEM
       nokogiri
       rest-client
     safe_yaml (0.9.7)
-    sanitize (3.0.2)
+    sanitize (3.0.3)
       crass (~> 0.2.0)
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.1.12)
@@ -721,6 +724,7 @@ DEPENDENCIES
   rails_best_practices
   rake
   resque-pool
+  roboto
   rspec-html-matchers (~> 0.6)
   rspec-its (~> 1.0)
   rspec-rails (~> 3.0)
