@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra-labs/orcid.git
-  revision: e70d9c2fa9acaf3af13c15736d33273d37f06795
+  revision: 55300b4518d6defaedd1a512437bd13420e7f314
   specs:
     orcid (0.9.0)
       devise-multi_auth (~> 0.1)
