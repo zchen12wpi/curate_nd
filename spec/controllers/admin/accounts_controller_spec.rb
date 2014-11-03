@@ -16,4 +16,13 @@ describe Admin::AccountsController do
     end
   end
 
+  context '#disconnect_orcid_profile' do
+    it 'should disconnect' do
+      user = FactoryGirl.create(:user)
+      delete :disconnect_orcid_profile, id: user.to_param
+      expect(response.status).to eq(302)
+      expect(flash[:notice]).to eq("Disconnected ORCID connection for '#{user.username}'.")
+    end
+  end
+
 end
