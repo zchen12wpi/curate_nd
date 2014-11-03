@@ -19,6 +19,7 @@ git clone "git@git.library.nd.edu:$secret_repo"
 files_to_copy="
     admin_api_keys.yml
     admin_usernames.yml
+    application.yml
     database.yml
     doi.yml
     fedora.yml

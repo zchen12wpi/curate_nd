@@ -1,0 +1,19 @@
+<% content_for :layout_name, 'user_profile_layout, ' %>
+<% content_for :left_column_class, 'span2' %>
+<% content_for :right_column_class, 'span10' %>
+<% content_for :left_column do %>
+  <ul class="nav nav-pills nav-stacked">
+    <%= content_tag('li', class: (controller_name == 'users' && action_name == 'edit' ? 'active' : '')) do %>
+      <%= link_to "Edit My Profile", edit_user_path(current_user.id) %>
+    <% end %>
+    <%= content_tag('li', class: (request.path =~ /^\/?orcid/ || action_name == 'orcid_settings' ? 'active' : '')) do %>
+      <%= link_to "ORCID Settings", orcid_settings_path %>
+    <% end %>
+  </ul>
+<% end %>
+
+<% content_for :right_column do %>
+  <%= yield %>
+<% end %>
+
+<%= render template: "layouts/#{theme}/2_column" %>

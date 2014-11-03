@@ -46,7 +46,7 @@ class lib_curate::disadis( $disadis_root = '/opt/disadis' ) {
 	exec { "stop-disadis":
 		command => "/sbin/initctl stop disadis",
 		unless => "/sbin/initctl status disadis | grep stop",
-		require => File['logrotate.d/disadis'], 
+		require => File['logrotate.d/disadis'],
 	}
 
 	exec { "start-disadis":

@@ -16,6 +16,12 @@ Once jetty is started, run either of the following
 
 `rake` or `rspec`
 
+## Running the application under SSL
+
+```console
+$ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
+```
+
 ## Application Status
 
 [![Build Status](https://travis-ci.org/ndlib/curate_nd.png)](https://travis-ci.org/ndlib/curate_nd)
