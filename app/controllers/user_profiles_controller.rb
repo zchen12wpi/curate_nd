@@ -5,7 +5,8 @@ class UserProfilesController < ApplicationController
     render 'orcid_settings'
   end
 
-  protected
-
   alias_method :after_successful_orcid_profile_request_path, :orcid_settings_path
+  def after_orcid_profile_request_destroyed_path
+    orcid.new_profile_request_path
+  end
 end
