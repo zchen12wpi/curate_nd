@@ -28,4 +28,8 @@ describe Account do
     }.to change { subject.person.reload.email }.to(attributes.fetch('email'))
   end
 
+  it 'should have an enumerable .omniauth_providers' do
+    expect(described_class.omniauth_providers).to be_a(Enumerable)
+  end
+
 end

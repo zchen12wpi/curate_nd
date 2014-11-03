@@ -12,7 +12,7 @@
 
   <div class="row">
 
-    <fieldset class="span6">
+    <fieldset class="span5">
       <legend>Personal Information</legend>
 
       <%= f.input :name %>
@@ -22,7 +22,7 @@
 
     </fieldset>
 
-    <fieldset class="span6">
+    <fieldset class="span5">
       <legend>Contact Information</legend>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -36,16 +36,20 @@
       <%= f.input :alternate_phone_number, as: :tel %>
 
     </fieldset>
-    <fieldset class="span12 research-ids">
+    <fieldset class="span10 research-ids">
       <legend>Researcher Identification Information</legend>
-        <%= f.input :orcid_id, label: "ORCID", input_html: { maxlength: 20 } %>
         <%= f.input :researcher_id, label: "ResearcherID", input_html: { maxlength: 20 } %>
         <%= f.input :scopus_id, label: "Scopus ID", input_html: { maxlength: 20 } %>
+        <div>
+          <div class="control-group">
+              <%= link_to "ORCID Settings", orcid_settings_path, class: 'btn' %>
+          </div>
+        </div>
     </fieldset>
   </div>
 
   <div class="row with-headroom">
-    <div class="span12">
+    <div class="span10">
       <fieldset class="required">
         <legend>
           Attach your profile image
@@ -56,7 +60,7 @@
   </div>
 
   <div class="row">
-    <div class="span12 form-actions">
+    <div class="span10 form-actions">
       <%= f.submit class: 'btn btn-primary', value: 'Update My Account' %>
       <%- if current_user.repository_id -%>
         <%= link_to 'Cancel', person_path(current_user.person), class: 'btn btn-link' %>
@@ -65,3 +69,4 @@
   </div>
 
 <% end %>
+

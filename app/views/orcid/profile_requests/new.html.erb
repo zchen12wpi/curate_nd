@@ -1,0 +1,14 @@
+<% content_for :page_title, 'Create an ORCID // Orcid Settings // CurateND' %>
+<% content_for :page_header do %>
+  <h1>ORCID Settings &mdash; Create an ORCID </h1>
+<% end %>
+
+<%= simple_form_for profile_request, as: :profile_request, url: orcid.profile_request_path do |f| %>
+  <%= field_set_tag do%>
+    <%= f.input :given_names %>
+    <%= f.input :family_name %>
+    <%= f.input :primary_email %>
+    <%= f.input :primary_email_confirmation %>
+  <% end %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
