@@ -29,6 +29,7 @@ en:
         existing_request_not_found: "Unable to find an existing ORCID Profile request. Go ahead and create one."
         existing_request: "You have already submitted an ORCID Profile request."
         previously_connected_profile: "You have already connected to an ORCID Profile (%{orcid_profile_id})."
+        profile_request_destroy: "Your ORCID profile request has been cancelled."
     connections:
       messages:
         profile_connection_not_found: "Unable to find an existing ORCID Profile connection."
