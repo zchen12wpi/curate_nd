@@ -7,6 +7,6 @@ class UserProfilesController < ApplicationController
 
   alias_method :after_successful_orcid_profile_request_path, :orcid_settings_path
   def after_orcid_profile_request_destroyed_path
-    orcid.new_profile_request_path
+    orcid.new_profile_connection_path
   end
 end
