@@ -6,9 +6,6 @@ describe UserProfilesController do
     expect(controller.after_successful_orcid_profile_request_path).to eq(controller.orcid_settings_path)
   end
 
-  it 'should have #after_orcid_profile_request_destroyed_path' do
-    expect(controller.after_orcid_profile_request_destroyed_path).to eq(controller.orcid.new_profile_connection_path)
-  end
   context 'GET orcid_settings' do
     it 'renders orcid_settings page' do
       get 'orcid_settings'
