@@ -43,7 +43,14 @@
         <td><%= mail_to(user.email) %></td>
         <td><%= user.name %></td>
         <td><%= user.repository_noid? ? link_to(user.repository_noid, person_path(user.repository_noid)) : 'no person object' %></td>
-          <td><%= link_to_if(current_user != user, "Masquerade as #{user}", user_masquerade_path(id: user.to_param)) %></td>
+        <td>
+          <ul>
+            <% if user != current_user %>
+              <li><%= link_to("Masquerade as #{user}", user_masquerade_path(id: user.to_param), class: 'btn') %></li>
+            <% end %>
+            <li><%= link_to("Disconnect Orcid Profile", disconnect_orcid_profile_admin_account_path(id: user.to_param), method: :delete, class: 'btn') %></li>
+          </ul>
+        </td>
       </tr>
     <% end %>
   </tbody>

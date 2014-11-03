@@ -17,6 +17,7 @@ CurateNd::Application.routes.draw do
       resources :announcements
       resources :accounts, only: [:show, :index] do
         collection { get :start_masquerading }
+        member { delete :disconnect_orcid_profile}
       end
     end
     constraints CurateND::AdminAPIConstraint do
