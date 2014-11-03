@@ -16,4 +16,11 @@ class Admin::AccountsController < ApplicationController
     redirect_to '/'
   end
 
+  def disconnect_orcid_profile
+    user = User.find(params[:id])
+    Orcid.disconnect_user_and_orcid_profile(user)
+    flash[:notice] = "Disconnected ORCID connection for '#{user.username}'."
+    redirect_to(request.env["HTTP_REFERER"] || admin_accounts_path)
+  end
+
 end
