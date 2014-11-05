@@ -27,8 +27,8 @@
   z-index: 9999;
   pointer-events: auto;
 
-  top: 42px;
-  right: -43px;
+  top: 15px;
+  right: -42px;
 
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -49,7 +49,7 @@
   text-align: center;
 
   /* Set the geometry. If you fiddle with these you'll also need to tweak the top and right values in .ribbon. */
-  width: 200px;
+  width: 145px;
   line-height: 20px;
 
   /* Set the layout properties */
@@ -66,5 +66,17 @@
   top: 0;
   z-index: 9999;
   pointer-events: none;
+  -webkit-transition: all 250ms ease-in-out;
+  -moz-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+@media (min-width: 1350px) {
+  .ribbon {
+    top: 42px;
+  }
+  .ribbon a,
+  .ribbon a:hover {
+    width: 200px;
+  }
 }
 

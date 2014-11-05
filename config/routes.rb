@@ -4,7 +4,7 @@ CurateNd::Application.routes.draw do
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
-  root 'catalog#index'
+  root 'static_pages#home'
 
   curate_for
 
@@ -41,6 +41,9 @@ CurateNd::Application.routes.draw do
   end
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+
+  #NOTE: This action may not be welcoming for new users.
+  get 'get_started', to: 'classify_concerns#new'
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: 'static_pages#beta'

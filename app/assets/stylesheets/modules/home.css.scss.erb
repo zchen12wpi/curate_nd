@@ -1,0 +1,363 @@
+@import 'global-variables';
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main h5,
+#main h6 {
+  color:$dark-blue;
+}
+
+#main.home {
+  margin-bottom:8%;
+}
+
+#banner.home {
+  position:fixed;
+  width:100%;
+  z-index:1;
+}
+.header-spacer {
+  height:8.6em;
+}
+@media (min-width: 545px) {
+  .header-spacer {
+    height:5.7em;
+  }
+}
+@media (min-width: 600px) {
+  .header-spacer {
+    height:7em;
+  }
+}
+
+.hero {
+  margin:0;
+  padding:1em 0 0;
+  position:relative;
+  height:416px;
+  background-image:url(<%= asset_path 'hero/sunset-basilica-500.jpg'%>);
+  background-position: top center;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+}
+@media (min-width: 700px) {
+  .hero {
+    height:600px;
+    padding-top:2em;
+    background-image:url(<%= asset_path 'hero/sunset-basilica-1000.jpg'%>);
+  }
+}
+@media (min-width: 960px) {
+  .hero {
+    height:940px;
+    padding-top:3em;
+    background-image:url(<%= asset_path 'hero/sunset-basilica-1500.jpg'%>);
+  }
+}
+
+$logo_width: 221;
+$logo_height: 48;
+
+.logo-wrapper {
+  font-size:1em;
+  margin:0 auto -7.5em;
+  padding:0;
+  padding-top: percentage(($logo_height / $logo_width * 60) / 100);
+  position:relative;
+  width:60%;
+}
+.logo-wrapper .CurateND-logo {
+  height:100%;
+  left:0;
+  position:absolute;
+  top:0;
+  width:100%;
+}
+.feature-navigation-wrapper{
+  padding-top:8.85em;
+}
+@media (min-width: 545px) {
+  .logo-wrapper {
+    margin-bottom:-3.6em;
+  }
+  .feature-navigation-wrapper{
+    padding-top:5.8em;
+  }
+}
+@media (min-width: 600px) {
+  .logo-wrapper {
+    margin-bottom:-5em;
+  }
+  .feature-navigation-wrapper{
+    padding-top:7.2em;
+  }
+}
+@media (min-width: 1200px) {
+  .logo-wrapper {
+    padding-top: percentage(($logo_height / $logo_width * 40) / 100);
+    width:40%;
+  }
+}
+
+#more-information {
+  font-weight:bold;
+  letter-spacing:.1em;
+  margin:0 auto;
+  text-align:center;
+  text-shadow:none;
+  text-transform:uppercase;
+  width:100%;
+  z-index:1;
+
+  .feature-navigation-wrapper {
+    margin:0 auto;
+    display:table;
+    border-bottom:2px solid #9c802e;
+  }
+  .feature-navigation {
+    background-color:#dcb439;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    display:table-row;
+    font-size:.8em;
+  }
+  .feature-link-wrapper {
+    display:table-cell;
+  }
+  .feature-link,
+  .feature-link:visited {
+    color:#002b5b;
+  }
+  .feature-link {
+    padding:.3em .6em;
+    text-align:center;
+    display:block;
+    -webkit-transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+  }
+  .feature-link:hover {
+    background-color:#9c802e;
+    color:#fff;
+    text-decoration:none;
+  }
+}
+@media (min-width: 400px) {
+  #more-information {
+    .feature-navigation {
+      font-size:1em;
+    }
+  }
+}
+@media (min-width: 768px) {
+  #more-information {
+    .feature-navigation {
+      font-size:1.4em;
+    }
+    .feature-link {
+      padding:.6em 1em;
+      letter-spacing:.1em;
+    }
+  }
+}
+@media (min-width: 960px) {
+  #more-information {
+    .feature-navigation {
+      font-size:1.8em;
+    }
+    .feature-link {
+      padding:.6em 1em;
+      letter-spacing:.15em;
+    }
+  }
+}
+
+#features {
+  h1 {
+    text-align:center;
+    font-size:1.8em;
+    line-height:1.4;
+    padding:.5em;
+    margin:0;
+    color:#FFF;
+    background-color:$dark-blue;
+  }
+  h2 {
+    padding-top:1.5em;
+    padding-bottom:.3em;
+  }
+  p {
+    color:$dark-blue;
+  }
+  .feature {
+    padding:0 0 3em;
+  }
+  .dark-blue {
+    background-color:$dark-blue;
+    color:#FFF;
+
+    p,h2,h3,h4 {
+      color:#FFF;
+    }
+    a,a:hover,a:visited {
+      border-color:#dcb439;
+      color:#dcb439;
+    }
+    abbr {
+      border-color:#dcb439;
+    }
+  }
+  .feature.dark-blue {
+    padding:2em 0;
+  }
+  .angle {
+    background-color:$dark-blue;
+    height:100%;
+    left:-10%;
+    position:absolute;
+    -webkit-transform:rotate(-2deg);
+    transform:rotate(-2deg);
+    -webkit-transform-origin:0 0;
+    transform-origin:0 0;
+    width:120%;
+    z-index:-1;
+    top:100%;
+  }
+  .angle-wrapper {
+    height:2em;
+    position:relative;
+    overflow:hidden;
+    margin-top:0px;
+    margin-bottom:-1px;
+  }
+  .dark-blue + .angle-wrapper {
+    margin-top:-1px;
+    margin-bottom:0;
+  }
+  .dark-blue + .angle-wrapper .angle {
+    top:0;
+  }
+  .feature-questions {
+    margin:0 0 1em 1.1em;
+    list-style-type:none;
+  }
+  .feature-questions li {
+    color:$dark-blue;
+    font-family:$headerFontFamily;
+    font-size:1.4em;
+    line-height:1.25;
+    position:relative;
+    padding-bottom:.5em;
+  }
+  .dark-blue .feature-questions li {
+    color:#FFF;
+  }
+  .feature-questions li:before {
+    border-color:$dark-blue;
+    border-style:solid;
+    border-width:.15em;
+    content: "";
+    left: -.7em;
+    position: absolute;
+    top: .55em;
+  }
+  .dark-blue .feature-questions li:before {
+    border-color:#FFF;
+  }
+  article {
+    padding:0 1em;
+  }
+  article p {
+    max-width:30em;
+  }
+}
+@media (min-width: 600px) {
+  #features {
+    .angle-wrapper {
+      height:3em;
+    }
+    .feature {
+      padding:0 0 5em;
+    }
+    .feature.dark-blue {
+      padding:2em 0 3em;
+    }
+  }
+}
+@media (min-width: 768px) {
+  #features {
+    h1 {
+      font-size:2.2em;
+      line-height:1.4;
+      padding:.5em 2em;
+    }
+    h2 {
+      font-size:3em;
+      line-height:2;
+    }
+    article {
+      padding:0;
+    }
+    .feature-questions {
+      margin:0 0 1em 1.5em;
+    }
+    .feature-questions li {
+      font-size:2em;
+    }
+    .feature-questions li:before {
+      border-width:.1em;
+    }
+    article p {
+      font-size:1.2em;
+      line-height:1.2;
+    }
+  }
+}
+@media (min-width: 960px) {
+  #features {
+    .angle-wrapper {
+      height:4em;
+    }
+    h1 {
+      font-size:3em;
+      line-height:1.6;
+      padding:2em 2em 1em;
+    }
+    h2 {
+      font-size:4em;
+    }
+    .feature-questions {
+      margin:0 0 1em 1.9em;
+    }
+    .feature-questions li {
+      font-size:2.5em;
+    }
+    article p {
+      font-size:1.4em;
+      line-height:1.4;
+    }
+  }
+  .home+#footer {
+    padding-top:5em;
+  }
+}
+@media (min-width: 1200px) {
+  #features {
+    .angle-wrapper {
+      height:6em;
+    }
+  }
+}
+@media (min-width: 2000px) {
+  #features {
+    .angle-wrapper {
+      height:8em;
+    }
+  }
+}
+
