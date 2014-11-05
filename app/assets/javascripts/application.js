@@ -16,9 +16,11 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require curate
+//= require jquery.sticky
 //= require_tree .
 
 $(function(){
+  $("#more-information").sticky({topSpacing:0});
   $("a[rel=popover]").popover({ html : true, trigger: "hover" });
   $("a[rel=popover]").click(function() { return false;});
 

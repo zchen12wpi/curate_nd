@@ -1,0 +1,53 @@
+@import 'global-variables';
+
+.emphatic-action {
+  font-family:$headerFontFamily;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  font-size:2em;
+  padding:.8em .7em;
+  margin-top:.5em;
+}
+@media (min-width: 960px) {
+  .emphatic-action {
+    margin-top:1em;
+  }
+}
+
+.emphatic-action.with-chevron {
+  padding-right:2.2em;
+  position:relative;
+}
+
+.emphatic-action .chevron-wrapper {
+  display:inline-block;
+  height:1.3em;
+  position:absolute;
+  right:.4em;
+  top:.4em;
+  width:1.3em;
+}
+
+/* Homepage-specific Theme */
+#features .emphatic-action-wrapper {
+  max-width:100%;
+}
+.emphatic-action-wrapper {
+  text-align:center;
+}
+@media (min-width: 768px) {
+  .emphatic-action-wrapper {
+    text-align:left;
+  }
+}
+
+#features .btn-primary.emphatic-action {
+  background:$dark-blue;
+}
+
+#features .dark-blue .btn-primary.emphatic-action {
+  border-color:#9C802E;
+  background:#DCB439;
+  color:#FFF;
+}
