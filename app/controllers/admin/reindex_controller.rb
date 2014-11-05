@@ -4,6 +4,8 @@ module Admin
   class ReindexController < ApplicationController
     with_themed_layout("1_column")
 
+    skip_before_action :verify_authenticity_token
+
     # POST /admin/reindex
     def reindex
       json = get_json_array(request.body.read)
