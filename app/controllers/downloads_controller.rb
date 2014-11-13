@@ -3,12 +3,17 @@ class DownloadsController
   protected
 
   def send_content(asset)
-    if Rails.application.config.use_proxy_for_download.enabled? && !params[:datastream_id].present?
+    # Because we don't want to proxy thumbnails, as per Don's suggestion.
+    if Rails.application.config.use_proxy_for_download.enabled? && !thumbnail_datastream?
       content_options
       response.headers['X-Accel-Redirect'] = "/download-content/#{asset.noid}"
       head :ok
     else
-      super
+      if datastream.mimeType.eql?('application/xml')
+        send_data datastream.content, type: "application/xml"
+      else
+        super
+      end
     end
   end
 
@@ -20,5 +25,11 @@ class DownloadsController
     else "inline"
     end
     options
+  end
+
+  private
+
+  def thumbnail_datastream?
+    params[:datastream_id] == 'thumbnail'
   end
 end
