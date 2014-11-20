@@ -1,0 +1,53 @@
+
+humanities:
+  key: "humanities"
+  identifier: "Humanities"
+  selectable: false
+africana_studies:
+  key: "africana_studies"
+  identifier: "Humanities::Africana Studies"
+  selectable: true
+american_studies:
+  key: "american_studies"
+  identifier: "Humanities::American Studies"
+  selectable: true
+arab_studies:
+  key: "arab_studies"
+  identifier: "Humanities::Arab Studies"
+  selectable: true
+architecture:
+  key: "architecture"
+  identifier: "Architecture"
+  selectable: true
+art_art_history_and_design:
+  key: "art_art_history_and_design"
+  identifier: "Humanities::Art, Art History And Design"
+  selectable: true
+asian_languages_and_literature:
+  key: "asian_languages_and_literature"
+  identifier: "Humanities::Asian Languages And Literature"
+  selectable: false
+chinese_languages_and_literature:
+  key: "chinese_languages_and_literature"
+  identifier: "Humanities::Asian Languages And Literature::Chinese Languages And Literature"
+  selectable: true
+japanese_languages_and_literature:
+  key: "japanese_languages_and_literature"
+  identifier: "Humanities::Asian Languages And Literature::Japanese Languages And Literature"
+  selectable: true
+asian_studies:
+  key: "asian_studies"
+  identifier: "Humanities::Asian Studies"
+  selectable: false
+chinese_studies:
+  key: "chinese_studies"
+  identifier: "Humanities::Asian Studies::Chinese Studies"
+  selectable: true
+japanese_studies:
+  key: "japanese_studies"
+  identifier: "Humanities::Asian Studies::Japanese Studies"
+  selectable: true
+korean_studies:
+  key: "korean_studies"
+  identifier: "Humanities::Asian Studies::Korean Studies"
+  selectable: true
