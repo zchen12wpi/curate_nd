@@ -1,17 +1,3 @@
 <div class="row">
-  <fieldset id="content-editor">
-    <legend class="span12">
-      <%=t('sufia.work.editor.legend') %>
-      <small><%=t('sufia.work.editor.caption') %></small>
-    </legend>
-    <div class="span7" id="required-information">
-      <%= render "linked_editors", curation_concern: curation_concern, f: f %>
-    </div>
-
-    <div class="span7" id="additional-information">
-      <%= render "linked_groups", curation_concern: curation_concern, f: f %>
-    </div>
-  </fieldset>
   <%= render "form_representative_file", curation_concern: curation_concern, f: f %>
-
 </div>
