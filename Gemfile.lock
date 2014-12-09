@@ -67,8 +67,9 @@ GIT
       json (~> 1.8)
       rest-client (~> 1.6)
 
-PATH
-  remote: ../orcid
+GIT
+  remote: git://github.com/projecthydra-labs/orcid.git
+  revision: c821938c8d755428be0f288f082d377446578595
   specs:
     orcid (0.9.1)
       devise-multi_auth (~> 0.1)
@@ -303,7 +304,7 @@ GEM
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    hashie (3.3.1)
+    hashie (3.3.2)
     highline (1.6.19)
     hike (1.2.3)
     hooks (0.3.6)
