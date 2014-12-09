@@ -67,6 +67,19 @@ GIT
       json (~> 1.8)
       rest-client (~> 1.6)
 
+PATH
+  remote: ../orcid
+  specs:
+    orcid (0.9.1)
+      devise-multi_auth (~> 0.1)
+      email_validator
+      figaro
+      mappy
+      omniauth-orcid
+      railties (~> 4.0)
+      simple_form
+      virtus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -427,15 +440,6 @@ GEM
     omniauth-orcid (0.6)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
-    orcid (0.9.1)
-      devise-multi_auth (~> 0.1)
-      email_validator
-      figaro
-      mappy
-      omniauth-orcid
-      railties (~> 4.0)
-      simple_form
-      virtus
     orm_adapter (0.5.0)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -717,7 +721,7 @@ DEPENDENCIES
   newrelic_rpm
   noids_client!
   nokogiri (~> 1.6.0)
-  orcid (~> 0.9)
+  orcid!
   poltergeist (~> 1.5)
   quiet_assets
   rails_best_practices
