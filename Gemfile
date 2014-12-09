@@ -8,7 +8,7 @@ group :default do
   # gem 'curate', path: '../curate'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
-  gem 'orcid', '~> 0.9'
+  gem 'orcid', path: '../orcid'
   gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
