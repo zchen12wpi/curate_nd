@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: d8c8c7c2a9a670f381b132a440902cf74d3e108a
-  ref: d8c8c7c2a9a670f381b132a440902cf74d3e108a
+  revision: c31a92e0ae09f0ec2981734210c6a39374fd63e5
+  ref: c31a92e0ae09f0ec2981734210c6a39374fd63e5
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -567,7 +567,7 @@ GEM
       nokogiri
       rest-client
     safe_yaml (0.9.7)
-    sanitize (3.0.3)
+    sanitize (3.0.4)
       crass (~> 0.2.0)
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.1.12)
