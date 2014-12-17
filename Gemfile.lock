@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c31a92e0ae09f0ec2981734210c6a39374fd63e5
-  ref: c31a92e0ae09f0ec2981734210c6a39374fd63e5
+  revision: dbe70411c6bff1a2a2a3e912b6c36c94ff531402
+  ref: dbe70411c6bff1a2a2a3e912b6c36c94ff531402
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -289,17 +289,16 @@ GEM
     foreigner (1.7.1)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
-    google-api-client (0.7.1)
-      addressable (>= 2.3.2)
-      autoparse (>= 0.3.3)
-      extlib (>= 0.9.15)
-      faraday (>= 0.9.0)
-      jwt (>= 0.1.5)
-      launchy (>= 2.1.1)
-      multi_json (>= 1.0.0)
-      retriable (>= 1.4)
-      signet (>= 0.5.0)
-      uuidtools (>= 2.1.0)
+    google-api-client (0.8.0)
+      activesupport (>= 3.2)
+      addressable (~> 2.3)
+      autoparse (~> 0.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      launchy (~> 2.4)
+      multi_json (~> 1.10)
+      retriable (~> 1.4)
+      signet (~> 0.6)
     google_drive (0.3.11)
       google-api-client (>= 0.7.0)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
@@ -665,7 +664,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uuidtools (2.1.5)
     vcr (2.7.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
