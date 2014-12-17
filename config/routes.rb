@@ -22,6 +22,7 @@ CurateNd::Application.routes.draw do
     end
     constraints CurateND::AdminAPIConstraint do
       post "reindex", to: "reindex#reindex"
+      post "add_to_collection", to: "add_to_collection#submit"
     end
   end
 
