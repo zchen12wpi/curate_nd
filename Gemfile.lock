@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: fe8b15361e1b39408384d1521617e05b174a1d02
-  ref: fe8b15361e1b39408384d1521617e05b174a1d02
+  revision: dcfa5b5bffc4b46b8a1d2b85e7abfec8e31f923d
+  ref: dcfa5b5bffc4b46b8a1d2b85e7abfec8e31f923d
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -103,9 +103,9 @@ GEM
       rdf-rdfxml (= 1.0.1)
       rsolr
       rubydora (~> 1.7.4)
-    active_attr (0.8.4)
-      activemodel (>= 3.0.2, < 4.2)
-      activesupport (>= 3.0.2, < 4.2)
+    active_attr (0.8.5)
+      activemodel (>= 3.0.2, < 5.0)
+      activesupport (>= 3.0.2, < 5.0)
     active_fedora-registered_attributes (0.2.1)
       active-fedora (>= 6.7.0)
       active_attr (~> 0.8.2)
@@ -118,7 +118,7 @@ GEM
       activesupport (= 4.0.12)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activerecord-import (0.6.0)
+    activerecord-import (0.7.0)
       activerecord (>= 3.0)
     activeresource (4.0.0)
       activemodel (~> 4.0)
@@ -289,7 +289,7 @@ GEM
     foreigner (1.7.1)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
-    google-api-client (0.8.0)
+    google-api-client (0.8.1.1)
       activesupport (>= 3.2)
       addressable (~> 2.3)
       autoparse (~> 0.3)
