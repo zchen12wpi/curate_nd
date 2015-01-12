@@ -274,3 +274,19 @@ li.attribute.abstract {
     }
   }
 }
+
+
+@media print {
+  #banner a[href]:after,
+  #footer p:nth-child(2) a[href]:after,
+  .footer-right a[href]:after {
+    content:"";
+  }
+  #brand-bar-wrapper {
+    display:none;
+  }
+  .CurateND-logo path {
+    fill:#000;
+  }
+}
+
