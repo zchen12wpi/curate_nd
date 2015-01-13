@@ -276,6 +276,28 @@ li.attribute.abstract {
 }
 
 
+/* Terms of Service */
+#terms_of_service .btn {
+  max-width:80%;
+  white-space:normal;
+}
+
+#tos-agree {
+  background-color:#dcb439;
+  background-image:none;
+  color:#002b5b;
+  font-weight:bold;
+  text-shadow:none;
+  border-width:0 0 2px;
+  border-color:#9c802e;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  -webkit-border-radius:0;
+    -moz-border-radius:0;
+          border-radius:0;
+}
+
+
 @media print {
   #banner a[href]:after,
   #footer p:nth-child(2) a[href]:after,
