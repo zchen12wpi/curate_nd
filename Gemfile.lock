@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 09705d1f5e645abdf2773c68e553855e9b2efb13
-  ref: 09705d1f5e645abdf2773c68e553855e9b2efb13
+  revision: 98ac85eda83b1ec0960db28cfe0b130360b78016
+  ref: 98ac85eda83b1ec0960db28cfe0b130360b78016
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -286,10 +286,10 @@ GEM
     flipper (0.6.2)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
-    foreigner (1.7.1)
+    foreigner (1.7.2)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
-    google-api-client (0.8.1.1)
+    google-api-client (0.8.2)
       activesupport (>= 3.2)
       addressable (~> 2.3)
       autoparse (~> 0.3)
