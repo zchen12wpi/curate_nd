@@ -8,8 +8,10 @@
 
 CONFIG_KEYS = [:CURATE_PATH, :CURATE_ND_PATH, :CURATE_BRANCH, :CURATE_ND_BRANCH, :CURATE_REMOTE].freeze
 
-CURATE_ND_PATH = ENV.fetch('CURATE_ND_PATH', File.join(ENV['HOME'], 'Repositories/curate_nd'))
-CURATE_PATH = ENV.fetch('CURATE_PATH', File.join(ENV['HOME'], 'Repositories/curate'))
+parent_directory = File.expand_path(File.join(File.dirname(__FILE__), '../..'))
+
+CURATE_ND_PATH = ENV.fetch('CURATE_ND_PATH', File.join(parent_directory, 'curate_nd'))
+CURATE_PATH = ENV.fetch('CURATE_PATH', File.join(parent_directory, 'curate'))
 CURATE_BRANCH = ENV.fetch('CURATE_BRANCH', 'curate-nd-beta')
 CURATE_ND_BRANCH = ENV.fetch('CURATE_ND_BRANCH', 'master')
 CURATE_REMOTE = ENV.fetch('CURATE_REMOTE', 'origin')
@@ -46,6 +48,23 @@ if ARGV.grep(/-h/i).size == 1
   $stdout.puts "Example:"
   $stdout.puts "$ CURATE_PATH=my/path/to/curate ./script/update-curate-gem"
   exit(0)
+end
+
+#*******************************************************************************
+#
+# GUARD Directories
+#
+#*******************************************************************************
+
+# Guard that directories exist
+[:CURATE_ND_PATH, :CURATE_PATH].each do |key|
+  repository_path = Object.const_get(key)
+  unless File.directory?(repository_path)
+    $stderr.puts "Expected directory for #{key} @ #{repository_path} to exist.\n\n"
+    $stderr.puts "See help for details on specifying #{key}.\n\n"
+    $stderr.puts "$ ./#{File.basename(__FILE__)} -h"
+    exit!(1)
+  end
 end
 
 #*******************************************************************************
