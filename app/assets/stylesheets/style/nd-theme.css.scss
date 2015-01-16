@@ -1,5 +1,6 @@
 @import 'compass';
 @import 'global-variables';
+@import 'modules/help_text';
 
 body {
   padding:0;
@@ -301,6 +302,7 @@ li.attribute.abstract {
 @media print {
   #banner a[href]:after,
   #footer p:nth-child(2) a[href]:after,
+  abbr[title].required-indicator:after,
   .footer-right a[href]:after {
     content:"";
   }
