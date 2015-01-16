@@ -304,11 +304,32 @@ li.attribute.abstract {
   .footer-right a[href]:after {
     content:"";
   }
-  #brand-bar-wrapper {
+
+  #banner {
+    margin-bottom:2em;
+  }
+
+  caption > h2 {
+    margin-bottom:1em;
+  }
+
+  #main {
+    h1, h2, h3, h4, h5, h6 {
+      font-family:$sansFontFamily;
+    }
+  }
+
+  #brand-bar-wrapper,
+  #action-bar,
+  .page-actions {
     display:none;
   }
+
   .CurateND-logo path {
     fill:#000;
   }
 }
 
+@page {
+  margin: 1in;
+}
