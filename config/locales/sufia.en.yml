@@ -56,6 +56,8 @@ en:
         abstract: "An account of the content of the resource. Examples of Description include, but are not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content. Please keep your abstract to 300 words or less."
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
+      user:
+        title: "Job title of the account holder"
     labels:
       profile_connection:
         text: "Search String"
