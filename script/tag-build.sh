@@ -2,7 +2,8 @@
 
 clean_repo=$(git status --porcelain)
 if [ -n "$clean_repo" ]; then
-  echo "Unable to tag current build; The repository has changes." 1>&2
+  printf "Unable to tag current build; The git repository has changes. Please review:\n\n"
+  printf "$clean_repo\n" 1>&2
   exit 1
 fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
