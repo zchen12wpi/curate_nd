@@ -47,7 +47,7 @@ CurateNd::Application.routes.draw do
   get 'get_started', to: 'classify_concerns#new'
 
   get 'about', to: 'static_pages#about'
-  get 'beta',  to: 'static_pages#beta'
+  get 'beta',  to: redirect('/')
   get 'faqs',  to: 'static_pages#faqs'
   get '500', to: 'static_pages#error'
   get '502', to: 'static_pages#error', default: { status_code: '502' }
