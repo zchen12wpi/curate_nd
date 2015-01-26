@@ -11,9 +11,6 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def beta
-  end
-
   def home
     render layout: 'curate_nd_home'
   end
