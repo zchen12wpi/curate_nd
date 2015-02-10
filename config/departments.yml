@@ -274,9 +274,13 @@ materials_science_including_biomaterials:
   key: "materials_science_including_biomaterials"
   identifier: "Science::Materials Science (including Biomaterials)"
   selectable: true
-mathematics_and_statistic:
-  key: "mathematics_and_statistic"
-  identifier: "Science::Mathematics and Statistic"
+mathematics:
+  key: "mathematics"
+  identifier: "Science::Mathematics"
+  selectable: true
+mathematics_and_statistics:
+  key: "applied_mathematics_and_statistics"
+  identifier: "Science::Applied and Computational Mathematics and Statistics"
   selectable: true
 social_science:
   key: "social_science"
