@@ -90,25 +90,26 @@ class lib_curate::standalone {
 	logoutput => on_failure,
 	user => "root",
 	require => Package[$packagelist],
-     } ->
-     class { 'mysql::server':
-  		root_password =>  $mysql_root_password,
-		require => [Package[$packagelist], Class["lib_ruby"], Class["lib_app_home"]],
-     } ->
-     mysql::db { "${fedora_db_name}":
-	user => $fedora_admin_mysql,
-	password => $fedora_passwd_mysql,
-	host => 'localhost',
-	grant => ['all'],
-	require => Class['mysql::server'],
-     } ->
-     mysql::db { 'curate_staging':
-	user => 'rails',
-	password => 'rails',
-	host => 'localhost',
-	grant => ['all'],
-	require => Class['mysql::server'],
      }
+     #} ->
+     #class { 'mysql::server':
+  #		root_password =>  $mysql_root_password,
+#		require => [Package[$packagelist], Class["lib_ruby"], Class["lib_app_home"]],
+#     } ->
+#     mysql::db { "${fedora_db_name}":
+#	user => $fedora_admin_mysql,
+#	password => $fedora_passwd_mysql,
+#	host => 'localhost',
+#	grant => ['all'],
+#	require => Class['mysql::server'],
+#     } ->
+#     mysql::db { 'curate_staging':
+#	user => 'rails',
+#	password => 'rails',
+#	host => 'localhost',
+#	grant => ['all'],
+#	require => Class['mysql::server'],
+#     }
 
      #Install and start Tomcat6
      class { 'lib_tomcat6':
@@ -117,7 +118,8 @@ class lib_curate::standalone {
 
      # Install Fedora after Tomcat and mysql set up
      class { 'lib_fedora':
-	require => [Class["lib_tomcat6"], Mysql::Db["${fedora_db_name}"]],
+	require => [Class["lib_tomcat6"], 
+	#require => [Class["lib_tomcat6"], Mysql::Db["${fedora_db_name}"]],
      }
 
      # Install SOLR after Fedora- tell tomcat
