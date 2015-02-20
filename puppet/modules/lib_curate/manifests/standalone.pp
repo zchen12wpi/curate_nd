@@ -118,7 +118,7 @@ class lib_curate::standalone {
 
      # Install Fedora after Tomcat and mysql set up
      class { 'lib_fedora':
-	require => [Class["lib_tomcat6"], 
+	require => Class["lib_tomcat6"], 
 	#require => [Class["lib_tomcat6"], Mysql::Db["${fedora_db_name}"]],
      }
 
