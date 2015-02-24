@@ -172,7 +172,10 @@ end
 #########################
 
 namespace :solr do
-  task :configure do
+  task :configure, :roles => :app do
+    # this pulls the solr config off the remote machine, parses the yml
+    # then tells the remote machine to copy the solr config to the server
+    # via the global NFS mount, and then pings the solr server to restart it.
     config = capture("cat #{current_path}/config/solr.yml")
     require 'uri'
     solr_core_url = YAML.load(config).fetch(rails_env).fetch('url')
@@ -308,7 +311,8 @@ task :staging do
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
-  before 'bundle:install', 'und:puppet'
+  # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
+  #before 'bundle:install', 'und:puppet'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -333,7 +337,9 @@ task :pre_production do
   server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
   server "app@curatewkrpprd.library.nd.edu", :work, :primary => true
 
-  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
+  # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
+  # before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
+  before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -360,7 +366,9 @@ task :production do
     server "app@curatesvrprod.library.nd.edu", :app, :web, :db, :primary => true
     server "app@curatewkrprod.library.nd.edu", :work, :primary => true
 
-    before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
+    # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
+    #before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
+    before 'bundle:install', 'solr:configure'
     after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
     after 'deploy', 'deploy:kickstart'
