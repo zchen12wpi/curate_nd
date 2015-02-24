@@ -11,3 +11,6 @@ bundler_args: --without headless debug
 
 before_install:
   - gem install bundler
+
+cache: bundler
+sudo: false
