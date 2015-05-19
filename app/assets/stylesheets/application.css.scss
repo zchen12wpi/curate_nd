@@ -19,7 +19,7 @@
  *= require_self
  */
 
-/* Inline form fields */
+// Inline form fields
 .control-group.inline input {
   padding-bottom:.1em;
   padding-top:.1em;
@@ -34,5 +34,10 @@
 }
 
 .browse-everything {
+  display: none;
+}
+
+// Modal dialog fix
+.js .modal {
   display: none;
 }
