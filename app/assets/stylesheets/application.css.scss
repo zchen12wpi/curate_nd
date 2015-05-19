@@ -36,3 +36,8 @@
 .browse-everything {
   display: none;
 }
+
+/* Modal dialog fix */
+.js .modal {
+  display: none;
+}
