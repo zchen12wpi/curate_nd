@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: f386f95cebc845af65e8f0d984ce66ffbf20f49a
-  ref: f386f95cebc845af65e8f0d984ce66ffbf20f49a
-  branch: etd-rebased
+  revision: 16836336bcc6b2c3f54ba67478bb04b35fb7a574
+  ref: 16836336bcc6b2c3f54ba67478bb04b35fb7a574
+  branch: curate-nd-beta
   specs:
     curate (0.6.6)
       active_attr
@@ -514,8 +514,6 @@ GEM
     rdf-xsd (1.1.2)
       rdf (~> 1.1)
     rdiscount (2.1.7.1)
-    rdoc (4.2.0)
-      json (~> 1.4)
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -531,9 +529,8 @@ GEM
       rake
       resque (~> 1.20)
       trollop (~> 1.16)
-    rest-client (1.6.8)
+    rest-client (1.6.9)
       mime-types (~> 1.16)
-      rdoc (>= 2.4.2)
     retriable (1.4.1)
     roboto (0.2.0)
       actionpack (>= 3.0.0)
@@ -602,11 +599,11 @@ GEM
     sexp_processor (4.3.0)
     sextant (0.2.4)
       rails (>= 3.2)
-    signet (0.6.0)
+    signet (0.6.1)
       addressable (~> 2.3)
       extlib (~> 0.9)
       faraday (~> 0.9)
-      jwt (~> 1.0)
+      jwt (~> 1.5)
       multi_json (~> 1.10)
     simple_form (3.0.3)
       actionpack (~> 4.0)
