@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: d12c32e73ac7ca195f3751a31af39ce350648b98
-  ref: d12c32e73ac7ca195f3751a31af39ce350648b98
+  revision: ed5f98b4a9c7fc8fed358f135d2bb5e25db1a1d2
+  ref: ed5f98b4a9c7fc8fed358f135d2bb5e25db1a1d2
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -474,7 +474,7 @@ GEM
       rest-client
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
-    rack (1.5.3)
+    rack (1.5.5)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
