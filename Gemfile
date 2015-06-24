@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', github: 'ndlib/curate', branch: 'curate-nd-beta', ref: 'ec6762ba7d77585badec06c7a2994cd89a166e1b'
+  gem 'curate', github: 'ndlib/curate', branch: 'curate-nd-beta', ref: '7675b4a1d3b47b82221dc593963b7dc7ac0c5319'
   #gem 'curate', path: '../curate'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
