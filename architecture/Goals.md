@@ -2,6 +2,8 @@
 CurateND exists to allow scholars to manage and preserve their intellectual output and to facilitate the sharing and discovery of the artifacts of scholarship produced at the University of Notre Dame. CurateND itself is a system of applications and services that endeavor to provide the functionality outlined below n.b. many of these features are incomplete or not present.
 
 ## MANAGE
+- Be able to describe holdings using arbitrarily granular subject-specific metadata
+- Customizable approval and metadata enrichment workflow based on organization or type-specific needs
 - Create items in CurateND through:
 	- Mediated self deposit
 	- Batch ingest of materials of known-good quality
@@ -10,8 +12,6 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- making changes to individual records through the web interface
 	- making changes to one or more records as a batch process
 	- OPTIONAL: making changes to two or more of records through the web interface
-- Be able to describe holdings using arbitrarily granular subject-specific metadata
-- Customizable approval and metadata enrichment workflow based on organization or type-specific needs
 - Allow “gated” deposit for some material e.g. undergraduate projects need to have a faculty sponsor in order to deposit their work
 
 ### Collaboration
@@ -31,7 +31,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 ### Versioning Content
 - Create separate works in CurateND for each version
 - Allow files to have multiple versions
-- Represent multiple expressions and manifestations of a work in a uniform way in CurateND
+	- Represent multiple expressions and manifestations of a work in a uniform way in CurateND
 - OPTIONAL: Support SemVer for software housed in CurateND
 
 ## PRESERVE
