@@ -4,6 +4,8 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 ## MANAGE
 - Be able to describe holdings using arbitrarily granular subject-specific metadata
 - Customizable approval and metadata enrichment workflow based on organization or type-specific needs
+	- New workflows for a project or administrative unit must be able to be created in with relative ease (≤ 3 weeks)
+	- New work types that accommodate different metadata profiles must be able to be created in a short period of time (≤ 3 days)
 - Create items in CurateND through:
 	- Mediated self deposit
 	- Batch ingest of materials of known-good quality
