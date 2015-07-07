@@ -4,8 +4,10 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 ## MANAGE
 - Be able to describe holdings using arbitrarily granular subject-specific metadata
 - Customizable approval and metadata enrichment workflow based on organization or type-specific needs
-	- New workflows for a project or administrative unit must be able to be created in with relative ease (≤ 3 weeks)
-	- New work types that accommodate different metadata profiles must be able to be created in a short period of time (≤ 3 days)
+	- Library staff consulting with patrons about initiating a new workflow or work type must be familiar with available options; if custom work is required its priority will be determined by the digital collections committee
+	- Patrons that request new workflows or work types must meet with a representative from the development team to determine the feasibility of the request
+	- New workflows for a project or administrative unit must be able to be created in with relative ease (≤ 3 weeks to implement an articulated need)
+	- New work types that accommodate different metadata profiles must be able to be created in a short period of time (≤ 3 days to implement an articulated need)
 - Create items in CurateND through:
 	- Mediated self deposit
 	- Batch ingest of materials of known-good quality
@@ -26,7 +28,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- with no ND affiliation so they can participate in CurateND without a netID
 	- leaving Notre Dame so that they may continue to participate in CurateND without a netID
 - Allow individuals to log in using other credentials than their netID:
-	- A Notre Dame user could associate their CurateND account with ORCID (or GMail)
+	- A Notre Dame user could associate their CurateND account with ORCID (or Gmail)
 	- A sponsored user could associate with other identifiers (i.e. Gmail, ORCID, etc.)
 - Allow individuals outside of the Notre Dame community:
 	- to view works and files
