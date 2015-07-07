@@ -9,7 +9,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 - Update items in CurateND by:
 	- making changes to individual records through the web interface
 	- making changes to one or more records as a batch process
-	- making changes to two or more of records through the web interface
+	- OPTIONAL: making changes to two or more of records through the web interface
 - Be able to describe holdings using arbitrarily granular subject-specific metadata
 - Customizable approval and metadata enrichment workflow based on organization or type-specific needs
 - Allow “gated” deposit for some material e.g. undergraduate projects need to have a faculty sponsor in order to deposit their work
@@ -32,7 +32,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 - Create separate works in CurateND for each version
 - Allow files to have multiple versions
 - Represent multiple expressions and manifestations of a work in a uniform way in CurateND
-- Support SemVer for software housed in CurateND
+- OPTIONAL: Support SemVer for software housed in CurateND
 
 ## PRESERVE
 - Store data and metadata in a digital preservation system
@@ -52,7 +52,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- Based on the administrative unit a work belongs to
 	- Based on the topics related to a work
 	- To within a collection
-	- Via bounding box (for geocoded holdings)
+	- OPTIONAL: Via bounding box (for geocoded holdings)
 - Allow patrons to peruse all the collections:
 	- Present in the repository
 	- In an administrative unit
@@ -82,9 +82,9 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- OAI-PMH
 	- ResourceSync
 	- Honeycomb
-	- Scalar
-- Integration with “social” services
+	- OPTIONAL: Scalar
+- OPTIONAL: Integration with “social” services
 	- Facebook Open Graph Protocol
 	- twitter cards
 	- Rich pins on Pinterest
-- Provide single-use URLs to grant limited access to a restricted work or file
+- OPTIONAL: Provide single-use URLs to grant limited access to a restricted work or file
