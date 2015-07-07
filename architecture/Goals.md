@@ -23,6 +23,9 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 - Allow members of the Notre Dame community to sponsor individuals:
 	- with no ND affiliation so they can participate in CurateND without a netID
 	- leaving Notre Dame so that they may continue to participate in CurateND without a netID
+- Allow individuals to log in using other credentials than their netID:
+	- A Notre Dame user could associate their CurateND account with ORCID (or GMail)
+	- A sponsored user could associate with other identifiers (i.e. Gmail, ORCID, etc.)
 - Allow individuals outside of the Notre Dame community:
 	- to view works and files
 	- to edit existing work and files
