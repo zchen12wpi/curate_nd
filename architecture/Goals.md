@@ -80,7 +80,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- Files must have a landing page that describes the file
 	- Web pages that display repository holdings should load quickly (≤4 seconds)
 	- Web pages describing works and files must be accommodate the needs of:
-		- Sighted and unsigned patrons
+		- Sighted and unsighted patrons
 		- Search engine crawlers
 		- OPTIONAL: Software that consumes structured data
 	- OPTIONAL: The repository holdings should be made available as a data source for specialized software
