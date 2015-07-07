@@ -70,6 +70,19 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- Render previews of common file types
 
 ## SHARE
+- Repository holdings should be accessible on the Internet
+	- Works must be addressable at a durable URL
+	- Files must be addressable at a durable URL
+	- Files must have a landing page that describes the file
+	- Web pages that display repository holdings should load quickly (≤4 seconds)
+	- Web pages describing works and files must be accommodate the needs of:
+		- Sighted and unsigned patrons
+		- Search engine crawlers
+		- OPTIONAL: Software that consumes structured data
+	- OPTIONAL: The repository holdings should be made available as a data source for specialized software
+		- Provide records in JSON-LD
+		- Provide records in N-Triples RDF
+		- Provide records in RDF XML
 - Create DOIs for:
 	- Works
 	- Files
@@ -83,11 +96,13 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- Reject “false” page views and downloads caused by search spiders
 - Integrate with an alt-metrics platform such as PlumX
 - Syndicate content from CurateND to other platforms:
-	- Sitemaps
-	- Google Scholar
-	- OAI-PMH
-	- ResourceSync
 	- Honeycomb
+	- Search engines
+		- Sitemaps
+		- Schema.org microdata
+	- Google Scholar
+	- OPTIONAL: OAI-PMH
+	- OPTIONAL: ResourceSync
 	- OPTIONAL: Scalar
 - OPTIONAL: Integration with “social” services
 	- Facebook Open Graph Protocol
