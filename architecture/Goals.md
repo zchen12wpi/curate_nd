@@ -32,9 +32,12 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- to be members of a group
 
 ### Versioning Content
-- Create separate works in CurateND for each version
+- Allow works to have multiple versions
 - Allow files to have multiple versions
-	- Represent multiple expressions and manifestations of a work in a uniform way in CurateND
+- Represent multiple expressions and manifestations of a work in a uniform way in CurateND
+	- Each version must be addressable at a URL
+	- Each version _may_ be given it’s own DOI
+	- Each version _may_ have its’s own access controls
 - OPTIONAL: Support SemVer for software housed in CurateND
 
 ## PRESERVE
