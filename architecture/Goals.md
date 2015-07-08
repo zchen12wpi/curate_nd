@@ -36,12 +36,13 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- to be members of a group
 
 ### Versioning Content
-- Allow works to have multiple versions
-- Allow files to have multiple versions
-- Represent multiple expressions and manifestations of a work in a uniform way in CurateND
+- Allow works to have multiple revisions
+- Allow files to have multiple revisions
+- Multiple expressions and manifestations of a work will be represented as “separate” works in CurateND
 	- Each version must be addressable at a URL
-	- Each version _may_ be given it’s own DOI
-	- Each version _may_ have its’s own access controls
+	- Each version must have its’s own access controls
+	- A DOI must not be shared across versions
+	- Works that represent versions of the same thing should have an explicit relationship between each other; related versions must be listed on the record view of each version
 - OPTIONAL: Support SemVer for software housed in CurateND
 
 ## PRESERVE
@@ -89,7 +90,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 		- Provide records in RDF XML
 - Create DOIs for:
 	- Works
-	- Versions of Works
+	- Versions of Works (see Versioning Content)
 - Update DOIs based on metadata changes the corresponding work or file
 - Log usage metrics for:
 	- Number of page views for a work
