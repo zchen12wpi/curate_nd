@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 8c1b50984afca414df2cfc35892fe82d51c06988
-  ref: 8c1b50984afca414df2cfc35892fe82d51c06988
+  revision: fca0faba57b515138f6e83043f2e4511862a1a76
+  ref: fca0faba57b515138f6e83043f2e4511862a1a76
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -119,7 +119,7 @@ GEM
       activesupport (= 4.0.13)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.4)
-    activerecord-import (0.9.0)
+    activerecord-import (0.10.0)
       activerecord (>= 3.0)
     activeresource (4.0.0)
       activemodel (~> 4.0)
