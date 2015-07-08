@@ -70,6 +70,9 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- Associated with a particular topic
 	- Associated with a patron affiliation e.g. faculty, staff, student
 - Allow patrons to navigate between collections and sub-collections via breadcrumbs
+- Allow patrons to request access to very large files, as this could take some time it must happen asynchronously
+	- Stage files from the archival system to disk
+	- Deliver the file payload via an appropriate protocol e.g. HTTP, NFS, FTP, or BitTorrent
 - Perform full-text searches on supported files
 - Display records with arbitrarily granular metadata at durable URLs
 	- Render previews of common file types
