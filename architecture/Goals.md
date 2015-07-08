@@ -89,9 +89,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 		- Provide records in RDF XML
 - Create DOIs for:
 	- Works
-	- Files
 	- Versions of Works
-	- Versions of Files
 - Update DOIs based on metadata changes the corresponding work or file
 - Log usage metrics for:
 	- Number of page views for a work
