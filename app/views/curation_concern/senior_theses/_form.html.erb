@@ -19,6 +19,9 @@
       <%= render 'form_content_license', curation_concern: curation_concern, f: f %>
       <%= render "form_permission", curation_concern: curation_concern, f: f %>
       <%= render "form_doi", curation_concern: curation_concern, f: f %>
+      <% if curation_concern.doi.present? %>
+        <%= f.input :doi, label: 'Changes to DOI can be made here', input_html: { class: 'input-xlarge' } %>
+      <% end %>
     <% end %>
 
     <%= container.pane("Additional Information and Metadata", class: 'optional prompt') do %>
