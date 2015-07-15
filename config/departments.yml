@@ -278,7 +278,7 @@ mathematics:
   key: "mathematics"
   identifier: "Science::Mathematics"
   selectable: true
-mathematics_and_statistics:
+applied_mathematics_and_statistics:
   key: "applied_mathematics_and_statistics"
   identifier: "Science::Applied and Computational Mathematics and Statistics"
   selectable: true
