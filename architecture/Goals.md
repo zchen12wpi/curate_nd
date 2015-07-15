@@ -6,7 +6,7 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 - Customizable approval and metadata enrichment workflow based on organization or type-specific needs
 	- Library staff consulting with patrons about initiating a new workflow or work type must be familiar with available options; if custom work is required its priority will be determined by the digital collections committee
 	- Patrons that request new workflows or work types must meet with a representative from the development team to determine the feasibility of the request
-	- New workflows for a project or administrative unit must be able to be created in with relative ease (≤ 3 weeks to implement an articulated need)
+	- New workflows for a project or administrative unit must be able to be created with relative ease (≤ 3 weeks to implement an articulated need)
 	- New work types that accommodate different metadata profiles must be able to be created in a short period of time (≤ 3 days to implement an articulated need)
 - Create items in CurateND through:
 	- Mediated self deposit
@@ -17,6 +17,9 @@ CurateND exists to allow scholars to manage and preserve their intellectual outp
 	- making changes to one or more records as a batch process
 	- OPTIONAL: making changes to two or more of records through the web interface
 - Allow “gated” deposit for some material e.g. undergraduate projects need to have a faculty sponsor in order to deposit their work
+- Patrons will have the _option_ to request that a self-deposit item be included in an _existing_ collection.
+	- Whether to include a self-deposit item in a collection is a decision made by library staff during metadata review.
+
 
 ### Collaboration
 - Grant access to:
