@@ -121,7 +121,7 @@ $logo-height: 48;
   padding-top: 2px;
 }
 
-#site-search {
+.site-search {
   display: inline-block;
   margin-bottom: 1em;
   width: 100%;
@@ -134,7 +134,7 @@ $logo-height: 48;
 
 
 @media (min-width: 545px) {
-  #site-search {
+  .site-search {
     margin-bottom: 0;
     width: 18.6em;
   }
@@ -191,7 +191,7 @@ $logo-height: 48;
     padding: 0;
   }
 
-  #site-search .search-form {
+  .site-search .search-form {
     margin: 0;
   }
 }
