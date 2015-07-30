@@ -120,6 +120,9 @@ class SeniorThesis < ActiveFedora::Base
     @citation ||= Citation.new(self)
   end
 
+  alias_method :doi, :identifier
+  alias_method :doi=, :identifier=
+
   private
   def parse_person_names(values)
     Array(values).each_with_object([]) {|value, collector|
