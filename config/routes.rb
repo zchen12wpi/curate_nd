@@ -49,11 +49,12 @@ CurateNd::Application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'beta',  to: redirect('/')
   get 'faqs',  to: 'static_pages#faqs'
+  get 'orcid_settings', to: 'user_profiles#orcid_settings'
+  get 'policies', to: 'static_pages#policies'
   get '500', to: 'static_pages#error'
   get '502', to: 'static_pages#error', default: { status_code: '502' }
   get '404', to: 'static_pages#error', default: { status_code: '404' }
   get '422', to: 'static_pages#error', default: { status_code: '422' }
   get '413', to: 'static_pages#error', default: { status_code: '413' }
-  get 'orcid_settings', to: 'user_profiles#orcid_settings'
 
 end
