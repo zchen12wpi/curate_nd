@@ -112,7 +112,7 @@ $logo-height: 48;
 
 // Action Bar
 
-#action-bar {
+.action-bar {
   padding-top: 1em;
 }
 
@@ -362,7 +362,7 @@ li.attribute.abstract {
     }
   }
 
-  #action-bar,
+  .action-bar,
   .brand-bar-wrapper,
   .page-actions {
     display: none;
