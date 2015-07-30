@@ -140,11 +140,11 @@ $logo-height: 48;
   }
 }
 
-#catalog_search {
+.search-form .search-query {
   -webkit-appearance: none;
 }
 
-#site-actions {
+.site-actions {
   display: inline-block;
   float: right;
   margin: 0;
@@ -187,7 +187,7 @@ $logo-height: 48;
 }
 
 @media (min-width: 768px) {
-  #site-actions {
+  .site-actions {
     padding: 0;
   }
 
@@ -351,7 +351,9 @@ li.attribute.abstract {
     margin-bottom: 1em;
   }
 
-  #main {
+  body,
+  main,
+  .home {
     h1,
     h2,
     h3,
