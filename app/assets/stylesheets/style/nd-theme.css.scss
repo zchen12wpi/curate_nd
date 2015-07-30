@@ -310,7 +310,7 @@ li.attribute.abstract {
   }
 
   #banner {
-    margin-bottom:2em;
+    margin-bottom:1em;
   }
 
   caption > h2 {
@@ -329,8 +329,16 @@ li.attribute.abstract {
     display:none;
   }
 
-  .CurateND-logo path {
-    fill:#000;
+  #home-link {
+    padding-top: 2em;
+
+    .CurateND-logo {
+      height: 2em;
+
+      path {
+        fill: #000;
+      }
+    }
   }
 }
 
