@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: e05bd68f49736d61843ad7af4b6433105c5dc1c2
-  ref: e05bd68f49736d61843ad7af4b6433105c5dc1c2
+  revision: a88d43980c2d4018eeaf2453919b9744d1d86015
+  ref: a88d43980c2d4018eeaf2453919b9744d1d86015
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -179,7 +179,7 @@ GEM
       ruby-box
       sass-rails
       skydrive
-    browser (0.8.0)
+    browser (0.9.0)
     builder (3.1.4)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -261,7 +261,7 @@ GEM
       devise (>= 2.1.0)
       railties (>= 3.0)
     diff-lcs (1.2.5)
-    dropbox-sdk (1.6.4)
+    dropbox-sdk (1.6.5)
       json
     email_validator (1.5.0)
       activemodel
@@ -284,7 +284,7 @@ GEM
     figaro (1.0.0)
       thor (~> 0.14)
     flipper (0.6.2)
-    font-awesome-rails (4.3.0.0)
+    font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     foreigner (1.7.4)
       activerecord (>= 3.0.0)
