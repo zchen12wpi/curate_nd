@@ -34,8 +34,8 @@ body {
 }
 
 .top-link a,
-.top-link a: hover,
-.top-link a: visited {
+.top-link a:hover,
+.top-link a:visited {
   color: $white;
 }
 
@@ -128,13 +128,13 @@ $logo-height: 48;
     border-width: 1px;
   }
 
-  .nav > li > a: hover {
+  .nav > li > a:hover {
     background-color: $gold-accent-light;
     border-color: $gold-accent-light;
   }
 
   .nav-pills > .active > a,
-  .nav-pills > .active > a: hover {
+  .nav-pills > .active > a:hover {
     @include background-image(linear-gradient($gold-accent-lightest, $official-gold 98%, $gold-accent-darkest));
     background-color: $official-gold;
     border-color: $gold-accent-mid $gold-accent-dark $gold-accent-dark $gold-accent-mid;
@@ -336,10 +336,10 @@ li.attribute.abstract {
 }
 
 @media print {
-  .page-banner a[href]: after,
-  .page-footer p: nth-child(2) a[href]: after,
-  abbr[title].required-indicator: after,
-  .footer-right a[href]: after {
+  .page-banner a[href]:after,
+  .page-footer p:nth-child(2) a[href]:after,
+  abbr[title].required-indicator:after,
+  .footer-right a[href]:after {
     content: '';
   }
 
