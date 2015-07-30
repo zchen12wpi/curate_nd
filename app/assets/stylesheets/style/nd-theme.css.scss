@@ -288,7 +288,7 @@ li.attribute.abstract {
 }
 
 // Footer formatting
-#footer {
+.page-footer {
   padding: 1em;
   text-align: left;
 
@@ -302,12 +302,12 @@ li.attribute.abstract {
 }
 
 @media (min-width: 768px) {
-  #footer {
+  .page-footer {
     padding: 0;
   }
 }
 @media (max-width: 767px) {
-  #footer {
+  .page-footer {
     .footer-right {
       margin-top: 2em;
       text-align: center;
@@ -337,7 +337,7 @@ li.attribute.abstract {
 
 @media print {
   #banner a[href]: after,
-  #footer p: nth-child(2) a[href]: after,
+  .page-footer p: nth-child(2) a[href]: after,
   abbr[title].required-indicator: after,
   .footer-right a[href]: after {
     content: '';
