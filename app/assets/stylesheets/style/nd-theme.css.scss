@@ -94,7 +94,7 @@ $logo-height: 48;
   position: relative;
   width: 40%;
 
-  .CurateND-logo {
+  .curate-nd-logo {
     height: 100%;
     left: 0;
     position: absolute;
@@ -114,6 +114,32 @@ $logo-height: 48;
 
 .action-bar {
   padding-top: 1em;
+
+  // Pills Overrides
+  $gold-accent-lightest: #f5e59e;
+  $gold-accent-light: #efda88;
+  $gold-accent-mid: #c59b2b;
+  $gold-accent-dark: #a17515;
+  $gold-accent-darkest: #9c7012;
+
+  .nav > li > a {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .nav > li > a: hover {
+    background-color: $gold-accent-light;
+    border-color: $gold-accent-light;
+  }
+
+  .nav-pills > .active > a,
+  .nav-pills > .active > a: hover {
+    @include background-image(linear-gradient($gold-accent-lightest, $official-gold 98%, $gold-accent-darkest));
+    background-color: $official-gold;
+    border-color: $gold-accent-mid $gold-accent-dark $gold-accent-dark $gold-accent-mid;
+    color: $official-blue;
+  }
 }
 
 .site-title {
@@ -140,8 +166,21 @@ $logo-height: 48;
   }
 }
 
-.search-form .search-query {
-  -webkit-appearance: none;
+.search-form {
+  .search-query {
+    -webkit-appearance: none;
+  }
+
+  .search-submit {
+    background-color: transparent;
+    border: 0;
+    height: 1.8em;
+    width: 2em;
+  }
+
+  .search-icon {
+    height: 100%;
+  }
 }
 
 .site-actions {
@@ -170,19 +209,6 @@ $logo-height: 48;
 
   .caret {
     border-top-color: $official-blue;
-  }
-}
-
-.search-form {
-  .search-submit {
-    background-color: transparent;
-    border: 0;
-    height: 1.8em;
-    width: 2em;
-  }
-
-  .search-icon {
-    height: 100%;
   }
 }
 
@@ -220,32 +246,6 @@ $logo-height: 48;
   top: 0;
 }
 
-
-// Pills Overrides
-$gold-accent-lightest: #f5e59e;
-$gold-accent-light: #efda88;
-$gold-accent-mid: #c59b2b;
-$gold-accent-dark: #a17515;
-$gold-accent-darkest: #9c7012;
-
-.action-bar .nav > li > a {
-  border-color: transparent;
-  border-style: solid;
-  border-width: 1px;
-}
-
-.action-bar .nav > li > a: hover {
-  background-color: $gold-accent-light;
-  border-color: $gold-accent-light;
-}
-
-.action-bar .nav-pills > .active > a,
-.action-bar .nav-pills > .active > a: hover {
-  @include background-image(linear-gradient($gold-accent-lightest, $official-gold 98%, $gold-accent-darkest));
-  background-color: $official-gold;
-  border-color: $gold-accent-mid $gold-accent-dark $gold-accent-dark $gold-accent-mid;
-  color: $official-blue;
-}
 
 // Fix all icon buttons
 .btn-primary {
@@ -373,7 +373,7 @@ li.attribute.abstract {
   .home-link {
     padding-top: 2em;
 
-    .CurateND-logo {
+    .curate-nd-logo {
       height: 2em;
 
       path {
