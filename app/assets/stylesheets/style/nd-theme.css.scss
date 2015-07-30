@@ -64,7 +64,7 @@ body {
 }
 
 // Title Bar
-#title-bar-wrapper {
+.title-bar-wrapper {
   background-color: $official-blue-dark;
   background-image: none;
   border-top: 0;
@@ -78,7 +78,7 @@ body {
 
 
 @media (min-width: 768px) {
-  #title-bar-wrapper .row {
+  .title-bar-wrapper .row {
     padding: 0;
   }
 }
