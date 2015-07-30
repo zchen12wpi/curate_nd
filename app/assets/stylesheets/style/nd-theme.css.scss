@@ -15,7 +15,7 @@ body {
 }
 
 // Brand Bar
-#brand-bar-wrapper {
+.brand-bar-wrapper {
   background-color: $official-blue;
   background-image: none;
   border-bottom: 0;
@@ -52,7 +52,7 @@ body {
     padding: 0 .1em;
   }
 
-  #brand-bar-wrapper i {
+  .brand-bar-wrapper i {
     padding: 0 .2em;
   }
 }
@@ -363,7 +363,7 @@ li.attribute.abstract {
   }
 
   #action-bar,
-  #brand-bar-wrapper,
+  .brand-bar-wrapper,
   .page-actions {
     display: none;
   }
