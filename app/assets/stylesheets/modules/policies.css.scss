@@ -1,12 +1,12 @@
 .footnotes {
-  margin-bottom:2em;
+  margin-bottom: 2em;
 
   &:before {
     border-bottom: 1px solid #999;
-    content: '';
+    content: "";
     display: block;
+    margin-bottom: 0.5em;
     margin-left: -25px;
-    margin-bottom: .5em;
     width: 25px;
   }
   p {
