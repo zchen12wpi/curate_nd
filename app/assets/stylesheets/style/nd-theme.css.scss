@@ -10,7 +10,7 @@ body {
   padding: 0;
 }
 
-#banner {
+.page-banner {
   border-bottom: 1px solid rgba(100, 100, 100, .7);
 }
 
@@ -336,14 +336,14 @@ li.attribute.abstract {
 }
 
 @media print {
-  #banner a[href]: after,
+  .page-banner a[href]: after,
   .page-footer p: nth-child(2) a[href]: after,
   abbr[title].required-indicator: after,
   .footer-right a[href]: after {
     content: '';
   }
 
-  #banner {
+  .page-banner {
     margin-bottom: 1em;
   }
 
