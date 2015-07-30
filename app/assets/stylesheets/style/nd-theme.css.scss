@@ -86,7 +86,7 @@ body {
 $logo-width: 221;
 $logo-height: 48;
 
-#home-link {
+.home-link {
   display: block;
   margin: 1em 0;
   padding: 0;
@@ -104,7 +104,7 @@ $logo-height: 48;
 }
 
 @media (min-width: 545px) {
-  #home-link {
+  .home-link {
     padding-top: 45px;
     width: 200px;
   }
@@ -368,7 +368,7 @@ li.attribute.abstract {
     display: none;
   }
 
-  #home-link {
+  .home-link {
     padding-top: 2em;
 
     .CurateND-logo {
