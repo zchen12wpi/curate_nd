@@ -10,9 +10,10 @@ digraph "G" {
         sipity -> rdbms
         sipity -> batch_ingester
         sipity -> noids
-        sipity -> cogitate
+        sipity -> cogitate_client
         sipity -> nd_api_server[style="dotted" color="red"]
         cogitate -> cas
+        cogitate_client -> cogitate
         cogitate -> rdbms
         cogitate -> nd_api_server
         curate_nd -> noids
