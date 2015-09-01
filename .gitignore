@@ -30,3 +30,5 @@ rails_best_practice*
 jetty/*
 spec/*.zip
 spec/jetty_generator
+.tag
+.tags
