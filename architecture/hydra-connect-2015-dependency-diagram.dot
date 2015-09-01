@@ -1,0 +1,37 @@
+digraph "G" {
+    compound=true;
+    node[color="grey15" shape=record penwidth=2 margin="0.15, 0.125"];
+
+    subgraph cluster_0 {
+        label="CurateND Dependency Diagram - 2015-09-01"
+        node[style=filled fillcolor=white color="seashell4"]
+        sipity -> aws_filesystem[style="dotted" color="red"]
+        sipity -> cas[style="dotted" color="red"]
+        sipity -> rdbms
+        sipity -> batch_ingester
+        sipity -> noids
+        sipity -> cogitate
+        sipity -> nd_api_server[style="dotted" color="red"]
+        cogitate -> cas
+        cogitate -> rdbms
+        cogitate -> nd_api_server
+        curate_nd -> noids
+        curate_nd -> disadis[label="for serving content"]
+        curate_nd -> rdbms
+        curate_nd -> redis
+        curate_nd -> fedora
+        curate_nd -> solr
+        curate_nd -> curate_nd_workers
+        curate_nd -> cogitate[style="dotted" color="green"]
+        curate_nd -> bendo[style="dotted" color="green"]
+        batch_ingester -> redis
+        batch_ingester -> rof
+        curate_nd_workers -> redis
+        disadis -> fedora
+        disadis -> bendo
+        fedora -> file_system
+        bendo -> file_system
+        bendo -> tape
+    }
+
+}
