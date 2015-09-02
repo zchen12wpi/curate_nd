@@ -1,0 +1,19 @@
+digraph "G" {
+    compound=true;
+    node[color="grey15" shape=record penwidth=2 margin="0.15, 0.125"];
+
+    subgraph cluster_0 {
+        label="CurateND Dependency Diagram - 2014-09-01"
+        node[style=filled fillcolor=white color="seashell4"]
+        curate_nd -> curate_nd_workers
+        curate_nd -> fedora
+        curate_nd -> noids
+        curate_nd -> rdbms
+        curate_nd -> redis
+        curate_nd -> solr
+        curate_nd_workers -> redis
+        fedora -> file_system
+        noids -> rdbms
+    }
+
+}
