@@ -5,34 +5,42 @@ digraph "G" {
     subgraph cluster_0 {
         label="CurateND Dependency Diagram - 2015-09-01"
         node[style=filled fillcolor=white color="seashell4"]
-        sipity -> aws_filesystem[style="dotted" color="red"]
-        sipity -> cas[style="dotted" color="red"]
-        sipity -> rdbms
-        sipity -> batch_ingester
-        sipity -> noids
-        sipity -> cogitate_client
-        sipity -> nd_api_server[style="dotted" color="red"]
-        cogitate -> cas
-        cogitate_client -> cogitate
-        cogitate -> rdbms
-        cogitate -> nd_api_server
-        curate_nd -> noids
-        curate_nd -> disadis[label="for serving content"]
-        curate_nd -> rdbms
-        curate_nd -> redis
-        curate_nd -> fedora
-        curate_nd -> solr
-        curate_nd -> curate_nd_workers
-        curate_nd -> cogitate[style="dotted" color="green"]
-        curate_nd -> bendo[style="dotted" color="green"]
+        batch_ingester -> curate_nd_api
         batch_ingester -> redis
         batch_ingester -> rof
-        curate_nd_workers -> redis
-        disadis -> fedora
-        disadis -> bendo
-        fedora -> file_system
+        batch_ingester -> noids
         bendo -> file_system
         bendo -> tape
+        cogitate -> cas
+        cogitate -> nd_api_server
+        cogitate -> rdbms
+        cogitate_client -> cogitate
+        curate_nd -> bendo[style="dotted" color="green"]
+        curate_nd -> cogitate_client[style="dotted" color="green"]
+        curate_nd -> curate_nd_workers
+        curate_nd -> disadis
+        curate_nd -> fedora
+        curate_nd -> locabulary
+        curate_nd -> noids
+        curate_nd -> rdbms
+        curate_nd -> redis
+        curate_nd -> solr
+        curate_nd_api -> curate_nd
+        curate_nd_workers -> redis
+        disadis -> bendo
+        disadis -> fedora
+        fedora -> file_system
+        sipity -> dragonfly
+        dragonfly -> aws_s3_bucket[style="dotted" color="red"]
+        dragonfly -> bendo[style="dotted" color="green"]
+        noids -> rdbms
+        sipity -> batch_ingester
+        sipity -> cas[style="dotted" color="red"]
+        sipity -> cogitate_client
+        sipity -> locabulary
+        sipity -> nd_api_server[style="dotted" color="red"]
+        sipity -> noids
+        sipity -> rdbms
     }
 
 }
