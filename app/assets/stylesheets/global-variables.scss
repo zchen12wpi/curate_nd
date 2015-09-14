@@ -2,11 +2,12 @@
 // Variables
 // --------------------------------------------------
 
-$official-blue : #002B5B;
-$official-gold : #DCB439;
-$dark-blue     : #001F42;
-$light-blue    : lighten($official-blue, 80%);
-
+$official-blue        : #002B5B;
+$official-blue-dark   : #001F42;
+$dark-blue            : #001F42;
+$official-gold        : #DCB439;
+$official-gold-accent : #9C802E;
+$light-blue           : lighten($official-blue, 80%);
 
 // Global values
 // --------------------------------------------------
