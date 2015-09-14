@@ -4,4 +4,19 @@ linters:
   Comment:
     exclude: 'app/assets/stylesheets/application.css.scss'
   NameFormat:
-    exclude: 'app/assets/stylesheets/style/typography.css.scss'
+    exclude:
+      - 'app/assets/stylesheets/global-variables.scss'
+      - 'app/assets/stylesheets/layout/positioning.css.scss'
+      - 'app/assets/stylesheets/modules/announcements.css.scss'
+      - 'app/assets/stylesheets/modules/classify_work.css.scss'
+      - 'app/assets/stylesheets/modules/emphatic-action.css.scss'
+      - 'app/assets/stylesheets/modules/emphatic_action_area.css.scss'
+      - 'app/assets/stylesheets/modules/forms.css.scss'
+      - 'app/assets/stylesheets/modules/pagination.css.scss'
+      - 'app/assets/stylesheets/modules/profile.css.scss'
+      - 'app/assets/stylesheets/modules/search_results.css.scss'
+      - 'app/assets/stylesheets/modules/site_search.css.scss'
+      - 'app/assets/stylesheets/modules/text-overlay.css.scss'
+      - 'app/assets/stylesheets/style/nd-theme.css.scss'
+      - 'app/assets/stylesheets/style/theme.css.scss'
+      - 'app/assets/stylesheets/style/typography.css.scss'
