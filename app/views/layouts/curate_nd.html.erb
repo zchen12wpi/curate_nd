@@ -5,7 +5,7 @@
 
 <%= render 'shared/flash_message' %>
 
-  <div id="main" role="main" class="container <%= yield(:page_class) if content_for?(:page_class)%>">
+  <div id="main" role="main" class="page-main container <%= yield(:page_class) if content_for?(:page_class)%>">
   <% if content_for?(:page_header) %>
     <div class="row">
     <% if content_for?(:page_actions) %>
