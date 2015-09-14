@@ -1,0 +1,53 @@
+<% content_for :page_title, curation_concern_page_title(curation_concern) %>
+
+<% content_for :page_header do %>
+  <h1><%= richly_formatted_text(curation_concern.to_s) %></h1>
+  <span class="human_readable_type"><%= curation_concern.human_readable_type %></span>
+<% end %>
+
+<%
+  collector = can?(:collect, curation_concern)
+  editor    = can?(:edit,    curation_concern)
+%>
+<% if collector || editor %>
+  <% content_for :page_actions do %>
+    <% if editor %>
+      <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn' do %>
+        <i class="icon icon-pencil"></i> Edit
+      <% end %>
+      <%= link_to [:curation_concern, curation_concern], class: 'btn', data: { confirm: "Delete this #{curation_concern.human_readable_type}?" }, method: :delete do %>
+        <i class="icon icon-trash"></i> Delete
+      <% end %>
+    <% end %>
+    <% if collector %>
+      <%= render partial: 'add_to_collection_gui', locals: { collectible: curation_concern, button_class: 'btn', use_text: true } %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if curation_concern.representative.present? %>
+  <div class="row">
+    <div class="work-representation span3">
+      <%= render partial: 'representative_media', locals: {work: curation_concern} %>
+    </div>
+    <div class="work-attributes span9">
+      <%= render 'attributes', curation_concern: curation_concern %>
+      <%= render 'doi', curation_concern: curation_concern %>
+
+      <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
+      <%= render 'related_resources', curation_concern: curation_concern, with_actions: true %>
+      <%= render 'related_works', curation_concern: curation_concern, with_actions: true %>
+      <%= render 'collections', curation_concern: curation_concern %>
+    </div>
+  </div>
+<% else %>
+  <div class="work-attributes">
+    <%= render 'attributes', curation_concern: curation_concern %>
+    <%= render 'doi', curation_concern: curation_concern %>
+
+    <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
+    <%= render 'related_resources', curation_concern: curation_concern, with_actions: true %>
+    <%= render 'related_works', curation_concern: curation_concern, with_actions: true %>
+    <%= render 'collections', curation_concern: curation_concern %>
+  </div>
+<% end %>
