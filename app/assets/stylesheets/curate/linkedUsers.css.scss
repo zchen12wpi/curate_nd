@@ -1,0 +1,21 @@
+.link-users {
+  .input-append .linked-user {
+    display: inline-block;
+    width: 275px;
+    height: 20px;
+    padding: 4px;
+    font-size: 14pt;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+  }
+
+  .current-user {
+    border: 0px !important;
+  }
+
+  .listing {
+    margin: 0;
+  }
+}
+

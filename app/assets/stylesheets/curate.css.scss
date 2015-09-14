@@ -1,0 +1,34 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery-ui-lightness
+ *= require curate/linkedUsers
+ *= require curate/linkedGroups
+ *= require help_requests
+ *= require_self
+ */
+
+@import 'global-variables';
+@import 'browse_everything'; // NOTE: browse_everything stomps on bootstrap-responsive styles
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+@import 'bootstrap-datepicker';
+@import 'select2';
+@import 'blacklight/blacklight';
+@import 'layout/positioning';
+@import 'modules';
+@import 'token-input-facebook';
+@import 'style/search';
+@import 'style/theme';
+@import 'style/typography';
+
+.negetive-left-margin {
+  margin-left: -30px;
+}
