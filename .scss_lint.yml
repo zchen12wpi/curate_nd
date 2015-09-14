@@ -3,3 +3,5 @@ scss_files: 'app/**/*.scss'
 linters:
   Comment:
     exclude: 'app/assets/stylesheets/application.css.scss'
+  NameFormat:
+    exclude: 'app/assets/stylesheets/style/typography.css.scss'
