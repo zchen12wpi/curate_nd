@@ -1,0 +1,53 @@
+@import 'global-variables';
+
+@media print {
+  .page-banner a[href]:after,
+  .page-footer p:nth-child(2) a[href]:after,
+  .required-indicator:after,
+  .footer-right a[href]:after {
+    content: '';
+  }
+
+  .page-banner {
+    margin-bottom: 1em;
+  }
+
+  caption > h2 {
+    margin-bottom: 1em;
+  }
+
+  body,
+  main,
+  .home {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $sansFontFamily;
+    }
+  }
+
+  .action-bar,
+  .brand-bar-wrapper,
+  .page-actions {
+    display: none;
+  }
+
+  .home-link {
+    padding-top: 2em;
+
+    .curate-nd-logo {
+      height: 2em;
+
+      path {
+        fill: $black;
+      }
+    }
+  }
+}
+
+@page {
+  margin: 1in;
+}

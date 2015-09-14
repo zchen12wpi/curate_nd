@@ -4,7 +4,7 @@
 
 <% end %>
 
-<%= form_tag terms_of_service_agreements_path, method: :post, id: "terms_of_service" do %>
+<%= form_tag terms_of_service_agreements_path, method: :post, class: "terms-of-service-form" do %>
 
   <div class="terms-of-service-summary">
     <%= richly_formatted_text(I18n.t('sufia.tos_summary')) %>
