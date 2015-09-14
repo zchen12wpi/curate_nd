@@ -18,6 +18,9 @@ linters:
       - 'app/assets/stylesheets/modules/site_search.css.scss'
       - 'app/assets/stylesheets/modules/text-overlay.css.scss'
       - 'app/assets/stylesheets/style/nd-theme.css.scss'
+      - 'app/assets/stylesheets/style/nd-theme-print.css.scss'
       - 'app/assets/stylesheets/style/search.css.scss'
       - 'app/assets/stylesheets/style/theme.css.scss'
       - 'app/assets/stylesheets/style/typography.css.scss'
+  QualifyingElement:
+    exclude: 'app/assets/stylesheets/style/nd-theme-print.css.scss'
