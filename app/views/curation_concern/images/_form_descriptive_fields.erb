@@ -1,0 +1,102 @@
+<fieldset class="required">
+  <legend>Required Information</legend>
+
+    <div class="row">
+      <div class="span7">
+
+        <%= f.input :title,
+          input_html: { class: 'input-xlarge' }
+        %>
+
+        <%= f.input :creator,  as: :multi_value, required: true, input_html: { class: 'input-xlarge' } %>
+
+        <%= f.input :date_created,
+            input_html: {class:'datepicker'}
+        %>
+
+        <%= f.input :affiliation,
+                    as: :select,
+                    collection: affiliations,
+                    input_html: { class: 'input-xlarge' }
+        %>
+
+        <%= render 'form_organization', curation_concern: curation_concern, f: f, select_label_id: 'add-to-organization', button_class: 'btn btn-primary' %>
+
+        <%= f.input :description,
+          as: :text,
+          input_html: {
+            class: 'input-xxxlarge',
+            rows: '14'
+          }
+        %>
+
+      <%= f.input :temporal_coverage,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :spatial_coverage,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :date_digitized,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :digitizing_equipment,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+    </div>
+
+    <div class="span7">
+
+      <%= f.input :alternate_title,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :contributor,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :contributor_institution,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :source,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+
+      <%= f.input :publisher,               as: :multi_value, label: "Publisher (Required for DOI)", input_html: { class: 'input-xlarge', id: 'publisher' } %>
+
+      <%= f.input :subject,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :recommended_citation,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :repository_name,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :collection_name,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :language,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :size,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+      <%= f.input :requires,
+                  as: :multi_value,
+                  input_html: { class: 'input-xlarge' }
+      %>
+    </div>
+  </div>
+</fieldset>
