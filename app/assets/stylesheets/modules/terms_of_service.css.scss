@@ -1,25 +1,25 @@
 .terms-of-service-actions {
-  line-height:4.5;
-  text-align:center;
+  line-height: 4.5;
+  text-align: center;
 
   .tos-read {
-    display:block;
-    margin-top:.5em;
+    display: block;
+    margin-top: .5em;
   }
 }
 
-#full-terms-of-service {
+.full-terms-of-service {
   .print {
-    display:none;
+    display: none;
   }
 }
 
 @media (min-width: 450px){
-  #full-terms-of-service {
+  .full-terms-of-service {
     .print {
-      display:block;
-      float:right;
-      margin-top:-2em;
+      display: block;
+      float: right;
+      margin-top: -2em;
     }
   }
 }
@@ -27,9 +27,9 @@
 @media (min-width: 980px){
   .terms-of-service-actions {
     .tos-read {
-      display:inline-block;
-      margin-top:0;
-      padding-left:0;
+      display: inline-block;
+      margin-top: 0;
+      padding-left: 0;
     }
   }
 }
@@ -37,27 +37,27 @@
 @media print {
   .terms-of-service-summary,
   .terms-of-service-actions {
-    display:none;
+    display: none;
   }
 
-  #full-terms-of-service {
-    display:block;
-    position:initial;
-    opacity:100;
-    margin:0;
-    border:none;
+  .full-terms-of-service {
+    border: 0;
+    display: block;
+    margin: 0;
+    opacity: 100;
+    position: initial;
 
     .close,
     .print {
-      display:none;
+      display: none;
     }
 
     .modal-header {
-      padding:9px 0;
+      padding: 9px 0;
     }
 
     .modal-footer {
-      border:none;
+      border: 0;
     }
   }
 }
