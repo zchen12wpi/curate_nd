@@ -16,10 +16,14 @@ $light-blue           : lighten($official-blue, 80%);
 // -------------------------
 $black:                 #000 !default;
 $grayDarker:            #222 !default;
+$gray-darker:           $grayDarker;
 $grayDark:              #333 !default;
+$gray-dark:             $grayDark
 $gray:                  #555 !default;
 $grayLight:             #999 !default;
+$gray-light:            $grayLight
 $grayLighter:           #eee !default;
+$gray-lighter:          $grayLighter;
 $white:                 #fff !default;
 
 
@@ -27,6 +31,7 @@ $white:                 #fff !default;
 // -------------------------
 $blue:                  $official-blue;
 $blueDark:              $official-blue-dark;
+$blue-dark:             $blueDark;
 $green:                 #46a546 !default;
 $red:                   #9d261d !default;
 $yellow:                $official-gold;
