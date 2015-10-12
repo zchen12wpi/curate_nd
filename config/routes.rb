@@ -7,7 +7,6 @@ CurateNd::Application.routes.draw do
   root 'static_pages#home'
 
   curate_for
-  resources :repo_managers, only: [:edit, :update]
 
   namespace :admin do
     constraints CurateND::AdminConstraint do
