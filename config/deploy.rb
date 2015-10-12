@@ -74,6 +74,11 @@ namespace :db do
   task :seed, :roles => :app do
     run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
   end
+
+  desc "Run the data migrate rake task."
+  task :data_migrate, :roles => :app do
+    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:data:migrate"
+  end
 end
 
 #############################################################
@@ -313,7 +318,7 @@ task :staging do
 
   # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
   #before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:data_migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
@@ -340,7 +345,8 @@ task :pre_production do
   # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
   # before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
   before 'bundle:install', 'solr:configure'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:data_migrate', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
@@ -369,7 +375,7 @@ task :production do
     # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
     #before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
     before 'bundle:install', 'solr:configure'
-    after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:precompile'
+    after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'deploy:data_migrate', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
     after 'deploy', 'deploy:kickstart'
     after 'deploy', 'worker:start'
