@@ -8,6 +8,12 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
+  remote: git://github.com/jeremyf/data-migrator.git
+  revision: 65bf22799c6c9914fb35ef96891f438f0ffa84fe
+  specs:
+    data_migrator (0.9.0)
+
+GIT
   remote: git://github.com/jeremyf/devise-multi_auth.git
   revision: 7835adee2f3f9d84dd876aea15a91ef47e155d3b
   specs:
@@ -720,6 +726,7 @@ DEPENDENCIES
   compass-rails (~> 1.1.2)
   curate!
   custom_configuration
+  data_migrator!
   database_cleaner
   decent_exposure
   devise (~> 3.2.2)
