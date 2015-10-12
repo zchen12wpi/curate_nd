@@ -5,6 +5,12 @@
 <% end %>
 
 <article class="curatend-faqs">
+  CurateND is a preservation repository managed by the Hesburgh Libraries of Notre Dame.
+  <ul>
+    <li>Contact us by phone <a href="tel:5746316258">(574) 631-6258</a> or email
+      <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Hello') %></li>
+    <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
+  </ul>
   <h3>Help Getting Started</h3>
   <ul>
     <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">How do I set up my account?</a></li>
