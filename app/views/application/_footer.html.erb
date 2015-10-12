@@ -5,7 +5,9 @@
         CurateND is a service of the <a href="http://library.nd.edu">Hesburgh Libraries of Notre Dame</a>.
       </p>
       <p>
-        For Technical Support call <a href="tel:5746316258">(574) 631-6258</a>  or email <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'CurateND Support Request') %>.
+        <%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %>.
+        For Technical Support call <a href="tel:5746316258">(574) 631-6258</a>,
+        or email <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'CurateND Support Request') %>.
       </p>
       <p>
         <a href="http://www.nd.edu/copyright/">Copyright</a> <%= Time.now.year %> <a href="http://www.nd.edu">University of Notre Dame</a>
