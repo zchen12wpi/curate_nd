@@ -54,11 +54,14 @@ $linkColorHover:        darken($linkColor, 15%) !default;
 
 // Typography
 // -------------------------
-$sansFontFamily   : "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$serifFontFamily  : 'Adobe Garamond Pro', Georgia, serif;
-$serif-font-family: $serifFontFamily;
-$monoFontFamily   : Monaco, Menlo, Consolas, "Courier New", monospace !default;
-$headerFontFamily : GalaxiePolarisCondensedBook, 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+$sansFontFamily:     'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$sans-font-family:   $sansFontFamily;
+$serifFontFamily:    'Adobe Garamond Pro', Georgia, serif;
+$serif-font-family:  $serifFontFamily;
+$monoFontFamily:     Monaco, Menlo, Consolas, 'Courier New', monospace !default;
+$mono-font-family:   $monoFontFamily;
+$headerFontFamily:   GalaxiePolarisCondensedBook, 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+$header-font-family: $headerFontFamily;
 
 $baseFontSize:          14px !default;
 $baseFontFamily:        $sansFontFamily !default;
