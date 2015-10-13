@@ -1,17 +1,19 @@
+@import 'global-variables';
+
 .link-users {
   .input-append .linked-user {
-    display: inline-block;
-    width: 275px;
-    height: 20px;
-    padding: 4px;
-    font-size: 14pt;
+    border: 1px solid $gray-lighter;
     border-radius: 4px 0 0 4px;
-    border: 1px solid #cccccc;
+    display: inline-block;
+    font-size: 14pt;
+    height: 20px;
     overflow: hidden;
+    padding: 4px;
+    width: 275px;
   }
 
   .current-user {
-    border: 0px !important;
+    border: 0;
   }
 
   .listing {
