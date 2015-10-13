@@ -5,6 +5,8 @@ exclude: 'app/assets/stylesheets/style/fonts.css'
 linters:
   Comment:
     exclude: 'app/assets/stylesheets/application.css.scss'
+  ImportantRule:
+    exclude: 'app/assets/stylesheets/modules/accessibility.css.scss'
   NameFormat:
     exclude:
       - 'app/assets/stylesheets/global-variables.scss'
