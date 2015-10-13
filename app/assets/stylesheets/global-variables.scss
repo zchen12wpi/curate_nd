@@ -18,10 +18,10 @@ $black:                 #000 !default;
 $grayDarker:            #222 !default;
 $gray-darker:           $grayDarker;
 $grayDark:              #333 !default;
-$gray-dark:             $grayDark
+$gray-dark:             $grayDark;
 $gray:                  #555 !default;
 $grayLight:             #999 !default;
-$gray-light:            $grayLight
+$gray-light:            $grayLight;
 $grayLighter:           #eee !default;
 $gray-lighter:          $grayLighter;
 $white:                 #fff !default;
@@ -242,12 +242,18 @@ $heroUnitLeadColor:               inherit !default;
 // Form states and alerts
 // -------------------------
 $warningText:             #c09853 !default;
+$warning-text:            $warningText;
 $warningBackground:       #fcf8e3 !default;
+$warning-background:      $warningBackground;
 $warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;
+$warning-border:          $warningBorder;
 
 $errorText:               #b94a48 !default;
+$error-text:              $errorText;
 $errorBackground:         #f2dede !default;
+$error-background:        $errorBackground;
 $errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
+$error-border:            $errorBorder;
 
 $successText:             #468847 !default;
 $successBackground:       #dff0d8 !default;
