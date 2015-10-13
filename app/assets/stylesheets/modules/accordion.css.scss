@@ -1,33 +1,33 @@
 .accordion {
   .accordion-toggle {
-    color:$blue
+    color: $blue;
   }
 
   .accordion-toggle:hover {
-    text-decoration:none;
+    text-decoration: none;
   }
 }
 
 .js .accordion {
   .accordion-toggle:before {
-    content:"";
-    display:inline-block;
-    width: 0;
+    border-color: $blue transparent transparent;
+    border-style: solid;
+    border-width: .3em .3em 0;
+    content: '';
+    display: inline-block;
     height: 0;
-    margin:0 .4em .25em -.2em;
-    border-style:solid;
-    border-color:$blue transparent transparent transparent;
-    border-width:.3em .3em 0 .3em;
+    margin: 0 .4em .25em -.2em;
+    width: 0;
   }
 
   .accordion-toggle.collapsed:before {
-    margin:0 .5em .2em 0;
-    border-color:transparent transparent transparent $blue;
-    border-width:.3em 0 .3em .3em;
+    border-color: transparent transparent transparent $blue;
+    border-width: .3em 0 .3em .3em;
+    margin: 0 .5em .2em 0;
   }
 }
 
-/* If form elements are present in an accordion they won't be wrapped in a row */
+// If form elements are present in an accordion they won't be wrapped in a row
 .accordion-inner .control-group {
-  margin-bottom:1.5em;
+  margin-bottom: 1.5em;
 }
