@@ -1,5 +1,5 @@
 .brand-bar-wrapper {
-  background-color: $blueDark;
+  background-color: $blue-dark;
 
   h2 a,
   h3 a {
@@ -40,14 +40,14 @@
   }
 
   .human-readable-type {
-    color: $grayLight;
+    color: $gray-light;
   }
 }
 
 .page-footer {
-  color: $grayLight;
+  color: $gray-light;
 
   .footer-text {
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $gray-lighter;
   }
 }
