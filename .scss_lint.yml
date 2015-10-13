@@ -4,7 +4,9 @@ exclude: 'app/assets/stylesheets/style/fonts.css'
 
 linters:
   Comment:
-    exclude: 'app/assets/stylesheets/application.css.scss'
+    exclude:
+      - 'app/assets/stylesheets/application.css.scss'
+      - 'app/assets/stylesheets/curate.css.scss'
   ImportantRule:
     exclude: 'app/assets/stylesheets/modules/accessibility.css.scss'
   NameFormat:
