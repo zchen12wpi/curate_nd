@@ -20,6 +20,7 @@ AllCops:
     - Rakefile
     - config.ru
   Exclude:
+    - app/assets/stylesheets/**/*
     - db/**/*
     - config/**/*
     - lib/**/version.rb
