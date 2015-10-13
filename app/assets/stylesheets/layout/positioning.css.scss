@@ -1,83 +1,77 @@
 body {
-  padding:0 1em 1em;
+  padding: 0 1em 1em;
 }
 
-#brand-bar-wrapper,
-#title-bar-wrapper {
-  margin-left:-1em;
-  margin-right:-1em;
-}
-
-.form-actions > form.button_to {
+.form-actions > .button_to {
   // make sure a rails button_to form renders inline when it's in a bootstrap .form-actions line.
   display: inline-block;
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 
-#site-search{
+.site-search {
   form {
-    margin:1em 0;
-    text-align:left;
+    margin: 1em 0;
+    text-align: left;
   }
 }
 
-#site-actions {
-  padding-top:1em;
-  text-align:right;
+.site-actions {
+  padding-top: 1em;
+  text-align: right;
 }
 
 .page-footer {
-  margin-top:2em;
-  margin-bottom:1em;
+  margin-bottom: 1em;
+  margin-top: 2em;
 
   .footer-text {
-    margin-top:1em;
-    padding-top:1.5em;
+    margin-top: 1em;
+    padding-top: 1.5em;
   }
 }
 
 .page-search {
-  padding-top:2em;
-  text-align:right;
+  padding-top: 2em;
+  text-align: right;
 }
 
 legend .pull-right {
-  margin-top:.2em;
+  margin-top: .2em;
 }
 
 .unpadded {
-  padding:0;
+  padding: 0;
 }
 
 .with-headroom {
-  padding-top:3em;
+  padding-top: 3em;
 }
 
 .with-footroom {
-  padding-bottom:3em;
+  padding-bottom: 3em;
 }
 
 .with-top-padding {
-  padding-top:2em;
+  padding-top: 2em;
 }
 
 .with-side-padding {
-  padding-left:2em;
-  padding-right:2em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
-dl.stacked {
+.stacked {
   dt {
-    clear:both;
-    float:left;
-    width:30%;
+    clear: both;
+    float: left;
+    width: 30%;
   }
 
   dd {
-    clear:right;
-    margin:0 0 0 30%;
-    width:40%;
-    word-wrap:break-word;
+    clear: right;
+    margin: 0 0 0 30%;
+    width: 40%;
+    word-wrap: break-word;
   }
 }
 
@@ -90,65 +84,69 @@ dl.stacked {
 
 .main-header {
   border-bottom: 1px solid $grayLighter;
+
+  > .navbar {
+    margin-bottom: 0;
+  }
 }
+
 .main-header-with-actions {
   position: relative;
 
   .human-readable-type {
-    display:block;
+    display: block;
   }
 
   .main-header {
     margin-bottom: 0;
 
     h1 {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
   }
 
   .page-actions {
-    margin:0;
-    padding:.5em 0 0;
+    margin: 0;
+    padding: .5em 0 0;
   }
 }
 
 .page-actions {
-  text-align:right;
-  line-height:3;
+  line-height: 3;
+  text-align: right;
 }
 
 .section-actions {
-  margin-bottom:2em;
+  margin-bottom: 2em;
 }
 
 .attached-file + .section-actions,
 .related-resources + .section-actions {
-  border-top:1px solid #EFEFEF;
-  padding-top:1em;
+  border-top: 1px solid $gray-lightest;
+  padding-top: 1em;
 }
 
-.search > .row > .main-header {
-  border-bottom: none;
-  margin-bottom: 24px;
-  padding-bottom: 0;
-}
+.search {
+  > .row > .main-header {
+    border-bottom: 0;
+    margin-bottom: 24px;
+    padding-bottom: 0;
+  }
 
-.main-header > .navbar {
-  margin-bottom: 0;
-}
+  .sidebar > h3:first-child {
+    margin-top: -.4em;
+  }
 
-.search .sidebar > h3:first-child {
-  margin-top: -.4em;
-}
+  .welcome-text > h2:first-child {
+    margin-top: -.2em;
+  }
 
-.search .welcome-text > h2:first-child {
-  margin-top: -.2em;
-}
-
-.search .call-to-action {
-  text-align: center;
+  .call-to-action {
+    text-align: center;
+  }
 }
 
 legend + .control-group {
-  margin-top: 0px;
+  margin-top: 0;
 }
+
