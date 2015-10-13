@@ -9,6 +9,19 @@
   margin: 0 0 2em;
   text-align: justify;
 
+  // 2 Column
+  > .work-type {
+    border: 1px solid $gray-lighter;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: $base-font-size;
+    margin: 1em 4%;
+    padding: .5em;
+    position: relative;
+    text-align: center;
+    width: 40%;
+  }
+
   .add-button {
     margin: .5em 0;
   }
@@ -46,19 +59,6 @@
     transform: rotate(-30deg);
     width: 100%;
     z-index: 1;
-  }
-
-  // 2 Column
-  > .work-type {
-    border: 1px solid $gray-lighter;
-    box-sizing: border-box;
-    display: inline-block;
-    font-size: $base-font-size;
-    margin: 1em 4%;
-    padding: .5em;
-    position: relative;
-    text-align: center;
-    width: 40%;
   }
 }
 
