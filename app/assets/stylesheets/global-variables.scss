@@ -96,6 +96,7 @@ $borderRadiusSmall:     0;
 // -------------------------
 $tableBackground:                   transparent !default; // overall background-color
 $tableBackgroundAccent:             #f9f9f9 !default; // for striping
+$table-background-accent:           $tableBackgroundAccent;
 $tableBackgroundHover:              #f5f5f5 !default; // for hover
 $tableBorder:                       #ddd !default; // table and cell border
 
@@ -129,6 +130,7 @@ $btnInverseBackgroundHighlight:     $grayDarker !default;
 $inputBackground:               $white !default;
 $inputBorder:                   #ccc !default;
 $inputBorderRadius:             $baseBorderRadius;
+$input-border-radius:           $inputBorderRadius;
 $inputDisabledBackground:       $grayLighter !default;
 $formActionsBackground:         #f5f5f5 !default;
 $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
@@ -234,7 +236,9 @@ $navbarInverseBrandColor:                $navbarInverseLinkColor !default;
 // Pagination
 // -------------------------
 $paginationBackground:                #fff !default;
+$pagination-background:               $paginationBackground;
 $paginationBorder:                    #ddd !default;
+$pagination-border:                   $paginationBorder;
 $paginationActiveBackground:          #f5f5f5 !default;
 
 
