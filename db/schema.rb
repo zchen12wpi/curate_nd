@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008174017) do
+ActiveRecord::Schema.define(version: 20150216123456) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -264,6 +264,15 @@ ActiveRecord::Schema.define(version: 20141008174017) do
 
   add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id", using: :btree
   add_index "receipts", ["receiver_id", "receiver_type"], name: "index_receipts_on_receiver_id_and_receiver_type", using: :btree
+
+  create_table "repo_managers", force: true do |t|
+    t.string   "username"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "repo_managers", ["username"], name: "index_repo_managers_on_username", using: :btree
 
   create_table "repo_object", primary_key: "repo_object_id", force: true do |t|
     t.string   "filename"
