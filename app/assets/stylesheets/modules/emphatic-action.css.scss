@@ -1,53 +1,55 @@
 @import 'global-variables';
 
 .emphatic-action {
-  font-family:$headerFontFamily;
-  -webkit-border-radius:0;
-  -moz-border-radius:0;
-  border-radius:0;
-  font-size:2em;
-  padding:.8em .7em;
-  margin-top:.5em;
+  border-radius: 0;
+  font-family: $header-font-family;
+  font-size: 2em;
+  margin-top: .5em;
+  padding: .8em .7em;
+
+  &.with-chevron {
+    padding-right: 2.2em;
+    position: relative;
+  }
+
+  .chevron-wrapper {
+    display: inline-block;
+    height: 1.3em;
+    position: absolute;
+    right: .4em;
+    top: .4em;
+    width: 1.3em;
+  }
 }
+
 @media (min-width: 960px) {
   .emphatic-action {
-    margin-top:1em;
+    margin-top: 1em;
   }
 }
 
-.emphatic-action.with-chevron {
-  padding-right:2.2em;
-  position:relative;
+// Homepage-specific Theme
+.site-features .emphatic-action-wrapper {
+  max-width: 100%;
 }
 
-.emphatic-action .chevron-wrapper {
-  display:inline-block;
-  height:1.3em;
-  position:absolute;
-  right:.4em;
-  top:.4em;
-  width:1.3em;
-}
-
-/* Homepage-specific Theme */
-#features .emphatic-action-wrapper {
-  max-width:100%;
-}
 .emphatic-action-wrapper {
-  text-align:center;
+  text-align: center;
 }
+
 @media (min-width: 768px) {
   .emphatic-action-wrapper {
-    text-align:left;
+    text-align: left;
   }
 }
 
-#features .btn-primary.emphatic-action {
-  background:$dark-blue;
+.site-features .btn-primary.emphatic-action {
+  background: $official-blue-dark;
 }
 
-#features .dark-blue .btn-primary.emphatic-action {
-  border-color:#9C802E;
-  background:#DCB439;
-  color:#FFF;
+.site-features .dark-blue .btn-primary.emphatic-action {
+  background: $official-gold;
+  border-color: $official-gold-accent;
+  color: $white;
 }
+

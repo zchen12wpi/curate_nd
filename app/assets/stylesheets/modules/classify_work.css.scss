@@ -1,0 +1,93 @@
+@import 'global-variables';
+
+// Aligning content types by leveraging text-align: justify
+// http: //www.barrelny.com/blog/text-align-justify-and-rwd/
+
+.classify-work {
+  font-size: .1px;
+  list-style-type: none;
+  margin: 0 0 2em;
+  text-align: justify;
+
+  // 2 Column
+  > .work-type {
+    border: 1px solid $gray-lighter;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: $base-font-size;
+    margin: 1em 4%;
+    padding: .5em;
+    position: relative;
+    text-align: center;
+    width: 40%;
+  }
+
+  .add-button {
+    margin: .5em 0;
+  }
+
+  .short-description {
+    font-size: 1em;
+    height: 4.29em; // Leave space for three lines
+    line-height: 1.43;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .title {
+    margin-top: 0;
+  }
+
+  > .placeholder {
+    border-color: transparent;
+  }
+
+  > .upcoming {
+    color: rgba(51, 51, 51, .5);
+  }
+
+  > .upcoming:before {
+    background-color: rgba(255, 255, 255, .8);
+    color: $red;
+    content: 'Coming Soon';
+    font-size: 1.5em;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 0 2px $gray-light, 0 0 1em $white;
+    top: 40%;
+    transform: rotate(-30deg);
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+
+// 3 Column
+@media (min-width: 600px){
+  .classify-work > .work-type {
+    margin: 1em 2%;
+    width: 29%;
+  }
+}
+
+// 4 Column
+@media (min-width: 1000px){
+  .classify-work > .work-type {
+    margin: 1em 2%;
+    width: 21%;
+  }
+}
+
+// 5 Column
+@media (min-width: 1200px){
+  .classify-work > .work-type {
+    margin: 1em 1%;
+    width: 18%;
+  }
+}
+
+.page-main .upcoming .title {
+  color: rgba(0, 43, 91, .5);
+}
+

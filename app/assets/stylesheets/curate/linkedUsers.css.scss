@@ -1,0 +1,23 @@
+@import 'global-variables';
+
+.link-users {
+  .input-append .linked-user {
+    border: 1px solid $gray-lighter;
+    border-radius: 4px 0 0 4px;
+    display: inline-block;
+    font-size: 14pt;
+    height: 20px;
+    overflow: hidden;
+    padding: 4px;
+    width: 275px;
+  }
+
+  .current-user {
+    border: 0;
+  }
+
+  .listing {
+    margin: 0;
+  }
+}
+

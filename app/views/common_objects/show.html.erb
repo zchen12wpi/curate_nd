@@ -1,5 +1,5 @@
 <% content_for :page_header do %>
-  <h1><%= curation_concern %><span class="human_readable_type">(<%= curation_concern.human_readable_type %>)</span></h1>
+  <h1><%= curation_concern %><span class="human-readable-type">(<%= curation_concern.human_readable_type %>)</span></h1>
 <% end %>
 
 <%= render "curation_concern/#{curation_concern.class.model_name.plural}/attributes", curation_concern: curation_concern, with_actions: false %>

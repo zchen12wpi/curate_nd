@@ -1,0 +1,84 @@
+.input-xxxlarge {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+legend small {
+  margin-left: .5em;
+}
+
+.label-checkbox .label-text {
+  display: block;
+  padding-left: 1.2em;
+}
+
+.control-group.error input,
+.control-group.error option,
+.control-group.error textarea {
+  color: $gray-dark;
+}
+
+.form-actions .btn-link {
+  color: $blue;
+}
+
+.control-label {
+  display: block;
+  label { display: inline; }
+
+  &.required {
+    abbr {
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+  }
+}
+
+.control-group .inline {
+  display: inline-block;
+}
+
+.field-choice {
+  font-size: 1.3em;
+  line-height: 1;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.accept-contributor-agreement {
+  padding-top: 1em;
+
+  input,
+  label {
+    font-size: 1.3em;
+  }
+}
+
+.edit-related-works {
+  .token-input-list-facebook {
+    float: left;
+  }
+
+  .btn {
+    margin: 1em 0 0;
+  }
+}
+
+@media (min-width: 980px){
+  .edit-related-works {
+    .btn {
+      margin: 0 0 0 1em;
+    }
+  }
+}
+
+.button-to {
+  margin: 0 .3em;
+}
+
+.inline-checkbox {
+  display: inline-block;
+  padding-right: 1em;
+}
+

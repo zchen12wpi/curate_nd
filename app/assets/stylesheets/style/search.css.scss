@@ -1,0 +1,49 @@
+.search {
+  .alert {
+    padding-right: 14px;
+
+    .applied-filter {
+      padding-right: 14px;
+    }
+
+    div {
+      display: inline;
+      float: right;
+    }
+
+    .clear-break {
+      clear: both;
+      display: block;
+      float: none;
+      height: 0;
+    }
+  }
+}
+
+.pager {
+  display: inline-block;
+  float: right;
+  margin-top: 0;
+  text-align: right;
+
+  .next-page,
+  .prev-page {
+    a,
+    span {
+      background-color: $white;
+      border: 1px solid $pagination-border;
+      border-radius: 15px;
+      display: inline-block;
+      padding: 5px 14px;
+    }
+  }
+}
+
+.search-result:first-child {
+  clear: both;
+}
+
+.sort-and-per-page {
+  margin: 0;
+  padding: 0;
+}

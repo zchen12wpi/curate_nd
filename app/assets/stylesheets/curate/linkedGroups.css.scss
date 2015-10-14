@@ -1,0 +1,19 @@
+@import 'global-variables';
+
+.link-groups {
+  .input-append .linked-group {
+    border: 1px solid $gray-lighter;
+    border-radius: 4px 0 0 4px;
+    display: inline-block;
+    font-size: 14pt;
+    height: 20px;
+    overflow: hidden;
+    padding: 4px;
+    width: 275px;
+  }
+
+  .listing {
+    margin: 0;
+  }
+}
+

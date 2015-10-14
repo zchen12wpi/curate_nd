@@ -1,10 +1,10 @@
 <% content_for :layout_name, 'curate_nd_home, ' %>
 <% content_for :body do %>
-<header id="banner" role="banner" class="home">
-  <div id="brand-bar-wrapper">
+<header role="banner" class="page-banner home">
+  <div class="brand-bar-wrapper">
     <%= render 'shared/brand_bar' %>
   </div>
-  <div id="title-bar-wrapper">
+  <div class="title-bar-wrapper">
     <%= render partial: 'shared/title_bar', locals: { hide_title: true } %>
   </div>
 </header>
@@ -15,7 +15,7 @@
 
 <div class="hero">
   <figure class="logo-wrapper">
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="CurateND-logo" viewBox="0 0 221 49" preserveAspectRatio="xMinYMin meet">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="curate-nd-logo" viewBox="0 0 221 49" preserveAspectRatio="xMinYMin meet">
       <style type="text/css">
         .white {fill:#FFF;}
         .yellow {fill:#DCB438; stroke-width:0.75;}
@@ -46,7 +46,7 @@
     <a href="http://news.nd.edu/news/55682-university-of-notre-dame-hesburgh-libraries-launch-curatend/">Press Release</a>
   </nav>
 
-  <figure id="site-mission" class="text-overlay">
+  <figure id="mission" class="site-mission text-overlay">
     <blockquote class="message">
       <p><span class="opening-quote">&ldquo;</span>
         Let us rise up and embrace the mission for our time:
@@ -61,7 +61,7 @@
 </div>
 
 
-<main id="main" role="main" class="home">
+<main id="main" role="main" class="page-main home">
   <%= yield %>
 </main>
 
