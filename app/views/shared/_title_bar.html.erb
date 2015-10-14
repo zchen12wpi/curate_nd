@@ -3,9 +3,9 @@
           <div class="row">
             <div id="title-bar" class="span12">
               <% unless hide_title.present? %>
-                <div id="site-title">
-                  <%= link_to root_path, id: 'home-link' do %>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="CurateND-logo" viewBox="0 0 221 49" preserveAspectRatio="xMinYMin meet">
+                <div class="site-title">
+                  <%= link_to root_path, class: 'home-link' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="curate-nd-logo" viewBox="0 0 221 49" preserveAspectRatio="xMinYMin meet">
                       <style type="text/css">
                         .white {fill:#FFF;}
                         .yellow {fill:#DCB438; stroke-width:0.75;}
@@ -25,16 +25,16 @@
             </div>
           </div>
         <% if show_site_search? || show_site_actions? %>
-          <div id="action-bar" class="row">
+          <div class="action-bar row">
             <div class="span12">
-              <div id="site-search">
+              <div class="site-search">
 
 <%= render 'shared/site_search' if show_site_search? %>
 
               </div>
 
 
-              <nav id="site-actions" role="menu">
+              <nav class="site-actions" role="menu">
 
 <%= render 'shared/site_actions' if show_site_actions? %>
 

@@ -1,14 +1,17 @@
+@import 'global-variables';
+
 .footnotes {
   margin-bottom: 2em;
 
   &:before {
-    border-bottom: 1px solid #999;
-    content: "";
+    border-bottom: 1px solid $gray-light;
+    content: '';
     display: block;
-    margin-bottom: 0.5em;
+    margin-bottom: .5em;
     margin-left: -25px;
     width: 25px;
   }
+
   p {
     margin-bottom: 0;
   }

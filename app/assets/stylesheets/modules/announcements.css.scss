@@ -1,22 +1,22 @@
 @import 'global-variables';
 
 .announcement-listing {
-
   .announcement {
     // Deferring to bootstrap-provided alert styles
   }
 
   .announcement-text {
-    font-family:$sansFontFamily;
-    letter-spacing:normal;
-    text-transform:none;
-    width:90%;
-    display:inline-block;
+    display: inline-block;
+    font-family: $sans-font-family;
+    letter-spacing: normal;
+    text-transform: none;
+    width: 90%;
   }
 
   .close {
     .announcement-dismiss {
-      padding:0;
+      padding: 0;
     }
   }
 }
+

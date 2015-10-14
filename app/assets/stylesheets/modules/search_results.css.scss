@@ -1,0 +1,50 @@
+@import 'global-variables';
+
+.search-results-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  border-top: 1px solid $gray-lighter;
+  margin-top: 1em;
+  padding-top: .5em;
+
+  .canonical-image {
+    margin-left: 20%;
+    width: 80%;
+  }
+
+  .list-number {
+    position: relative;
+  }
+
+  .resource-type {
+    margin-bottom: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 80%;
+  }
+
+  .modal {
+    text-align: left;
+  }
+}
+
+.search-result:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.search-result-actions {
+  text-align: right;
+}
+
+.readmore-js-toggle,
+.readmore-js-section {
+  float: left;
+}

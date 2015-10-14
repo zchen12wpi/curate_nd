@@ -1,0 +1,53 @@
+.brand-bar-wrapper {
+  background-color: $blue-dark;
+
+  h2 a,
+  h3 a {
+    color: $white;
+  }
+
+  .division {
+    float: right;
+  }
+}
+
+.title-bar-wrapper {
+  background-color: $yellow;
+  border-top: 1px solid $white;
+  margin-bottom: .3em;
+}
+
+.site-title {
+  h1 {
+    text-shadow: $white 0 0 1px;
+  }
+
+  a,
+  a:hover,
+  a:visited {
+    color: $blue;
+  }
+}
+
+.page-main {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $blue;
+  }
+
+  .human-readable-type {
+    color: $gray-light;
+  }
+}
+
+.page-footer {
+  color: $gray-light;
+
+  .footer-text {
+    border-top: 1px solid $gray-lighter;
+  }
+}

@@ -12,6 +12,7 @@
  *= require 'global-variables'
  *= require 'curate'
  *= require 'style/nd-theme'
+ *= require 'style/nd-theme-print'
  *= require 'modules/announcements'
  *= require 'modules/text-overlay'
  *= require 'modules/emphatic-action'
@@ -22,16 +23,16 @@
 
 // Inline form fields
 .control-group.inline input {
-  padding-bottom:.1em;
-  padding-top:.1em;
-  margin-bottom:0;
+  margin-bottom: 0;
+  padding-bottom: .1em;
+  padding-top: .1em;
 }
 
 .thumbnail {
-  border: none;
-  box-shadow: none;
-  padding-top: 10px; 
   background: none;
+  border: 0;
+  box-shadow: none;
+  padding-top: 10px;
 }
 
 .browse-everything {
