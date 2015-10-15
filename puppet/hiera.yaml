@@ -2,10 +2,7 @@
 :backends:
   - json
 :hierarchy:
-  - nodes/%{::hostname}
   - vagrant
-  - global
-  - server_info
 
 :json:
   :datadir: /var/lib/hiera
