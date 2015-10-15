@@ -73,7 +73,7 @@ class lib_curate::standalone {
 
      # Install app user
      class { 'lib_app_home':
-	require => Package[$packagelist],
+	before => Package[$packagelist],
      }	
 
      # Install Ruby
@@ -136,6 +136,7 @@ class lib_curate::standalone {
        owner => 'root',
        group => 'root',
        mode => '644',
+       require => Class['lib_nginx'],
        notify => Service['nginx'],
      }
 
@@ -144,6 +145,7 @@ class lib_curate::standalone {
        owner => 'root',
        group => 'root',
        mode => '644',
+       require => Class['lib_nginx'],
        notify => Service['nginx'],
      }
 
@@ -160,7 +162,7 @@ class lib_curate::standalone {
 
      # Make unicorn a service ( unicorn.rb is deployed with the ruby stack
      class { 'lib_unicornd':
-	require => Class["lib_resque_poold"],
+	require => Class["lib_ruby"],
      }
 
      # Install Fedora download proxy
