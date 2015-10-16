@@ -35,7 +35,6 @@ group :default do
   gem 'newrelic_rpm'
   gem 'flipper'
   gem 'roboto'
-  gem 'data_migrator', github: 'jeremyf/data-migrator'
 end
 
 # Hack to work around some bundler strangeness

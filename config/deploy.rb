@@ -1,4 +1,4 @@
-:quiet# List all tasks from RAILS_ROOT using: cap -T
+# List all tasks from RAILS_ROOT using: cap -T
 #
 # NOTE: The SCM command expects to be at the same path on both the local and
 # remote machines. The default git path is: '/shared/git/bin/git'.
@@ -73,11 +73,6 @@ namespace :db do
   desc "Run the seed rake task."
   task :seed, :roles => :app do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
-  end
-
-  desc "Run the data migrate rake task."
-  task :data_migrate, :roles => :app do
-    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:data:migrate"
   end
 end
 
@@ -318,7 +313,7 @@ task :staging do
 
   # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
   #before 'bundle:install', 'und:puppet'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:data_migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
@@ -346,7 +341,7 @@ task :pre_production do
   # before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
   before 'bundle:install', 'solr:configure'
   before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
-  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:data_migrate', 'deploy:precompile'
+  after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
   after 'deploy', 'worker:start'
@@ -375,7 +370,7 @@ task :production do
     # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
     #before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
     before 'bundle:install', 'solr:configure'
-    after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:data_migrate', 'deploy:precompile'
+    after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
     after 'deploy', 'deploy:kickstart'
     after 'deploy', 'worker:start'
