@@ -221,7 +221,6 @@ namespace :maintenance do
   task :orcid_migration, :roles => :app do
     run "cd #{current_path} && bundle exec rails runner -e #{rails_env} script/migrations/orcid_migration.rb"
   end
-
 end
 
 set(:secret_repo_name) {
