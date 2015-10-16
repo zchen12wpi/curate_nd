@@ -72,12 +72,12 @@ end
 namespace :db do
   desc "Run the seed rake task."
   task :seed, :roles => :app do
-    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
+    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
   end
 
   desc "Run the data migrate rake task."
   task :data_migrate, :roles => :app do
-    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:data:migrate"
+    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:data:migrate"
   end
 end
 
