@@ -1,4 +1,8 @@
 en:
+  blacklight:
+    search:
+      pagination_info:
+        no_items_found: "<span class='no-items-found'>No entries matched your search criteria</span>"
   sufia:
     product_name:        "CurateND"
     account_name:        "Notre Dame NetID"
