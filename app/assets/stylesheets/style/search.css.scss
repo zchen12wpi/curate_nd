@@ -20,25 +20,6 @@
   }
 }
 
-.pager {
-  display: inline-block;
-  float: right;
-  margin-top: 0;
-  text-align: right;
-
-  .next-page,
-  .prev-page {
-    a,
-    span {
-      background-color: $white;
-      border: 1px solid $pagination-border;
-      border-radius: 15px;
-      display: inline-block;
-      padding: 5px 14px;
-    }
-  }
-}
-
 .search-result:first-child {
   clear: both;
 }

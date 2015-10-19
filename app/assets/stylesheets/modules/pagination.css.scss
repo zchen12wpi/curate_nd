@@ -1,6 +1,54 @@
 @import 'global-variables';
 
-.pager .active a {
-  background-color: $pagination-border;
-  color: $pagination-background;
+.pager {
+  float: right;
+  margin-top: 0;
+  text-align: center;
+  width: 100%;
+
+  .active a {
+    background-color: $pagination-border;
+    color: $pagination-background;
+  }
+
+  .next-page,
+  .prev-page {
+    a,
+    span {
+      background-color: $white;
+      border: 1px solid $pagination-border;
+      border-radius: 15px;
+      display: inline-block;
+      padding: 5px 14px;
+    }
+  }
+
+  .page_links {
+    display: block;
+  }
+
+  .page_entries {
+    display: block;
+    text-align: right;
+  }
+
+  .no-items-found {
+    display: block;
+    font-size: 1.33em;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+  .new-search-from-no-results {
+    font-style: normal;
+  }
+}
+
+@media (min-width: 768px) {
+  .pager .page_entries .no-items-found {
+    text-align: left;
+  }
 }
