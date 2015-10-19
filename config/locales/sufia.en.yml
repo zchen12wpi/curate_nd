@@ -1,4 +1,8 @@
 en:
+  blacklight:
+    search:
+      pagination_info:
+        no_items_found: '<p class="no-items-found">Your search yielded no results.<br /><a href="/catalog" class="new-search-from-no-results">Start a new search</a></p>'
   sufia:
     product_name:        "CurateND"
     account_name:        "Notre Dame NetID"
@@ -43,7 +47,7 @@ en:
         repository_name: "The name of the organization or institution that holds the original physical object, if applicable."
         publisher: "An entity responsible for making the original resource available."
         source: "A related resource from which the described resource is derived. The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
-        rights: "Information about rights to the content, such as copyright, contract, and privacy rights. Ownership of original physical item (book, print, etc) should be recorded in dc.contributor.repository, and does not apply here. Rights information can take the form of a copyright statement, a license, or terms of use. If the Rights element is absent, no assumptions may be made about any rights held in or over the resource."
+        rights: "Set the license which governs how others may use your files. The main questions are whether others can reuse your work in deritivies, and whether you want attribution as the original creator."
         contributor_institution: "A consistent reference to the Institution that contributes the material."
         format: "The media type of the item. The system stored and registered MIME type of the file uploaded. Comments: This is an automatically system generated field so it does not need to be filled in. The field is present here so that metadata contributor knows how it is captured."
         size: "Size or duration of the resource."

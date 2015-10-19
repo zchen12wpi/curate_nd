@@ -13,6 +13,7 @@ linters:
     exclude:
       - 'app/assets/stylesheets/global-variables.scss'
       - 'app/assets/stylesheets/layout/positioning.css.scss'
+      - 'app/assets/stylesheets/modules/pagination.css.scss'
   QualifyingElement:
     exclude: 'app/assets/stylesheets/style/nd-theme-print.css.scss'
   SelectorFormat:
