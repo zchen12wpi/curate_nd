@@ -1,0 +1,60 @@
+<%
+  # This is a search result with a prominant thumbnail
+
+  solr_doc          ||= document.inner_object.solr_doc
+  title_link_target ||= polymorphic_path([:curation_concern, document])
+
+  if document.respond_to?(:user)
+    edit_path = ''
+  else
+    edit_path ||= edit_polymorphic_path([:curation_concern, document])
+  end
+
+  if document.respond_to?(:name)
+    title_link_text ||= document.name
+  else
+    title_link_text ||= document.title
+  end
+%>
+
+<li id="document_<%= document.noid %>" class="thumbnail-tile">
+
+  <div class="tile-thumbnail">
+    <%= render :partial => 'catalog/_index_partials/thumbnail_display', locals: {document: document} %>
+  </div>
+
+  <div class="tile-title">
+    <%= link_to richly_formatted_text(title_link_text), title_link_target, :id => "src_copy_link_#{solr_doc.noid}" %>
+  </div>
+
+<% if current_user %>
+  <div class="tile-actions">
+  <% if can?( :edit, document ) && edit_path.present? %>
+    <%= link_to(
+      raw('<i class="icon-pencil icon-large"></i>'),
+        edit_path,
+        class: 'itemicon itemedit btn',
+        title: "Edit #{document.human_readable_type}"
+      )%>
+    <% unless document.is_a?(Collection) %>
+      <%= link_to(
+        raw('<i class="icon-trash icon-large"></i>'),
+          [:curation_concern, document],
+          class: 'itemicon itemtrash btn',
+          data: {
+            confirm: "Delete this #{document.human_readable_type}?"
+          },
+          method: :delete,
+          title: "Delete #{document.human_readable_type}"
+        )%>
+    <% end %>
+  <% end %>
+
+  <% unless document.respond_to?(:user) %>
+    <% if can? :collect, document %>
+      <%= render 'add_to_collection_gui', collectible: document %>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+</li>
