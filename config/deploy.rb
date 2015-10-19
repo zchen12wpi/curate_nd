@@ -72,7 +72,7 @@ end
 namespace :db do
   desc "Run the seed rake task."
   task :seed, :roles => :app do
-    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
+    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
   end
 end
 
@@ -221,6 +221,12 @@ namespace :maintenance do
   task :orcid_migration, :roles => :app do
     run "cd #{current_path} && bundle exec rails runner -e #{rails_env} script/migrations/orcid_migration.rb"
   end
+
+  desc "Run ETD Reindexing"
+  task :etd_reindex, :roles => :app do
+    run "cd #{current_path} && bundle exec rails runner -e #{rails_env} 'Etd.all.each(&:update_index)'"
+  end
+
 end
 
 set(:secret_repo_name) {
