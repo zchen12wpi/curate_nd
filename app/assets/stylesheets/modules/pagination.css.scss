@@ -30,15 +30,20 @@
   .page_entries {
     display: block;
     text-align: right;
+  }
 
-    .no-items-found {
-      display: block;
-      font-size: 1.33em;
-      font-style: italic;
-      font-weight: normal;
-      margin-bottom: 2em;
-      text-align: center;
-    }
+  .no-items-found {
+    display: block;
+    font-size: 1.33em;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+  .new-search-from-no-results {
+    font-style: normal;
   }
 }
 
