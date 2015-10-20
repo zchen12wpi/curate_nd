@@ -3,6 +3,7 @@
 <% modal_title_id = "#{modal_id}-title"         %>
 <% use_text ||= false                           %>
 
+<% content_for(:modal_windows) do %>
 <div class="modal fade" id="<%= modal_id %>">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -15,6 +16,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <%= link_to add_member_form_collections_path(collectible_id: collectible.pid), data: { toggle: "modal", target: ('#' + modal_id) }, method: :get, class: "add-to-collection #{button_class}", remote: true, title: "Add #{collectible.human_readable_type} to Collection"  do %>
   <span class="icon icon-folder-open"></span><% if use_text %> Add to Collection<% end %>

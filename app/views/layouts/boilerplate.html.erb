@@ -23,6 +23,7 @@
     <% unless Rails.env.production? %>
     <!-- Rendered through: <%= yield(:layout_name) %>boilerplate -->
     <% end %>
+    <%= yield(:modal_windows) %>
     <div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
   </body>
 </html>
