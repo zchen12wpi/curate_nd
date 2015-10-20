@@ -8,7 +8,7 @@ module ApplicationHelper
     person_path(person)
   end
 
-  def display_as_grid
+  def display_as_grid?
     if (params[:display] == 'grid')
       true
     else
