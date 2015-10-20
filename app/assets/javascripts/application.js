@@ -61,6 +61,25 @@ $(function(){
     $(this).next('.field-hint').slideToggle(100);
   });
 
+  // Tile search results menu (TSRM)
+  $('.tile-menu-toggle').on('click', function(e) {
+    e.preventDefault();
+    $('.tile-actions-menu.focus').removeClass('focus');
+    $(this).parent('.tile-actions-menu').toggleClass('focus');
+    e.stopPropagation();
+  });
+
+  // TSRM: Save mouse-wielding users having to click
+  $('.tile-menu-toggle').on('mouseover', function(e) {
+    $('.tile-actions-menu.focus').removeClass('focus');
+    $(this).parent('.tile-actions-menu').addClass('focus');
+  });
+
+  // TSRM: Catch-all for dismissing open menus
+  $('.page-main').on('click', function(e) {
+    $('.tile-actions-menu.focus').removeClass('focus');
+  });
+
   $('.field-hint')
     .hide()
     .before(
