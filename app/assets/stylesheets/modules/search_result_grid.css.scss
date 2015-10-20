@@ -42,7 +42,11 @@
 }
 
 .tile-title {
-  text-align: center;
+  margin: .5em;
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .tile-actions {
