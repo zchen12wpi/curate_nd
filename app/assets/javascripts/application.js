@@ -21,14 +21,14 @@
 //= require_tree .
 
 $(function(){
-  $("#more-information").sticky({topSpacing:0});
-  $("a[rel=popover]").popover({ html : true, trigger: "hover" });
-  $("a[rel=popover]").click(function() { return false;});
+  $('#more-information').sticky({topSpacing:0});
+  $('a[rel=popover]').popover({ html : true, trigger: 'hover' });
+  $('a[rel=popover]').click(function() { return false;});
 
   $('#accept_contributor_agreement').each(function(){
     $.fn.disableAgreeButton = function(element) {
-      var $submit_button = $('input.require-contributor-agreement');
-      $submit_button.prop("disabled", !element.checked);
+      var $submitButton = $('input.require-contributor-agreement');
+      $submitButton.prop('disabled', !element.checked);
     };
     $.fn.disableAgreeButton(this);
     $(this).on('change', function(){
@@ -43,16 +43,16 @@ $(function(){
     $announcment.fadeOut(100);
   });
 
-  $("dt.attribute:contains('Date of birth:') + dd").remove();
-  $("dt.attribute:contains('Date of birth:')").remove();
-  $("dt.attribute:contains('Gender:') + dd").remove();
-  $("dt.attribute:contains('Gender:')").remove();
+  $('dt.attribute:contains("Date of birth:") + dd').remove();
+  $('dt.attribute:contains("Date of birth:")').remove();
+  $('dt.attribute:contains("Gender:") + dd').remove();
+  $('dt.attribute:contains("Gender:")').remove();
 
   $('table.attributes').ready(function(){
     $('li.attribute.abstract').each(function(){
       var str = $(this).html();
       var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
-      var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+      var replaced_text = str.replace(regex, '<a href=' + $1 + ' target="_blank">' + $1 + '</a>');
       $(this).html(replaced_text);
     });
   });
@@ -88,7 +88,7 @@ $(function(){
     }
     else {
       e.preventDefault();
-      if(window.location.search == ''){
+      if(window.location.search === ''){
         window.location.href = window.location.href + '?display=grid';
       } else {
         window.location.href = window.location.href + '&display=grid';
