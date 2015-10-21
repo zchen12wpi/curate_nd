@@ -1,18 +1,25 @@
 <% content_for :main_column_class, 'span8 offset2' %>
 <% content_for :page_title, construct_page_title('FAQs') %>
 <% content_for :page_header do %>
-<h1 class="center">Frequently Asked Questions about CurateND</h1>
+<h1 class="center">CurateND FAQ</h1>
 <% end %>
 
 <article class="curatend-faqs">
-  <p>CurateND is a preservation repository managed by the Hesburgh Libraries of Notre Dame.
+  <p>CurateND is a preservation repository managed by the Hesburgh Libraries of Notre Dame.</p>
     <ul>
       <li>Contact us by phone <a href="tel:5746316258">(574) 631-6258</a> or email
         <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Hello') %></li>
-      <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
+        <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
     </ul>
-  </p>
-  <h3>Help Getting Started</h3>
+
+  <h2><%= link_to 'Governing policies', policies_path %></h2>
+  <ul>
+    <li><%= link_to 'CurateND Content in Scope Policy', policies_path(anchor: 'content') %></li>
+    <li><%= link_to 'General Support Policy for Depositors', policies_path(anchor: 'support') %></li>
+    <li><%= link_to 'CurateND Mission', policies_path(anchor: 'mission') %></li>
+  </ul>
+
+  <h2>Help Getting Started</h2>
   <ul>
     <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">How do I set up my account?</a></li>
     <li><a href="https://docs.google.com/document/d/1Prr8vto_3xXfk4Ki_S1lL2XJi6yKI-dyTLA33dXZ5hA/pub">How do I deposit a work?</a></li>
@@ -23,7 +30,8 @@
     <li><a href="https://docs.google.com/a/nd.edu/document/d/10gJ2924B9LtMoG9FpKNZXGgGO1cSyxq1mvLI1Yolst8/pub">How do I assign a delegate?</a></li>
     <li><a href="https://docs.google.com/document/d/1qDUmRHcGaCurbWZuMqZXR4X1SWVABFVvn-miLvPHMGo/pub">How do I create a group?</a></li>
   </ul>
-  <h3>Frequently Asked Questions about CurateND</h3>
+
+  <h2>Frequently Asked Questions</h3>
   <% contact_curatend_support = link_to 'contact CurateND support', new_help_request_path, class: 'help-report-problem request-help' %>
   <dl>
     <dt>What are persistent URLs?</dt><dd>A persistent URL is a URL that does not break. It is expected to work and return documents from CurateND for a long time, where a “long time” is more than ten years.</dd>
