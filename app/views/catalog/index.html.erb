@@ -33,6 +33,7 @@
   <%= render :partial => 'did_you_mean' %>
 
   <div class="row sort-and-per-page">
+    <%= render 'choose_result_format' %>
     <%= render 'sort_and_per_page' %>
   </div>
 
@@ -46,6 +47,7 @@
 
   <% if current_user %>
 
+    <%= render 'choose_result_format' %>
     <%= render 'results_pagination' %>
 
     <%= render 'document_list' %>

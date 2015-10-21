@@ -18,6 +18,10 @@ body {
 .site-actions {
   padding-top: 1em;
   text-align: right;
+
+  .dropdown-menu {
+    text-align: left;
+  }
 }
 
 .page-footer {
@@ -150,3 +154,7 @@ legend + .control-group {
   margin-top: 0;
 }
 
+.container.flash-message .alert {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
