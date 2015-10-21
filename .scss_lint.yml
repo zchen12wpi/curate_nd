@@ -20,5 +20,6 @@ linters:
     exclude:
       - 'app/assets/stylesheets/layout/positioning.css.scss'
       - 'app/assets/stylesheets/modules/multi_value_fields.css.scss'
+      - 'app/assets/stylesheets/modules/pagination.css.scss'
   VendorPrefix:
     exclude: 'app/assets/stylesheets/modules/concerns.css.scss'

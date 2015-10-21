@@ -3,8 +3,7 @@
 .pager {
   float: right;
   margin-top: 0;
-  text-align: center;
-  width: 100%;
+  text-align: right;
 
   .active a {
     background-color: $pagination-border;
@@ -28,7 +27,7 @@
   }
 
   .page_entries {
-    display: block;
+    display: inline-block;
     text-align: right;
   }
 
@@ -39,16 +38,10 @@
     font-weight: normal;
     line-height: 1.5;
     margin-bottom: 2em;
-    text-align: center;
+    text-align: left;
   }
 
   .new-search-from-no-results {
     font-style: normal;
-  }
-}
-
-@media (min-width: 768px) {
-  .pager .page_entries .no-items-found {
-    text-align: left;
   }
 }
