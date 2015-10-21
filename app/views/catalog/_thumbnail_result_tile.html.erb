@@ -6,6 +6,8 @@
 
   if document.respond_to?(:user)
     edit_path = ''
+  elsif document.is_a?(Collection)
+    edit_path = edit_collection_path(document)
   else
     edit_path ||= edit_polymorphic_path([:curation_concern, document])
   end
