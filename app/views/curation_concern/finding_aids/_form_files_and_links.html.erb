@@ -1,25 +1,13 @@
-<% unless curation_concern.persisted? %>
-  <fieldset id="work-contents">
-    <div class="row with-headroom">
-      <div class="span12">
-        <legend>
-          Manage your <%= curation_concern.human_readable_type %> files
-        </legend>
-
-      </div>
-    </div>
-
-    <div class="row">
-
-      <fieldset class="span5">
-        <legend>
-          Attach Your File.
-          <%= file_size_warning %>
-        </legend>
-        <%= f.input :files, as: :file %>
-      </fieldset>
-
-
-    </div>
-  </fieldset>
+<% if curation_concern.persisted? %>
+  <p><em>Files are managed from the <%= link_to(
+  "#{curation_concern.human_readable_type.downcase} record view",
+  polymorphic_path([:curation_concern, curation_concern])
+  )%>.</em></p>
+<% else %>
+  <div class="row">
+    <fieldset class="span12">
+      <%= file_size_warning %>
+      <%= f.input :files, as: :file %>
+    </fieldset>
+  </div>
 <% end %>

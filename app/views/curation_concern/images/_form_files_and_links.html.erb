@@ -1,13 +1,21 @@
-<% unless curation_concern.persisted? %>
-  <div class="row with-headroom">
-      <div class="span12">
-        <fieldset class="required">
-          <legend>
-            Attach Your File.
-            <%= file_size_warning %>
-          </legend>
-          <%= f.input :files, as: :file, label: 'Upload your file' %>
-        </fieldset>
-      </div>
+<div class="row with-headroom">
+  <div class="span12">
+    <h2 id="attachments">
+      Attachments
+    </h2>
+  </div>
+</div>
+<% if curation_concern.persisted? %>
+  <p><em>Files are managed from the <%= link_to(
+  "#{curation_concern.human_readable_type.downcase} record view",
+  polymorphic_path([:curation_concern, curation_concern])
+  )%>.</em></p>
+<% else %>
+  <div class="row">
+    <fieldset class="span12">
+      <legend>Upload a File</legend>
+      <%= file_size_warning %>
+      <%= f.input :files, as: :file %>
+    </fieldset>
   </div>
 <% end %>
