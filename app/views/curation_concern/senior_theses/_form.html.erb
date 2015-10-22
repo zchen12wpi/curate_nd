@@ -51,7 +51,8 @@
 
 
     <%= container.pane("Files") do %>
-      <%= render "form_files_and_links", curation_concern: curation_concern, f: f %>
+      <p><em>A PDF is preferred</em><p>
+      <%= render "form_files", curation_concern: curation_concern, f: f %>
       <% if curation_concern.persisted? %>
         <%= render 'form_manage_related_files', curation_concern: curation_concern, f: f %>
       <% end %>
