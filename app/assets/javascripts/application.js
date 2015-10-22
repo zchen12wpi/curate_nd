@@ -18,12 +18,15 @@
 //= require blacklight/blacklight
 //= require curate
 //= require jquery.sticky
+//= require jquery.colorbox
 //= require_tree .
 
 $(function(){
   $('#more-information').sticky({topSpacing:0});
-  $('a[rel=popover]').popover({ html : true, trigger: 'hover' });
+  $('a[rel=popover]').popover({ html: true, trigger: 'hover' });
   $('a[rel=popover]').click(function() { return false;});
+  $('.colorbox').colorbox();
+  $('.colorbox-image').colorbox({photo: true, maxWidth: '90%', maxHeight: '90%'});
 
   $('#accept_contributor_agreement').each(function(){
     $.fn.disableAgreeButton = function(element) {

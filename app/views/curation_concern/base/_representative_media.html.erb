@@ -1,6 +1,6 @@
 <% if work.representative.present? && (generic_file = GenericFile.load_instance_from_solr(work.representative)) %>
   <% if generic_file.image? %>
-    <a href="<%= download_path(work.representative) %>" rel="colorbox">
+    <a href="<%= download_path(work.representative) %>" class="colorbox-image">
       <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
     </a>
   <% elsif generic_file.pdf? || generic_file.video? %>
