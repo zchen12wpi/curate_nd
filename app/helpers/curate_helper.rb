@@ -5,7 +5,7 @@ module CurateHelper
   end
 
   def file_size_warning
-    "<strong>Note - For files larger than #{t('sufia.supported_file_upload_size')} please contact #{support_email_link.html_safe} for assistance.</strong>".html_safe
+    "<p class=\"alert alert-block\"><strong>Please Note:</strong><br />For files larger than #{t('sufia.supported_file_upload_size')} please contact #{support_email_link.html_safe} for assistance.</p>".html_safe
   end
 
   # Loads the object and returns its title
