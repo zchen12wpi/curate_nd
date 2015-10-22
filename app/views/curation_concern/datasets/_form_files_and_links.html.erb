@@ -1,0 +1,40 @@
+<div class="row with-headroom">
+  <div class="span12">
+    <h2 id="attachments">
+      Attachments
+    </h2>
+
+    <% unless curation_concern.persisted? %>
+      <p class="alert alert-info alert-block">
+        <strong>Improve your Dataset record:</strong><br />
+        Please attach a code book that describes the nature of the data <em>in addition</em> to the data itself.
+      </p>
+    <% end %>
+
+    <p class="help-block">
+      The subject of your <%= curation_concern.human_readable_type.downcase %> can either be a file <em>or</em> a URL.
+    </p>
+  </div>
+</div>
+<% if curation_concern.persisted? %>
+  <p><em>Files and links are managed from the <%= link_to(
+  "#{curation_concern.human_readable_type.downcase} record view",
+  polymorphic_path([:curation_concern, curation_concern])
+  )%>.</em></p>
+<% else %>
+  <div class="row">
+    <fieldset class="span5">
+      <legend>Upload a File</legend>
+
+      <%= file_size_warning %>
+      <%= f.input :files, as: :file %>
+    </fieldset>
+
+    <strong class="span1 field-choice">OR</strong>
+
+    <fieldset class="span6">
+      <legend>Link to External Content</legend>
+      <%= f.input :linked_resource_urls, as: :multi_value, label: "External links", input_html: {class: 'input-xlarge'} %>
+    </fieldset>
+  </div>
+<% end %>
