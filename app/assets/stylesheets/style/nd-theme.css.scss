@@ -268,7 +268,7 @@ $logo-height: 48;
 
 // Footer formatting
 .page-footer {
-  padding: 1em;
+  padding: 1em 0 4em;
   text-align: left;
 
   .footer-right {
@@ -278,6 +278,10 @@ $logo-height: 48;
       width: 180px;
     }
   }
+}
+
+.help-report-a-problem {
+  margin:.5em .5em .5em 0;
 }
 
 @media (min-width: 768px) {
