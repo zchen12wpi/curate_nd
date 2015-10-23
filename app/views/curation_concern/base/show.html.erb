@@ -25,29 +25,42 @@
   <% end %>
 <% end %>
 
+<% details = capture do %>
+  <%= render 'attributes', curation_concern: curation_concern %>
+  <%= render 'doi', curation_concern: curation_concern %>
+
+  <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'related_resources', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'related_works', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'collections', curation_concern: curation_concern %>
+<% end %>
+
 <% if curation_concern.representative.present? %>
   <div class="row">
     <div class="work-representation span3">
       <%= render partial: 'representative_media', locals: {work: curation_concern} %>
     </div>
     <div class="work-attributes span9">
-      <%= render 'attributes', curation_concern: curation_concern %>
-      <%= render 'doi', curation_concern: curation_concern %>
-
-      <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
-      <%= render 'related_resources', curation_concern: curation_concern, with_actions: true %>
-      <%= render 'related_works', curation_concern: curation_concern, with_actions: true %>
-      <%= render 'collections', curation_concern: curation_concern %>
+      <%= details %>
     </div>
   </div>
 <% else %>
   <div class="work-attributes">
-    <%= render 'attributes', curation_concern: curation_concern %>
-    <%= render 'doi', curation_concern: curation_concern %>
+    <%= details %>
+  </div>
+<% end %>
 
-    <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
-    <%= render 'related_resources', curation_concern: curation_concern, with_actions: true %>
-    <%= render 'related_works', curation_concern: curation_concern, with_actions: true %>
-    <%= render 'collections', curation_concern: curation_concern %>
+<%
+  has_doi = curation_concern.identifier.present?
+
+  if has_doi
+    doi = curation_concern.identifier
+    unprefixed_doi = doi.split(':').drop(1).join(':')
+  end
+%>
+<% if has_doi %>
+  <div class="show-analytics">
+    <hr />
+    <a href="https://plu.mx/notre/a/?doi=<%= unprefixed_doi %>" class="plumx-details" data-hide-when-empty="true" data-site="notre"></a>
   </div>
 <% end %>
