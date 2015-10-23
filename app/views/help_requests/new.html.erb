@@ -1,5 +1,13 @@
+<%
+  if params[:label] == 'problem'
+    form_legend = 'CurateND: Report a problem'
+    request_label = 'What happened?'
+  else
+    form_legend = 'CurateND: Technical Support'
+    request_label = 'How can we help you?'
+  end
+%>
 <%= simple_form_for(help_request) do |f| %>
-
 
 <fieldset class="hidden">
   <dl class="stacked">
@@ -42,7 +50,7 @@
   </dl>
 </fieldset>
 <fieldset class="required with-side-padding">
-  <legend>What&rsquo;s Going On?</legend>
+  <legend><%= form_legend %></legend>
   <%= f.input :view_port, as: 'hidden' %>
   <%= f.input :resolution, as: 'hidden' %>
   <% if help_request.current_url.blank? %>
@@ -54,10 +62,11 @@
   <%= f.input :name, input_html: { value: help_request.form_name } %>
   <%= f.input :email, input_html: { value: help_request.form_email } %>
   <legend>Describe Your Issue</legend>
-  <%= f.input :how_can_we_help_you, as: 'text', input_html: { class: 'input-xxxlarge', rows: '10' } %>
+  <%= f.input :how_can_we_help_you, as: 'text', label: request_label, input_html: { class: 'input-xxxlarge', rows: '10' } %>
 </fieldset>
 
 <div class="form-actions">
-  <%= f.submit "Let Us Know", class: 'btn btn-primary' %> <a href="#" id="never-mind" class="btn btn-link" data-dismiss="modal"> never mind</a>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  <a href="#" id="never-mind" class="btn btn-link" data-dismiss="modal">Cancel</a>
 </div>
 <% end %>
