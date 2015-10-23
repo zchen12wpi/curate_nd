@@ -6,7 +6,7 @@
 <% end %>
 
 <%
-  collector = can?(:collect, curation_concern)
+  collector = current_user.present?
   editor    = can?(:edit,    curation_concern)
 %>
 <% if collector || editor %>
