@@ -4,6 +4,13 @@
       Attachments
     </h2>
 
+    <% unless curation_concern.persisted? %>
+      <p class="alert alert-info alert-block">
+        <strong>Improve your Dataset record:</strong><br />
+        Please attach a code book that describes the nature of the data <em>in addition</em> to the data itself.
+      </p>
+    <% end %>
+
     <p class="help-block">
       The subject of your <%= curation_concern.human_readable_type.downcase %> can either be a file <em>or</em> a URL.
     </p>
@@ -18,6 +25,7 @@
   <div class="row">
     <fieldset class="span5">
       <legend>Upload a File</legend>
+
       <%= render 'file_size_warning' %>
       <%= f.input :files, as: :file %>
     </fieldset>
