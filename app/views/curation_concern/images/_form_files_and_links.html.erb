@@ -14,7 +14,7 @@
   <div class="row">
     <fieldset class="span12">
       <legend>Upload a File</legend>
-      <%= file_size_warning %>
+      <%= render 'file_size_warning' %>
       <%= f.input :files, as: :file %>
     </fieldset>
   </div>
