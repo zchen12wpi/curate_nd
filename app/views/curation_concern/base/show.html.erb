@@ -55,9 +55,9 @@
 
   if has_doi
     doi = curation_concern.identifier
-    split_doi = doi.split(':')
-    if split_doi.length > 1
-      unprefixed_doi = split_doi.drop(1).join(':')
+    pattern = %r{doi:}i
+    if pattern.match(doi)
+      unprefixed_doi = doi.gsub(pattern, '')
     else
       unprefixed_doi = doi
     end
