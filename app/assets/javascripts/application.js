@@ -32,17 +32,6 @@ $(function(){
     maxHeight: '90%'
   });
 
-  $('#accept_contributor_agreement').each(function(){
-    $.fn.disableAgreeButton = function(element) {
-      var $submitButton = $('input.require-contributor-agreement');
-      $submitButton.prop('disabled', !element.checked);
-    };
-    $.fn.disableAgreeButton(this);
-    $(this).on('change', function(){
-      $.fn.disableAgreeButton(this);
-    });
-  });
-
   $('#announcements').on('ajax:success', function(event, xhr, status){
     var $target = $(event.target),
         $announcment = $target.parent('.announcement');
