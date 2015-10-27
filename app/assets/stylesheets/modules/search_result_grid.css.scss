@@ -1,5 +1,8 @@
 .search-results-grid {
+  display: flex;
+  flex-wrap: wrap;
   float: left;
+  justify-content: flex-start;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -8,11 +11,10 @@
 
 .grid-tile {
   border: 1px solid $gray-lightest;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: flex-start;
+  margin-bottom: 5px;
   margin-right: 5px;
   padding: 10px 5px 5px;
   position: relative;
@@ -21,14 +23,38 @@
 
 @media (min-width: 768px) {
   .grid-tile {
-    margin-right: 10px;
     width: 200px;
   }
 }
 
 .tile-thumbnail {
+  padding: 5px 0;
+
   a {
     display: inline-block;
+  }
+
+  .canonical-image {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+// .thumbnail-wrapper is a fixed size because I couldn’t figure out how to make
+// a fluid container that supported vertical centering and still maintained the
+// image aspect ratio
+.thumbnail-wrapper {
+  align-items: center;
+  display: flex;
+  height: 140px;
+  justify-content: center;
+  width: 140px;
+}
+
+@media (min-width: 768px) {
+  .thumbnail-wrapper {
+    height: 200px;
+    width: 200px;
   }
 }
 
@@ -91,17 +117,13 @@
   }
 }
 
-.flexbox {
-  .search-results-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-}
-
 .no-flexbox {
   .grid-tile {
     display: inline-block;
+  }
+
+  .thumbnail-wrapper {
+    text-align: center;
   }
 }
 
