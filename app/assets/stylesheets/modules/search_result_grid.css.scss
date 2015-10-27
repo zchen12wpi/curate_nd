@@ -38,21 +38,22 @@
     max-height: 100%;
     max-width: 100%;
   }
+
+  // .thumbnail-wrapper is a fixed size because I couldn’t figure out how to make
+  // a fluid container that supported vertical centering and still maintained the
+  // image aspect ratio
+  .thumbnail-wrapper {
+    align-items: center;
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    width: 140px;
+  }
 }
 
-// .thumbnail-wrapper is a fixed size because I couldn’t figure out how to make
-// a fluid container that supported vertical centering and still maintained the
-// image aspect ratio
-.thumbnail-wrapper {
-  align-items: center;
-  display: flex;
-  height: 140px;
-  justify-content: center;
-  width: 140px;
-}
 
 @media (min-width: 768px) {
-  .thumbnail-wrapper {
+  .tile-thumbnail .thumbnail-wrapper {
     height: 200px;
     width: 200px;
   }
