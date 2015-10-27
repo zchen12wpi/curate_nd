@@ -27,6 +27,11 @@ class StaticPagesController < ApplicationController
   end
 
   def policies
+    if params[:policyname]
+      render 'policies-' + params[:policyname].to_s
+    else
+      render 'policies'
+    end
   end
 
   private

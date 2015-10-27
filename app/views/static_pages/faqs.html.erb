@@ -14,9 +14,9 @@
 
   <h2><%= link_to 'Governing policies', policies_path %></h2>
   <ul>
-    <li><%= link_to 'CurateND Content in Scope Policy', policies_path(anchor: 'content') %></li>
-    <li><%= link_to 'General Support Policy for Depositors', policies_path(anchor: 'support') %></li>
-    <li><%= link_to 'CurateND Mission', policies_path(anchor: 'mission') %></li>
+    <li><%= link_to 'CurateND Mission', named_policy_path('mission') %></li>
+    <li><%= link_to 'CurateND Content in Scope Policy', named_policy_path('content') %></li>
+    <li><%= link_to 'General Support Policy for Depositors', named_policy_path('support') %></li>
   </ul>
 
   <h2>Help Getting Started</h2>
