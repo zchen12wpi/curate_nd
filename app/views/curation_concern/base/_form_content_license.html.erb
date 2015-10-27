@@ -4,12 +4,17 @@
     What do you want others to be able to do with your work?
   </p>
 
+  <p>
+    <a href="#licenseModal" role="button" class="btn fright" data-toggle="modal">Help me choose a license</a>
+  </p>
+
   <%= f.input :rights,
     as: :select,
     collection: Sufia.config.cc_licenses,
+    include_blank: false,
     input_html: { class: 'input-xxlarge' },
     label: 'Content License'
   %>
 
-  <%=render :partial => "curation_concern/base/license_modal" %>
+  <%= render :partial => "curation_concern/base/license_modal" %>
 </fieldset>
