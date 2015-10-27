@@ -84,7 +84,9 @@ Click OK to remove #{file_name} from #{t('sufia.product_name')}, or Cancel to ab
 
 <% elsif editor %>
   <h2>Files</h2>
-  <p><em>This <%= curation_concern.human_readable_type %> has no files associated with it.</em></p>
+  <p><em>This <%= curation_concern.human_readable_type.downcase %> has no files associated with it.
+    <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
+  </em></p>
 <% end %>
 <% if editor %>
   <div class="section-actions">

@@ -1,9 +1,4 @@
-<!-- Button to trigger modal -->
-<div class="modal-div">
-  <a href="#licenseModal" role="button" class="btn fright" data-toggle="modal">License Descriptions</a>
-</div>
-
-<!-- Modal -->
+<% content_for :modal_windows do %>
 <div class="modal hide fade" id="licenseModal" tabindex="-1" role="dialog" aria-labelledby="License Descriptions" aria-hidden="true">
   <div class="modal-header">
     <h2><%= t('sufia.product_name') %> License Descriptions</h2>
@@ -76,3 +71,4 @@
     <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
+<% end %>
