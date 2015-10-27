@@ -55,7 +55,12 @@
 
   if has_doi
     doi = curation_concern.identifier
-    unprefixed_doi = doi.split(':').drop(1).join(':')
+    pattern = %r{doi:}i
+    if pattern.match(doi)
+      unprefixed_doi = doi.gsub(pattern, '')
+    else
+      unprefixed_doi = doi
+    end
   end
 %>
 <% if has_doi %>
