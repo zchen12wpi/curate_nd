@@ -49,6 +49,8 @@
 // Initialize plugins and Bootstrap dropdowns on jQuery's ready event as well as
 // Turbolinks's page change event.
 Blacklight.onLoad(function() {
+  'use strict';
+
   $('abbr').tooltip();
 
   $('body').on('keypress', '.multi-text-field', function(event) {
@@ -56,10 +58,10 @@ Blacklight.onLoad(function() {
         $activeFieldControls = $activeField.children('.field-controls'),
         $addControl=$activeFieldControls.children('.add'),
         $removeControl=$activeFieldControls.children('.remove');
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       event.preventDefault();
-      $addControl.click()
-      $removeControl.click()
+      $addControl.click();
+      $removeControl.click();
     }
   });
   $('.multi_value.control-group').manage_fields();
@@ -74,15 +76,17 @@ Blacklight.onLoad(function() {
     startDate: '+1d'
   });
 
-  $('.remove-member').on('ajax:success', function(){window.location.href = window.location.href});
+  $('.remove-member').on('ajax:success', function(){
+    window.location.href = window.location.href;
+  });
 
-  $("[data-toggle='dropdown']").dropdown();
+  $('[data-toggle="dropdown"]').dropdown();
 
 	$('.generic_file_actions').on('click', '.disabled', function(event) {
 		event.preventDefault();
 	});
 
-	$("input.datepicker").datepicker({
+	$('input.datepicker').datepicker({
 		format: 'yyyy-mm-dd'
 	});
 
@@ -90,35 +94,31 @@ Blacklight.onLoad(function() {
 		event.preventDefault();
 	});
 
-	$(".department-select").select2({
-		placeholder: "Make a Selection",
+	$('.department-select').select2({
+		placeholder: 'Make a Selection',
 		formatResultCssClass:function(object) {
 									if(object.disabled === true){
-										return "bold-row";
+										return 'bold-row';
 									}
 								},
 		formatResult: format
 
 	});
 
-	function format(option, container, query) {
-		var originalOption = option.element;
-		var noOfSpaces= $(originalOption).data('indent')
-		if (noOfSpaces==undefined )
+	function format(option) {
+		var originalOption = option.element,
+		    noOfSpaces = $(originalOption).data('indent');
+
+		if (noOfSpaces === undefined ) {
 			return option.text;
-		else{
-			var space = "&nbsp",
-			returnValue = "";
+    } else {
+			var space = '&nbsp',
+			returnValue = '';
 			for(var index=0; index < noOfSpaces*3; index++) {
 				returnValue += space;
 			}
 			return  returnValue + option.text;
 		}
-
-
 	}
-
 });
-
-
 
