@@ -24,7 +24,6 @@ $(function(){
   $('.request-help').on('click', function(event){
     event.preventDefault();
     var target = $(this).attr('href')
-    console.log(target);
 
     $('body').modalmanager('loading');
     setTimeout(function(){
