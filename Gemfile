@@ -12,7 +12,6 @@ group :default do
   gem 'nokogiri', "~>1.6.0"
   gem 'jettywrapper'
   gem 'jquery-rails'
-  gem 'browse-everything', '0.8.2'
   gem 'decent_exposure'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
