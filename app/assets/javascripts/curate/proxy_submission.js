@@ -5,19 +5,20 @@
  * a creator field and clicks the creator Add button.
  */
 function updateCreators(){
+  'use strict';
 
-    // Get the selected owner name from the owner control.
-    // If it is 'Myself', then pluck the name from the display name on the dropdown menu in the title bar of the page.
-    // If 'nothing' was selected, do nothing and return.
+  // Get the selected owner name from the owner control.
+  // If it is 'Myself', then pluck the name from the display name on the dropdown menu in the title bar of the page.
+  // If 'nothing' was selected, do nothing and return.
 
-    var ownerName = $("[id*='_owner'] option:selected").text();
-    if (ownerName == 'Myself') {
-        ownerName = $(".user-display-name").text().trim();
-    }
-    else if (ownerName === "") { return; }
+  var ownerName = $('[id*=_owner] option:selected').text();
+  if (ownerName === 'Myself') {
+    ownerName = $('.user-display-name').text().trim();
+  }
+  else if (ownerName === '') { return; }
 
-    // Put that name into the "Add" creator control and force a click of the Add button.
-    // Note that the last creator control is always the one into which a new user is entered.
-    $('input[id$=_creator]').last().val(ownerName);
-    $("div[class*=_creator] .add").click();
+  // Put that name into the "Add" creator control and force a click of the Add button.
+  // Note that the last creator control is always the one into which a new user is entered.
+  $('input[id$=_creator]').last().val(ownerName);
+  $('div[class*=_creator] .add').click();
 }
