@@ -5,7 +5,7 @@
 (function($){
   'use strict';
 
-  $.widget( "curate.manage_sections", {
+  $.widget( 'curate.manage_sections', {
     options: {
       change: null,
       add: null,
@@ -13,10 +13,10 @@
     },
 
     _create: function() {
-      this.element.addClass("managed");
-      $('.repeat', this.element).addClass("input-append");
-      this.adder = $("<button class=\"btn btn-success add\" id=\"section_add_button\"><i class=\"icon-white icon-plus\"></i><span>Add</span></button>");
-      this.remover = $("<button class=\"btn btn-danger remove\"><i class=\"icon-white icon-minus\"></i><span>Remove</span></button>");
+      this.element.addClass('managed');
+      $('.repeat', this.element).addClass('input-append');
+      this.adder = $('<button class="btn btn-success add" id="section_add_button"><i class="icon-white icon-plus"></i><span>Add</span>\</button>.');
+      this.remover = $('<button class="btn btn-danger remove"><i class="icon-white icon-minus"></i><span>Remove</span></button>');
       this.tableControls = $('.table-controls', this.element);
       this.cannotAddNotification = $('<div class="alert alert-warning warning">You cannot add multiple empty entries.</div>');
       this.fieldIndex = $('.repeat', this.element).length;
@@ -25,8 +25,8 @@
       $('.table-controls', this.element).append(this.adder);
 
       this._on( this.element, {
-        "click .remove": "remove_from_list",
-        "click .add": "add_to_section_list"
+        'click .remove': 'remove_from_list',
+        'click .add': 'add_to_section_list'
       });
 
       var $last_line = $('.repeat', this.element).last();
@@ -82,8 +82,7 @@
         $activeField.children('button').remove();
         $listing.append($newField);
         $('.remove', $newField).remove();
-        //$nameFieldCell.first().focus();
-        this._trigger("add");
+        this._trigger('add');
       }
     },
 
@@ -98,13 +97,13 @@
         .parents('.repeat')
         .remove();
 
-      this._trigger("remove");
+      this._trigger('remove');
     },
 
     _destroy: function() {
       this.actions.remove();
-      $('.repeat', this.element).removeClass("input-append");
-      this.element.removeClass( "managed" );
+      $('.repeat', this.element).removeClass('input-append');
+      this.element.removeClass('managed');
     }
   });
 })(jQuery);
