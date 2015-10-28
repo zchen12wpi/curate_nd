@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 859fac5bb69965fed8e8cea52b0af0dee486c9b1
-  ref: 859fac5bb69965fed8e8cea52b0af0dee486c9b1
+  revision: fec8f575ffbfb02793c29051fc949f5955452817
+  ref: fec8f575ffbfb02793c29051fc949f5955452817
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -28,7 +28,6 @@ GIT
       bootstrap-datepicker-rails
       breach-mitigation-rails
       breadcrumbs_on_rails
-      browse-everything
       browser
       chronic (>= 0.10.2)
       devise
