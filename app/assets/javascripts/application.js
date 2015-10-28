@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require polyfill
+//= require array_filter_polyfill
 //
 // Required by Blacklight
 //= require blacklight/blacklight
