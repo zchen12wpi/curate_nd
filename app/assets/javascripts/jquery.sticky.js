@@ -11,6 +11,8 @@
 //       might need to adjust the width in some cases.
 
 (function($) {
+  'use strict';
+
   var defaults = {
       topSpacing: 0,
       bottomSpacing: 0,
@@ -45,14 +47,13 @@
           }
         }
         else {
-          var newTop = documentHeight - s.stickyElement.outerHeight()
-            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
+          var newTop = documentHeight - s.stickyElement.outerHeight() - s.topSpacing - s.bottomSpacing - scrollTop - extra;
           if (newTop < 0) {
             newTop = newTop + s.topSpacing;
           } else {
             newTop = s.topSpacing;
           }
-          if (s.currentTop != newTop) {
+          if (s.currentTop !== newTop) {
             s.stickyElement
               .css('position', 'fixed')
               .css('top', newTop);
@@ -84,18 +85,18 @@
           var stickyElement = $(this);
 
           var stickyId = stickyElement.attr('id');
-          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName 
+          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
           var wrapper = $('<div></div>')
             .attr('id', stickyId + '-sticky-wrapper')
             .addClass(o.wrapperClassName);
           stickyElement.wrapAll(wrapper);
 
           if (o.center) {
-            stickyElement.parent().css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+            stickyElement.parent().css({width:stickyElement.outerWidth(),marginLeft:'auto', marginRight:'auto'});
           }
 
-          if (stickyElement.css("float") == "right") {
-            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+          if (stickyElement.css('float') === 'right') {
+            stickyElement.css({'float':'none'}).parent().css({'float':'right'});
           }
 
           var stickyWrapper = stickyElement.parent();
@@ -120,12 +121,12 @@
           var removeIdx = -1;
           for (var i = 0; i < sticked.length; i++)
           {
-            if (sticked[i].stickyElement.get(0) == unstickyElement.get(0))
+            if (sticked[i].stickyElement.get(0) === unstickyElement.get(0))
             {
                 removeIdx = i;
             }
           }
-          if(removeIdx != -1)
+          if(removeIdx !== -1)
           {
             sticked.splice(removeIdx,1);
             unstickyElement.unwrap();
