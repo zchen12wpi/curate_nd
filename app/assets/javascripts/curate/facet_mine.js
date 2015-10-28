@@ -1,22 +1,25 @@
 //= require blacklight/core
 (function($) {
+  'use strict';
+
   var facet_mine_behavior = function() {
     $('#aux-search-submit-header').hide();
 
-    $('input[name="works"]').on("change", function(e) {
+    $('input[name="works"]').on('change', function() {
       $(this).closest('form').submit();
     });
 
-  };  
+  };
 
 
   // TODO when we upgrade blacklight to 4.4+, we can use Blacklight.onLoad()
-  if (typeof Turbolinks !== "undefined") {
+  if (typeof Turbolinks !== 'undefined') {
     $(document).on('page:load', function() {
-      facet_mine_behavior();  
+      facet_mine_behavior();
     });
   }
+
   $(document).ready(function() {
-    facet_mine_behavior();  
+    facet_mine_behavior();
   });
 })(jQuery);
