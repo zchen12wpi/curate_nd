@@ -22,6 +22,8 @@
 //= require_tree .
 
 $(function(){
+  'use strict';
+
   $('#more-information').sticky({topSpacing:0});
   $('a[rel=popover]').popover({ html: true, trigger: 'hover' });
   $('a[rel=popover]').click(function() { return false;});
@@ -32,7 +34,7 @@ $(function(){
     maxHeight: '90%'
   });
 
-  $('#announcements').on('ajax:success', function(event, xhr, status){
+  $('#announcements').on('ajax:success', function(event){
     var $target = $(event.target),
         $announcment = $target.parent('.announcement');
 
@@ -46,9 +48,9 @@ $(function(){
 
   $('table.attributes').ready(function(){
     $('li.attribute.abstract').each(function(){
-      var str = $(this).html();
-      var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
-      var replaced_text = str.replace(regex, '<a href=' + $1 + ' target="_blank">' + $1 + '</a>');
+      var str = $(this).html(),
+          regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig,
+          replaced_text = str.replace(regex, '<a href=' + $1 + ' target="_blank">' + $1 + '</a>');
       $(this).html(replaced_text);
     });
   });
