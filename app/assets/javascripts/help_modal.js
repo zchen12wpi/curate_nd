@@ -1,4 +1,6 @@
 $(function(){
+  'use strict';
+
   var $window = $(window),
       $modal = $('#ajax-modal'),
       resolution = screen.width + 'x' + screen.height,
@@ -23,12 +25,12 @@ $(function(){
 
   $('.request-help').on('click', function(event){
     event.preventDefault();
-    var target = $(this).attr('href')
+    var target = $(this).attr('href');
 
     $('body').modalmanager('loading');
     setTimeout(function(){
       $modal.load(target + ' #new_help_request', function(){
-        $('body').modalmanager('loading')
+        $('body').modalmanager('loading');
         $modal.modal();
         populateHelpForm();
       });
