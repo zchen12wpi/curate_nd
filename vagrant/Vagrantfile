@@ -28,10 +28,10 @@ Vagrant.configure(2) do |config|
    end
 
   # CentOS provisioning
-  config.vm.provision "shell", inline: "yum -y install http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm"
-  config.vm.provision "shell", inline: "yum -y install epel-release"
-  config.vm.provision "shell", inline: "cp /vagrant/iptables /etc/sysconfig/iptables && service iptables restart"
-  config.vm.provision "shell", inline: "puppet module install puppetlabs/mysql"
+  config.vm.provision "shell", inline: "yum list rpmforge-release || yum -y install http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm"
+  config.vm.provision "shell", inline: "yum list epel-release || yum -y install epel-release"
+  config.vm.provision "shell", inline: "cp -f /vagrant/iptables /etc/sysconfig/iptables && service iptables restart"
+  config.vm.provision "shell", inline: "if [ ! -d /etc/puppet/modules/mysql ]; then  puppet module install puppetlabs/mysql; fi"
 
   #m Enable provisioning with Puppet
   # 
@@ -43,5 +43,5 @@ Vagrant.configure(2) do |config|
        puppet.options = "--verbose "
   end
 
-  config.vm.provison "shell", inline: "usermod -G app nginx"
+  config.vm.provision "shell", inline: "usermod -G app nginx"
 end
