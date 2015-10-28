@@ -3,7 +3,9 @@
 // These assumptions are reflected in the MultiValueInput class.
 
 (function($){
-  $.widget( "curate.manage_fields", {
+  'use strict';
+
+  $.widget( 'curate.manage_fields', {
     options: {
       change: null,
       add: null,
@@ -11,20 +13,20 @@
     },
 
     _create: function() {
-      this.element.addClass("managed");
-      $('.field-wrapper', this.element).addClass("input-append");
+      this.element.addClass('managed');
+      $('.field-wrapper', this.element).addClass('input-append');
 
-      this.controls = $("<span class=\"field-controls\">");
-      this.remover  = $("<button class=\"btn btn-danger remove\"><i class=\"icon-white icon-minus\"></i><span>Remove</span></button>");
-      this.adder    = $("<button class=\"btn btn-success add\"><i class=\"icon-white icon-plus\"></i><span>Add</span></button>");
+      this.controls = $('<span class="field-controls">');
+      this.remover  = $('<button class="btn btn-danger remove"><i class="icon-white icon-minus"></i><span>Remove</span></button>');
+      this.adder    = $('<button class="btn btn-success add"><i class="icon-white icon-plus"></i><span>Add</span></button>');
 
       $('.field-wrapper', this.element).append(this.controls);
       $('.field-wrapper:not(:last-child) .field-controls', this.element).append(this.remover);
       $('.field-controls:last', this.element).append(this.adder);
 
       this._on( this.element, {
-        "click .remove": "remove_from_list",
-        "click .add": "add_to_list"
+        'click .remove': 'remove_from_list',
+        'click .add': 'add_to_list'
       });
     },
 
@@ -36,7 +38,7 @@
           $removeControl = this.remover.clone(),
           $newField = $activeField.clone(),
           $listing = $('.listing', this.element),
-          $warningSpan  = $("<span class=\'message warning\'>cannot add new empty field</span>");
+          $warningSpan  = $('<span class="message warning">cannot add new empty field</span>');
       if ($activeField.children('input').val() === '') {
           $listing.children('.warning').remove();
           $listing.append($warningSpan);
@@ -45,19 +47,20 @@
         $listing.children('.warning').remove();
         $('.add', $activeFieldControls).remove();
         $activeFieldControls.prepend($removeControl);
-        $newChildren = $newField.children('input');
+
+        var $newChildren = $newField.children('input');
         $newChildren.
           val('').
           removeProp('required');
         $listing.append($newField);
 
-				if ($newChildren.first().hasClass( "datepicker" )) {
+				if ($newChildren.first().hasClass( 'datepicker' )) {
 					$newChildren.first().datepicker({
 						format: 'yyyy-mm-dd'
 					});
 				}
 				$newChildren.first().focus();
-        this._trigger("add");
+        this._trigger('add');
       }
     },
 
@@ -68,13 +71,13 @@
         .parents('.field-wrapper')
         .remove();
 
-      this._trigger("remove");
+      this._trigger('remove');
     },
 
     _destroy: function() {
       this.actions.remove();
-      $('.field-wrapper', this.element).removeClass("input-append");
-      this.element.removeClass( "managed" );
+      $('.field-wrapper', this.element).removeClass('input-append');
+      this.element.removeClass( 'managed' );
     }
   });
 })(jQuery);
