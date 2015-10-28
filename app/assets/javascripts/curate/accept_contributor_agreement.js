@@ -1,8 +1,8 @@
 (function($) {
   'use strict';
 
-  $("a[rel=popover]").popover({ html: true, trigger: "hover" });
-  $("a[rel=popover]").click(function() { return false;});
+  $('a[rel=popover]').popover({ html: true, trigger: 'hover' });
+  $('a[rel=popover]').click(function() { return false;});
 
   $('#accept_contributor_agreement').each(function(){
     $.fn.disableAgreeButton = function(element) {
