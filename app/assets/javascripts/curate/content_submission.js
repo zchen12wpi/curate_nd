@@ -1,4 +1,4 @@
-var ready = function(){
+var toggleLicenseText = function(){
   'use strict';
 
   showHideLicenseText();
@@ -23,5 +23,5 @@ function showHideLicenseText(){
     }
 }
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).ready(toggleLicenseText);
+$(document).on('page:load', toggleLicenseText);
