@@ -1,3 +1,7 @@
 <h1>Unauthorized</h1>
-<p>The collection you have tried to access is private<p>
-<p>ID: <%= @collection.id %>
+<p>The collection you have tried to access is private.</p>
+<p>ID: <%= @collection.id %></p>
+<% unless current_user %>
+  <p>If you think you should have access, please try logging in.</p>
+  <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary login', role: 'menuitem' %>
+<% end %>
