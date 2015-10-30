@@ -82,3 +82,7 @@ end
 group :deploy do
   gem 'capistrano', '~> 2.15'
 end
+
+group :development do
+  gem 'jshintrb'
+end

@@ -1,5 +1,7 @@
+// Tile search results menu
 $(function(){
-  // Tile search results menu (TSRM)
+  'use strict';
+
   $('.tile-menu-toggle').on('click', function(e) {
     e.preventDefault();
     $('.tile-actions-menu.focus').removeClass('focus');
@@ -7,18 +9,18 @@ $(function(){
     e.stopPropagation();
   });
 
-  // TSRM: Save mouse-wielding users having to click
+  // Save mouse-wielding users having to click
   $('.tile-menu-toggle').on('mouseover', function() {
     $('.tile-actions-menu.focus').removeClass('focus');
     $(this).parent('.tile-actions-menu').addClass('focus');
   });
 
-  // TSRM: Catch-all for dismissing open menus
+  // Catch-all for dismissing open menus
   $('.page-main').on('click', function() {
     $('.tile-actions-menu.focus').removeClass('focus');
   });
 
-  // TSRM: Turn on tile display
+  // Turn on tile display
   $('.search .choose-list-format .grid').on('click', function(e) {
     e.preventDefault();
     if(!($(this).hasClass('active'))){
@@ -30,7 +32,7 @@ $(function(){
     }
   });
 
-  // TSRM: Turn off tile display
+  // Turn off tile display
   $('.search .choose-list-format .listing').on('click', function(e) {
     e.preventDefault();
     if(!($(this).hasClass('active'))){

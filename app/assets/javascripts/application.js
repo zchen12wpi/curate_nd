@@ -10,18 +10,18 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require array_filter_polyfill
 //= require jquery
 //= require jquery_ujs
-//= require polyfill
 //
-// Required by Blacklight
 //= require blacklight/blacklight
 //= require curate
 //= require jquery.sticky
 //= require jquery.colorbox
-//= require_tree .
 
 $(function(){
+  'use strict';
+
   $('#more-information').sticky({topSpacing:0});
   $('a[rel=popover]').popover({ html: true, trigger: 'hover' });
   $('a[rel=popover]').click(function() { return false;});
@@ -32,18 +32,7 @@ $(function(){
     maxHeight: '90%'
   });
 
-  $('#accept_contributor_agreement').each(function(){
-    $.fn.disableAgreeButton = function(element) {
-      var $submitButton = $('input.require-contributor-agreement');
-      $submitButton.prop('disabled', !element.checked);
-    };
-    $.fn.disableAgreeButton(this);
-    $(this).on('change', function(){
-      $.fn.disableAgreeButton(this);
-    });
-  });
-
-  $('#announcements').on('ajax:success', function(event, xhr, status){
+  $('#announcements').on('ajax:success', function(event){
     var $target = $(event.target),
         $announcment = $target.parent('.announcement');
 
@@ -57,9 +46,9 @@ $(function(){
 
   $('table.attributes').ready(function(){
     $('li.attribute.abstract').each(function(){
-      var str = $(this).html();
-      var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
-      var replaced_text = str.replace(regex, '<a href=' + $1 + ' target="_blank">' + $1 + '</a>');
+      var str = $(this).html(),
+          regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig,
+          replaced_text = str.replace(regex, '<a href=' + $1 + ' target="_blank">' + $1 + '</a>');
       $(this).html(replaced_text);
     });
   });
