@@ -1,11 +1,6 @@
 <%
-  if params[:label] == 'problem'
-    form_legend = 'CurateND: Report a problem'
-    request_label = 'What happened?'
-  else
-    form_legend = 'CurateND: Technical Support'
-    request_label = 'How can we help you?'
-  end
+  form_legend = 'CurateND: Technical Support'
+  request_label = 'How can we help you?'
 %>
 <%= simple_form_for(help_request) do |f| %>
 
