@@ -1,2 +1,2 @@
-PERMISSION BADGE
-<%= debug curation_concern %>
+<% access_controls = AccessRenderer.new(curation_concern) %>
+<%= access_controls.badge %>
