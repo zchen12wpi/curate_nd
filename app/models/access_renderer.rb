@@ -63,7 +63,7 @@ class AccessRenderer
       if has_embargo? && currently_under_embargo?
         dom_label_class = 'label-warning'
         link_title = 'Under Embargo'
-        qualifier = " until #{human_readable_embargo_release_date}"
+        qualifier = "until #{human_readable_embargo_release_date}"
       elsif publically_viewable?
         dom_label_class = 'label-success'
         link_title = 'Open Access'
@@ -81,7 +81,7 @@ class AccessRenderer
     markup = %(<span class="label #{dom_label_class}" title="#{link_title}">#{link_title}</span>).html_safe
 
     if show_date
-      markup << qualifier
+      markup << %( <span class="access-rights-qualifier">#{qualifier}</span>).html_safe
     else
       markup
     end
