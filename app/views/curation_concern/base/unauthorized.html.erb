@@ -1,6 +1,7 @@
 <h1>Unauthorized</h1>
 <p>The <%= curation_concern.human_readable_type.downcase %> you have tried to access is private.</p>
 <p>ID: <%= curation_concern.noid %></p>
+<p><%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %></p>
 <% unless current_user -%>
   <p>If you think you should have access, please try logging in.</p>
   <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary login', role: 'menuitem' %>

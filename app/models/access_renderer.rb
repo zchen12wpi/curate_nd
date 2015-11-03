@@ -76,8 +76,14 @@ class AccessRenderer
   end
   private :extract_dom_label_class_and_link_title
 
-  def badge
+  def badge(show_date: false)
     dom_label_class, link_title, qualifier = extract_dom_label_class_and_link_title
-    %(<span class="label #{dom_label_class}" title="#{link_title}">#{link_title}</span>#{qualifier}).html_safe
+    markup = %(<span class="label #{dom_label_class}" title="#{link_title}">#{link_title}</span>).html_safe
+
+    if show_date
+      markup << qualifier
+    else
+      markup
+    end
   end
 end
