@@ -10,7 +10,7 @@ describe ReindexWorker do
 
   it 'reindexes everything' do
     worker = ReindexWorker.new
-    expect(ActiveFedora::Base).to receive("reindex_everything").with(/^pid~.*\*$/)
+    expect(worker).to receive("reindex_everything")
     worker.run
   end
 
