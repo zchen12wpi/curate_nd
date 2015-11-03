@@ -42,7 +42,7 @@
             <%= generic_file.date_uploaded %>
           </td>
           <td class="attribute permission">
-            <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
+            <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %>
           </td>
           <td>
             <%= check_box_tag :delete %>&nbsp;<em>Not yet implemented</em>
