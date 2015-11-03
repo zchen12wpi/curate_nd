@@ -1,6 +1,10 @@
 class AccessRenderer
   def initialize(curation_concern, solr_document = nil)
-    @solr_document ||= curation_concern.to_solr
+    if solr_document
+      @solr_document = solr_document
+    else
+      @solr_document = curation_concern.to_solr
+    end
   end
 
   def access_rights_hash
