@@ -1,0 +1,5 @@
+<%
+  show_date ||= false
+  access_controls = AccessRenderer.new(curation_concern)
+%>
+<%= access_controls.badge(show_date: show_date) %>

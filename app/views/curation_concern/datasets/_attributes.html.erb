@@ -20,7 +20,7 @@
   <tr>
     <th>Access Rights</th>
     <td>
-      <%= permission_badge_for(curation_concern) %>
+      <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
     </td>
   </tr>
   <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
