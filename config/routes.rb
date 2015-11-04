@@ -6,6 +6,10 @@ CurateNd::Application.routes.draw do
 
   root 'static_pages#home'
 
+  # Some ETDs are not loading correctly on the curation concern page
+  get '/concern/etds/:id', to: redirect { |params, request|
+    "/show/#{params[:id]}"
+  }
   curate_for
 
   namespace :admin do
