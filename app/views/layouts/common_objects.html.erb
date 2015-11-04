@@ -1,13 +1,7 @@
 <% content_for :layout_name, 'common_objects, ' %>
 <% content_for :body do %>
 
-  <header id="banner" role="banner">
-    <hgroup>
-      <div id="brand-bar-wrapper">
-        <%= render 'shared/brand_bar' %>
-      </div>
-    </hgroup>
-  </header>
+  <%= render 'shared/header' %>
 
   <div id="main" role="main" class="page-main container <%= yield(:page_class) if content_for?(:page_class)%>">
     <% if content_for?(:page_header) %>
