@@ -24,7 +24,7 @@ class ReindexWorker
     ActiveFedora::Base.send(:connections).each do |conn|
       conn.search(query) do |object|
         next if object.pid.start_with?(FEDORA_SYSTEM_PIDS)
-        reindex_for(object.pid)
+        Sufia.queue.push(ReindexWorker.new(object.pid))
       end
     end
   end
