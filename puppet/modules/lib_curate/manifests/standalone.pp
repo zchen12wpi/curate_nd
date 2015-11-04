@@ -41,7 +41,6 @@ class lib_curate::standalone {
     "libwmf-lite",
     "libxml2-devel",
     "libxslt-devel",
-    "readline-devel",
     "mysql-devel",
     "sgml-common",
     "htop",

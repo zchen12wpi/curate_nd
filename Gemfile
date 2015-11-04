@@ -35,6 +35,7 @@ group :default do
   gem 'newrelic_rpm'
   gem 'flipper'
   gem 'roboto'
+  gem 'jshintrb'
 end
 
 # Hack to work around some bundler strangeness
@@ -84,5 +85,4 @@ group :deploy do
 end
 
 group :development do
-  gem 'jshintrb'
 end
