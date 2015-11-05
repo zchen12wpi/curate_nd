@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: f584acf216823231525dd7baac92cf87ea7dcd95
-  ref: f584acf216823231525dd7baac92cf87ea7dcd95
+  revision: 6709153660d4c71d1b12a4e14479b2ce6610dbeb
+  ref: 6709153660d4c71d1b12a4e14479b2ce6610dbeb
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -138,7 +138,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    backports (3.6.6)
+    backports (3.6.7)
     bcrypt (3.1.10)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
