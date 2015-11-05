@@ -1,5 +1,5 @@
 <% content_for :page_header do %>
-  <h1><%= curation_concern %></h1>
+  <h1><%= richly_formatted_text(curation_concern.to_s) %></h1>
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
@@ -10,6 +10,6 @@
 
 <% if can?(:edit, curation_concern) %>
   <div class="form-actions">
-    <%= link_to %(Edit #{curation_concern}), edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-primary' %>
   </div>
 <% end %>
