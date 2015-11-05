@@ -1,4 +1,5 @@
 class ReindexWorker
+  FEDORA_SYSTEM_PIDS = 'fedora-system:'.freeze
   def queue_name
     :resolrize
   end
@@ -11,11 +12,30 @@ class ReindexWorker
 
   def run
     if @pids_to_reindex == :everything
-      ActiveFedora::Base.reindex_everything("pid~#{Sufia.config.id_namespace}:*")
+      reindex_everything
     else
-      @pids_to_reindex.each do |pid|
-        ActiveFedora::Base.find(pid, cast: true).update_index
+      reindex_each_pid
+    end
+  end
+
+  private
+
+  def reindex_everything(query = "pid~#{Sufia.config.id_namespace}:*")
+    ActiveFedora::Base.send(:connections).each do |conn|
+      conn.search(query) do |object|
+        next if object.pid.start_with?(FEDORA_SYSTEM_PIDS)
+        Sufia.queue.push(ReindexWorker.new(object.pid))
       end
     end
+  end
+
+  def reindex_each_pid
+    @pids_to_reindex.each do |pid|
+      reindex_for(pid)
+    end
+  end
+
+  def reindex_for(pid)
+    ActiveFedora::Base.find(pid, :cast=>true).update_index
   end
 end
