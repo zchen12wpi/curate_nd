@@ -14,9 +14,28 @@
     padding-bottom: .3em;
   }
 
-  .last-updated {
+  .effective-date {
     display: block;
   }
+}
+
+@media (min-width: 768px) {
+  .policy-header {
+    position: relative;
+
+    .return-to-policy-list {
+      position: absolute;
+      top: .5em;
+      left: 0;
+      line-height: 1.2;
+      width: 7em;
+    }
+  }
+}
+
+.policy figure {
+  margin-bottom: 1em;
+  text-align: center;
 }
 
 .footnotes {
