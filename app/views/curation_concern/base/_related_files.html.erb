@@ -9,7 +9,7 @@
 
   <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
     <% badge_html = capture do %>
-      <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %>
+      <%= render partial: 'permission_badge', locals: { curation_concern: generic_file, show_date: true } %>
     <% end %>
 
     <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
