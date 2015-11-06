@@ -7,9 +7,13 @@
   <% end %>
 <% elsif document.respond_to?(:representative) && document.representative.present? %>
   <%= link_to title_link_target do  %>
-    <div class="thumbnail-wrapper">
+    <% if((file = ActiveFedora::Base.load_instance_from_solr(document.representative)) && (can?(:read, file))) %>
       <%= image_tag(download_path(document.representative,  'thumbnail'), html_options = { class: "canonical-image" }) %>
-    </div>
+    <% else %>
+      <div class="thumbnail-wrapper">
+        <span class="canonical-image"></span>
+      </div>
+    <% end %>
   <% end %>
 <% elsif document.persisted? %>
   <%= link_to title_link_target do  %>
