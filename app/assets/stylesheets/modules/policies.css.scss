@@ -1,5 +1,24 @@
 @import 'global-variables';
 
+.policy-list {
+  margin-bottom: 4em;
+
+  .policy-anchor:focus,
+  .policy-anchor:hover {
+    text-decoration: none;
+    text-shadow: 1px 1px 1px $blue-light;
+  }
+
+  .policy-heading {
+    line-height: 1.4;
+    padding-bottom: .3em;
+  }
+
+  .last-updated {
+    display: block;
+  }
+}
+
 .footnotes {
   margin-bottom: 2em;
 

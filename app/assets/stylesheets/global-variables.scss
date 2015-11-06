@@ -6,7 +6,6 @@ $official-blue        : #002b5b;
 $official-blue-dark   : #001f42;
 $official-gold        : #dcb439;
 $official-gold-accent : #9c802e;
-$light-blue           : lighten($official-blue, 80%);
 
 // Global values
 // --------------------------------------------------
@@ -30,9 +29,11 @@ $white:                 #fff !default;
 
 // Accent colors
 // -------------------------
-$blue:                  $official-blue;
 $blueDark:              $official-blue-dark;
 $blue-dark:             $blueDark;
+$blue:                  $official-blue;
+$blue-light:            lighten($official-blue, 70%);
+$blue-lightest:         lighten($official-blue, 80%);
 $green:                 #46a546 !default;
 $red:                   #9d261d !default;
 $yellow:                $official-gold;
