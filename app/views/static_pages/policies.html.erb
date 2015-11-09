@@ -1,13 +1,28 @@
 <% content_for :main_column_class, 'span8 offset2' %>
 <% content_for :page_title, construct_page_title('Policies // CurateND')  %>
 <% content_for :page_header do %>
-<h1 class="center">Policies</h1>
+<h1 class="center">CurateND Policies</h1>
 <% end %>
 
 <section class="curatend-policies policy-list">
-  <ul>
-    <li><%= link_to 'Mission', named_policy_path('mission') %> (January 16, 2015)</li>
-    <li><%= link_to 'Content in Scope Policy', named_policy_path('content') %> (August 18, 2015)</li>
-    <li><%= link_to 'General Support Policy', named_policy_path('support') %> (July 7, 2015)</li>
-  </ul>
+  <%= link_to named_policy_path('mission'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Mission
+    <small class="effective-date">Effective Date: <time datetime="2015-01-16">January 16, 2015</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('content'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Content in Scope Policy
+    <small class="effective-date">Effective Date: <time datetime="2015-08-16">August 18, 2015</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('support'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    General Support Policy
+    <small class="effective-date">Effective Date: <time datetime="2015-07-7">July 7, 2015</time></small>
+  </h2>
+  <% end %>
 </section>

@@ -1,14 +1,16 @@
 <% content_for :main_column_class, 'span8 offset2' %>
-<% content_for :page_title, construct_page_title('Policies // CurateND')  %>
+<% content_for :page_title, construct_page_title('Depositor Support // Policies // CurateND') %>
 <% content_for :page_header do %>
-<h1 class="center">Policies</h1>
+<div class="policy-header">
+  <h1 class="center">General Support Policy for Depositors</h1>
+  <nav class="return-to-policy-list">
+    <%= link_to 'Return to Policies Listing', policies_path %>
+  </nav>
+</div>
 <% end %>
 
-<p><%= link_to 'Return to Policy List', policies_path %></p>
-
-<article id="support" class="policy">
-  <h2>General Support Policy for Depositors</h2>
-  <p>Effective Date: July 7th, 2015</p>
+<article class="policy">
+  <p class="effective-date">Effective Date: <time datetime="2015-07-07">July 7th, 2015</time></p>
 
   <p>Uploaded works must go through a multi-step review process that includes factors such as appropriateness of content according to the <%= link_to 'CurateND Content in Scope Policy', named_policy_path('content') %>, rights management, and metadata review. This process helps us fulfill our promise to help you manage and preserve your works so that they are globally discoverable, accessible, and sharable.</p>
 

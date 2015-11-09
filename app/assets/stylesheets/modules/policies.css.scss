@@ -1,5 +1,43 @@
 @import 'global-variables';
 
+.policy-list {
+  margin-bottom: 4em;
+
+  .policy-anchor:focus,
+  .policy-anchor:hover {
+    text-decoration: none;
+    text-shadow: 1px 1px 1px $blue-light;
+  }
+
+  .policy-heading {
+    line-height: 1.4;
+    padding-bottom: .3em;
+  }
+
+  .effective-date {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .policy-header {
+    position: relative;
+
+    .return-to-policy-list {
+      position: absolute;
+      top: .5em;
+      left: 0;
+      line-height: 1.2;
+      width: 7em;
+    }
+  }
+}
+
+.policy figure {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
 .footnotes {
   margin-bottom: 2em;
 
