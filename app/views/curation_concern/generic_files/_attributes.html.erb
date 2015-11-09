@@ -15,6 +15,12 @@
       </tr>
     <% end %>
     <tr>
+      <th>Access Rights</th>
+      <td>
+        <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %>
+      </td>
+    </tr>
+    <tr>
       <th>Date Uploaded</th>
       <td>
         <%= curation_concern.date_uploaded %>
