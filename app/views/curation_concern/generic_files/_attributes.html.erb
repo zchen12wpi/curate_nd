@@ -1,3 +1,4 @@
+<% show_characterization ||= true %>
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <tbody>
     <tr>
@@ -14,6 +15,12 @@
         <td><%= curation_concern.depositor %></td>
       </tr>
     <% end %>
+    <tr>
+      <th>Access Rights</th>
+      <td>
+        <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %>
+      </td>
+    </tr>
     <tr>
       <th>Date Uploaded</th>
       <td>
