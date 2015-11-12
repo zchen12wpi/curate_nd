@@ -20,6 +20,7 @@ class Ability
       # Access to ETD-specifc functions is limited to names in etd_manager_permission.yml
       unless EtdManagers.include?(current_user)
         cannot [:manage], EtdVocabulary
+        cannot [:manage], TemporaryAccessToken
       end
     end
     # Limits deleting objects to a the admin user

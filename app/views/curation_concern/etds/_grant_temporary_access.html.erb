@@ -2,7 +2,7 @@
   <div class="request-temporary-access">
     <%
       request_subject = "[ETD Access Request] for #{curation_concern.title} (id: #{curation_concern.noid})"
-      request_body = "I would like to view a witheld file in CurateND (id: #{file.noid})."
+      request_body = "I am interested in #{ curation_concern.title }.\nI would like to view one of the withheld files associated with it (id: #{file.noid})."
       request_html = <<-markup
         request permission to view this file from the Publications Manager of the Graduate School.
         <a href="mailto:dteditor@nd.edu?subject=#{URI.escape(request_subject)}&body=#{URI.escape(request_body)}">Send a request</a>.
@@ -23,5 +23,11 @@
         <p>You may <%= request_access %></p>
       <% end %>
     <% end %>
+  </div>
+<% end %>
+
+<% if can? :create, TemporaryAccessToken %>
+  <div class="grant-temporary-access">
+    <%= link_to 'Grant One-Time Access', '#', class: 'btn btn-default' %>
   </div>
 <% end %>
