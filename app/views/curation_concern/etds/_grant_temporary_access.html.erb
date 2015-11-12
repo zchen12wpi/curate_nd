@@ -1,19 +1,27 @@
-<div class="grant-temporary-access">
-  <% if cannot? :show, curation_concern %>
+<% if cannot? :show, file %>
+  <div class="request-temporary-access">
+    <%
+      request_subject = "[ETD Access Request] for #{curation_concern.title} (id: #{curation_concern.noid})"
+      request_body = "I would like to view a witheld file in CurateND (id: #{file.noid})."
+      request_html = <<-markup
+        request permission to view this file from the Publications Manager of the Graduate School.
+        <a href="mailto:dteditor@nd.edu?subject=#{URI.escape(request_subject)}&body=#{URI.escape(request_body)}">Send a request</a>.
+      markup
+      request_access = request_html.html_safe
+    %>
     <div class="alert alert-info">
       At the request of the author, this graduate work is not available to the public.
     </div>
-    <% request = 'request permission to view this file from the Publications Manager of the Graduate School.'.html_safe %>
     <% if current_user %>
-      <p>You may <%= request %></p>
+      <p>You may <%= request_access %></p>
     <% else %>
       <% access = AccessRenderer.new(curation_concern) %>
       <% if access.viewable_by_institution? %>
         <p>If you have Notre Dame credentials you can view this file after you <%= link_to 'Log in', new_user_session_path %>.</p>
-        <p>Otherwise, you must <%= request %></p>
+        <p>Otherwise, you must <%= request_access %></p>
       <% else %>
-        <p>You may <%= request %></p>
+        <p>You may <%= request_access %></p>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
