@@ -121,7 +121,9 @@ legend .pull-right {
 }
 
 .section-actions {
+  clear: both;
   margin-bottom: 2em;
+  width: 100%;
 }
 
 .attached-file + .section-actions,

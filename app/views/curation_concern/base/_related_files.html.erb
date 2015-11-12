@@ -21,6 +21,7 @@
           <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html } %>
         </a>
       </figure>
+      <%= render partial: 'grant_temporary_access', locals: { curation_concern: generic_file } %>
       <div class="actions">
         <%- if can?(:read, generic_file) %>
           <%

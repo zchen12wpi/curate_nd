@@ -1,0 +1,19 @@
+<div class="grant-temporary-access">
+  <% if cannot? :show, curation_concern %>
+    <div class="alert alert-info">
+      At the request of the author, this graduate work is not available to the public.
+    </div>
+    <% request = 'request permission to view this file from the Publications Manager of the Graduate School.'.html_safe %>
+    <% if current_user %>
+      <p>You may <%= request %></p>
+    <% else %>
+      <% access = AccessRenderer.new(curation_concern) %>
+      <% if access.viewable_by_institution? %>
+        <p>If you have Notre Dame credentials you can view this file after you <%= link_to 'Log in', new_user_session_path %>.</p>
+        <p>Otherwise, you must <%= request %></p>
+      <% else %>
+        <p>You may <%= request %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
