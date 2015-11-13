@@ -2,11 +2,18 @@ class TemporaryAccessToken < ActiveRecord::Base
   self.primary_key = 'sha'
 
   def self.permitted?(noid, sha)
-    false #stub
+    valid_tokens = self.where(noid: noid).where(sha: sha).where(used: false)
+    valid_tokens.any?
   end
 
   def self.expire!(sha)
-    true #stub
+    tokens = self.where(sha: sha).where(used: false)
+
+    if tokens.count == 1
+      tokens.first.update_attribute(:used, true)
+    else
+      false
+    end
   end
 
   validates_presence_of :noid, :issued_by
