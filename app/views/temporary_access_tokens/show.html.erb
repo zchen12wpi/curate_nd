@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sha:</strong>
+  <%= @temporary_access_token.sha %>
+</p>
+
+<p>
+  <strong>Noid:</strong>
+  <%= @temporary_access_token.noid %>
+</p>
+
+<p>
+  <strong>Issued by:</strong>
+  <%= @temporary_access_token.issued_by %>
+</p>
+
+<p>
+  <strong>Used:</strong>
+  <%= @temporary_access_token.used %>
+</p>
+
+<%= link_to 'Edit', edit_temporary_access_token_path(@temporary_access_token) %> |
+<%= link_to 'Back', temporary_access_tokens_path %>

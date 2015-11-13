@@ -1,3 +1,2 @@
-# This is a placeholder class for determining view-level permmissions.
-class TemporaryAccessToken
+class TemporaryAccessToken < ActiveRecord::Base
 end

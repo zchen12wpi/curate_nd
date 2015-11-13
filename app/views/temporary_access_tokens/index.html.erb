@@ -1,0 +1,33 @@
+<h1>Listing temporary_access_tokens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sha</th>
+      <th>Noid</th>
+      <th>Issued by</th>
+      <th>Used</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @temporary_access_tokens.each do |temporary_access_token| %>
+      <tr>
+        <td><%= temporary_access_token.sha %></td>
+        <td><%= temporary_access_token.noid %></td>
+        <td><%= temporary_access_token.issued_by %></td>
+        <td><%= temporary_access_token.used %></td>
+        <td><%= link_to 'Show', temporary_access_token %></td>
+        <td><%= link_to 'Edit', edit_temporary_access_token_path(temporary_access_token) %></td>
+        <td><%= link_to 'Destroy', temporary_access_token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Temporary access token', new_temporary_access_token_path %>

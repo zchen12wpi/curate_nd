@@ -1,4 +1,6 @@
 CurateNd::Application.routes.draw do
+  resources :temporary_access_tokens
+
   mount_roboto
   mount Orcid::Engine => "/orcid"
   Blacklight.add_routes(self)
