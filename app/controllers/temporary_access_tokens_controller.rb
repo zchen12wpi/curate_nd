@@ -53,6 +53,6 @@ class TemporaryAccessTokensController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def temporary_access_token_params
-      params.require(:temporary_access_token).permit(:sha, :noid, :issued_by, :used)
+      params.require(:temporary_access_token).permit(:noid, :issued_by)
     end
 end
