@@ -1,5 +1,4 @@
 CurateNd::Application.routes.draw do
-  resources :temporary_access_tokens
 
   mount_roboto
   mount Orcid::Engine => "/orcid"
@@ -48,6 +47,8 @@ CurateNd::Application.routes.draw do
   end
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+
+  resources :temporary_access_tokens, path: 'access_tokens', as: 'access_tokens'
 
   #NOTE: This action may not be welcoming for new users.
   get 'get_started', to: 'classify_concerns#new'

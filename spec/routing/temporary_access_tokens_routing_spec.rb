@@ -4,31 +4,31 @@ RSpec.describe TemporaryAccessTokensController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/temporary_access_tokens").to route_to("temporary_access_tokens#index")
+      expect(:get => "/access_tokens").to route_to("temporary_access_tokens#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/temporary_access_tokens/new").to route_to("temporary_access_tokens#new")
+      expect(:get => "/access_tokens/new").to route_to("temporary_access_tokens#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/temporary_access_tokens/1").to route_to("temporary_access_tokens#show", :id => "1")
+      expect(:get => "/access_tokens/1").to route_to("temporary_access_tokens#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/temporary_access_tokens/1/edit").to route_to("temporary_access_tokens#edit", :id => "1")
+      expect(:get => "/access_tokens/1/edit").to route_to("temporary_access_tokens#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/temporary_access_tokens").to route_to("temporary_access_tokens#create")
+      expect(:post => "/access_tokens").to route_to("temporary_access_tokens#create")
     end
 
     it "routes to #update" do
-      expect(:put => "/temporary_access_tokens/1").to route_to("temporary_access_tokens#update", :id => "1")
+      expect(:put => "/access_tokens/1").to route_to("temporary_access_tokens#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/temporary_access_tokens/1").to route_to("temporary_access_tokens#destroy", :id => "1")
+      expect(:delete => "/access_tokens/1").to route_to("temporary_access_tokens#destroy", :id => "1")
     end
 
   end
