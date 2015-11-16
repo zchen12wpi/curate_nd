@@ -26,7 +26,7 @@
         <tr><th> Degree Discipline </th><td><%= disc %></td></tr>
       <% end %>
     <% end %>
-    <tr><th> Degree Name </th><td><%= DEGREE.fetch('degrees')[degree.name.first] %></td></tr>
+    <tr><th> Degree Name </th><td><%= DEGREE.fetch('degrees').fetch(degree.name.first, degree.name.first) %></td></tr>
   <% end %>
   <%= curation_concern_attribute_to_html(curation_concern, :date, 'Defense Date') %>
   <tr><th> Submission Date </th><td><%= curation_concern.date_uploaded %></td></tr> 
