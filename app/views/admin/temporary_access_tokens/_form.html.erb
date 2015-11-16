@@ -1,14 +1,16 @@
 <%= simple_form_for([:admin, @temporary_access_token]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :noid %>
+  <fieldset>
     <% if @temporary_access_token.persisted? %>
+      <%= f.input :noid, label: "Object ID (#{ link_to('Item Page', common_object_path(@temporary_access_token.noid))})".html_safe %>
       <%= f.input :used %>
+    <% else %>
+      <%= f.input :noid, label: 'Object ID' %>
     <% end %>
-  </div>
+  </fieldset>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>

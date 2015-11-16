@@ -1,14 +1,21 @@
+<% content_for :page_header do %>
 <h1>Listing Temporary Access Tokens</h1>
 
-<table>
+<ul class="breadcrumb">
+  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
+  <li><span class="active">Temporary Access Tokens</span></li>
+</ul>
+<% end %>
+
+<p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>
+
+<table class="table">
   <thead>
     <tr>
-      <th>Sha</th>
-      <th>Noid</th>
+      <th>SHA</th>
+      <th>Object ID</th>
       <th>Issued by</th>
       <th>Used</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -17,17 +24,17 @@
     <% @temporary_access_tokens.each do |temporary_access_token| %>
       <tr>
         <td><%= temporary_access_token.sha %></td>
-        <td><%= temporary_access_token.noid %></td>
+        <td><%= link_to temporary_access_token.noid, common_object_path(temporary_access_token.noid) %></td>
         <td><%= temporary_access_token.issued_by %></td>
-        <td><%= temporary_access_token.used %></td>
-        <td><%= link_to 'Show', admin_temporary_access_token_path(temporary_access_token) %></td>
-        <td><%= link_to 'Edit', edit_admin_temporary_access_token_path(temporary_access_token) %></td>
-        <td><%= link_to 'Destroy', admin_temporary_access_token_path(temporary_access_token), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= temporary_access_token.used ? 'Yes' : 'No' %></td>
+        <td>
+          <%= link_to 'Show', admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>
+          <%= link_to 'Edit', edit_admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>
+          <%= link_to 'Destroy', admin_temporary_access_token_path(temporary_access_token), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Temporary access token', new_admin_temporary_access_token_path %>
+<p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>

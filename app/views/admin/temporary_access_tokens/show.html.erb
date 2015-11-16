@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_header do %>
+<h1>Temporary Access Token</h1>
 
-<p>
-  <strong>Sha:</strong>
-  <%= @temporary_access_token.sha %>
-</p>
+<ul class="breadcrumb">
+  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary Access Tokens', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><span class="active">Show</span></li>
+</ul>
+<% end %>
 
-<p>
-  <strong>Noid:</strong>
-  <%= @temporary_access_token.noid %>
-</p>
+<dl>
+  <dt>SHA:</dt>
+  <dd><%= @temporary_access_token.sha %></dd>
+  <dt>Object ID:</dt>
+  <dd><%= link_to @temporary_access_token.noid, common_object_path(@temporary_access_token.noid) %></dd>
+  <dt>Issued by:</dt>
+  <dd><%= @temporary_access_token.issued_by %></dd>
+  <dt>Used:</dt>
+  <dd><%= @temporary_access_token.used ? 'Yes' : 'No' %></dd>
+</dl>
 
-<p>
-  <strong>Issued by:</strong>
-  <%= @temporary_access_token.issued_by %>
-</p>
-
-<p>
-  <strong>Used:</strong>
-  <%= @temporary_access_token.used %>
-</p>
-
-<%= link_to 'Edit', edit_admin_temporary_access_token_path(@temporary_access_token) %> |
-<%= link_to 'Back', admin_temporary_access_tokens_path %>
+<%= link_to 'Edit', edit_admin_temporary_access_token_path(@temporary_access_token), class: 'btn btn-default' %>

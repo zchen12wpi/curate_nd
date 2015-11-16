@@ -1,6 +1,11 @@
+<% content_for :page_header do %>
 <h1>Editing Temporary Access Token</h1>
 
-<%= render 'form' %>
+<ul class="breadcrumb">
+  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary Access Tokens', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><span class="active">Edit</span></li>
+</ul>
+<% end %>
 
-<%= link_to 'Show', admin_temporary_access_token_path(@temporary_access_token) %> |
-<%= link_to 'Back', admin_temporary_access_tokens_path %>
+<%= render 'form' %>

@@ -1,4 +1,6 @@
 class Admin::TemporaryAccessTokensController < ApplicationController
+  with_themed_layout('1_column')
+
   before_action :set_temporary_access_token, only: [:show, :edit, :update, :destroy]
 
   # GET /temporary_access_tokens
