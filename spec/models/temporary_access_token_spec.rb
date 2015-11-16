@@ -10,7 +10,7 @@ describe TemporaryAccessToken do
     end
   end
 
-  context 'issuing new tokens' do
+  context 'when being created' do
     it 'permits a null sha during object initialization' do
       token = FactoryGirl.build(:temporary_access_token, sha: nil)
       expect(token.sha).to eq(nil)
@@ -26,9 +26,16 @@ describe TemporaryAccessToken do
       token = FactoryGirl.create(:temporary_access_token, sha: provided_sha)
       expect(token.sha).not_to eq(provided_sha)
     end
+
+    it 'ignores pid namespace passed during object initialization' do
+      provided_pid = 'und:1234'
+      implied_noid = '1234'
+      token = FactoryGirl.create(:temporary_access_token, noid: provided_pid)
+      expect(token.noid).to eq(implied_noid)
+    end
   end
 
-  context 'validating existing tokens' do
+    context 'when validating existing tokens' do
     subject { FactoryGirl.create(:temporary_access_token, attributes) }
 
     it 'should allow access exisiting, unused tokens' do

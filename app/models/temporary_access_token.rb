@@ -19,7 +19,7 @@ class TemporaryAccessToken < ActiveRecord::Base
 
   validates_presence_of :noid, :issued_by
   validates_uniqueness_of :sha
-  before_create :assign_new_sha
+  before_create :assign_new_sha, :strip_pid_namespace
 
   def assign_new_sha
     assign_attributes(sha: generate_sha)
@@ -30,4 +30,9 @@ class TemporaryAccessToken < ActiveRecord::Base
     SecureRandom.urlsafe_base64(32, false)
   end
   private :generate_sha
+
+  def strip_pid_namespace
+    assign_attributes(noid: Sufia::Noid.noidify(noid))
+  end
+  private :strip_pid_namespace
 end
