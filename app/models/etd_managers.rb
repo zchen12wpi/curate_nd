@@ -1,6 +1,6 @@
 class EtdManagers
   def self.include?(current_user)
-    etd_manager_usernames.include?(current_user.user_key)
+    !!etd_manager_usernames.include?(current_user.user_key)
   end
 
   def self.etd_manager_usernames

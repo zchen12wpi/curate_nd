@@ -1,4 +1,4 @@
-class TemporaryAccessTokensController < ApplicationController
+class Admin::TemporaryAccessTokensController < ApplicationController
   before_action :set_temporary_access_token, only: [:show, :edit, :update, :destroy]
 
   # GET /temporary_access_tokens
