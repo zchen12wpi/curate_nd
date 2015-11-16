@@ -30,7 +30,7 @@
       <tr>
         <td>
           <form class="form-slimline">
-            <input type="text" class="input-autoselect input-xxlarge" value="<%= common_object_url(temporary_access_token.noid, token: temporary_access_token.sha) %>">
+            <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(temporary_access_token.noid, token: temporary_access_token.sha) %>">
           </form>
         </td>
         <td><%= link_to temporary_access_token.noid, common_object_path(temporary_access_token.noid) %></td>

@@ -13,7 +13,7 @@
 
 <h2>Temporary Access Link</h2>
 <form>
-  <input type="text" class="input-autoselect input-xxlarge" value="<%= common_object_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
+  <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
 </form>
 
 <h3>Attributes</h3>
