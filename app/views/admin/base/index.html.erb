@@ -1,11 +1,9 @@
 <% content_for :page_header do %>
-  <h1>Admin Landing Page</h1>
+  <h1>CurateND Administrative Functions</h1>
 <% end %>
 
-<p>Helpful links</p>
-<ul>
-  <li><%= link_to 'Accounts', admin_accounts_path %></li>
-  <li><%= link_to 'Announcements', admin_announcements_path %></li>
-  <li><%= link_to 'Exceptions', admin_harbinger_path %></li>
-  <li><%= link_to 'Resque queue', admin_resque_server_path %></li>
-</ul>
+<p class="lead"><%= link_to 'Account Management', admin_accounts_path %></p>
+<p class="lead"><%= link_to 'Site-Wide Announcements', admin_announcements_path %></p>
+<p class="lead"><%= link_to 'Application Exceptions', admin_harbinger_path %></p>
+<p class="lead"><%= link_to 'Resque Queue', admin_resque_server_path %></p>
+<p class="lead"><%= link_to 'Single Use Links (ETD Manager Only)', admin_temporary_access_tokens_path %></p>
