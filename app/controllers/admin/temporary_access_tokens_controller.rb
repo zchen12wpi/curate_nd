@@ -3,48 +3,41 @@ class Admin::TemporaryAccessTokensController < ApplicationController
 
   before_action :set_temporary_access_token, only: [:show, :edit, :update, :destroy]
 
-  # GET /temporary_access_tokens
   def index
-    @temporary_access_tokens = TemporaryAccessToken.all
+    @temporary_access_tokens = TemporaryAccessToken.order(updated_at: :desc).page(params[:page])
   end
 
-  # GET /temporary_access_tokens/1
   def show
   end
 
-  # GET /temporary_access_tokens/new
   def new
     @temporary_access_token = TemporaryAccessToken.new
   end
 
-  # GET /temporary_access_tokens/1/edit
   def edit
   end
 
-  # POST /temporary_access_tokens
   def create
-    @temporary_access_token = TemporaryAccessToken.new(temporary_access_token_params)
+    @temporary_access_token = TemporaryAccessToken.new(temporary_access_token_params_with_current_user)
 
     if @temporary_access_token.save
-      redirect_to @temporary_access_token, notice: 'Temporary access token was successfully created.'
+      redirect_to admin_temporary_access_token_path(@temporary_access_token), notice: 'Temporary access token was successfully created.'
     else
       render action: 'new'
     end
   end
 
-  # PATCH/PUT /temporary_access_tokens/1
   def update
-    if @temporary_access_token.update(temporary_access_token_params)
-      redirect_to @temporary_access_token, notice: 'Temporary access token was successfully updated.'
+    if @temporary_access_token.update(temporary_access_token_params_with_current_user)
+      redirect_to admin_temporary_access_token_path(@temporary_access_token), notice: 'Temporary access token was successfully updated.'
     else
       render action: 'edit'
     end
   end
 
-  # DELETE /temporary_access_tokens/1
   def destroy
     @temporary_access_token.destroy
-    redirect_to temporary_access_tokens_url, notice: 'Temporary access token was successfully destroyed.'
+    redirect_to admin_temporary_access_tokens_url, notice: 'Temporary access token was successfully destroyed.'
   end
 
   private
@@ -55,6 +48,11 @@ class Admin::TemporaryAccessTokensController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def temporary_access_token_params
-      params.require(:temporary_access_token).permit(:noid, :issued_by)
+      params.require(:temporary_access_token).permit(:noid, :issued_by, :used)
+    end
+
+    # Enforce that the current user is associated with creating or modifying a token
+    def temporary_access_token_params_with_current_user
+      temporary_access_token_params.merge({ :issued_by => current_user.user_key })
     end
 end

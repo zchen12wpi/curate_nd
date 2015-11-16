@@ -1,5 +1,6 @@
 class TemporaryAccessToken < ActiveRecord::Base
   self.primary_key = 'sha'
+  paginates_per 15
 
   def self.permitted?(noid, sha)
     valid_tokens = self.where(noid: noid).where(sha: sha).where(used: false)

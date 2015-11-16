@@ -22,6 +22,14 @@ legend small {
   color: $blue;
 }
 
+.form-slimline {
+  margin-bottom: 0;
+
+  input {
+    margin-bottom: 0;
+  }
+}
+
 .control-label {
   display: block;
   label { display: inline; }

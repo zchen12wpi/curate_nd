@@ -9,10 +9,12 @@
 
 <p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>
 
+<%= paginate @temporary_access_tokens %>
+
 <table class="table">
   <thead>
     <tr>
-      <th>SHA</th>
+      <th>Temporary Access Link</th>
       <th>Object ID</th>
       <th>Issued by</th>
       <th>Used</th>
@@ -23,7 +25,11 @@
   <tbody>
     <% @temporary_access_tokens.each do |temporary_access_token| %>
       <tr>
-        <td><%= temporary_access_token.sha %></td>
+        <td>
+          <form class="form-slimline">
+            <input type="text" class="input-autoselect input-xxlarge" value="<%= common_object_url(temporary_access_token.noid, token: temporary_access_token.sha) %>">
+          </form>
+        </td>
         <td><%= link_to temporary_access_token.noid, common_object_path(temporary_access_token.noid) %></td>
         <td><%= temporary_access_token.issued_by %></td>
         <td><%= temporary_access_token.used ? 'Yes' : 'No' %></td>
@@ -36,5 +42,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @temporary_access_tokens %>
 
 <p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>

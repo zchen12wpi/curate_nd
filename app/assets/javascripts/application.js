@@ -68,4 +68,6 @@ $(function(){
       '  </svg>' +
       '</a>'
     );
+
+    $(document).on('click', '.input-autoselect', function(){ this.select(); });
 });
