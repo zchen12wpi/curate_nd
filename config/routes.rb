@@ -32,7 +32,7 @@ CurateNd::Application.routes.draw do
     end
 
     constraints CurateND::AdminAccessTokenConstraint do
-      resources :temporary_access_tokens, path: 'access_tokens', as: 'access_tokens'
+      resources :temporary_access_tokens, path: 'access_tokens'
     end
   end
 
