@@ -1,6 +1,6 @@
 <%
   # Granting temporary access is limited to ETDs for the time being
-  if curation_concern.is_a? Etd %>
+  if curation_concern.is_a? Etd
 %>
   <% if cannot? :show, file %>
     <div class="request-temporary-access">
@@ -32,7 +32,7 @@
 
   <% if can? :create, TemporaryAccessToken %>
     <div class="grant-temporary-access">
-      <%= link_to 'Grant One-Time Access', '#', class: 'btn btn-default' %>
+      <%= link_to 'Grant One-Time Access', new_admin_temporary_access_token_path(temporary_access_token: { noid: file.noid }), class: 'btn btn-default' %>
     </div>
   <% end %>
 <% end %>

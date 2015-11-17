@@ -1,24 +1,24 @@
 <% content_for :page_title do %>
-  Temporary Access Tokens // Administrative Functions // CurateND
+  Temporary File Access // Administrative Functions // CurateND
 <% end %>
 <% content_for :page_header do %>
-<h1>Listing Temporary Access Tokens</h1>
+<h1>Temporary File Access Approvals</h1>
 
 <ul class="breadcrumb">
   <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
-  <li><span class="active">Temporary Access Tokens</span></li>
+  <li><span class="active">Temporary File Access</span></li>
 </ul>
 <% end %>
 
-<p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>
+<p><%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>
 
 <%= paginate @temporary_access_tokens %>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Temporary Access Link</th>
-      <th>Object ID</th>
+      <th>Single-Use URL</th>
+      <th>File ID</th>
       <th>Issued by</th>
       <th>Used</th>
       <th></th>
@@ -39,7 +39,7 @@
         <td>
           <%= link_to 'Show', admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>
           <%= link_to 'Edit', edit_admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>
-          <%= link_to 'Destroy', admin_temporary_access_token_path(temporary_access_token), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+          <%= link_to 'Destroy', admin_temporary_access_token_path(temporary_access_token), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
@@ -48,4 +48,4 @@
 
 <%= paginate @temporary_access_tokens %>
 
-<p><%= link_to 'New Temporary Access Token', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>
+<p><%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>

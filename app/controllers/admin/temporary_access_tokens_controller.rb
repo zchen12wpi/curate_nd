@@ -11,7 +11,7 @@ class Admin::TemporaryAccessTokensController < ApplicationController
   end
 
   def new
-    @temporary_access_token = TemporaryAccessToken.new
+    @temporary_access_token = TemporaryAccessToken.new(new_temporary_access_token_params)
   end
 
   def edit
@@ -41,18 +41,27 @@ class Admin::TemporaryAccessTokensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_temporary_access_token
-      @temporary_access_token = TemporaryAccessToken.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def temporary_access_token_params
-      params.require(:temporary_access_token).permit(:noid, :issued_by, :used)
-    end
+  def set_temporary_access_token
+    @temporary_access_token = TemporaryAccessToken.find(params[:id])
+  end
 
-    # Enforce that the current user is associated with creating or modifying a token
-    def temporary_access_token_params_with_current_user
-      temporary_access_token_params.merge({ :issued_by => current_user.user_key })
+  # Only allow a trusted parameter "white list" through.
+  def temporary_access_token_params
+    params.require(:temporary_access_token).permit(:noid, :issued_by, :used)
+  end
+
+  # Only accept a noid during token creation
+  def new_temporary_access_token_params
+    if params.has_key? :temporary_access_token
+      params.require(:temporary_access_token).permit(:noid)
+    else
+      {}
     end
+  end
+
+  # Enforce that the current user is associated with creating or modifying a token
+  def temporary_access_token_params_with_current_user
+    temporary_access_token_params.merge({ :issued_by => current_user.user_key })
+  end
 end

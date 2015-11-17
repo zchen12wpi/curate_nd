@@ -1,26 +1,25 @@
 <% content_for :page_title do %>
-  Show // Temporary Access Tokens // Administrative Functions // CurateND
+  Show // Temporary File Access // Administrative Functions // CurateND
 <% end %>
 <% content_for :page_header do %>
-<h1>Temporary Access Token</h1>
+<h1>Temporary File Access Approval</h1>
 
 <ul class="breadcrumb">
   <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
-  <li><%= link_to 'Temporary Access Tokens', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary File Access', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
   <li><span class="active">Show</span></li>
 </ul>
 <% end %>
 
-<h2>Temporary Access Link</h2>
+<h2>Single-Use URL</h2>
 <form>
+  <p>Share this link with the patron who needs access</p>
   <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
 </form>
 
 <h3>Attributes</h3>
 <dl>
-  <dt>SHA:</dt>
-  <dd><%= @temporary_access_token.sha %></dd>
-  <dt>Object ID:</dt>
+  <dt>File ID:</dt>
   <dd><%= link_to @temporary_access_token.noid, common_object_path(@temporary_access_token.noid) %></dd>
   <dt>Issued by:</dt>
   <dd><%= @temporary_access_token.issued_by %></dd>
