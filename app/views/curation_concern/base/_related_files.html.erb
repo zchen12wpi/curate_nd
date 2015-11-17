@@ -17,9 +17,7 @@
         <%= generic_file_title(generic_file) %>
       </h3>
       <figure class="file-thumbnail">
-        <a class="detail-view" title="View larger image" href="https://curate.nd.edu/concern/generic_files/05741r6883h">
-          <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html } %>
-        </a>
+        <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html } %>
       </figure>
       <div class="actions">
         <%- if can?(:read, generic_file) %>
