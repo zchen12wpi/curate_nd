@@ -1,0 +1,28 @@
+<% content_for :page_title do %>
+  Edit // Temporary File Access // Administrative Functions // CurateND
+<% end %>
+<% content_for :page_header do %>
+<h1>Editing Temporary File Access Approval</h1>
+
+<ul class="breadcrumb">
+  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary File Access', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><span class="active">Edit</span></li>
+</ul>
+<% end %>
+
+<%= simple_form_for([:admin, @temporary_access_token]) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <div class="control-group">
+      <p>Issued By: <%= @temporary_access_token.issued_by %></p>
+    </div>
+    <%= f.input :noid, label: "File ID (#{ link_to('View File Record', common_object_path(@temporary_access_token.noid))})".html_safe %>
+    <%= f.input :used %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
+  </div>
+<% end %>

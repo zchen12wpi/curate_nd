@@ -31,10 +31,15 @@
 }
 
 .attached-file {
+  clear: both;
+  float: left;
   margin-bottom: 1.5em;
+  width: 100%;
 
   .file-thumbnail {
+    float: left;
     margin: 0 0 1em;
+    padding-right: 10em;
   }
 
   .canonical-image {

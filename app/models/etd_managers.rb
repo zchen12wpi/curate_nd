@@ -1,19 +1,15 @@
-class EtdVocabularyPermissions
-  def initialize( current_user )
-    @user = current_user
+class EtdManagers
+  def self.include?(current_user)
+    !!etd_manager_usernames.include?(current_user.user_key)
   end
 
-  def can_manage_etd?
-    etd_manager_usernames.include?(@user.user_key)
-  end
-
-  def etd_manager_usernames
-    @etd_manager_usernames ||= load_managers
+  def self.etd_manager_usernames
+    @@etd_manager_usernames ||= load_managers
   end
 
   private
 
-  def load_managers
+  def self.load_managers
     manager_config = "#{::Rails.root}/config/etd_manager_usernames.yml"
     if File.exist?(manager_config)
       content = IO.read(manager_config)

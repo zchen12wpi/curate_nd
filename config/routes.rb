@@ -1,4 +1,5 @@
 CurateNd::Application.routes.draw do
+
   mount_roboto
   mount Orcid::Engine => "/orcid"
   Blacklight.add_routes(self)
@@ -24,9 +25,14 @@ CurateNd::Application.routes.draw do
         member { delete :disconnect_orcid_profile}
       end
     end
+
     constraints CurateND::AdminAPIConstraint do
       post "reindex", to: "reindex#reindex"
       post "add_to_collection", to: "add_to_collection#submit"
+    end
+
+    constraints CurateND::AdminAccessTokenConstraint do
+      resources :temporary_access_tokens, path: 'access_tokens'
     end
   end
 

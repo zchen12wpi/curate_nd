@@ -89,6 +89,11 @@ legend .pull-right {
 .main-header {
   border-bottom: 1px solid $grayLighter;
 
+  > .breadcrumb {
+    margin-bottom: 0;
+    margin-top: 15px;
+  }
+
   > .navbar {
     margin-bottom: 0;
   }
@@ -121,7 +126,9 @@ legend .pull-right {
 }
 
 .section-actions {
+  clear: both;
   margin-bottom: 2em;
+  width: 100%;
 }
 
 .attached-file + .section-actions,

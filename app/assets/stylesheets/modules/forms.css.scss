@@ -18,8 +18,22 @@ legend small {
   color: $gray-dark;
 }
 
-.form-actions .btn-link {
-  color: $blue;
+.form-actions {
+  .btn-link {
+    color: $blue;
+  }
+
+  .action-annotation {
+    padding-left: 1em;
+  }
+}
+
+.form-slimline {
+  margin-bottom: 0;
+
+  input {
+    margin-bottom: 0;
+  }
 }
 
 .control-label {

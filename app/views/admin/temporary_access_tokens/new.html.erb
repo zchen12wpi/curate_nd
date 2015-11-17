@@ -1,0 +1,29 @@
+<% content_for :page_title do %>
+  Grant // Temporary File Access // Administrative Functions // CurateND
+<% end %>
+<% content_for :page_header do %>
+<h1>Grant One-Time Access</h1>
+
+<ul class="breadcrumb">
+  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary File Access', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><span class="active">New</span></li>
+</ul>
+<% end %>
+
+<p class="alert alert-waring">
+  A single-use URL will be generated from the provided file ID that will allow a patron to download the file <em>even if it is normally inaccessible.</em>
+</p>
+
+<%= simple_form_for([:admin, @temporary_access_token]) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <%= f.input :noid, label: 'File ID' %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Grant Access', class: 'btn btn-danger' %>
+    <span class="action-annotation">Single-use URLs can be revoked from the <%= link_to 'listing page', admin_temporary_access_tokens_path %>.</span>
+  </div>
+<% end %>
