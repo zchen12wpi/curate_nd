@@ -1,5 +1,7 @@
 require Curate::Engine.root.join("app/controllers/downloads_controller")
 class DownloadsController
+  rescue_from Hydra::AccessDenied, with: :handle_access_denied
+
   protected
 
   def send_content(asset)
@@ -35,6 +37,19 @@ class DownloadsController
       true
     else
       super
+    end
+  end
+
+  def handle_access_denied
+    if current_user
+      error_code = '401'
+    else
+      error_code = '403'
+    end
+
+    respond_to do |format|
+      format.json { render json: { status: 'ERROR', code: error_code } }
+      format.html { render "/errors/#{error_code}", status: error_code }
     end
   end
 
