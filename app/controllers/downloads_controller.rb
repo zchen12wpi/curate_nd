@@ -42,9 +42,9 @@ class DownloadsController
 
   def handle_access_denied
     if current_user
-      error_code = '401'
-    else
       error_code = '403'
+    else
+      error_code = '401'
     end
 
     respond_to do |format|
