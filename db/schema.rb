@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113155448) do
+ActiveRecord::Schema.define(version: 20151118201016) do
 
   create_table "activity_engine_activities", force: true do |t|
     t.integer  "user_id"
@@ -312,18 +312,18 @@ ActiveRecord::Schema.define(version: 20151113155448) do
   add_index "subject_local_authority_entries", ["lowerLabel"], name: "entries_by_lower_label", using: :btree
 
   create_table "temporary_access_tokens", id: false, force: true do |t|
-    t.string   "sha",                        null: false
+    t.string   "sha",         null: false
     t.string   "noid"
     t.string   "issued_by"
-    t.boolean  "used",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "expiry_date"
   end
 
+  add_index "temporary_access_tokens", ["expiry_date"], name: "index_temporary_access_tokens_on_expiry_date", using: :btree
   add_index "temporary_access_tokens", ["noid"], name: "index_temporary_access_tokens_on_noid", using: :btree
-  add_index "temporary_access_tokens", ["sha", "noid", "used"], name: "index_temporary_access_tokens_on_sha_and_noid_and_used", unique: true, using: :btree
+  add_index "temporary_access_tokens", ["sha", "noid", "expiry_date"], name: "index_temporary_access_tokens_on_sha_and_noid_and_expiry_date", unique: true, using: :btree
   add_index "temporary_access_tokens", ["sha"], name: "index_temporary_access_tokens_on_sha", unique: true, using: :btree
-  add_index "temporary_access_tokens", ["used"], name: "index_temporary_access_tokens_on_used", using: :btree
 
   create_table "trophies", force: true do |t|
     t.integer  "user_id"
