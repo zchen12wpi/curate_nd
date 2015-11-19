@@ -48,7 +48,8 @@ describe TemporaryAccessToken do
       subject.save!
       expect(subject.expiry_date).to be_nil
       expect(TemporaryAccessToken.use!(subject.sha)).to eq(true)
-      expect(subject.expiry_date).to_not be_nil
+      updated_token = TemporaryAccessToken.find(subject.sha)
+      expect(updated_token.expiry_date).to_not be_nil
     end
 
     it 'should not change the expiry date if the token is used repeatedly' do
