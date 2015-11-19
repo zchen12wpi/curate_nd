@@ -79,4 +79,19 @@ describe TemporaryAccessToken do
       expect(described_class.use!('sha_that_does_not_exist')).to eq(false)
     end
   end
+
+  context 'when updating existing tokens' do
+    it 'should accept a "reset" flag' do
+      subject.reset_expiry_date = true
+      subject.save!
+    end
+
+    it 'should reset the expiry date if the "reset" flag is passed' do
+      subject.expiry_date = Time.now
+      subject.save!
+      subject.reset_expiry_date = true
+      subject.save!
+      expect(subject.expiry_date).to be_nil
+    end
+  end
 end

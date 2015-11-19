@@ -35,6 +35,8 @@ class TemporaryAccessToken < ActiveRecord::Base
   validates_presence_of :noid, :issued_by
   validates_uniqueness_of :sha
   before_create :assign_new_sha, :strip_pid_namespace
+  before_update :reset_expiry_date_if_prompted
+  attr_accessor :reset_expiry_date
 
   def assign_new_sha
     assign_attributes(sha: generate_sha)
@@ -45,6 +47,13 @@ class TemporaryAccessToken < ActiveRecord::Base
     SecureRandom.urlsafe_base64(32, false)
   end
   private :generate_sha
+
+  def reset_expiry_date_if_prompted
+    if reset_expiry_date
+      self.expiry_date = nil
+    end
+  end
+  private :reset_expiry_date_if_prompted
 
   def strip_pid_namespace
     assign_attributes(noid: Sufia::Noid.noidify(noid))
