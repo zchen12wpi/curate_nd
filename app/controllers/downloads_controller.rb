@@ -31,7 +31,7 @@ class DownloadsController
 
   def can_download?
     if params[:token] && TemporaryAccessToken.permitted?(Sufia::Noid.noidify(params[:id]), params[:token])
-      TemporaryAccessToken.expire!(params[:token])
+      TemporaryAccessToken.use!(params[:token])
       true
     else
       super
@@ -41,4 +41,5 @@ class DownloadsController
   def thumbnail_datastream?
     params[:datastream_id] == 'thumbnail'
   end
+
 end
