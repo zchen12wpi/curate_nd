@@ -1,43 +1,44 @@
 require 'spec_helper'
 
 describe TemporaryAccessToken do
-  let(:attributes) {{ noid: '1a2b3c4d', issued_by: 'ralph' }}
+  subject { FactoryGirl.build(:temporary_access_token) }
 
   context 'test support' do
-    subject { FactoryGirl.build(:temporary_access_token, attributes) }
     it 'has a valid factory' do
       expect(subject).to be_valid
     end
   end
 
   context 'when being created' do
-    it 'permits a null SHA during object initialization' do
-      token = FactoryGirl.build(:temporary_access_token, sha: nil)
-      expect(token.sha).to eq(nil)
-    end
+    context 'without a provided SHA' do
+      subject { FactoryGirl.build(:temporary_access_token, sha: nil) }
 
-    it 'sets a SHA during object persistence' do
-      token = FactoryGirl.create(:temporary_access_token, sha: nil)
-      expect(token.sha).not_to eq(nil)
+      it 'permits a null SHA during object initialization' do
+        expect(subject.sha).to eq(nil)
+      end
+
+      it 'sets a SHA during object persistence' do
+        subject.save!
+        expect(subject.sha).not_to eq(nil)
+      end
     end
 
     it 'ignores SHA values passed during object initialization' do
       provided_sha = 'please_ignore_this_sha'
-      token = FactoryGirl.create(:temporary_access_token, sha: provided_sha)
-      expect(token.sha).not_to eq(provided_sha)
+      subject.sha = provided_sha
+      subject.save!
+      expect(subject.sha).not_to eq(provided_sha)
     end
 
     it 'ignores pid namespace passed during object initialization' do
-      provided_pid = 'und:1234'
-      implied_noid = '1234'
-      token = FactoryGirl.create(:temporary_access_token, noid: provided_pid)
-      expect(token.noid).to eq(implied_noid)
+      subject.noid = 'und:1234'
+      noid_from_pid = '1234'
+      subject.save!
+      expect(subject.noid).to eq(noid_from_pid)
     end
   end
 
   context 'when validating existing tokens' do
-    subject { FactoryGirl.create(:temporary_access_token, attributes) }
-
     it 'should allow access to existing, unused tokens' do
       subject.save!
       expect(described_class.count).not_to eq(0)
@@ -53,22 +54,22 @@ describe TemporaryAccessToken do
       expect(updated_token.expiry_date).to_not be_nil
     end
 
-    it 'should not change the expiry date if the token is used repeatedly' do
-      expected_expiry_date = Time.now + 1.hour
-      subject.expiry_date = expected_expiry_date
+    it 'should not change a set expiry date if the token is used' do
+      a_time_in_the_future = Time.now + 1.hour
+      subject.expiry_date = a_time_in_the_future
       subject.save!
       expect(described_class.use!(subject.sha)).to eq(false)
-      expect(subject.expiry_date).to eq(expected_expiry_date)
+      expect(subject.expiry_date).to eq(a_time_in_the_future)
     end
 
-    it 'should permit access with a token to be used repeatedly before the expiry period has elapsed' do
+    it 'should repeatedly permit access with a token before the expiry period has elapsed' do
       subject.expiry_date = Time.now + 1.hour
       subject.save!
       expect(described_class.permitted?(subject.noid, subject.sha)).to eq(true)
       expect(described_class.permitted?(subject.noid, subject.sha)).to eq(true)
     end
 
-    it 'should not permit access with a token after the expiry period has elapsed' do
+    it 'should not permit access with a token after the expiry date has elapsed' do
       subject.expiry_date = Time.now - 1.hour
       subject.save!
       expect(described_class.permitted?(subject.noid, subject.sha)).to eq(false)
