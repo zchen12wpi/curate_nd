@@ -20,7 +20,7 @@
       <th>Single-Use URL</th>
       <th>File ID</th>
       <th>Issued by</th>
-      <th>Used</th>
+      <th>Expiry Date</th>
       <th></th>
     </tr>
   </thead>
@@ -35,7 +35,7 @@
         </td>
         <td><%= link_to temporary_access_token.noid, common_object_path(temporary_access_token.noid) %></td>
         <td><%= temporary_access_token.issued_by %></td>
-        <td><%= temporary_access_token.used ? 'Yes' : 'No' %></td>
+        <td><%= temporary_access_token.expiry_date.present? ? temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></td>
         <td>
           <%= link_to 'Show', admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>
           <%= link_to 'Edit', edit_admin_temporary_access_token_path(temporary_access_token), class: 'btn btn-default' %>

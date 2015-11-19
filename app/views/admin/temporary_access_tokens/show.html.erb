@@ -13,7 +13,7 @@
 
 <h2>Single-Use URL</h2>
 <form>
-  <p>Share this link with the patron who needs access</p>
+  <p>Share this link with the patron who needs access. It will be valid for 24 hours after its first use.</p>
   <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
 </form>
 
@@ -23,8 +23,8 @@
   <dd><%= link_to @temporary_access_token.noid, common_object_path(@temporary_access_token.noid) %></dd>
   <dt>Issued by:</dt>
   <dd><%= @temporary_access_token.issued_by %></dd>
-  <dt>Used:</dt>
-  <dd><%= @temporary_access_token.used ? 'Yes' : 'No' %></dd>
+  <dt>Expiry Date:</dt>
+  <dd><%= @temporary_access_token.expiry_date.present? ? temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></dd>
 </dl>
 
 <%= link_to 'Edit', edit_admin_temporary_access_token_path(@temporary_access_token), class: 'btn btn-default' %>
