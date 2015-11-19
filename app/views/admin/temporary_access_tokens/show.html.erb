@@ -13,7 +13,7 @@
 
 <h2>Single-Use URL</h2>
 <form>
-  <p>Share this link with the patron who needs access. It will be valid for 24 hours after its first use.</p>
+  <p>Share this link with the patron who needs access. It will be valid for <%= TemporaryAccessToken.hours_until_expiry %> hours after its first use.</p>
   <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
 </form>
 

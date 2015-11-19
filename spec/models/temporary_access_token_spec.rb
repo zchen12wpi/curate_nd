@@ -3,6 +3,10 @@ require 'spec_helper'
 describe TemporaryAccessToken do
   subject { FactoryGirl.build(:temporary_access_token) }
 
+  it 'can report how long tokens are valid after first use' do
+    expect(described_class.hours_until_expiry).to be_kind_of(Fixnum)
+  end
+
   context 'test support' do
     it 'has a valid factory' do
       expect(subject).to be_valid

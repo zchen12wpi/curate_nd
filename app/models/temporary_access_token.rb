@@ -2,7 +2,9 @@ class TemporaryAccessToken < ActiveRecord::Base
   self.primary_key = 'sha'
   paginates_per 15
 
-  HOURS_UNTIL_EXPIRY = 24
+  def self.hours_until_expiry
+    24
+  end
 
   def self.permitted?(noid, sha)
     valid_tokens(noid, sha).any?
@@ -28,7 +30,7 @@ class TemporaryAccessToken < ActiveRecord::Base
   private_class_method :valid_tokens
 
   def self.new_expiry_date
-    Time.now + HOURS_UNTIL_EXPIRY.hours
+    Time.now + hours_until_expiry.hours
   end
   private_class_method :new_expiry_date
 
