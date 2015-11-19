@@ -2,20 +2,35 @@ class TemporaryAccessToken < ActiveRecord::Base
   self.primary_key = 'sha'
   paginates_per 15
 
+  HOURS_UNTIL_EXPIRY = 24
+
   def self.permitted?(noid, sha)
-    valid_tokens = self.where(noid: noid).where(sha: sha).where(used: false)
-    valid_tokens.any?
+    valid_tokens(noid, sha).any?
   end
 
-  def self.expire!(sha)
-    tokens = self.where(sha: sha).where(used: false)
+  def self.use!(sha)
+    tokens = self.where(sha: sha)
+    updated_tokens  = []
 
-    if tokens.count == 1
-      tokens.first.update_attribute(:used, true)
-    else
-      false
+    tokens.each do |token|
+      if token.expiry_date.blank?
+        token.update_attribute(:expiry_date, new_expiry_date)
+        updated_tokens << token
+      end
     end
+
+    updated_tokens.any?
   end
+
+  def self.valid_tokens(noid, sha)
+    self.where(noid: noid, sha: sha).where("#{self.quoted_table_name}.`expiry_date` IS NULL OR #{self.quoted_table_name}.`expiry_date` >= ?", Time.now)
+  end
+  private_class_method :valid_tokens
+
+  def self.new_expiry_date
+    Time.now + HOURS_UNTIL_EXPIRY.hours
+  end
+  private_class_method :new_expiry_date
 
   validates_presence_of :noid, :issued_by
   validates_uniqueness_of :sha

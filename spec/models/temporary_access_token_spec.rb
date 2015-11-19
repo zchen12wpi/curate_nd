@@ -41,6 +41,7 @@ describe TemporaryAccessToken do
     it 'should allow access to existing, unused tokens' do
       subject.save!
       expect(TemporaryAccessToken.count).not_to eq(0)
+      expect(subject.expiry_date).to be_nil
       expect(TemporaryAccessToken.permitted?(subject.noid, subject.sha)).to eq(true)
     end
 
