@@ -2,10 +2,10 @@
   width = 100 if width.blank?
   captured = '' if captured.blank?
 
-  if thumbnail.image? || thumbnail.pdf? || thumbnail.video?
+  if can?(:read, thumbnail) && ( thumbnail.image? || thumbnail.pdf? || thumbnail.video? )
     path = download_path(thumbnail, {datastream_id: 'thumbnail'})
   else
-    path = "curate/default.png"
+    path = 'curate/default.png'
   end
 %>
 
