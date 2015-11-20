@@ -12,7 +12,8 @@
 <% end %>
 
 <p class="alert alert-waring">
-  A single-use URL will be generated from the provided file ID that will allow a patron to download the file <em>even if it is normally inaccessible.</em>
+  A single-use URL will be generated from the provided file ID that will allow a patron to download the file <em>even if it is normally inaccessible.</em><br/>
+  Single-use URLs are valid for <em><%= TemporaryAccessToken.hours_until_expiry %> hours</em> after first use.
 </p>
 
 <%= simple_form_for([:admin, @temporary_access_token]) do |f| %>

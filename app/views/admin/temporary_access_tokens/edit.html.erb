@@ -19,7 +19,7 @@
       <p>Issued By: <%= @temporary_access_token.issued_by %></p>
     </div>
     <%= f.input :noid, label: "File ID (#{ link_to('View File Record', common_object_path(@temporary_access_token.noid))})".html_safe %>
-    <%= f.input :used %>
+    <%= f.input :reset_expiry_date, as: :boolean, hint: "When the expiry date is reset the single-use URL will be valid for #{TemporaryAccessToken.hours_until_expiry} hours after its first use." %>
   </fieldset>
 
   <div class="form-actions">

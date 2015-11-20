@@ -48,7 +48,7 @@ class Admin::TemporaryAccessTokensController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def temporary_access_token_params
-    params.require(:temporary_access_token).permit(:noid, :issued_by, :used)
+    params.require(:temporary_access_token).permit(:noid, :issued_by, :reset_expiry_date)
   end
 
   # Only accept a noid during token creation
