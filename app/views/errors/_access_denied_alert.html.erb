@@ -1,0 +1,14 @@
+<% if params[:token] %>
+  <%
+    request_subject = "[ETD Access Request] Renewed Access to File (id: #{params[:id]})"
+    request_body = "Previously, I had been granted temporary access to a restricted file in CurateND (id: #{params[:noid] ? params[:noid] : params[:id]}). I no longer have access to the file and would like to view it again.\n\nHere is the access token I was given:\n #{params[:token]}"
+    request_html = <<-markup
+      <a href="mailto:dteditor@nd.edu?subject=#{URI.escape(request_subject)}&body=#{URI.escape(request_body)}" class="btn btn-default">Request an Access Extension</a>
+    markup
+    request_access = request_html.html_safe
+  %>
+  <div class="alert alert-warn">
+    <p>Your single-use URL has expired or is no longer valid.</p>
+    <%= request_access %>
+  </div>
+<% end %>

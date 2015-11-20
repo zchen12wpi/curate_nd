@@ -1,14 +1,6 @@
-<% content_for :page_title, construct_page_title("#{response.status} #{action_name.humanize}") %>
+<% content_for :page_title, construct_page_title("#{response.status} Forbidden") %>
 <% content_for :page_header do %>
-  <h1>Unauthorized</h1>
+  <%= render '/errors/access_denied_alert' %>
+  <h1>Forbidden</h1>
 <% end %>
-<% if params[:token] %>
-  <p class="alert alert-warn">
-    Your single-use URL has expired or is no longer valid.
-  </p>
-<% end %>
-<p class="lead">You are not authorized to access the page.</p>
-<% if !params.has_key?(:token) && !current_user.present? %>
-  <p>If you think you should have access, please try logging in.</p>
-  <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary login', role: 'menuitem' %>
-<% end %>
+<%= render '/errors/access_denied_body' %>
