@@ -11,10 +11,12 @@ Devise.setup do |config|
                         )
 
   if Rails.env.development?
-    config.cas_base_url = "https://cas.library.nd.edu/cas"
+    config.cas_base_url = Figaro.env.cas_base_url
+    config.cas_destination_url = Figaro.env.cas_destination_url
+    config.cas_follow_url = Figaro.env.cas_follow_url
   else
-    config.cas_base_url = "https://login.nd.edu/cas"
-    config.cas_validate_url = "https://login.nd.edu/cas/serviceValidate"
+    config.cas_base_url = Figaro.env.cas_base_url
+    config.cas_validate_url = Figaro.env.cas_validate_url
   end
   config.cas_destination_url = Rails.configuration.application_root_url
   config.cas_follow_url = Rails.configuration.application_root_url
