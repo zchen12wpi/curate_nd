@@ -42,6 +42,7 @@
 //= require curate/validate_doi
 //= require curate/sort_and_per_page
 //= require curate/read_more
+//= require curate/grid_view_controls
 
 
 // Initialize plugins and Bootstrap dropdowns on jQuery's ready event as well as
