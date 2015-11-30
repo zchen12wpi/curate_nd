@@ -25,8 +25,5 @@
     <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
   </a>
 <% else %>
-  <a href="<%= download_path(work.representative) %>" target = "_blank">
-    <%= image_tag 'curate/default.png', class: "canonical-image" %>
-  </a>
+  <%= image_tag 'curate/default.png', class: "canonical-image" %>
 <% end %>
-
