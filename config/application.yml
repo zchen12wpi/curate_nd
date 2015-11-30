@@ -9,3 +9,10 @@
 # These are keys for the sandbox
 ORCID_APP_ID: 0000-0002-6683-6607
 ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
+cas_base_url: "https://login.nd.edu/cas"
+cas_validate_url: "https://login.nd.edu/cas/serviceValidate"
+
+development:
+  cas_base_url: "https://cas.library.nd.edu/cas"
+  cas_destination_url: "http://localhost:3000"
+  cas_follow_url: "http://localhost:3000"
