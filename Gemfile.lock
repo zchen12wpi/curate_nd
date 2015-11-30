@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: e48a18fd2c01d3e6730b6dcef419f99898239164
-  ref: e48a18fd2c01d3e6730b6dcef419f99898239164
+  revision: 752529335dfbb164123b345bd6cfd8cd46193036
+  ref: 752529335dfbb164123b345bd6cfd8cd46193036
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -195,7 +195,7 @@ GEM
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cliver (0.3.2)
-    cocaine (0.5.7)
+    cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.3)
       sexp_processor
