@@ -266,7 +266,7 @@ physics:
   key: "physics"
   identifier: "Science::Physics"
   selectable: true
-chemistry_and_biochemistry:
+history_and_philosophy_of_science:
   key: "history_and_philosophy_of_science"
   identifier: "Science::History and Philosophy of Science"
   selectable: true
