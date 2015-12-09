@@ -13,7 +13,7 @@
     <div class="span10">
       <dl class="attribute-list">
         <% if solr_doc.has?('desc_metadata__creator_tesim') %>
-          <dt>Author(s):</dt>
+          <dt>Author:</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__creator_tesim') %></dd>
         <% end %>
         <% if solr_doc.has?('contributors_tesim') %>
@@ -27,6 +27,10 @@
         <% if solr_doc.has?('degree_name_tesim') %>
           <dt>Degree:</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'degree_name_tesim') %></dd>
+        <% end %>
+        <% if solr_doc.has?('desc_metadata__date_ssi') %>
+          <dt>Defense Date:</dt>
+          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__date_ssi') %></dd>
         <% end %>
       </dl>
     </div>
