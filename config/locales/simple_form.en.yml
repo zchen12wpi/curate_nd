@@ -13,7 +13,7 @@ en:
     # Labels and hints examples
     labels:
       defaults:
-        files: 'Upload one or more files'
+        files: 'Upload a file (you can add more later)'
     #     password: 'Password'
     #   user:
     #     new:
@@ -27,10 +27,12 @@ en:
         files: 'For your Article, a PDF is preferred.'
       document:
         files: 'For your Document, a PDF is preferred.'
+      dataset:
+        files: 'For your Dataset, a CSV is preferred.'
+      etd:
+        files: 'For your Thesis or Dissertation, a PDF is preferred.'
       senior_thesis:
         files: 'For your Senior Thesis, a PDF is preferred.'
-      etd:
-        files: 'For your ETD, a PDF is preferred.'
 
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
