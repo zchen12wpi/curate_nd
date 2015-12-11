@@ -43,4 +43,12 @@ class StaticPagesController < ApplicationController
     )
   end
 
+  def show_site_search?
+    if params[:action] == 'home'
+      false
+    else
+      true
+    end
+  end
+
 end

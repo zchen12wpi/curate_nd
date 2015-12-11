@@ -189,6 +189,10 @@ $logo-height: 48;
   .btn-group.open .btn-primary.dropdown-toggle {
     background-color: $official-gold;
   }
+
+  .btn-group + .btn-group {
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 768px) {
