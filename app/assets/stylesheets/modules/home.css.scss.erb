@@ -1,7 +1,8 @@
 @import 'global-variables';
 
 .hero {
-  background-image: url(<%= asset_path 'hero/sunset-basilica-500.jpg'%>);
+  background-color: $official-blue;
+  background-image: none;
   background-position: top center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -21,6 +22,12 @@
   .hero {
     background-image: url(<%= asset_path 'hero/sunset-basilica-1500.jpg'%>);
     padding-top: 3em;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    background-size: cover;
   }
 }
 
