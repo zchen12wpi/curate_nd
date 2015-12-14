@@ -104,7 +104,7 @@ $logo-height: 48;
   .logo-wrapper {
     padding-top: percentage(($logo_height / $logo_width * 40) / 100);
     width: 40%;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
   }
 }
 
@@ -455,3 +455,56 @@ $logo-height: 48;
   }
 }
 
+
+.im-looking-for {
+  background-color: rgba(0, 31, 66, .8);
+  margin-top: 3em;
+  padding: 2em;
+
+  h2 {
+    text-align: center;
+    color: $official-gold;
+  }
+
+  .categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .category-list {
+    margin: 0;
+    padding-top: 1em;
+  }
+
+  .category {
+    color: $official-gold;
+    display: inline-block;
+    margin: 0 .6em;
+    width: 12em;
+
+    .caption {
+      color: $official-gold;
+      line-height: 1.2;
+      margin: 0;
+    }
+  }
+
+  .catalog-browse {
+    display: inline-block;
+    outline: 2px solid transparent;
+    padding: 0 .5em 2em;
+
+    &:focus,
+    &:hover {
+      outline-color: $blue-accent;
+    }
+
+    &:focus,
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
