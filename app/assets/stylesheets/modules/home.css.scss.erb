@@ -3,11 +3,8 @@
 .hero {
   background-image: url(<%= asset_path 'hero/sunset-basilica-500.jpg'%>);
   background-position: top center;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
-  height: 416px;
+  background-repeat: no-repeat;
+  background-size: 100%;
   margin: 0;
   padding: 1em 0 0;
   position: relative;
@@ -15,16 +12,15 @@
 
 @media (min-width: 700px) {
   .hero {
-    height: 600px;
-    padding-top: 2em;
     background-image: url(<%= asset_path 'hero/sunset-basilica-1000.jpg'%>);
+    padding-top: 2em;
   }
 }
+
 @media (min-width: 960px) {
   .hero {
-    height: 940px;
-    padding-top: 3em;
     background-image: url(<%= asset_path 'hero/sunset-basilica-1500.jpg'%>);
+    padding-top: 3em;
   }
 }
 

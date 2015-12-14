@@ -2,14 +2,10 @@
 
 .text-overlay {
   background-color: rgba(100, 100, 100, .7);
-  bottom: 0;
   box-sizing: border-box;
   color: $white;
-  left: 0;
   margin: 0;
-  padding: 0 1em;
-  position: absolute;
-  width: 100%;
+  padding: .1em 1em;
 
   .message {
     border: 0;
@@ -43,6 +39,7 @@
 
 .site-mission {
   font-family: $header-font-family;
+  margin-top: 1em;
 
   .message {
     font-size: 1.2em;
@@ -62,29 +59,16 @@
   .site-mission .message {
     font-size: 1.5em;
   }
-
-  .text-overlay {
-    bottom: 2em;
-  }
 }
 
 @media (min-width: 960px) {
   .site-mission .message {
     font-size: 2em;
   }
-
-  .text-overlay {
-    bottom: 3em;
-  }
 }
 
 @media (min-width: 1200px) {
   .site-mission .message {
-    font-size: 2.3em;
-    margin-top: 1.5em;
-  }
-
-  .text-overlay {
-    bottom: 3em;
+    font-size: 1.9em;
   }
 }
