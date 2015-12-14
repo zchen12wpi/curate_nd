@@ -55,7 +55,7 @@ $logo-height: 48;
 .im-looking-for {
   background-color: rgba(0, 31, 66, .8);
   margin-top: 3em;
-  padding: 2em;
+  padding: 1em;
 
   h2 {
     text-align: center;
@@ -76,21 +76,33 @@ $logo-height: 48;
 
   .category {
     color: $official-gold;
-    display: inline-block;
+    display: block;
     margin: 0 .6em;
-    width: 12em;
+    height: 5em;
+    text-align: left;
+  }
 
-    .caption {
-      color: $official-gold;
-      line-height: 1.2;
-      margin: 0;
-    }
+  .category-icon {
+    float: left;
+    width: 4em;
+  }
+
+  .caption {
+    color: $official-gold;
+    display: inline;
+    float: left;
+    font-size: 1em;
+    line-height: 4;
+    margin: 0;
+    padding-left: .5em;
   }
 
   .catalog-browse {
-    display: inline-block;
+    display: block;
+    float: left;
     outline: 2px solid transparent;
-    padding: 0 .5em 2em;
+    padding: 0 .5em;
+    width: 100%;
 
     &:focus,
     &:hover {
@@ -101,6 +113,61 @@ $logo-height: 48;
     &:hover,
     &:visited {
       text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .im-looking-for {
+    padding: 2em;
+
+    .category {
+      display: inline-block;
+      height: auto;
+      padding-left: 0;
+      text-align: center;
+      width: 8em;
+    }
+
+    .category-icon {
+      left: auto;
+      position: relative;
+      top: auto;
+      width: 100%;
+      float: none;
+    }
+
+    .caption {
+      line-height: 1.2;
+      display: block;
+      float: none;
+      padding-left: 0;
+    }
+
+    .catalog-browse {
+      display: inline-block;
+      padding: 0 .5em 2em;
+      float: none;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .im-looking-for {
+    .category {
+      width: 14em;
+    }
+
+    .caption {
+      font-size: 2em;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .im-looking-for {
+    .category {
+      margin: 0 1em;
     }
   }
 }
