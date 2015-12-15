@@ -55,7 +55,6 @@ $logo-height: 48;
 }
 
 .im-looking-for {
-  background-color: rgba(0, 31, 66, .8);
   margin-top: 3em;
   padding: 1em;
 
@@ -154,6 +153,12 @@ $logo-height: 48;
   }
 }
 
+@media (min-width: 700px) {
+  .im-looking-for {
+    background-color: rgba(0, 31, 66, .8);
+  }
+}
+
 @media (min-width: 900px) {
   .im-looking-for {
     .category {
@@ -170,6 +175,42 @@ $logo-height: 48;
   .im-looking-for {
     .category {
       margin: 0 1em;
+    }
+  }
+}
+
+.dark-blue {
+  background-color: $blue-dark;
+  color: $white;
+
+  h1 {
+    color: $white;
+    padding: 1em .5em 0;
+    text-align: center;
+  }
+
+  hr {
+    border-top: 2px solid $official-gold;
+    border-bottom: 1px solid $official-gold-accent;
+    margin: 1em auto;
+    max-width: 33em;
+  }
+
+  h1 + hr {
+    margin-top: 3em;
+  }
+}
+
+@media (max-width: 900px) {
+  .dark-blue {
+    h1 {
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    h1 + hr {
+      margin-top: 2em;
+      max-width: 16em;
     }
   }
 }
