@@ -6,9 +6,12 @@
   background-position: top center;
   background-repeat: no-repeat;
   background-size: 100%;
+  clear: both;
+  float: left;
   margin: 0;
   padding: 1em 0 0;
   position: relative;
+  width: 100%;
 }
 
 @media (min-width: 700px) {
@@ -55,8 +58,12 @@ $logo-height: 48;
 }
 
 .im-looking-for {
+  clear: both;
+  float: left;
   margin-top: 3em;
   padding: 1em;
+  width: 100%;
+  box-sizing: border-box;
 
   h2 {
     text-align: center;
@@ -64,6 +71,8 @@ $logo-height: 48;
   }
 
   .categories {
+    clear: both;
+    float: left;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -71,15 +80,19 @@ $logo-height: 48;
   }
 
   .category-list {
+    clear: both;
+    float: left;
     margin: 0;
     padding-top: 1em;
   }
 
   .category {
+    clear: both;
     color: $official-gold;
     display: block;
-    margin: 0 .6em;
+    float: left;
     height: 5em;
+    margin: 0 .6em;
     text-align: left;
   }
 
@@ -135,19 +148,27 @@ $logo-height: 48;
       position: relative;
       top: auto;
       width: 100%;
-      float: none;
     }
 
     .caption {
       line-height: 1.2;
       display: block;
-      float: none;
       padding-left: 0;
     }
 
     .catalog-browse {
       display: inline-block;
       padding: 0 .5em 2em;
+    }
+
+    .hero,
+    .im-looking-for,
+    .categories,
+    .category-list,
+    .category,
+    .caption,
+    .category-icon,
+    .catalog-browse {
       float: none;
     }
   }
@@ -181,6 +202,7 @@ $logo-height: 48;
 
 .dark-blue {
   background-color: $blue-dark;
+  clear: both;
   color: $white;
 
   h1 {
