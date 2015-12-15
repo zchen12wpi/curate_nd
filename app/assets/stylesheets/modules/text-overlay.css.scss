@@ -1,7 +1,7 @@
 @import 'global-variables';
 
 .text-overlay {
-  background-color: rgba(100, 100, 100, .7);
+  background-color: $blue-dark;
   box-sizing: border-box;
   color: $white;
   margin: 0;
@@ -9,7 +9,7 @@
 
   .message {
     border: 0;
-    margin: 1em auto;
+    margin: 1em auto .5em;
     max-width: 31em;
     padding: 0;
     position: relative;
