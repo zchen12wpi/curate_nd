@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   helper_method :status
 
   def about
+    render layout: 'curate_nd_home'
   end
 
   def home
