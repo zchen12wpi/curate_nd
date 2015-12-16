@@ -274,7 +274,7 @@ $logo-height: 48;
 
 // Footer formatting
 .page-footer {
-  padding: 1em 0 4em;
+  padding: 1em 1em 4em;
   text-align: left;
 
   .footer-right {
@@ -295,6 +295,7 @@ $logo-height: 48;
     padding: 0;
   }
 }
+
 @media (max-width: 767px) {
   .page-footer {
     .footer-right {
