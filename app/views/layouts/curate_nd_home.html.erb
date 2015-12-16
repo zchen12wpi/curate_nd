@@ -1,3 +1,7 @@
+<%
+  @hide_title = true unless defined? @hide_title
+  @show_site_search = false unless defined? @show_site_search
+%>
 <% content_for :layout_name, 'curate_nd_home, ' %>
 <% content_for :body do %>
 <header role="banner" class="page-banner">
@@ -5,7 +9,7 @@
     <%= render 'shared/brand_bar' %>
   </div>
   <div class="title-bar-wrapper">
-    <%= render partial: 'shared/title_bar', locals: { hide_title: true, show_site_search: false } %>
+    <%= render partial: 'shared/title_bar', locals: { hide_title: @hide_title, show_site_search: @show_site_search } %>
     <%= render partial: 'shared/flash_message' %>
   </div>
 </header>
