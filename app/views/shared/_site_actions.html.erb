@@ -2,9 +2,6 @@
 <% if current_user %>
   <%= render 'shared/add_content' %>
   <%= render 'shared/my_actions' %>
-  <% if can? :create, EtdVocabulary %>
-    <%= render 'shared/add_etd_vocabulary' %>
-  <% end %>
 <% else %>
   <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary login', role: 'menuitem' %>
 <% end %>
