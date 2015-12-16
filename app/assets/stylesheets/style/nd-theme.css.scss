@@ -160,6 +160,7 @@ $logo-height: 48;
 .site-actions {
   display: inline-block;
   float: right;
+  font-size: 0;
   margin: 0;
   padding: 0;
 
@@ -190,8 +191,9 @@ $logo-height: 48;
     background-color: $official-gold;
   }
 
-  .btn-group + .btn-group {
-    margin-left: 0;
+  .btn,
+  .btn-group {
+    margin-left: 4px;
   }
 }
 
