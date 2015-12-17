@@ -337,6 +337,7 @@ GEM
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
+    logstash-event (1.2.02)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mailboxer (0.11.0)
@@ -675,6 +676,7 @@ DEPENDENCIES
   kaminari!
   libv8 (= 3.16.14.3)
   lograge
+  logstash-event
   meta_request
   method_locator
   morphine
