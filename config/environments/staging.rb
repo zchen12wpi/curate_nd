@@ -64,4 +64,6 @@ CurateNd::Application.configure do
       path: "log/#{Rails.env}.log"
     }
   ]
+
+  config.log_level = :info
 end
