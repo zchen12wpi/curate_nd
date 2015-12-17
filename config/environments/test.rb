@@ -49,4 +49,11 @@ CurateNd::Application.configure do
       Rails.root.join('spec/support/files/default_fits_output.xml').read
     }
   end
+
+  config.logstash = [
+    {
+      type: :file,
+      path: "log/#{Rails.env}.log"
+    }
+  ]
 end

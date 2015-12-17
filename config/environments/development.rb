@@ -44,4 +44,10 @@ CurateNd::Application.configure do
     }
   end
 
+  config.logstash = [
+    {
+      type: :file,
+      path: "log/#{Rails.env}.log"
+    }
+  ]
 end

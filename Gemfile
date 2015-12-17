@@ -37,6 +37,7 @@ group :default do
   gem 'roboto'
   gem 'jshintrb'
   gem 'lograge'
+  gem 'logstash-logger'
   gem 'logstash-event'
 end
 
