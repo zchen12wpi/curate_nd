@@ -36,6 +36,7 @@ group :default do
   gem 'flipper'
   gem 'roboto'
   gem 'jshintrb'
+  gem 'lograge'
 end
 
 # Hack to work around some bundler strangeness
