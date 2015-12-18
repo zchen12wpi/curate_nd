@@ -86,4 +86,13 @@ CurateNd::Application.configure do
   end
 
   config.use_proxy_for_download.enable
+
+  config.logstash = [
+    {
+      type: :file,
+      path: "log/#{Rails.env}.log"
+    }
+  ]
+
+  config.log_level = :info
 end

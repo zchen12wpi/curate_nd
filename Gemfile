@@ -36,6 +36,9 @@ group :default do
   gem 'flipper'
   gem 'roboto'
   gem 'jshintrb'
+  gem 'lograge'
+  gem 'logstash-logger'
+  gem 'logstash-event'
 end
 
 # Hack to work around some bundler strangeness

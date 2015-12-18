@@ -43,5 +43,4 @@ CurateNd::Application.configure do
       Rails.root.join('spec/support/files/default_fits_output.xml').read
     }
   end
-
 end
