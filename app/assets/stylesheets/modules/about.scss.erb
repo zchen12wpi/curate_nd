@@ -1,5 +1,22 @@
 @import 'global-variables';
 
+.page-main.about {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.about .logo-wrapper {
+  margin-top: 1em;
+}
+
+@media (min-width: 1200px) {
+  .about .logo-wrapper {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+}
+
 .about-page-header {
   padding: 1em;
   text-align: center;
@@ -21,7 +38,7 @@
   text-shadow: none;
   text-transform: uppercase;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 
   .feature-navigation-wrapper {
     border-bottom: 2px solid $official-gold-accent;
@@ -139,8 +156,8 @@
     a,
     a:hover,
     a:visited {
-      border-color: $official-blue;
-      color: $official-blue;
+      border-color: $official-gold;
+      color: $official-gold;
     }
 
     abbr {
@@ -188,6 +205,7 @@
     margin-top: 0;
     overflow: hidden;
     position: relative;
+    z-index: 1;
   }
 
   .feature-questions {
@@ -278,6 +296,8 @@
 
 @media (min-width: 960px) {
   .site-features {
+    margin-top:3em;
+
     .angle-wrapper {
       height: 4em;
     }
