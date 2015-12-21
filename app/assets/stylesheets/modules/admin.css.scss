@@ -1,0 +1,33 @@
+@import 'global-variables';
+
+.table {
+  .accessibility-placeholder {
+    padding: 0;
+  }
+
+  .row-actions {
+    list-style: none;
+    margin: 0;
+
+    .action + .action {
+      margin-top: .5em;
+    }
+  }
+}
+
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.primary-color-highlight {
+  background-color: $official-blue;
+  color: $white;
+
+  td > a,
+  td > a:focus,
+  td > a:hover,
+  td > a:visited {
+    color: $official-gold;
+  }
+}

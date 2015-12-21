@@ -1,5 +1,5 @@
 <% content_for :page_header do %>
-  <h1>Admin view of Accounts</h1>
+  <h1>Account Management</h1>
 <% end %>
 
 <%= form_tag admin_accounts_path, :method => :get, :class => "search-form" do %>
@@ -21,11 +21,12 @@
 <% end %>
 
 <%= paginate @users %>
+<div class="table-scroll-wrapper">
 <table class="table table-striped">
   <caption class="accessible-hidden">List of All Matching Accounts</caption>
   <thead>
     <tr>
-      <th>&nbsp;</th>
+      <th class="accessibility-placeholder">&#8202;</th>
       <th>ID</th>
       <th>Username</th>
       <th>Email</th>
@@ -36,22 +37,28 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td><% if current_user == user %>Current User<% else %>&nbsp;<%end%></td>
+      <% if current_user == user %>
+        <tr class="primary-color-highlight current-user">
+          <td class="accessibility-placeholder"><span class="visuallyhidden">Current User</span></td>
+      <% else %>
+        <tr>
+          <td class="accessibility-placeholder">&#8202;</td>
+      <% end %>
         <td><%= user.id %></td>
         <td><%= user.username %></td>
         <td><%= mail_to(user.email) %></td>
         <td><%= user.name %></td>
         <td><%= user.repository_noid? ? link_to(user.repository_noid, person_path(user.repository_noid)) : 'no person object' %></td>
         <td>
-          <ul>
+          <ul class="row-actions">
             <% if user != current_user %>
-              <li><%= link_to("Masquerade as #{user}", user_masquerade_path(id: user.to_param), class: 'btn') %></li>
+              <li class="action"><%= link_to('Masquerade', user_masquerade_path(id: user.to_param), class: 'btn') %></li>
             <% end %>
-            <li><%= link_to("Disconnect Orcid Profile", disconnect_orcid_profile_admin_account_path(id: user.to_param), method: :delete, class: 'btn') %></li>
+            <li class="action"><%= link_to('Disconnect Orcid Profile', disconnect_orcid_profile_admin_account_path(id: user.to_param), method: :delete, class: 'btn') %></li>
           </ul>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
