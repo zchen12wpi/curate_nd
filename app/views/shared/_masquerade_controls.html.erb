@@ -1,0 +1,5 @@
+<div class="masquerade-controls">
+  <% if current_user && user_masquerade? %>
+    <%= link_to 'Stop Masquerade', stop_masquerading_path, class: 'btn btn-default' %>
+  <% end %>
+</div>
