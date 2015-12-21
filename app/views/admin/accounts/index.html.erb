@@ -4,8 +4,7 @@
 
 <%= form_tag admin_accounts_path, :method => :get, :class => "search-form" do %>
   <fieldset>
-    <legend class="accessible-hidden">Search Accounts</legend>
-    <%= label_tag :catalog_search, "Search Accounts", :class => "accessible-hidden" %>
+    <%= label_tag :catalog_search, "Search Accounts" %>
     <%= text_field_tag(
       :q,
       params[:q],
@@ -14,10 +13,23 @@
       :size => "30",
       :tabindex => "1",
       :type => "search",
-    )%><button type="submit" class="search-submit btn btn-primary" id="keyword-search-submit" tabindex="2">
-      <i class="icon-search icon-white"></i><span class="accessible-hidden">Search</span>
+    )%><button type="submit" class="search-submit" tabindex="2">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="search-icon" viewBox="0 0 28 28" preserveAspectRatio="xMinYMin meet">
+        <style type="text/css">
+          .lense {stroke-width:3; fill:none; stroke:#002b5b;}
+          .handle {stroke-width:5; stroke:#002b5b;}
+          .cap {fill:#002b5b; stroke:none;}
+        </style>
+        <circle class="lense" cx="10.73" cy="10.73" r="8.85"></circle>
+        <line class="handle" x1="16.99" y1="16.99" x2="24.79" y2="24.79"></line>
+        <circle class="cap" cx="24.79" cy="24.79" r="2.5"></circle>
+      </svg>
+      <span class="accessible-hidden">Search</span>
     </button>
   </fieldset>
+<% end %>
+<% if params[:q].present? %>
+  <p><%= link_to 'New Search', admin_accounts_path, class: 'btn btn-default' %></p>
 <% end %>
 
 <%= paginate @users %>
