@@ -1,4 +1,5 @@
-<% if current_page?(controller: :static_pages, action: :about) %>
+<% on_about_page = current_page?(controller: 'static_pages', action: 'about') rescue false %>
+<% if on_about_page %>
   <%= link_to 'Home', '/', class: 'btn btn-primary home', role: 'menuitem' %>
 <% else %>
   <%= link_to 'About', '/about', class: 'btn btn-primary about', role: 'menuitem' %>
