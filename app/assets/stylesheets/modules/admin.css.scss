@@ -1,0 +1,41 @@
+@import 'global-variables';
+
+.table {
+  .accessibility-placeholder {
+    padding: 0;
+  }
+
+  .row-actions {
+    list-style: none;
+    margin: 0;
+
+    .action + .action {
+      margin-top: .5em;
+    }
+  }
+
+  .primary-color-highlight {
+    background-color: $official-blue;
+    color: $white;
+
+    &:nth-child(odd) > td {
+      background-color: $official-blue;
+    }
+
+    td > a,
+    td > a:focus,
+    td > a:hover,
+    td > a:visited {
+      color: $official-gold;
+    }
+  }
+
+  &.with-row-actions td {
+    line-height: 2.2;
+  }
+}
+
+.table-scroll-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
