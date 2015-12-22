@@ -1,9 +1,7 @@
 <% content_for :layout_name, 'curate_nd, ' %>
 <% content_for :body do %>
 
-  <%= render 'shared/header' %>
-
-<%= render 'shared/flash_message' %>
+<%= render 'shared/header' %>
 
   <div id="main" role="main" class="page-main container <%= yield(:page_class) if content_for?(:page_class)%>">
   <% if content_for?(:page_header) %>

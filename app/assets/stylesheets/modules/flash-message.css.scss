@@ -1,0 +1,13 @@
+.flash-message {
+  .alert {
+    margin: 0;
+
+    &:first-child {
+      margin-top: 1em;
+    }
+  }
+
+  .alert + .alert {
+    margin-top: .5em;
+  }
+}
