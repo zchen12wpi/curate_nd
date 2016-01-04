@@ -1,3 +1,11 @@
+@import 'global-variables';
+
 .edit-repo-manager {
   margin-bottom: 1em;
+}
+
+.repo-manager-banner {
+  background-color: $warning-background;
+  color: $warning-text;
+  padding-top: 10px;
 }
