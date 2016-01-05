@@ -16,7 +16,7 @@ module CurateND
     end
 
     def admin_usernames
-      @admin_usernames ||= YAML.load(ERB.new(Rails.root.join('config/admin_usernames.yml').read).result)[Rails.env]['admin_usernames']
+      @@admin_usernames ||= YAML.load(ERB.new(Rails.root.join('config/admin_usernames.yml').read).result)[Rails.env]['admin_usernames']
     end
 
   end
