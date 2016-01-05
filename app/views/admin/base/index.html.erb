@@ -5,8 +5,13 @@
   <h1>Administrative Functions</h1>
 <% end %>
 
+<p class="lead"><%= link_to 'Temporarily Escalate Your Privileges', edit_repo_manager_path %></p>
 <p class="lead"><%= link_to 'Account Management', admin_accounts_path %></p>
 <p class="lead"><%= link_to 'Site-Wide Announcements', admin_announcements_path %></p>
+
+<hr />
+<p class="lead"><%= link_to 'Grant Temporary File Access (ETD Manager Only)', admin_temporary_access_tokens_path %></p>
+
+<hr />
 <p class="lead"><%= link_to 'Application Exceptions', admin_harbinger_path %></p>
 <p class="lead"><%= link_to 'Resque Queue', admin_resque_server_path %></p>
-<p class="lead"><%= link_to 'Grant Temporary File Access (ETD Manager Only)', admin_temporary_access_tokens_path %></p>
