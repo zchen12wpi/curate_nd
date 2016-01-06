@@ -123,11 +123,11 @@ $logo-height: 48;
 
 .site-search {
   display: inline-block;
-  margin-bottom: 1em;
+  margin-bottom: 7px;
   width: 100%;
 
   .search-form {
-    margin: 0;
+    margin: 0 0 3px;
     width: 100%;
   }
 }
@@ -154,12 +154,6 @@ $logo-height: 48;
 
   .search-icon {
     height: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .site-search .search-form {
-    margin: 0;
   }
 }
 
