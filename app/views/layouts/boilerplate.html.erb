@@ -17,7 +17,8 @@
     <%= render :partial => '/ga', :formats => [:html] -%>
   </head>
   <body>
-    <%= render :partial => '/shared/masquerade_controls', :formats => [:html] -%>
+    <%= render :partial => '/shared/repo_manager_controls', formats: [:html] %>
+    <%= render :partial => '/shared/masquerade_controls', formats: [:html] %>
 
     <%= content_for?(:body) ? yield(:body) : yield %>
 

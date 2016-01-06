@@ -37,6 +37,12 @@ CurateNd::Application.routes.draw do
     end
   end
 
+  scope :admin do
+    constraints CurateND::AdminConstraint do
+      curate_repo_manager_permissions
+    end
+  end
+
   # Due to an apparent bug in devise the following routes should be presented
   # in this order
   scope :admin do

@@ -1,11 +1,18 @@
+<% content_for :page_title, construct_page_title('Site-Wide Announcements', 'Administrative Functions') %>
 <% content_for :page_header do %>
-  <h1>CurateND Announcements</h1>
+  <h1>Site-Wide Announcements</h1>
+
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Administrative Functions', admin_path %> <span class="divider">/</span></li>
+    <li class="active">Site-Wide Announcements</li>
+  </ul>
 <% end %>
 
 <%= paginate @admin_announcements %>
 
 <table class="table table-striped">
-  <caption class="accessible-hidden">List of All Administrative Announcments</caption>
+  <caption class="accessible-hidden">List of All Administrative Announcements</caption>
   <thead>
     <tr>
       <th>Message</th>

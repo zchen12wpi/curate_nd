@@ -6,12 +6,11 @@
   </div>
   <div class="title-bar-wrapper">
     <%= render partial: 'shared/title_bar', locals: { hide_title: true } %>
+    <%= render partial: 'shared/flash_message' %>
   </div>
 </header>
 
 <div class="header-spacer"></div>
-
-<%= render 'shared/flash_message' %>
 
 <div class="hero">
   <figure class="logo-wrapper">
@@ -60,8 +59,7 @@
   </figure>
 </div>
 
-
-<main id="main" role="main" class="page-main home">
+<main id="main" role="main" class="page-main <%= yield(:page_main_class) %>">
   <%= yield %>
 </main>
 

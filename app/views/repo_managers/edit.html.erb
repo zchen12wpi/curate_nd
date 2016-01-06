@@ -1,0 +1,27 @@
+<% content_for :page_title, construct_page_title('Act As A Repository Manager', 'Administrative Functions') %>
+<% content_for :page_header do %>
+  <h1>Act As A Repository Manager</h1>
+
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Administrative Functions', admin_path %> <span class="divider">/</span></li>
+    <li class="active">Temporarily Escalate Your Privileges</li>
+  </ul>
+<% end %>
+<%= simple_form_for @repo_manager do |f| %>
+  <fieldset class="edit-repo-manager" >
+    <p class="alert alert-info">
+      A repository manager has permission to view and alter <em>everything</em> in CurateND.
+      <em>Please be careful.</em>
+    </p>
+    <% {'Yes, I want additional power and responsibility' => true, 'No, I will use CurateND normally' => false}.each do |key, value| %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button(:active, value) %>
+          <%= key %>
+        </label>
+      </div>
+    <% end %>
+  </fieldset>
+<%= f.submit 'Update Status', class: 'btn btn-primary' %>
+<% end %>

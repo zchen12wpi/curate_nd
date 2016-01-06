@@ -1,13 +1,12 @@
-<% content_for :page_title do %>
-  Temporary File Access // Administrative Functions // CurateND
-<% end %>
+<% content_for :page_title, construct_page_title('Temporary File Access', 'Administrative Functions') %>
 <% content_for :page_header do %>
-<h1>Temporary File Access Approvals</h1>
+  <h1>Temporary File Access Approvals</h1>
 
-<ul class="breadcrumb">
-  <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
-  <li><span class="active">Temporary File Access</span></li>
-</ul>
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Administrative Functions', admin_path %> <span class="divider">/</span></li>
+    <li><span class="active">Temporary File Access</span></li>
+  </ul>
 <% end %>
 
 <p><%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path, class: 'btn btn-default' %></p>

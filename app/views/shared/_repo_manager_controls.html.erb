@@ -1,0 +1,10 @@
+<% if RepoManager.with_active_privileges?(current_user) %>
+  <div class="repo-manager-banner">
+    <div class="container">
+      <p>
+        You are acting with repository manager privileges.
+        <%= link_to 'Revoke Them', edit_repo_manager_path, class: 'btn btn-default' %>
+      </p>
+    </div>
+  </div>
+<% end %>
