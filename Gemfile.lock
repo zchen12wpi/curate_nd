@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 752529335dfbb164123b345bd6cfd8cd46193036
-  ref: 752529335dfbb164123b345bd6cfd8cd46193036
+  revision: 8c46ca9c0fd7b1c788f629214bcf826b2fd8390c
+  ref: 8c46ca9c0fd7b1c788f629214bcf826b2fd8390c
   branch: curate-nd-beta
   specs:
     curate (0.6.6)
@@ -163,7 +163,7 @@ GEM
       activesupport
       rack
     breadcrumbs_on_rails (2.3.1)
-    browser (1.0.1)
+    browser (1.1.0)
     builder (3.1.4)
     byebug (2.7.0)
       columnize (~> 0.3)
