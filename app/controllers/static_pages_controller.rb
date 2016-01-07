@@ -25,6 +25,7 @@ class StaticPagesController < ApplicationController
   end
 
   def faqs
+    render layout: 'curate_nd_home'
   end
 
   def policies
