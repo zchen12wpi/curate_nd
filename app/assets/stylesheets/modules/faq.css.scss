@@ -1,0 +1,23 @@
+.curate-nd-faq-title {
+  margin: 0 auto;
+  width: 4em;
+}
+
+@media (min-width: 400px) {
+  .curate-nd-faq-title {
+    width: 6em;
+  }
+}
+
+@media (min-width: 768px) {
+  .curate-nd-faq-title {
+    margin-top: .5em;
+    width: 8em;
+  }
+}
+
+.curate-nd-faqs {
+  dd {
+    margin-bottom: 1rem;
+  }
+}
