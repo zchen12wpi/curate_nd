@@ -1,0 +1,98 @@
+@import 'global-variables';
+
+.page-main.faq {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-bottom: 1px solid #F1F1F1;
+  padding-top: 1em;
+}
+
+.curate-nd-faq-title {
+  margin: 0 auto;
+  width: 4em;
+}
+
+.faq-lead {
+  color: $official-blue;
+  padding-bottom: 1.5em;
+
+  p {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+.faq-wrapper {
+  padding: 0 1em 1em;
+}
+
+.curate-nd-faqs {
+  background-color: white;
+  border: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  margin: 2em auto 0;
+  max-width: 62em;
+  padding: 0 1em 1em;
+
+  h2 {
+    margin-top: 1.5em;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    font-size: 18px;
+    line-height: 1.6;
+    list-style: none;
+    text-indent: -1em;
+    padding-left: 1em;
+  }
+
+  dt {
+    color: $official-blue;
+    font-family: $header-font-family;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.4;
+    border-bottom: 1px solid #F1F1F1;
+    margin: 1.5em 0 .5em;
+  }
+
+  dd {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .curate-nd-faqs {
+    padding: 0 2em 2em;
+  }
+
+  .curate-nd-faq-title {
+    width: 6em;
+  }
+
+  .curate-nd-faqs {
+    margin-bottom: 2em;
+  }
+}
+
+@media (min-width: 768px) {
+  .curate-nd-faqs {
+    padding: 0 4em 4em;
+  }
+
+  .curate-nd-faq-title {
+    width: 8em;
+  }
+
+  .curate-nd-faqs {
+    margin-bottom: 6em;
+  }
+}

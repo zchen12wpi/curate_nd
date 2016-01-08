@@ -25,6 +25,7 @@ class StaticPagesController < ApplicationController
   end
 
   def faqs
+    @hide_title = false;
     render layout: 'curate_nd_home'
   end
 
