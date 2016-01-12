@@ -40,6 +40,12 @@ server {
 
     location @app {
         internal;
+        # need to restate all error_page directives since the presence of
+        # even one shadows ALL the inherited ones.
+        error_page 503   /503.html;
+        error_page 500   /500.html;
+        error_page 502 = @timeouterror;
+
         # Maintenance mode if file is present
         # unless request has the header X-Test set to something, e.g. "on"
         if ( -f /home/app/curatend/shared/system/maintenance ) {
@@ -58,13 +64,12 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_redirect off;
         proxy_intercept_errors on;
-        error_page 502 = @timeouterror;
         proxy_pass http://app_server;
     }
 
     location @timeouterror {
         # Used to handle errors from large uploads.
-        # This is a seperate location to prevent a loop should the actual
+        # This is a separate location to prevent a loop should the actual
         # application be down.
         # What happens is large upload takes more than 1 minute, so unicorn
         # kills the process, which triggers an nginx 502 error from a broken
