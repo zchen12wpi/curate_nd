@@ -3,7 +3,7 @@
   if curation_concern.is_a? Etd
 %>
   <% if cannot? :show, file %>
-    <div class="request-temporary-access">
+    <span class="request-temporary-access">
       <%
         request_subject = "[ETD Access Request] for #{curation_concern.title} (id: #{curation_concern.noid})"
         request_body = "I am interested in #{ curation_concern.title }.\nI would like to view one of the withheld files associated with it (id: #{file.noid})."
@@ -27,12 +27,12 @@
           <p>You may <%= request_access %></p>
         <% end %>
       <% end %>
-    </div>
+    </span>
   <% end %>
 
   <% if can? :create, TemporaryAccessToken %>
-    <div class="grant-temporary-access">
+    <span class="grant-temporary-access">
       <%= link_to 'Grant One-Time Access', new_admin_temporary_access_token_path(temporary_access_token: { noid: file.noid }), class: 'btn btn-default' %>
-    </div>
+    </span>
   <% end %>
 <% end %>

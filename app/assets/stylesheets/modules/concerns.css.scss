@@ -33,13 +33,12 @@
 .attached-file {
   clear: both;
   float: left;
-  margin-bottom: 1.5em;
+  margin-bottom: .5em;
   width: 100%;
 
   .file-thumbnail {
     float: left;
-    margin: 0 0 1em;
-    padding-right: 13em;
+    margin: 0 0 .5em;
   }
 
   .canonical-image {
@@ -76,8 +75,11 @@
   }
 
   .actions {
-    line-height: 3;
-    margin-top: -.5em;
+    clear: left;
+  }
+
+  .btn {
+    margin-top: .5em;
   }
 
   + .attached-file {
