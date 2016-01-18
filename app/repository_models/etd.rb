@@ -6,4 +6,8 @@ class Etd
   def self.human_readable_type
     'Thesis or Dissertation'
   end
+
+  def human_readable_type
+    degree.map(&:level).flatten.to_sentence
+  end
 end
