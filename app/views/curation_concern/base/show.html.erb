@@ -5,22 +5,13 @@
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
-<%
-  collector = current_user.present?
-  editor    = can?(:edit,    curation_concern)
-%>
-<% if collector || editor %>
+<% if can?(:edit, curation_concern %>
   <% content_for :page_actions do %>
-    <% if editor %>
-      <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn' do %>
-        <i class="icon icon-pencil"></i> Edit
-      <% end %>
-      <%= link_to [:curation_concern, curation_concern], class: 'btn', data: { confirm: "Delete this #{curation_concern.human_readable_type}?" }, method: :delete do %>
-        <i class="icon icon-trash"></i> Delete
-      <% end %>
+    <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn' do %>
+      <i class="icon icon-pencil"></i> Edit
     <% end %>
-    <% if collector %>
-      <%= render partial: 'add_to_collection_gui', locals: { collectible: curation_concern, button_class: 'btn', use_text: true } %>
+    <%= link_to [:curation_concern, curation_concern], class: 'btn', data: { confirm: "Delete this #{curation_concern.human_readable_type}?" }, method: :delete do %>
+      <i class="icon icon-trash"></i> Delete
     <% end %>
   <% end %>
 <% end %>

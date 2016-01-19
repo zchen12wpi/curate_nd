@@ -26,23 +26,17 @@
           class: 'itemicon itemedit btn',
           title: "Edit #{document.human_readable_type}"
         )%>
-      <% unless document.is_a?(Collection) %>
-        <%= link_to(
-          raw('<i class="icon-trash icon-large"></i>'),
-            [:curation_concern, document],
-            class: 'itemicon itemtrash btn',
-            data: {
-              confirm: "Delete this #{document.human_readable_type}?"
-            },
-            method: :delete,
-            title: "Delete #{document.human_readable_type}"
-          )%>
-      <% end %>
-      <% end %>
-
-      <% unless document.respond_to?(:user) %>
-        <% if can? :collect, document %>
-          <%= render 'add_to_collection_gui', collectible: document %>
+        <% unless document.is_a?(Collection) %>
+          <%= link_to(
+            raw('<i class="icon-trash icon-large"></i>'),
+              [:curation_concern, document],
+              class: 'itemicon itemtrash btn',
+              data: {
+                confirm: "Delete this #{document.human_readable_type}?"
+              },
+              method: :delete,
+              title: "Delete #{document.human_readable_type}"
+            )%>
         <% end %>
       <% end %>
     <% end %>
