@@ -24,13 +24,6 @@
   <div class="tile-actions-menu">
     <div class="tile-actions">
       <% available_actions = 0 %>
-      <% unless document.respond_to?(:user) %>
-        <% if can? :collect, document %>
-          <% available_actions += 1 %>
-          <%= render 'add_to_collection_gui', collectible: document %>
-        <% end %>
-      <% end %>
-
       <% if can?( :edit, document ) && edit_path.present? %>
         <% available_actions += 1 %>
         <%= link_to(
