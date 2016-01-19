@@ -5,9 +5,9 @@
     &:first-child {
       margin-top: 1em;
     }
-  }
 
-  .alert + .alert {
-    margin-top: .5em;
+    + .alert {
+      margin-top: .5em;
+    }
   }
 }
