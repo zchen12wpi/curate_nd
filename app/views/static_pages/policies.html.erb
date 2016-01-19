@@ -1,3 +1,13 @@
+<%#
+*******************************************************************************
+*******************************************************************************
+
+NOTE: Keep the Mission policy as the first policy. Otherwise, sort the policies
+alphabetically by the policy-heading.
+
+*******************************************************************************
+*******************************************************************************
+%>
 <% content_for :main_column_class, 'span8 offset2' %>
 <% content_for :page_title, construct_page_title('Policies // CurateND')  %>
 <% content_for :page_header do %>
@@ -19,10 +29,18 @@
   </h2>
   <% end %>
 
+  <%= link_to named_policy_path('designated-communities'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Designated Communities
+    <small class="effective-date">Effective Date: <time datetime="2015-10-16">October 16, 2015</time></small>
+  </h2>
+  <% end %>
+
   <%= link_to named_policy_path('support'), class: 'policy-anchor' do %>
   <h2 class="policy-heading">
     General Support Policy
     <small class="effective-date">Effective Date: <time datetime="2015-07-7">July 7, 2015</time></small>
   </h2>
   <% end %>
+
 </section>
