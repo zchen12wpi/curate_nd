@@ -276,7 +276,6 @@ $logo-height: 48;
     margin: 1em auto;
     max-width: 33em;
   }
-
 }
 
 @media (max-width: 900px) {
@@ -290,5 +289,29 @@ $logo-height: 48;
         max-width: 16em;
       }
     }
+  }
+}
+
+.curate-nd-homepage + .page-footer-wrapper {
+  background-color: $blue-dark;
+  border: 1px solid $blue-dark;
+
+  .page-footer {
+    color: $white;
+  }
+
+  a,
+  a:hover,
+  a:visited {
+    border-color: $official-gold;
+    color: $official-gold;
+  }
+
+  a.btn {
+    color: $gray-dark;
+  }
+
+  .hesburgh-mark {
+    background-image: url(<%= asset_path 'hesburgh-mark-white.png'%>);
   }
 }
