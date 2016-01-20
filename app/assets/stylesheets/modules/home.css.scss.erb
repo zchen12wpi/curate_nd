@@ -218,6 +218,43 @@ $logo-height: 48;
   }
 }
 
+.call-for-deposit {
+  padding: .8em 0 1.4em;
+
+  .emphatic-action-wrapper {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .call-for-deposit {
+    padding: .8em 0 2em;
+  }
+
+  .emphatic-action-wrapper {
+    font-size: 1.4em;
+  }
+}
+
+.mission-statement {
+  text-align: center;
+  margin: .7em 0 .5em;
+}
+
+@media (min-width: 1200px) {
+  .mission-statement {
+    margin: 1.2em 0 .7em;
+  }
+}
+
+.crosshatch {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-color: #F1F1F1;
+  border-style: solid;
+  border-width: 1px 0;
+}
+
 .dark-blue {
   background-color: $blue-dark;
   clear: both;

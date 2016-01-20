@@ -1,9 +1,8 @@
 @import 'global-variables';
 
 .text-overlay {
-  background-color: $blue-dark;
   box-sizing: border-box;
-  color: $white;
+  color: $blue-dark;
   margin: 0;
   padding: .1em 1em;
 
@@ -42,7 +41,9 @@
   margin-top: 1em;
 
   .message {
+    background-color: rgba(255, 255, 255, .4);
     font-size: 1.2em;
+    padding: 1em;
 
     p {
       font-size: 1em;
@@ -51,7 +52,8 @@
   }
 
   .opening-quote {
-    left: -.32em;
+    left: .65em;
+    top: 1em;
   }
 }
 
