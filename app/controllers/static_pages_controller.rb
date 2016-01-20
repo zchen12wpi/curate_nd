@@ -16,6 +16,11 @@ class StaticPagesController < ApplicationController
     render layout: 'curate_nd_home'
   end
 
+  def deposit
+    @hide_title = true;
+    render layout: 'curate_nd_home'
+  end
+
   def error
     @help_request = build_help_request
     respond_with(@help_request) do |wants|

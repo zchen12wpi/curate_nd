@@ -1,0 +1,56 @@
+<%
+  content_for :page_title, construct_page_title('Deposit')
+  content_for :page_main_class, 'contribute-landing-page'
+%>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h1>Contributing to CurateND</h1>
+      <h2>Who is CurateND for?</h2>
+      <p class="lead">
+        CurateND serves the people who live, work, and study in and around the University of Notre Dame.
+        The <a href="/policies/designated-communities">designated communities policy</a> outlines the various eligible groups.
+      </p>
+
+      <h2>What can I put in CurateND?</h2>
+      <p class="lead">
+        CurateND stores and disseminates scholarly work.
+        Our <a href="/policies/content">content in scope policy</a> describes what an appropriate deposit looks like in more detail.
+      </p>
+
+      <h2>What do you need to get started?</h2>
+      <p class="lead">
+        CurateND is meant to house <em>finished</em> work.
+        Have a preprint or otherwise finalized representation of your work ready for upload.
+      </p>
+      <p class="lead">
+        We will ask you to describe your work. Be prepared to answer a few questions.
+      </p>
+
+      <h3>New Users</h3>
+      <p class="lead">
+        CurateND stores some personal information so your work can be properly cited by others.
+        We ask for contact information so we can relay questions and requests to you if need be.
+      </p>
+      <p class="lead">
+        You can link an <a href="http://orcid.org/">ORCID</a> with your profile in CurateND.
+        If you already have an <a href="http://orcid.org/">ORCID</a> please have your credentials ready.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <p class="emphatic-action-wrapper">
+        <%= link_to get_started_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
+          Get Started
+          <span class="chevron-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
+              <style type="text/css">polygon { fill: #FFF; }</style>
+              <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
+              <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
+            </svg>
+          </span>
+        <% end %>
+    </div>
+  </div>
+</div>
