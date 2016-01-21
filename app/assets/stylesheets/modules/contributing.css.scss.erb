@@ -1,0 +1,58 @@
+@import 'global-variables';
+
+.page-main.contributing {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-bottom: 1px solid $gray-faint;
+}
+
+.contributing {
+  header {
+    margin: 0 auto;
+    max-width: 74em;
+    padding: 2em 1em 0;
+    text-align: center;
+  }
+
+  article {
+    background-color: $white;
+    border: 1px solid $gray-faint;
+    margin: 1em auto 2em;
+    max-width: 45em;
+    padding: 1em;
+
+    p {
+      margin-bottom: 20px;
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 30px;
+
+      + h2 {
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .call-to-action {
+    font-size: 1.5em;
+    padding-bottom: 1em;
+    text-align: center;
+  }
+}
+
+@media (min-width: 47em) {
+  .contributing {
+    header {
+      padding: 3em 0 2em;
+    }
+
+    article {
+      padding: 2em 3em;
+      margin-bottom: 4em;
+    }
+
+    .call-to-action {
+      font-size: 2em;
+    }
+  }
+}
