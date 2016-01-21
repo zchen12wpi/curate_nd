@@ -39,6 +39,8 @@ group :default do
   gem 'lograge'
   gem 'logstash-logger'
   gem 'logstash-event'
+  gem 'citeproc-ruby', '~> 1.1'
+  gem 'csl-styles', '~> 1.0'
 end
 
 # Hack to work around some bundler strangeness
