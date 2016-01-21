@@ -30,7 +30,11 @@
 
   <%# Rendering the user's preferred name for use in some JavaScript actions %>
   <span class="hidden user-display-name">
-    <%= current_user.name.blank? ? 'Anonymous' : current_user.name %>
+    <% if current_user && current_user.name.present? %>
+      <%= current_user.name %>
+    <% else %>
+      Anonymous
+    <% end %>
   </span>
 <% end %>
 
