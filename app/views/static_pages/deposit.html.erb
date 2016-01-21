@@ -21,9 +21,9 @@
 </header>
 
 <article>
-  <h2>Who is CurateND for?</h2>
+  <h2>Can I contribute to CurateND?</h2>
   <p>
-    CurateND serves the people who live, work, and study in and around the University of Notre Dame.
+    CurateND takes contributions from people who are affiliated with the University of Notre Dame.
     The <a href="/policies/designated-communities">designated communities policy</a> outlines the various eligible groups.
   </p>
 
@@ -42,15 +42,24 @@
     We will ask you to describe your work. Be prepared to answer a few questions.
   </p>
 
-  <h3>Please Note</h3>
+  <h3>Please note</h3>
   <p>
     CurateND stores some personal information so your work can be properly cited by others.
     We ask for contact information so we can relay questions and requests to you if need be.
   </p>
-  <p>
-    You can link an <a href="http://orcid.org/">ORCID</a> with your profile in CurateND.
-    If you already have an <a href="http://orcid.org/">ORCID</a> please have your credentials ready.
-  </p>
+
+  <% unless current_user && current_user.orcid_id.present? %>
+    <p>
+      <% if current_user && current_user.user_does_not_require_profile_update %>
+        The <%= link_to 'ORCID settings page', orcid_settings_path %> allows you to associate an existing ORCID with your account.
+        You will need your ORCID credentials to certify that you have an existing ORCID.
+        You can create a new ORCID from the <%= link_to 'ORCID settings page', orcid_settings_path %> if you don&rsquo;t have one.
+      <% else %>
+        You can link an <a href="http://orcid.org/">ORCID</a> with your profile in CurateND.
+        If you already have an ORCID please have your credentials ready.
+      <% end %>
+    </p>
+  <% end %>
 
   <div class="call-to-action">
     <%= link_to new_classify_concern_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
