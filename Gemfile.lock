@@ -377,7 +377,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.4.2)
+    mysql2 (0.3.13)
     namae (0.8.0)
     nest (1.1.2)
       redis
