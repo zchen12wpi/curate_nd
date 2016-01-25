@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
     render layout: 'curate_nd_home'
   end
 
-  def deposit
+  def contribute
     @hide_title = false;
     render layout: 'curate_nd_home'
   end

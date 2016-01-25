@@ -65,7 +65,7 @@ CurateNd::Application.routes.draw do
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: redirect('/')
-  get 'deposit', to: 'static_pages#deposit'
+  get 'contribute', to: 'static_pages#contribute'
   get 'faqs',  to: 'static_pages#faqs'
   get 'orcid_settings', to: 'user_profiles#orcid_settings'
   get 'policies', to: 'static_pages#policies'
