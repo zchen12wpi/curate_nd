@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   helper_method :status
 
   def about
+    @hide_title = false;
     render layout: 'curate_nd_home'
   end
 
