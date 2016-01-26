@@ -39,7 +39,8 @@ class StaticPagesController < ApplicationController
     if params[:policyname]
       render 'policies-' + params[:policyname].to_s
     else
-      render 'policies'
+      @hide_title = false;
+      render 'policies', layout: 'curate_nd_home'
     end
   end
 
