@@ -146,7 +146,11 @@ $logo-height: 48;
 
 @media (min-width: 600px) {
   .im-looking-for {
-    padding: 2em;
+    padding: 1em 1.5em;
+
+    .section-heading {
+      margin-bottom: 0;
+    }
 
     .category {
       display: inline-block;
@@ -172,7 +176,7 @@ $logo-height: 48;
 
     .catalog-browse {
       display: inline-block;
-      padding: 0 .5em 2em;
+      padding: 0 .5em 1em;
     }
 
     .hero,
@@ -196,24 +200,8 @@ $logo-height: 48;
 
 @media (min-width: 900px) {
   .im-looking-for {
-    h2 {
-      font-size: 2.3em;
-    }
-
-    .category {
-      width: 14em;
-    }
-
     .caption {
-      font-size: 1.8em;
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .im-looking-for {
-    .category {
-      margin: 0 1em;
+      font-size: 1.2em;
     }
   }
 }
