@@ -40,10 +40,22 @@
     padding-right: 8px;
     text-shadow: none;
     text-transform: uppercase;
+
+    &.active {
+      color: $white;
+      background-color: $official-gold-accent;
+    }
   }
+
 
   .caret {
     border-top-color: $official-blue;
+  }
+
+  .active {
+    .caret {
+      border-top-color: $white;
+    }
   }
 
   .dropdown-toggle,
