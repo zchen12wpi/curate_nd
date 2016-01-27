@@ -12,6 +12,7 @@ class ClassifyConcernsController < ApplicationController
   helper_method :classify_concern
 
   def new
+    @hide_title = false;
     respond_with(classify_concern, layout: 'curate_nd_home')
   end
 
