@@ -42,8 +42,8 @@
     text-transform: uppercase;
 
     &.active {
-      color: $white;
       background-color: $official-gold-accent;
+      color: $white;
     }
   }
 
