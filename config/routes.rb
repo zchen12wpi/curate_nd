@@ -7,6 +7,9 @@ CurateNd::Application.routes.draw do
 
   root 'static_pages#home'
 
+  # Making deposit a top-level route
+  get '/classify_concerns/new', to: redirect('deposit')
+
   # Some ETDs are not loading correctly on the curation concern page
   get '/concern/etds/new', to: 'curation_concern/etds#new'
   get '/concern/etds/:id', to: redirect { |params, request|
@@ -60,8 +63,8 @@ CurateNd::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
 
-  #NOTE: This action may not be welcoming for new users.
-  get 'get_started', to: 'classify_concerns#new'
+  get 'get_started', to: redirect('deposit')
+  get 'deposit', to: 'classify_concerns#new'
 
   get 'about', to: 'static_pages#about'
   get 'beta',  to: redirect('/')

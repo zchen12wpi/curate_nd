@@ -4,7 +4,7 @@
   deposit_page_classes << ' active' if on_deposit_page
 %>
 <div class="btn-group add-content">
-  <%= link_to new_classify_concern_path, id: "add-content", class: deposit_page_classes, data: { toggle: "dropdown"} do %>
+  <%= link_to deposit_path, id: "add-content", class: deposit_page_classes, data: { toggle: "dropdown"} do %>
     Deposit
     <span class="caret"></span>
   <% end %>
@@ -18,6 +18,6 @@
         ) %>
       </li>
     <% end %>
-    <li><%= link_to 'More Options', new_classify_concern_path, class: 'link-to-full-list', role: 'menuitem' %></li>
+    <li><%= link_to 'More Options', deposit_path, class: 'link-to-full-list', role: 'menuitem' %></li>
   </ul>
 </div>
