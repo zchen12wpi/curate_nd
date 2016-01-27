@@ -1,5 +1,5 @@
 <%
-  on_deposit_page = current_page?(controller: 'classify_concerns', action: 'new') rescue false
+  on_deposit_page = (params[:controller] == 'classify_concerns' && params[:action] == 'new') rescue false
   deposit_page_classes = 'btn btn-primary dropdown-toggle'
   deposit_page_classes << ' active' if on_deposit_page
 %>
