@@ -28,6 +28,14 @@
 
   <%= render 'footer' %>
 
+  <%# Rendering the user's preferred name for use in some JavaScript actions %>
+  <span class="hidden user-display-name">
+    <% if current_user && current_user.name.present? %>
+      <%= current_user.name %>
+    <% else %>
+      Anonymous
+    <% end %>
+  </span>
 <% end %>
 
 <%= render :template => 'layouts/boilerplate' %>

@@ -1,202 +1,94 @@
 <% content_for :page_title, 'CurateND' %>
-<% content_for :page_main_class, 'home' %>
-<section id="features" class="site-features">
-  <div class="dark-blue">
-    <h1>Curating Notre Dame&rsquo;s Research and Scholarship for Study throughout Time</h1>
-  </div>
-  <div class="angle-wrapper">
-    <div class="angle angle-bottom"></div>
+<% content_for :page_main_class, 'curate-nd-homepage' %>
+<div class="hero">
+  <figure class="logo-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="curate-nd-logo" viewBox="0 0 221 49" preserveAspectRatio="xMinYMin meet">
+      <style type="text/css">
+        .white {fill:#FFF;}
+        .yellow {fill:#DCB438; stroke-width:0.75;}
+      </style>
+      <path class="white" d="M13.62,42.54c5.1,0,6.3-2.28,6.36-8.94l6.3,0.84c-0.06,9.24-2.58,13.68-12.48,13.68C3.9,48.12,0,42.18,0,24.06S3.9,0,13.8,0c9.9,0,12.42,4.44,12.48,13.68l-6.3,0.84c-0.06-6.66-1.26-8.94-6.36-8.94c-6.06,0-7.2,5.7-7.2,18.48S7.56,42.54,13.62,42.54z"/>
+      <path class="white" d="M48.66,43.98c-2.04,2.4-4.98,4.14-9.48,4.14c-5.46,0-7.92-3.12-7.92-7.92V15.66h6.18v22.98c0,2.46,1.26,3.96,4.02,3.96c3,0,5.28-1.56,6.66-3.54v-23.4h6.18v24.06l0.18,7.74h-5.46L48.66,43.98z"/>
+      <path class="white" d="M66.54,24.54v22.92h-6.18V23.4l-0.12-7.74h5.46l0.36,3.66c1.62-2.7,4.08-4.32,6.9-4.32c0.96,0,1.74,0.18,2.46,0.54l-0.3,5.7C74.58,21.06,73.74,21,73.08,21C70.38,21,68.22,22.38,66.54,24.54z"/>
+      <path class="white" d="M85.56,25.08l-6.24-0.78c0-5.88,2.22-9.3,10.86-9.3c8.1,0,10.62,2.88,10.62,9.6v15.12l0.18,7.74h-5.46l-0.36-3.48c-2.16,2.94-4.98,4.14-8.88,4.14c-5.82,0-8.16-3.78-8.16-9.54c0-6.72,3.78-9.24,11.82-10.44l4.62-0.66V24c0-2.64-1.08-4.26-4.44-4.26C86.82,19.74,85.56,21.3,85.56,25.08z M88.56,43.02c2.46,0,4.56-1.26,6-3.24v-8.16l-4.08,0.6c-3.96,0.54-6.12,1.86-6.12,5.88C84.36,41.64,85.92,43.02,88.56,43.02z"/>
+      <path class="white" d="M105.48,15.66h3.72v-8.4l6.18-0.18v8.58h6.72v5.22h-6.72V39.6c0,2.52,1.2,3.18,3.06,3.18c1.32,0,2.4-0.3,3-0.54l0.42,5.22c-0.9,0.3-2.22,0.66-4.56,0.66c-5.76,0-8.1-2.88-8.1-7.74v-19.5h-3.72V15.66z"/>
+      <path class="white" d="M138.42,43.08c3.78,0,4.86-1.8,4.86-4.98l6.3,0.78c0,5.34-1.86,9.24-10.98,9.24c-9.78,0-12.06-5.88-12.06-16.56c0-10.74,2.4-16.56,11.88-16.56c9.42,0,11.52,5.88,11.52,16.56v2.34h-16.86C133.08,39.9,134.04,43.08,138.42,43.08z M133.08,29.04h10.32c-0.06-5.94-0.9-9-5.04-9C134.28,20.04,133.14,22.68,133.08,29.04z"/>
+      <path class="yellow" d="M174.42,19.92l4.02,11.7l-0.12-11.34V0.66h7.56v46.8h-9l-6.9-19.26l-3.96-11.7l0.12,11.34l0.06,19.62h-7.68V0.66h9L174.42,19.92z"/>
+      <path class="yellow" d="M192.42,47.46V0.66h11.82c12.6,0,16.56,5.34,16.56,23.4c0,18.06-3.96,23.4-16.56,23.4H192.42z M204.48,40.2c7.38,0,8.16-4.38,8.16-16.14s-0.78-16.14-8.16-16.14h-3.9V40.2H204.48z"/>
+    </svg>
+  </figure>
+
+  <div class="homepage-search">
+    <%= render 'shared/site_search' %>
   </div>
 
-  <div id="manage" class="feature">
-    <article class="container">
-      <div class="row">
-        <div class="span12">
-          <h2>Manage</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span6">
-          <ul class="feature-questions">
-            <li>Are you required to have a data management plan?</li>
-            <li>Do you work with a team or need to regulate levels of access?</li>
-            <li>Do you want to link your work to supplemental materials of multiple formats?</li>
-            <li>Do you want to curate and elevate your entire portfolio of work?</li>
-          </ul>
-        </div>
-        <div class="span6">
-          <p>
-            CurateND is a research portal that allows for the management of your research portfolio on several levels.
-            In response to funding mandates, portal features and our related <%= link_to 'Center for Digital Scholarship', 'http://library.nd.edu/cds/' %> services offer streamlined consultation for the creation of data management plans.
-            Upon deposit, you can select different access privileges and embargo periods that allow you to share research results with groups and regulate access to your works while in progress.
-          </p>
-          <p>
-            In the digital age, research &ldquo;data&rdquo; comes in multiple formats, often within a single published work.
-            CurateND is designed to accept, manage and securely preserve files of any format including: datasets, articles, images, video, whitepapers, presentations, and more.
-            And, you can deposit and illuminate as much of your portfolio of work and supplemental materials as you choose.
-          </p>
-          <p class="emphatic-action-wrapper">
-            <%= link_to get_started_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
-              Get Started
-              <span class="chevron-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
-                  <style type="text/css">polygon { fill: #FFF; }</style>
-                  <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
-                  <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
-                </svg>
-              </span>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </article>
+  <div class="im-looking-for">
+    <h2 class="section-heading">I&rsquo;m looking for&hellip;</h2>
+    <nav class="categories">
+      <ul class="category-list">
+        <li class="category">
+          <%= link_to catalog_index_path( :'f[human_readable_type_sim][]' => 'Thesis or Dissertation'),  class: 'catalog-browse' do %>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="category-icon svg-graduation-cap" viewBox="-3 -7 42 42" preserveAspectRatio="xMinYMin meet">
+              <path fill="#7f8e9f" d="M27.719,13.062L28,17.999c0.042,0.719-0.385,1.386-1.281,2c-0.896,0.614-2.119,1.102-3.672,1.461c-1.552,0.359-3.234,0.539-5.047,0.539s-3.495-0.18-5.047-0.539c-1.552-0.359-2.776-0.847-3.672-1.461s-1.323-1.281-1.281-2l0.281-4.937l8.969,2.829c0.229,0.072,0.479,0.108,0.75,0.108s0.521-0.036,0.75-0.108L27.719,13.062z M36,8c0,0.239-0.115,0.401-0.344,0.484l-17.5,5.5C18.114,13.995,18.062,14,18,14s-0.114-0.005-0.156-0.016L7.657,10.765c-0.448,0.354-0.818,0.935-1.109,1.742c-0.291,0.808-0.468,1.737-0.531,2.789c0.656,0.375,0.984,0.942,0.984,1.703c0,0.719-0.302,1.276-0.906,1.672l0.906,6.767c0.021,0.146-0.021,0.275-0.125,0.391C6.782,25.943,6.657,26,6.501,26h-3c-0.156,0-0.281-0.057-0.375-0.172c-0.104-0.115-0.146-0.245-0.125-0.391l0.906-6.767c-0.604-0.396-0.906-0.953-0.906-1.672c0-0.761,0.339-1.339,1.016-1.733c0.115-2.157,0.625-3.875,1.531-5.157L0.345,8.484C0.116,8.401,0.001,8.239,0.001,8s0.115-0.401,0.344-0.484l17.5-5.5C17.887,2.005,17.939,2,18.001,2s0.114,0.005,0.156,0.016l17.5,5.5C35.887,7.599,36.001,7.761,36,8L36,8z"/>
+            </svg>
+            <h3 class="caption">
+              Theses & Dissertations
+            </h3>
+          <% end %>
+        </li>
+        <li class="category">
+          <%= link_to catalog_index_path( :'f[human_readable_type_sim][]' => 'Article'),  class: 'catalog-browse' do %>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="category-icon svg-book" viewBox="-8 -7 42 42" preserveAspectRatio="xMinYMin meet">
+              <path fill="#7f8e9f" d="M25.609,7.469c0.416,0.594,0.51,1.266,0.281,2.016l-4.298,14.156c-0.198,0.667-0.597,1.227-1.194,1.68c-0.6,0.454-1.237,0.681-1.914,0.681H4.062c-0.802,0-1.575-0.278-2.32-0.836s-1.263-1.242-1.555-2.056c-0.25-0.697-0.26-1.359-0.031-1.983c0-0.042,0.016-0.183,0.047-0.422s0.052-0.433,0.063-0.578c0.011-0.083-0.005-0.195-0.047-0.336c-0.042-0.141-0.058-0.242-0.047-0.306c0.021-0.114,0.062-0.224,0.125-0.327c0.063-0.104,0.149-0.227,0.258-0.367s0.195-0.263,0.258-0.367c0.239-0.396,0.474-0.872,0.703-1.43c0.229-0.558,0.386-1.034,0.469-1.431c0.031-0.104,0.034-0.26,0.008-0.469c-0.026-0.209-0.029-0.354-0.008-0.438c0.031-0.115,0.12-0.261,0.266-0.438c0.146-0.177,0.235-0.297,0.266-0.359c0.219-0.375,0.437-0.854,0.656-1.437c0.219-0.583,0.349-1.052,0.391-1.406c0.011-0.094-0.002-0.261-0.039-0.5s-0.034-0.385,0.008-0.438c0.042-0.135,0.156-0.294,0.344-0.477s0.302-0.3,0.344-0.352c0.198-0.271,0.419-0.711,0.664-1.32C5.13,7.32,5.273,6.817,5.315,6.421C5.326,6.338,5.31,6.205,5.268,6.023s-0.052-0.32-0.031-0.414c0.021-0.083,0.068-0.177,0.141-0.281s0.167-0.224,0.281-0.359c0.114-0.135,0.203-0.245,0.266-0.328c0.083-0.125,0.169-0.284,0.258-0.477C6.271,3.971,6.35,3.788,6.417,3.617c0.067-0.171,0.151-0.359,0.25-0.562c0.099-0.204,0.201-0.37,0.305-0.5c0.104-0.13,0.242-0.252,0.414-0.367c0.172-0.115,0.359-0.175,0.562-0.18c0.203-0.005,0.45,0.023,0.742,0.086L8.674,2.141C9.07,2.047,9.335,2,9.471,2h11.89c0.771,0,1.365,0.292,1.781,0.875c0.417,0.583,0.511,1.26,0.281,2.031l-4.281,14.156c-0.374,1.238-0.746,2.038-1.117,2.397c-0.369,0.359-1.039,0.539-2.008,0.539H2.44c-0.281,0-0.479,0.078-0.594,0.233c-0.115,0.167-0.12,0.391-0.016,0.672c0.25,0.73,1,1.095,2.25,1.095h14.422c0.303,0,0.594-0.081,0.875-0.242s0.464-0.377,0.547-0.647l4.688-15.422c0.073-0.229,0.1-0.526,0.078-0.891c0.396,0.156,0.704,0.38,0.922,0.672L25.609,7.469z M8.984,7.5C8.942,7.635,8.952,7.753,9.015,7.852C9.078,7.951,9.182,8,9.328,8h9.5c0.135,0,0.268-0.049,0.398-0.148c0.129-0.099,0.215-0.216,0.258-0.352l0.328-1c0.041-0.135,0.031-0.253-0.031-0.352S19.613,6,19.468,6h-9.5C9.833,6,9.7,6.049,9.57,6.148C9.44,6.247,9.354,6.364,9.312,6.5L8.984,7.5z M7.688,11.5c-0.042,0.135-0.032,0.253,0.031,0.352C7.782,11.951,7.886,12,8.032,12h9.5c0.136,0,0.268-0.049,0.397-0.148c0.131-0.099,0.217-0.216,0.258-0.352l0.328-1c0.043-0.135,0.032-0.253-0.031-0.352C18.422,10.049,18.318,10,18.172,10h-9.5c-0.135,0-0.268,0.049-0.398,0.148S8.058,10.364,8.016,10.5L7.688,11.5z"/>
+            </svg>
+            <h3 class="caption">
+              Articles & Publications
+            </h3>
+          <% end %>
+        </li>
+        <li class="category">
+          <%= link_to catalog_index_path( :'f[human_readable_type_sim][]' => 'Dataset'),  class: 'catalog-browse' do %>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="category-icon svg-graph" viewBox="-5 -7 42 42" preserveAspectRatio="xMinYMin meet">
+              <path fill="#7f8e9f" d="M10,14v8H6v-8H10z M16,6v16h-4V6H16z M32,24v2H0V2h2v22H32z M22,10v12h-4V10H22z M28,4v18h-4V4H28z"/>
+            </svg>
+            <h3 class="caption">
+              Datasets & Related Materials
+            </h3>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
   </div>
+</div>
 
-  <div class="angle-wrapper">
-    <div class="angle angle-top"></div>
-  </div>
-  <div id="preserve" class="feature dark-blue">
-    <article class="container">
-      <div class="row">
-        <div class="span12">
-          <h2>Preserve</h2>
-        </div>
-      </div>
+<div class="call-for-deposit dark-blue">
+  <p class="emphatic-action-wrapper">
+    <%= link_to contribute_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
+      Contribute Your Work
+      <span class="chevron-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
+          <style type="text/css">polygon { fill: #FFF; }</style>
+          <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
+          <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
+        </svg>
+      </span>
+    <% end %>
+  </p>
+</div>
 
-      <div class="row">
-        <div class="span6">
-          <ul class="feature-questions">
-            <li>Does your funding mandate a plan for long-term preservation?</li>
-            <li>Do you want assurances that you can locate your research and related works in the future?</li>
-            <li>Do you want to preserve conference proceedings?</li>
-            <li>Is it important to steward your research for future scientists and scholars?</li>
-          </ul>
-        </div>
-        <div class="span6">
-          <p>
-            CurateND employs preservation standards that meet the requirements of funding agencies for long-term preservation and curation over the life-cycle of research.
-            Whether or not a project is grant-funded, our preservation standards will give you security and peace of mind that you will find your work in the future and it will be guarded against corruption.
-          </p>
-          <p>
-            And, should the need arise, the platform will migrate files to new formats for continued access and usability.
-            All this is to ensure that your work and the work of your students is preserved for future study throughout time.
-          </p>
-          <p class="emphatic-action-wrapper">
-            <%= link_to get_started_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
-              Get Started
-              <span class="chevron-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
-                  <style type="text/css">polygon { fill: #FFF; }</style>
-                  <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
-                  <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
-                </svg>
-              </span>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="angle-wrapper">
-    <div class="angle angle-bottom"></div>
-  </div>
+<h1 class="mission-statement">Curating Notre Dame&rsquo;s Research and Scholarship for Study throughout Time</h1>
 
-  <div id="discover" class="feature">
-    <article class="container">
-      <div class="row">
-        <div class="span12">
-          <h2>Discover</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span6">
-          <ul class="feature-questions">
-            <li>Do you want help to illuminate your published research globally?</li>
-            <li>Are you interested in increasing your discoverability and citations?</li>
-            <li>Do you want to share working papers or negative results?</li>
-            <li>Do you use non-traditional publishing platforms?</li>
-          </ul>
-        </div>
-        <div class="span6">
-          <p>
-            CurateND was built to provide a first-class search experience through the portal.
-            And, with well-structured metadata and optimization, we help ensure that publicly available content is listed prominently by outside search engines.
-            Global access through one main platform increases discoverability and allows central tracking for downloads and citations at the individual, department, college or university level.
-          </p>
-          <p>
-            If you have other working papers and research results important to share with your research community around the world, CurateND is a perfect solution.
-            And, if your research involves multi-media and non-traditional publishing platforms, CurateND will feature these works and seamlessly link to all related materials.
-          </p>
-          <p class="emphatic-action-wrapper">
-            <%= link_to catalog_index_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
-              Get Started
-              <span class="chevron-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
-                  <style type="text/css">polygon { fill: #FFF; }</style>
-                  <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
-                  <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
-                </svg>
-              </span>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="angle-wrapper">
-    <div class="angle angle-top"></div>
-  </div>
-  <div id="share" class="feature dark-blue">
-    <article class="container">
-      <div class="row">
-        <div class="span12">
-          <h2>Share</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span6">
-          <ul class="feature-questions">
-            <li>Are you required to share your research, data and related works?</li>
-            <li>Do you need to create a DOI for citing and sharing your data?</li>
-            <li>Do you have images, posters, presentations, collections, white papers or datasets that you want to share?</li>
-            <li>Do you want to highlight the work of graduate and undergraduate research?</li>
-          </ul>
-        </div>
-        <div class="span6">
-          <p>
-            For those with grant-funded research and data sharing mandates, CurateND puts your front-end data management plan into action.
-            You have the ability (rights not withstanding) to share content at any level&mdash;from restricted access, to lab or campus access, to open access for the world. 
-          </p>
-          <p>
-            CurateND can create a <a href="http://simple.wikipedia.org/wiki/Digital_object_identifier"><abbr title="Digital Object Identifier">DOI</abbr></a> on demand, linking to works on your behalf.
-            A <a href="http://simple.wikipedia.org/wiki/Digital_object_identifier"><abbr title="Digital Object Identifier">DOI</abbr></a> is a convenient (and often required) way to cite your data in publications and it makes it easy for others to cite your work.
-            You can share all of the associated work and multiple data formats that are not supported by the publishing platform.
-          <p>
-            It is equally valuable for featuring the important contributions of undergraduate and graduate research across all disciplines.
-            All members of the campus community can create an account and contribute to intellectual fabric that is Notre Dame.
-          </p>
-          <p class="emphatic-action-wrapper">
-            <%= link_to get_started_path, class: 'btn btn-primary btn-large emphatic-action with-chevron' do %>
-              Get Started
-              <span class="chevron-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="chevron" viewBox="0 0 54 54" preserveAspectRatio="xMinYMin meet">
-                  <style type="text/css">polygon { fill: #FFF; }</style>
-                  <polygon points="0,0 18,0 27,27 18,54 0,54 9,27"/>
-                  <polygon points="27,0 45,0 54,27 45,54 27,54 36,27"/>
-                </svg>
-              </span>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="angle-wrapper">
-    <div class="angle angle-bottom"></div>
-  </div>
-
-</section>
+<div class="crosshatch">
+  <figure id="mission" class="site-mission text-overlay">
+    <blockquote class="message">
+      <p><span class="opening-quote">&ldquo;</span>
+        Let us rise up and embrace the mission for our time:
+        to build a Notre Dame that is bigger and better than ever&#8202;&mdash;&#8202;a
+        center for learning whose intellectual and religious traditions converge to make it a healing, unifying, enlightening force for a world deeply in need.
+        This is our goal.
+        Let no one ever again say that we dreamed too small.&rdquo;
+      </p>
+      <cite class="source">Rev. John I. Jenkins, C.S.C.</cite>
+    </blockquote>
+  </figure>
+</div>

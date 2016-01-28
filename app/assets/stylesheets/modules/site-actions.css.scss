@@ -1,0 +1,112 @@
+@import 'global-variables';
+
+.site-actions {
+  display: inline-block;
+  float: right;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+  text-align: right;
+
+  .dropdown-menu {
+    border-radius: 0;
+    min-width: auto;
+    text-align: left;
+
+    > li > a {
+      padding: 3px 12px;
+    }
+  }
+
+  .add-content > .dropdown-menu,
+  .my-actions > .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  .btn {
+    background-color: $official-gold;
+    background-image: none;
+    border-color: $official-gold-accent;
+    border-radius: 0;
+    border-width: 0 0 2px;
+    color: $official-blue;
+    font-weight: bold;
+    letter-spacing: .1em;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+    padding-left: 9px;
+    padding-right: 8px;
+    text-shadow: none;
+    text-transform: uppercase;
+
+    &.active {
+      background-color: $official-gold-accent;
+      color: $white;
+    }
+  }
+
+
+  .caret {
+    border-top-color: $official-blue;
+  }
+
+  .active {
+    .caret {
+      border-top-color: $white;
+    }
+  }
+
+  .dropdown-toggle,
+  .btn-group.open .btn-primary.dropdown-toggle {
+    background-color: $official-gold;
+  }
+
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: 3px;
+  }
+}
+
+@media (min-width: 400px) {
+  .site-actions .add-content > .dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-actions {
+    padding: 0;
+
+    .dropdown-menu {
+      min-width: 160px;
+
+      > li > a {
+        padding: 3px 20px;
+      }
+    }
+
+    .btn {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .btn + .btn,
+    .btn + .btn-group,
+    .btn-group + .btn,
+    .btn-group + .btn-group {
+      margin-left: 4px;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .site-actions .my-actions > .dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+}

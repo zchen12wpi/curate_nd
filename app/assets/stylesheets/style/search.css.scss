@@ -28,3 +28,19 @@
   margin: 0;
   padding: 0;
 }
+
+.homepage-search {
+  margin: 0 auto;
+  max-width: 40em;
+
+  .search-query {
+    font-size: 2em;
+    line-height: 2;
+  }
+
+  .search-form .search-submit {
+    font-size: 1.8em;
+    height: 2.2em;
+    padding: .5em 0;
+  }
+}

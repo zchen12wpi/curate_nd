@@ -1,15 +1,10 @@
 @import 'global-variables';
 
 .text-overlay {
-  background-color: rgba(100, 100, 100, .7);
-  bottom: 0;
   box-sizing: border-box;
-  color: $white;
-  left: 0;
+  color: $blue-dark;
   margin: 0;
-  padding: 0 1em;
-  position: absolute;
-  width: 100%;
+  padding: .1em 1em;
 
   .message {
     border: 0;
@@ -43,9 +38,12 @@
 
 .site-mission {
   font-family: $header-font-family;
+  margin-top: 1em;
 
   .message {
+    background-color: rgba(255, 255, 255, .4);
     font-size: 1.2em;
+    padding: 1em;
 
     p {
       font-size: 1em;
@@ -54,17 +52,18 @@
   }
 
   .opening-quote {
-    left: -.32em;
+    left: .65em;
+    top: 1em;
   }
 }
 
 @media (min-width: 768px) {
   .site-mission .message {
     font-size: 1.5em;
-  }
 
-  .text-overlay {
-    bottom: 2em;
+    p {
+      text-align: justify;
+    }
   }
 }
 
@@ -72,19 +71,10 @@
   .site-mission .message {
     font-size: 2em;
   }
-
-  .text-overlay {
-    bottom: 3em;
-  }
 }
 
 @media (min-width: 1200px) {
   .site-mission .message {
-    font-size: 2.3em;
-    margin-top: 1.5em;
-  }
-
-  .text-overlay {
-    bottom: 3em;
+    font-size: 1.9em;
   }
 }

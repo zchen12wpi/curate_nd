@@ -65,7 +65,7 @@ body {
   background-image: none;
   border-top: 0;
   margin: 0;
-  padding-bottom: 1em;
+  padding-bottom: 7px;
 
   .row {
     padding: .5em .5em 0;
@@ -123,11 +123,11 @@ $logo-height: 48;
 
 .site-search {
   display: inline-block;
-  margin-bottom: 1em;
+  margin-bottom: 7px;
   width: 100%;
 
   .search-form {
-    margin: 0;
+    margin: 0 0 3px;
     width: 100%;
   }
 }
@@ -154,50 +154,6 @@ $logo-height: 48;
 
   .search-icon {
     height: 100%;
-  }
-}
-
-.site-actions {
-  display: inline-block;
-  float: right;
-  margin: 0;
-  padding: 0;
-
-  .dropdown-menu {
-    border-radius: 0;
-    min-width: 168px;
-  }
-
-  .btn {
-    background-color: $official-gold;
-    background-image: none;
-    border-color: $official-gold-accent;
-    border-radius: 0;
-    border-width: 0 0 2px;
-    color: $official-blue;
-    font-weight: bold;
-    letter-spacing: .1em;
-    text-shadow: none;
-    text-transform: uppercase;
-  }
-
-  .caret {
-    border-top-color: $official-blue;
-  }
-
-  .dropdown-toggle,
-  .btn-group.open .btn-primary.dropdown-toggle {
-    background-color: $official-gold;
-  }
-}
-
-@media (min-width: 768px) {
-  .site-actions {
-    padding: 0;
-  }
-
-  .site-search .search-form {
-    margin: 0;
   }
 }
 
@@ -248,13 +204,6 @@ $logo-height: 48;
   }
 }
 
-// FAQs
-.curatend-faqs {
-  dd {
-    margin-bottom: 1rem;
-  }
-}
-
 // Fix whitespace for abstract text on show pages
 .attribute.abstract {
   white-space: pre-line;
@@ -268,7 +217,7 @@ $logo-height: 48;
 
 // Footer formatting
 .page-footer {
-  padding: 1em 0 4em;
+  padding: 1em 1em 4em;
   text-align: left;
 
   .footer-right {
@@ -289,6 +238,7 @@ $logo-height: 48;
     padding: 0;
   }
 }
+
 @media (max-width: 767px) {
   .page-footer {
     .footer-right {

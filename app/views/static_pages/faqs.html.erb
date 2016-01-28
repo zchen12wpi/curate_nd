@@ -1,155 +1,181 @@
-<% content_for :main_column_class, 'span8 offset2' %>
-<% content_for :page_title, construct_page_title('FAQs') %>
-<% content_for :page_header do %>
-<h1 class="center">CurateND FAQ</h1>
-<% end %>
+<%
+  content_for :page_title, construct_page_title('FAQs')
+  content_for :page_main_class, 'faq'
+%>
 
-<article class="curatend-faqs">
+<h1 class="curate-nd-faq-title">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="faq-title" viewBox="0 0 142 80" preserveAspectRatio="xMinYMin meet">
+    <path fill="#001f42" d="M18.414,63.26h-8.4V16.462h31.979v7.8H18.414v11.159h20.699v7.8H18.414V63.26z"/>
+    <path fill="#001f42" d="M59.333,15.862h9.839l17.04,47.397h-9.06l-3.66-10.619H55.014l-3.66,10.619h-9.06L59.333,15.862z M61.733,32.182l-4.38,13.379h13.799l-4.38-13.379l-2.52-7.92L61.733,32.182z"/>
+    <path fill="#001f42" d="M59.333,15.862h9.839l17.04,47.397h-9.06l-3.66-10.619H55.014l-3.66,10.619h-9.06L59.333,15.862z M61.733,32.182l-4.38,13.379h13.799l-4.38-13.379l-2.52-7.92L61.733,32.182z"/>
+    <path fill="#001f42" d="M123.413,63.26l11.279,3.84v8.82l-32.279-13.14c-8.58-3.12-12.299-11.46-12.299-22.919c0-14.76,6.18-24.239,20.999-24.239c14.82,0,21,9.479,21,24.239c0,11.039-3.48,19.079-11.34,22.499v0.06L123.413,63.26z M98.633,39.861c0,8.879,2.46,16.439,12.479,16.439c10.02,0,12.419-7.561,12.419-16.439c0-8.88-2.399-16.439-12.419-16.439C101.093,23.422,98.633,30.981,98.633,39.861z"/>
+    <text fill="transparent" transform="matrix(1.6 0 0 1 1 63.3)" font-size="60" letter-spacing="1">FAQ</text>
+  </svg>
+</h1>
+
+<div class="faq-lead">
   <p>CurateND is a preservation repository managed by the Hesburgh Libraries of Notre Dame.</p>
+</div>
+
+<nav class="site-feature-navigation">
+  <div class="feature-navigation-wrapper">
+    <ul class="feature-navigation">
+      <li class="feature-link-wrapper"><a class="feature-link" href="#help">Help</a></li>
+      <li class="feature-link-wrapper"><a class="feature-link" href="#getting-started">Getting Started</a></li>
+      <li class="feature-link-wrapper"><a class="feature-link" href="#common-questions">Common Questions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="faq-wrapper">
+  <article class="curate-nd-faqs">
+    <h2 id="help">Help</h2>
     <ul>
       <li>Questions? Contact us by phone <a href="tel:5746316258">(574) 631-6258</a> or email
-        <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Hello') %></li>
-        <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
+      <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Hello') %></li>
+      <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
     </ul>
 
-  <h2><%= link_to 'Governing policies', policies_path %></h2>
-  <ul>
-    <li><%= link_to 'CurateND Mission', named_policy_path('mission') %></li>
-    <li><%= link_to 'CurateND Content in Scope Policy', named_policy_path('content') %></li>
-    <li><%= link_to 'Designated Communities Policy', named_policy_path('designated-communities') %></li>
-    <li><%= link_to 'General Support Policy for Depositors', named_policy_path('support') %></li>
-  </ul>
+    <h2 id="policies"><%= link_to 'Governing policies', policies_path %></h2>
+    <ul>
+      <li><%= link_to 'CurateND Mission', named_policy_path('mission') %></li>
+      <li><%= link_to 'CurateND Content in Scope Policy', named_policy_path('content') %></li>
+      <li><%= link_to 'Designated Communities Policy', named_policy_path('designated-communities') %></li>
+      <li><%= link_to 'General Support Policy for Depositors', named_policy_path('support') %></li>
+    </ul>
 
-  <h2>Help Getting Started</h2>
-  <ul>
-    <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">How do I set up my account?</a></li>
-    <li><a href="https://docs.google.com/document/d/1Prr8vto_3xXfk4Ki_S1lL2XJi6yKI-dyTLA33dXZ5hA/pub">How do I deposit a work?</a></li>
-    <li><a href="https://docs.google.com/a/nd.edu/document/d/1JwZ6NXduQmsSJi5c8CnlQzkYeAX03adsgY0q5diy-B0/pub">How do I relate a work?</a></li>
-    <li><a href="https://docs.google.com/document/d/1N2itt5_9ZraokPqvbC_Dau2KVPdkonlcPAwqF80bFqw/pub">How do I delete a work?</a></li>
-    <li><a href="https://docs.google.com/a/nd.edu/document/d/1fV4XoImyLFxMoUC5t2fIi0_4Ym5mPCyudyhMGbffYNs/pub">How do I create a collection?</a></li>
-    <li><a href="https://docs.google.com/document/d/1ZCHnGU2h2fRmxUtLOBfOjdqBCOG9abAcQrS_Dm34KbY/pub">How do I update my user profile?</a></li>
-    <li><a href="https://docs.google.com/a/nd.edu/document/d/10gJ2924B9LtMoG9FpKNZXGgGO1cSyxq1mvLI1Yolst8/pub">How do I assign a delegate?</a></li>
-    <li><a href="https://docs.google.com/document/d/1qDUmRHcGaCurbWZuMqZXR4X1SWVABFVvn-miLvPHMGo/pub">How do I create a group?</a></li>
-  </ul>
+    <h2 id="getting-started">Getting Started</h2>
+    <ul>
+      <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">How do I set up my account?</a></li>
+      <li><a href="https://docs.google.com/document/d/1Prr8vto_3xXfk4Ki_S1lL2XJi6yKI-dyTLA33dXZ5hA/pub">How do I deposit a work?</a></li>
+      <li><a href="https://docs.google.com/a/nd.edu/document/d/1JwZ6NXduQmsSJi5c8CnlQzkYeAX03adsgY0q5diy-B0/pub">How do I relate a work?</a></li>
+      <li><a href="https://docs.google.com/document/d/1N2itt5_9ZraokPqvbC_Dau2KVPdkonlcPAwqF80bFqw/pub">How do I delete a work?</a></li>
+      <li><a href="https://docs.google.com/a/nd.edu/document/d/1fV4XoImyLFxMoUC5t2fIi0_4Ym5mPCyudyhMGbffYNs/pub">How do I create a collection?</a></li>
+      <li><a href="https://docs.google.com/document/d/1ZCHnGU2h2fRmxUtLOBfOjdqBCOG9abAcQrS_Dm34KbY/pub">How do I update my user profile?</a></li>
+      <li><a href="https://docs.google.com/a/nd.edu/document/d/10gJ2924B9LtMoG9FpKNZXGgGO1cSyxq1mvLI1Yolst8/pub">How do I assign a delegate?</a></li>
+      <li><a href="https://docs.google.com/document/d/1qDUmRHcGaCurbWZuMqZXR4X1SWVABFVvn-miLvPHMGo/pub">How do I create a group?</a></li>
+    </ul>
 
-  <h2>Frequently Asked Questions</h3>
-  <% contact_curatend_support = link_to 'contact CurateND support', new_help_request_path, class: 'help-report-problem request-help' %>
-  <dl>
-    <dt>What are persistent URLs?</dt>
-    <dd>
-      A persistent URL is a URL that does not break.
-      It is expected to work and return documents from CurateND for a long time, where a “long time” is more than ten years.
-    </dd>
+    <h2 id="common-questions">Common Questions</h3>
+    <% contact_curatend_support = link_to 'contact CurateND support', new_help_request_path, class: 'help-report-problem request-help' %>
+    <dl>
+      <dt>What are persistent URLs?</dt>
+      <dd>
+        A persistent URL is a URL that does not break.
+        It is expected to work and return documents from CurateND for a long time, where a &ldquo;long time&rdquo; is more than ten years.
+      </dd>
 
-    <dt>What is a DOI?</dt>
-    <dd>
-      This is an acronym for <em>digital object identifier</em>, and it is a long-term identifier for a work.
-      A DOI can be turned into a persistent URL by prefixing it with <tt>http://dx.doi.org/</tt>.
-      Any item in CurateND that has a value for <b>publisher</b> can be assigned a DOI.
-    </dd>
+      <dt>What is a DOI?</dt>
+      <dd>
+        This is an acronym for <em>digital object identifier</em>, and it is a long-term identifier for a work.
+        A DOI can be turned into a persistent URL by prefixing it with <tt>http://dx.doi.org/</tt>.
+        Any item in CurateND that has a value for <b>publisher</b> can be assigned a DOI.
+      </dd>
 
-    <dt>How long is long term?</dt>
-    <dd>
-      Compared to books, computers are the mere infants on the block, but that said, “long term” when it comes to computers is measured in decades.
-    </dd>
+      <dt>How long is long term?</dt>
+      <dd>
+        Compared to books, computers are the mere infants on the block, but that said, &ldquo;long term&rdquo; when it comes to computers is measured in decades.
+      </dd>
 
-    <dt>What is a Creative Commons license?</dt>
-    <dd>
-      A Creative Commons license is one of a <a href="http://creativecommons.org/licenses/">set of licenses</a> providing others various degrees of permission for use. Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works.
-    </dd>
+      <dt>What is a Creative Commons license?</dt>
+      <dd>
+        A Creative Commons license is one of a <a href="http://creativecommons.org/licenses/">set of licenses</a> providing others various degrees of permission for use.
+        Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works.
+      </dd>
 
-    <dt>How does someone find something that was self-submitted?</dt>
-    <dd>
-      Try searching for your work from inside CurateND itself.
-      You will need to log-in if your work is not visible to the public.
-    </dd>
+      <dt>How does someone find something that was self-submitted?</dt>
+      <dd>
+        Try searching for your work from inside CurateND itself.
+        You will need to log-in if your work is not visible to the public.
+      </dd>
 
-    <dt>How do I load large numbers of collections or files?</dt>
-    <dd>
-      The batch ingest of files is still in development.
-      If you have a large number of files—more than a dozen or so—please <%= contact_curatend_support %>, and we can work with you directly.
-    </dd>
+      <dt>How do I load large numbers of collections or files?</dt>
+      <dd>
+        The batch ingest of files is still in development.
+        If you have a large number of files&mdash;more than a dozen or so&mdash;please <%= contact_curatend_support %>, and we can work with you directly.
+      </dd>
 
-    <dt>Is there a priority list or order for what can be archived?</dt>
-    <dd>
-      The short answer to this question is, “No”.
-      The long answer is, “If you are an individual and you have individual things to contribute, then by all means, please do.
-      If you have many things to contribute, then let’s work together to get started.”
-    </dd>
+      <dt>Is there a priority list or order for what can be archived?</dt>
+      <dd>
+        The short answer to this question is, &ldquo;No&rdquo;.
+        The long answer is, &ldquo;If you are an individual and you have individual things to contribute, then by all means, please do.
+        If you have many things to contribute, then let&rsquo;s work together to get started.&rdquo;
+      </dd>
 
-    <dt>What does preservation mean? Can anyone edit the documents I deposit?</dt>
-    <dd>
-      Preservation means we are concerned about keeping your files intact, now and tomorrow.
-      We keep copies of your files, and we make sure they do not change over time.
-      We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to translate your files into more modern formats. Additionally, we never edit your content. And files are never deleted; new versions are stored alongside the old ones (with some exceptions).
-    </dd>
+      <dt>What does preservation mean? Can anyone edit the documents I deposit?</dt>
+      <dd>
+        Preservation means we are concerned about keeping your files intact, now and tomorrow.
+        We keep copies of your files, and we make sure they do not change over time.
+        We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to translate your files into more modern formats. Additionally, we never edit your content. And files are never deleted; new versions are stored alongside the old ones (with some exceptions).
+      </dd>
 
-    <dt>What is the process for digitizing collections from departments?</dt>
-    <dd>
-      The process will vary from department to department.
-      If you have content that needs digitizing before being added to CurateND, please <%= contact_curatend_support %>.
-    </dd>
+      <dt>What is the process for digitizing collections from departments?</dt>
+      <dd>
+        The process will vary from department to department.
+        If you have content that needs digitizing before being added to CurateND, please <%= contact_curatend_support %>.
+      </dd>
 
-    <dt>Is there a concern that there will be a lot of junk data submitted? Is there a content review?</dt>
-    <dd>
-      Yes, there is a review process.
-      Content that is deposited into CurateND is examined for various characteristics such as completeness and academic integrity.
-    </dd>
+      <dt>Is there a concern that there will be a lot of junk data submitted? Is there a content review?</dt>
+      <dd>
+        Yes, there is a review process.
+        Content that is deposited into CurateND is examined for various characteristics such as completeness and academic integrity.
+      </dd>
 
-    <dt>How can I keep a work private, but still allow collaborators outside campus to view it?</dt>
-    <dd>
-      For now outside collaborators are not able to do anything except read public content from the repository.
-    </dd>
+      <dt>How can I keep a work private, but still allow collaborators outside campus to view it?</dt>
+      <dd>
+        For now outside collaborators are not able to do anything except read public content from the repository.
+      </dd>
 
-    <dt>Is there a work type for unpublished materials?</dt>
-    <dd>
-      No, items in the repository are centered around specific formats such as articles, books, data sets, collections, etc.
-      Pick the format that most closely matches your unpublished materials when depositing them.
-    </dd>
+      <dt>Is there a work type for unpublished materials?</dt>
+      <dd>
+        No, items in the repository are centered around specific formats such as articles, books, data sets, collections, etc.
+        Pick the format that most closely matches your unpublished materials when depositing them.
+      </dd>
 
-    <dt>Can anyone outside of ND deposit works?</dt>
-    <dd>No.</dd>
+      <dt>Can anyone outside of ND deposit works?</dt>
+      <dd>No.</dd>
 
-    <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
-    <dd>
-      As long as the person retains a NetID, they have the ability to view private content and to upload items to CurateND.
-      Everyone in the world always has the ability to read public content in CurateND.
-    </dd>
+      <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
+      <dd>
+        As long as the person retains a NetID, they have the ability to view private content and to upload items to CurateND.
+        Everyone in the world always has the ability to read public content in CurateND.
+      </dd>
 
-    <dt>Can one search by academic department?</dt>
-    <dd>
-      No, not yet.
-    </dd>
+      <dt>Can one search by academic department?</dt>
+      <dd>
+        No, not yet.
+      </dd>
 
-    <dt>Can one export a profile page?</dt>
-    <dd>
-      No, this is not a feature of the repository.
-    </dd>
+      <dt>Can one export a profile page?</dt>
+      <dd>
+        No, this is not a feature of the repository.
+      </dd>
 
-    <dt>Will CurateND be indexed by search engines?</dt>
-    <dd>
-      Yes.
-    </dd>
+      <dt>Will CurateND be indexed by search engines?</dt>
+      <dd>
+        Yes.
+      </dd>
 
-    <dt>What is the difference between an article and a document?</dt>
-    <dd>
-      An article is a type of document.
-      Other types of documents may include a poster, an image, a spreadsheet, etc.
-    </dd>
+      <dt>What is the difference between an article and a document?</dt>
+      <dd>
+        An article is a type of document.
+        Other types of documents may include a poster, an image, a spreadsheet, etc.
+      </dd>
 
-    <dt>Can I put links to my CurateND profile page on other webpages?</dt>
-    <dd>
-      Yes, please do. The URL to your profile page is a persistent URL.
-    </dd>
+      <dt>Can I put links to my CurateND profile page on other webpages?</dt>
+      <dd>
+        Yes, please do. The URL to your profile page is a persistent URL.
+      </dd>
 
-    <dt>Can contributors outside Notre Dame create their own researcher profile?</dt>
-    <dd>
-      No, not at this time.
-    </dd>
+      <dt>Can contributors outside Notre Dame create their own researcher profile?</dt>
+      <dd>
+        No, not at this time.
+      </dd>
 
-    <dt>Is research done at the university property of the university or researcher?</dt>
-    <dd>
-      It depends on the exact situation, but in general faculty research output is the property of the author.
-    </dd>
-  </dl>
-</article>
+      <dt>Is research done at the university property of the university or researcher?</dt>
+      <dd>
+        It depends on the exact situation, but in general faculty research output is the property of the author.
+      </dd>
+    </dl>
+  </article>
+</div>

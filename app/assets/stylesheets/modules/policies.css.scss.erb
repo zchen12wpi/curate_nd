@@ -1,5 +1,44 @@
 @import 'global-variables';
 
+.page-main.policies {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-bottom: 1px solid $gray-faint;
+  padding-top: 1em;
+}
+
+.policies-page-header {
+  padding: 1em;
+  text-align: center;
+
+  .svg-title {
+    margin: 0 auto;
+    max-width: 14em;
+    padding: 0 2em;
+  }
+}
+
+.curatend-policies {
+  background-color: white;
+  border: 1px solid $gray-faint;
+  box-sizing: border-box;
+  margin: 2em auto 0;
+  max-width: 33em;
+  padding: 0 1em;
+}
+
+@media (min-width: 400px) {
+  .curatend-policies {
+    padding: 1em 2em 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .curatend-policies {
+    padding: 3em 4em 1em;
+  }
+}
+
 .policy-list {
   margin-bottom: 4em;
 
@@ -11,7 +50,7 @@
 
   .policy-heading {
     line-height: 1.4;
-    padding-bottom: .3em;
+    padding-bottom: 1em;
   }
 
   .effective-date {
