@@ -62,8 +62,10 @@ class Citation
   def doi
     v = try_fields([:doi, :identifier])
     return nil if v.nil?
+    if v.respond_to?(:select)
     # try to only keep dois
-    v = v.select { |id| id =~ /\A[^0-9]*?10\./ }
+      v = v.select { |id| id =~ /\A[^0-9]*?10\./ }.first
+    end
     # remove any doi: prefixes
     v.sub(/\A.*?10/, "10")
   end
