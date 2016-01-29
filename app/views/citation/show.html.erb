@@ -1,8 +1,15 @@
-<% result.each do |style, citation| %>
-<div class="citation" id="<%= style %>">
-  <div class="cite">
-    <%= citation.html_safe %>
-  </div>
-</div>
-<% end %>
+<%
+ content_for :page_title, construct_page_title("#{curation_concern.title} // Citation")
+ content_for :page_header, content_tag('h1', "Cite &ldquo;#{curation_concern.title}&rdquo;".html_safe)
+%>
 
+<section id="citations">
+<% result.each do |style, citation| %>
+  <article class="citation" class="<%= style %>">
+    <h3><%= citation_lable(style) %></h3>
+    <p class="lead">
+      <cite><%= citation.html_safe %></cite>
+    </p>
+  </article>
+<% end %>
+</section>

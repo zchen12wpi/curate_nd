@@ -18,6 +18,13 @@ class CitationController < ApplicationController
   end
 
   STYLES = [:apa, :mla, :chicago, :harvard, :vancouver]
+  HUMAN_READABLE_STYLE_NAMES = {
+    apa: 'APA',
+    mla: 'MLA',
+    chicago: 'Chicago',
+    harvard: 'Harvard',
+    vancouver: 'Vancouver'
+  }
 
   helper_method :result
   attr_accessor :result
@@ -32,5 +39,10 @@ class CitationController < ApplicationController
 
     render
   end
+
+  def citation_lable(style)
+    HUMAN_READABLE_STYLE_NAMES[style]
+  end
+  helper_method :citation_lable
 end
 
