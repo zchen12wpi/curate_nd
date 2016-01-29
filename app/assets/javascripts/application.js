@@ -16,6 +16,7 @@
 //
 //= require blacklight/blacklight
 //= require curate
+//= require citation_modal
 //= require jquery.sticky
 //= require jquery.colorbox
 

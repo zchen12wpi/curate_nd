@@ -16,8 +16,9 @@
   <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: false %>
 <% end %>
 
-<% if can?(:edit, curation_concern) %>
-  <div class="form-actions">
+<div class="form-actions">
+  <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn btn-primary citation-modal-js' %>
+  <% if can?(:edit, curation_concern) %>
     <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-primary' %>
-  </div>
-<% end %>
+  <% end %>
+</div>

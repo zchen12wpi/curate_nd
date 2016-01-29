@@ -3,10 +3,10 @@
  content_for :page_header, content_tag('h1', "Cite &ldquo;#{curation_concern.title}&rdquo;".html_safe)
 %>
 
-<section id="citations">
+<section id="citations" class="citation-listing">
 <% result.each do |style, citation| %>
   <article class="citation" class="<%= style %>">
-    <h3><%= citation_lable(style) %></h3>
+    <h2><%= citation_lable(style) %></h2>
     <p class="lead">
       <cite><%= citation.html_safe %></cite>
     </p>
