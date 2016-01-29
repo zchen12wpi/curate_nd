@@ -17,8 +17,7 @@ class CitationController < ApplicationController
     'app/views/curation_concern/base/unauthorized'
   end
 
-  STYLES = [:apa, :mla, :chicago, :harvard, :vancouver]
-  HUMAN_READABLE_STYLE_NAMES = {
+  STYLES = {
     apa: 'APA',
     mla: 'MLA',
     chicago: 'Chicago',
@@ -33,7 +32,7 @@ class CitationController < ApplicationController
     @result = {}
     citation = Citation.new(curation_concern)
 
-    STYLES.each do |style|
+    STYLES.keys.each do |style|
       @result[style] = citation.make_citation(style)
     end
 
@@ -41,7 +40,7 @@ class CitationController < ApplicationController
   end
 
   def citation_lable(style)
-    HUMAN_READABLE_STYLE_NAMES[style]
+    STYLES[style]
   end
   helper_method :citation_lable
 end
