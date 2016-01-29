@@ -40,35 +40,63 @@ class Citation
   # the item information we pass to citeproc
   def item
     @item ||= begin
+                show_page = common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url)
                 md = {
                   id: curation_concern.noid,
-                  URL: common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url),
-                  source: common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url),
+                  URL: show_page,
+                  source: show_page,
                   title: curation_concern.title,
                 }
-                if curation_concern.created
-                  begin
-                    md[:issued] = Date.parse(curation_concern.created)
-                  rescue ArgumentError
-                  end
-                end
-                if curation_concern.creator && curation_concern.creator.length > 0
-                  md[:author] = curation_concern.creator.join(" and ")
-                end
-                if curation_concern.publisher && curation_concern.publisher.length > 0
-                  md[:publisher] = curation_concern.publisher.join(", ")
-                end
-                if doi.present?
-                  md[:DOI] = doi
-                end
+                v = date_created
+                md[:issued] = v if v.present?
+                v = creator
+                md[:author] = v if v.present?
+                v = publisher
+                md[:publisher] = v if v.present?
+                v = doi
+                md[:DOI] = v if v.present?
                 CiteProc::Item.new(md)
               end
   end
 
   def doi
-    if curation_concern.identifier
-      curation_concern.identifier.sub(/\A.*?10/, "10")
+    v = try_fields([:doi, :identifier])
+    return nil if v.nil?
+    # try to only keep dois
+    v = v.select { |id| id =~ /\A[^0-9]*?10\./ }
+    # remove any doi: prefixes
+    v.sub(/\A.*?10/, "10")
+  end
+
+  def date_created
+    v = try_fields([:date_created, :created])
+    return nil if v.nil?
+    begin
+      Date.parse(v)
+    rescue ArgumentError
+      # invalid date string
     end
+  end
+
+  def creator
+    v = try_fields([:creator])
+    return nil if v.nil?
+    v.join(" and ")
+  end
+
+  def publisher
+    v = try_fields([:publisher])
+    return nil if v.nil?
+    v.join(", ")
+  end
+
+  def try_fields(fields)
+    fields.each do |field|
+      if curation_concern.respond_to?(field)
+        return curation_concern.send(field)
+      end
+    end
+    nil
   end
 end
 

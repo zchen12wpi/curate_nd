@@ -1,0 +1,8 @@
+<% result.each do |style, citation| %>
+<div class="citation" id="<%= style %>">
+  <div class="cite">
+    <%= citation.html_safe %>
+  </div>
+</div>
+<% end %>
+
