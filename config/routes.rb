@@ -17,6 +17,8 @@ CurateNd::Application.routes.draw do
   }
   curate_for
 
+  get '/show/citation/:id', to: 'citation#show'
+
   namespace :admin do
     constraints CurateND::AdminConstraint do
       get '/', to: 'base#index'
