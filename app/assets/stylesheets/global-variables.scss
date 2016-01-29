@@ -24,6 +24,7 @@ $gray-light:            $grayLight;
 $grayLighter:           #eee !default;
 $gray-lighter:          $grayLighter;
 $gray-lightest:         #efefef;
+$gray-faint:            #f1f1f1;
 $white:                 #fff !default;
 
 
@@ -34,6 +35,7 @@ $blue-dark:             $blueDark;
 $blue:                  $official-blue;
 $blue-light:            lighten($official-blue, 70%);
 $blue-lightest:         lighten($official-blue, 80%);
+$blue-accent:           #7f8e9f;
 $green:                 #46a546 !default;
 $red:                   #9d261d !default;
 $yellow:                $official-gold;
@@ -62,7 +64,7 @@ $serifFontFamily:    'Adobe Garamond Pro', Georgia, serif;
 $serif-font-family:  $serifFontFamily;
 $monoFontFamily:     Monaco, Menlo, Consolas, 'Courier New', monospace !default;
 $mono-font-family:   $monoFontFamily;
-$headerFontFamily:   GalaxiePolarisCondensedBook, 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+$headerFontFamily:   GalaxiePolarisCondensedBook, 'GalaxiePolarisCondensed-Book', 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
 $header-font-family: $headerFontFamily;
 
 $baseFontSize:          14px !default;

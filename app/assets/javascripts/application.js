@@ -22,7 +22,7 @@
 $(function(){
   'use strict';
 
-  $('#more-information').sticky({topSpacing:0});
+  $('.site-feature-navigation').sticky({topSpacing:0});
   $('a[rel=popover]').popover({ html: true, trigger: 'hover' });
   $('a[rel=popover]').click(function() { return false;});
   $('.colorbox').colorbox();

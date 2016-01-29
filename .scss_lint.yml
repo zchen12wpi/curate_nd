@@ -17,7 +17,9 @@ linters:
   QualifyingElement:
     exclude: 'app/assets/stylesheets/style/nd-theme-print.css.scss'
   SelectorDepth:
-    exclude: 'app/assets/stylesheets/modules/admin.css.scss'
+    exclude:
+      - 'app/assets/stylesheets/modules/admin.css.scss'
+      - 'app/assets/stylesheets/modules/site-actions.css.scss'
   SelectorFormat:
     exclude:
       - 'app/assets/stylesheets/layout/positioning.css.scss'

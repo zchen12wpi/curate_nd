@@ -27,11 +27,13 @@
         <% if show_site_search? || show_site_actions? %>
           <div class="action-bar row">
             <div class="span12">
+            <% if show_site_search? %>
               <div class="site-search">
 
-<%= render 'shared/site_search' if show_site_search? %>
+<%= render 'shared/site_search' %>
 
               </div>
+            <% end %>
 
 
               <nav class="site-actions" role="menu">

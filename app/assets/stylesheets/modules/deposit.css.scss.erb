@@ -1,0 +1,42 @@
+@import 'global-variables';
+
+.page-main.deposit-landing-page {
+  background-image: url(<%= asset_path 'bg.png' %>);
+  background-repeat: repeat;
+  border-bottom: 1px solid $gray-faint;
+}
+
+.deposit-landing-page {
+  padding-top: 10px;
+
+  .svg-title {
+    margin: 0 auto;
+    max-width: 14em;
+    padding: 0 2em;
+  }
+
+  .call-to-action {
+    text-align: center;
+  }
+
+  .work-type-listing {
+    background: $white;
+    border: 1px solid $gray-faint;
+    margin-bottom: 1em;
+  }
+}
+
+@media (min-width: 900px) {
+  .deposit-landing-page {
+    padding-top: 28px;
+
+    .call-to-action {
+      margin-bottom: .5em;
+    }
+
+    .work-type-listing {
+      padding: .5em;
+      margin-bottom: 3em;
+    }
+  }
+}

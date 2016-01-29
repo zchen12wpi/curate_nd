@@ -1,5 +1,21 @@
 @import 'global-variables';
 
+.search-term-splash {
+  padding: 1em 1em 0 3.8em;
+  text-indent: -3.8em;
+
+  .search-splash-icon {
+    display: inline-block;
+    margin: 0 .2em 0 0;
+    text-indent: 0;
+    width: 1em;
+
+    .svg {
+      width: 100%;
+    }
+  }
+}
+
 .search-results-list {
   list-style-type: none;
   margin: 0;

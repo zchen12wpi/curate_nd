@@ -9,9 +9,16 @@ class StaticPagesController < ApplicationController
   helper_method :status
 
   def about
+    @hide_title = false;
+    render layout: 'curate_nd_home'
   end
 
   def home
+    render layout: 'curate_nd_home'
+  end
+
+  def contribute
+    @hide_title = false;
     render layout: 'curate_nd_home'
   end
 
@@ -24,13 +31,16 @@ class StaticPagesController < ApplicationController
   end
 
   def faqs
+    @hide_title = false;
+    render layout: 'curate_nd_home'
   end
 
   def policies
     if params[:policyname]
       render 'policies-' + params[:policyname].to_s
     else
-      render 'policies'
+      @hide_title = false;
+      render 'policies', layout: 'curate_nd_home'
     end
   end
 
@@ -41,6 +51,14 @@ class StaticPagesController < ApplicationController
       user: current_user,
       how_can_we_help_you:"#{t('sufia.product_name')} encountered a problem (Error ##{status})."
     )
+  end
+
+  def show_site_search?
+    if params[:action] == 'home'
+      false
+    else
+      true
+    end
   end
 
 end
