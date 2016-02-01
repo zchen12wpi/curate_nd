@@ -4,6 +4,12 @@
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
+<% if can?(:edit, curation_concern) %>
+  <% content_for :page_actions do %>
+    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' %>
+  <% end %>
+<% end %>
+
 <div class="work-attributes">
   <%= render "curation_concern/#{curation_concern.class.model_name.plural}/attributes", curation_concern: curation_concern, with_actions: false %>
 </div>
@@ -15,10 +21,4 @@
   <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
 <% else %>
   <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: false %>
-<% end %>
-
-<% if can?(:edit, curation_concern) %>
-  <div class="form-actions">
-    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-primary' %>
-  </div>
 <% end %>
