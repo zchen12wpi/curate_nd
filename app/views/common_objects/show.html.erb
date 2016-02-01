@@ -20,5 +20,5 @@
 %>
   <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
 <% else %>
-  <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: false %>
+  <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
 <% end %>
