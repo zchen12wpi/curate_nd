@@ -5,8 +5,9 @@
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
-<% if can?(:edit, curation_concern) %>
-  <% content_for :page_actions do %>
+<% content_for :page_actions do %>
+  <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>
+  <% if can?(:edit, curation_concern) %>
     <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn' do %>
       <i class="icon icon-pencil"></i> Edit
     <% end %>

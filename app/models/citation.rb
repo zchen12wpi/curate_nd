@@ -1,73 +1,104 @@
+require 'citeproc'
+require 'csl/styles'
+
 class Citation
   include Rails.application.routes.url_helpers
 
-  attr_reader :curation_concern, :authors, :title, :publishers
+  # maps our internal name to the citeproc style name
+  STYLES = {
+    apa: "apa",
+    mla: "modern-language-association-with-url",
+    chicago: "chicago-fullnote-bibliography",
+    harvard: "harvard1",
+    vancouver: "vancouver"
+  }
 
-  class InvalidCurationConcern < RuntimeError
-    def initialize(url_string)
-      super(url_string)
-    end
-  end
+  attr_reader :curation_concern
 
   def initialize(curation_concern)
     @curation_concern = curation_concern
-    @authors = authors_in_apa
-    @title = title_in_apa
-    @publishers = curation_concern.publisher.join(", ")
   end
 
+  # The view code expects this to return an APA citation
   def to_s
-    to_apa
+    make_citation(:apa)
   end
 
-  def to_apa
-    authors + published_date_in_apa + title + ". " + publishers + ". " + doi_apa
+  # return html formatted citation in the given style
+  def make_citation(style)
+    cp_style = STYLES[style]
+    cp = CiteProc::Processor.new(style: cp_style, format:'html')
+    cp.engine.format = 'html'
+    cp << item
+    result = cp.render(:bibliography, id: item.id, format: 'html')
+    # for some reason render returns a list
+    result.first
   end
 
   private
 
-  def title_in_apa
-    if curation_concern.title.blank?
-      raise InvalidCurationConcern.new("Invalid Title!")
+  # the item information we pass to citeproc
+  def item
+    @item ||= begin
+                show_page = common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url)
+                md = {
+                  id: curation_concern.noid,
+                  URL: show_page,
+                  source: show_page,
+                  title: curation_concern.title,
+                }
+                v = date_created
+                md[:issued] = v if v.present?
+                v = creator
+                md[:author] = v if v.present?
+                v = publisher
+                md[:publisher] = v if v.present?
+                v = doi
+                md[:DOI] = v if v.present?
+                CiteProc::Item.new(md)
+              end
+  end
+
+  def doi
+    v = try_fields([:doi, :identifier])
+    return nil if v.nil?
+    if v.respond_to?(:select)
+    # try to only keep dois
+      v = v.select { |id| id =~ /\A[^0-9]*?10\./ }.first
     end
-    curation_concern.title
+    # remove any doi: prefixes
+    v.sub(/\A.*?10/, "10")
   end
 
-  def authors_in_apa
-    if curation_concern.authors_for_citation.blank?
-      raise InvalidCurationConcern.new("Invalid Author!")
+  def date_created
+    v = try_fields([:date_created, :created])
+    return nil if v.nil?
+    begin
+      Date.parse(v)
+    rescue ArgumentError
+      # invalid date string
     end
-    curation_concern.authors_for_citation.collect {|name| name_format(name.strip) }.to_sentence(:last_word_connector => ', & ', :two_words_connector => ', & ')
   end
 
-  def name_format(name)
-    normalized_name = Namae.parse(name).first
-    "#{normalized_name.family}, #{given_name_in_apa(normalized_name.given)}"
+  def creator
+    v = try_fields([:creator])
+    return nil if v.nil?
+    v.join(" and ")
   end
 
-  def given_name_in_apa(name)
-    initials_arr = name.to_s.split(" ").collect {|x| x.first}
-    initials = ""
-    initials_arr.each do |initial|
-      initials << initial + "."
+  def publisher
+    v = try_fields([:publisher])
+    return nil if v.nil?
+    v.join(", ")
+  end
+
+  def try_fields(fields)
+    fields.each do |field|
+      if curation_concern.respond_to?(field)
+        return curation_concern.send(field)
+      end
     end
-    initials
-  end
-
-  def published_date_in_apa
-    if curation_concern.created.blank?
-      return " "
-    end
-    date = Date.parse(curation_concern.created)
-    date.strftime("(%Y, %B %d). ")
-  end
-
-  def doi_apa
-    curation_concern.identifier.nil? ? no_doi : curation_concern.identifier
-  end
-
-  def no_doi
-    "Retrieved from #{File.join(Rails.configuration.application_root_url, common_object_path(curation_concern.to_param))}"
+    nil
   end
 end
 

@@ -17,6 +17,7 @@ CurateNd::Application.routes.draw do
   }
   curate_for
 
+
   namespace :admin do
     constraints CurateND::AdminConstraint do
       get '/', to: 'base#index'
@@ -62,6 +63,8 @@ CurateNd::Application.routes.draw do
   end
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+
+  get '/show/citation/:id', to: 'citation#show', as: 'citation'
 
   get 'get_started', to: redirect('deposit')
   get 'deposit', to: 'classify_concerns#new'
