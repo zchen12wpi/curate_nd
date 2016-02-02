@@ -1,6 +1,14 @@
+<% content_for :page_title, construct_page_title(curation_concern.title, 'Show') if curation_concern.title %>
 <% content_for :page_header do %>
   <h1><%= richly_formatted_text(curation_concern.to_s) %></h1>
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn btn-primary citation-modal-js' %>
+  <% if can?(:edit, curation_concern) %>
+    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' %>
+  <% end %>
 <% end %>
 
 <div class="work-attributes">
@@ -13,12 +21,5 @@
 %>
   <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
 <% else %>
-  <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: false %>
+  <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
 <% end %>
-
-<div class="form-actions">
-  <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn btn-primary citation-modal-js' %>
-  <% if can?(:edit, curation_concern) %>
-    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-primary' %>
-  <% end %>
-</div>

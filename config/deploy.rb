@@ -344,7 +344,6 @@ task :pre_production do
   # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
   # before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
   before 'bundle:install', 'solr:configure'
-  before 'bundle:install', 'und:puppet_server', 'und:puppet_worker', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
