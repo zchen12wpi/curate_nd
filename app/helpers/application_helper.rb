@@ -15,4 +15,8 @@ module ApplicationHelper
       false
     end
   end
+
+  def include_rich_text_editor?
+    (params[:action] == 'edit' || params[:action] == 'new' ) && params[:controller].start_with?('curation_concern')
+  end
 end

@@ -13,7 +13,7 @@
         <legend>This is what we need to know about your Finding Aid</legend>
         <%= f.input :title, input_html: { class: 'input-xxlarge'}, required: true %>
         <%= f.input :creator, input_html: { class: 'input-xlarge', placeholder: 'George Washington' }, required: true %>
-        <%= f.input :abstract, input_html: { class: 'input-xxxlarge', rows: '9' }, as: :text, required: true %>
+        <%= f.input :abstract, input_html: { class: 'input-xxxlarge rich-textarea-js', rows: '9' }, as: :text, required: true %>
         <%= f.hidden_field :visibility, value: 'open' %>
       </fieldset>
     <% end %>

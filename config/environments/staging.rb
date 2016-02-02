@@ -36,7 +36,7 @@ CurateNd::Application.configure do
   config.assets.debug = true
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( modernizr.js )
+  config.assets.precompile += %w( modernizr.js rich_text_editor.js simplemde.min.css )
 
   config.application_root_url = "https://localhost"
 
