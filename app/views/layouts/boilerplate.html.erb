@@ -11,8 +11,10 @@
     <%= csrf_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'screen, print' %>
+    <%= stylesheet_link_tag 'simplemde.min', media: 'screen, print' if include_rich_text_editor? %>
     <%= javascript_include_tag 'modernizr' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'rich_text_editor' if include_rich_text_editor? %>
     <script type="text/javascript" src="//d39af2mgp1pqhg.cloudfront.net/widget-details.js"></script>
     <%= render :partial => '/ga', :formats => [:html] -%>
   </head>
