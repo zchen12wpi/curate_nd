@@ -4,22 +4,25 @@
   background-image: url(<%= asset_path 'bg.png' %>);
   background-repeat: repeat;
   border-bottom: 1px solid $gray-faint;
-  padding-top: 1em;
 }
 
-.curate-nd-faq-title {
-  margin: 0 auto;
-  width: 4em;
+.faq-page-header {
+  padding: 1em;
+  text-align: center;
+
+  .svg-title {
+    font-size: 16px;
+    margin: 0 auto -3px;
+    max-width: 211px; // 72px tall SVG character
+    padding: 0 2em;
+  }
 }
 
-.faq-lead {
-  color: $official-blue;
-  padding-bottom: 1.5em;
-
-  p {
-    font-size: 1.5em;
-    text-align: center;
+@media (max-width: 550px) {
+  .faq-page-header h2 {
+    font-size: 20px;
     line-height: 1.2;
+    margin-bottom: 0;
   }
 }
 
@@ -72,13 +75,6 @@
 @media (min-width: 400px) {
   .curate-nd-faqs {
     padding: 0 2em 2em;
-  }
-
-  .curate-nd-faq-title {
-    width: 6em;
-  }
-
-  .curate-nd-faqs {
     margin-bottom: 2em;
   }
 }
@@ -86,13 +82,12 @@
 @media (min-width: 768px) {
   .curate-nd-faqs {
     padding: 0 4em 4em;
-  }
-
-  .curate-nd-faq-title {
-    width: 8em;
-  }
-
-  .curate-nd-faqs {
     margin-bottom: 6em;
+  }
+}
+
+@media (min-width: 900px) {
+  .faq-page-header {
+    padding: 32px 1em;
   }
 }
