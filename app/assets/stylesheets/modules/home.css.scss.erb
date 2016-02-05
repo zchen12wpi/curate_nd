@@ -29,31 +29,23 @@
   }
 }
 
-$logo-width: 221;
-$logo-height: 48;
-
 .logo-wrapper {
-  font-size: 1em;
   margin: 0 auto 1em;
-  padding: 0;
-  padding-top: percentage(($logo-height / $logo-width * 60) / 100);
-  position: relative;
-  width: 60%;
+  padding: 0 1em;
+  max-width: 129px; // 28px tall SVG character
+}
 
-  .curate-nd-logo {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+@media (min-width: 450px){
+  .logo-wrapper {
+    max-width: 221px; // 48px tall SVG character
+    padding: 1em 2em;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 40em){
   .logo-wrapper {
-    margin-bottom: 3em;
-    padding-top: percentage(($logo_height / $logo_width * 40) / 100);
-    width: 39%;
+    max-width: 40em; // Same width as search box
+    padding: 3em 0 1em;
   }
 }
 
