@@ -13,8 +13,7 @@
   .svg-title {
     font-size: 16px;
     margin: 0 auto;
-    max-width: 540px; // 107 px tall for SVG container
-    padding: 0 2em;
+    max-width: 165px; // 22px tall SVG character
   }
 
   .call-to-action {
@@ -25,6 +24,12 @@
     background: $white;
     border: 1px solid $gray-faint;
     margin-bottom: 1em;
+  }
+}
+
+@media (min-width: 768px) {
+  .deposit-landing-page .svg-title {
+    max-width: 540px; // 72px tall SVG character
   }
 }
 
