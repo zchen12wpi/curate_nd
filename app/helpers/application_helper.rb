@@ -16,6 +16,10 @@ module ApplicationHelper
     end
   end
 
+  def display_citation_generation?
+    Rails.env.ends_with? 'production'
+  end
+
   def include_rich_text_editor?
     (['create', 'edit', 'new'].include? params[:action]) && params[:controller].start_with?('curation_concern')
   end
