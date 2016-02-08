@@ -4,17 +4,16 @@
   background-image: url(<%= asset_path 'bg.png' %>);
   background-repeat: repeat;
   border-bottom: 1px solid $gray-faint;
-  padding-top: 1em;
 }
 
 .policies-page-header {
-  padding: 1em;
+  padding: 1em 1em 0;
   text-align: center;
 
   .svg-title {
+    font-size: 16px;
     margin: 0 auto;
-    max-width: 14em;
-    padding: 0 2em;
+    max-width: 175px; // 22px tall SVG character
   }
 }
 
@@ -34,6 +33,10 @@
 }
 
 @media (min-width: 768px) {
+  .policies-page-header {
+    padding-top: 32px;
+  }
+
   .curatend-policies {
     padding: 3em 4em 1em;
   }
@@ -59,6 +62,10 @@
 }
 
 @media (min-width: 768px) {
+  .policies-page-header .svg-title {
+    max-width: 572px; // 72px tall SVG character
+  }
+
   .policy-header {
     position: relative;
 

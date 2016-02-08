@@ -7,12 +7,13 @@
 }
 
 .deposit-landing-page {
-  padding-top: 10px;
+  padding: 1em 0;
+  text-align: center;
 
   .svg-title {
+    font-size: 16px;
     margin: 0 auto;
-    max-width: 14em;
-    padding: 0 2em;
+    max-width: 165px; // 22px tall SVG character
   }
 
   .call-to-action {
@@ -26,9 +27,15 @@
   }
 }
 
+@media (min-width: 768px) {
+  .deposit-landing-page .svg-title {
+    max-width: 540px; // 72px tall SVG character
+  }
+}
+
 @media (min-width: 900px) {
   .deposit-landing-page {
-    padding-top: 28px;
+    padding-top: 32px;
 
     .call-to-action {
       margin-bottom: .5em;

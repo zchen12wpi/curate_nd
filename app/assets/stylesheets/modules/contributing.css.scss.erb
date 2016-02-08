@@ -6,13 +6,18 @@
   border-bottom: 1px solid $gray-faint;
 }
 
-.contributing {
-  header {
+.contributing-header {
+  padding: 1em;
+  text-align: center;
+
+  .svg-title {
+    font-size: 16px;
     margin: 0 auto;
-    max-width: 74em;
-    padding: 2em 1em 0;
-    text-align: center;
+    max-width: 273px; // 22px tall SVG character
   }
+}
+
+.contributing {
 
   article {
     background-color: $white;
@@ -43,7 +48,7 @@
 @media (min-width: 47em) {
   .contributing {
     header {
-      padding: 3em 0 2em;
+      padding: 32px 0;
     }
 
     article {
@@ -54,5 +59,11 @@
     .call-to-action {
       font-size: 2em;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .contributing-header .svg-title {
+    max-width: 895px; // 72px tall SVG character
   }
 }
