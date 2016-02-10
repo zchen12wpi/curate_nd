@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def display_citation_generation?
-    Rails.env.ends_with? 'production'
+    !(Rails.env.ends_with? 'production')
   end
 
   def include_rich_text_editor?
