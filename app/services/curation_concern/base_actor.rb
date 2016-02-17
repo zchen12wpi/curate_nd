@@ -76,8 +76,8 @@ module CurationConcern
     end
 
     def attach_file(generic_file, file_to_attach)
-      ActiveSupport::Deprecation.warn("removing #{self.class}#attach_file, use CurationConcern.attach_file instead")
-      CurationConcern.attach_file(generic_file, user, file_to_attach)
+      ActiveSupport::Deprecation.warn("removing #{self.class}#attach_file, use CurationConcern::Utility.attach_file instead")
+      CurationConcern::Utility.attach_file(generic_file, user, file_to_attach)
     end
 
 

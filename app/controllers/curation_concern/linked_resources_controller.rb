@@ -53,7 +53,7 @@ class CurationConcern::LinkedResourcesController < CurationConcern::BaseControll
 
   include Morphine
   register :actor do
-    CurationConcern.actor(curation_concern, current_user, params[:linked_resource])
+    CurationConcern::Utility.actor(curation_concern, current_user, params[:linked_resource])
   end
 
 end

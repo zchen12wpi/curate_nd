@@ -30,7 +30,7 @@ module CurationConcern
       title ||= file.original_filename if file
       curation_concern.label = title
       if file
-        CurationConcern.attach_file(curation_concern, user, file)
+        CurationConcern::Utility.attach_file(curation_concern, user, file)
       else
         true
       end
@@ -57,7 +57,7 @@ module CurationConcern
         title = attributes[:title]
         title ||= File.basename(cloud_resource)
         curation_concern.label=title
-        CurationConcern.attach_file(curation_concern, user, cloud_resource,File.basename(cloud_resource))
+        CurationConcern::Utility.attach_file(curation_concern, user, cloud_resource,File.basename(cloud_resource))
         File.delete(cloud_resource)
       end
     rescue ActiveFedora::RecordInvalid

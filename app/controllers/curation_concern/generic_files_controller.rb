@@ -92,6 +92,6 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
   end
 
   register :actor do
-    CurationConcern.actor(curation_concern, current_user, attributes_for_actor)
+    CurationConcern::Utility.actor(curation_concern, current_user, attributes_for_actor)
   end
 end

@@ -32,7 +32,7 @@ module CurationConcern
     protected
 
     def assign_pid
-      curation_concern.inner_object.pid = CurationConcern.mint_a_pid
+      curation_concern.inner_object.pid = CurationConcern::Utility.mint_a_pid
     end
 
     def add_or_update_editors_and_groups(editors, groups, action)
@@ -124,7 +124,7 @@ module CurationConcern
       )
       generic_file.embargo_release_date = curation_concern.embargo_release_date
       generic_file.visibility = visibility
-      CurationConcern.attach_file(generic_file, user, file)
+      CurationConcern::Utility.attach_file(generic_file, user, file)
     end
 
     def attach_cloud_resource(cloud_resource)
@@ -140,7 +140,7 @@ module CurationConcern
         )
         generic_file.embargo_release_date = curation_concern.embargo_release_date
         generic_file.visibility = visibility
-        CurationConcern.attach_file(generic_file, user, cloud_resource,File.basename(cloud_resource))
+        CurationConcern::Utility.attach_file(generic_file, user, cloud_resource,File.basename(cloud_resource))
         File.delete(cloud_resource)
       end
     rescue ActiveFedora::RecordInvalid

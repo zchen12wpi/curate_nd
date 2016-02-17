@@ -11,12 +11,12 @@ shared_examples 'is_a_curation_concern_actor' do |curation_concern_class, curati
   let(:person) { FactoryGirl.create(:person) }
 
   subject {
-    CurationConcern.actor(curation_concern, user, attributes)
+    CurationConcern::Utility.actor(curation_concern, user, attributes)
   }
 
   describe '#create' do
     let(:contributors) { ["Mark Twain"] }
-    let(:curation_concern) { curation_concern_class.new(pid: CurationConcern.mint_a_pid )}
+    let(:curation_concern) { curation_concern_class.new(pid: CurationConcern::Utility.mint_a_pid )}
 
     context 'valid attributes' do
 

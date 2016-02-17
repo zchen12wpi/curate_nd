@@ -109,7 +109,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
   protected :after_destroy_response
 
   register :actor do
-    CurationConcern.actor(curation_concern, current_user, attributes_for_actor)
+    CurationConcern::Utility.actor(curation_concern, current_user, attributes_for_actor)
   end
 
   def attributes_for_actor
