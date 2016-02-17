@@ -6,7 +6,7 @@ require "rails/test_help"
 require "rspec/rails"
 require 'factory_girl'
 require 'capybara/poltergeist'
-Dir["#{spec_directory}/factories/**/*.rb"].each { |f| require f }
+# Dir["#{spec_directory}/factories/**/*.rb"].each { |f| require f }
 Dir["#{spec_directory}/support/**/*.rb"].each { |f| require f }
 
 Capybara.register_driver :poltergeist_debug do |app|
