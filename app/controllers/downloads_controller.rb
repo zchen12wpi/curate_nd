@@ -1,8 +1,39 @@
-require Curate::Engine.root.join("app/controllers/downloads_controller")
+require 'sufia/models/noid'
+
 class DownloadsController
+  include Sufia::Noid # for normalize_identifier method
+  include Hydra::Controller::DownloadBehavior
+  prepend_before_filter :normalize_identifier, except: [:index, :new, :create]
+  with_themed_layout
+
   rescue_from Hydra::AccessDenied, with: :handle_access_denied
 
+  def datastream_to_show
+    super
+  rescue Exception => e
+    if params[:datastream_id] == 'thumbnail'
+      respond_with_default_thumbnail_image
+      return false
+    else
+      raise e
+    end
+  end
+
   protected
+
+  def render_404
+    if params[:datastream_id] == 'thumbnail'
+      respond_with_default_thumbnail_image
+    else
+      super
+    end
+  end
+
+  # Send default thumbnail image
+  def respond_with_default_thumbnail_image
+    image= ActionController::Base.helpers.asset_path("curate/default.png", type: :image)
+    redirect_to image
+  end
 
   def send_content(asset)
     # Because we don't want to proxy thumbnails, as per Don's suggestion.

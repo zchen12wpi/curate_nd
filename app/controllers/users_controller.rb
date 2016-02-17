@@ -1,5 +1,23 @@
-require Curate::Engine.root.join('app/controllers/users_controller.rb')
-class UsersController
+class UsersController < ApplicationController
+  include Curate::ThemedLayoutController
   with_themed_layout 'user_profile_layout'
-end
 
+  def edit
+    render 'registrations/edit'
+  end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.find(params[:id])
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  helper_method :resource_name, :resource, :devise_mapping
+
+end
