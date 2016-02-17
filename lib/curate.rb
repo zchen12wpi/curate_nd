@@ -1,6 +1,6 @@
 require 'sufia/models'
 require 'chronic'
-require "curate/engine"
+require "curate/active_model_adaptor"
 require "curate/configuration"
 require "curate/date_formatter"
 require "curate/text_formatter"

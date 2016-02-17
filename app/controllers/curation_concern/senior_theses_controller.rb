@@ -1,4 +1,3 @@
-require Curate::Engine.root.join('app/services/curation_concern')
 class CurationConcern::SeniorThesesController < CurationConcern::GenericWorksController
   self.curation_concern_type = SeniorThesis
 

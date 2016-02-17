@@ -4,7 +4,32 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', github: 'ndlib/curate', branch: 'add-administrative-units', ref: 'c4c43f11fe17acf937eb28986f9dd2d80ac6bd88'
+  gem "rails", "~>4.0.2"
+  gem "breach-mitigation-rails"
+  gem 'sufia-models', '~>3.4.0'
+  gem 'hydra-file_characterization', ">= 0.2.3"
+  gem 'hydra-batch-edit', '~> 1.1.1'
+  gem 'hydra-collections', '~> 1.3.0'
+  gem 'morphine'
+  gem 'mini_magick', '~> 3.8'
+  gem 'simple_form', '~> 3.0.1'
+  gem 'active_attr'
+  gem 'bootstrap-datepicker-rails'
+  gem "devise-guests", "~> 0.3"
+  gem 'browser'
+  gem 'breadcrumbs_on_rails'
+  gem 'active_fedora-registered_attributes', '~> 0.2.0'
+  gem 'hydra-remote_identifier', '~> 0.6', '>= 0.6.7'
+  gem 'hydra-derivatives', '~> 0.0.7'
+  gem 'chronic', '>= 0.10.2'
+  gem 'virtus'
+  gem 'rails_autolink'
+  gem 'rdiscount', '~> 2.1.7.1'
+  gem 'rubydora', '~> 1.7.4'
+  gem 'sanitize', '~> 3.0.2'
+  gem 'select2-rails'
+  gem 'httparty'
+  gem 'qa'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
   gem 'orcid', github: 'projecthydra-labs/orcid'

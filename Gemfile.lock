@@ -17,42 +17,6 @@ GIT
       rails (~> 4.0)
 
 GIT
-  remote: git://github.com/ndlib/curate.git
-  revision: c4c43f11fe17acf937eb28986f9dd2d80ac6bd88
-  ref: c4c43f11fe17acf937eb28986f9dd2d80ac6bd88
-  branch: add-administrative-units
-  specs:
-    curate (0.6.6)
-      active_attr
-      active_fedora-registered_attributes (~> 0.2.0)
-      bootstrap-datepicker-rails
-      breach-mitigation-rails
-      breadcrumbs_on_rails
-      browser
-      chronic (>= 0.10.2)
-      devise
-      devise-guests (~> 0.3)
-      httparty
-      hydra-batch-edit (~> 1.1.1)
-      hydra-collections (~> 1.3.0)
-      hydra-derivatives (~> 0.0.7)
-      hydra-file_characterization (>= 0.2.3)
-      hydra-remote_identifier (~> 0.6, >= 0.6.7)
-      locabulary
-      mini_magick (~> 3.8)
-      morphine
-      qa
-      rails (~> 4.0.2)
-      rails_autolink
-      rdiscount (~> 2.1.7.1)
-      rubydora (~> 1.7.4)
-      sanitize (~> 3.0.2)
-      select2-rails
-      simple_form (~> 3.0.1)
-      sufia-models (~> 3.4.0)
-      virtus
-
-GIT
   remote: git://github.com/ndlib/harbinger
   revision: f330a0ead6136f9aadbcd0ada1a927b38cec85cd
   specs:
@@ -671,19 +635,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_attr
+  active_fedora-registered_attributes (~> 0.2.0)
   addressable (~> 2.3.5)
   better_errors
   binding_of_caller
   bootstrap-datepicker-rails
+  breach-mitigation-rails
+  breadcrumbs_on_rails
+  browser
   byebug
   capistrano (~> 2.15)
   capybara (~> 2.4)
+  chronic (>= 0.10.2)
   citeproc-ruby (~> 1.1)
   clamav
   coffee-rails (~> 4.0)
   compass-rails (~> 1.1.2)
   csl-styles (~> 1.0)
-  curate!
   custom_configuration
   database_cleaner
   decent_exposure
@@ -695,6 +664,12 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.0)
   flipper
   harbinger!
+  httparty
+  hydra-batch-edit (~> 1.1.1)
+  hydra-collections (~> 1.3.0)
+  hydra-derivatives (~> 0.0.7)
+  hydra-file_characterization (>= 0.2.3)
+  hydra-remote_identifier (~> 0.6, >= 0.6.7)
   jettywrapper
   jquery-rails
   jshintrb
@@ -706,6 +681,7 @@ DEPENDENCIES
   logstash-logger
   meta_request
   method_locator
+  mini_magick (~> 3.8)
   morphine
   mysql2
   namae
@@ -715,17 +691,26 @@ DEPENDENCIES
   nokogiri (~> 1.6.0)
   orcid!
   poltergeist (~> 1.5)
+  qa
   quiet_assets
+  rails (~> 4.0.2)
+  rails_autolink
   rails_best_practices
   rake
+  rdiscount (~> 2.1.7.1)
   resque-pool
   roboto
   rspec-html-matchers (~> 0.6)
   rspec-its (~> 1.0)
   rspec-rails (~> 3.0)
+  rubydora (~> 1.7.4)
+  sanitize (~> 3.0.2)
   sass-rails (~> 4.0)
+  select2-rails
   sextant
+  simple_form (~> 3.0.1)
   simplecov
+  sufia-models (~> 3.4.0)
   test_after_commit
   therubyracer (= 0.12.1)
   thin
@@ -734,4 +719,5 @@ DEPENDENCIES
   unicode
   unicorn (~> 4.0)
   vcr
+  virtus
   webmock
