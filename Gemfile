@@ -10,12 +10,9 @@ group :default do
   gem 'hydra-file_characterization', ">= 0.2.3"
   gem 'hydra-batch-edit', '~> 1.1.1'
   gem 'hydra-collections', '~> 1.3.0'
-  gem 'morphine'
   gem 'mini_magick', '~> 3.8'
   gem 'simple_form', '~> 3.0.1'
   gem 'active_attr'
-  gem 'bootstrap-datepicker-rails'
-  gem "devise-guests", "~> 0.3"
   gem 'browser'
   gem 'breadcrumbs_on_rails'
   gem 'active_fedora-registered_attributes', '~> 0.2.0'
