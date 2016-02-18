@@ -1,6 +1,6 @@
 require File.expand_path('../../helpers/common_objects_helper', __FILE__)
 class CommonObjectsController < ApplicationController
-  append_view_path(Curate::Engine.root.join('app/views/curation_concern/base'))
+  append_view_path(Rails.root.join('app/views/curation_concern/base'))
   include Hydra::Controller::ControllerBehavior
   layout 'common_objects'
 
