@@ -27,7 +27,14 @@ module CurateNd
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/app/constraints #{config.root}/app/services)
+    config.autoload_paths += %W(
+      #{config.root}/app/builders
+      #{config.root}/app/constraints
+      #{config.root}/app/repository_models
+      #{config.root}/app/repository_datastreams
+      #{config.root}/app/repository_models/concerns
+      #{config.root}/app/services
+    )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

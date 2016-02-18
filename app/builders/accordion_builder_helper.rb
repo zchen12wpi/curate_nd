@@ -80,8 +80,3 @@ module AccordionBuilderHelper
 
   end
 end
-
-
-unless ActionView::Base.included_modules.include?(AccordionBuilderHelper)
-  ActionView::Base.send :include, AccordionBuilderHelper
-end
