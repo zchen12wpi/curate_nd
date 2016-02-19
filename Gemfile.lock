@@ -18,7 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 1b48217ae2f0611633571d0d0be76b96127a853f
+  revision: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
+  ref: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
   branch: add-administrative-units
   specs:
     curate (0.6.6)
@@ -61,10 +62,11 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/locabulary.git
-  revision: 7e18b0a3586df186f900203c00bbfb5245a8021a
+  revision: 69ec6264ca8246d2f9809afc0fe83155116a1fa1
+  ref: 69ec6264ca8246d2f9809afc0fe83155116a1fa1
   branch: master
   specs:
-    locabulary (0.1.8)
+    locabulary (0.2.0)
       json (~> 1.8)
 
 GIT

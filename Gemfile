@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'mysql2'
-  gem 'curate', github: 'ndlib/curate', branch: 'add-administrative-units'
+  gem 'curate', github: 'ndlib/curate', branch: 'add-administrative-units', ref: '72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # gem 'active-fedora', github: 'jeremyf/active_fedora', branch: 'fixing-rdf-datastream-encoding'
   gem 'orcid', github: 'projecthydra-labs/orcid'
@@ -41,7 +41,7 @@ group :default do
   gem 'logstash-event'
   gem 'citeproc-ruby', '~> 1.1'
   gem 'csl-styles', '~> 1.0'
-  gem 'locabulary', github: 'ndlib/locabulary', branch: 'master'
+  gem 'locabulary', github: 'ndlib/locabulary', branch: 'master', ref: '69ec6264ca8246d2f9809afc0fe83155116a1fa1'
 end
 
 # Hack to work around some bundler strangeness
