@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
-  ref: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
+  revision: c4c43f11fe17acf937eb28986f9dd2d80ac6bd88
+  ref: c4c43f11fe17acf937eb28986f9dd2d80ac6bd88
   branch: add-administrative-units
   specs:
     curate (0.6.6)
