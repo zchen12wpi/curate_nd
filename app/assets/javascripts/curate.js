@@ -94,7 +94,7 @@ Blacklight.onLoad(function() {
 	});
 
 	$('.department-select').select2({
-		placeholder: 'Make a Selection',
+		placeholder: 'Please select one or more; type to search',
 		formatResultCssClass:function(object) {
 									if(object.disabled === true){
 										return 'bold-row';

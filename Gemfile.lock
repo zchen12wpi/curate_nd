@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/curate.git
-  revision: c04f2e69ed467cb91df132af5f8eba0cba0696a1
-  ref: c04f2e69ed467cb91df132af5f8eba0cba0696a1
-  branch: curate-nd-beta
+  revision: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
+  ref: 72f4d115e2e6a45d4a8ca8af49b0b5ccf9e907a6
+  branch: add-administrative-units
   specs:
     curate (0.6.6)
       active_attr
@@ -38,6 +38,7 @@ GIT
       hydra-derivatives (~> 0.0.7)
       hydra-file_characterization (>= 0.2.3)
       hydra-remote_identifier (~> 0.6, >= 0.6.7)
+      locabulary
       mini_magick (~> 3.8)
       morphine
       qa
@@ -58,6 +59,15 @@ GIT
     harbinger (0.2.3)
       kaminari (~> 0.14s)
       rails (~> 4.0)
+
+GIT
+  remote: git://github.com/ndlib/locabulary.git
+  revision: 69ec6264ca8246d2f9809afc0fe83155116a1fa1
+  ref: 69ec6264ca8246d2f9809afc0fe83155116a1fa1
+  branch: master
+  specs:
+    locabulary (0.2.0)
+      json (~> 1.8)
 
 GIT
   remote: git://github.com/ndlib/noids_client
@@ -690,6 +700,7 @@ DEPENDENCIES
   jshintrb
   kaminari!
   libv8 (= 3.16.14.3)
+  locabulary!
   lograge
   logstash-event
   logstash-logger

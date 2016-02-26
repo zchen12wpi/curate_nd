@@ -24,4 +24,19 @@
   .attribute {
     list-style-type: none;
   }
+
+  .breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin:0;
+    .divider {
+      color: #ccc;
+      padding: 0 5px;
+    }
+  }
+
 }
+
+
+
+
