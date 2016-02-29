@@ -63,7 +63,7 @@ group :default do
   gem 'logstash-event'
   gem 'citeproc-ruby', '~> 1.1'
   gem 'csl-styles', '~> 1.0'
-  gem 'locabulary', github: 'ndlib/locabulary', branch: 'master', ref: '69ec6264ca8246d2f9809afc0fe83155116a1fa1'
+  gem 'locabulary', github: 'ndlib/locabulary', branch: 'master'
 end
 
 # Hack to work around some bundler strangeness

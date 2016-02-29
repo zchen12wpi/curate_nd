@@ -120,4 +120,3 @@ Blacklight.onLoad(function() {
 		}
 	}
 });
-
