@@ -24,17 +24,15 @@ en:
         q:
           label:         "Search CurateND"
           placeholder:   "Search CurateND"
-
     field_label:
       rights:            "Content License"
-
-    metadata_help:
-      resource_type: "Pre-defined categories to describe the type of file content being uploaded, such as \"article\" or \"dataset.\"  More than one type may be selected."
-      rights: "Licensing and distribution information governing access to the file. Select from the provided drop-down list."
-        search_facets:
+    search_facets:
       label:            "View:"
     profile:
       default_title:    "Selected Works:"
+    metadata_help:
+      resource_type: "Pre-defined categories to describe the type of file content being uploaded, such as \"article\" or \"dataset.\"  More than one type may be selected."
+      rights: "Licensing and distribution information governing access to the file. Select from the provided drop-down list."
     work:
       collaborator:
         legend:         "Collaborators"
