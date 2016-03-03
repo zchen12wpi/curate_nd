@@ -1,5 +1,5 @@
-require Curate::Engine.root.join('app/services/curation_concern')
 class CurationConcern::SeniorThesesController < CurationConcern::GenericWorksController
+  helper AccordionBuilderHelper
   self.curation_concern_type = SeniorThesis
 
   def after_create_response

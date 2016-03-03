@@ -13,7 +13,7 @@ describe 'create DOIs feature', FeatureSupport.options do
       context "for #{curation_concern_class_name}" do
         CurationConcern::FactoryHelpers.load_factories_for(self, curation_concern_class_name.constantize)
         let(:curation_concern_class) { curation_concern_class_name.constantize }
-        let(:curation_concern) { curation_concern_class.new(pid: CurationConcern.mint_a_pid ) }
+        let(:curation_concern) { curation_concern_class.new(pid: CurationConcern::Utility.mint_a_pid ) }
         let(:user) { FactoryGirl.create(:user) }
         let(:attributes) {
           FactoryGirl.attributes_for(
@@ -26,7 +26,7 @@ describe 'create DOIs feature', FeatureSupport.options do
         }
 
         subject {
-          CurationConcern.actor(curation_concern, user, attributes)
+          CurationConcern::Utility.actor(curation_concern, user, attributes)
         }
 
         it 'should mint a remote identifier' do

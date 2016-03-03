@@ -24,13 +24,41 @@ en:
         q:
           label:         "Search CurateND"
           placeholder:   "Search CurateND"
-
     field_label:
       rights:            "Content License"
-
+    search_facets:
+      label:            "View:"
+    profile:
+      default_title:    "Selected Works:"
     metadata_help:
       resource_type: "Pre-defined categories to describe the type of file content being uploaded, such as \"article\" or \"dataset.\"  More than one type may be selected."
       rights: "Licensing and distribution information governing access to the file. Select from the provided drop-down list."
+    work:
+      collaborator:
+        legend:         "Collaborators"
+        caption:        "Who can work with this content?"
+        editor:
+          name:         "Individual Editors"
+          help:         "These people can make changes to this work. There should be atleast one editor"
+        editor_group:
+          name:         "Group Editors"
+          help:         "These groups can make changes to this work."
+        viewer:
+          name:         "Individual Viewers"
+          help:         "These people can view this work but not make changes."
+        viewer_group:
+          name:         "Group Viewers"
+          help:         "These groups can view this work but not make changes."
+    collection:
+      collaborator:
+        legend:         "Collaborators"
+        caption:        "Who can view this content before making it public?"
+        viewer:
+          name:         "Individual Viewers"
+          help:         "These people can view this collection but not make changes."
+        viewer_group:
+          name:         "Group Viewers"
+          help:         "These groups can view this collection but not make changes."
   simple_form:
     hints:
       defaults:
@@ -65,3 +93,21 @@ en:
     labels:
       profile_connection:
         text: "Search String"
+  curate:
+    organization_affiliation:
+      label:
+        faculty: "Faculty research and publications"
+        staff: "Staff research and publications"
+        graduate: "Graduate research and publications "
+        undergraduate: "Undergraduate research and publications "
+        other: "Other"
+      name:
+        faculty: "Faculty"
+        staff: "Staff"
+        graduate: "Graduate"
+        undergraduate: "Undergraduate"
+        other: "Other"
+    notification_messages:
+      minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."
+    group:
+      members: "Owners can add other members to the group. A group must have at least one owner."

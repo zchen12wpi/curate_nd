@@ -27,7 +27,14 @@ module CurateNd
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/app/constraints)
+    config.autoload_paths += %W(
+      #{config.root}/app/builders
+      #{config.root}/app/constraints
+      #{config.root}/app/repository_models
+      #{config.root}/app/repository_datastreams
+      #{config.root}/app/repository_models/concerns
+      #{config.root}/app/services
+    )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -64,6 +71,12 @@ module CurateNd
     config.assets.compress = !Rails.env.development?
 
     config.exceptions_app = lambda { |env| ErrorsController.action(:show).call(env) }
+    config.action_dispatch.rescue_responses["ActionController::RoutingError"] = :not_found
+    config.action_dispatch.rescue_responses["ActiveFedora::ObjectNotFoundError"] = :not_found
+    config.action_dispatch.rescue_responses["ActiveFedora::ActiveObjectNotFoundError"] = :gone
+    config.action_dispatch.rescue_responses["Hydra::AccessDenied"] = :unauthorized
+    config.action_dispatch.rescue_responses["CanCan::AccessDenied"] = :unauthorized
+    config.action_dispatch.rescue_responses["Rubydora::RecordNotFound"] = :not_found
 
     config.doi_url = "http://dx.doi.org/"
 
