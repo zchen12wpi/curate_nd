@@ -45,7 +45,7 @@ group :default do
   gem "devise-guests", "~> 0.3"
   # Need rubyracer to run integration tests.....really?!?
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'libv8', '3.16.14.3'
+  gem 'libv8', '~> 3.16.14.3'
   gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
   gem 'bootstrap-datepicker-rails'
   gem 'namae'
