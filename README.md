@@ -1,8 +1,18 @@
 # CurateND
+[![Build Status](https://travis-ci.org/ndlib/curate_nd.png)](https://travis-ci.org/ndlib/curate_nd)
 
 This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
 
 It's primary function is to be a self-deposit interface for our institutional digital repository.
+
+## Installation Notes
+
+Installing the clamav gem on OS X is a trying process. It can be safely excluded
+from your development environment 
+
+```console
+$ bundle install --without headless
+```
 
 ## Testing
 
@@ -21,7 +31,3 @@ Once jetty is started, run either of the following
 ```console
 $ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
 ```
-
-## Application Status
-
-[![Build Status](https://travis-ci.org/ndlib/curate_nd.png)](https://travis-ci.org/ndlib/curate_nd)
