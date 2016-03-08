@@ -7,8 +7,7 @@
   </span>
   <div class="controls">
     <% options = "" %>
-    <% options << option_listing(curation_concern) %>
+    <% options << administrative_unit_option_listing(curation_concern) %>
     <%=select_tag "#{f.object_name}[administrative_unit][]", options, {prompt: 'Please select one or more; type to search', class: 'input-xxlarge department-select', :size =>10, multiple:true}  %>
   </div>
 </div>
-
