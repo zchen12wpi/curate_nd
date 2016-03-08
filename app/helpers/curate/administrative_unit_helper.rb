@@ -1,4 +1,30 @@
 module Curate::AdministrativeUnitHelper
+  def administrative_unit_option_listing(curation_concern)
+    select_administrative_unit_ids=[]
+    processed_administrative_unit_ids=[]
+    administrative_units=Array.wrap(curation_concern.administrative_unit)
+    administrative_units.each do |administrative_unit|
+      select_administrative_unit_ids << administrative_unit
+    end
+    options=''
+    all_administrative_units = AdministrativeUnits.create_hierarchy
+    root = all_administrative_units.first
+    root.children.each do |administrative_unit|
+      processed_administrative_unit_ids<<administrative_unit.id
+      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "id", "label",'indent', "children", select_administrative_unit_ids) if administrative_unit.eligible_for_selection?
+      if administrative_unit.children.present?
+          selectable_children=administrative_unit.children.reject {|n| !n.selectable?}
+          not_selectable_children=administrative_unit.children.reject {|n| n.selectable?}
+          options << "<optgroup label=\"#{administrative_unit.label}\">".html_safe
+          options << administrative_unit_options_from_collection_for_select_with_attributes(selectable_children, "id", "label", 'indent', "children", select_administrative_unit_ids)
+          options << administrative_units_select_options_html(not_selectable_children,processed_administrative_unit_ids,select_administrative_unit_ids)
+          options << '</optgroup>'.html_safe
+      end
+    end
+    return options
+  end
+
+  private
 
   def administrative_units_select_options_html(administrative_units,processed_administrative_unit_ids = [], selected_list)
     administrative_units.map do |administrative_unit|
@@ -26,30 +52,4 @@ module Curate::AdministrativeUnitHelper
   def administrative_unit_is_selected?(administrative_unit,selected_list)
     selected_list.include?(administrative_unit.id)
   end
-
-  def administrative_unit_option_listing(curation_concern)
-    select_administrative_unit_ids=[]
-    processed_administrative_unit_ids=[]
-    administrative_units=Array.wrap(curation_concern.administrative_unit)
-    administrative_units.each do |administrative_unit|
-      select_administrative_unit_ids << administrative_unit
-    end
-    options=''
-    all_administrative_units = AdministrativeUnits.create_hierarchy
-    root = all_administrative_units.first
-    root.children.each do |administrative_unit|
-      processed_administrative_unit_ids<<administrative_unit.id
-      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "id", "label",'indent', "children", select_administrative_unit_ids) if administrative_unit.eligible_for_selection?
-      if administrative_unit.children.present?
-          selectable_children=administrative_unit.children.reject {|n| !n.selectable?}
-          not_selectable_children=administrative_unit.children.reject {|n| n.selectable?}
-          options << "<optgroup label=\"#{administrative_unit.label}\">".html_safe
-          options << administrative_unit_options_from_collection_for_select_with_attributes(selectable_children, "id", "label", 'indent', "children", select_administrative_unit_ids)
-          options << administrative_units_select_options_html(not_selectable_children,processed_administrative_unit_ids,select_administrative_unit_ids)
-          options << '</optgroup>'.html_safe
-      end
-    end
-    return options
-  end
-
 end
