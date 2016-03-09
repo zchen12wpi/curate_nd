@@ -14,13 +14,6 @@ class AdministrativeUnits
   alias_method :selectable?, :selectable
   alias_method :id, :identifier
 
-  def self.[](value)
-    new(
-      identifier: value,
-      label: value
-    )
-  end
-
   def properties(options = {})
     object = ACTIVE_ADMINISTRATIVE_UNITS.detect { |obj| obj.term_label == self.identifier }
     return object
