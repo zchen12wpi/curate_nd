@@ -78,8 +78,4 @@ class AdministrativeUnits
       parent.children << leaf
     end
   end
-
-  def eligible_for_selection?
-    self.selectable?
-  end
 end

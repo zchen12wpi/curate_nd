@@ -11,7 +11,7 @@ module Curate::AdministrativeUnitHelper
     root = all_administrative_units.first
     root.children.each do |administrative_unit|
       processed_administrative_unit_ids<<administrative_unit.id
-      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "id", "label",'indent', "children", select_administrative_unit_ids) if administrative_unit.eligible_for_selection?
+      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "id", "label",'indent', "children", select_administrative_unit_ids) if administrative_unit.selectable?
       if administrative_unit.children.present?
           selectable_children=administrative_unit.children.reject {|n| !n.selectable?}
           not_selectable_children=administrative_unit.children.reject {|n| n.selectable?}
