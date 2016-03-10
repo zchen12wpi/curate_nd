@@ -1,27 +1,18 @@
 class AdministrativeUnits
   ADMINISTRATIVE_UNITS = Locabulary.active_nested_labels_for(predicate_name: 'administrative_units')
-  ACTIVE_ADMINISTRATIVE_UNITS = Locabulary.active_items_for(predicate_name: 'administrative_units')
 
   def initialize(attributes = {})
     @identifier = attributes.fetch(:identifier)
-    @selectable = attributes[:selectable]
+    @selectable = attributes.fetch(:selectable, false)
     @label = attributes.fetch(:label)
     @children = []
   end
 
   attr_reader :identifier, :selectable, :children, :label
 
-  alias_method :selectable?, :selectable
-  alias_method :id, :identifier
-
-  def properties(options = {})
-    object = ACTIVE_ADMINISTRATIVE_UNITS.detect { |obj| obj.term_label == self.identifier }
-    return object
-  end
-
-  def to_s
-    label
-  end
+  alias selectable? selectable
+  alias id identifier
+  alias to_s label
 
   def self.create_hierarchy
     root_obj = []
