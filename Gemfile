@@ -3,14 +3,10 @@ source 'https://rubygems.org'
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
-  gem "breach-mitigation-rails"
-  gem "devise", "~>3.2.2"
-  gem "devise-guests", "~> 0.3"
-  gem "rails", "~>4.0.2"
-  gem "unicode", :platforms => [:mri_18, :mri_19]
   gem 'active_attr'
   gem 'active_fedora-registered_attributes', '~> 0.2.0'
   gem 'bootstrap-datepicker-rails'
+  gem 'breach-mitigation-rails'
   gem 'breadcrumbs_on_rails'
   gem 'browser'
   gem 'chronic', '>= 0.10.2'
@@ -18,6 +14,8 @@ group :default do
   gem 'csl-styles', '~> 1.0'
   gem 'custom_configuration'
   gem 'decent_exposure'
+  gem 'devise', '~>3.2.2'
+  gem 'devise-guests', '~> 0.3'
   gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
@@ -50,6 +48,7 @@ group :default do
   gem 'nokogiri', "~>1.6.0"
   gem 'orcid', github: 'projecthydra-labs/orcid'
   gem 'qa'
+  gem 'rails', '~>4.0.2'
   gem 'rails_autolink'
   gem 'rake'
   gem 'rdiscount', '~> 2.1.7.1'
@@ -61,6 +60,7 @@ group :default do
   gem 'simple_form', '~> 3.0.1'
   gem 'sufia-models', '~>3.4.0'
   gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
+  gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
 end
