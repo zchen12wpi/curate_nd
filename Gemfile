@@ -89,7 +89,6 @@ group :test do
   gem 'rspec-its', '~> 1.0'
   gem 'rspec-rails', '~>3.0'
   gem 'test_after_commit'
-  gem 'timecop'
   gem 'vcr'
   gem 'webmock'
 end

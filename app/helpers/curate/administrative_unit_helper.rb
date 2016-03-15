@@ -7,16 +7,15 @@ module Curate::AdministrativeUnitHelper
       select_administrative_unit_ids << administrative_unit
     end
     options=''
-    all_administrative_units = AdministrativeUnits.create_hierarchy
-    root = all_administrative_units.first
+    root = Locabulary.active_hierarchical_root(predicate_name: 'administrative_units')
     root.children.each do |administrative_unit|
-      processed_administrative_unit_ids<<administrative_unit.id
-      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "id", "label",'indent', "children", select_administrative_unit_ids) if administrative_unit.eligible_for_selection?
+      processed_administrative_unit_ids<<administrative_unit.selectable_id
+      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "selectable_id", "selectable_label",'indent', "children", select_administrative_unit_ids) if administrative_unit.selectable?
       if administrative_unit.children.present?
           selectable_children=administrative_unit.children.reject {|n| !n.selectable?}
           not_selectable_children=administrative_unit.children.reject {|n| n.selectable?}
-          options << "<optgroup label=\"#{administrative_unit.label}\">".html_safe
-          options << administrative_unit_options_from_collection_for_select_with_attributes(selectable_children, "id", "label", 'indent', "children", select_administrative_unit_ids)
+          options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
+          options << administrative_unit_options_from_collection_for_select_with_attributes(selectable_children, "selectable_id", "selectable_label", 'indent', "children", select_administrative_unit_ids)
           options << administrative_units_select_options_html(not_selectable_children,processed_administrative_unit_ids,select_administrative_unit_ids)
           options << '</optgroup>'.html_safe
       end
@@ -29,9 +28,9 @@ module Curate::AdministrativeUnitHelper
   def administrative_units_select_options_html(administrative_units,processed_administrative_unit_ids = [], selected_list)
     administrative_units.map do |administrative_unit|
       if administrative_unit.selectable?
-        content_tag(:option, value: administrative_unit.identifier, selected:administrative_unit_is_selected?(administrative_unit,selected_list), data:{indent:4}) { administrative_unit.label }+ administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids)
+        content_tag(:option, value: administrative_unit.selectable_id, selected:administrative_unit_is_selected?(administrative_unit,selected_list), data:{indent:4}) { administrative_unit.selectable_label }+ administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids)
       else
-        content_tag(:option, value: administrative_unit.identifier, disabled:true, data:{indent:2, class:"bold-row"}) { administrative_unit.label } + administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids, selected_list)
+        content_tag(:option, value: administrative_unit.selectable_id, disabled:true, data:{indent:2, class:"bold-row"}) { administrative_unit.selectable_label } + administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids, selected_list)
       end
     end.join.html_safe
   end
