@@ -1,4 +1,4 @@
-tequire 'spec_helper'
+require 'spec_helper'
 
 module Curate
   describe AdministrativeUnitHelper do
