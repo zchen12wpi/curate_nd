@@ -28,16 +28,13 @@
     <% end %>
     <tr><th> Degree Name </th><td><%= DEGREE.fetch('degrees').fetch(degree.name.first, degree.name.first) %></td></tr>
   <% end %>
-  <% curation_concern.administrative_unit.each do |au| %>
-    <tr><th> Administrative Unit </th><td><%= au.split("::").to_sentence %></td></tr>
-  <% end %>
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
   <%= curation_concern_attribute_to_html(curation_concern, :date, 'Defense Date') %>
   <tr><th> Submission Date </th><td><%= curation_concern.date_uploaded %></td></tr>
   <%= curation_concern_attribute_to_html(curation_concern, :country, 'Country') %>
   <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
   <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
   <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
   <%= curation_concern_attribute_to_html(curation_concern, :coverage_temporal, "Coverage Temporal") %>
   <%= curation_concern_attribute_to_html(curation_concern, :coverage_spatial, "Coverage Spatial") %>
   <tr>
