@@ -30,6 +30,10 @@ class SeniorThesisRdfDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :displayable
     end
 
+    map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
     map.date_uploaded(to: "dateSubmitted", in: RDF::DC) do |index|
       index.type :date
       index.as :stored_searchable, :displayable, :sortable
