@@ -16,16 +16,16 @@ describe 'curation_concern/base/_form_administrative_unit.html.erb' do
     it 'should have optgroup within select' do
       expect(rendered).to have_select('generic_work_administrative_unit_') do
         with_tag('optgroup', text:'Centers and Institutes')
-        with_tag('option', text:'Centers and Institutes::Center for Building Communities', :with => { :disable => true, :class=>'bold-row'})
+        with_tag('option', text:'Center for Building Communities', :with => { :disable => true, :class=>'bold-row'})
       end
     end
 
     it 'should have valid option within optgroup' do
       expect(rendered).to have_tag('optgroup', :with => { :label => 'Centers and Institutes'}) do
-        have_tag('option', text:'Centers and Institutes::Center for Building Communities')
+        have_tag('option', text:'Center for Building Communities')
       end
       expect(rendered).to have_tag('optgroup', :with => { :label => 'Centers and Institutes'}) do
-        with_tag('option', text:'Centers and Institutes::Center for Digital Scholarship')
+        with_tag('option', text:'Center for Digital Scholarship')
       end
     end
   end
