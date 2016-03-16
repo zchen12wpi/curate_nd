@@ -15,6 +15,7 @@ module Curate::AdministrativeUnitHelper
 
     root.children.each do |administrative_unit|
       processed_administrative_unit_ids << administrative_unit.selectable_id
+      options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
 
       if administrative_unit.selectable?
         options << administrative_unit_options_from_collection_for_select_with_attributes(
@@ -25,15 +26,14 @@ module Curate::AdministrativeUnitHelper
       if administrative_unit.children.present?
           selectable_children = administrative_unit.children.reject {|n| !n.selectable?}
           not_selectable_children = administrative_unit.children.reject {|n| n.selectable?}
-          options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
           options << administrative_unit_options_from_collection_for_select_with_attributes(
             selectable_children, 'selectable_id', 'selectable_label', 'indent', 'children', select_administrative_unit_ids
           )
           options << administrative_units_select_options_html(
             not_selectable_children, processed_administrative_unit_ids, select_administrative_unit_ids
           )
-          options << '</optgroup>'.html_safe
       end
+      options << '</optgroup>'.html_safe
     end
     return options
   end
