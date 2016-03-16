@@ -73,6 +73,7 @@ class Citation
   def date_created
     v = try_fields([:date_created, :created])
     return nil if v.nil?
+    return v if v.is_a? Date
     begin
       Date.parse(v)
     rescue ArgumentError

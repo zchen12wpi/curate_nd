@@ -5,6 +5,7 @@ module CurationConcernHelper
   end
 
   def decode_administrative_unit(curation_concern, method_name, label = nil, options = { class: 'descriptive-text' })
+    return unless curation_concern.respond_to?(:administrative_unit)
     markup = ""
     label ||= derived_label_for(curation_concern, method_name)
     administrative_unit = curation_concern.public_send(method_name)

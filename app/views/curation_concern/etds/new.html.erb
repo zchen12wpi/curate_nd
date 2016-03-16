@@ -1,0 +1,14 @@
+<% content_for :page_title, "New #{curation_concern.class.human_readable_type} // CurateND" %>
+<% content_for :page_header do %>
+
+<h2>Describe Your <%= curation_concern.class.human_readable_type %></h2>
+<p>
+  The more descriptive information you provide the better we can serve your needs.
+</p>
+<p>
+  Please consider releasing your <%= curation_concern.human_readable_type.downcase %> as an <span class="label label-success">Open Access</span> work.
+</p>
+
+<% end %>
+
+<%= render 'form' %>
