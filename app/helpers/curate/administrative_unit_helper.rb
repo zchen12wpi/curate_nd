@@ -1,43 +1,72 @@
 module Curate::AdministrativeUnitHelper
   def administrative_unit_option_listing(curation_concern)
-    select_administrative_unit_ids=[]
-    processed_administrative_unit_ids=[]
-    administrative_units=Array.wrap(curation_concern.administrative_unit)
+    select_administrative_unit_ids = []
+    processed_administrative_unit_ids = []
+
+    administrative_units = Array.wrap(curation_concern.administrative_unit)
+
     administrative_units.each do |administrative_unit|
       select_administrative_unit_ids << administrative_unit
     end
-    options=''
+
+    options = ''
+
     root = Locabulary.active_hierarchical_root(predicate_name: 'administrative_units')
+
     root.children.each do |administrative_unit|
-      processed_administrative_unit_ids<<administrative_unit.selectable_id
-      options << administrative_unit_options_from_collection_for_select_with_attributes([administrative_unit], "selectable_id", "selectable_label",'indent', "children", select_administrative_unit_ids) if administrative_unit.selectable?
-      if administrative_unit.children.present?
-          selectable_children=administrative_unit.children.reject {|n| !n.selectable?}
-          not_selectable_children=administrative_unit.children.reject {|n| n.selectable?}
-          options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
-          options << administrative_unit_options_from_collection_for_select_with_attributes(selectable_children, "selectable_id", "selectable_label", 'indent', "children", select_administrative_unit_ids)
-          options << administrative_units_select_options_html(not_selectable_children,processed_administrative_unit_ids,select_administrative_unit_ids)
-          options << '</optgroup>'.html_safe
+      processed_administrative_unit_ids << administrative_unit.selectable_id
+      options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
+
+      if administrative_unit.selectable?
+        options << administrative_unit_options_from_collection_for_select_with_attributes(
+          [administrative_unit], 'selectable_id', 'selectable_label','indent', 'children', select_administrative_unit_ids
+        )
       end
+
+      if administrative_unit.children.present?
+          selectable_children = administrative_unit.children.reject {|n| !n.selectable?}
+          not_selectable_children = administrative_unit.children.reject {|n| n.selectable?}
+          options << administrative_unit_options_from_collection_for_select_with_attributes(
+            selectable_children, 'selectable_id', 'selectable_label', 'indent', 'children', select_administrative_unit_ids
+          )
+          options << administrative_units_select_options_html(
+            not_selectable_children, processed_administrative_unit_ids, select_administrative_unit_ids
+          )
+      end
+      options << '</optgroup>'.html_safe
     end
     return options
   end
 
   private
 
-  def administrative_units_select_options_html(administrative_units,processed_administrative_unit_ids = [], selected_list)
+  def administrative_units_select_options_html(administrative_units, processed_administrative_unit_ids = [], selected_list)
     administrative_units.map do |administrative_unit|
       if administrative_unit.selectable?
-        content_tag(:option, value: administrative_unit.selectable_id, selected:administrative_unit_is_selected?(administrative_unit,selected_list), data:{indent:4}) { administrative_unit.selectable_label }+ administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids)
+        content_tag(
+          :option,
+          value: administrative_unit.selectable_id,
+          selected: administrative_unit_is_selected?( administrative_unit, selected_list),
+          data: { indent: 4 }
+        ) { administrative_unit.selectable_label } + administrative_units_select_options_html(
+          administrative_unit.children, processed_administrative_unit_ids
+        )
       else
-        content_tag(:option, value: administrative_unit.selectable_id, disabled:true, data:{indent:2, class:"bold-row"}) { administrative_unit.selectable_label } + administrative_units_select_options_html(administrative_unit.children,processed_administrative_unit_ids, selected_list)
+        content_tag(
+          :option,
+          value: administrative_unit.selectable_id,
+          disabled: true,
+          data:{ indent: 2, class: 'bold-row' }
+        ) { administrative_unit.selectable_label } + administrative_units_select_options_html(
+          administrative_unit.children, processed_administrative_unit_ids, selected_list
+        )
       end
     end.join.html_safe
   end
 
   def administrative_unit_options_from_collection_for_select_with_attributes(collection, value_method, text_method, attr_name, attr_field, selected = nil)
     options = collection.map do |element|
-      [element.send(text_method), element.send(value_method), "data-"+attr_name => element.send(attr_field).size]
+      [ element.send(text_method), element.send(value_method), "data-" + attr_name => element.send(attr_field).size ]
     end
 
     selected, disabled = extract_selected_and_disabled(selected)
