@@ -60,6 +60,10 @@ class SeniorThesis < ActiveFedora::Base
     hint: "What is the language(s) in which you wrote your work?",
     default: ['English'],
     datastream: :descMetadata, multiple: true
+  attribute :administrative_unit,
+    datastream: :descMetadata, multiple: true,
+    label: "Departments and Units",
+    hint: "Departments and Units that creator belong to."
   attribute :publisher,
     default: ["University of Notre Dame"],
     datastream: :descMetadata, multiple: true

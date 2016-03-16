@@ -12,13 +12,22 @@
       <fieldset class="required">
         <legend>This is what we need to know about your Senior Thesis</legend>
         <%= f.input :title, input_html: { class: 'input-xxlarge'}, required: true %>
+
         <%= f.input :creator, input_html: { class: 'input-xlarge', placeholder: 'George Washington' }, required: true %>
+
         <%= f.input :description, input_html: { class: 'input-xxxlarge rich-textarea-js', rows: '9' }, as: :text, required: true %>
+
         <%= f.input :date_created, input_html: { class: 'datepicker', placeholder: Date.today } %>
+
+        <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
       </fieldset>
+
       <%= render 'form_content_license', curation_concern: curation_concern, f: f %>
+
       <%= render "form_permission", curation_concern: curation_concern, f: f %>
+
       <%= render "form_doi", curation_concern: curation_concern, f: f %>
+
       <% if curation_concern.identifier.present? %>
         <%= f.input :identifier, label: 'Changes to DOI can be made here', input_html: { class: 'input-xlarge' } %>
       <% end %>
