@@ -16,6 +16,8 @@
         <%= f.input :abstract, input_html: { class: 'input-xxxlarge rich-textarea-js', rows: '9' }, as: :text, required: true %>
         <%= f.hidden_field :visibility, value: 'open' %>
       </fieldset>
+
+      <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
     <% end %>
 
     <%= render 'form_descriptive_fields', curation_concern: curation_concern, f: f %>

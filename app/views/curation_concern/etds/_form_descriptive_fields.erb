@@ -40,6 +40,8 @@
 
   <%= render partial: 'degree', locals: {f: f, curation_concern: curation_concern} %>
 
+  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
+
   <%= f.input :date,
     label: 'Date of Defense',
     input_html: { class: 'input-xlarge datepicker' }

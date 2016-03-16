@@ -31,6 +31,10 @@ class FindingAid < ActiveFedora::Base
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
+  attribute :administrative_unit,
+    datastream: :descMetadata, multiple: true,
+    label: "Departments and Units",
+    hint: "Departments and Units that creator belong to."
   attribute :identifier, datastream: :descMetadata, multiple: false
   attribute :date_uploaded,
     default: lambda { Date.today.to_s("%Y-%m-%d") }
