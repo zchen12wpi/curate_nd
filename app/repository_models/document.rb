@@ -11,6 +11,10 @@ class Document < GenericWork
     DOCUMENT_TYPES.fetch('document_types')
   end
 
+  def human_readable_type
+    self.type.present? ? type.titleize :  self.class.human_readable_type
+  end
+
   attribute :type, datastream: :descMetadata,
     multiple: false,
     validates: { inclusion: { in: Document.valid_types,
