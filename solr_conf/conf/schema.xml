@@ -255,9 +255,8 @@
     <!-- END hydra deprecated items -->
 
   <!-- copy fields;  note that you must define copyField source and dest fields explicity or schemaBrowser doesn't work -->
-<!--
-  <copyField source="some_field" dest="all_text_timv" />
--->
+
+  <copyField source="desc_metadata__administrative_unit_tesim" dest="all_text_timv" />
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
@@ -340,6 +339,7 @@
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <!-- EnglishMinimalStemFilterFactory is less aggressive than PorterStemFilterFactory: -->
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
+        <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
         <!--
         <filter class="solr.PorterStemFilterFactory"/>
         -->
