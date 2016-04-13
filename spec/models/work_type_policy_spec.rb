@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WorkTypePermissions do
+describe WorkTypePolicy do
   let(:privileged_groups){ [ 'pid:1234', 'pid:5678' ] }
   let(:current_user){ double( groups: privileged_groups ) }
 
@@ -21,14 +21,14 @@ describe WorkTypePermissions do
     end
 
     context 'when work type is open to all' do
-      it 'allows access' do
-        expect(simple_access_policy.allow?('Permitted')).to be_truthy
+      it 'authorized_fors access' do
+        expect(simple_access_policy.authorized_for?('Permitted')).to be_truthy
       end
     end
 
     context 'when work type is open to nobody' do
       it 'denies access' do
-        expect(simple_access_policy.allow?('Forbidden')).to be_falsey
+        expect(simple_access_policy.authorized_for?('Forbidden')).to be_falsey
       end
     end
   end
@@ -59,28 +59,28 @@ describe WorkTypePermissions do
 
     context 'when work type is open to a single group' do
       context 'and user has group' do
-        it 'will allow' do
-          expect(authorized_group_access_policy.allow?('Single')).to be_truthy
+        it 'will authorized_for' do
+          expect(authorized_group_access_policy.authorized_for?('Single')).to be_truthy
         end
       end
 
       context 'and user does not have group' do
         it 'will deny' do
-          expect(unauthorized_group_access_policy.allow?('Single')).to be_falsey
+          expect(unauthorized_group_access_policy.authorized_for?('Single')).to be_falsey
         end
       end
     end
 
     context 'when work type is open to several groups' do
       context 'and user has group' do
-        it 'will allow' do
-          expect(authorized_group_access_policy.allow?('Multiple')).to be_truthy
+        it 'will authorized_for' do
+          expect(authorized_group_access_policy.authorized_for?('Multiple')).to be_truthy
         end
       end
 
       context 'user does not have group' do
         it 'will deny' do
-          expect(unauthorized_group_access_policy.allow?('Multiple')).to be_falsey
+          expect(unauthorized_group_access_policy.authorized_for?('Multiple')).to be_falsey
         end
       end
     end
@@ -103,19 +103,19 @@ describe WorkTypePermissions do
 
     context 'when work type permissions are not specified' do
       it 'will deny' do
-        expect(configuration_with_errors.allow?('Ambiguous')).to be_falsy
+        expect(configuration_with_errors.authorized_for?('Ambiguous')).to be_falsy
       end
     end
 
     context 'when work type is not is not declared open' do
       it 'will deny' do
-        expect(configuration_with_errors.allow?('Unspecified')).to be_falsy
+        expect(configuration_with_errors.authorized_for?('Unspecified')).to be_falsy
       end
     end
 
     context 'when work type is not is not listed' do
       it 'will deny' do
-        expect(configuration_with_errors.allow?('Absent')).to be_falsy
+        expect(configuration_with_errors.authorized_for?('Absent')).to be_falsy
       end
     end
   end
