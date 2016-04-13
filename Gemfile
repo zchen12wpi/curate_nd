@@ -112,4 +112,5 @@ end
 group :development do
   gem 'meta_request'
   gem 'rubocop', require: false
+  gem 'scss-lint', require: false
 end
