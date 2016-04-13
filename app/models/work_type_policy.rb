@@ -3,8 +3,6 @@
 #
 # Rules are defined in config/work_type_policy_rules.yml
 class WorkTypePolicy
-  attr_accessor :user, :policy_rules
-
   def initialize( user: current_user, policy_rules: WORK_TYPE_POLICY_RULES )
     self.user = user
     self.policy_rules = policy_rules
@@ -20,6 +18,8 @@ class WorkTypePolicy
   end
 
   private
+
+  attr_accessor :policy_rules, :user
 
   def rules_for(work_type)
     return 'nobody' unless policy_rules.has_key?( work_type )
