@@ -4,7 +4,7 @@ describe WorkTypePolicy do
   let(:privileged_groups){ [ 'pid:1234', 'pid:5678' ] }
   let(:current_user){ double( groups: privileged_groups ) }
 
-  context 'With a simple rule declaration' do
+  context 'with simple rules' do
     let(:simple_rules) do
       rules = <<-config.strip_heredoc
       ---
@@ -21,7 +21,7 @@ describe WorkTypePolicy do
     end
 
     context 'when work type is open to all' do
-      it 'authorized_fors access' do
+      it 'allows access' do
         expect(simple_access_policy.authorized_for?('Permitted')).to be_truthy
       end
     end
@@ -33,7 +33,7 @@ describe WorkTypePolicy do
     end
   end
 
-  context 'With group access controls' do
+  context 'with group access rules' do
     let(:user_without_groups){ double( groups: [] ) }
 
     let(:group_rules) do
@@ -59,7 +59,7 @@ describe WorkTypePolicy do
 
     context 'when work type is open to a single group' do
       context 'and user has group' do
-        it 'will authorized_for' do
+        it 'will allow' do
           expect(authorized_group_access_policy.authorized_for?('Single')).to be_truthy
         end
       end
@@ -72,13 +72,13 @@ describe WorkTypePolicy do
     end
 
     context 'when work type is open to several groups' do
-      context 'and user has group' do
-        it 'will authorized_for' do
+      context 'user has an authorized group' do
+        it 'will allow' do
           expect(authorized_group_access_policy.authorized_for?('Multiple')).to be_truthy
         end
       end
 
-      context 'user does not have group' do
+      context 'user does not have an authorized group' do
         it 'will deny' do
           expect(unauthorized_group_access_policy.authorized_for?('Multiple')).to be_falsey
         end
@@ -86,7 +86,7 @@ describe WorkTypePolicy do
     end
   end
 
-  context 'With configuration errors' do
+  context 'with configuration errors' do
     let(:poorly_written_rules) do
       rules = <<-config.strip_heredoc
       ---
