@@ -1,38 +1,25 @@
+# Ability defines the authorization logic used by cancan
 class Ability
   include Hydra::Ability
 
   include Curate::Ability
 
-  # Define any customized permissions here.
   def custom_permissions
-    @work_type_permissions ||= WorkTypePermissions.new(current_user)
+    @user_work_type_policy ||= WorkTypePolicy.new(user: current_user)
 
     Curate.configuration.registered_curation_concern_types.each do |work_type|
-      #The access is controlled by the work_type_permission.yml file
-      #For a work, all the registered users will be given create access
-      #unless a group id is specified instead of 'all' in the yml file.
-      if !@work_type_permissions.is_permitted?(work_type)
-        #Only concerned with work creation.
-        #Edit can be controlled by access permissions settings for an object
+      # Blacklisting Create for work types UNLESS explicitly authorized
+      unless @user_work_type_policy.authorized_for?(work_type)
+        # Show, Edit, Update, and Destroy are determined by the access controls
+        # on the work.
         cannot :create, work_type.constantize
       end
 
-      # Access to ETD-specifc functions is limited to names in etd_manager_permission.yml
+      # Access to ETD-specific functions is limited to names in etd_manager_permission.yml
       unless EtdManagers.include?(current_user)
         cannot [:manage], EtdVocabulary
         cannot [:manage], TemporaryAccessToken
       end
     end
-    # Limits deleting objects to a the admin user
-    #
-    # if current_user.admin?
-    #   can [:destroy], ActiveFedora::Base
-    # end
-
-    # Limits creating new objects to a specific group
-    #
-    # if user_groups.include? 'special_group'
-    #   can [:create], ActiveFedora::Base
-    # end
   end
 end
