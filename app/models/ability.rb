@@ -1,3 +1,4 @@
+# Ability defines the authorization logic used by cancan
 class Ability
   include Hydra::Ability
 

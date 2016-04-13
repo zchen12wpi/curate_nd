@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe WorkTypePolicy do
-  let(:privileged_groups){ [ 'pid:1234', 'pid:5678' ] }
-  let(:current_user){ double( groups: privileged_groups ) }
+  let(:privileged_groups) { ['pid:1234', 'pid:5678'] }
+  let(:current_user) { double(groups: privileged_groups) }
 
   context 'with simple rules' do
     let(:simple_rules) do
@@ -17,7 +17,7 @@ describe WorkTypePolicy do
     end
 
     subject(:simple_access_policy) do
-      described_class.new( user: current_user, policy_rules: simple_rules )
+      described_class.new(user: current_user, policy_rules: simple_rules)
     end
 
     context 'when work type is open to all' do
@@ -34,7 +34,7 @@ describe WorkTypePolicy do
   end
 
   context 'with group access rules' do
-    let(:user_without_groups){ double( groups: [] ) }
+    let(:user_without_groups) { double(groups: []) }
 
     let(:group_rules) do
       rules = <<-config.strip_heredoc
@@ -50,11 +50,11 @@ describe WorkTypePolicy do
     end
 
     let(:authorized_group_access_policy) do
-      described_class.new( user: current_user, policy_rules: group_rules )
+      described_class.new(user: current_user, policy_rules: group_rules)
     end
 
     let(:unauthorized_group_access_policy) do
-      described_class.new( user: user_without_groups, policy_rules: group_rules )
+      described_class.new(user: user_without_groups, policy_rules: group_rules)
     end
 
     context 'when work type is open to a single group' do
@@ -98,7 +98,7 @@ describe WorkTypePolicy do
     end
 
     subject(:configuration_with_errors) do
-      described_class.new( user: current_user, policy_rules: poorly_written_rules )
+      described_class.new(user: current_user, policy_rules: poorly_written_rules)
     end
 
     context 'when work type permissions are not specified' do
