@@ -3,11 +3,11 @@
 #
 # Rules are defined in config/work_type_policy_rules.yml
 class WorkTypePolicy
-  attr_accessor :user, :permission_rules
+  attr_accessor :user, :policy_rules
 
-  def initialize( user: current_user, permission_rules: WORK_TYPE_POLICY_RULES )
+  def initialize( user: current_user, policy_rules: WORK_TYPE_POLICY_RULES )
     self.user = user
-    self.permission_rules = permission_rules
+    self.policy_rules = policy_rules
   end
 
   def authorized_for?( work_type )
@@ -22,9 +22,9 @@ class WorkTypePolicy
   private
 
   def rules_for(work_type)
-    return false unless permission_rules.has_key?( work_type )
-    work_type_rules = permission_rules.fetch( work_type )
-    return false if work_type_rules.blank?
+    return 'nobody' unless policy_rules.has_key?( work_type )
+    work_type_rules = policy_rules.fetch( work_type )
+    return 'nobody' if work_type_rules.blank?
     work_type_rules.fetch( 'open' ) { 'nobody' }
   end
 
