@@ -1,6 +1,7 @@
-# The access is controlled by the work_type_permission.yml file
-# For a work, all the registered users will be given create access
-# unless a group id is specified instead of 'all' in the yml file.
+# Not all work types can be created by all users. This policy object answers
+# whether a user is authorized to create a given work type.
+#
+# Rules are defined in config/work_type_policy_rules.yml
 class WorkTypePolicy
   attr_accessor :user, :permission_rules
 

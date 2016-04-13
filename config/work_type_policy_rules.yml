@@ -1,3 +1,5 @@
+# Work types must be whitelisted in order to be available as options for self
+# deposit. Options are "all", "nobody", or one or more group PIDs.
 Article:
   open: all
 Dataset:
