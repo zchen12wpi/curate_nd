@@ -10,20 +10,22 @@ class WorkTypePolicy
   end
 
   def authorized_for?( work_type )
-    begin
-      work_type_permission = permission_rules.fetch( work_type.to_s )
-      open_to = work_type_permission.fetch( 'open' ) { 'nobody' }
-      case open_to
-        when 'all' then true
-        when 'nobody' then false
-        else user_has_privileged_group?( open_to )
-      end
-    rescue KeyError
-      false
+    rules = rules_for( work_type )
+    case rules
+    when 'all' then true
+    when 'nobody' then false
+    else user_has_privileged_group?( rules )
     end
   end
 
   private
+
+  def rules_for(work_type)
+    return false unless permission_rules.has_key?( work_type )
+    work_type_rules = permission_rules.fetch( work_type )
+    return false if work_type_rules.blank?
+    work_type_rules.fetch( 'open' ) { 'nobody' }
+  end
 
   def user_groups
     @user_groups ||= user.groups
