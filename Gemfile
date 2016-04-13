@@ -111,4 +111,5 @@ end
 
 group :development do
   gem 'meta_request'
+  gem 'rubocop', require: false
 end
