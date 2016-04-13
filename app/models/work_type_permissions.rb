@@ -1,13 +1,17 @@
+# The access is controlled by the work_type_permission.yml file
+# For a work, all the registered users will be given create access
+# unless a group id is specified instead of 'all' in the yml file.
 class WorkTypePermissions
-  attr_accessor :user
+  attr_accessor :user, :permission_rules
 
-  def initialize( current_user )
-    self.user = current_user
+  def initialize( user: current_user, permission_rules: WORK_PERMISSIONS )
+    self.user = user
+    self.permission_rules = permission_rules
   end
 
-  def is_permitted?( work_type )
+  def allow?( work_type )
     begin
-      work_type_permission = WORK_PERMISSIONS.fetch( work_type.to_s )
+      work_type_permission = permission_rules.fetch( work_type.to_s )
       open_to = work_type_permission.fetch( 'open' ) { 'nobody' }
       case open_to
         when 'all' then true
@@ -18,6 +22,8 @@ class WorkTypePermissions
       false
     end
   end
+
+  private
 
   def user_groups
     @user_groups ||= user.groups
