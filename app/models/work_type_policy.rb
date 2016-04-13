@@ -4,7 +4,7 @@
 class WorkTypePolicy
   attr_accessor :user, :permission_rules
 
-  def initialize( user: current_user, permission_rules: WORK_PERMISSIONS )
+  def initialize( user: current_user, permission_rules: WORK_TYPE_POLICY_RULES )
     self.user = user
     self.permission_rules = permission_rules
   end
