@@ -1,5 +1,6 @@
 # CurateND
 [![Build Status](https://travis-ci.org/ndlib/curate_nd.png)](https://travis-ci.org/ndlib/curate_nd)
+[![Stories in Ready](https://badge.waffle.io/ndlib/curate_nd.png?label=ready&title=Ready)](https://waffle.io/ndlib/curate_nd)
 
 This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
 
