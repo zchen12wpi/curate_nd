@@ -1,5 +1,5 @@
 module CurationConcern
-  module WithViewers
+  module WithRecordViewers
     extend ActiveSupport::Concern
 
     included do

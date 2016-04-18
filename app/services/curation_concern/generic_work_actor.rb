@@ -46,7 +46,7 @@ module CurationConcern
     end
 
     def add_depositor_as_editor
-      curation_concern.add_editor(user)
+      curation_concern.add_record_editor(user)
       true
     end
 

@@ -1,5 +1,5 @@
 module CurationConcern
-  module WithEditors
+  module WithRecordEditors
     extend ActiveSupport::Concern
 
     included do
@@ -40,7 +40,7 @@ module CurationConcern
     end
 
     # @param user [User] the user account you want to grant edit access to.
-    def add_editor(user)
+    def add_record_editor(user)
       raise ArgumentError, "parameter is #{user.inspect}, expected a kind of User" unless user.is_a?(User)
       record_editors << user.person
       self.permissions_attributes = [{ name: user.user_key, access: 'edit', type: 'person' }] unless depositor == user.user_key
@@ -49,19 +49,19 @@ module CurationConcern
     # @param users [Array<User>] a list of users to add
     def add_record_editors(users)
       users.each do |u|
-        add_editor(u)
+        add_record_editor(u)
       end
     end
 
     # @param user [User] the user account you want to revoke edit access for.
-    def remove_editor(user)
-      remove_candidate_editor(user) if can_remove_editor?(user)
+    def remove_record_editor(user)
+      remove_candidate_editor(user) if can_remove_record_editor?(user)
     end
 
     # @param users [Array<User>] a list of users to remove
     def remove_record_editors(users)
       users.each do |u|
-        remove_editor(u)
+        remove_record_editor(u)
       end
     end
 
@@ -70,7 +70,7 @@ module CurationConcern
       # Decide if the user can be removed as an editor.  They cannot be removed
       # if they are the depositor or if they are not presently an editor
       # @param user [User] the user to remove
-      def can_remove_editor?(user)
+      def can_remove_record_editor?(user)
         depositor != user.user_key && record_editors.include?(user.person)
       end
 
