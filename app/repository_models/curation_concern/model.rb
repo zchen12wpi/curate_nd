@@ -20,8 +20,8 @@ module CurationConcern
 
       has_and_belongs_to_many :record_viewers, class_name: "::Person", property: :has_viewer, inverse_of: :is_viewer_of
       accepts_nested_attributes_for :record_viewers, allow_destroy: true, reject_if: :all_blank
-      has_and_belongs_to_many :viewer_groups, class_name: "::Hydramata::Group", property: :has_viewer_group, inverse_of: :is_viewer_group_of
-      accepts_nested_attributes_for :viewer_groups, allow_destroy: true, reject_if: :all_blank
+      has_and_belongs_to_many :record_viewer_groups, class_name: "::Hydramata::Group", property: :has_viewer_group, inverse_of: :is_viewer_group_of
+      accepts_nested_attributes_for :record_viewer_groups, allow_destroy: true, reject_if: :all_blank
     end
 
     def as_json(options)

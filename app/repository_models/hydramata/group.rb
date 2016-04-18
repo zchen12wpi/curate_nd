@@ -123,7 +123,7 @@ class Hydramata::Group < ActiveFedora::Base
     end
 
     self.view_works.each do |work|
-      work.remove_viewer_group(self)
+      work.remove_record_viewer_group(self)
     end
   end
 

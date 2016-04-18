@@ -5,7 +5,7 @@ class CurationConcern::WorkPermission
       update_record_editor_groups(work, groups, action)
     else
       update_record_viewers(work, people, action)
-      update_viewer_groups(work, groups, action)
+      update_record_viewer_groups(work, groups, action)
     end
     true
   end
@@ -74,9 +74,9 @@ class CurationConcern::WorkPermission
       work.add_record_editor_groups(collection[:create].map { |grp| group(grp) }.compact)
     end
 
-    def self.update_viewer_groups(work, viewer_groups, action)
-      collection = decide_action(viewer_groups, action)
-      work.remove_viewer_groups(collection[:remove].map { |grp| group(grp) }.compact)
-      work.add_viewer_groups(collection[:create].map { |grp| group(grp) }.compact)
+    def self.update_record_viewer_groups(work, record_viewer_groups, action)
+      collection = decide_action(record_viewer_groups, action)
+      work.remove_record_viewer_groups(collection[:remove].map { |grp| group(grp) }.compact)
+      work.add_record_viewer_groups(collection[:create].map { |grp| group(grp) }.compact)
     end
 end

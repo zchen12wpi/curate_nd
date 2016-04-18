@@ -9,6 +9,6 @@ class CurationConcern::ImagesController < CurationConcern::GenericWorksControlle
     curation_concern.record_editors.build
     curation_concern.record_editor_groups.build
     curation_concern.record_viewers.build
-    curation_concern.viewer_groups.build
+    curation_concern.record_viewer_groups.build
   end
 end

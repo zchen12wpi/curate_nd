@@ -5,14 +5,14 @@ module CurationConcern
       record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('record_editor_groups_attributes')
       record_viewers = attributes.delete('record_viewers_attributes')
-      viewer_groups = attributes.delete('viewer_groups_attributes')
+      record_viewer_groups = attributes.delete('record_viewer_groups_attributes')
 
       assign_pid && super {
         attach_files && create_linked_resources &&
         download_create_cloud_resources && assign_representative &&
         add_depositor_as_editor &&
         add_or_update_record_editors_and_groups(record_editors, groups, :create) &&
-        add_or_update_record_viewers_and_groups(record_viewers, viewer_groups, :create)
+        add_or_update_record_viewers_and_groups(record_viewers, record_viewer_groups, :create)
       }
     end
 
@@ -20,11 +20,11 @@ module CurationConcern
       record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('record_editor_groups_attributes')
       record_viewers = attributes.delete('record_viewers_attributes')
-      viewer_groups = attributes.delete('viewer_groups_attributes')
+      record_viewer_groups = attributes.delete('record_viewer_groups_attributes')
       add_to_collections(attributes.delete(:collection_ids)) &&
         super { attach_files && create_linked_resources } &&
         add_or_update_record_editors_and_groups(record_editors, groups, :update) &&
-        add_or_update_record_viewers_and_groups(record_viewers, viewer_groups, :create)
+        add_or_update_record_viewers_and_groups(record_viewers, record_viewer_groups, :create)
     end
 
     delegate :visibility_changed?, to: :curation_concern
