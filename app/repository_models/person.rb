@@ -62,7 +62,7 @@ class Person < ActiveFedora::Base
     return unless validate_work(work)
     self.works << work
     self.save!
-    work.editors << self
+    work.record_editors << self
     work.permissions_attributes = [{name: self.user_key, access: "edit", type: "person"}] unless work.depositor == self.user_key
     work.save!
   end
@@ -71,7 +71,7 @@ class Person < ActiveFedora::Base
     if( ( work.depositor != self.user_key ) && ( self.works.include?( work ) ) )
       self.works.delete(work)
       self.save!
-      work.editors.delete(self)
+      work.record_editors.delete(self)
       work.edit_users = work.edit_users - [self.user_key]
       work.save!
     end
