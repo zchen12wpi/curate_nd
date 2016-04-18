@@ -4,8 +4,8 @@ class Image < ActiveFedora::Base
   include CurationConcern::WithLinkedResources
   include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
-  include CurationConcern::WithRecordEditors
-  include CurationConcern::WithRecordViewers
+  include CurationConcern::WithEditors
+  include CurationConcern::WithViewers
 
   include ActiveFedora::RegisteredAttributes
 

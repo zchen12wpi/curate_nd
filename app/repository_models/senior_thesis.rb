@@ -11,8 +11,8 @@ class SeniorThesis < ActiveFedora::Base
   include CurationConcern::WithLinkedContributors
   include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
-  include CurationConcern::WithRecordEditors
-  include CurationConcern::WithRecordViewers
+  include CurationConcern::WithEditors
+  include CurationConcern::WithViewers
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"

@@ -24,7 +24,7 @@
       <small><%=t('sufia.work.collaborator.caption') %></small>
     </legend>
     <div class="span7" id="required-information">
-      <%= render "linked_record_editors", curation_concern: curation_concern, f: f %>
+      <%= render "linked_editors", curation_concern: curation_concern, f: f %>
     </div>
 
     <div class="span7" id="additional-information">
@@ -32,11 +32,11 @@
     </div>
 
     <div class="span7" id="additional-information">
-      <%= render "linked_record_viewers", curation_concern: curation_concern, f: f %>
+      <%= render "linked_viewers", curation_concern: curation_concern, f: f %>
     </div>
 
     <div class="span7" id="additional-information">
-      <%= render "linked_record_viewer_groups", curation_concern: curation_concern, f: f %>
+      <%= render "linked_viewer_groups", curation_concern: curation_concern, f: f %>
     </div>
   </fieldset>
 </div>

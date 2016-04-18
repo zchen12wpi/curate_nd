@@ -5,8 +5,8 @@ class GenericWork < ActiveFedora::Base
   include CurationConcern::WithLinkedContributors
   include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
-  include CurationConcern::WithRecordEditors
-  include CurationConcern::WithRecordViewers
+  include CurationConcern::WithEditors
+  include CurationConcern::WithViewers
 
   include ActiveFedora::RegisteredAttributes
 

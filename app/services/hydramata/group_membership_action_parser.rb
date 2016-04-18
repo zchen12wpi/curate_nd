@@ -49,7 +49,7 @@ module Hydramata::GroupMembershipActionParser
     new_params_aggregate = []
 
     if !params.has_key?("group_member") || !params["group_member"].has_key?("edit_users_ids")
-      return { group_id: params[:id], current_user: current_user, title: params["hydramata_group"]["title"], description: params["hydramata_group"]["description"], members: [], no_record_editors: true }
+      return { group_id: params[:id], current_user: current_user, title: params["hydramata_group"]["title"], description: params["hydramata_group"]["description"], members: [], no_editors: true }
     end
     action.each_with_index do |member_action, index|
       person_id = params["hydramata_group"]["members_attributes"][index.to_s]["id"]
@@ -59,7 +59,7 @@ module Hydramata::GroupMembershipActionParser
         new_params_aggregate << new_params_hash
       end
     end
-    { group_id: params[:id], current_user: current_user, title: params["hydramata_group"]["title"], description: params["hydramata_group"]["description"], members: new_params_aggregate, no_record_editors: false }
+    { group_id: params[:id], current_user: current_user, title: params["hydramata_group"]["title"], description: params["hydramata_group"]["description"], members: new_params_aggregate, no_editors: false }
   end
 
 

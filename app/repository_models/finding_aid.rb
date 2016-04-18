@@ -6,8 +6,8 @@ class FindingAid < ActiveFedora::Base
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedContributors
   include CurationConcern::Embargoable 
-  include CurationConcern::WithRecordEditors
-  include CurationConcern::WithRecordViewers
+  include CurationConcern::WithEditors
+  include CurationConcern::WithViewers
 
   before_create :set_visibility_to_open_access
 

@@ -70,9 +70,9 @@ class Curate::CollectionsController < ApplicationController
   end
 
   def update
-    record_viewers = params['collection'].delete('record_viewers_attributes')
-    record_viewer_groups = params['collection'].delete('record_viewer_groups_attributes')
-    add_or_update_record_viewers_and_groups(record_viewers, record_viewer_groups, :create) &&
+    viewers = params['collection'].delete('viewers_attributes')
+    viewer_groups = params['collection'].delete('viewer_groups_attributes')
+    add_or_update_viewers_and_groups(viewers, viewer_groups, :create) &&
       super
     extract_file_parameter
   end
@@ -185,13 +185,13 @@ class Curate::CollectionsController < ApplicationController
   end
 
   def setup_form
-    @collection.record_viewers.build
-    @collection.record_viewer_groups.build
+    @collection.viewers.build
+    @collection.viewer_groups.build
   end
   protected :setup_form
 
-  def add_or_update_record_viewers_and_groups(record_viewers, groups, action)
-    CurationConcern::WorkPermission.create(@collection, action, record_viewers,
+  def add_or_update_viewers_and_groups(viewers, groups, action)
+    CurationConcern::WorkPermission.create(@collection, action, viewers,
                                            groups, 'viewer')
   end
 
@@ -201,11 +201,11 @@ class Curate::CollectionsController < ApplicationController
   end
 
   def init_collection
-    record_viewers = params['collection'].delete('record_viewers_attributes')
-    record_viewer_groups = params['collection'].delete('record_viewer_groups_attributes')
+    viewers = params['collection'].delete('viewers_attributes')
+    viewer_groups = params['collection'].delete('viewer_groups_attributes')
     @collection = Collection.new(params['collection'])
     @collection.save
-    add_or_update_record_viewers_and_groups(record_viewers, record_viewer_groups, :create)
+    add_or_update_viewers_and_groups(viewers, viewer_groups, :create)
   end
 
 end
