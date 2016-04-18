@@ -6,9 +6,9 @@ module CurationConcern
       before_destroy :clear_associations
     end
 
-    def add_viewer_group(group)
+    def add_record_viewer_group(group)
       raise ArgumentError, "parameter is #{group.inspect}, expected a kind of Hydramata::Group" unless group.is_a?(Hydramata::Group)
-      viewer_groups << group
+      record_viewer_groups << group
       self.permissions_attributes = [{ name: group.pid, access: 'read',
                                        type: 'group' }]
       self.save!
@@ -17,13 +17,13 @@ module CurationConcern
     end
 
     # @param groups [Array<Hydramata::Group>] a list of groups to add
-    def add_viewer_groups(groups)
+    def add_record_viewer_groups(groups)
       groups.each do |g|
-        add_viewer_group(g)
+        add_record_viewer_group(g)
       end
     end
 
-    def remove_viewer_group(group)
+    def remove_record_viewer_group(group)
       return unless read_groups.include?(group.pid)
       read_groups.delete(group)
       self.read_groups = read_groups - [group.pid]
@@ -33,9 +33,9 @@ module CurationConcern
     end
 
     # @param groups [Array<Hydramata::Group>] a list of users to remove
-    def remove_viewer_groups(groups)
+    def remove_record_viewer_groups(groups)
       groups.each do |g|
-        remove_viewer_group(g)
+        remove_record_viewer_group(g)
       end
     end
 
@@ -68,13 +68,13 @@ module CurationConcern
     private
 
       def clear_associations
-        clear_viewer_groups
+        clear_record_viewer_groups
         clear_record_viewers
       end
 
-      def clear_viewer_groups
-        viewer_groups.each do |viewer_group|
-          remove_viewer_group(viewer_group)
+      def clear_record_viewer_groups
+        record_viewer_groups.each do |viewer_group|
+          remove_record_viewer_group(viewer_group)
         end
       end
 

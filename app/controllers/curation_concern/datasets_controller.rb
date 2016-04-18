@@ -9,7 +9,7 @@ class CurationConcern::DatasetsController < CurationConcern::GenericWorksControl
     curation_concern.record_editors.build
     curation_concern.record_editor_groups.build
     curation_concern.record_viewers.build
-    curation_concern.viewer_groups.build
+    curation_concern.record_viewer_groups.build
   end
   protected :setup_form
 
