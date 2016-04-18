@@ -42,12 +42,12 @@ module CurationConcern
     # @param user [User] the user account you want to grant edit access to.
     def add_editor(user)
       raise ArgumentError, "parameter is #{user.inspect}, expected a kind of User" unless user.is_a?(User)
-      editors << user.person
+      record_editors << user.person
       self.permissions_attributes = [{ name: user.user_key, access: 'edit', type: 'person' }] unless depositor == user.user_key
     end
 
     # @param users [Array<User>] a list of users to add
-    def add_editors(users)
+    def add_record_editors(users)
       users.each do |u|
         add_editor(u)
       end
@@ -59,7 +59,7 @@ module CurationConcern
     end
 
     # @param users [Array<User>] a list of users to remove
-    def remove_editors(users)
+    def remove_record_editors(users)
       users.each do |u|
         remove_editor(u)
       end
@@ -71,12 +71,12 @@ module CurationConcern
       # if they are the depositor or if they are not presently an editor
       # @param user [User] the user to remove
       def can_remove_editor?(user)
-        depositor != user.user_key && editors.include?(user.person)
+        depositor != user.user_key && record_editors.include?(user.person)
       end
 
       def clear_associations
         clear_editor_groups
-        clear_editors
+        clear_record_editors
       end
 
       def clear_editor_groups
@@ -85,14 +85,14 @@ module CurationConcern
         end
       end
 
-      def clear_editors
-        editors.each do |editor|
+      def clear_record_editors
+        record_editors.each do |editor|
           remove_candidate_editor(User.find_by_repository_id(editor.pid))
         end
       end
 
       def remove_candidate_editor(user)
-        editors.delete(user.person)
+        record_editors.delete(user.person)
         self.edit_users = edit_users - [user.user_key]
         user.person.works.delete(self)
       end

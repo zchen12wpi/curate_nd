@@ -1,7 +1,7 @@
 class CurationConcern::WorkPermission
   def self.create(work, action, people, groups, type='viewer')
     if type == 'editor'
-      update_editors(work, people, action)
+      update_record_editors(work, people, action)
       update_editor_groups(work, groups, action)
     else
       update_viewers(work, people, action)
@@ -53,10 +53,10 @@ class CurationConcern::WorkPermission
       nil
     end
 
-    def self.update_editors(work, editors, action)
-      collection = decide_action(editors, action)
-      work.remove_editors(collection[:remove].map { |u| user(u) }.compact)
-      work.add_editors(collection[:create].map { |u| user(u) }.compact)
+    def self.update_record_editors(work, record_editors, action)
+      collection = decide_action(record_editors, action)
+      work.remove_record_editors(collection[:remove].map { |u| user(u) }.compact)
+      work.add_record_editors(collection[:create].map { |u| user(u) }.compact)
       work.save!
     end
 

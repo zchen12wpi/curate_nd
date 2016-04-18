@@ -13,8 +13,8 @@ module CurationConcern
       has_attributes :relative_path, :depositor, :owner, :representative, :license, :type_of_license, datastream: :properties, multiple: false
       class_attribute :human_readable_short_description
 
-      has_and_belongs_to_many :editors, class_name: "::Person", property: :has_editor, inverse_of: :is_editor_of
-      accepts_nested_attributes_for :editors, allow_destroy: true, reject_if: :all_blank
+      has_and_belongs_to_many :record_editors, class_name: "::Person", property: :has_editor, inverse_of: :is_editor_of
+      accepts_nested_attributes_for :record_editors, allow_destroy: true, reject_if: :all_blank
       has_and_belongs_to_many :editor_groups, class_name: "::Hydramata::Group", property: :has_editor_group, inverse_of: :is_editor_group_of
       accepts_nested_attributes_for :editor_groups, allow_destroy: true, reject_if: :all_blank
 

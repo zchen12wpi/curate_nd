@@ -9,7 +9,7 @@ class Hydramata::GroupMembershipForm
   attribute :title, String
   attribute :description, String
   attribute :members, Array
-  attribute :no_editors, Boolean
+  attribute :no_record_editors, Boolean
 
   delegate :add_member, to: :group
   delegate :group_read_membership, to: :group
@@ -34,8 +34,8 @@ class Hydramata::GroupMembershipForm
   end
 
   def save
-    if no_editors || !atleast_one_manager_present?
-      errors.add(:no_editors, "The Group needs atleast one editor")
+    if no_record_editors || !atleast_one_manager_present?
+      errors.add(:no_record_editors, "The Group needs atleast one editor")
       false
     else
       valid? ? persist : false
