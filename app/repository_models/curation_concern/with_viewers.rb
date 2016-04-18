@@ -40,28 +40,28 @@ module CurationConcern
     end
 
     # @param user [User] the user account you want to grant read access to.
-    def add_viewer(user)
+    def add_record_viewer(user)
       raise ArgumentError, "parameter is #{user.inspect}, expected a kind of User" unless user.is_a?(User)
-      viewers << user.person
+      record_viewers << user.person
       self.permissions_attributes = [{ name: user.user_key, access: 'read', type: 'person' }] unless depositor == user.user_key
     end
 
     # @param users [Array<User>] a list of users to add
-    def add_viewers(users)
+    def add_record_viewers(users)
       users.each do |u|
-        add_viewer(u)
+        add_record_viewer(u)
       end
     end
 
     # @param user [User] the user account you want to revoke read access for.
-    def remove_viewer(user)
+    def remove_record_viewer(user)
       remove_candidate_viewer(user)
     end
 
     # @param users [Array<User>] a list of users to remove
-    def remove_viewers(users)
+    def remove_record_viewers(users)
       users.each do |u|
-        remove_viewer(u)
+        remove_record_viewer(u)
       end
     end
 
@@ -69,7 +69,7 @@ module CurationConcern
 
       def clear_associations
         clear_viewer_groups
-        clear_viewers
+        clear_record_viewers
       end
 
       def clear_viewer_groups
@@ -78,14 +78,14 @@ module CurationConcern
         end
       end
 
-      def clear_viewers
-        viewers.each do |viewer|
+      def clear_record_viewers
+        record_viewers.each do |viewer|
           remove_candidate_viewer(User.find_by_repository_id(viewer.pid))
         end
       end
 
       def remove_candidate_viewer(user)
-        viewers.delete(user.person)
+        record_viewers.delete(user.person)
         self.read_users = read_users - [user.user_key]
         user.person.view_works.delete(self)
       end

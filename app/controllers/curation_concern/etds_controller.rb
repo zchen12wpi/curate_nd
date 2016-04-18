@@ -8,7 +8,7 @@ class CurationConcern::EtdsController < CurationConcern::GenericWorksController
     end
     curation_concern.record_editors.build
     curation_concern.editor_groups.build
-    curation_concern.viewers.build
+    curation_concern.record_viewers.build
     curation_concern.viewer_groups.build
     curation_concern.build_degree if curation_concern.degree.blank?
     curation_concern.build_contributor if curation_concern.contributor.blank?
