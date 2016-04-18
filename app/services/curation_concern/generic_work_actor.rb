@@ -2,7 +2,7 @@ module CurationConcern
   class GenericWorkActor < CurationConcern::BaseActor
 
     def create
-      editors = attributes.delete('editors_attributes')
+      record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('editor_groups_attributes')
       viewers = attributes.delete('viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
@@ -11,19 +11,19 @@ module CurationConcern
         attach_files && create_linked_resources &&
         download_create_cloud_resources && assign_representative &&
         add_depositor_as_editor &&
-        add_or_update_editors_and_groups(editors, groups, :create) &&
+        add_or_update_record_editors_and_groups(record_editors, groups, :create) &&
         add_or_update_viewers_and_groups(viewers, viewer_groups, :create)
       }
     end
 
     def update
-      editors = attributes.delete('editors_attributes')
+      record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('editor_groups_attributes')
       viewers = attributes.delete('viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
       add_to_collections(attributes.delete(:collection_ids)) &&
         super { attach_files && create_linked_resources } &&
-        add_or_update_editors_and_groups(editors, groups, :update) &&
+        add_or_update_record_editors_and_groups(record_editors, groups, :update) &&
         add_or_update_viewers_and_groups(viewers, viewer_groups, :create)
     end
 
@@ -35,8 +35,8 @@ module CurationConcern
       curation_concern.inner_object.pid = CurationConcern::Utility.mint_a_pid
     end
 
-    def add_or_update_editors_and_groups(editors, groups, action)
-      CurationConcern::WorkPermission.create(curation_concern, action, editors,
+    def add_or_update_record_editors_and_groups(record_editors, groups, action)
+      CurationConcern::WorkPermission.create(curation_concern, action, record_editors,
                                              groups, 'editor')
     end
 
