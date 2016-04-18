@@ -7,8 +7,13 @@ class Document < GenericWork
   self.indefinite_article = 'an'
   self.contributor_label = 'Author'
 
+  DOCUMENT_TYPES = [
+    'Book', 'Book Chapter', 'Brochure', 'Document', 'Letter', 'Manuscript', 'Newsletter', 'OpenCourseWare', 'Pamphlet',
+    'Presentation', 'Press Release', 'Report', 'Software', 'White Paper', 'Video'
+  ].freeze
+
   def self.valid_types
-    DOCUMENT_TYPES.fetch('document_types')
+    DOCUMENT_TYPES
   end
 
   def human_readable_type
