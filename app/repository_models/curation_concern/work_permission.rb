@@ -2,7 +2,7 @@ class CurationConcern::WorkPermission
   def self.create(work, action, people, groups, type='viewer')
     if type == 'editor'
       update_record_editors(work, people, action)
-      update_editor_groups(work, groups, action)
+      update_record_editor_groups(work, groups, action)
     else
       update_record_viewers(work, people, action)
       update_viewer_groups(work, groups, action)
@@ -67,11 +67,11 @@ class CurationConcern::WorkPermission
       work.save!
     end
 
-    # This is extremely expensive because add_editor_group causes a save each time.
-    def self.update_editor_groups(work, editor_groups, action)
-      collection = decide_action(editor_groups, action)
-      work.remove_editor_groups(collection[:remove].map { |grp| group(grp) }.compact)
-      work.add_editor_groups(collection[:create].map { |grp| group(grp) }.compact)
+    # This is extremely expensive because add_record_editor_group causes a save each time.
+    def self.update_record_editor_groups(work, record_editor_groups, action)
+      collection = decide_action(record_editor_groups, action)
+      work.remove_record_editor_groups(collection[:remove].map { |grp| group(grp) }.compact)
+      work.add_record_editor_groups(collection[:create].map { |grp| group(grp) }.compact)
     end
 
     def self.update_viewer_groups(work, viewer_groups, action)

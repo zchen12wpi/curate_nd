@@ -7,7 +7,7 @@ class CurationConcern::DocumentsController < CurationConcern::GenericWorksContro
       curation_concern.record_editors << current_user.person unless curation_concern.record_editors.present?
     end
     curation_concern.record_editors.build
-    curation_concern.editor_groups.build
+    curation_concern.record_editor_groups.build
     curation_concern.record_viewers.build
     curation_concern.viewer_groups.build
   end

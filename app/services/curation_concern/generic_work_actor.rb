@@ -3,7 +3,7 @@ module CurationConcern
 
     def create
       record_editors = attributes.delete('record_editors_attributes')
-      groups = attributes.delete('editor_groups_attributes')
+      groups = attributes.delete('record_editor_groups_attributes')
       record_viewers = attributes.delete('record_viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
 
@@ -18,7 +18,7 @@ module CurationConcern
 
     def update
       record_editors = attributes.delete('record_editors_attributes')
-      groups = attributes.delete('editor_groups_attributes')
+      groups = attributes.delete('record_editor_groups_attributes')
       record_viewers = attributes.delete('record_viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
       add_to_collections(attributes.delete(:collection_ids)) &&

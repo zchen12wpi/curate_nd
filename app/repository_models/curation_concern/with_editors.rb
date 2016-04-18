@@ -6,9 +6,9 @@ module CurationConcern
       before_destroy :clear_associations
     end
 
-    def add_editor_group(group)
+    def add_record_editor_group(group)
       raise ArgumentError, "parameter is #{group.inspect}, expected a kind of Hydramata::Group" unless group.is_a?(Hydramata::Group)
-      editor_groups << group
+      record_editor_groups << group
       self.permissions_attributes = [{ name: group.pid, access: 'edit',
                                        type: 'group' }]
       self.save!
@@ -17,15 +17,15 @@ module CurationConcern
     end
 
     # @param groups [Array<Hydramata::Group>] a list of groups to add
-    def add_editor_groups(groups)
+    def add_record_editor_groups(groups)
       groups.each do |g|
-        add_editor_group(g)
+        add_record_editor_group(g)
       end
     end
 
-    def remove_editor_group(group)
+    def remove_record_editor_group(group)
       return unless edit_groups.include?(group.pid)
-      editor_groups.delete(group)
+      record_editor_groups.delete(group)
       self.edit_groups = edit_groups - [group.pid]
       self.save!
       group.works.delete(self)
@@ -33,9 +33,9 @@ module CurationConcern
     end
 
     # @param groups [Array<Hydramata::Group>] a list of users to remove
-    def remove_editor_groups(groups)
+    def remove_record_editor_groups(groups)
       groups.each do |g|
-        remove_editor_group(g)
+        remove_record_editor_group(g)
       end
     end
 
@@ -75,13 +75,13 @@ module CurationConcern
       end
 
       def clear_associations
-        clear_editor_groups
+        clear_record_editor_groups
         clear_record_editors
       end
 
-      def clear_editor_groups
-        editor_groups.each do |editor_group|
-          remove_editor_group(editor_group)
+      def clear_record_editor_groups
+        record_editor_groups.each do |editor_group|
+          remove_record_editor_group(editor_group)
         end
       end
 
