@@ -119,7 +119,7 @@ class Hydramata::Group < ActiveFedora::Base
 
   def remove_works
     self.works.each do |work|
-      work.remove_editor_group(self)
+      work.remove_record_editor_group(self)
     end
 
     self.view_works.each do |work|

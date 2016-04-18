@@ -15,8 +15,8 @@ module CurationConcern
 
       has_and_belongs_to_many :record_editors, class_name: "::Person", property: :has_editor, inverse_of: :is_editor_of
       accepts_nested_attributes_for :record_editors, allow_destroy: true, reject_if: :all_blank
-      has_and_belongs_to_many :editor_groups, class_name: "::Hydramata::Group", property: :has_editor_group, inverse_of: :is_editor_group_of
-      accepts_nested_attributes_for :editor_groups, allow_destroy: true, reject_if: :all_blank
+      has_and_belongs_to_many :record_editor_groups, class_name: "::Hydramata::Group", property: :has_editor_group, inverse_of: :is_editor_group_of
+      accepts_nested_attributes_for :record_editor_groups, allow_destroy: true, reject_if: :all_blank
 
       has_and_belongs_to_many :record_viewers, class_name: "::Person", property: :has_viewer, inverse_of: :is_viewer_of
       accepts_nested_attributes_for :record_viewers, allow_destroy: true, reject_if: :all_blank
