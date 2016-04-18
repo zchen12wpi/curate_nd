@@ -41,7 +41,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
     curation_concern.record_editors << current_user.person if curation_concern.record_editors.blank? && action_name == 'new'
     curation_concern.record_editors.build
     curation_concern.editor_groups.build
-    curation_concern.viewers.build
+    curation_concern.record_viewers.build
     curation_concern.viewer_groups.build
   end
   protected :setup_form

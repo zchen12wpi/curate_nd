@@ -4,7 +4,7 @@ module CurationConcern
     def create
       record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('editor_groups_attributes')
-      viewers = attributes.delete('viewers_attributes')
+      record_viewers = attributes.delete('record_viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
 
       assign_pid && super {
@@ -12,19 +12,19 @@ module CurationConcern
         download_create_cloud_resources && assign_representative &&
         add_depositor_as_editor &&
         add_or_update_record_editors_and_groups(record_editors, groups, :create) &&
-        add_or_update_viewers_and_groups(viewers, viewer_groups, :create)
+        add_or_update_record_viewers_and_groups(record_viewers, viewer_groups, :create)
       }
     end
 
     def update
       record_editors = attributes.delete('record_editors_attributes')
       groups = attributes.delete('editor_groups_attributes')
-      viewers = attributes.delete('viewers_attributes')
+      record_viewers = attributes.delete('record_viewers_attributes')
       viewer_groups = attributes.delete('viewer_groups_attributes')
       add_to_collections(attributes.delete(:collection_ids)) &&
         super { attach_files && create_linked_resources } &&
         add_or_update_record_editors_and_groups(record_editors, groups, :update) &&
-        add_or_update_viewers_and_groups(viewers, viewer_groups, :create)
+        add_or_update_record_viewers_and_groups(record_viewers, viewer_groups, :create)
     end
 
     delegate :visibility_changed?, to: :curation_concern
@@ -40,8 +40,8 @@ module CurationConcern
                                              groups, 'editor')
     end
 
-    def add_or_update_viewers_and_groups(viewers, groups, action)
-      CurationConcern::WorkPermission.create(curation_concern, action, viewers,
+    def add_or_update_record_viewers_and_groups(record_viewers, groups, action)
+      CurationConcern::WorkPermission.create(curation_concern, action, record_viewers,
                                              groups, 'viewer')
     end
 
