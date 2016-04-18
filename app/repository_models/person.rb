@@ -77,11 +77,11 @@ class Person < ActiveFedora::Base
     end
   end
 
-  def add_editor(obj)
+  def add_record_editor(obj)
     false
   end
 
-  def remove_editor(obj)
+  def remove_record_editor(obj)
     false
   end
 

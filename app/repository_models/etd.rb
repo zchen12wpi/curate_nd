@@ -4,8 +4,8 @@ class Etd < ActiveFedora::Base
   include CurationConcern::WithLinkedResources
   include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
-  include CurationConcern::WithEditors
-  include CurationConcern::WithViewers
+  include CurationConcern::WithRecordEditors
+  include CurationConcern::WithRecordViewers
 
   include ActiveFedora::RegisteredAttributes
 

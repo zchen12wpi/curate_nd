@@ -3,7 +3,7 @@ class Collection < ActiveFedora::Base
   include CurationConcern::CollectionModel
   include Hydra::Collections::Collectible
   include Hydra::Derivatives
-  include CurationConcern::WithViewers
+  include CurationConcern::WithRecordViewers
 
   has_file_datastream :name => "content"
   has_file_datastream :name => "medium"
