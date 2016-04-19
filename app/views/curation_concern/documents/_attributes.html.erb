@@ -20,6 +20,7 @@
   <%= curation_concern_attribute_to_html(curation_concern, :contributing_photographer,  'Contributing Photographer') %>
   <%= curation_concern_attribute_to_html(curation_concern, :creator,                    'Creator') %>
   <%= curation_concern_attribute_to_html(curation_concern, :contributor,                'Contributor') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :date_created,               'Date Created') %>
   <%= curation_concern_attribute_to_html(curation_concern, :copyright_date,             'Copyright Date') %>
   <%= curation_concern_attribute_to_html(curation_concern, :table_of_contents,          'Table of Contents') %>
   <%= curation_concern_attribute_to_html(curation_concern, :extent,                     'Extent') %>
@@ -32,6 +33,13 @@
   <%= curation_concern_attribute_to_html(curation_concern, :lc_subject,                 'Subject (Library of Congress)') %>
   <%= curation_concern_attribute_to_html(curation_concern, :source,                     'Source') %>
   <%= curation_concern_attribute_to_html(curation_concern, :language,                   'Language') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage,          'Temporal Coverage') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage,           'Spatial Coverage') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :size,                       'Size') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :requires,                   'Requires') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :repository_name,            'Repository Name') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :collection_name,            'Collection Name') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :contributor_institution,    'Contributor Institution') %>
   <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation,       'Recommended Citation') %>
 
   <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
