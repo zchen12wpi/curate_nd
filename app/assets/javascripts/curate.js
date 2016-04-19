@@ -66,7 +66,12 @@ Blacklight.onLoad(function() {
   });
   $('.multi_value.control-group').manage_fields();
   $('.table.contributors').manage_sections();
-  $('form.new_document, form.edit_documnet').formInputMask({ target: '#document_type' });
+  $('form.new_document, form.edit_documnet').formInputMask({
+    trigger: '#document_type',
+    fields: {
+      'Book': 'book-attribute'
+    }
+  });
   $('.link-users').linkUsers();
   $('.link-groups').linkGroups();
   $('.proxy-rights').proxyRights();
