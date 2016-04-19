@@ -42,13 +42,13 @@ class DocumentDatastream < GenericWorkRdfDatastream
       index.as :stored_searchable
     end
 
-    map.permission(in: RDF::QualifiedDC, to: 'rights#permissions')
+    map.permission(to: 'rights#permissions', in: RDF::QualifiedDC)
 
     map.size(to: 'format#extent', in: RDF::QualifiedDC)
 
-    map.format(in: RDF::QualifiedDC, to: 'format#mimetype')
+    map.format(to: 'format#mimetype', in: RDF::QualifiedDC)
 
-    map.recommended_citation(in: RDF::DC, to: 'bibliographicCitation')
+    map.recommended_citation(to: 'bibliographicCitation', in: RDF::DC)
 
     map.identifier(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
