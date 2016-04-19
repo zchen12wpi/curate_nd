@@ -5,6 +5,28 @@
               collection: affiliations,
               input_html: { class: 'input-xlarge' }
   %>
+
+  <%= f.input :alternate_title,            as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :author,                     as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :coauthor,                   as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :contributor,                as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :editor,                     as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :contributing_editor,        as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :artist,                     as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :contributing_artist,        as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :illustrator,                as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :contributing_illustrator,   as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :photographer,               as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :contributing_photographer,  as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :copyright_date,             input_html: { class: 'input-xlarge' } %>
+  <%= f.input :table_of_contents,          input_html: { class: 'input-xlarge' } %>
+  <%= f.input :extent,                     as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :isbn,                       as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :local_identifier,           as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :publication_date,           input_html: { class: 'input-xlarge' } %>
+  <%= f.input :edition,                    input_html: { class: 'input-xlarge' } %>
+  <%= f.input :lc_subject,                 as: :multi_value, input_html: { class: 'input-xlarge' } %>
+
   <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
   <%= f.input :contributor,             as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :alternate_title,         as: :multi_value, input_html: { class: 'input-xlarge' } %>
