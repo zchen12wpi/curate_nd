@@ -1,16 +1,101 @@
 class DocumentDatastream < GenericWorkRdfDatastream
   map_predicates do |map|
 
+    # @book
     map.alternate_title(to: 'alternative', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
-    map.creator(to: 'creator#author', in: RDF::QualifiedDC) do |index|
+    # @book
+    map.author(to: 'creator#author', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
     end
 
-    map.contributor(to: 'contributor#author', in: RDF::QualifiedDC) do |index|
+    # @book
+    map.creator(to: 'creator', in: RDF::DC) do |index|
       index.as :stored_searchable, :facetable
+    end
+
+    # @book
+    map.coauthor(to: 'contributor#author', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    # @book
+    map.contributor(to: 'contributor', in: RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    # @book
+    map.editor(to: 'creator#editor', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.contributing_editor(to: 'contributor#editor', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.artist(to: 'creator#artist', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.contributing_artist(to: 'contributor#artist', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.illustrator(to: 'creator#illustrator', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.contributing_illustrator(to: 'contributor#illustrator', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.photographer(to: 'creator#photographer', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.contributing_photographer(to: 'contributor#photographer', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.copyright_date(to: 'dateCopyrighted', in: RDF::DC)
+
+    # @book
+    map.table_of_contents(to: 'description#table_of_contents', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.extent(in: RDF::DC)
+
+    # @book
+    map.isbn(to: 'identifier#isbn', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.local_identifier(to: 'identifier#local', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    # @book
+    map.publication_date(to: 'issued', in: RDF::DC)
+
+    # @book
+    map.edition(to: 'isVersionOf#edition', in: RDF::QualifiedDC)
+
+    # @book
+    map.lc_subject(to: 'subject#lcsh', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
     end
 
     map.abstract(to: 'abstract', in: RDF::DC) do |index|
