@@ -30,7 +30,7 @@ files_to_copy="
     service_dn.yml
     smtp_config.yml
     solr.yml
-    work_type_permissions.yml
+    work_type_policy_rules.yml
     licensing_permissions.yml
     newrelic.yml
     etd_manager_usernames.yml
