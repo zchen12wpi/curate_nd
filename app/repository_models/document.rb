@@ -20,6 +20,28 @@ class Document < GenericWork
     self.type.present? ? type.titleize :  self.class.human_readable_type
   end
 
+  # @book attributes
+  attribute :alternate_title,            datastream: :descMetadata, multiple: true
+  attribute :author,                     datastream: :descMetadata, multiple: true
+  attribute :coauthor,                   datastream: :descMetadata, multiple: true
+  attribute :contributor,                datastream: :descMetadata, multiple: true
+  attribute :editor,                     datastream: :descMetadata, multiple: true
+  attribute :contributing_editor,        datastream: :descMetadata, multiple: true
+  attribute :artist,                     datastream: :descMetadata, multiple: true
+  attribute :contributing_artist,        datastream: :descMetadata, multiple: true
+  attribute :illustrator,                datastream: :descMetadata, multiple: true
+  attribute :contributing_illustrator,   datastream: :descMetadata, multiple: true
+  attribute :photographer,               datastream: :descMetadata, multiple: true
+  attribute :contributing_photographer,  datastream: :descMetadata, multiple: true
+  attribute :copyright_date,             datastream: :descMetadata, multiple: false
+  attribute :table_of_contents,          datastream: :descMetadata, multiple: false
+  attribute :extent,                     datastream: :descMetadata, multiple: true
+  attribute :isbn,                       datastream: :descMetadata, multiple: true
+  attribute :local_identifier,           datastream: :descMetadata, multiple: true
+  attribute :publication_date,           datastream: :descMetadata, multiple: false
+  attribute :edition,                    datastream: :descMetadata, multiple: false
+  attribute :lc_subject,                 datastream: :descMetadata, multiple: true
+
   attribute :type, datastream: :descMetadata,
     multiple: false,
     validates: { inclusion: { in: Document.valid_types,
