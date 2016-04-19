@@ -22,46 +22,46 @@ class DocumentDatastream < GenericWorkRdfDatastream
       index.as :stored_searchable
     end
 
-    map.repository_name(to: "contributor#repository", in: RDF::QualifiedDC) do |index|
+    map.repository_name(to: 'contributor#repository', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end
 
-    map.collection_name(to: "relation#ispartof", in: RDF::QualifiedDC) do |index|
+    map.collection_name(to: 'relation#ispartof', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end
 
-    map.temporal_coverage({to: "temporal", in: RDF::DC}) do |index|
+    map.temporal_coverage(to: 'temporal', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
-    map.spatial_coverage({to: "spatial", in: RDF::DC}) do |index|
+    map.spatial_coverage(to: 'spatial', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
-    map.contributor_institution(to: "contributor#institution", in: RDF::QualifiedDC) do |index|
+    map.contributor_institution(to: 'contributor#institution', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end
 
-    map.permission({in: RDF::QualifiedDC, to: 'rights#permissions'})
+    map.permission(in: RDF::QualifiedDC, to: 'rights#permissions')
 
-    map.size({to: "format#extent", in: RDF::QualifiedDC})
+    map.size(to: 'format#extent', in: RDF::QualifiedDC)
 
-    map.format({in: RDF::QualifiedDC, to: 'format#mimetype'})
+    map.format(in: RDF::QualifiedDC, to: 'format#mimetype')
 
-    map.recommended_citation({in: RDF::DC, to: 'bibliographicCitation'})
+    map.recommended_citation(in: RDF::DC, to: 'bibliographicCitation')
 
-    map.identifier({to: 'identifier#doi', in: RDF::QualifiedDC}) do |index|
+    map.identifier(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end
 
-    map.doi({to: 'identifier#doi', in: RDF::QualifiedDC})
+    map.doi(to: 'identifier#doi', in: RDF::QualifiedDC)
 
-    map.date_uploaded(to: "dateSubmitted", in: RDF::DC) do |index|
+    map.date_uploaded(to: 'dateSubmitted', in: RDF::DC) do |index|
       index.type :date
       index.as :stored_sortable
     end
 
-    map.date_modified(to: "modified", in: RDF::DC) do |index|
+    map.date_modified(to: 'modified', in: RDF::DC) do |index|
       index.type :date
       index.as :stored_sortable
     end
