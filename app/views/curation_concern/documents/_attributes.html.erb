@@ -6,24 +6,10 @@
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
-  <% curation_concern.creator.each do |creator| %>
-    <tr><th> Creator </th><td><%= creator %></td></tr>
-  <% end %>
-  <% curation_concern.contributor.each do |contributor| %>
-    <tr><th> Contributor </th><td><%= contributor %></td></tr>
-  <% end %>
-  <%= curation_concern_attribute_to_html(curation_concern, :type, "Document Type") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation, "Recommended Citation") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
 
   <%= curation_concern_attribute_to_html(curation_concern, :alternate_title,            'Alternate Title') %>
   <%= curation_concern_attribute_to_html(curation_concern, :author,                     'Author') %>
   <%= curation_concern_attribute_to_html(curation_concern, :coauthor,                   'Coauthor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributor,                'Contributor') %>
   <%= curation_concern_attribute_to_html(curation_concern, :editor,                     'Editor') %>
   <%= curation_concern_attribute_to_html(curation_concern, :contributing_editor,        'Contributing Editor') %>
   <%= curation_concern_attribute_to_html(curation_concern, :artist,                     'Artist') %>
@@ -32,14 +18,23 @@
   <%= curation_concern_attribute_to_html(curation_concern, :contributing_illustrator,   'Contributing Illustrator') %>
   <%= curation_concern_attribute_to_html(curation_concern, :photographer,               'Photographer') %>
   <%= curation_concern_attribute_to_html(curation_concern, :contributing_photographer,  'Contributing Photographer') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :creator,                    'Creator') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :contributor,                'Contributor') %>
   <%= curation_concern_attribute_to_html(curation_concern, :copyright_date,             'Copyright Date') %>
   <%= curation_concern_attribute_to_html(curation_concern, :table_of_contents,          'Table of Contents') %>
   <%= curation_concern_attribute_to_html(curation_concern, :extent,                     'Extent') %>
   <%= curation_concern_attribute_to_html(curation_concern, :isbn,                       'ISBN') %>
   <%= curation_concern_attribute_to_html(curation_concern, :local_identifier,           'Local Identifier') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :publisher,                  'Publisher') %>
   <%= curation_concern_attribute_to_html(curation_concern, :publication_date,           'Publication Date') %>
   <%= curation_concern_attribute_to_html(curation_concern, :edition,                    'Edition') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :subject,                    'Subject') %>
   <%= curation_concern_attribute_to_html(curation_concern, :lc_subject,                 'Subject (Library of Congress)') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :source,                     'Source') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :language,                   'Language') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation,       'Recommended Citation') %>
+
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
 
   <tr>
     <th>Access Rights</th>
@@ -47,10 +42,14 @@
       <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
     </td>
   </tr>
-  <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :rights, "Content License") %>
-  <% if curation_concern.type_of_license == "Independently Licensed" %>
-    <%= curation_concern_attribute_to_html(curation_concern, :license, "License Agreement") %>
+
+  <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, 'Embargo Release Date') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :rights, 'Content License') %>
+
+  <% if curation_concern.type_of_license == 'Independently Licensed' %>
+    <%= curation_concern_attribute_to_html(curation_concern, :license, 'License Agreement') %>
   <% end %>
+
+  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
   </tbody>
 </table>
