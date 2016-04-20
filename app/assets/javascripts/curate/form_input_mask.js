@@ -4,7 +4,7 @@
 // Show values with a specific input mask @done
 // If the value of the trigger matches an input mask show those fields @done
 // If the initial value of the trigger matches an input mask hide all all OTHER
-// input mask fields @TODO
+// input mask fields @done
 
 (function($){
   'use strict';
@@ -20,12 +20,12 @@
     _create: function() {
       this.element.addClass('input-mask');
 
-      this.hideAllInputMaskFields();
+      this.toggleTypedInputFields($(this.options.trigger));
 
       var eventString = this.options.triggerEvent + ' ' + this.options.trigger,
           eventListeners = {};
 
-      eventListeners[eventString] = 'toggleTypedInputFields';
+      eventListeners[eventString] = 'toggleTypedInputFieldsHandler';
       this._on( this.element, eventListeners);
     },
 
@@ -39,9 +39,8 @@
       $(specificInputMaskSelector).show();
     },
 
-    toggleTypedInputFields: function( event ) {
-      event.preventDefault();
-      var triggerValue = $(event.target).val(),
+    toggleTypedInputFields: function( element ) {
+      var triggerValue = $(element).val(),
           targetAttribute = this.options.fields[triggerValue];
 
       // It would be better to show or hide only the fields that are required
@@ -50,6 +49,11 @@
       if (!(targetAttribute === undefined)) {
         this.showInputMaskFields(targetAttribute);
       }
+    },
+
+    toggleTypedInputFieldsHandler: function (event) {
+      event.preventDefault();
+      this.toggleTypedInputFields($(event).target);
     },
 
     _destroy: function() {
