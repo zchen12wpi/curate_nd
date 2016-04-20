@@ -2,7 +2,7 @@
 //
 // Hide all values with an input mask @done
 // Show values with a specific input mask @done
-// If the value of the trigger matches an input mask show those fields
+// If the value of the trigger matches an input mask show those fields @done
 // If the initial value of the trigger matches an input mask hide all all OTHER
 // input mask fields @TODO
 
@@ -44,10 +44,10 @@
       var triggerValue = $(event.target).val(),
           targetAttribute = this.options.fields[triggerValue];
 
-      // This still assumes that there is only one input mask @TODO
-      if (targetAttribute === undefined) {
-        this.hideAllInputMaskFields();
-      } else {
+      // It would be better to show or hide only the fields that are required
+      // rather than simply hide them all before revealing tagged fields.
+      this.hideAllInputMaskFields();
+      if (!(targetAttribute === undefined)) {
         this.showInputMaskFields(targetAttribute);
       }
     },
