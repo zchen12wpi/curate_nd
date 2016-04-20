@@ -1,8 +1,8 @@
 class Document < GenericWork
 
-  has_metadata "descMetadata", type: DocumentDatastream
+  has_metadata 'descMetadata', type: DocumentDatastream
 
-  self.human_readable_short_description = "Deposit any text-based document (other than an article)."
+  self.human_readable_short_description = 'Deposit any text-based document (other than an article).'
 
   self.indefinite_article = 'an'
   self.contributor_label = 'Author'
@@ -46,12 +46,12 @@ class Document < GenericWork
     multiple: false,
     validates: { inclusion: { in: Document.valid_types,
                               allow_blank: true } }
-  attribute :affiliation,datastream: :descMetadata, hint: "Creator's Affiliation to the Institution.", multiple: false
+  attribute :affiliation,datastream: :descMetadata, hint: 'Creator’s Affiliation to the Institution.', multiple: false
   attribute :organization,
             datastream: :descMetadata, multiple: true,
-            label: "School & Department",
-            hint: "School and Department that creator belong to."
-  attribute :date_created,               datastream: :descMetadata, multiple: false, default: lambda { Date.today.to_s("%Y-%m-%d") }
+            label: 'School & Department',
+            hint: 'School and Department that creator belong to.'
+  attribute :date_created,               datastream: :descMetadata, multiple: false, default: lambda { Date.today.to_s('%Y-%m-%d') }
   attribute :date_uploaded,              datastream: :descMetadata, multiple: false
   attribute :date_modified,              datastream: :descMetadata, multiple: false
   attribute :alternate_title,            datastream: :descMetadata, multiple: true
