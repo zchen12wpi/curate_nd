@@ -1,10 +1,25 @@
-// This widget manages the conditional display of form fields.
+// This widget manages the conditional display of form fields. "Input masks" are
+// sets of fields that are hidden or shown depending on configurable criteria.
 //
-// Hide all values with an input mask @done
-// Show values with a specific input mask @done
-// If the value of the trigger matches an input mask show those fields @done
-// If the initial value of the trigger matches an input mask hide all all OTHER
-// input mask fields @done
+// Initialize the widget with a hash of options.
+//
+// Key                 | Value
+// --------------------|--------------------------------------------------------
+// trigger (required)  | jQuery selector for the input control that determines
+//                     | which input mask is applied to the form.
+//                     |
+// fields (required)   | Hash where the key is the value of the trigger input
+//                     | control and the value is the value of the data
+//                     | attribute of the input mask.
+//                     |
+// inputMaskAttribute  | The data attribute suffix used to indicate an input
+//                     | mask. The default 'input-mask' means the widget acts
+//                     | upon input containers with a 'data-input-mask'
+//                     | attribute.
+//                     |
+// triggerEvent        | The event on the trigger control that will update the
+//                     | input mask. Defaults to 'change' which is suitable for
+//                     | select controls.
 
 (function($){
   'use strict';
@@ -31,7 +46,17 @@
 
     hideAllInputMaskFields: function() {
       var inputMaskSelector = '*[data-' + this.options.inputMaskAttribute + ']';
-      $(inputMaskSelector).hide();
+      $(inputMaskSelector).each(function(){
+        var $element = $(this),
+            $input = $element.find('input').first(),
+            value = $input.val();
+
+        // If a field has a value display it anyway; it displayed on the final
+        // object if there is a value present.
+        if (value === '') {
+          $element.hide();
+        }
+      });
     },
 
     showInputMaskFields: function( value ) {
@@ -43,17 +68,17 @@
       var triggerValue = $(element).val(),
           targetAttribute = this.options.fields[triggerValue];
 
-      // It would be better to show or hide only the fields that are required
-      // rather than simply hide them all before revealing tagged fields.
+      // It would be more efficient to show or hide only the fields that are
+      // required rather than simply hide them all before showing specific fields.
       this.hideAllInputMaskFields();
-      if (!(targetAttribute === undefined)) {
+      if (targetAttribute !== undefined) {
         this.showInputMaskFields(targetAttribute);
       }
     },
 
     toggleTypedInputFieldsHandler: function (event) {
       event.preventDefault();
-      this.toggleTypedInputFields($(event).target);
+      this.toggleTypedInputFields(event.target);
     },
 
     _destroy: function() {
