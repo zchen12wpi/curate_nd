@@ -66,7 +66,7 @@ Blacklight.onLoad(function() {
   });
   $('.multi_value.control-group').manage_fields();
   $('.table.contributors').manage_sections();
-  $('form.new_document, form.edit_documnet').formInputMask({
+  $('form.new_document, form.edit_document').formInputMask({
     trigger: '#document_type',
     fields: {
       'Book': 'book-attribute'
