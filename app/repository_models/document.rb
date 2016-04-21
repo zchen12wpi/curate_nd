@@ -24,7 +24,6 @@ class Document < GenericWork
   attribute :alternate_title,            datastream: :descMetadata, multiple: true
   attribute :author,                     datastream: :descMetadata, multiple: true
   attribute :coauthor,                   datastream: :descMetadata, multiple: true
-  attribute :contributor,                datastream: :descMetadata, multiple: true
   attribute :editor,                     datastream: :descMetadata, multiple: true
   attribute :contributing_editor,        datastream: :descMetadata, multiple: true
   attribute :artist,                     datastream: :descMetadata, multiple: true
@@ -65,6 +64,7 @@ class Document < GenericWork
   attribute :edition,                    datastream: :descMetadata, multiple: false
   attribute :lc_subject,                 datastream: :descMetadata, multiple: true
 
+  # base attributes
   attribute :type,                       datastream: :descMetadata, multiple: false,
             validates: {
               inclusion: {
@@ -73,7 +73,6 @@ class Document < GenericWork
               }
             }
 
-  # base attributes
   attribute :affiliation,                datastream: :descMetadata, multiple: false,
             hint: 'Creator’s Affiliation to the Institution.'
 
@@ -88,6 +87,7 @@ class Document < GenericWork
   attribute :date_modified,              datastream: :descMetadata, multiple: false
   attribute :alternate_title,            datastream: :descMetadata, multiple: true
   attribute :creator,                    datastream: :descMetadata, multiple: true
+  attribute :contributor,                datastream: :descMetadata, multiple: true
   attribute :contributor_institution,    datastream: :descMetadata, multiple: true
   attribute :abstract,                   datastream: :descMetadata, multiple: false
   attribute :repository_name,            datastream: :descMetadata, multiple: true
