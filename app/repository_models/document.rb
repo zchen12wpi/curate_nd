@@ -45,7 +45,12 @@ class Document < GenericWork
 
   attribute :table_of_contents,          datastream: :descMetadata, multiple: false
   attribute :extent,                     datastream: :descMetadata, multiple: true
-  attribute :isbn,                       datastream: :descMetadata, multiple: true
+  attribute :isbn,                       datastream: :descMetadata, multiple: true,
+            validates: {
+              allow_blank: true,
+              isbn: {}
+            }
+
   attribute :local_identifier,           datastream: :descMetadata, multiple: true
 
   attribute :publication_date,           datastream: :descMetadata, multiple: false,
