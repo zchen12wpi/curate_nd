@@ -69,7 +69,7 @@ en:
         description: "An account of the content of the resource. Examples of Description include, but are not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content. Please keep your abstract to 300 words or less"
         subject: "A topic of the content of the resource. Typically, Subject will be expressed as keywords, or thesaurus terms or classification codes that describe a topic of the resource. Recommended best practice is to select a value from a controlled vocabulary, name authority file or formal classification scheme."
         spatial_coverage: "Describes the spatial characteristics of the intellectual content of the resource. Spatial refers to the location(s) covered by the intellectual content of the resource (i.e. place names; longitude and latitude; celestial sector; etc.) not the place of publication."
-        temporal_coverage: "Coverage temporal refers to the time period covered by the intellectual content of the resource (e.g. Jurassic; 1900-1920), not necessarily the publication date or creation date. For artifacts and art objects the temporal characteristics refer to the date or time period during which the artifact was made, or art object depicts."
+        temporal_coverage: "Coverage temporal refers to the time period covered by the intellectual content of the resource (e.g. Jurassic; 1900–1920), not necessarily the publication date or creation date. For artifacts and art objects the temporal characteristics refer to the date or time period during which the artifact was made, or art object depicts."
         language: "A language of the intellectual content of the resource. Comments: Images do not usually have a language unless there is significant text in a caption or in the image itself, and would therefore be coded as N/A). Maps to DC"
         type: "The type(s) of content of the item, used to identify the genre of a resource. Comments: This field will help map the item to the appropriate metadata profile that is being used in the collection as well as identify what the material is that is being described."
         repository_name: "The name of the organization or institution that holds the original physical object, if applicable."
@@ -84,7 +84,7 @@ en:
         requires: "A related resource that is required by the described resource to support its function, delivery, or coherence."
         version: "A related resource of which the described resource is a version, edition, or adaptation. Changes in version imply substantive changes in content rather than differences in format."
         recommended_citation: "A bibliographic reference for the resource. Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."
-        collection_name: "Formal or informal group of objects to which item belongs. This information is important for metadata sharing (such as via the OAI-°©‐PMH protocol), and for reuse of objects."
+        collection_name: "Formal or informal group of objects to which item belongs. This information is important for metadata sharing (such as via the OAI-PMH protocol), and for reuse of objects."
         abstract: "An account of the content of the resource. Examples of Description include, but are not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content. Please keep your abstract to 300 words or less."
         alternate_title: 'An alternative form of the title.'
         author: 'The author or primary creator of a textual resource. May be any kind of entity, most commonly a person but may be a corporate body.'
@@ -100,7 +100,7 @@ en:
         copyright_date: 'A year in which the resource was copyrighted, e.g. 1982.'
         table_of_contents: 'Chapter titles or other tables of contents, separated by a space and a pair of hyphens, e.g. “Title of Chapter 1 -- Title of Chapter 2.”'
         extent: 'The number of pages in the resource, the resource’s size, or the resource’s duration. E.g. “368 pages,” “2 hours,” or “523 MB.”'
-        isbn: 'The resource’s ISBN as 10 or 13 characters--numbers and the letter “x.” May or may not include hyphens, e.g. 978-0-596-52812-6 or 9780596528126'
+        isbn: 'The resource’s ISBN as 10 or 13 characters—numbers and the letter “x.” May or may not include hyphens, e.g. 978-0-596-52812-6 or 9780596528126'
         local_identifier: 'The resource’s local identifier, generally it’s library call number.'
         publication_date: 'The year in which the resource was published, if it differs from the copyright date, e.g. 1983.'
         edition: 'A description of the resource’s edition, e.g. “2nd edition.”'
