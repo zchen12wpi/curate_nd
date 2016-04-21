@@ -5,8 +5,13 @@ class IsbnValidator < ActiveModel::EachValidator
       value.each do |isbn|
         if isbn.strip!
           record.errors[attribute] << 'Cannot have leading or trailing spaces'
+        elsif (isbn[0] == '-' || isbn[-1] == '-')
+          record.errors[attribute] << 'Cannot have leading or trailing hyphens'
         else
-          unless isbn =~ /(97[89])?\-?\d\-?\d\-?\d\-?\d\-?\d\-?\d\-?\d\-?\d\-?\d\-?[\dx]/i
+          # There can be an arbitrary number of dash seperators
+          isbn.delete!('-')
+          # ISBN number can be 10 or 13 digits. The last "digit" can be an "X".
+          unless isbn =~ /\A(?=[0-9]*)(?:.{9}|.{12})[\dx]\z/i
             record.errors[attribute] << 'Invalid ISBN'
           end
         end

@@ -32,6 +32,19 @@ describe IsbnValidator do
     ] }
   end
 
+  context 'extrainous hyphens' do
+    let(:isbn_numbers) { [
+      '-0-9752298-0-X',
+      '0-9752298-0-X-',
+      '-0-9752298-0-X-'
+    ] }
+    it { expect(subject.errors.messages).to eq :isbn_numbers => [
+      'Cannot have leading or trailing hyphens',
+      'Cannot have leading or trailing hyphens',
+      'Cannot have leading or trailing hyphens'
+    ] }
+  end
+
   context 'valid ISBN numbers' do
     let(:isbn_numbers) do
       [
@@ -62,10 +75,22 @@ describe IsbnValidator do
   context 'invalid ISBN numbers' do
     let(:isbn_numbers) do
       [
-        '78-1-561x9-909-4'
+        '78-1-561x9-909-4',
+        '9971-5-0210-09',
+        '960-425-059-09001',
+        '80-94-1-6',
+        '0-4-84328-5',
+        '0-8044-2957XX',
+        '0-9752298-0ZX'
       ]
     end
     it { expect(subject.errors.messages).to eq :isbn_numbers => [
+      'Invalid ISBN',
+      'Invalid ISBN',
+      'Invalid ISBN',
+      'Invalid ISBN',
+      'Invalid ISBN',
+      'Invalid ISBN',
       'Invalid ISBN'
     ] }
   end
