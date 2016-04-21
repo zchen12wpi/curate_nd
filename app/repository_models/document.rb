@@ -33,12 +33,30 @@ class Document < GenericWork
   attribute :contributing_illustrator,   datastream: :descMetadata, multiple: true
   attribute :photographer,               datastream: :descMetadata, multiple: true
   attribute :contributing_photographer,  datastream: :descMetadata, multiple: true
-  attribute :copyright_date,             datastream: :descMetadata, multiple: false
+
+  attribute :copyright_date,             datastream: :descMetadata, multiple: false,
+            validates: {
+              allow_blank: true,
+              format: {
+                with: /\d{4}/,
+                message: 'must be a four-digit year'
+              }
+            }
+
   attribute :table_of_contents,          datastream: :descMetadata, multiple: false
   attribute :extent,                     datastream: :descMetadata, multiple: true
   attribute :isbn,                       datastream: :descMetadata, multiple: true
   attribute :local_identifier,           datastream: :descMetadata, multiple: true
-  attribute :publication_date,           datastream: :descMetadata, multiple: false
+
+  attribute :publication_date,           datastream: :descMetadata, multiple: false,
+            validates: {
+              allow_blank: true,
+              format: {
+                with: /\d{4}/,
+                message: 'must be a four-digit year'
+              }
+            }
+
   attribute :edition,                    datastream: :descMetadata, multiple: false
   attribute :lc_subject,                 datastream: :descMetadata, multiple: true
 
@@ -50,6 +68,7 @@ class Document < GenericWork
               }
             }
 
+  # base attributes
   attribute :affiliation,                datastream: :descMetadata, multiple: false,
             hint: 'Creator’s Affiliation to the Institution.'
 
