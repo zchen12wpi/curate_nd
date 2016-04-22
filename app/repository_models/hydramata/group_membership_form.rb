@@ -35,7 +35,7 @@ class Hydramata::GroupMembershipForm
 
   def save
     if no_record_editors || !atleast_one_manager_present?
-      errors.add(:no_record_editors, "The Group needs atleast one editor")
+      errors.add(:no_record_editors, "The Group needs at least one editor")
       false
     else
       valid? ? persist : false

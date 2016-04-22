@@ -39,7 +39,7 @@ en:
         caption:        "Who can work with this content?"
         editor:
           name:         "Individual Editors"
-          help:         "These people can make changes to this work. There should be atleast one editor"
+          help:         "These people can make changes to this work. There should be at least one editor"
         editor_group:
           name:         "Group Editors"
           help:         "These groups can make changes to this work."
