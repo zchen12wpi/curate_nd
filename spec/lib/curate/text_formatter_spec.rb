@@ -1,12 +1,14 @@
 require 'spec_helper'
 
+# Tests for CurateND::TextFormatter behavior
+#
+# The text formatting tests verify the presence of basic formatting syntax and
+# appropriate behavior in different processing contexts. There is no need to
+# validate the markdown spec in its entirety.
 module Curate
   describe TextFormatter do
     describe '#call' do
       subject { described_class }
-
-      # The text formatting tests are only to verify the presence of basic
-      # formatting syntax. We will not test markdown in its entirety.
 
       it 'allows single newlines in a paragraph' do
         text = <<-eos.strip_heredoc
@@ -55,14 +57,14 @@ module Curate
       end
     end
 
-    context 'Link creation' do
+    context 'link creation' do
       it 'captures a full URL' do
         text = <<-eos.strip_heredoc
           If I include a fully-qualified URL like this one: http://www.nd.edu
           there should be a link element with the "href" attribute set to the
           value of the URL literal.
         eos
-        expect(subject.call(text: text)).to have_tag('a', with: { href: 'http://www.nd.edu'})
+        expect(subject.call(text: text)).to have_tag('a', with: { href: 'http://www.nd.edu' })
       end
 
       it 'captures a partial URL' do
@@ -72,11 +74,11 @@ module Curate
           value of the URL.
         eos
         pending('not supported by the Rdiscount autolink extension')
-        expect(subject.call(text: text)).to have_tag('a', with: { href: 'http://google.com'})
+        expect(subject.call(text: text)).to have_tag('a', with: { href: 'http://google.com' })
       end
     end
 
-    context 'Sanitizing HTML output' do
+    context 'HTML sanitization' do
       it 'removes script tags' do
         text = <<-eos.strip_heredoc
           A malicious user could try to inject JavaScript directly into the
@@ -90,7 +92,7 @@ module Curate
           JavaScript can also be included in an anchor tag
           <a href="javascript:alert('CLICK HIJACK');">like so</a>
         eos
-        expect(subject.call(text: text)).to_not have_tag("a[href]")
+        expect(subject.call(text: text)).to_not have_tag('a[href]')
       end
     end
 
