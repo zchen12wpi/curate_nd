@@ -9,7 +9,7 @@ module Curate
       # formatting syntax. We will not test markdown in its entirety.
 
       it 'allows single newlines in a paragraph' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           If there is a single line break between blocks of text (leaving no
           empty whitespace between the text blocks) the contents of both blocks
           of text should be combined into a single paragraph tag.
@@ -19,7 +19,7 @@ module Curate
       end
 
       it 'separates paragraphs with two line breaks' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           If there are TWO line breaks between blocks of text (leaving a single
           empty line between those text blocks) each block should be turned into
           a "p" tag.
@@ -30,7 +30,7 @@ module Curate
       end
 
       it 'makes words surrounded by single pairs italic' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
             If text is surrounded by a pair of *asterisks* or _underscores_ it
             will be _italic_.
         eos
@@ -38,7 +38,7 @@ module Curate
       end
 
       it 'makes words surrounded by double pairs bold' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
             If text is surrounded by a TWO pairs of **asterisks** or
             __underscores__ it will be **bold**
         eos
@@ -46,7 +46,7 @@ module Curate
       end
 
       it 'makes quotes curly intelligently' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
             Text that is "quoted" shouldn't be surrounded by double primes.
             It should use proper “curly” qotes instead.
         eos
@@ -57,7 +57,7 @@ module Curate
 
     context 'Link creation' do
       it 'captures a full URL' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           If I include a fully-qualified URL like this one: http://www.nd.edu
           there should be a link element with the "href" attribute set to the
           value of the URL literal.
@@ -66,7 +66,7 @@ module Curate
       end
 
       it 'captures a partial URL' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           If I include a URL fragment like this one: google.com there should
           be a link element with the "src" attribute set to the inferred
           value of the URL.
@@ -78,7 +78,7 @@ module Curate
 
     context 'Sanitizing HTML output' do
       it 'removes script tags' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           A malicious user could try to inject JavaScript directly into the
           HTML via a script tag. <script>alert('Like this');</script>
         eos
@@ -86,7 +86,7 @@ module Curate
       end
 
       it 'removes JavaScript links' do
-        text = <<-eos.gsub(/^ {10}/, '')
+        text = <<-eos.strip_heredoc
           JavaScript can also be included in an anchor tag
           <a href="javascript:alert('CLICK HIJACK');">like so</a>
         eos
