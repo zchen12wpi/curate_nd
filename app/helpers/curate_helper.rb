@@ -50,11 +50,12 @@ module CurateHelper
     construct_page_title(text)
   end
 
-  # options[:include_empty]
+  # options[:include_empty, :block_formatting]
   def curation_concern_attribute_to_html(curation_concern, method_name, label = nil, options = {})
     markup = ""
     label ||= derived_label_for(curation_concern, method_name)
     subject = curation_concern.public_send(method_name)
+    options.reverse_merge!(block_formatting: false)
     return markup if !subject.present? && !options[:include_empty]
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
     [subject].flatten.compact.each do |value|
@@ -63,26 +64,28 @@ module CurateHelper
         # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
         parsedUri = URI.parse(value) rescue nil
         if parsedUri.nil?
-          markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value))}</li>\n)
+          markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</li>\n)
         else
           markup << %(<li class="attribute #{method_name}"><a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a></li>\n)
         end
       else
-        markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value))}</li>\n)
+        markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</li>\n)
       end
     end
     markup << %(</ul></td></tr>)
     markup.html_safe
   end
 
-  def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = { class: 'descriptive-text' })
+  # options[:block_formatting, :class]
+  def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = {})
     markup = ""
     label ||= derived_label_for(curation_concern, method_name)
     subject = curation_concern.public_send(method_name)
+    options.reverse_merge!(block_formatting: true, class: 'descriptive-text')
     return markup if subject.blank?
     markup << %(<h2 class="#{method_name}-label">#{label}</h2>\n<section class="#{method_name}-list">\n)
     [subject].flatten.compact.each do |value|
-      markup << %(<article class="#{method_name} #{options[:class]}">\n#{richly_formatted_text(value)}\n</article>\n)
+      markup << %(<article class="#{method_name} #{options[:class]}">\n#{richly_formatted_text(value, block: options[:block_formatting])}\n</article>\n)
     end
     markup << %(</section>)
     markup.html_safe
@@ -174,9 +177,10 @@ module CurateHelper
     auto_link(link, :all)
   end
 
-  def richly_formatted_text(text)
+  def richly_formatted_text(text, options = {})
     return if text.blank?
-    markup = Curate::TextFormatter.call(text: text)
+    options.reverse_merge!(block: false)
+    markup = Curate::TextFormatter.call(text: text, block: options[:block])
     markup.html_safe unless markup.nil?
   end
 
