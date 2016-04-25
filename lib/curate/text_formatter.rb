@@ -4,7 +4,7 @@ require 'sanitize'
 module Curate
   module TextFormatter
     module_function
-    def call(text: nil)
+    def call(text: nil, block: false)
       return if text.nil?
       markdown = RDiscount.new(text, :autolink, :smart)
       html = markdown.to_html
