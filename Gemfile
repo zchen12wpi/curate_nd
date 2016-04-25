@@ -51,7 +51,7 @@ group :default do
   gem 'rails', '~>4.0.2'
   gem 'rails_autolink'
   gem 'rake'
-  gem 'rdiscount', '~> 2.1.7.1'
+  gem 'redcarpet'
   gem 'resque-pool'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'

@@ -58,7 +58,7 @@ module Curate
     end
 
     context 'inline text' do
-      xit 'does not support numerical ordered lists' do
+      it 'does not support numerical ordered lists' do
         text = <<-eos.strip_heredoc
             1. Numerical ordered lists start with a letter and a period
             2. They can have more than one item
@@ -66,7 +66,7 @@ module Curate
         expect(subject.call(text: text)).to_not have_tag('li')
       end
 
-      xit 'does not support alphabetical ordered lists' do
+      it 'does not support alphabetical ordered lists' do
         text = <<-eos.strip_heredoc
             a. Alphabetical ordered lists start with a letter and a period
             b. They can have more than one item
@@ -74,7 +74,7 @@ module Curate
         expect(subject.call(text: text)).to_not have_tag('li')
       end
 
-      xit 'does not support unordered lists' do
+      it 'does not support unordered lists' do
         text = <<-eos.strip_heredoc
             - Unordered lists start with a dash
             - They can have more than one item
@@ -97,6 +97,7 @@ module Curate
             a. Alphabetical ordered lists start with a letter and a period
             b. They can have more than one item
         eos
+        pending('alphabetical lists are not supported by Redcarpet')
         expect(subject.call(text: text, block: true)).to have_tag('li', count: 2)
       end
 
@@ -125,7 +126,7 @@ module Curate
           be a link element with the "src" attribute set to the inferred
           value of the URL.
         eos
-        pending('not supported by the Rdiscount autolink extension')
+        pending('not supported by the Redcarpet autolink extension')
         expect(subject.call(text: text)).to have_tag('a', with: { href: 'http://google.com' })
       end
     end
