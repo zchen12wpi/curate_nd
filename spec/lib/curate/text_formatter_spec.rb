@@ -57,6 +57,58 @@ module Curate
       end
     end
 
+    context 'inline text' do
+      xit 'does not support numerical ordered lists' do
+        text = <<-eos.strip_heredoc
+            1. Numerical ordered lists start with a letter and a period
+            2. They can have more than one item
+        eos
+        expect(subject.call(text: text)).to_not have_tag('li')
+      end
+
+      xit 'does not support alphabetical ordered lists' do
+        text = <<-eos.strip_heredoc
+            a. Alphabetical ordered lists start with a letter and a period
+            b. They can have more than one item
+        eos
+        expect(subject.call(text: text)).to_not have_tag('li')
+      end
+
+      xit 'does not support unordered lists' do
+        text = <<-eos.strip_heredoc
+            - Unordered lists start with a dash
+            - They can have more than one item
+        eos
+        expect(subject.call(text: text)).to_not have_tag('li')
+      end
+    end
+
+    context 'block text' do
+      xit 'supports numerical ordered lists' do
+        text = <<-eos.strip_heredoc
+            1. Numerical ordered lists start with a letter and a period
+            2. They can have more than one item
+        eos
+        expect(subject.call(text: text, block: true)).to have_tag('li', count: 2)
+      end
+
+      xit 'supports alphabetical ordered lists' do
+        text = <<-eos.strip_heredoc
+            a. Alphabetical ordered lists start with a letter and a period
+            b. They can have more than one item
+        eos
+        expect(subject.call(text: text, block: true)).to have_tag('li', count: 2)
+      end
+
+      xit 'supports unordered lists' do
+        text = <<-eos.strip_heredoc
+            - Unordered lists start with a dash
+            - They can have more than one item
+        eos
+        expect(subject.call(text: text, block: true)).to have_tag('li', count: 2)
+      end
+    end
+
     context 'link creation' do
       it 'captures a full URL' do
         text = <<-eos.strip_heredoc
