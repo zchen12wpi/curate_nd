@@ -43,6 +43,7 @@
 //= require curate/sort_and_per_page
 //= require curate/read_more
 //= require curate/grid_view_controls
+//= require curate/form_input_mask
 
 
 // Initialize plugins and Bootstrap dropdowns on jQuery's ready event as well as
@@ -65,6 +66,12 @@ Blacklight.onLoad(function() {
   });
   $('.multi_value.control-group').manage_fields();
   $('.table.contributors').manage_sections();
+  $('form.new_document, form.edit_document').formInputMask({
+    trigger: '#document_type',
+    fields: {
+      'Book': 'book-attribute'
+    }
+  });
   $('.link-users').linkUsers();
   $('.link-groups').linkGroups();
   $('.proxy-rights').proxyRights();
