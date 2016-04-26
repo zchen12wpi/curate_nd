@@ -84,7 +84,7 @@ CurateNd::Application.routes.draw do
         member { delete :disconnect_orcid_profile}
       end
 
-      resource :repo_manager, only: [:edit, :update]
+      resource :repo_manager, only: [:edit, :update], path: :privledges
     end
 
     constraints CurateND::AdminAPIConstraint do
