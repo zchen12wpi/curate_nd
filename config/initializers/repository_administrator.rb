@@ -17,7 +17,8 @@ class RepositoryAdministrator
     manager_usernames_config = Rails.root.join('config/admin_usernames.yml')
     if manager_usernames_config.exist?
       interpreted_config = YAML.load(ERB.new(manager_usernames_config.read).result)
-      interpreted_config.fetch(Rails.env).fetch('admin_usernames')
+      admin_usernames = interpreted_config.fetch(Rails.env).fetch('admin_usernames')
+      Array.wrap(admin_usernames)
     else
       $stderr.puts "Unable to find admin_usernames file: #{manager_usernames_config}"
       []
