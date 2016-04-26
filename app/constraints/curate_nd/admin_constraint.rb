@@ -12,11 +12,7 @@ module CurateND
 
     def is_admin?(user)
       username = user.respond_to?(:username) ? user.username : user.to_s
-      !!admin_usernames.include?(username)
-    end
-
-    def admin_usernames
-      @@admin_usernames ||= YAML.load(ERB.new(Rails.root.join('config/admin_usernames.yml').read).result)[Rails.env]['admin_usernames']
+      RepositoryAdministrator.include?(username)
     end
 
   end

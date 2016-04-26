@@ -83,6 +83,8 @@ CurateNd::Application.routes.draw do
         collection { get :start_masquerading }
         member { delete :disconnect_orcid_profile}
       end
+
+      resource :repo_manager, only: [:edit, :update], path: :privledges
     end
 
     constraints CurateND::AdminAPIConstraint do
@@ -92,12 +94,6 @@ CurateNd::Application.routes.draw do
 
     constraints CurateND::AdminAccessTokenConstraint do
       resources :temporary_access_tokens, path: 'access_tokens'
-    end
-  end
-
-  scope :admin do
-    constraints CurateND::AdminConstraint do
-      resource :repo_manager, only: [:edit, :update]
     end
   end
 

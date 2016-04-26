@@ -8,7 +8,7 @@
     <li class="active">Temporarily Escalate Your Privileges</li>
   </ul>
 <% end %>
-<%= simple_form_for @repo_manager do |f| %>
+<%= simple_form_for [:admin, @repo_manager] do |f| %>
   <fieldset class="edit-repo-manager" >
     <p class="alert alert-warn">
       A repository manager has permission to view and alter <em>everything</em> in CurateND.

@@ -1,4 +1,4 @@
-class RepoManagersController < ApplicationController
+class Admin::RepoManagersController < ApplicationController
   with_themed_layout '1_column'
 
   def edit
@@ -16,6 +16,6 @@ class RepoManagersController < ApplicationController
   private
 
   def find_repo_manager!
-    RepoManager.find_by!(username: current_user.user_key)
+    RepoManager.find_or_initialize_by_username!(current_user.user_key)
   end
 end
