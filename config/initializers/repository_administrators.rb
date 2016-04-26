@@ -1,14 +1,12 @@
-# Provides a simple API for retrieving ids of users who are permitted to act as
-# a repository administrator.
 class RepositoryAdministrator
 
   def self.usernames
-   @usernames ||= load_usernames
+    @@usernames ||= load_usernames
   end
 
   def self.include?(user_key)
     user_key = user_key.to_s
-    !!usernames.include?(user_key)
+    usernames.include?(user_key)
   end
 
   private
@@ -16,8 +14,7 @@ class RepositoryAdministrator
   def self.load_usernames
     manager_usernames_config = Rails.root.join('config/admin_usernames.yml')
     if manager_usernames_config.exist?
-      interpreted_config = YAML.load(ERB.new(manager_usernames_config.read).result)
-      interpreted_config.fetch(Rails.env).fetch('admin_usernames')
+      YAML.load(ERB.new(manager_usernames_config.read).result).fetch(Rails.env).fetch('admin_usernames')
     else
       $stderr.puts "Unable to find admin_usernames file: #{manager_usernames_config}"
       []
