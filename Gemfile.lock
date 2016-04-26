@@ -472,7 +472,7 @@ GEM
       rdf-xsd (>= 1.0)
     rdf-xsd (1.1.2)
       rdf (~> 1.1)
-    rdiscount (2.1.7.1)
+    redcarpet (3.3.4)
     redis (3.2.1)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -717,7 +717,7 @@ DEPENDENCIES
   rails_autolink
   rails_best_practices
   rake
-  rdiscount (~> 2.1.7.1)
+  redcarpet
   resque-pool
   roboto
   rspec-html-matchers (~> 0.6)
