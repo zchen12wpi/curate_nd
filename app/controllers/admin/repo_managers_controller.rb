@@ -1,4 +1,4 @@
-class RepoManagersController < ApplicationController
+class Admin::RepoManagersController < ApplicationController
   with_themed_layout '1_column'
 
   def edit
