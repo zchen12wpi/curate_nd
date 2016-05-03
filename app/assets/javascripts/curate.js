@@ -79,7 +79,7 @@ Blacklight.onLoad(function() {
 
   // Based on example provided by Greg Kempe (@longhotsummer)
   // https://gist.github.com/longhotsummer/ba9c96bb2abb304e4095ce00df17ae2f
-  function initializeImageViewer() {
+  $('#image-viewer-content').on('load', function() {
     var map = L.map('image-viewer', {
       fullscreenControl: true,
       minZoom: 1,
@@ -89,7 +89,7 @@ Blacklight.onLoad(function() {
       crs: L.CRS.Simple
     });
 
-    var $content = $('#image-viewer-content'),
+    var $content = $(this),
         w = $content.naturalWidth(),
         h = $content.naturalHeight(),
         url = $content.attr('src'),
@@ -99,8 +99,7 @@ Blacklight.onLoad(function() {
 
     L.imageOverlay(url, bounds).addTo(map);
     map.setMaxBounds(bounds);
-  }
-  initializeImageViewer();
+  });
 
   $('#set-access-controls .datepicker').datepicker({
     format: 'yyyy-mm-dd',
