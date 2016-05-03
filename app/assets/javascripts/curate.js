@@ -99,6 +99,7 @@ Blacklight.onLoad(function() {
 
     L.imageOverlay(url, bounds).addTo(map);
     map.setMaxBounds(bounds);
+    L.control.pan().addTo(map);
   });
 
   $('#set-access-controls .datepicker').datepicker({
