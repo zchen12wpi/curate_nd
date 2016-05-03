@@ -112,42 +112,42 @@ Blacklight.onLoad(function() {
 
   $('[data-toggle="dropdown"]').dropdown();
 
-	$('.generic_file_actions').on('click', '.disabled', function(event) {
-		event.preventDefault();
-	});
+  $('.generic_file_actions').on('click', '.disabled', function(event) {
+    event.preventDefault();
+  });
 
-	$('input.datepicker').datepicker({
-		format: 'yyyy-mm-dd'
-	});
+  $('input.datepicker').datepicker({
+    format: 'yyyy-mm-dd'
+  });
 
-	$('li.disabled').on('click', 'a', function(event) {
-		event.preventDefault();
-	});
+  $('li.disabled').on('click', 'a', function(event) {
+    event.preventDefault();
+  });
 
-	$('.department-select').select2({
-		placeholder: 'Please select one or more; type to search',
-		formatResultCssClass:function(object) {
-									if(object.disabled === true){
-										return 'bold-row';
-									}
-								},
-		formatResult: format
+  $('.department-select').select2({
+    placeholder: 'Please select one or more; type to search',
+    formatResultCssClass:function(object) {
+      if(object.disabled === true){
+        return 'bold-row';
+      }
+    },
+    formatResult: format
 
-	});
+  });
 
-	function format(option) {
-		var originalOption = option.element,
-		    noOfSpaces = $(originalOption).data('indent');
+  function format(option) {
+    var originalOption = option.element,
+    noOfSpaces = $(originalOption).data('indent');
 
-		if (noOfSpaces === undefined ) {
-			return option.text;
+    if (noOfSpaces === undefined ) {
+      return option.text;
     } else {
-			var space = '&nbsp',
-			returnValue = '';
-			for(var index=0; index < noOfSpaces*3; index++) {
-				returnValue += space;
-			}
-			return  returnValue + option.text;
-		}
-	}
+      var space = '&nbsp',
+        returnValue = '';
+      for(var index=0; index < noOfSpaces*3; index++) {
+        returnValue += space;
+      }
+      return  returnValue + option.text;
+    }
+  }
 });
