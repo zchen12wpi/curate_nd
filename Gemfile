@@ -81,6 +81,7 @@ gem 'sass-rails',   '~> 4.0'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'rails-assets-leaflet', source: 'https://rails-assets.org'
+gem 'rails-assets-Leaflet--Leaflet.fullscreen', source: 'https://rails-assets.org'
 
 group :test do
   gem 'capybara', "~> 2.4"
