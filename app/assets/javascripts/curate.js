@@ -81,6 +81,7 @@ Blacklight.onLoad(function() {
   // https://gist.github.com/longhotsummer/ba9c96bb2abb304e4095ce00df17ae2f
   function initializeImageViewer() {
     var map = L.map('image-viewer', {
+      fullscreenControl: true,
       minZoom: 1,
       maxZoom: 4,
       center: [0, 0],

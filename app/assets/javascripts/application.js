@@ -12,6 +12,7 @@
 //
 //= require array_filter_polyfill
 //= require leaflet
+//= require Leaflet.fullscreen/dist/Leaflet.fullscreen
 //= require jquery
 //= require jquery_ujs
 //
