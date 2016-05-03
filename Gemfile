@@ -80,6 +80,8 @@ gem 'compass-rails', '~> 1.1.2'
 gem 'sass-rails',   '~> 4.0'
 gem 'uglifier', '>= 1.0.3'
 
+gem 'rails-assets-leaflet', source: 'https://rails-assets.org'
+
 group :test do
   gem 'capybara', "~> 2.4"
   gem 'database_cleaner'
