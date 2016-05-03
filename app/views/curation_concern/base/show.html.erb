@@ -30,14 +30,27 @@
 <% end %>
 
 <% if curation_concern.representative.present? %>
-  <div class="row">
-    <div class="work-representation span3">
-      <%= render partial: 'representative_media', locals: {work: curation_concern} %>
+  <% if curation_concern.is_a? Image %>
+    <div class="row">
+      <div class="work-representation span12">
+        <%= render partial: 'image_viewer', locals: { work: curation_concern } %>
+      </div>
     </div>
-    <div class="work-attributes span9">
-      <%= details %>
+    <div class="row">
+      <div class="work-attributes span12">
+        <%= details %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row">
+      <div class="work-representation span3">
+        <%= render partial: 'representative_media', locals: { work: curation_concern } %>
+      </div>
+      <div class="work-attributes span9">
+        <%= details %>
+      </div>
+    </div>
+  <% end %>
 <% else %>
   <div class="work-attributes">
     <%= details %>
