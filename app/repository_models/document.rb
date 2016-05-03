@@ -8,8 +8,9 @@ class Document < GenericWork
   self.contributor_label = 'Author'
 
   DOCUMENT_TYPES = [
-    'Book', 'Book Chapter', 'Brochure', 'Document', 'Letter', 'Manuscript', 'Newsletter', 'OpenCourseWare', 'Pamphlet',
-    'Presentation', 'Press Release', 'Report', 'Software', 'White Paper', 'Video'
+    'Book', 'Book Chapter', 'Brochure', 'Catholic Document' 'Document', 'Letter',
+    'Manuscript', 'Newsletter', 'OpenCourseWare', 'Pamphlet', 'Presentation',
+    'Press Release', 'Report', 'Software', 'White Paper', 'Video'
   ].freeze
 
   def self.valid_types
