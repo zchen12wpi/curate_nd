@@ -14,9 +14,15 @@
     background: $black;
     border: 3px solid $black;
     height: 400px;
+    margin-bottom: 15px;
   }
 
   .leaflet-control-attribution {
     display: none;
   }
+}
+
+// Let's assume people using a touchscreen don't need a button to pan
+.leaflet-touch.leaflet-fullscreen-on .leaflet-control-pan {
+  display: none;
 }
