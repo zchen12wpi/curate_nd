@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require array_filter_polyfill
+//= require leaflet
 //= require jquery
 //= require jquery_ujs
 //

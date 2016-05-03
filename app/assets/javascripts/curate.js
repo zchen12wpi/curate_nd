@@ -39,6 +39,7 @@
 //= require curate/proxy_submission
 //= require curate/content_submission
 //= require handlebars
+//= require curate/img_dimensions_polyfill
 //= require curate/validate_doi
 //= require curate/sort_and_per_page
 //= require curate/read_more
@@ -76,6 +77,29 @@ Blacklight.onLoad(function() {
   $('.link-groups').linkGroups();
   $('.proxy-rights').proxyRights();
 
+  // Based on example provided by Greg Kempe (@longhotsummer)
+  // https://gist.github.com/longhotsummer/ba9c96bb2abb304e4095ce00df17ae2f
+  function initializeImageViewer() {
+    var map = L.map('image-viewer', {
+      minZoom: 1,
+      maxZoom: 4,
+      center: [0, 0],
+      zoom: 1,
+      crs: L.CRS.Simple
+    });
+
+    var $content = $('#image-viewer-content'),
+        w = $content.naturalWidth(),
+        h = $content.naturalHeight(),
+        url = $content.attr('src'),
+        southWest = map.unproject([0, h], map.getMaxZoom()-1),
+        northEast = map.unproject([w, 0], map.getMaxZoom()-1),
+        bounds = new L.LatLngBounds(southWest, northEast);
+
+    L.imageOverlay(url, bounds).addTo(map);
+    map.setMaxBounds(bounds);
+  }
+  initializeImageViewer();
 
   $('#set-access-controls .datepicker').datepicker({
     format: 'yyyy-mm-dd',
