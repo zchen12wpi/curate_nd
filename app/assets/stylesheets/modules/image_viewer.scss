@@ -23,6 +23,14 @@
 }
 
 // Let's assume people using a touchscreen don't need a button to pan
-.leaflet-touch.leaflet-fullscreen-on .leaflet-control-pan {
-  display: none;
+.leaflet-touch.leaflet-fullscreen-on .has-leaflet-pan-control {
+  padding-top: 0;
+
+  .leaflet-control-fullscreen,
+  .leaflet-control-zoom {
+    left:10px;
+  }
+  .leaflet-control-pan {
+    display: none;
+  }
 }
