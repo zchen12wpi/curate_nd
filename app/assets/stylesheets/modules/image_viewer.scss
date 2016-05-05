@@ -1,0 +1,36 @@
+.js {
+  #image-viewer-content {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  #image-viewer {
+    background: $black;
+    border: 3px solid $black;
+    height: 400px;
+    margin-bottom: 15px;
+  }
+
+  .leaflet-control-attribution {
+    display: none;
+  }
+}
+
+// Let's assume people using a touchscreen don't need a button to pan
+.leaflet-touch.leaflet-fullscreen-on .has-leaflet-pan-control {
+  padding-top: 0;
+
+  .leaflet-control-fullscreen,
+  .leaflet-control-zoom {
+    left:10px;
+  }
+  .leaflet-control-pan {
+    display: none;
+  }
+}

@@ -39,6 +39,7 @@
 //= require curate/proxy_submission
 //= require curate/content_submission
 //= require handlebars
+//= require curate/img_dimensions_polyfill
 //= require curate/validate_doi
 //= require curate/sort_and_per_page
 //= require curate/read_more
@@ -76,6 +77,30 @@ Blacklight.onLoad(function() {
   $('.link-groups').linkGroups();
   $('.proxy-rights').proxyRights();
 
+  // Based on example provided by Greg Kempe (@longhotsummer)
+  // https://gist.github.com/longhotsummer/ba9c96bb2abb304e4095ce00df17ae2f
+  $('#image-viewer-content').on('load', function() {
+    var map = L.map('image-viewer', {
+      fullscreenControl: true,
+      minZoom: 1,
+      maxZoom: 4,
+      center: [0, 0],
+      zoom: 1,
+      crs: L.CRS.Simple
+    });
+
+    var $content = $(this),
+        w = $content.naturalWidth(),
+        h = $content.naturalHeight(),
+        url = $content.attr('src'),
+        southWest = map.unproject([0, h], map.getMaxZoom()-1),
+        northEast = map.unproject([w, 0], map.getMaxZoom()-1),
+        bounds = new L.LatLngBounds(southWest, northEast);
+
+    L.imageOverlay(url, bounds).addTo(map);
+    map.setMaxBounds(bounds);
+    L.control.pan().addTo(map);
+  });
 
   $('#set-access-controls .datepicker').datepicker({
     format: 'yyyy-mm-dd',
@@ -88,42 +113,42 @@ Blacklight.onLoad(function() {
 
   $('[data-toggle="dropdown"]').dropdown();
 
-	$('.generic_file_actions').on('click', '.disabled', function(event) {
-		event.preventDefault();
-	});
+  $('.generic_file_actions').on('click', '.disabled', function(event) {
+    event.preventDefault();
+  });
 
-	$('input.datepicker').datepicker({
-		format: 'yyyy-mm-dd'
-	});
+  $('input.datepicker').datepicker({
+    format: 'yyyy-mm-dd'
+  });
 
-	$('li.disabled').on('click', 'a', function(event) {
-		event.preventDefault();
-	});
+  $('li.disabled').on('click', 'a', function(event) {
+    event.preventDefault();
+  });
 
-	$('.department-select').select2({
-		placeholder: 'Please select one or more; type to search',
-		formatResultCssClass:function(object) {
-									if(object.disabled === true){
-										return 'bold-row';
-									}
-								},
-		formatResult: format
+  $('.department-select').select2({
+    placeholder: 'Please select one or more; type to search',
+    formatResultCssClass:function(object) {
+      if(object.disabled === true){
+        return 'bold-row';
+      }
+    },
+    formatResult: format
 
-	});
+  });
 
-	function format(option) {
-		var originalOption = option.element,
-		    noOfSpaces = $(originalOption).data('indent');
+  function format(option) {
+    var originalOption = option.element,
+    noOfSpaces = $(originalOption).data('indent');
 
-		if (noOfSpaces === undefined ) {
-			return option.text;
+    if (noOfSpaces === undefined ) {
+      return option.text;
     } else {
-			var space = '&nbsp',
-			returnValue = '';
-			for(var index=0; index < noOfSpaces*3; index++) {
-				returnValue += space;
-			}
-			return  returnValue + option.text;
-		}
-	}
+      var space = '&nbsp',
+        returnValue = '';
+      for(var index=0; index < noOfSpaces*3; index++) {
+        returnValue += space;
+      }
+      return  returnValue + option.text;
+    }
+  }
 });

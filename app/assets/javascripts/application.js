@@ -11,6 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require array_filter_polyfill
+//= require leaflet
+//= require Leaflet.fullscreen/dist/Leaflet.fullscreen
+//= require L.Control.Pan
 //= require jquery
 //= require jquery_ujs
 //
