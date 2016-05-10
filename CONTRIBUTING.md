@@ -3,7 +3,7 @@
 This document is intended for internal use only.
 
 ### Creating an Issue
-[Issues for the repo](https://github.com/ndlib/sipity/issues) should have a clear functional scope and desired outcome.
+[Issues for the repo](https://github.com/ndlib/curate_nd/issues) should have a clear functional scope and desired outcome.
 This keeps issues actionable and cruft out of the backlog.
 
 Issues do _not_ have to be stated in terms of a user story (Given…, When…, Then…; As a…, I want to…, So that…) as long as the desired outcome is clearly articulated.
@@ -13,17 +13,19 @@ Speculative feature requests should be [treated as a question](#what-if-i-have-a
 
 ### Starting an Issue
 ```console
-$ ./scripts/start-issue <the-issue-number>
+$ ./script/start-issue <the-issue-number>
 ```
 
-See [./scripts/start-issue](https://github.com/ndlib/sipity/blob/master/scripts/start-issue) for further details.
+See [./script/start-issue](https://github.com/ndlib/curate_nd/blob/master/script/start-issue) for further details.
 
 ### Closing an Issue
+From a feature branch created by `start-issue`:
+
 ```console
-$ ./scripts/close-issue <the-issue-number>
+$ ./script/close-issue
 ```
 
-See [./scripts/close-issue](https://github.com/ndlib/sipity/blob/master/scripts/close-issue) for further details.
+See [./script/close-issue](https://github.com/ndlib/curate_nd/blob/master/script/close-issue) for further details.
 
 ### Submitting a Pull Request
 When submitting a pull request, make sure to submit a useful description of what you are doing.
