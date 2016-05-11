@@ -1,0 +1,44 @@
+<%= curation_concern_attribute_to_formatted_text(curation_concern, :description, 'Description') %>
+
+<table class="table table-striped <%= dom_class(curation_concern) %> attributes">
+  <caption class="table-heading"><h2>Attributes</h2></caption>
+  <thead>
+    <tr><th>Attribute Name</th><th>Values</th></tr>
+  </thead>
+  <tbody>
+
+  <%= curation_concern_attribute_to_html(curation_concern, :title,   'Title') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :patent_number,   'Patent Number') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :patent_office_link,   'UPSTO Link') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :creator,   'Creator') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :creators_from_local_institution,  'Creator For Local Institution'   ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :other_application,   'Other Application') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :application_date, 'Application Date' ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :prior_publication_date,   'Prior Publication Date') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :prior_publication,   'Prior Publication Number') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :number_of_claims,  'Claims') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :us_patent_classification_code,   'Classification (US Patent)') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :cooperative_patent_classification_code,  'Cooperative Patent Classification codes' ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :international_patent_classification_code,  'International Patent Classification codes' ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :language,  'Language' ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :date_issued,  'Date Issued') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :publisher,  'Publisher'  ) %>
+  <%= curation_concern_attribute_to_html(curation_concern, :rights_holder,   'Assignee') %>
+
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
+
+  <tr>
+    <th>Access Rights</th>
+    <td>
+      <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
+    </td>
+  </tr>
+
+  <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, 'Embargo Release Date') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :rights, 'Content License') %>
+
+  <% if curation_concern.type_of_license == 'Independently Licensed' %>
+    <%= curation_concern_attribute_to_html(curation_concern, :license, 'License Agreement') %>
+  <% end %>
+  </tbody>
+</table>
