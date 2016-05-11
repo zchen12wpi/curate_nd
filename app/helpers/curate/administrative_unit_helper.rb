@@ -11,19 +11,20 @@ module Curate::AdministrativeUnitHelper
 
     options = ''
 
-    root = Locabulary.active_hierarchical_root(predicate_name: 'administrative_units')
+    roots = Locabulary.active_hierarchical_roots(predicate_name: 'administrative_units')
 
-    root.children.each do |administrative_unit|
-      processed_administrative_unit_ids << administrative_unit.selectable_id
-      options << "<optgroup label=\"#{administrative_unit.selectable_label}\">".html_safe
+    roots.each do |root|
+      root.children.each do |administrative_unit|
+        processed_administrative_unit_ids << administrative_unit.selectable_id
+        options << "<optgroup label=\"#{optgroup_label_for(administrative_unit)}\">".html_safe
 
-      if administrative_unit.selectable?
-        options << administrative_unit_options_from_collection_for_select_with_attributes(
-          [administrative_unit], 'selectable_id', 'selectable_label','indent', 'children', select_administrative_unit_ids
-        )
-      end
+        if administrative_unit.selectable?
+          options << administrative_unit_options_from_collection_for_select_with_attributes(
+            [administrative_unit], 'selectable_id', 'selectable_label','indent', 'children', select_administrative_unit_ids
+          )
+        end
 
-      if administrative_unit.children.present?
+        if administrative_unit.children.present?
           selectable_children = administrative_unit.children.reject {|n| !n.selectable?}
           not_selectable_children = administrative_unit.children.reject {|n| n.selectable?}
           options << administrative_unit_options_from_collection_for_select_with_attributes(
@@ -32,13 +33,24 @@ module Curate::AdministrativeUnitHelper
           options << administrative_units_select_options_html(
             not_selectable_children, processed_administrative_unit_ids, select_administrative_unit_ids
           )
+        end
+        options << '</optgroup>'.html_safe
       end
-      options << '</optgroup>'.html_safe
     end
     return options
   end
 
   private
+
+  # University of Notre Dame is a three-level hierarchy
+  # Non-UND Administrative Units MUST be 2-level hierarchies
+  def optgroup_label_for(administrative_unit)
+    if administrative_unit.root_slug == "University of Notre Dame"
+      administrative_unit.selectable_label
+    else
+      administrative_unit.root_slug
+    end
+  end
 
   def administrative_units_select_options_html(administrative_units, processed_administrative_unit_ids = [], selected_list)
     administrative_units.map do |administrative_unit|
