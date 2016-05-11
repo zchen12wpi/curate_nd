@@ -1,5 +1,10 @@
 class QuickClassificationQuery
-  CURATION_CONCERNS_TO_TRY = ['article', 'dataset', 'image']
+  CURATION_CONCERNS_TO_TRY = [
+    'article',
+    'dataset',
+    'document',
+    'image'
+  ]
 
   def self.each_for_context(*args, &block)
     new(*args).all.each(&block)
