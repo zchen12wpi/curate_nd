@@ -5,13 +5,13 @@
 
 set :bundle_roles, [:app, :work]
 set :bundle_flags, "--deployment"
-require 'bundler/capistrano'
+require 'bundler/capistrano'1G
 # see http://gembundler.com/v1.3/deploying.html
 # copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
 #
 # Install the current Bundler environment. By default, gems will be \
 #  installed to the shared/bundle path. Gems in the development and \
-#  test group will not be installed. The install command is executed \
+#  test group/symlink will not be installed. The install command is executed \
 #  with the --deployment and --quiet flags. If the bundle cmd cannot \
 #  be found then you can override the bundle_cmd variable to specifiy \
 #  which one it should use. The base path to the app is fetched from \
