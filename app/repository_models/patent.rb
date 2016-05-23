@@ -19,7 +19,8 @@ class Patent < ActiveFedora::Base
             label: "Title of the Patent",
             validates: { presence: { message: 'Your patent must have a title.' } }
   attribute :creator, datastream: :descMetadata, multiple: true,
-            hint:"An entity listed on the patent as a creator."
+            label: "Inventor",
+            hint:"An entity listed on the patent as an inventor."
   attribute :administrative_unit, datastream: :descMetadata, multiple: true,
             label: "Departments and Units",
             hint: "Departments and Units that creator belong to."
@@ -52,7 +53,7 @@ class Patent < ActiveFedora::Base
             label: "Classification (IPC)" ,
             hint: "International Patent Classification codes"
   attribute :creators_from_local_institution, multiple: true,
-            hint: "Creators who are (or were) associated with the local institution. People are to be listed here in addition to being listed in creator"
+            hint: "Inventors who are (or were) associated with the local institution. People are to be listed here in addition to being listed in inventor."
   attribute :prior_publication, datastream: :descMetadata, multiple: false, label: "Prior Publication Number"
   attribute :date_issued, datastream: :descMetadata, multiple: false,
             hint: "Date the patent was issued."

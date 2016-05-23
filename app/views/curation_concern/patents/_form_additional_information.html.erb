@@ -2,8 +2,8 @@
   <legend>Additional Information</legend>
 
   <%= f.input :patent_office_link, label: 'USPTO Link', input_html: { class: 'input-xlarge' } %>
-  <%= f.input :creator, as: :multi_value, input_html: { class: 'input-xlarge', placeholder: 'George Washington' } %>
-  <%= f.input :creators_from_local_institution,  as: :multi_value, input_html: { class: 'input-xlarge', placeholder: 'George Washington' } %>
+  <%= f.input :creator, as: :multi_value, label: 'Inventor', input_html: { class: 'input-xlarge', placeholder: 'George Washington' } %>
+  <%= f.input :creators_from_local_institution, as: :multi_value, label: 'Inventor From Local Institution', input_html: { class: 'input-xlarge', placeholder: 'George Washington' } %>
   <%= f.input :other_application, as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :application_date, input_html: { class: 'input-xlarge' } %>
   <%= f.input :prior_publication_date, as: :multi_value, input_html: { class: 'input-xlarge' } %>
