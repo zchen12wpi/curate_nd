@@ -52,7 +52,7 @@ class Patent < ActiveFedora::Base
   attribute :international_patent_classification_code, datastream: :descMetadata, multiple: true,
             label: "Classification (IPC)" ,
             hint: "International Patent Classification codes"
-  attribute :creators_from_local_institution, multiple: true,
+  attribute :creators_from_local_institution, datastream: :descMetadata, multiple: true,
             hint: "Inventors who are (or were) associated with the local institution. People are to be listed here in addition to being listed in inventor."
   attribute :prior_publication, datastream: :descMetadata, multiple: false, label: "Prior Publication Number"
   attribute :date_issued, datastream: :descMetadata, multiple: false,
