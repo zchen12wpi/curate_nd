@@ -26,6 +26,7 @@ describe Collection do
   it "should be empty by default" do
     expect(@collection.members).to eq([])
   end
+
   it "should have many works" do
     @collection.members = [generic_work1, generic_work2]
     @collection.save
