@@ -1,4 +1,5 @@
 require 'hydra/collection'
+
 class Collection < ActiveFedora::Base
   include Hydra::Collection
   include CurationConcern::CollectionModel
