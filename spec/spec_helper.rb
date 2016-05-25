@@ -37,11 +37,11 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
 
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = 'random'
+  # When issue https://github.com/ndlib/curate_nd/issues/423 is resolved
+  # * Restore config.order = 'random'
+  # * Remove config.seed = '44282'
+  # config.order = 'random'
+  config.seed = '44282'
 
   config.use_transactional_fixtures = false
 
