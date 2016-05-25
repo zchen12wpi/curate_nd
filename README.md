@@ -1,5 +1,5 @@
 # CurateND
-[![Build Status](https://travis-ci.org/ndlib/curate_nd.png)](https://travis-ci.org/ndlib/curate_nd)
+[![Build Status](https://travis-ci.org/ndlib/curate_nd.svg?branch=master)](https://travis-ci.org/ndlib/curate_nd)
 [![Stories in Ready](https://badge.waffle.io/ndlib/curate_nd.png?label=ready&title=Ready)](https://waffle.io/ndlib/curate_nd)
 
 This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
@@ -9,7 +9,7 @@ It's primary function is to be a self-deposit interface for our institutional di
 ## Installation Notes
 
 Installing the clamav gem on OS X is a trying process. It can be safely excluded
-from your development environment 
+from your development environment
 
 ```console
 $ bundle install --without headless
