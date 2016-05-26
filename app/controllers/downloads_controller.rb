@@ -46,22 +46,22 @@ class DownloadsController < ApplicationController
   end
 
   def send_content(asset)
-
-    # Because we don't want to proxy thumbnails, as per Don's suggestion.
-    if Rails.application.config.use_proxy_for_download.enabled? && !thumbnail_datastream?
-      content_options
+    # Disadis is configured to send only content datastreams. Don suggested that
+    # we leave thumbnails to the application for the time being.
+    if download_proxying_enabled? && !thumbnail_datastream?
+      send_file_headers! content_options
       response.headers['X-Accel-Redirect'] = "/download-content/#{asset.noid}"
       head :ok
     else
-      if datastream.mimeType.eql?('application/xml')
-        send_data datastream.content, type: "application/xml"
-      else
-        response.headers['Accept-Ranges'] = 'bytes'
+      response.headers['Accept-Ranges'] = 'bytes'
 
-        if request.head?
-          content_head
-        elsif request.headers['HTTP_RANGE']
-          send_range
+      if head_request?
+        content_head
+      elsif range_request?
+        send_range
+      else
+        if redirect_datastream?
+          redirect_to datastream.dsLocation
         else
           send_file_headers! content_options
           self.response_body = datastream.stream
@@ -71,7 +71,6 @@ class DownloadsController < ApplicationController
   end
 
   private
-
 
   def can_download?
     if params[:token] && TemporaryAccessToken.permitted?(Sufia::Noid.noidify(params[:id]), params[:token])
@@ -97,6 +96,14 @@ class DownloadsController < ApplicationController
       format.json { render json: { status: 'ERROR', code: error_code } }
       format.html { render "/errors/#{error_code}", status: error_code }
     end
+  end
+
+  def head_request?
+    request.head?
+  end
+
+  def range_request?
+    request.headers['HTTP_RANGE']
   end
 
   def redirect_datastream?
