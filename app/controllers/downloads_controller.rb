@@ -45,7 +45,16 @@ class DownloadsController < ApplicationController
       if datastream.mimeType.eql?('application/xml')
         send_data datastream.content, type: "application/xml"
       else
-        super
+        response.headers['Accept-Ranges'] = 'bytes'
+
+        if request.head?
+          content_head
+        elsif request.headers['HTTP_RANGE']
+          send_range
+        else
+          send_file_headers! content_options
+          self.response_body = datastream.stream
+        end
       end
     end
   end
