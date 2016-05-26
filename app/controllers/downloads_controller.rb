@@ -46,6 +46,7 @@ class DownloadsController < ApplicationController
   end
 
   def send_content(asset)
+
     # Because we don't want to proxy thumbnails, as per Don's suggestion.
     if Rails.application.config.use_proxy_for_download.enabled? && !thumbnail_datastream?
       content_options
@@ -71,6 +72,7 @@ class DownloadsController < ApplicationController
 
   private
 
+
   def can_download?
     if params[:token] && TemporaryAccessToken.permitted?(Sufia::Noid.noidify(params[:id]), params[:token])
       TemporaryAccessToken.use!(params[:token])
@@ -78,6 +80,10 @@ class DownloadsController < ApplicationController
     else
       super
     end
+  end
+
+  def download_proxying_enabled?
+    Rails.application.config.use_proxy_for_download.enabled?
   end
 
   def handle_access_denied
@@ -91,6 +97,14 @@ class DownloadsController < ApplicationController
       format.json { render json: { status: 'ERROR', code: error_code } }
       format.html { render "/errors/#{error_code}", status: error_code }
     end
+  end
+
+  def redirect_datastream?
+    datastream.redirect?
+  end
+
+  def redirect_url
+    datastream.dsLocation
   end
 
   def thumbnail_datastream?
