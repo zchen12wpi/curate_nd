@@ -5,7 +5,7 @@
 
 set :bundle_roles, [:app, :work]
 set :bundle_flags, "--deployment"
-require 'bundler/capistrano'1G
+require 'bundler/capistrano'
 # see http://gembundler.com/v1.3/deploying.html
 # copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
 #
