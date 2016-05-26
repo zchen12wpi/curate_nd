@@ -35,6 +35,16 @@ class DownloadsController < ApplicationController
     redirect_to image
   end
 
+  def content_options
+    options = {
+      disposition: 'inline',
+      type: datastream.mimeType,
+      filename: datastream_name
+    }
+    options[:disposition] = 'attachment' if options[:type] =~ /\/xml/i
+    options
+  end
+
   def send_content(asset)
     # Because we don't want to proxy thumbnails, as per Don's suggestion.
     if Rails.application.config.use_proxy_for_download.enabled? && !thumbnail_datastream?
@@ -57,16 +67,6 @@ class DownloadsController < ApplicationController
         end
       end
     end
-  end
-
-  def content_options
-    options = super
-    options[:disposition] =
-    case datastream.mimeType.to_s
-    when /\/xml/i then "attachment"
-    else "inline"
-    end
-    options
   end
 
   private
