@@ -21,7 +21,7 @@
           <dd><%= render_index_field_value(document: solr_doc, field: 'contributors_tesim') %></dd>
         <% end %>
         <% if solr_doc.has?('degree_disciplines_tesim') %>
-          <dt>Department(s):</dt>
+          <dt>Degree Area:</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'degree_disciplines_tesim') %></dd>
         <% end %>
         <% if solr_doc.has?('degree_name_tesim') %>
