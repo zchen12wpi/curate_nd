@@ -49,7 +49,6 @@ class DownloadsController < ApplicationController
     # Disadis is configured to send only content datastreams. Don suggested that
     # we leave thumbnails to the application for the time being.
     if download_proxying_enabled? && !thumbnail_datastream?
-      send_file_headers! content_options
       response.headers['X-Accel-Redirect'] = "/download-content/#{asset.noid}"
       head :ok
     else
