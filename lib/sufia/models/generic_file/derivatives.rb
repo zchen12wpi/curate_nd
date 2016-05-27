@@ -1,5 +1,3 @@
-# Monkey patch the sufia derivatives to increase size of the thumbnail
-
 module Sufia
   module GenericFile
     module Derivatives
@@ -22,7 +20,7 @@ module Sufia
                                        { :webm => {format: "webm", datastream: 'webm'},
                                          :mp4 => {format: "mp4", datastream: 'mp4'} }, processor: :video
             when *image_mime_types
-              obj.transform_datastream :content, { :thumbnail => {size: "270x200>", datastream: 'thumbnail'} }
+              obj.transform_datastream :content, { :thumbnail => {size: "248x272", datastream: 'thumbnail'} }
           end
         end
       end
@@ -30,5 +28,4 @@ module Sufia
     end
   end
 end
-
 
