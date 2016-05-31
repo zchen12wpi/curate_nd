@@ -36,6 +36,10 @@
   margin-bottom: .5em;
   width: 100%;
 
+  .file-title a {
+    color: $official-blue;
+  }
+
   .file-thumbnail {
     float: left;
     margin: 0 0 .5em;
@@ -68,7 +72,6 @@
   }
 
   .thumbnail {
-    border: 1px solid $gray-lightest;
     border-radius: 0;
     display: inline-block;
     padding: 0;
