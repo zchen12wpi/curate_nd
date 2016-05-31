@@ -17,7 +17,7 @@
         <%= generic_file_title(generic_file) %>
       </h3>
       <figure class="file-thumbnail">
-        <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html } %>
+        <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html, href: download_path(generic_file.noid) } %>
       </figure>
       <div class="actions">
         <%- if can?(:read, generic_file) %>
