@@ -20,26 +20,27 @@
       </figure>
 
       <div class="actions">
-        <%- if can?(:read, generic_file) %>
+        <% if can?(:read, generic_file) %>
           <%
             if generic_file.with_empty_content?
-              content_dependent_button_class = 'btn disabled'
+              content_dependent_button_class = 'action btn disabled'
             else
-              content_dependent_button_class = 'btn'
+              content_dependent_button_class = 'action btn'
             end
           %>
           <%= link_to(
             download_path(generic_file.noid),
             {
               class: content_dependent_button_class,
-              title: "Download #{generic_file.to_s.inspect}",
-              target: "_blank"
+              target: '_blank'
             }
           ) do %>
-            <i class="icon icon-download"></i> Download File
+            <i class="icon icon-time"></i> Request Retrieval
           <% end %>
-          <%= link_to "View Details", curation_concern_generic_file_path(generic_file), class: 'btn' %>
+
+          <%= link_to 'View Details', curation_concern_generic_file_path(generic_file), class: 'btn' %>
         <% end %>
+
         <%= render partial: '/curation_concern/base/grant_temporary_access', locals: { curation_concern: curation_concern, file: generic_file } %>
       </div>
   </article>
