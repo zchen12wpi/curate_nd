@@ -12,8 +12,19 @@
 - Send a request instructions (ETD)
 
 ## File Details
-- Change button theme
-- Move to multi-column layout with thumbnail on the left and details on the right
-- Add Rollback button
-- Add breadcrumb with File and Item
-- Move the “Back to…” button to its own line (arrow button?)
+- [x] Change button theme
+- [x] Move to multi-column layout with thumbnail on the left and details on the right
+- [x] Add Rollback button
+- [x] ~~Add breadcrumb with File and Item~~ Included parent as attribute instead
+- [x] ~~Move the “Back to…” button to its own line (arrow button?)~~ Removed
+
+## File Cache Checking
+- [x] Toggle button state based on cache status
+- [x] Display file access notice based on cache status
+- [ ] Toggle access URLs based on cache status
+- [ ] Implement API calls to Bendo
+- [ ] Implement “retrieval” behavior
+	- [ ] Display notice on placeholder page
+	- [ ] Display file size (based on FITS on placeholder page)
+	- [ ] Call Bendo API to recall item
+	- [ ] Implement cache status poller that will redirect to the download URL when finished
