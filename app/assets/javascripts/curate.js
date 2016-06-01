@@ -45,6 +45,8 @@
 //= require curate/read_more
 //= require curate/grid_view_controls
 //= require curate/form_input_mask
+//
+//= require curate/bendo/cache_status
 
 
 // Initialize plugins and Bootstrap dropdowns on jQuery's ready event as well as

@@ -3,12 +3,17 @@
 <section id="attached-files">
 <% if curation_concern.respond_to?(:generic_files) && curation_concern.generic_files.present? %>
   <h2>Files</h2>
+
+  <article class="file-delay-notice alert alert-info">
+    <%= t('curate.notification_messages.file_retrieval').html_safe %>
+  </article>
+
   <% if curation_concern.with_empty_contents? %>
     <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
   <% end %>
 
   <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
-    <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
+    <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-pid="<%= generic_file.pid %>">
       <h3 class="file-title">
         <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
       </h3>
@@ -25,7 +30,7 @@
             if generic_file.with_empty_content?
               content_dependent_button_class = 'action btn disabled'
             else
-              content_dependent_button_class = 'action btn'
+              content_dependent_button_class = 'action btn btn-info'
             end
           %>
           <%= link_to(
@@ -35,7 +40,7 @@
               target: '_blank'
             }
           ) do %>
-            <i class="icon icon-time"></i> Request Retrieval
+            <i class="icon icon-white icon-time"></i> Request Retrieval
           <% end %>
 
           <%= link_to 'View Details', curation_concern_generic_file_path(generic_file), class: 'btn' %>
