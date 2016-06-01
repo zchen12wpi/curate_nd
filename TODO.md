@@ -3,9 +3,10 @@
 	- “Download” (default; green badge?)
 	- “Request Retrieval” (AJAX-assigned; yellow badge?)
 - View details
-- Edit
+- Access badge (realign)
+- ~~Edit~~ (Move to File details)
 - ~~Rollback~~ (Move to File details)
-- Delete
+- ~~Delete~~ (Move to File details)
 - Grant One-time Access (ETD)
 - Access request notice (ETD)
 - Send a request instructions (ETD)
