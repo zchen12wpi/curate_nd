@@ -8,17 +8,17 @@
   <% end %>
 
   <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
-    <% badge_html = capture do %>
-      <%= render partial: 'permission_badge', locals: { curation_concern: generic_file, show_date: true } %>
-    <% end %>
-
     <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
       <h3 class="file-title">
         <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
       </h3>
+
+      <p><%= render partial: 'permission_badge', locals: { curation_concern: generic_file, show_date: true } %></p>
+
       <figure class="file-thumbnail">
-        <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, captured: badge_html, href: download_path(generic_file.noid) } %>
+        <%= render partial: '/application/thumbnail', locals: { thumbnail: generic_file, href: download_path(generic_file.noid) } %>
       </figure>
+
       <div class="actions">
         <%- if can?(:read, generic_file) %>
           <%

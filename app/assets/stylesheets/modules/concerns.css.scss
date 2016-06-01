@@ -48,27 +48,6 @@
   .canonical-image {
     display: inline-block;
     position: relative;
-
-    &.width-100 .access-rights-qualifier,
-    &.width-100 .label {
-      left: 115px;
-      right: auto;
-    }
-
-    .label {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-    .access-rights-qualifier {
-      color: $gray-dark;
-      display: inline-block;
-      position: absolute;
-      right: 0;
-      top: 1.7em;
-      white-space: nowrap;
-    }
   }
 
   .thumbnail {
