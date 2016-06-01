@@ -17,6 +17,15 @@ GIT
       rails (~> 4.0)
 
 GIT
+  remote: git://github.com/ndlib/blacklight-hierarchy.git
+  revision: 92ff8b87b5f04550697a98760ca1a2f08a956592
+  branch: master
+  specs:
+    blacklight-hierarchy (0.1.1)
+      blacklight (~> 4, < 6)
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/ndlib/harbinger
   revision: f330a0ead6136f9aadbcd0ada1a927b38cec85cd
   specs:
@@ -663,6 +672,7 @@ DEPENDENCIES
   addressable (~> 2.3.5)
   better_errors
   binding_of_caller
+  blacklight-hierarchy!
   bootstrap-datepicker-rails
   breach-mitigation-rails
   breadcrumbs_on_rails

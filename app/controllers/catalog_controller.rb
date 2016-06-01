@@ -143,6 +143,19 @@ class CatalogController < ApplicationController
     super
   end
 
+  def hierarchy_facet
+    @pagination = get_facet_pagination(params[:id], params)
+    (@response, @document_list) = get_search_results
+    respond_to do |format|
+      # Draw the facet selector for users who have javascript disabled:
+      format.html
+      format.json { render json: render_facet_list_as_json }
+
+      # Draw the partial for the "more" facet modal window:
+      format.js { render :layout => false }
+    end
+  end
+
   def self.uploaded_field
     #  system_create_dtsi
     solr_name('desc_metadata__date_uploaded', :stored_sortable, type: :date)
@@ -194,6 +207,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("desc_metadata__publisher", :facetable), label: "Publisher", limit: 5
     config.add_facet_field solr_name("desc_metadata__affiliation", :facetable), label: "Affiliation", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
+    #config.add_facet_field solr_name("admin_unit_hierarchy", :facetable), label: "Test", limit: 5
+    config.add_facet_field 'admin_unit_hierarchy_sim', :label => 'Administrative Units', :partial => 'blacklight/hierarchy/facet_hierarchy', :limit => 9999, :show=> false, :sort => 'count'
+    config.facet_display = {
+      :hierarchy => {
+        'admin_unit_hierarchy' => [['sim'], ':']
+      }
+    }
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
