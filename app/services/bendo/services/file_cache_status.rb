@@ -1,13 +1,10 @@
-require 'json'
-
 module Bendo
   module Services
     module FileCacheStatus
 
       def call(id: [], handler: BendoApi)
         ids = Array.wrap(id)
-        results = handler.call(ids)
-        JSON.generate(results)
+        handler.call(ids)
       end
       module_function :call
 
