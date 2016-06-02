@@ -10,7 +10,7 @@ module Bendo
       if is_downloadable?
         if is_viewable?
           respond_to do |format|
-            format.html { render 'recall_item', status: 302 }
+            format.html { render 'recall_item', status: :see_other }
             format.json { json_delegate_response }
           end
         else
@@ -21,7 +21,7 @@ module Bendo
         end
       else
         respond_to do |format|
-          format.html { render 'item_not_found', status: 404 }
+          format.html { render 'item_not_found', status: :not_found }
           format.json { json_not_found_response }
         end
       end
@@ -96,7 +96,7 @@ module Bendo
           },
           data: []
         },
-        status: 200
+        status: :ok
       )
     end
 
@@ -117,7 +117,7 @@ module Bendo
     def json_not_found_response
       render(
         json: { pid => 404 },
-        status: 404
+        status: :not_found
       )
     end
 
