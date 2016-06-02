@@ -1,6 +1,6 @@
 module Bendo
   module Services
-    module FileCacheStatus
+    module RefreshFileCache
 
       def call(id: [], handler: BendoApi)
         ids = Array.wrap(id)

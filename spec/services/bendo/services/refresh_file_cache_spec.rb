@@ -1,9 +1,9 @@
 require 'fast_spec_helper'
-require 'bendo/services/file_cache_status'
+require 'bendo/services/refresh_file_cache'
 
 module Bendo
   module Services
-    RSpec.describe FileCacheStatus do
+    RSpec.describe RefreshFileCache do
       describe '.call' do
         context 'with no IDs' do
           subject { described_class.call(handler: FakeApi) }

@@ -7,7 +7,7 @@ module Bendo
     def check
       render :json => Bendo::Services::FileCacheStatus.call(
         id: params[:id],
-        handler: Bendo::Services::FileCacheStatus::FakeApi
+        handler: Bendo::Services::FakeApi
       )
     end
   end
