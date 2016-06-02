@@ -1,3 +1,6 @@
-<h1>ITEM</h1>
-<%= debug api_response %>
+<% content_for :page_header do %>
+  <h1>Retrieving File</h1>
+<% end %>
 <%= debug item %>
+<%= debug item.is_a? GenericFile %>
+<%= debug api_response %>

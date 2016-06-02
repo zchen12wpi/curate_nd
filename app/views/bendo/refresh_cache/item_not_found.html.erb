@@ -1,2 +1,8 @@
-<h1>ITEM NOT FOUND</h1>
-<%= debug item %>
+<% content_for :page_header do %>
+  <h1>Item Not Found</h1>
+<% end %>
+<div class="alert alert-block">
+  <p class="lead">
+    No files were found for <%= pid %>
+  <p>
+</div>
