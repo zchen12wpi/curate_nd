@@ -11,27 +11,18 @@ module Bendo
         if is_viewable?
           respond_to do |format|
             format.html { render 'recall_item', status: 302 }
-            format.json { render(
-              json: api_response.body,
-              status: api_response.status
-            )}
+            format.json { json_delegate_response }
           end
         else
           respond_to do |format|
             format.html { render unauthorized_path, status: :unauthorized }
-            format.json { render(
-              json: { pid => 401 },
-              status: :unauthorized
-            )}
+            format.json { json_unauthorized_response }
           end
         end
       else
         respond_to do |format|
           format.html { render 'item_not_found', status: 404 }
-          format.json { render(
-            json: { pid => 404 },
-            status: 404
-          )}
+          format.json { json_not_found_response }
         end
       end
     end
@@ -41,28 +32,24 @@ module Bendo
       if is_downloadable?
         if is_viewable?
           respond_to do |format|
-            format.json { render(
-              json: api_response.body,
-              status: api_response.status
-            )}
+            format.json { json_api_response }
           end
         else
           respond_to do |format|
-            format.json { render(
-              json: { pid => 401 },
-              status: :unauthorized
-            )}
+            format.json { json_unauthorized_response }
           end
         end
       else
         respond_to do |format|
-          format.json { render(
-            json: { pid => 404 },
-            status: 404
-          )}
+          format.json { json_not_found_response }
         end
       end
     end
+
+    def pid
+      params[:id]
+    end
+    helper_method :pid
 
     private
 
@@ -84,11 +71,6 @@ module Bendo
     alias_method :curation_concern, :item
     helper_method :item, :curation_concern
 
-    def pid
-      params[:id]
-    end
-    helper_method :pid
-
     def api_response
       @response ||= make_request(params[:id])
     end
@@ -103,6 +85,40 @@ module Bendo
 
     def unauthorized_path
       'app/views/curation_concern/base/unauthorized'
+    end
+
+    def json_delegate_response
+      render(
+        json: {
+          links: {
+            self: common_object_path(noid),
+            recall: request_bendo_cache_refresh_path(noid)
+          },
+          data: []
+        },
+        status: 200
+      )
+    end
+
+    def json_api_response
+      render(
+        json: api_response.body,
+        status: api_response.status
+      )
+    end
+
+    def json_unauthorized_response
+      render(
+        json: { pid => 401 },
+        status: :unauthorized
+      )
+    end
+
+    def json_not_found_response
+      render(
+        json: { pid => 404 },
+        status: 404
+      )
     end
 
   end
