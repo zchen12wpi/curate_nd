@@ -32,8 +32,3 @@
     <%= render_facet_partials %>
   </ul>
 <% end %>
-<% if has_facet_values?(['admin_unit_hierarchy_sim']) -%>
-  <li class="more_facets_link">
-    <%= link_to facet_field_labels['admin_unit_hierarchy_sim'], url_for(params.merge(:id => 'admin_unit_hierarchy_sim', :action=>"hierarchy_facet", :path_only=>true)), :id=>'hierarchy_modal', :class => "more_facets_link"%>
-  </li>
-<% end %>
