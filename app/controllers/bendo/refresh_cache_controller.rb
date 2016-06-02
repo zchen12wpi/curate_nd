@@ -1,6 +1,8 @@
 module Bendo
   # Refresh the cache of an item stored in Bendo
   class RefreshCacheController < BendoController
+    include Sufia::Noid
+    before_filter :normalize_identifier
 
     # Provide a human-friendly refresh process
     def recall_item
