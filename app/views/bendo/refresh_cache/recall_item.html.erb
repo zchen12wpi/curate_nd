@@ -1,6 +1,19 @@
 <% content_for :page_header do %>
   <h1>Retrieving File</h1>
 <% end %>
-<%= debug item %>
-<%= debug item.is_a? GenericFile %>
-<%= debug api_response %>
+<p class="lead">This operation could take some time.</p>
+<% bytes = item.file_size.first %>
+<% unless bytes.blank? %>
+  <div class="alert alert-block alert-info">
+    The file is <%= number_to_human_size(bytes) %>.
+  </div>
+<% end %>
+
+<div class="retrieval-progress-indicator" data-poll="<%= bendo_cache_status_path(id: pid) %>">
+</div>
+
+<noscript>
+  <%= form_for request_bendo_cache_refresh_path(pid) do |f| %>
+    <%= f.submit 'Submit request manually', class: 'btn' %>
+  <% end %>
+</noscript>
