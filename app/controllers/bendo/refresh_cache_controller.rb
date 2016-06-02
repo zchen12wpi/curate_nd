@@ -44,6 +44,8 @@ module Bendo
       rescue ActiveFedora::ObjectNotFoundError
         @item = nil
       end
+
+      @item = nil unless @item.is_a? GenericFile
     end
     helper_method :item
 
