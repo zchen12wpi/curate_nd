@@ -9,7 +9,8 @@
   </div>
 <% end %>
 
-<div class="retrieval-progress-indicator" data-poll="<%= bendo_cache_status_path(id: pid) %>">
+<div class="retrieval-progress-indicator" data-poll="<%= bendo_cache_status_path(id: pid) %>" data-redirect="<%= download_path(id: item.noid) %>">
+  <p class="lead">Loading…</p>
 </div>
 
 <noscript>
