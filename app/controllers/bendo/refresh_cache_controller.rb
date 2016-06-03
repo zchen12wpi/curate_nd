@@ -32,15 +32,30 @@ module Bendo
       if is_downloadable?
         if is_viewable?
           respond_to do |format|
+            format.html do
+              flash[:notice] = "Request recieved. <a href=\"#{download_path(item.noid)}\">Click here to download the item.</a>".html_safe
+              redirect_to(
+                recall_bendo_item_path(pid),
+                status: api_response.status
+              )
+            end
             format.json { json_api_response }
           end
         else
           respond_to do |format|
+            format.html do
+              flash[:alert] = "You are not permitted to view the item with ID: #{item.noid}"
+              redirect_to recall_bendo_item_path(pid)
+            end
             format.json { json_unauthorized_response }
           end
         end
       else
         respond_to do |format|
+          format.html do
+            flash[:alert] = "No files can be downloaded for ID: #{item.noid}"
+            redirect_to recall_bendo_item_path(pid)
+          end
           format.json { json_not_found_response }
         end
       end

@@ -13,7 +13,10 @@
 </div>
 
 <noscript>
-  <%= form_for request_bendo_cache_refresh_path(pid) do |f| %>
+  <div class="alert alert-block alert-error">
+    <p><b>JavaScript is disabled.</b> You must request the file manually.</p>
+  </div>
+  <%= form_for item, method: :post, url: request_bendo_cache_refresh_path(item.noid) do |f| %>
     <%= f.submit 'Submit request manually', class: 'btn' %>
   <% end %>
 </noscript>
