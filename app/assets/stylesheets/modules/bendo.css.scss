@@ -1,0 +1,13 @@
+.no-js .retrieval-progress-indicator {
+  display: none;
+}
+
+@keyframes pulseOpacity {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.pulse-opacity {
+  animation: pulseOpacity 2s infinite;
+  animation-timing-function: ease-in-out;
+}

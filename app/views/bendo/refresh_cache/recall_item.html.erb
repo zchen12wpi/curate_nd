@@ -9,7 +9,11 @@
   </div>
 <% end %>
 
-<div class="retrieval-progress-indicator" data-poll="<%= bendo_cache_status_path(id: pid) %>" data-redirect="<%= download_path(id: item.noid) %>">
+<%
+  poll_params = JSON.generate({ id: pid, uri: bendo_cache_status_path() })
+  redirect_params = JSON.generate({ uri: download_path(item.noid) })
+%>
+<div class="retrieval-progress-indicator alert alert-block alert-info" data-poll="<%= poll_params %>" data-redirect="<%= redirect_params %>">
   <p class="lead">Loading…</p>
 </div>
 
