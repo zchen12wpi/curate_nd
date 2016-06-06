@@ -10,7 +10,7 @@ module Bendo
       end
 
       class Response
-        def initialize(status: status, body: body)
+        def initialize(status:, body:)
           @status = status
           @body = body
         end
