@@ -2,15 +2,23 @@ module Bendo
   module Services
     module FileCacheStatus
 
-      def call(id: [], handler: BendoApi)
-        ids = Array.wrap(id)
-        handler.call(ids)
+      def call(item_slugs: [], handler: BendoApi)
+        slugs = Array.wrap(item_slugs)
+        handler.call(slugs)
       end
       module_function :call
 
       module BendoApi
-        def call(ids)
-          raise "Not implmented"
+        Response = Struct.new(:status, :body)
+
+        def call(item_slugs)
+          body = item_slugs.each_with_object({}) do |item_slug, memo|
+            # TODO parameterize configuration
+            response = Faraday.head "http://localhost:14000/item/#{item_slug}"
+            is_cached = response.headers.fetch('x-cached') != "0"
+            memo[item_slug] = is_cached
+          end
+          Response.new(200, body.to_json)
         end
         module_function :call
       end

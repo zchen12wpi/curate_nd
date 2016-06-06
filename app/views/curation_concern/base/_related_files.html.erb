@@ -13,7 +13,7 @@
   <% end %>
 
   <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
-    <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-pid="<%= generic_file.pid %>">
+    <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-bendo_item_slug="<%= "#{curation_concern.noid}/#{generic_file.filename}" %>">
       <h3 class="file-title">
         <%= link_to(
           generic_file_title(generic_file),
