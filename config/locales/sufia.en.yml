@@ -128,6 +128,6 @@ en:
         other: "Other"
     notification_messages:
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."
-      file_retrieval: "<b>Please Note:</b> Some files, especially large ones, can take seconds or minuteswhile to retrieve from our archival storage system. Thank you for your patience."
+      file_retrieval: "<b>Please Note:</b> Some files, especially large ones, can take seconds or minutes to retrieve from our archival storage system. Thank you for your patience."
     group:
       members: "Owners can add other members to the group. A group must have at least one owner."
