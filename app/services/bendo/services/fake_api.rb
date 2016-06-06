@@ -3,14 +3,14 @@ module Bendo
     module FakeApi
       module_function
 
-      def call(ids)
+      def call(slugs)
         results = {}
-        ids.map{ |id| results[id] = true }
+        slugs.map{ |slug| results[slug] = true }
         Response.new(status: 200, body: results)
       end
 
       class Response
-        def initialize(status:, body:)
+        def initialize(status: nil, body: nil)
           @status = status
           @body = body
         end
