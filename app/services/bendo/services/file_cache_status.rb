@@ -13,9 +13,8 @@ module Bendo
 
         def call(item_slugs)
           body = item_slugs.each_with_object({}) do |item_slug, memo|
-            # TODO parameterize configuration
-            response = Faraday.head "http://localhost:14000/item/#{item_slug}"
-            is_cached = response.headers.fetch('x-cached') != "0"
+            response = Faraday.head Bendo.item_url(item_slug)
+            is_cached = response.headers.fetch('x-cached') != '0'
             memo[item_slug] = is_cached
           end
           Response.new(200, body.to_json)
