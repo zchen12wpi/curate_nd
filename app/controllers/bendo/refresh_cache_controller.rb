@@ -44,7 +44,7 @@ module Bendo
         else
           respond_to do |format|
             format.html do
-              flash[:alert] = "You are not permitted to view the item with ID: #{item.noid}"
+              flash[:alert] = "You are not permitted to view the item with ID: #{pid}"
               redirect_to recall_bendo_item_path(pid)
             end
             format.json { json_unauthorized_response }
@@ -53,7 +53,7 @@ module Bendo
       else
         respond_to do |format|
           format.html do
-            flash[:alert] = "No files can be downloaded for ID: #{item.noid}"
+            flash[:alert] = "No files can be downloaded for ID: #{pid}"
             redirect_to recall_bendo_item_path(pid)
           end
           format.json { json_not_found_response }
@@ -62,7 +62,7 @@ module Bendo
     end
 
     def pid
-      params[:id]
+      @pid ||= Noid.namespaceize(params[:id])
     end
     helper_method :pid
 
@@ -78,7 +78,7 @@ module Bendo
 
     def item
       begin
-        @item ||= ActiveFedora::Base.find(params[:id], cast: true)
+        @item ||= ActiveFedora::Base.find(pid, cast: true)
       rescue ActiveFedora::ObjectNotFoundError
         @item = nil
       end
@@ -87,7 +87,7 @@ module Bendo
     helper_method :item, :curation_concern
 
     def api_response
-      @response ||= make_request(params[:id])
+      @response ||= make_request(pid)
     end
     helper_method :api_response
 
