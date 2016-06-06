@@ -20,6 +20,10 @@ Blacklight.onLoad(function() {
           $('[data-pid="' + key + '"] .action')
             .removeClass('btn-info')
             .html('<i class="icon icon-download"></i> Download');
+          $('[data-pid="' + key + '"] [data-alternate]').map(function() {
+            var $this = $(this);
+            $this.attr('href', $this.data('alternate'));
+          });
         }
       });
 
