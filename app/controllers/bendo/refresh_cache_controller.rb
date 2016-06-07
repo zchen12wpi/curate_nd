@@ -62,7 +62,7 @@ module Bendo
     end
 
     def pid
-      @pid ||= Noid.namespaceize(params[:id])
+      @pid ||= Sufia::Noid.namespaceize(params[:id])
     end
     helper_method :pid
 
