@@ -1,3 +1,5 @@
+require 'URI'
+
 module Bendo
   module_function
 
@@ -6,6 +8,6 @@ module Bendo
   end
 
   def item_url(slug)
-    "#{url}/item/#{slug}"
+    "#{url}#{slug}"
   end
 end
