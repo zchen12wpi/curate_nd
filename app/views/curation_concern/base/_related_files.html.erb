@@ -14,13 +14,11 @@
 
   <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
     <%
-      bendo_datastream = Bendo::DatastreamPresenter.new(generic_file.datastreams.fetch('content'))
+      content = generic_file.datastreams.fetch('content')
+      bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
       if bendo_datastream.valid?
     %>
       <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-bendo_item_slug="<%= bendo_datastream.item_slug %>">
-    <% else %>
-      <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
-    <% end %>
       <h3 class="file-title">
         <%= link_to(
           generic_file_title(generic_file),
@@ -30,6 +28,12 @@
           }
         ) %>
       </h3>
+    <% else %>
+      <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
+      <h3 class="file-title">
+        <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
+      </h3>
+    <% end %>
 
       <p><%= render(
         partial: 'permission_badge',
@@ -40,14 +44,24 @@
       ) %></p>
 
       <figure class="file-thumbnail">
-        <%= render(
-          partial: '/application/thumbnail',
-          locals: {
-            alternate_href: download_path(generic_file.noid),
-            href: recall_bendo_item_path(generic_file.noid),
-            thumbnail: generic_file
-          }
-        ) %>
+        <% if bendo_datastream.valid? %>
+          <%= render(
+            partial: '/application/thumbnail',
+            locals: {
+              alternate_href: download_path(generic_file.noid),
+              href: recall_bendo_item_path(generic_file.noid),
+              thumbnail: generic_file
+            }
+          ) %>
+        <% else %>
+          <%= render(
+            partial: '/application/thumbnail',
+            locals: {
+              href: download_path(generic_file.noid),
+              thumbnail: generic_file
+            }
+          ) %>
+        <% end %>
       </figure>
 
       <div class="actions">
@@ -56,20 +70,33 @@
             if generic_file.with_empty_content?
               content_dependent_button_class = 'action btn disabled'
             else
-              content_dependent_button_class = 'action btn btn-info'
+              content_dependent_button_class = 'action btn'
             end
           %>
-          <%= link_to(
-            recall_bendo_item_path(generic_file.noid),
-            {
-              class: content_dependent_button_class,
-              data: {
-                alternate: download_path(generic_file.noid)
-              },
-              target: '_blank'
-            }
-          ) do %>
-            <i class="icon icon-white icon-time"></i> Request Retrieval
+
+          <% if bendo_datastream.valid? %>
+            <%= link_to(
+              recall_bendo_item_path(generic_file.noid),
+              {
+                class: "#{content_dependent_button_class} btn-info",
+                data: {
+                  alternate: download_path(generic_file.noid)
+                },
+                target: '_blank'
+              }
+            ) do %>
+              <i class="icon icon-white icon-time"></i> Request Retrieval
+            <% end %>
+          <% else %>
+            <%= link_to(
+              download_path(generic_file.noid),
+              {
+                class: content_dependent_button_class,
+                target: '_blank'
+              }
+            ) do %>
+              <i class="icon icon-download"></i> Download
+            <% end %>
           <% end %>
 
           <%= link_to 'View Details', curation_concern_generic_file_path(generic_file), class: 'btn' %>
