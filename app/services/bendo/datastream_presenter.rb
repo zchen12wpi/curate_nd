@@ -4,8 +4,9 @@ module Bendo
   class DatastreamPresenter
     attr_reader :datastream
 
-    def initialize(datastream)
+    def initialize(datastream: datastream, service_url: Bendo.url)
       @datastream = datastream
+      @service_url = service_url
     end
 
     def valid?
@@ -26,6 +27,10 @@ module Bendo
     alias_method :item_slug, :item_path
 
     private
+
+    def service_url
+      @service_url
+    end
 
     def find_item_path
       uri = URI.parse(location)
@@ -54,7 +59,7 @@ module Bendo
 
     def is_bendo_url?
       return false unless location
-      Bendo.url == location[0...Bendo.url.length]
+      service_url == location[0...service_url.length]
     end
   end
 end
