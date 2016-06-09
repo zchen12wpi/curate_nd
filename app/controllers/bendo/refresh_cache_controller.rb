@@ -86,15 +86,18 @@ module Bendo
     alias_method :curation_concern, :item
     helper_method :item, :curation_concern
 
+    def item_slugs
+      @item_slugs ||= params[:item_slugs]
+    end
+
     def api_response
-      @response ||= make_request(pid)
+      @response ||= make_request
     end
     helper_method :api_response
 
-    def make_request(id)
+    def make_request
       Bendo::Services::RefreshFileCache.call(
-        id: id,
-        handler: Bendo::Services::FakeApi
+        item_slugs: item_slugs
       )
     end
 
