@@ -1,4 +1,4 @@
-require 'URI'
+require 'uri'
 
 module Bendo
   module_function
