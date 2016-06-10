@@ -12,19 +12,20 @@ Blacklight.onLoad(function() {
         redirect = $this.data('redirect'),
         message = $('.lead', $this);
 
-    $.getJSON(poll.uri, { id: poll.id }, function(data) {
+    console.log(poll);
+    $.getJSON(poll.uri, { item_slugs: [ poll.item_slug ] }, function(data) {
       $.poll(function(retry){
-        if (data) {
-          var cache_hit = data[poll.id];
-          if (cache_hit){
+        $.each( data, function(slug, value) {
+          if (value === true){
             $this.addClass('alert-success').removeClass('alert-info');
-            message.text('Success! You will recieve the file shortly.');
+            message.html('Success! (<a href="' + redirect.uri + '">Download</a>)');
+            $('.retrieval-delay-notice').remove();
             window.location.href = window.location.origin + redirect.uri;
           } else {
             message.addClass('pulse-opacity');
             retry();
           }
-        }
+        });
       });
     });
   });

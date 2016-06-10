@@ -33,9 +33,9 @@ module Bendo
         if is_viewable?
           respond_to do |format|
             format.html do
-              flash[:notice] = "Request recieved. <a href=\"#{download_path(item.noid)}\">Click here to download the item.</a>".html_safe
+              flash[:notice] = "Request recieved. <a href=\"#{download_path(noid)}\">Click here to download the item.</a>".html_safe
               redirect_to(
-                recall_bendo_item_path(pid),
+                recall_bendo_item_path(id: noid),
                 status: api_response.status
               )
             end
@@ -44,8 +44,8 @@ module Bendo
         else
           respond_to do |format|
             format.html do
-              flash[:alert] = "You are not permitted to view the item with ID: #{pid}"
-              redirect_to recall_bendo_item_path(pid)
+              flash[:alert] = "You are not permitted to view the item with ID: #{noid}"
+              redirect_to recall_bendo_item_path(id: noid)
             end
             format.json { json_unauthorized_response }
           end
@@ -53,8 +53,8 @@ module Bendo
       else
         respond_to do |format|
           format.html do
-            flash[:alert] = "No files can be downloaded for ID: #{pid}"
-            redirect_to recall_bendo_item_path(pid)
+            flash[:alert] = "No files can be downloaded for ID: #{noid}"
+            redirect_to recall_bendo_item_path(id: noid)
           end
           format.json { json_not_found_response }
         end
@@ -64,7 +64,16 @@ module Bendo
     def pid
       @pid ||= Sufia::Noid.namespaceize(params[:id])
     end
-    helper_method :pid
+
+    def noid
+      @noid ||= Sufia::Noid.noidify(params[:id])
+    end
+    helper_method :noid
+
+    def item_slug
+      @item_slug ||= find_item_slug
+    end
+    helper_method :item_slug
 
     private
 
@@ -86,8 +95,10 @@ module Bendo
     alias_method :curation_concern, :item
     helper_method :item, :curation_concern
 
-    def item_slugs
-      @item_slugs ||= params[:item_slugs]
+    def find_item_slug
+      content = item.datastreams.fetch('content')
+      bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
+      bendo_datastream.item_slug
     end
 
     def api_response
@@ -97,7 +108,7 @@ module Bendo
 
     def make_request
       Bendo::Services::RefreshFileCache.call(
-        item_slugs: item_slugs
+        item_slugs: item_slug
       )
     end
 
@@ -127,14 +138,14 @@ module Bendo
 
     def json_unauthorized_response
       render(
-        json: { pid => 401 },
+        json: { item_slug => 401 },
         status: :unauthorized
       )
     end
 
     def json_not_found_response
       render(
-        json: { pid => 404 },
+        json: { item_slug => 404 },
         status: :not_found
       )
     end

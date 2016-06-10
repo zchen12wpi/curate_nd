@@ -16,7 +16,7 @@ module Bendo
           # The only difference is that the GET request should be closed instead
           # of waiting for all of the body to be sent. The easiest way to do
           # this is with HTTP streaming.
-          body = item_slugs.each_with_object({}) do |item_slug, memo|
+          body = slugs.each_with_object({}) do |item_slug, memo|
             memo[item_slug] = true
           end
           Response.new(200, body.to_json)

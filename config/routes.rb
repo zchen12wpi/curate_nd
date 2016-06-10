@@ -69,8 +69,8 @@ CurateNd::Application.routes.draw do
 
   scope module: 'bendo' do
     match 'cache_status' => 'file_cache_status#check', via: :get, as: 'bendo_cache_status'
-    match 'recall/:item_slug' => 'refresh_cache#recall_item', via: :get, as: 'recall_bendo_item'
-    match 'refresh_cache/:item_slug' => 'refresh_cache#request_item', via: :post, as: 'request_bendo_cache_refresh'
+    match 'recall/:id' => 'refresh_cache#recall_item', via: :get, as: 'recall_bendo_item'
+    match 'refresh_cache/:id' => 'refresh_cache#request_item', via: :post, as: 'request_bendo_cache_refresh'
   end
 
   #scope module: 'hydramata' do
