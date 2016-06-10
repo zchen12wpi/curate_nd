@@ -13,6 +13,7 @@ Blacklight.onLoad(function() {
   if (filePids.length > 0) {
     var cacheHit = 0;
     $.getJSON('/cache_status', { item_slugs: filePids }, function(data) {
+      $('.attached-file .action.btn-info').tooltip();
       $.each( data, function(slug, value) {
         if (value === true){
           cacheHit += 1;

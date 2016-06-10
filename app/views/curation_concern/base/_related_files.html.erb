@@ -4,15 +4,19 @@
 <% if curation_concern.respond_to?(:generic_files) && curation_concern.generic_files.present? %>
   <h2>Files</h2>
 
-  <article class="file-delay-notice alert alert-info">
-    <%= t('curate.notification_messages.file_retrieval').html_safe %>
-  </article>
+  <% files = curation_concern.generic_files %>
+
+  <% if files.any? %>
+    <article class="file-delay-notice alert alert-info">
+      <%= t('curate.notification_messages.file_retrieval').html_safe %>
+    </article>
+  <% end %>
 
   <% if curation_concern.with_empty_contents? %>
     <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
   <% end %>
 
-  <% curation_concern.generic_files.each_with_index do |generic_file, index| %>
+  <% files.each_with_index do |generic_file, index| %>
     <%
       content = generic_file.datastreams.fetch('content')
       bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
@@ -80,8 +84,11 @@
               {
                 class: "#{content_dependent_button_class} btn-info",
                 data: {
-                  alternate: download_path(generic_file.noid)
+                  alternate: download_path(generic_file.noid),
+                  toggle: 'tooltip',
+                  placement: 'top'
                 },
+                title: t('curate.notification_messages.file_retrieval_tooltip'),
                 target: '_blank'
               }
             ) do %>
