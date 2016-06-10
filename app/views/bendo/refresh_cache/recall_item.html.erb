@@ -1,7 +1,7 @@
 <% content_for :page_header do %>
   <h1>Retrieving File</h1>
 <% end %>
-<p class="lead">This operation could take some time.</p>
+<p class="lead"><%= t('curate.notification_messages.file_retrieval_in_progress') %></p>
 <% bytes = item.file_size.first %>
 <% unless bytes.blank? %>
   <div class="alert alert-block alert-info">
