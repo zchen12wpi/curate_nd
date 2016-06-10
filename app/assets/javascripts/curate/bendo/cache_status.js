@@ -32,6 +32,8 @@ Blacklight.onLoad(function() {
         $('.file-delay-notice').remove();
       }
     });
+  } else {
+    $('.file-delay-notice').remove();
   }
 
 });
