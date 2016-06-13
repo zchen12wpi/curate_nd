@@ -1,29 +1,38 @@
 <% content_for :page_header do %>
   <h1>Retrieving File</h1>
 <% end %>
-<p class="lead retrieval-delay-notice">
-  <%= t('curate.notification_messages.file_retrieval_in_progress') %>
-</p>
-<% bytes = item.file_size.first %>
-<% unless bytes.blank? %>
-  <div class="alert alert-block alert-info">
-    The file is <%= number_to_human_size(bytes) %>.
-  </div>
-<% end %>
-
-<%
-  poll_params = JSON.generate({ item_slug: item_slug, uri: bendo_cache_status_path() })
-  redirect_params = JSON.generate({ uri: download_path(noid) })
-%>
-<div class="retrieval-progress-indicator alert alert-block alert-info" data-poll="<%= poll_params %>" data-redirect="<%= redirect_params %>">
-  <p class="lead">Loading…</p>
-</div>
-
-<noscript>
-  <div class="alert alert-block alert-error">
-    <p><b>JavaScript is disabled.</b> You must request the file manually.</p>
-  </div>
-  <%= form_for item, method: :post, url: request_bendo_cache_refresh_path(noid) do |f| %>
-    <%= f.submit 'Submit request manually', class: 'btn' %>
+<% if flash[:notice] %>
+  <p class="lead retrieval-request-delay-notice">
+    <%= t('curate.notification_messages.file_retrieval_request_recieved') %>
+  </p>
+  <p>
+    <%= link_to 'Download File', download_path(noid), class: 'btn btn-large' %>
+  </p>
+<% else %>
+  <p class="lead retrieval-delay-notice">
+    <%= t('curate.notification_messages.file_retrieval_in_progress') %>
+  </p>
+  <% bytes = item.file_size.first %>
+  <% unless bytes.blank? %>
+    <div class="alert alert-block alert-info">
+      The file is <%= number_to_human_size(bytes) %>.
+    </div>
   <% end %>
-</noscript>
+
+  <%
+    poll_params = JSON.generate({ item_slug: item_slug, uri: bendo_cache_status_path() })
+    redirect_params = JSON.generate({ uri: download_path(noid) })
+  %>
+  <div class="retrieval-progress-indicator alert alert-block alert-info" data-poll="<%= poll_params %>" data-redirect="<%= redirect_params %>">
+    <p class="lead">Loading…</p>
+  </div>
+
+  <noscript>
+    <div class="alert alert-block alert-error">
+      <p><b>JavaScript is disabled.</b> You must request the file manually.</p>
+    </div>
+    <%= form_for item, method: :post, url: request_bendo_cache_refresh_path(noid) do |f| %>
+      <%= f.submit 'Submit request manually', class: 'btn' %>
+    <% end %>
+  </noscript>
+<% end %>

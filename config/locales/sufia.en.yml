@@ -130,6 +130,7 @@ en:
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."
       file_retrieval: "<b>Please Note:</b> You may encounter a delay before a download begins. Large or infrequently accessed files can take several minutes to retrieve from our archival storage system."
       file_retrieval_tooltip: "You may encounter a delay before a download begins."
+      file_retrieval_request_recieved: "The file retrival process has been started. There may be a delay before you can download the file."
       file_retrieval_in_progress: "Retrieving the file may take several minutes. The download will start automatically when the file is ready."
     group:
       members: "Owners can add other members to the group. A group must have at least one owner."

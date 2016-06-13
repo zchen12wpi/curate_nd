@@ -33,7 +33,7 @@ module Bendo
         if is_viewable?
           respond_to do |format|
             format.html do
-              flash[:notice] = "Request recieved. <a href=\"#{download_path(noid)}\">Click here to download the item.</a>".html_safe
+              flash[:notice] = 'File retrieval request recieved.'
               redirect_to(
                 recall_bendo_item_path(id: noid),
                 status: api_response.status
