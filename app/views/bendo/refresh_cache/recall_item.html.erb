@@ -20,11 +20,12 @@
   <% end %>
 
   <%
+    post_params = JSON.generate({ uri: request_bendo_cache_refresh_path(noid) })
     poll_params = JSON.generate({ item_slug: item_slug, uri: bendo_cache_status_path() })
     redirect_params = JSON.generate({ uri: download_path(noid) })
   %>
-  <div class="retrieval-progress-indicator alert alert-block alert-info" data-poll="<%= poll_params %>" data-redirect="<%= redirect_params %>">
-    <p class="lead">Loading…</p>
+  <div class="retrieval-progress-indicator alert alert-block alert-info" data-post="<%= post_params %>" data-poll="<%= poll_params %>" data-redirect="<%= redirect_params %>">
+    <p class="lead">Requesting File…</p>
   </div>
 
   <noscript>

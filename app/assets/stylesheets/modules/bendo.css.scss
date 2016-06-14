@@ -2,6 +2,10 @@
   display: none;
 }
 
+.retrieval-progress-indicator .btn {
+  margin-top: 10px;
+}
+
 @keyframes pulseOpacity {
   0%   { opacity:1; }
   50%  { opacity:0; }

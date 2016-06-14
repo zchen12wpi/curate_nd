@@ -27,7 +27,7 @@ module Bendo
       end
     end
 
-    # JSON API requests only
+    # JSON API requests & noscript fallback HTML responses
     def request_item
       if is_downloadable?
         if is_viewable?
