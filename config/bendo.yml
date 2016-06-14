@@ -3,4 +3,4 @@ development:
 test:
   url: 'http://localhost:14000'
 ci:
-  url: 'http://bendo.library.nd.edu'
+  url: 'http://localhost:14000'
