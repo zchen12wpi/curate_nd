@@ -31,6 +31,18 @@ Blacklight.onLoad(function() {
                 .html('Success!<br/><a href="' + redirect.uri + '" class="btn btn-large">Manual Download</a>');
               $('.retrieval-delay-notice').remove();
               window.location.href = window.location.origin + redirect.uri;
+            } else if (value === 'never') {
+              $this.addClass('alert-error').removeClass('alert-info');
+              message
+                .removeClass('pulse-opacity')
+                .html('The file you requested is too big to process.<br/><a class="request-help btn btn-large" href="/help_requests/new">Request Assistance</a>');
+              $('.retrieval-delay-notice').remove();
+            } else if (value === 'error') {
+              $this.addClass('alert-error').removeClass('alert-info');
+              message
+                .removeClass('pulse-opacity')
+                .html('There was an error retriving the you requested.<br/><a class="request-help btn btn-large" href="/help_requests/new">Request Assistance</a>');
+              $('.retrieval-delay-notice').remove();
             } else {
               retry();
             }
@@ -39,7 +51,7 @@ Blacklight.onLoad(function() {
       });
     }).fail( function(data) {
       var failureMessage = 'File retrieval failed: ' + data.status + ' ' + data.statusText + '<br/>' +
-                           '<a class="help-report-a-problem request-help btn btn-large" href="/help_requests/new">Request Assistance</a>';
+                           '<a class="request-help btn btn-large" href="/help_requests/new">Request Assistance</a>';
       $this
         .addClass('alert-error')
         .removeClass('alert-info');
