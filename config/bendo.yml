@@ -2,3 +2,5 @@ development:
   url: 'http://localhost:14000'
 test:
   url: 'http://localhost:14000'
+ci:
+  url: 'http://bendo.library.nd.edu'
