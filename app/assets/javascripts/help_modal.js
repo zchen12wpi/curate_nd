@@ -23,7 +23,7 @@ $(function(){
   }
   populateHelpForm();
 
-  $('.request-help').on('click', function(event){
+  $(document).on('click','.request-help', function(event){
     event.preventDefault();
     var target = $(this).attr('href');
 

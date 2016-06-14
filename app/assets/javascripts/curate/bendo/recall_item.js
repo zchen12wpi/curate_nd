@@ -38,11 +38,13 @@ Blacklight.onLoad(function() {
         });
       });
     }).fail( function(data) {
+      var failureMessage = 'File retrieval failed: ' + data.status + ' ' + data.statusText + '<br/>' +
+                           '<a class="help-report-a-problem request-help btn btn-large" href="/help_requests/new">Request Assistance</a>';
       $this
         .addClass('alert-error')
         .removeClass('alert-info');
       message
-        .html('File retrieval failed: ' + data.status + ' ' + data.statusText + '<br/><a href="' + window.location.href + '" class="btn btn-large">Try again</a>');
+        .html(failureMessage);
     });
   });
 
