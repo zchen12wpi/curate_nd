@@ -36,7 +36,7 @@ module Bendo
               flash[:notice] = 'File retrieval request recieved.'
               redirect_to(
                 recall_bendo_item_path(id: noid),
-                status: api_response.status
+                status: :found
               )
             end
             format.json { json_api_response }
