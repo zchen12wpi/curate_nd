@@ -4,7 +4,7 @@ module Bendo
   module_function
 
   def url
-    @@url ||= Psych.load_file(Rails.root.join('config/bendo.yml').to_s).fetch(Rails.env).fetch('url')
+    @@url ||= Psych.load(ERB.new(IO.read(Rails.root.join('config/bendo.yml'))).result).fetch(Rails.env).fetch('url')
   end
 
   def item_path(slug)
