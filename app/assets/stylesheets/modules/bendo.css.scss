@@ -2,7 +2,22 @@
   display: none;
 }
 
+.manual-item-retrieval-processed-notice {
+  .btn {
+    margin-top: 10px;
+  }
+
+  .lead {
+    margin-bottom: 5px;
+  }
+}
+
 .retrieval-progress-indicator .btn {
+  margin-top: 10px;
+}
+
+.manual-item-retrieval-notice form {
+  margin-bottom: 0;
   margin-top: 10px;
 }
 
