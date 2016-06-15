@@ -127,6 +127,7 @@ en:
         undergraduate: "Undergraduate"
         other: "Other"
     notification_messages:
+      edit_bendo_item_warning: "<b>Warning:</b> This item is stored on tape. Any edits made through the web interface may be lost."
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."
       file_retrieval: "<b>Please Note:</b> You may encounter a delay before a download begins. Large or infrequently accessed files can take several minutes to retrieve from our archival storage system."
       file_retrieval_tooltip: "You may encounter a delay before a download begins."

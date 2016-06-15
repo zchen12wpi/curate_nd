@@ -1,17 +1,12 @@
+.alert > .lead {
+  margin-bottom: 5px;
+}
+
 .no-js .retrieval-progress-indicator {
   display: none;
 }
 
-.manual-item-retrieval-processed-notice {
-  .btn {
-    margin-top: 10px;
-  }
-
-  .lead {
-    margin-bottom: 5px;
-  }
-}
-
+.manual-item-retrieval-processed-notice .btn,
 .retrieval-progress-indicator .btn {
   margin-top: 10px;
 }

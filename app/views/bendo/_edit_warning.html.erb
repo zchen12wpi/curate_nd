@@ -1,0 +1,7 @@
+<% if item.datastreams.has_key?('bendo-item') %>
+  <div class="alert">
+    <p class="lead">
+      <%= t('curate.notification_messages.edit_bendo_item_warning').html_safe %>
+    </p>
+  </div>
+<% end %>
