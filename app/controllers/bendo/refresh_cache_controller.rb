@@ -86,11 +86,7 @@ module Bendo
     end
 
     def item
-      begin
-        @item ||= ActiveFedora::Base.find(pid, cast: true)
-      rescue ActiveFedora::ObjectNotFoundError
-        @item = nil
-      end
+      @item ||= ActiveFedora::Base.find(pid, cast: true)
     end
     alias_method :curation_concern, :item
     helper_method :item, :curation_concern
