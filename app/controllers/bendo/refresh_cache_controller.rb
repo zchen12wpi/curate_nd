@@ -33,7 +33,7 @@ module Bendo
         if is_viewable?
           respond_to do |format|
             format.html do
-              flash[:notice] = 'File retrieval request recieved.'
+              flash[:notice] = 'File retrieval request received.'
               redirect_to(
                 recall_bendo_item_path(id: noid),
                 status: :found
