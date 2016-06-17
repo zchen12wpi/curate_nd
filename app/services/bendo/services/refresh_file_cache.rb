@@ -33,7 +33,7 @@ module Bendo
                 end
               end
             rescue NoMethodError
-              logger.info "Prematurely terminated request for #{uri} to warm the cache"
+              logger.info "Prematurely and deliberately terminated request for #{uri} to warm the cache"
             end
             memo[item_slug] = status
           end
