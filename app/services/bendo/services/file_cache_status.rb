@@ -24,8 +24,8 @@ module Bendo
         def call(item_slugs)
           body = item_slugs.each_with_object({}) do |item_slug, memo|
             response = Faraday.head Bendo.item_url(item_slug)
-            cache_status = response.headers.fetch('x-cached') rescue KeyError
-            memo[item_slug] = CACHE_STATUS_RESPONSE_MAP.fetch(cache_status)
+            cache_status = response.headers.fetch('x-cached', nil)
+            memo[item_slug] = CACHE_STATUS_RESPONSE_MAP[cache_status]
           end
           Response.new(200, body.to_json)
         end
