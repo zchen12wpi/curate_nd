@@ -92,6 +92,7 @@ module Bendo
     helper_method :item, :curation_concern
 
     def find_item_slug
+      return nil unless item && item.datastreams
       content = item.datastreams.fetch('content')
       bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
       bendo_datastream.item_slug
