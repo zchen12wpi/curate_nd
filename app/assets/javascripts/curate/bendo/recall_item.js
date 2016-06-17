@@ -41,7 +41,7 @@ Blacklight.onLoad(function() {
               $this.addClass('alert-error').removeClass('alert-info');
               message
                 .removeClass('pulse-opacity')
-                .html('There was an error retriving the you requested.<br/><a class="request-help btn btn-large" href="/help_requests/new">Request Assistance</a>');
+                .html('There was an error retrieving the file you requested.<br/><a class="request-help btn btn-large" href="/help_requests/new">Request Assistance</a>');
               $('.retrieval-delay-notice').remove();
             } else {
               retry();

@@ -1,4 +1,4 @@
-// This widget manages querying and displaying the cache status of files in
+// This script manages querying and displaying the cache status of files in
 // Bendo. There are a lot of assumptions about the structure of the classes and
 // elements.
 

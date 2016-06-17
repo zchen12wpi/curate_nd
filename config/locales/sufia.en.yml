@@ -75,7 +75,7 @@ en:
         repository_name: "The name of the organization or institution that holds the original physical object, if applicable."
         publisher: "An entity responsible for making the original resource available."
         source: "A related resource from which the described resource is derived. The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
-        rights: "Set the license which governs how others may use your files. The main questions are whether others can reuse your work in deritivies, and whether you want attribution as the original creator."
+        rights: "Set the license which governs how others may use your files. The main questions are whether others can reuse your work in derivatives, and whether you want attribution as the original creator."
         contributor_institution: "A consistent reference to the Institution that contributes the material."
         format: "The media type of the item. The system stored and registered MIME type of the file uploaded. Comments: This is an automatically system generated field so it does not need to be filled in. The field is present here so that metadata contributor knows how it is captured."
         size: "Size or duration of the resource."
@@ -131,7 +131,7 @@ en:
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."
       file_retrieval: "<b>Please Note:</b> You may encounter a delay before a download begins. Large or infrequently accessed files can take several minutes to retrieve from our archival storage system."
       file_retrieval_tooltip: "You may encounter a delay before a download begins."
-      file_retrieval_request_received: "The file retrival process has been started."
+      file_retrieval_request_received: "The file retrieval process has been started."
       file_retrieval_in_progress: "Retrieving the file may take several minutes. The download will start automatically when the file is ready."
     group:
       members: "Owners can add other members to the group. A group must have at least one owner."
