@@ -20,6 +20,7 @@ files_to_copy="
     admin_api_keys.yml
     admin_usernames.yml
     application.yml
+    bendo.yml
     database.yml
     doi.yml
     fedora.yml

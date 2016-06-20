@@ -35,29 +35,38 @@ class DownloadsController < ApplicationController
     redirect_to image
   end
 
+  def content_options
+    options = {
+      disposition: 'inline',
+      type: datastream.mimeType,
+      filename: datastream_name
+    }
+    options[:disposition] = 'attachment' if options[:type] =~ /\/xml/i
+    options
+  end
+
   def send_content(asset)
-    # Because we don't want to proxy thumbnails, as per Don's suggestion.
-    if Rails.application.config.use_proxy_for_download.enabled? && !thumbnail_datastream?
-      content_options
+    # Disadis is configured to send only content datastreams. Don suggested that
+    # we leave thumbnails to the application for the time being.
+    if download_proxying_enabled? && !thumbnail_datastream?
       response.headers['X-Accel-Redirect'] = "/download-content/#{asset.noid}"
       head :ok
     else
-      if datastream.mimeType.eql?('application/xml')
-        send_data datastream.content, type: "application/xml"
+      response.headers['Accept-Ranges'] = 'bytes'
+
+      if head_request?
+        content_head
+      elsif range_request?
+        send_range
       else
-        super
+        if redirect_datastream?
+          redirect_to datastream.dsLocation
+        else
+          send_file_headers! content_options
+          self.response_body = datastream.stream
+        end
       end
     end
-  end
-
-  def content_options
-    options = super
-    options[:disposition] =
-    case datastream.mimeType.to_s
-    when /\/xml/i then "attachment"
-    else "inline"
-    end
-    options
   end
 
   private
@@ -71,6 +80,10 @@ class DownloadsController < ApplicationController
     end
   end
 
+  def download_proxying_enabled?
+    Rails.application.config.use_proxy_for_download.enabled?
+  end
+
   def handle_access_denied
     if current_user
       error_code = '403'
@@ -82,6 +95,22 @@ class DownloadsController < ApplicationController
       format.json { render json: { status: 'ERROR', code: error_code } }
       format.html { render "/errors/#{error_code}", status: error_code }
     end
+  end
+
+  def head_request?
+    request.head?
+  end
+
+  def range_request?
+    request.headers['HTTP_RANGE']
+  end
+
+  def redirect_datastream?
+    datastream.redirect?
+  end
+
+  def redirect_url
+    datastream.dsLocation
   end
 
   def thumbnail_datastream?

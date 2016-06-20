@@ -67,6 +67,12 @@ CurateNd::Application.routes.draw do
   match 'users/:id/edit' => 'users#edit', via: :get, as: 'edit_user'
   match 'downloads/:id(/:datastream_id)(.:format)' => 'downloads#show', via: :get, as: 'download'
 
+  scope module: 'bendo' do
+    match 'cache_status' => 'file_cache_status#check', via: :get, as: 'bendo_cache_status'
+    match 'recall/:id' => 'refresh_cache#recall_item', via: :get, as: 'recall_bendo_item'
+    match 'refresh_cache/:id' => 'refresh_cache#request_item', via: :post, as: 'request_bendo_cache_refresh'
+  end
+
   #scope module: 'hydramata' do
   namespace :hydramata do
     resources 'groups'

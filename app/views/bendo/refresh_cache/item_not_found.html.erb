@@ -1,0 +1,9 @@
+<%# Display when a valid PID does not resolve to a GenericFile object %>
+<% content_for :page_header do %>
+  <h1>File Not Found</h1>
+<% end %>
+<div class="alert alert-block">
+  <p class="lead">
+    No files can be downloaded for ID: <%= noid %>
+  <p>
+</div>
