@@ -5,35 +5,82 @@ module Bendo
   RSpec.describe DatastreamPresenter do
     let(:service_url) { 'http://bendo.io/' }
     let(:bendo_url) { 'http://bendo.io/item/01234' }
-    let(:invalid_bendo_url) { 'https://archive.org'}
+    let(:non_bendo_url) { 'https://archive.org'}
     let(:mock_datastream) do
-      Struct.new(:location)
+      Struct.new(:location, :controlGroup)
     end
-    let(:datastream) do
+
+    let(:bendo_datastream) do
       mock = mock_datastream.new
       mock.location = bendo_url
+      mock.controlGroup = 'R'
       mock
     end
-    let(:datastream_with_invalid_url) do
-      mock = mock_datastream.new
-      mock.location = invalid_bendo_url
-      mock
-    end
+
     let(:invalid_datastream) do
       Struct.new(:blank).new
     end
+
     let(:instance) do
       described_class.new(
-        datastream: datastream,
+        datastream: bendo_datastream,
         service_url: service_url
       )
     end
 
     describe '#valid?' do
-      # Is a redirect datastream & a Bendo URL
-      # Is a redirect datastream & NOT a Bendo URL
-      # Is NOT a redirect datastream & a Bendo URL
-      # Is NOT a redirect datastream & NOT a Bendo URL
+      let(:bendo_datastream_without_redirect) do
+        mock = mock_datastream.new
+        mock.location = bendo_url
+        mock
+      end
+
+      let(:non_bendo_datastream_without_redirect) do
+        mock = mock_datastream.new
+        mock.location = non_bendo_url
+        mock
+      end
+
+      let(:non_bendo_datastream) do
+        mock = non_bendo_datastream_without_redirect
+        mock.controlGroup = 'R'
+        mock
+      end
+
+      context 'redirect datastream with a Bendo URL'do
+        subject { instance.valid? }
+        it { is_expected.to be_truthy }
+      end
+
+      context 'redirect datastream with a non-Bendo URL'do
+        subject do
+          described_class.new(
+            datastream: non_bendo_datastream,
+            service_url: service_url
+          ).valid?
+        end
+        it { is_expected.to be_falsey }
+      end
+
+      context 'non-redirect datastream with a Bendo URL' do
+        subject do
+          described_class.new(
+            datastream: bendo_datastream_without_redirect,
+            service_url: service_url
+          ).valid?
+        end
+        it { is_expected.to be_falsey }
+      end
+
+      context 'non-redirect datastream with a non-Bendo URL' do
+        subject do
+          described_class.new(
+            datastream: non_bendo_datastream_without_redirect,
+            service_url: service_url
+          ).valid?
+        end
+        it { is_expected.to be_falsey }
+      end
     end
 
     describe '#location' do
@@ -43,7 +90,12 @@ module Bendo
       end
 
       context 'datastream does NOT respond to `:location`' do
-        subject { described_class.new(datastream: invalid_datastream).location }
+        subject do
+          described_class.new(
+            datastream: invalid_datastream,
+            service_url: service_url
+          ).location
+        end
         it { is_expected.to be_nil }
       end
     end
