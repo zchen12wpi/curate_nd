@@ -1,0 +1,55 @@
+.facet-hierarchy {
+  clear: both;
+  margin: 0;
+  padding-bottom: 1.5em;
+  width: 100%;
+
+  .count {
+    display: inline-block;
+    line-height: 2;
+    position: absolute;
+    right: 2px;
+    top: 0;
+    z-index: 1;
+  }
+
+  .facet_select {
+    display: block;
+    padding: 2px;
+
+    &:active,
+    &:hover {
+      background-color: $gray-faint;
+      text-decoration: none;
+    }
+  }
+
+  .h-node, .h-leaf {
+    line-height: 1.2;
+    position: relative;
+  }
+
+  & > .h-node {
+    list-style-type: none;
+
+    & > .facet_select {
+      font-size: 24px;
+    }
+
+    .h-node, .h-leaf {
+      list-style-type: none;
+
+      .facet_select {
+        font-size: 20px;
+      }
+    }
+
+    .h-node .h-leaf {
+      list-style-type: square;
+
+      .facet_select {
+        font-size: 16px;
+      }
+    }
+  }
+}
