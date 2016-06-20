@@ -34,7 +34,7 @@ module Bendo
 
     def find_item_path
       uri = URI.parse(location)
-      if uri.respond_to?(:path)
+      if ['http', 'https'].include? uri.scheme
         uri.path
       else
         nil
