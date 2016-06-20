@@ -2,10 +2,6 @@ module CurationConcern
   module Work
     extend ActiveSupport::Concern
 
-    included do
-      has_and_belongs_to_many :library_collections, property: :is_member_of_collection, class_name: "ActiveFedora::Base"
-    end
-
     # Parses a comma-separated string of tokens, returning an array of ids
     def self.ids_from_tokens(tokens)
       tokens.gsub(/\s+/, "").split(',')
@@ -14,6 +10,7 @@ module CurationConcern
     included do
       include CurationConcern::Model
       include Hydra::AccessControls::Permissions
+      include CurationConcern::IsMemberOfLibraryCollection
     end
 
     def to_solr(solr_doc={}, opts={})
