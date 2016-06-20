@@ -53,3 +53,14 @@
     }
   }
 }
+
+.hierarchy + .hierarchy {
+  padding-left: 1em;
+  position: relative;
+
+  &:before {
+    content: '❯';
+    position: absolute;
+    left: .3em;
+  }
+}
