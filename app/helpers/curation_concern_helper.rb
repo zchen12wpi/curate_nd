@@ -12,7 +12,7 @@ module CurationConcernHelper
     return markup if administrative_unit.blank?
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
     [administrative_unit].flatten.compact.each do |hierarchy|
-      markup << safe_join(decorator.send(:call, value: hierarchy, opener: '<li class="attribute">', closer: '</li>'))
+      markup << safe_join(decorator.send(:call, value: hierarchy, opener: '<li class="attribute">', closer: '</li>', link: true))
     end
     markup << %(</ul></td></tr>)
     markup.html_safe
