@@ -4,7 +4,7 @@ module CurationConcernHelper
     simple_form_for(object, *(args << options.merge(builder: CurationConcernFormBuilder)), &block)
   end
 
-  def decode_administrative_unit(curation_concern, method_name, label = nil, options = { class: 'descriptive-text' })
+  def decode_administrative_unit(curation_concern, method_name, label = nil, options = { class: 'descriptive-text' }, decorator: Catalog::HierarchicalValuePresenter)
     return unless curation_concern.respond_to?(:administrative_unit)
     markup = ""
     label ||= derived_label_for(curation_concern, method_name)
@@ -12,9 +12,7 @@ module CurationConcernHelper
     return markup if administrative_unit.blank?
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
     [administrative_unit].flatten.compact.each do |hierarchy|
-      markup << %(<ul class='breadcrumb'><li>)
-      markup << hierarchy.split("::").join("</li><span class='divider'>/</span><li>")
-      markup << %(</ul></li>)
+      markup << safe_join(decorator.send(:call, value: hierarchy, opener: '<li class="attribute">', closer: '</li>'))
     end
     markup << %(</ul></td></tr>)
     markup.html_safe

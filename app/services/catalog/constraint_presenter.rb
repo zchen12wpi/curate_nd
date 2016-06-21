@@ -2,9 +2,9 @@ module Catalog
   module ConstraintPresenter
     module_function
 
-    def call(value: value, options: options)
+    def call(value: value, options: options, decorator: HierarchicalValuePresenter)
       if hierarchical_value?(options)
-        decorate(value)
+        decorator.send(:decorate, value: value, delimiter: ':')
       else
         value
       end
@@ -16,16 +16,6 @@ module Catalog
       else
         false
       end
-    end
-
-    def decorate(value)
-      levels = value.split(':')
-      opener = '<span class="hierarchy">'
-      closer = '</span>'
-      markup = opener
-      markup << levels.join("#{closer}#{opener}")
-      markup << closer
-      markup
     end
   end
 end
