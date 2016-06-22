@@ -15,7 +15,7 @@
 
   .count {
     right: 2px;
-    top: 0;
+    top: 6px;
   }
 
   .remove {
@@ -46,12 +46,21 @@
     position: relative;
   }
 
+  ul {
+    padding-bottom: 5px;
+  }
+
   & > .h-node {
     list-style-type: none;
 
     & > .facet_select,
     & > .selected {
+      border-bottom: 2px solid $gray-lightest;
+      color: $official-blue;
       font-size: 24px;
+      margin-bottom: 3px;
+      padding-bottom: 2px;
+      padding-top: 6px;
     }
 
     .h-node, .h-leaf {
