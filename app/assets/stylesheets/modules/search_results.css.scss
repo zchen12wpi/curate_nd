@@ -1,5 +1,37 @@
 @import 'global-variables';
 
+.catalog-title-bar {
+  position: relative;
+
+  .site-actions-wrapper {
+    padding-top:5px;
+  }
+}
+
+@media (min-width: 600px) {
+  .catalog-title-bar {
+    .site-actions {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog.page-banner {
+    margin-bottom: .8em;
+  }
+
+  .catalog .title-bar-wrapper {
+    padding-bottom:.8em;
+  }
+}
+
 .search-term-splash {
   padding: 1em 1em 0 3.8em;
   text-indent: -3.8em;

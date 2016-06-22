@@ -1,6 +1,16 @@
-<% content_for :layout_name, 'catalog, ' %>
-<% content_for :main do %>
+<% content_for :layout_name, 'curate_nd_catalog, ' %>
+<% content_for :body do %>
+<header role="banner" class="catalog page-banner">
+  <div class="brand-bar-wrapper">
+    <%= render 'shared/brand_bar' %>
+  </div>
+  <div class="title-bar-wrapper">
+    <%= render partial: 'catalog/title_bar' %>
+  </div>
+</header>
 
+
+<main id="main" role="main" class="page-main container <%= yield :page_main_class %>">
   <div class="row">
   <% if content_for?(:sidebar) %>
 
@@ -33,6 +43,10 @@
   <% end %>
   </div>
 
+</main>
+
+<%= render 'footer' %>
+
 <% end %>
 
-<%= render template: "layouts/#{theme}" %>
+<%= render :template => 'layouts/boilerplate' %>
