@@ -21,7 +21,7 @@ $(function(){
   });
 
   // Turn on tile display
-  $('.search .choose-list-format .grid').on('click', function(e) {
+  $('.search-results .choose-list-format .grid').on('click', function(e) {
     e.preventDefault();
     if(!($(this).hasClass('active'))){
       if(window.location.search === ''){
@@ -33,7 +33,7 @@ $(function(){
   });
 
   // Turn off tile display
-  $('.search .choose-list-format .listing').on('click', function(e) {
+  $('.search-results .choose-list-format .listing').on('click', function(e) {
     e.preventDefault();
     if(!($(this).hasClass('active'))){
       var url = window.location.href.split('?'),
