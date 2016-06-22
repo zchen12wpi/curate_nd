@@ -90,8 +90,9 @@
 
   &:before {
     content: '❯';
-    position: absolute;
     left: .3em;
+    opacity: .35;
+    position: absolute;
   }
 }
 
