@@ -11,6 +11,9 @@
 
 
 <main id="main" role="main" class="page-main container <%= yield :page_main_class %>">
+  <div>
+    <%= render 'search_term_splash' %>
+  </div>
   <div class="row">
   <% if content_for?(:sidebar) %>
 
