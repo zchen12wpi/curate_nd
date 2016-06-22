@@ -34,7 +34,7 @@
         <% end -%>
       </dl>
 
-      <%= safe_join(Catalog::HierarchicalValuePresenter.call(value: solr_doc[:desc_metadata__administrative_unit_tesim])) %>
+      <%= display_hierarchical_value(solr_doc[:desc_metadata__administrative_unit_tesim]) %>
     </div>
 
   </div>

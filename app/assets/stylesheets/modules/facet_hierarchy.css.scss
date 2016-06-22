@@ -64,3 +64,12 @@
     left: .3em;
   }
 }
+
+.hierarchical-value-list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
