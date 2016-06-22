@@ -10,9 +10,12 @@
 </header>
 
 
-<main id="main" role="main" class="page-main container <%= yield :page_main_class %>">
-  <div>
-    <%= render 'search_term_splash' %>
+<main id="main" role="main" class="page-main container search-results <%= yield :page_main_class %>">
+  <div class="row">
+    <div class="span9 offset3">
+      <%= render 'search_term_splash' %>
+      <%= render 'shared/site_search' %>
+    </div>
   </div>
   <div class="row">
   <% if content_for?(:sidebar) %>
