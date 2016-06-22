@@ -4,14 +4,23 @@
   padding-bottom: 1.5em;
   width: 100%;
 
-  .count {
+  .count,
+  .remove {
     display: inline-block;
     font-size: 14px;
     line-height: 2;
     position: absolute;
+    z-index: 1;
+  }
+
+  .count {
     right: 2px;
     top: 0;
-    z-index: 1;
+  }
+
+  .remove {
+    left: -13px;
+    top: 3px;
   }
 
   .facet_select {
@@ -30,6 +39,7 @@
     padding: 2px;
     position: relative;
   }
+
 
   .h-node, .h-leaf {
     line-height: 1.2;
@@ -51,6 +61,11 @@
       .selected {
         font-size: 20px;
       }
+
+      .remove {
+        left: -15px;
+        top: 0;
+      }
     }
 
     .h-node .h-leaf {
@@ -59,6 +74,11 @@
       .facet_select,
       .selected {
         font-size: 16px;
+      }
+
+      .remove {
+        left: -19px;
+        top: -2px;
       }
     }
   }
