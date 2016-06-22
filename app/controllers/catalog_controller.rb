@@ -166,7 +166,7 @@ class CatalogController < ApplicationController
     (@response, @document_list) = get_search_results
     respond_to do |format|
       # Draw the facet selector for users who have javascript disabled:
-      format.html
+      format.html { render layout: 'curate_nd/1_column'}
       format.json { render json: render_facet_list_as_json }
 
       # Draw the partial for the "more" facet modal window:

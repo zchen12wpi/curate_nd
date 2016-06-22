@@ -73,3 +73,13 @@
     list-style-type: none;
   }
 }
+
+.hierarchical-facet-page {
+  .modal-header {
+    display: none;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+}
