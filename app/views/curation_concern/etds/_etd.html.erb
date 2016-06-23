@@ -33,6 +33,8 @@
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__date_ssi') %></dd>
         <% end %>
       </dl>
+
+      <%= display_hierarchical_value(solr_doc[:desc_metadata__administrative_unit_tesim]) %>
     </div>
 
   </div>

@@ -1,0 +1,66 @@
+.facets {
+  margin: 0;
+
+  li {
+    list-style-type: none;
+    position: relative;
+  }
+
+  a {
+    &:hover,
+    &:focus {
+      background-color: $gray-faint;
+      text-decoration: none;
+    }
+  }
+
+  .expandable_new {
+    & > a {
+      border: 1px solid $gray-lightest;
+      display: block;
+      margin: 0 0 2px;
+      padding:4px 20px 4px 8px;
+      position: relative;
+    }
+
+    .slide-list {
+      li {
+        padding: 2px 0;
+      }
+    }
+  }
+
+  .facet_select {
+    display: block;
+    padding: 2px 2em 2px 2px;
+  }
+
+  .count {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+  }
+
+  .chevron {
+    border-color: $official-blue transparent transparent;
+    border-style: solid;
+    border-width: 8px 4px 0;
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 0;
+  }
+
+  .accordion-toggle.collapsed .chevron {
+    transform: rotate(-90deg);
+  }
+
+  .more_facets_link > .more_facets_link {
+    display: block;
+    margin-bottom: 4px;
+    padding: 2px;
+    text-align: right;
+  }
+}

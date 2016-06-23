@@ -1,0 +1,12 @@
+<% if has_facet_values?([facet_field.field]) -%>
+  <% facet_url = url_for(
+    params.merge(
+      id: facet_field.field,
+      action: 'hierarchy_facet',
+      path_only: true
+    )
+  )%>
+  <%= link_to facet_url, id: 'hierarchy_modal', class: 'more_facets_link' do %>
+    <%= facet_field.label %>
+  <% end %>
+<% end %>

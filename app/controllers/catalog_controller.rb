@@ -109,6 +109,24 @@ module BlacklightFacetExtras
         content_tag(:span, render_facet_value(facet_solr_field, item, :suppress_link => true), :class => "selected") +
           link_to(content_tag(:i, '', :class => "icon-remove") + content_tag(:span, '[remove]', :class => 'hide-text'), remove_facet_params(facet_solr_field, item, params), :class=>"remove")
       end
+
+      def render_facet_limit(display_facet, options = {})
+        if display_facet.is_a? String or display_facet.is_a? Symbol
+          $stderr.puts "DEPRECATION WARNING: Blacklight::FacetsHelper#render_facet_limit: use #render_facet_partials to render facets by field name"
+          return render_facet_partials([display_facet])
+        end
+        return if not should_render_facet?(display_facet)
+        config = facet_configuration_for_field(display_facet.name)
+        options = options.dup
+        options[:partial] ||= facet_partial_name(display_facet)
+        options[:layout] ||= config.try(:layout) || "facet_layout" unless options.has_key?(:layout)
+        options[:locals] ||= {}
+        options[:locals][:solr_field] ||= display_facet.name
+        options[:locals][:solr_fname] ||= display_facet.name # DEPRECATED
+        options[:locals][:facet_field] ||= facet_configuration_for_field(display_facet.name)
+        options[:locals][:display_facet] ||= display_facet
+        render(options)
+      end
     end
   end
 end
@@ -143,6 +161,19 @@ class CatalogController < ApplicationController
     super
   end
 
+  def hierarchy_facet
+    @pagination = get_facet_pagination(params[:id], params)
+    (@response, @document_list) = get_search_results
+    respond_to do |format|
+      # Draw the facet selector for users who have javascript disabled:
+      format.html { render layout: 'curate_nd/1_column'}
+      format.json { render json: render_facet_list_as_json }
+
+      # Draw the partial for the "more" facet modal window:
+      format.js { render :layout => false }
+    end
+  end
+
   def self.uploaded_field
     #  system_create_dtsi
     solr_name('desc_metadata__date_uploaded', :stored_sortable, type: :date)
@@ -159,7 +190,7 @@ class CatalogController < ApplicationController
      initialized_config = Curate.configuration.search_config['catalog']
      # If the hash is empty, set reasonable defaults for this search type
      if initialized_config.nil?
-        Hash['qf' => ['desc_metadata__title_tesim','desc_metadata__name_tesim'],'qt' => 'search','rows' => 10]
+        Hash['qf' => ['desc_metadata__title_tesim','desc_metadata__name_tesim'],'qt' => 'search','rows' => 12]
      else
         initialized_config
      end
@@ -184,9 +215,16 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
+    config.add_facet_field(
+      solr_name('admin_unit_hierarchy', :facetable),
+      label: 'Department or Unit',
+      layout: 'catalog/hierarchy_facet_layout',
+      partial: 'catalog/hierarchy_facet',
+      limit: 9999,
+      sort: 'count'
+    )
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type of Work", limit: 5, multiple: true
     config.add_facet_field solr_name(:desc_metadata__creator, :facetable), label: "Creator", helper_method: :creator_name_from_pid, limit: 5
-
     config.add_facet_field solr_name("desc_metadata__tag", :facetable), label: "Keyword", limit: 5
     config.add_facet_field solr_name("desc_metadata__subject", :facetable), label: "Subject", limit: 5
     config.add_facet_field solr_name("desc_metadata__language", :facetable), label: "Language", limit: 5
@@ -194,6 +232,11 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("desc_metadata__publisher", :facetable), label: "Publisher", limit: 5
     config.add_facet_field solr_name("desc_metadata__affiliation", :facetable), label: "Affiliation", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
+    config.facet_display = {
+      :hierarchy => {
+        'admin_unit_hierarchy' => [['sim'], ':']
+      }
+    }
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

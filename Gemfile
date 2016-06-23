@@ -21,6 +21,7 @@ group :default do
   gem 'devise_masquerade'
   gem 'flipper'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
+  gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
   gem 'httparty'
   gem 'hydra-batch-edit', '~> 1.1.1'
   gem 'hydra-collections', '~> 1.3.0'

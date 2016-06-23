@@ -126,6 +126,11 @@ en:
         graduate: "Graduate"
         undergraduate: "Undergraduate"
         other: "Other"
+    catalog:
+      facet_title:
+        admin_unit_hierarchy_sim: 'Department or Unit'
+      help_text:
+        admin_unit_hierarchy_sim: 'Filter by Department or Unit'
     notification_messages:
       edit_bendo_item_warning: "<b>Warning:</b> This item is stored on tape. Any edits made through the web interface may be lost."
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."

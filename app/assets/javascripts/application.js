@@ -36,6 +36,7 @@ $(function(){
     maxWidth: '90%',
     maxHeight: '90%'
   });
+  $('.accordion-toggle').addClass('collapsed');
 
   $('#announcements').on('ajax:success', function(event){
     var $target = $(event.target),
