@@ -1,5 +1,3 @@
-@import 'global-variables';
-
 .catalog-title-bar {
   position: relative;
 
@@ -33,19 +31,7 @@
 }
 
 .search-term-splash {
-  padding: 1em 1em 0 3.8em;
-  text-indent: -3.8em;
-
-  .search-splash-icon {
-    display: inline-block;
-    margin: 0 .2em 0 0;
-    text-indent: 0;
-    width: 1em;
-
-    .svg {
-      width: 100%;
-    }
-  }
+  padding: .5em 0 0;
 }
 
 .search-results-list {
