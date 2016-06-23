@@ -95,10 +95,14 @@
 }
 
 .search-constraints {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
-  .applied-filter {
-    display: inline-block;
-    font-size: 1.2em;
+  .applied-filter,
+  .clear-filters {
+    margin-bottom: 5px;
+  }
+
+  .btn-group + .btn-group {
+    margin-left: 0;
   }
 }

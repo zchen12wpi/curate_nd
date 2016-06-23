@@ -10,7 +10,7 @@
   <p class="search-constraint-notice">You searched for:</p>
   <div class="search-constraints">
     <%= render_constraints(params) %>
-    <%= link_to 'Clear All', catalog_index_path, class: 'btn' %>
+    <%= link_to 'Clear All', catalog_index_path, class: 'btn btn-danger clear-filters' %>
   </div>
 
   <%= render :partial => 'did_you_mean' %>

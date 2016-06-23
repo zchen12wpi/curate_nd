@@ -1,0 +1,8 @@
+.btn.btn-outline {
+  background-color: $white;
+  background-image: none;
+
+  &:active {
+    box-shadow: none;
+  }
+}
