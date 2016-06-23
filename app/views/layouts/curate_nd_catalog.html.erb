@@ -9,7 +9,6 @@
   </div>
 </header>
 
-
 <main id="main" role="main" class="page-main container search-results <%= yield :page_main_class %>">
   <div class="row">
     <div class="span9 offset3">
@@ -24,21 +23,9 @@
       <%= yield(:sidebar) %>
     </div>
 
-    <% if content_for?(:call_to_action) %>
-      <div class="span6 <%= yield(:content_class) %>">
-    <% else %>
-      <div class="span9 <%= yield(:content_class) %>">
-    <% end %>
+    <div class="span9 <%= yield(:content_class) %>">
       <%= yield %>
     </div>
-
-    <% if content_for?(:call_to_action) %>
-
-    <div class="span3 call-to-action">
-      <%= yield(:call_to_action) %>
-    </div>
-
-    <% end %>
 
   <% else %>
 
