@@ -1,4 +1,6 @@
 <% splash = Catalog::SearchSplashPresenter.call(params) %>
+<%= debug params[:f][:human_readable_type_sim] %>
+<%= debug params[:f_inclusive][:human_readable_type_sim] %>
 <% if splash %>
   <div class="search-term-splash">
     <h1>
