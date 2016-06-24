@@ -47,7 +47,7 @@ module Catalog
     end
 
     def department_label(params)
-      params[:f][department_key].first
+      params[:f][department_key].first.split(':').last
     end
 
     def category_present?(params)

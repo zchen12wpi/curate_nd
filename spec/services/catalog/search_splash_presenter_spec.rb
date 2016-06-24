@@ -22,7 +22,33 @@ module Catalog
         it { is_expected.to eq('University of Notre Dame') }
       end
 
+      context 'one nested department' do
+        let(:nested_department_params) do
+          {
+            f: {
+              described_class.department_key => [
+                'University of Notre Dame:College of Arts and Letters'
+              ]
+            }
+          }
+        end
+        subject { described_class.call(nested_department_params) }
+        it { is_expected.to eq('College of Arts and Letters') }
+      end
+
       context 'more than one department' do
+        let(:multiple_department_params) do
+          {
+            f: {
+              described_class.department_key => [
+                'University of Notre Dame',
+                'University of Notre Dame:College of Arts and Letters'
+              ]
+            }
+          }
+        end
+        subject { described_class.call(multiple_department_params) }
+        it { is_expected.to be_nil }
       end
 
       context 'Articles' do
