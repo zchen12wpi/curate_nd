@@ -1,0 +1,31 @@
+.search-constraint-notice {
+  margin-top: 0;
+}
+
+.search-constraints {
+  margin-bottom: 15px;
+
+  .applied-filter,
+  .clear-filters {
+    margin-bottom: 5px;
+  }
+
+  .applied-filter {
+    direction: ltr;
+  }
+
+  .applied-constraints {
+    direction: rtl;
+    overflow-y: auto;
+  }
+
+  .btn-group + .btn-group {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-constraints .applied-constraints {
+    direction: ltr;
+  }
+}
