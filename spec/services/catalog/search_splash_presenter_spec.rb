@@ -10,14 +10,41 @@ module Catalog
         it { is_expected.to eq(nil) }
       end
 
+      context 'one top-level department' do
+        let(:top_level_department_params) do
+          {
+            f: {
+              described_class.department_key => ['University of Notre Dame']
+            }
+          }
+        end
+        subject { described_class.call(top_level_department_params) }
+        it { is_expected.to eq('University of Notre Dame') }
+      end
+
+      context 'more than one department' do
+      end
+
       context 'Articles' do
-        let(:article_params) { { f: { human_readable_type_sim: ['Article'] } } }
+        let(:article_params) do
+          {
+            f: {
+              described_class.category_key => ['Article']
+            }
+          }
+        end
         subject { described_class.call(article_params) }
         it { is_expected.to eq(described_class::ARTICLE_SPLASH) }
       end
 
       context 'Datasets' do
-        let(:dataset_params) { { f: { human_readable_type_sim: ['Dataset'] } } }
+        let(:dataset_params) do
+          {
+            f: {
+              described_class.category_key => ['Dataset']
+            }
+          }
+        end
         subject { described_class.call(dataset_params) }
         it { is_expected.to eq(described_class::DATASET_SPLASH) }
       end
@@ -26,7 +53,7 @@ module Catalog
         let(:etd_params) do
           {
             f_inclusive: {
-              human_readable_type_sim: [
+              described_class.category_key => [
                 'Doctoral Dissertation',
                 "Master's Thesis"
               ]

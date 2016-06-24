@@ -4,8 +4,12 @@ module Catalog
     DATASET_SPLASH = 'Datasets & Related Materials'.freeze
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
+    module_function
+
     def call(params)
-      if category_present?(params)
+      if exactly_one_department(params)
+        department_label(params)
+      elsif category_present?(params)
         if category_match?(params, ['Article'])
           ARTICLE_SPLASH
         elsif category_match?(params, ['Dataset'])
@@ -24,14 +28,26 @@ module Catalog
         nil
       end
     end
-    module_function :call
+
+    def department_key
+      :admin_unit_hierarchy_sim
+    end
+
+    def category_key
+      :human_readable_type_sim
+    end
 
     private
 
     module_function
 
-    def category_key
-      :human_readable_type_sim
+    def exactly_one_department(params)
+      return false unless params.key?(:f) && params[:f].fetch(department_key, nil)
+      params[:f][department_key].count == 1
+    end
+
+    def department_label(params)
+      params[:f][department_key].first
     end
 
     def category_present?(params)
