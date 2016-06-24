@@ -32,6 +32,10 @@
 
 .search-results {
   padding-top: .5em;
+
+  .sidebar > h4 {
+    margin-top: 0;
+  }
 }
 
 .search-term-splash {
@@ -39,6 +43,23 @@
 
   &> h1 {
     margin-top: 0;
+  }
+}
+
+.search-constraint-notice {
+  margin-top: 0;
+}
+
+.search-constraints {
+  margin-bottom: 15px;
+
+  .applied-filter,
+  .clear-filters {
+    margin-bottom: 5px;
+  }
+
+  .btn-group + .btn-group {
+    margin-left: 0;
   }
 }
 
@@ -100,17 +121,4 @@
 .readmore-js-toggle,
 .readmore-js-section {
   float: left;
-}
-
-.search-constraints {
-  margin-bottom: 15px;
-
-  .applied-filter,
-  .clear-filters {
-    margin-bottom: 5px;
-  }
-
-  .btn-group + .btn-group {
-    margin-left: 0;
-  }
 }
