@@ -4,6 +4,16 @@ module Catalog
     DATASET_SPLASH = 'Datasets & Related Materials'.freeze
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
+    # NOTE: terms are encoded with '::' as a delimeter but are indexed with ':'
+    DEPARTMENT_LABEL_MAP = {
+      'University of Notre Dame:College of Arts and Letters:Non-Departmental' => 'College of Arts and Letters, Non-Departmental',
+      'University of Notre Dame:Mendoza College of Business:Non-Departmental' => 'Mendoza College of Business, Non-Departmental',
+      'University of Notre Dame:College of Engineering:Non-Departmental' => 'Engineering, Non-Departmental',
+      'University of Notre Dame:College of Science:Non-Departmental' => 'College of Science, Non-Departmental',
+      'University of Notre Dame:Reserve Officers Training Corps:Non-Departmental' => 'ROTC, Non-Departmental',
+      'University of Notre Dame:Hesburgh Libraries:General' => 'Hesburgh Libraries General Collection'
+    }
+
     module_function
 
     def call(params)
@@ -47,7 +57,8 @@ module Catalog
     end
 
     def department_label(params)
-      params[:f][department_key].first.split(':').last
+      term = params[:f][department_key].first
+      DEPARTMENT_LABEL_MAP.fetch(term, term.split(':').last)
     end
 
     def category_present?(params)

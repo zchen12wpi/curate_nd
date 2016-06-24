@@ -36,6 +36,21 @@ module Catalog
         it { is_expected.to eq('College of Arts and Letters') }
       end
 
+      context 'department with special naming needs' do
+        let(:term) { 'University of Notre Dame:Hesburgh Libraries:General' }
+        let(:nested_department_params) do
+          {
+            f: {
+              described_class.department_key => [
+                term
+              ]
+            }
+          }
+        end
+        subject { described_class.call(nested_department_params) }
+        it { is_expected.to eq(described_class::DEPARTMENT_LABEL_MAP.fetch(term)) }
+      end
+
       context 'more than one department' do
         let(:multiple_department_params) do
           {
