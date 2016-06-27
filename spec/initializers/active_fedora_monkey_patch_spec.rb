@@ -31,4 +31,7 @@ describe 'active fedora monkey patches' do
     expect(ActiveFedora::Base.exists?(generic_file_pid)).to eq(true)
   end
 
+  it 'will escape control characters on solrize' do
+    expect { ActiveFedora::SolrService.add(title_tesim: "a\fb\tc", id: '123') }.to_not raise_error
+  end
 end
