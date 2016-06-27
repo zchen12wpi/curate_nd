@@ -2,20 +2,6 @@ require 'rubydora/repository'
 require 'rubydora/rest_api_client'
 require 'active_fedora/digital_object'
 require 'active_fedora/base'
-require 'rsolr/client'
-require 'curate/sanitize_control_characters_for_indexing'
-
-module RSolr
-  class Client
-    # I've been working to use a module and super method, but that is not working.
-    # So instead I'm leveraging the alternate as defined by Jay Field's blog http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html
-    add_instance_method = instance_method(:add)
-    define_method(:add) do |doc, *args|
-      sanitized_document = Curate::SanitizeControlCharactersForIndexing.sanitize_document(doc)
-      add_instance_method.bind(self).call(sanitized_document, *args)
-    end
-  end
-end
 
 module Rubydora
   class PerformedSoftDelete < RuntimeError
