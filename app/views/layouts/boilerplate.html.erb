@@ -19,6 +19,10 @@
     <%= render :partial => '/ga', :formats => [:html] -%>
   </head>
   <body>
+    <% unless Rails.env.production? %>
+      <p class="environment-notice"><strong>WARNING: </strong> This site is running in <%= Rails.env %>. Data will not be changed.</p>
+    <% end %>
+
     <%= render :partial => '/shared/repo_manager_controls', formats: [:html] %>
     <%= render :partial => '/shared/masquerade_controls', formats: [:html] %>
 

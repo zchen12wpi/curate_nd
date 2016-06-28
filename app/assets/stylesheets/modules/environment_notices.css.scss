@@ -1,0 +1,11 @@
+.environment-notice {
+  background: $brightRed;
+  bottom: 0;
+  color: $white;
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 0;
+  padding: .5em;
+  position: fixed;
+  z-index: 5;
+}
