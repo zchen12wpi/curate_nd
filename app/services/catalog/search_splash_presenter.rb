@@ -1,5 +1,6 @@
 require 'catalog/hierarchical_term_label'
 require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/array/wrap'
 
 module Catalog
   module SearchSplashPresenter
@@ -39,19 +40,19 @@ module Catalog
     end
 
     def self.exactly_one_department(params)
-      return false unless params.key?(:f) && params[:f].fetch(department_key, nil).present?
-      params[:f][department_key].count == 1
+      return false unless params.key?(:f) && params[:f][department_key].present?
+      Array.wrap(params[:f][department_key]).count == 1
     end
     private_class_method :exactly_one_department
 
     def self.department_label(params)
-      term = params[:f][department_key].first
+      term = Array.wrap(params[:f][department_key]).first
       Catalog::HierarchicalTermLabel.call(term)
     end
     private_class_method :department_label
 
     def self.category_present?(params)
-      params.key?(:f) && params[:f].fetch(category_key, nil)
+      params.key?(:f) && params[:f][category_key].present?
     end
     private_class_method :category_present?
 
@@ -61,7 +62,7 @@ module Catalog
     private_class_method :category_match?
 
     def self.inclusive_category_present?(params)
-      params.key?(:f_inclusive) && params[:f_inclusive].fetch(category_key, nil)
+      params.key?(:f_inclusive) && params[:f_inclusive][category_key].present?
     end
     private_class_method :inclusive_category_present?
 
