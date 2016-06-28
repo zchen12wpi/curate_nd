@@ -1,4 +1,3 @@
-
 require 'rubydora/repository'
 require 'rubydora/rest_api_client'
 require 'active_fedora/digital_object'
@@ -97,8 +96,3 @@ module ActiveFedora
     extend SoftDeleteBehavior
   end
 end
-
-
-
-
-
