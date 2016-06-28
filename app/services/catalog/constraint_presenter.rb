@@ -2,7 +2,7 @@ module Catalog
   module ConstraintPresenter
     def self.call(value: value, options: options, decorator: HierarchicalTermLabel)
       if hierarchical_value?(options)
-        decorator.send(:call, value)
+        decorator.call(value)
       else
         value
       end
