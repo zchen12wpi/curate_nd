@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FutureDateValidator do
+describe DateFormatValidator do
 
   let(:validatable) do
     Class.new do
@@ -9,7 +9,7 @@ describe FutureDateValidator do
       end
       include ActiveModel::Validations
       attr_accessor :a_date
-      validates :a_date, future_date: true
+      validates :a_date, date_format: true
     end
   end
   subject { validatable.new }
@@ -21,12 +21,12 @@ describe FutureDateValidator do
 
   context 'with today as embargo release date' do
     let(:a_date) { Date.today.to_s }
-    it { expect(subject.errors.messages).to eq :a_date => ["Must be a future date"] }
+    it { expect(subject.errors.messages).to eq({}) }
   end
 
   context 'with past date as embargo release date' do
     let(:a_date) { (Date.today - 2).to_s  }
-    it { expect(subject.errors.messages).to eq :a_date => ["Must be a future date"] }
+    it { expect(subject.errors.messages).to eq({}) }
   end
 
   context 'invalid date as embargo release date' do
@@ -38,5 +38,4 @@ describe FutureDateValidator do
     let(:a_date) { (Date.today + 2).to_s    }
     it { expect(subject.errors.messages).to eq({}) }
   end
-
 end

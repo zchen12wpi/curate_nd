@@ -1,13 +1,9 @@
-class FutureDateValidator < ActiveModel::EachValidator
+class DateFormatValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     if value.present?
       begin
-        if date = value.to_date
-          if date <= Date.today
-            record.errors[attribute] << "Must be a future date"
-          end
-        else
+        if value.to_date.is_a?(Date) == false
           record.errors[attribute] << "Invalid Date Format"
         end
       rescue ArgumentError, NoMethodError => e
