@@ -16,7 +16,11 @@ module Catalog
 
     def self.values_for(term)
       map_name = "#{term.upcase}_LABEL_MAP"
-      self.const_get(map_name)
+      if self.const_defined?(map_name)
+        self.const_get(map_name)
+      else
+        {}
+      end
     end
     private_class_method :values_for
 

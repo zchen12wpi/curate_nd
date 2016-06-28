@@ -28,6 +28,9 @@ module Catalog
       end
 
       context 'unknown term' do
+        let(:fallback_value) { 'Prefix:Value' }
+        subject { described_class.call(fallback_value, term: :spam) }
+        it { is_expected.to eq('Value') }
       end
     end
   end
