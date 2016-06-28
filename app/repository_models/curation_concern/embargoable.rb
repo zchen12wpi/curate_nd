@@ -1,3 +1,4 @@
+require 'morphine'
 require File.expand_path('../../../validators/date_format_validator', __FILE__)
 module CurationConcern
   module Embargoable
@@ -25,12 +26,11 @@ module CurationConcern
       end
     end
 
-    include Hydra::AccessControls::WithAccessRight
-    include VisibilityOverride
-    require 'morphine'
-    include Morphine
-
     included do
+      include Hydra::AccessControls::WithAccessRight
+      include CurationConcern::Embargoable::VisibilityOverride
+      include Morphine
+
       validates :embargo_release_date, date_format: true
       before_save :write_embargo_release_date, prepend: true
 
