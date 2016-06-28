@@ -1,4 +1,4 @@
-require File.expand_path('../../../validators/future_date_validator', __FILE__)
+require File.expand_path('../../../validators/date_format_validator', __FILE__)
 module CurationConcern
   module Embargoable
     extend ActiveSupport::Concern
@@ -31,7 +31,7 @@ module CurationConcern
     include Morphine
 
     included do
-      validates :embargo_release_date, future_date: true
+      validates :embargo_release_date, date_format: true
       before_save :write_embargo_release_date, prepend: true
 
       register :embargoable_persistence_container do
