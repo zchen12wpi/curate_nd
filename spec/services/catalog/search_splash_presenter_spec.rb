@@ -104,6 +104,84 @@ module Catalog
         subject { described_class.call(etd_params) }
         it { is_expected.to eq(described_class::ETD_SPLASH) }
       end
+
+      context 'empty, but present' do
+        context 'facet param' do
+          context 'string' do
+            let(:empty_facet_params) do
+              {
+                f: {
+                  described_class.department_key => ''
+                }
+              }
+            end
+            subject { described_class.call(empty_facet_params) }
+            it { is_expected.to be_nil }
+          end
+
+          context 'array' do
+            let(:empty_facet_params) do
+              {
+                f: {
+                  described_class.department_key => []
+                }
+              }
+            end
+            subject { described_class.call(empty_facet_params) }
+            it { is_expected.to be_nil }
+          end
+
+          context 'array with blank value' do
+            let(:empty_facet_params) do
+              {
+                f: {
+                  described_class.department_key => ['']
+                }
+              }
+            end
+            subject { described_class.call(empty_facet_params) }
+            it { is_expected.to be_nil }
+          end
+        end
+
+        context 'inclusive facet param' do
+          context 'string' do
+            let(:empty_inclusive_facet_params) do
+              {
+                f_inclusive: {
+                  described_class.department_key => ''
+                }
+              }
+            end
+            subject { described_class.call(empty_inclusive_facet_params) }
+            it { is_expected.to be_nil }
+          end
+
+          context 'empty array' do
+            let(:empty_inclusive_facet_params) do
+              {
+                f_inclusive: {
+                  described_class.department_key => []
+                }
+              }
+            end
+            subject { described_class.call(empty_inclusive_facet_params) }
+            it { is_expected.to be_nil }
+          end
+
+          context 'array with blank value' do
+            let(:empty_inclusive_facet_params) do
+              {
+                f_inclusive: {
+                  described_class.department_key => ['']
+                }
+              }
+            end
+            subject { described_class.call(empty_inclusive_facet_params) }
+            it { is_expected.to be_nil }
+          end
+        end
+      end
     end
   end
 end

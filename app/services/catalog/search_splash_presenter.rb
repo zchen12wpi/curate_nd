@@ -1,4 +1,5 @@
 require 'catalog/hierarchical_term_label'
+require 'active_support/core_ext/object/blank'
 
 module Catalog
   module SearchSplashPresenter
@@ -38,7 +39,7 @@ module Catalog
     end
 
     def self.exactly_one_department(params)
-      return false unless params.key?(:f) && params[:f].fetch(department_key, nil)
+      return false unless params.key?(:f) && params[:f].fetch(department_key, nil).present?
       params[:f][department_key].count == 1
     end
     private_class_method :exactly_one_department
