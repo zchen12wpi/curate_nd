@@ -1,5 +1,16 @@
 require 'fast_spec_helper'
+require 'pathname'
 require_relative '../../config/initializers/bendo'
+
+module Rails
+  def self.env
+    'test'
+  end
+
+  def self.root
+    Pathname.new(File.expand_path('../../../', __FILE__))
+  end
+end
 
 RSpec.describe Bendo do
   let(:service_url) { 'http://localhost:14000' }
@@ -12,7 +23,6 @@ RSpec.describe Bendo do
   end
 
   describe '.item_path' do
-
     context 'identifier' do
       subject { described_class.item_path('00000/Concatenation.pptx') }
       it { is_expected.to eq(item_path) }

@@ -48,7 +48,7 @@ module Catalog
           }
         end
         subject { described_class.call(nested_department_params) }
-        it { is_expected.to eq(described_class::DEPARTMENT_LABEL_MAP.fetch(term)) }
+        it { is_expected.to eq(HierarchicalTermLabel::DEPARTMENT_LABEL_MAP.fetch(term)) }
       end
 
       context 'more than one department' do

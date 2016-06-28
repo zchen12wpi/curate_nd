@@ -1,19 +1,19 @@
+require 'active_support/core_ext/array/wrap'
 require 'uri'
 
 module Bendo
   module Services
     module RefreshFileCache
 
-      def call(item_slugs: [], handler: BendoApi)
+      def self.call(item_slugs: [], handler: BendoApi)
         slugs = Array.wrap(item_slugs)
         handler.call(slugs)
       end
-      module_function :call
 
       module BendoApi
         Response = Struct.new(:status, :body)
 
-        def call(slugs)
+        def self.call(slugs)
           # Refreshing the cache is the same processes as requesting a downlowd.
           # The only difference is that the GET request should be closed instead
           # of waiting for all of the body to be sent. The easiest way to do
@@ -40,13 +40,10 @@ module Bendo
 
           Response.new(200, body.to_json)
         end
-        module_function :call
 
-        def item_url(item_slug)
+        def self.item_url(item_slug)
           Bendo.item_url(item_slug)
         end
-        module_function :item_url
-
       end
     end
   end
