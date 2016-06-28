@@ -1,3 +1,5 @@
+require 'active_support/core_ext/array/wrap'
+
 module Bendo
   module Services
     module FileCacheStatus
@@ -12,16 +14,15 @@ module Bendo
         '2' => NEVER_CACHED_RESPONSE
       )
 
-      def call(item_slugs: [], handler: BendoApi)
+      def self.call(item_slugs: [], handler: BendoApi)
         slugs = Array.wrap(item_slugs)
         handler.call(slugs)
       end
-      module_function :call
 
       module BendoApi
         Response = Struct.new(:status, :body)
 
-        def call(item_slugs)
+        def self.call(item_slugs)
           body = item_slugs.each_with_object({}) do |item_slug, memo|
             response = Faraday.head Bendo.item_url(item_slug)
             cache_status = response.headers.fetch('x-cached', nil)
@@ -29,9 +30,7 @@ module Bendo
           end
           Response.new(200, body.to_json)
         end
-        module_function :call
       end
-
     end
   end
 end

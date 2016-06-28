@@ -1,4 +1,6 @@
 require 'fast_spec_helper'
+require 'rspec/its'
+require 'bendo/services/fake_api'
 require 'bendo/services/file_cache_status'
 
 module Bendo

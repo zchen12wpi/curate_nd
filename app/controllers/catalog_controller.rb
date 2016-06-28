@@ -142,7 +142,7 @@ class CatalogController < ApplicationController
   # Order matters for this; It should be after the various blacklight and solr modules
   include BlacklightFacetExtras::Multiple::ControllerExtension
 
-  with_themed_layout 'catalog'
+  layout 'curate_nd_catalog'
 
   # These before_filters apply the hydra access controls
   before_filter :enforce_show_permissions, :only=>:show

@@ -1,0 +1,44 @@
+<% content_for :layout_name, 'curate_nd_catalog, ' %>
+<% content_for :body do %>
+<header role="banner" class="catalog page-banner">
+  <div class="brand-bar-wrapper">
+    <%= render 'shared/brand_bar' %>
+  </div>
+  <div class="title-bar-wrapper">
+    <%= render partial: 'catalog/title_bar' %>
+  </div>
+</header>
+
+<main id="main" role="main" class="page-main container search-results <%= yield :page_main_class %>">
+  <div class="row">
+    <div class="span9 offset3">
+      <%= render 'search_term_splash' %>
+    </div>
+  </div>
+  <div class="row">
+  <% if content_for?(:sidebar) %>
+
+    <div class="span3 sidebar">
+      <%= yield(:sidebar) %>
+    </div>
+
+    <div class="span9 <%= yield(:content_class) %>">
+      <%= yield %>
+    </div>
+
+  <% else %>
+
+    <div class="span12">
+      <%= yield %>
+    </div>
+
+  <% end %>
+  </div>
+
+</main>
+
+<%= render 'footer' %>
+
+<% end %>
+
+<%= render :template => 'layouts/boilerplate' %>

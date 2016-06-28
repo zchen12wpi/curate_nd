@@ -43,3 +43,14 @@
     padding-left: .3em;
   }
 }
+
+.search-results .search-form {
+  margin-bottom: 10px;
+  max-width: 30em;
+  padding-top: .5em;
+
+  .search-query,
+  .search-submit {
+    font-size: 18px;
+  }
+}

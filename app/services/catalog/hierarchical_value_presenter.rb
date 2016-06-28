@@ -1,10 +1,10 @@
+require 'active_support/core_ext/array/wrap'
+require 'active_support/core_ext/string/output_safety'
 require 'cgi'
 
 module Catalog
   module HierarchicalValuePresenter
-    module_function
-
-    def call(value: value, opener:'<p>', closer:'</p>', link: false)
+    def self.call(value: value, opener:'<p>', closer:'</p>', link: false)
       values = Array.wrap(value)
       if link
         decorator = :decorate_with_links
@@ -17,7 +17,7 @@ module Catalog
       end
     end
 
-    def decorate_with_links(
+    def self.decorate_with_links(
       value: value,
       value_delimiter: '::',
       opener: '<span class="hierarchy">',
@@ -38,7 +38,7 @@ module Catalog
       markup
     end
 
-    def decorate(
+    def self.decorate(
       value: value,
       delimiter: '::',
       opener: '<span class="hierarchy">',

@@ -39,17 +39,6 @@ module Curate::CatalogHelper
     raw text.gsub('&amp;', '&')
   end
 
-  def display_hierarchical_value(value)
-    markup = '<ul class="hierarchical-value-list">'
-    markup << safe_join(Catalog::HierarchicalValuePresenter.call(
-      value: value,
-      opener: '<li>',
-      closer: '</li>',
-    ))
-    markup << '</ul>'
-    markup.html_safe
-  end
-
   private
 
   def type_field

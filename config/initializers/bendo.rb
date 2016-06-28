@@ -1,4 +1,5 @@
 require 'uri'
+require 'psych'
 
 module Bendo
   module_function

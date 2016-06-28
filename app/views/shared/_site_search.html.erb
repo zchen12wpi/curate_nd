@@ -1,3 +1,4 @@
+<% placeholder ||= t('sufia.search.form.q.placeholder') %>
 <%= form_tag catalog_index_path, :method => :get, :class => "search-form" do %>
   <fieldset>
     <legend class="accessible-hidden">Search <%=t('sufia.product_name')%></legend>
@@ -8,7 +9,7 @@
       params[:q],
       :class => "q search-query",
       :id => "catalog_search",
-      :placeholder => t('sufia.search.form.q.placeholder'),
+      :placeholder => placeholder,
       :size => "30",
       :tabindex => "1",
       :type => "search",

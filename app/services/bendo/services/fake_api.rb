@@ -1,9 +1,7 @@
 module Bendo
   module Services
     module FakeApi
-      module_function
-
-      def call(slugs)
+      def self.call(slugs)
         results = {}
         slugs.map{ |slug| results[slug] = true }
         Response.new(status: 200, body: results)

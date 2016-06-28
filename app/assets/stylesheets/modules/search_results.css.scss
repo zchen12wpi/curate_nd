@@ -1,18 +1,48 @@
-@import 'global-variables';
+.catalog-title-bar {
+  position: relative;
+
+  .site-actions-wrapper {
+    padding-top:5px;
+  }
+}
+
+@media (min-width: 600px) {
+  .catalog-title-bar {
+    .site-actions {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog.page-banner {
+    margin-bottom: .8em;
+  }
+
+  .catalog .title-bar-wrapper {
+    padding-bottom:.8em;
+  }
+}
+
+.search-results {
+  padding-top: .5em;
+
+  .sidebar > h4 {
+    margin-top: 0;
+  }
+}
 
 .search-term-splash {
-  padding: 1em 1em 0 3.8em;
-  text-indent: -3.8em;
+  padding: .5em 0 0;
 
-  .search-splash-icon {
-    display: inline-block;
-    margin: 0 .2em 0 0;
-    text-indent: 0;
-    width: 1em;
-
-    .svg {
-      width: 100%;
-    }
+  &> h1 {
+    margin-top: 0;
   }
 }
 

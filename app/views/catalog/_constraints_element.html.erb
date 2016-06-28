@@ -1,4 +1,3 @@
-<%# This view is overridden to change the alt attribute to be a title in the link_to below in order to conform to the HTML5 validity standard.  This should ultimately be fixed in Blacklight.  -%>
 <%- # local params:
     # label
     # value
@@ -10,13 +9,14 @@
     options[:escape_value] = false unless options.has_key?(:escape_value)
 -%>
 
-<span class="applied-filter constraint <%= options[:classes].join(" ") if options[:classes] %>">
-      <%- unless label.blank? -%>
-        <span class="filterName"><%= options[:escape_label] ? h(label) : label %>:</span>
-      <%- end -%>
-      <%- unless value.blank? -%>
-        <% decorated_value = Catalog::ConstraintPresenter.call(value: value, options: options) %>
-        <span class="filterValue"><%= options[:escape_value] ? h(decorated_value) : decorated_value.html_safe %></span>
-      <%- end -%>
-      &nbsp;<a href='<%= options[:remove] %>' class="icon-remove-sign"></a>
+<span class="btn-group applied-filter constraint <%= options[:classes].join(" ") if options[:classes] %>">
+  <span class="btn btn-outline">
+  <% unless label.blank? %>
+    <span class="filter-name"><%= options[:escape_label] ? h(label) : label %>:</span>
+  <% end %>
+  <% unless value.blank? %>
+    <% decorated_value = Catalog::ConstraintPresenter.call(value: value, options: options) %>
+    <span class="filter-value"><%= options[:escape_value] ? h(decorated_value) : decorated_value.html_safe %></span>
+  <% end %>
+  </span><a class="btn" href="<%= options[:remove] %>"><span class="accessible-hidden">remove </span>×</a>
 </span>

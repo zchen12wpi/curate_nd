@@ -2,7 +2,7 @@ en:
   blacklight:
     search:
       pagination_info:
-        no_items_found: '<p class="no-items-found span9">Your search yielded no results.<br /><a href="/catalog" class="new-search-from-no-results">Start a new search</a></p>'
+        no_items_found: '<p class="no-items-found span9">No records match these criteria.<br /><a href="/catalog" class="new-search-from-no-results">Start a new search</a></p>'
   sufia:
     product_name:        "CurateND"
     account_name:        "Notre Dame NetID"
@@ -129,8 +129,10 @@ en:
     catalog:
       facet_title:
         admin_unit_hierarchy_sim: 'Department or Unit'
+      facet_page_title:
+        admin_unit_hierarchy_sim: 'Browse Materials by Department or Unit'
       help_text:
-        admin_unit_hierarchy_sim: 'Filter by Department or Unit'
+        admin_unit_hierarchy_sim: ''
     notification_messages:
       edit_bendo_item_warning: "<b>Warning:</b> This item is stored on tape. Any edits made through the web interface may be lost."
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."

@@ -1,20 +1,5 @@
 <% content_for :page_title, "#{application_name} Search Results" %>
 <% content_for :page_class, 'search' %>
-<% content_for :page_header do %>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <ul class="nav">
-        <%= type_tab 'Works', 'Work' %>
-        <%= type_tab 'Collections', 'Collection' %>
-        <%= type_tab 'People', 'Person' %>
-        <%= all_type_tab %>
-      </ul>
-    </div>
-  </div>
-
-  <%= render 'search_term_splash' %>
-
-<% end %>
 <% content_for :sidebar do %>
 
   <%= render 'facets' %>
@@ -22,15 +7,12 @@
 <% end %>
 
 <% if has_search_parameters? %>
-  <div class="alert alert-info search-constraints">
-    <i class="icon-search icon-large"></i>
-    You searched for: &nbsp;
+  <h4 class="search-constraint-notice">Search criteria:</h4>
+  <div class="search-constraints">
+    <div class="applied-constraints">
       <%= render_constraints(params) %>
-    <div>
-      <%= link_to( "New Search", catalog_index_path, :class => 'btn btn-primary' ) %>
-
     </div>
-    <div class="clear-break">&nbsp;</div>
+    <%= link_to 'Clear all', catalog_index_path, class: 'btn btn-danger clear-filters' %>
   </div>
 
   <%= render :partial => 'did_you_mean' %>
@@ -40,25 +22,17 @@
     <%= render 'sort_and_per_page' %>
   </div>
 
-
-
 <%= render 'document_list' %>
 
 <%= render 'results_pagination' %>
 
 <% else %>
 
-  <% if current_user %>
+  <%= render 'choose_result_format' %>
+  <%= render 'results_pagination' %>
 
-    <%= render 'choose_result_format' %>
-    <%= render 'results_pagination' %>
+  <%= render 'document_list' %>
 
-    <%= render 'document_list' %>
-
-    <%= render 'results_pagination' %>
-
-  <% else %>
-    <%= render 'home' %>
-  <% end %>
+  <%= render 'results_pagination' %>
 
 <% end %>
