@@ -1,11 +1,7 @@
 <% content_for :page_title, curation_concern_page_title(curation_concern) %>
 <% content_for :page_header do %>
   <h1><p>
-    <%- if can?(:read, curation_concern) %>
-      <%= link_to curation_concern.title, download_path(curation_concern) %>
-    <% else %>
-      <%= curation_concern.title %>
-    <% end %>
+    <%= link_to_if(can?(:read, curation_concern), curation_concern, download_path(curation_concern)) %>
   <p></h1>
   <span class="human-readable-type">File</span>
 <% end %>
@@ -29,18 +25,17 @@
 
   <% if can?(:destroy, curation_concern) %>
     <%
-      file_name = curation_concern.title
       delete_confirmation_message = %Q{
-Deleting #{file_name} from #{t('sufia.product_name')} is a permanent action.
+Deleting #{curation_concern} from #{t('sufia.product_name')} is a permanent action.
 
-Click OK to remove #{file_name} from #{t('sufia.product_name')}, or Cancel to abort this operation.
+Click OK to remove #{curation_concern} from #{t('sufia.product_name')}, or Cancel to abort this operation.
     } %>
     <%= link_to(
       polymorphic_path([:curation_concern, curation_concern]),
       {
         class: 'btn',
         method: :delete,
-        title: "Delete #{file_name}",
+        title: "Delete #{curation_concern}",
         data: {
           confirm: delete_confirmation_message
         }
@@ -63,4 +58,3 @@ Click OK to remove #{file_name} from #{t('sufia.product_name')}, or Cancel to ab
     </div>
   </div>
 <% end %>
-
