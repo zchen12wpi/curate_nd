@@ -59,6 +59,7 @@ group :default do
   gem 'rubydora', '~> 1.7.4'
   gem 'sanitize', '~> 3.0.2'
   gem 'select2-rails'
+  gem 'share_notify', '~> 0.2'
   gem 'simple_form', '~> 3.0.1'
   gem 'sufia-models', '~>3.4.0'
   gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'

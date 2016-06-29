@@ -59,29 +59,36 @@ if [ -Z $PID_NAMESPACE ]; then
     PID_NAMESPACE="und:"
 fi
 
+set -e
+
 mkdir results
+
+# We download the records as json instead of csv for two reasons
+#
+# 1) we want to use "|" as the multiple item separator (solr uses a comma)
+# 2) some of the transformations we want to do are easier to first perform using jq
+#
+# Fortunately, we can then convert the json into a csv file at the end!
 
 for OFFSET in $(seq 0 1000 25000); do
     echo "Fetching 1000 at offset $OFFSET..."
-    curl --silent "$SOLR_URL/select?q=*%3A*&start=$OFFSET&rows=1000&fl=id%2Csystem_create_dtsi%2Csystem_modified_dtsi%2Cobject_state_ssi%2Cactive_fedora_model_ssi%2Chuman_readable_type_tesim%2Cdepositor_tesim%2Cread_access_group_ssim%2Cdesc_metadata__title_tesim%2Cdesc_metadata__creator_tesim&wt=csv" > results/$OFFSET.csv
+    curl --silent "$SOLR_URL/select?q=*%3A*&start=$OFFSET&rows=1000&fl=id%2Csystem_create_dtsi%2Csystem_modified_dtsi%2Cobject_state_ssi%2Cactive_fedora_model_ssi%2Chuman_readable_type_tesim%2Cdepositor_tesim%2Cread_access_group_ssim%2Cdesc_metadata__title_tesim%2Cdesc_metadata__creator_tesim&wt=json" > results/$OFFSET.json
 done
 
-TARGET_ALL="all-$(date '+%Y%m%d').csv"
-TARGET_CURATE="curate-$(date '+%Y%m%d').csv"
-TARGET_NON_ETD="curate-non-etd-$(date '+%Y%m%d').csv"
-first=1
-for f in $(ls results/*.csv); do
-    # only copy the labels on the first file
-    if [[ $first == 1 ]]; then
-        cat $f > "$TARGET_ALL"
-        first=0
-    else
-        # don't copy the first line since it contains the column labels
-        awk 'NR > 1 { print $0 }' < $f >> "$TARGET_ALL"
-    fi
-done
+TARGET_CURATE="curate-$(date '+%Y%m%d').json"
+TARGET_NON_ETD="curate-non-etd-$(date '+%Y%m%d').json"
+TARGET_SHARE_JSON="curate-for-share-$(date '+%Y%m%d').json"
+TARGET_SHARE_CSV="curate-for-share-$(date '+%Y%m%d').csv"
 
-awk "/^(id|$PID_NAMESPACE)/ { print \$0 }" < $TARGET_ALL > "$TARGET_CURATE"
+# concatenate the results, keeping only those in the right namespace
+jq -s "map(.response.docs)|flatten(1)|map(select(.id|startswith(\"und:\")))" results/*.json > "$TARGET_CURATE"
 
-awk -F ',' '$6 ~ /human_readable_type_tesim|Article|Book|Collection|Dataset|Document|Finding Aid|Image|Manuscript|Presentation|Report|Senior Thesis|Software|Video/ {print $0}' < $TARGET_CURATE > "$TARGET_NON_ETD"
+# now, remove Etd and GenericFiles and other unwanted objects
+jq -S 'map(select(.active_fedora_model_ssi | test("^(Etd|GenericFile|Person|Profile|ProfileSection|LinkedResource|Hydramata::Group)$") | not))' "$TARGET_CURATE" > "$TARGET_NON_ETD"
 
+# convert each id into an URL
+jq -S 'map(.id |= sub("und:(?<noid>.*)"; "https://curate.nd.edu/show/\(.noid)"))' "$TARGET_NON_ETD" > "$TARGET_SHARE_JSON"
+
+# convert to csv so that it is easier for the librarians to scan
+# see: http://stackoverflow.com/questions/32960857/how-to-convert-arbirtrary-simple-json-to-csv-using-jq
+jq -r '(map(keys) | add | unique) as $cols | $cols, map(. as $row | $cols | map($row[.]|if (. | type) == "array" then join("|") else . end))[] | @csv' "$TARGET_SHARE_JSON" > "$TARGET_SHARE_CSV"

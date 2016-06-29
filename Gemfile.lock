@@ -583,6 +583,9 @@ GEM
     sexp_processor (4.3.0)
     sextant (0.2.4)
       rails (>= 3.2)
+    share_notify (0.2.0)
+      activesupport
+      httparty
     simple_form (3.0.3)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -760,6 +763,7 @@ DEPENDENCIES
   scss-lint
   select2-rails
   sextant
+  share_notify (~> 0.2)
   simple_form (~> 3.0.1)
   simplecov
   sufia-models (~> 3.4.0)
