@@ -98,15 +98,16 @@ group :test do
 end
 
 group :debug do
+  gem 'method_source'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'byebug'
-  gem 'method_locator'
   gem 'quiet_assets'
   gem 'rails_best_practices'
   gem 'sextant'
   gem 'simplecov'
   gem 'thin'
+  gem 'ruby-beautify'
 end
 
 group :deploy do
