@@ -19,6 +19,7 @@
     <fieldset class="required with-side-padding">
       <legend>Please submit a help request to give us more information about what is going on.</legend>
       <%= f.input :javascript_enabled, as: 'hidden' %>
+        <%= f.input :email, input_html: { value: f.form_email } %>
       <%= f.input :how_can_we_help_you, as: 'text', input_html: { class: 'input-xxxlarge', rows: '10' } %>
     </fieldset>
 
