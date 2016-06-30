@@ -68,6 +68,13 @@ protected
       dates.map { |date| Curate::DateFormatter.parse(date.to_s).to_s }
     end
 
+    def derived_dates
+      dates = Array(date_created)
+      dates.map do |date|
+        Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
+      end
+    end
+
     def index_collection_pids(solr_doc)
       solr_doc[Solrizer.solr_name(:collection, :facetable)] ||= []
       solr_doc[Solrizer.solr_name(:collection)] ||= []
