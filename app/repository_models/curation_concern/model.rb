@@ -65,7 +65,9 @@ protected
 
     def derived_dates
       dates = Array(date_created)
-      dates.map { |date| Curate::DateFormatter.parse(date.to_s).to_s }
+      dates.map do |date|
+        Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
+      end
     end
 
     def index_collection_pids(solr_doc)
