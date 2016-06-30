@@ -47,8 +47,10 @@ class StaticPagesController < ApplicationController
   private
 
   def build_help_request
+    email = current_user ? current_user.email : ''
     HelpRequest.new(
       user: current_user,
+      email: email,
       how_can_we_help_you:"#{t('sufia.product_name')} encountered a problem (Error ##{status})."
     )
   end
