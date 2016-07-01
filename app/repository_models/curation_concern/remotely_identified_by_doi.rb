@@ -20,7 +20,7 @@ module CurationConcern
           multiple: false, editable: true, displayable: false,
           writer: lambda {|value| normalize_identifier(value) }
 
-        validates :publisher, multi_value_presence: { message: 'is required for remote DOI minting', if: :remote_doi_assignment_strategy? }
+        # validates :publisher, multi_value_presence: { message: 'is required for remote DOI minting', if: :remote_doi_assignment_strategy? }
         validate :remove_white_space_in_doi
 
         attr_writer :doi_remote_service

@@ -6,7 +6,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.target {|obj| Curate.permanent_url_for(obj) }
       map.creator :creator
       map.title :title
-      map.publisher {|o| Array(o.publisher).join("; ")}
+      map.publisher(I18n.t('sufia.product_name'))
       map.publicationyear {|o| o.date_uploaded.year }
       map.set_identifier { |o,value| o.identifier = value }
     end
@@ -15,7 +15,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.target {|obj| Curate.permanent_url_for(obj) }
       map.creator {|obj| Array.wrap(obj.creator).collect(&:to_s).join(", ") }
       map.title :title
-      map.publisher {|o| Array.wrap(o.publisher).join("; ")}
+      map.publisher(I18n.t('sufia.product_name'))
       map.publicationyear {|o| o.date_uploaded.year }
       map.set_identifier { |o,value| o.identifier = value }
     end

@@ -42,7 +42,7 @@
         <label class="radio">
           <input type="radio" name="<%= f.object_name %>[doi_assignment_strategy]" id="mint-doi" value="<%= remote_service.accessor_name %>" <% if curation_concern.doi_assignment_strategy == remote_service.accessor_name.to_s %> checked="true"<% end %> />
           <span class="label-text">
-            Yes, I would like to create a <abbr title="Digital Object Identifier">DOI</abbr> for this <%= curation_concern.human_readable_type %>. (Publisher information is required)
+            Yes, I would like to create a <abbr title="Digital Object Identifier">DOI</abbr> for this <%= curation_concern.human_readable_type %>. (This DOI will point to your <%= curation_concern.human_readable_type %> on CurateND.)
             <br /><em><strong>Please note that it could take up to an hour for your DOI to be available.</strong></em>
           </span>
         </label>
