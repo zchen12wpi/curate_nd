@@ -44,7 +44,6 @@ group :default do
   gem 'mysql2'
   gem 'namae'
   gem 'net-ldap'
-  gem 'newrelic_rpm'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
   gem 'orcid', github: 'projecthydra-labs/orcid'
