@@ -1,4 +1,7 @@
-<% show_characterization ||= true %>
+<%
+  show_characterization ||= true
+  show_bendo_id = current_user.manager?
+%>
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
   <thead>
@@ -17,6 +20,18 @@
       <th>Filename</th>
       <td><%= curation_concern.filename %></td>
     </tr>
+    <% if show_bendo_id %>
+      <%
+        content = curation_concern.datastreams.fetch('content')
+        bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
+        if bendo_datastream.valid?
+      %>
+        <tr>
+          <th>Bendo Location</th>
+          <td><%= bendo_datastream.location %></td>
+        </tr>
+      <% end %>
+    <% end %>
     <% unless curation_concern.batch.kind_of?(FindingAid) %>
       <tr>
         <th>Depositor</th>
