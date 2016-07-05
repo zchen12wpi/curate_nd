@@ -65,11 +65,6 @@ class lib_curate::standalone {
 	require => Package[$packagelist],
      }	
 
-     # Install SSL Certs
-     class { 'lib_certs':
-	require => Package[$packagelist],
-     }	
-
      # Install app user
      class { 'lib_app_home':
 	before => Package[$packagelist],

@@ -261,7 +261,7 @@ RAILS_ROOT=#{current_path}
 
   desc "Run puppet using the modules supplied by the application"
   task :puppet, :roles => [:app, :work] do
-    run_puppet()
+    run_puppet(:config => 'standalone')
   end
 
   task :puppet_server, :roles => :app do
