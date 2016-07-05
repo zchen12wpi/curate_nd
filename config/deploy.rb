@@ -254,8 +254,7 @@ RAILS_ROOT=#{current_path}
   end
 
   def run_puppet(option_string)
-    local_module_path = File.join(release_path, 'puppet', 'modules')
-    run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate::#{option_string}': }"}
+    run %Q{sudo puppet apply --modulepath=/home/app/curatend/current/puppet/modules:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate::#{option_string}': }"}
   end
 
   desc "Run puppet using the modules supplied by the application"
