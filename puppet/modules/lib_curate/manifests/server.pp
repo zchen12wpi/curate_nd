@@ -44,11 +44,6 @@ class lib_curate::server {
 	type => "remote",
      }	
 
-     # Install SSL Certs
-     class { 'lib_certs':
-	require => Package[$packagelist],
-     }	
-
      # Install app user
      class { 'lib_app_home':
 	require => Package[$packagelist],
@@ -60,7 +55,7 @@ class lib_curate::server {
      }	
 
      class { 'lib_nginx':
-	require => Class[["lib_app_home","lib_certs","lib_ruby"]],
+	require => Class[["lib_app_home","lib_ruby"]],
      }
 
      file { '/etc/nginx/conf.d/curatend.conf':
