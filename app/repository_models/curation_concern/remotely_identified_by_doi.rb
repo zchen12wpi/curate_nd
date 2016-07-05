@@ -8,9 +8,7 @@ module CurationConcern
     module Attributes
       extend ActiveSupport::Concern
       included do
-        unless included_modules.include?(ActiveFedora::RegisteredAttributes)
-          include ActiveFedora::RegisteredAttributes
-        end
+        include ActiveFedora::RegisteredAttributes
         attribute :identifier,
           datastream: :descMetadata,
           multiple: false, editable: false, displayable: true

@@ -3,9 +3,10 @@ module Curate
   module UserBehavior
     extend ActiveSupport::Concern
 
-    include Curate::UserBehavior::Base
-    include Curate::UserBehavior::WithAssociatedPerson
-    include Curate::UserBehavior::Delegates
-
+    included do
+      include Curate::UserBehavior::Base
+      include Curate::UserBehavior::WithAssociatedPerson
+      include Curate::UserBehavior::Delegates
+    end
   end
 end
