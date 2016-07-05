@@ -2,16 +2,7 @@
   <div class="row">
     <div class="span6">
       <fieldset class="required">
-        <legend>Your File&#8217;s Title</legend>
         <%= file_size_warning %>
-        <span class="control-label">
-          <label class="string optional" for="generic_file_title">Title</label>
-        </span>
-        <%= text_field_tag 'generic_file[title]', curation_concern.title,
-                    input_html: { class: 'input-xlarge' }
-        %>
-      </fieldset>
-      <fieldset class="required">
         <legend>
           Attach Your File
           <small>A PDF copy is preferred.</small>

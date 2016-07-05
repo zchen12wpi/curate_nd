@@ -38,7 +38,7 @@ class GenericFile < ActiveFedora::Base
 
   def filename
     return 'File Upload Error' if with_empty_content?
-    content.label
+    content.label || "no filename given"
   end
 
   def with_empty_content?
@@ -46,7 +46,7 @@ class GenericFile < ActiveFedora::Base
   end
 
   def to_s
-    title || "No Title"
+    filename
   end
 
   def versions
