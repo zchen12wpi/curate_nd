@@ -253,23 +253,22 @@ RAILS_ROOT=#{current_path}
     put "#{branch}", "#{release_path}/BUILD_IDENTIFIER"
   end
 
-  def run_puppet(options={})
+  def run_puppet(option_string)
     local_module_path = File.join(release_path, 'puppet', 'modules')
-    option_string = options.map { |k,v| "#{k} => '#{v}'" }.join(', ')
     run %Q{sudo puppet apply --modulepath=#{local_module_path}:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate::#{option_string}': }"}
   end
 
   desc "Run puppet using the modules supplied by the application"
   task :puppet, :roles => [:app, :work] do
-    run_puppet(:config => 'standalone')
+    run_puppet('standalone')
   end
 
   task :puppet_server, :roles => :app do
-    run_puppet(:config => 'server')
+    run_puppet('server')
   end
 
   task :puppet_worker, :roles => :work do
-    run_puppet(:config => 'worker')
+    run_puppet('worker')
   end
 
   desc "Have all new requests to be redirected to a 503 page"
