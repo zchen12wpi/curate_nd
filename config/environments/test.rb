@@ -46,6 +46,7 @@ CurateNd::Application.configure do
     }
 
     Curate.configuration.relationship_reindexer = lambda { |pid| true }
+    Curate.configuration.all_relationships_reindexer = lambda { true }
 
     Curate.configuration.characterization_runner = lambda { |file_path|
       Rails.root.join('spec/support/files/default_fits_output.xml').read

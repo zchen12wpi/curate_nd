@@ -40,6 +40,7 @@ CurateNd::Application.configure do
   }
 
   Curate.configuration.relationship_reindexer = lambda { |pid| true }
+  Curate.configuration.all_relationships_reindexer = lambda { true }
 
   if ENV['TRAVIS']
     Curate.configuration.characterization_runner = lambda { |file_path|

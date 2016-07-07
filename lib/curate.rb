@@ -31,4 +31,8 @@ module Curate
     Curate.configuration.relationship_reindexer
   end
 
+  def all_relationships_reindexer
+    Curate.configuration.all_relationships_reindexer
+  end
+
 end

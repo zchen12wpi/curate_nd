@@ -20,6 +20,20 @@ module Curate
       }
     end
 
+    def all_relationships_reindexer
+      @all_relationships_reindexer || default_all_relationships_reindexer
+    end
+    attr_writer :all_relationships_reindexer
+
+    def default_all_relationships_reindexer
+      @default_all_relationships_reindexer ||= lambda {
+        require 'all_relationships_reindexing_worker'
+        Sufia.queue.push(AllRelationshipsReindexerWorker.new)
+        true
+      }
+    end
+    private :default_all_relationships_reindexer
+
     def relationship_reindexer
       @relationship_reindexer || default_relationship_reindexer
     end
