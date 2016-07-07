@@ -64,9 +64,9 @@ protected
     end
 
     def derived_dates
-      dates = Array(date_created)
-      dates.map do |date|
-        Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
+      Array.wrap(date_created).each_with_object([]) do |date, mem|
+        mem << Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
+        mem
       end
     end
 
