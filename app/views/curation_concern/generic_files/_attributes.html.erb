@@ -10,7 +10,7 @@
   <tbody>
     <tr>
       <th>Parent Work</th>
-      <td><%= link_to parent.title, polymorphic_path([:curation_concern, parent]) %></td>
+      <td><%= link_to curation_concern.parent, polymorphic_path([:curation_concern, curation_concern.parent]) %></td>
     </tr>
     <tr>
       <th>Title</th>

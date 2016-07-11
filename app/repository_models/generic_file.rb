@@ -36,6 +36,8 @@ class GenericFile < ActiveFedora::Base
 
   attr_accessor :file, :version
 
+  alias parent batch
+
   def filename
     return 'File Upload Error' if with_empty_content?
     content.label || "no filename given"
