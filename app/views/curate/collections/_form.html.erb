@@ -30,14 +30,14 @@
 
   <div class="control-group string required collection_description">
     <span class="control-label">
-      <%= f.label :description %>
+      <%= f.label :description, "About the Collection" %>
     </span>
     <div class="controls">
       <%= f.text_area :description, class: 'text input-xxlarge' %>
     </div>
   </div>
 
-  <%# We want to display neither the avatar control nor the access permission controls if this collection is a profile section. %>
+    <%# We want to display neither the avatar control nor the access permission controls if this collection is a profile section. %>
   <%# There are 2 situations where this partial is rendered, 1) when the section is created 2) when the section is edited.      %>
   <%# We must check for both those situations: 1) is_a? and 2) include?, respectively.                                          %>
   <% if !@collection.is_a?(ProfileSection) && !ActiveFedora::ContentModel.known_models_for(@collection).include?(ProfileSection) %>

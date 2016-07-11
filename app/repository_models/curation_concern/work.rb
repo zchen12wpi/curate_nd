@@ -10,6 +10,7 @@ module CurationConcern
     included do
       include CurationConcern::Model
       include Hydra::AccessControls::Permissions
+      include CurationConcern::IsMemberOfLibraryCollection
     end
 
     def to_solr(solr_doc={}, opts={})

@@ -23,3 +23,14 @@ Curate.configure do |config|
     end
   end
 end
+
+# Add :has_profile predicate for use in ActiveModel (RELS-EXT) relationships
+ActiveFedora::Predicates.set_predicates("http://projecthydra.org/ns/relations#"=>{:has_profile => "hasProfile"})
+
+require 'object_relationship_reindexing_worker'
+require 'all_relationships_reindexing_worker'
+
+Curate::Indexer.configure do |config|
+  require 'curate/library_collection_indexing_adapter'
+  config.adapter = Curate::LibraryCollectionIndexingAdapter
+end

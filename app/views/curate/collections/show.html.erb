@@ -6,29 +6,25 @@
   <% end %>
   <h1> <%= @collection.title %> </h1>
 <% end %>
-<% if can? :edit, @collection %>
-  <% content_for :page_actions do %>
-
-  <%= button_to(
-    "Delete",
-    {
-      action: :destroy,
-      controller: :collections,
-      id: @collection.id
-    },
-    data: {confirm: 'Are you sure you want to delete this collection?'},
-    class: 'btn',
-    form_class: 'button-to pull-right',
-    method: :delete
-  )%>
-
-    <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn' %>
-  <% end %>
-<% end %>
 <div class="collection-description">
   <%= richly_formatted_text(@collection.description) %>
 </div>
-
+<table class="table table-striped <%= dom_class(@collection) %> attributes">
+  <caption class="table-heading"><h2>Attributes</h2></caption>
+  <thead>
+  <tr><th>Attribute Name</th><th>Values</th></tr>
+  </thead>
+  <tbody>
+    <%= curation_concern_attribute_to_html(@collection, :subject, "Subject") %>
+    <%= curation_concern_attribute_to_html(@collection, :creator, "Creator") %>
+    <%= curation_concern_attribute_to_html(@collection, :tag, "Related Resources") %>
+    <%= curation_concern_attribute_to_html(@collection, :source, "Source") %>
+    <%= curation_concern_attribute_to_html(@collection, :contributor, "Collector") %>
+    <%= curation_concern_attribute_to_html(@collection, :curator, "Curator") %>
+    <%= curation_concern_attribute_to_html(@collection, :date, "Coverage Date") %>
+    <%= decode_administrative_unit(@collection, :administrative_unit, "Departments and Units") %>
+  </tbody>
+</table>
 <div id="documents" class="clear">
   <%= list_items_in_collection(@collection) %>
 </div>

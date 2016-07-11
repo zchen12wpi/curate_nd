@@ -27,4 +27,12 @@ module Curate
     File.join(Curate.configuration.application_root_url, 'show', object.noid)
   end
 
+  def relationship_reindexer
+    Curate.configuration.relationship_reindexer
+  end
+
+  def all_relationships_reindexer
+    Curate.configuration.all_relationships_reindexer
+  end
+
 end
