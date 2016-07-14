@@ -15,7 +15,7 @@ class lib_curate::disadis( $disadis_root = '/opt/disadis' ) {
 	exec { "Build-disadis-from-repo":
 		environment => ["GOPATH=${disadis_root}","GO15VENDOREXPERIMENT=1"],
 		path => "/usr/bin",
-		command => "go get github.com/ndlib/disadis",
+		command => "go get -u github.com/ndlib/disadis",
 		require => File[$disadis_root],
 	}
 
