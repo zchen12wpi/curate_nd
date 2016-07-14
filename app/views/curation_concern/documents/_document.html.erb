@@ -12,10 +12,24 @@
 
     <div class="span10">
       <dl class="attribute-list">
-        <% if solr_doc.has?('desc_metadata__creator_tesim') %>
-          <dt>Author(s):</dt>
-          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__creator_tesim') %></dd>
+        <%# Because Book and other Document types store primary creator information in different places. %>
+        <% if solr_doc.has?('desc_metadata__type_tesim') && Array.wrap(solr_doc['desc_metadata__type_tesim']).include? 'Book' %>
+          <% if solr_doc.has?('desc_metadata__author_tesim') %>
+            <dt>Author(s):</dt>
+            <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__author_tesim') %></dd>
+          <% end %>
+        <% else %>
+          <% if solr_doc.has?('desc_metadata__creator_tesim') %>
+            <dt>Author(s):</dt>
+            <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__creator_tesim') %></dd>
+          <% end %>
         <% end %>
+
+        <% if solr_doc.has?('desc_metadata__lc_subject_tesim') %>
+         <dt>Subject(s):</dt>
+         <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__lc_subject_tesim') %></dd>
+        <% end %>
+
         <% if solr_doc.has?('desc_metadata__abstract_tesim') %>
           <dt>Abstract:</dt>
           <dd class="readmore"><%= escape_html_for_solr_text(truncate(render_index_field_value(document: solr_doc, field: 'desc_metadata__abstract_tesim'), length: 500)).html_safe %></dd>
