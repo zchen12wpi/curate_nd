@@ -31,6 +31,11 @@ module Curate
           expect(preservation_document.parent_pids).to eq([])
         end
       end
+      context 'for a missing pid' do
+        it 'will raise an ActiveFedora::RecordNotFound error' do
+          expect { described_class.find_preservation_document_by('missing') }.to raise_error
+        end
+      end
     end
 
     context '.each_preservation_document' do
