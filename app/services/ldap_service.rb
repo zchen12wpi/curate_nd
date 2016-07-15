@@ -3,8 +3,6 @@ class LdapService
 
   attr_reader :net_id
 
-  class_attribute :ldap_options
-
   LDAP_TIME_OUT = 15
 
   def initialize(net_id)
@@ -32,7 +30,7 @@ class LdapService
                   :attributes => ['uid', 'mail', 'displayName'],
                   :filter     => Net::LDAP::Filter.eq('uid', net_id),
                   :return_result => true
-    ) 
+    )
 
     if results.blank?
       return nil
@@ -53,5 +51,8 @@ class LdapService
   def connection
     @connection ||= Net::LDAP.new(ldap_options)
   end
-end
 
+  def ldap_options
+    { host: ENV.fetch('LDAP_HOST'), port: ENV.fetch('LDAP_PORT', '636').to_i, encryption: ENV.fetch('LDAP_ENCRYPTION').to_sym }
+  end
+end

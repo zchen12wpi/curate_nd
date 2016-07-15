@@ -12,6 +12,11 @@ ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
 cas_base_url: "https://login.nd.edu/cas"
 cas_validate_url: "https://login.nd.edu/cas/serviceValidate"
 
+LDAP_HOST: directory.nd.edu
+LDAP_PORT: '636'
+LDAP_ENCRYPTION: simple_tls
+
+
 development:
   cas_base_url: "https://cas.library.nd.edu/cas"
   cas_destination_url: "http://localhost:3000"
