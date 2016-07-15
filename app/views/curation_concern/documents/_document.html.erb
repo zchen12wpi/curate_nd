@@ -13,7 +13,7 @@
     <div class="span10">
       <dl class="attribute-list">
         <%# Because Book and other Document types store primary creator information in different places. %>
-        <% if solr_doc.has?('desc_metadata__type_tesim') && Array.wrap(solr_doc['desc_metadata__type_tesim']).include? 'Book' %>
+        <% if solr_doc.has?('desc_metadata__type_tesim') && Array.wrap(solr_doc['desc_metadata__type_tesim']).include?('Book') %>
           <% if solr_doc.has?('desc_metadata__author_tesim') %>
             <dt>Author(s):</dt>
             <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__author_tesim') %></dd>
