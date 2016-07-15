@@ -17,9 +17,7 @@ Curate.configure do |config|
       pid = options.fetch(:pid) || "PID unknown"
       message = options.fetch(:message)|| "Message Missing"
       exception = Exception.new("Problem with: "+pid+","+message)
-      Harbinger.call(reporters: [exception], channels: [:database, :logger])
-    rescue StandardError => e
-      logger.error("Unable to notify Harbinger. #{e.class}: #{e}\n#{e.backtrace.join("\n")} \n Logging exception. #{exception.message}")
+      Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: {})
     end
   end
 end
