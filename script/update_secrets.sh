@@ -26,7 +26,6 @@ files_to_copy="
     fedora.yml
     manager_usernames.yml
     noids.yml
-    recipients_list.yml
     redis.yml
     smtp_config.yml
     solr.yml

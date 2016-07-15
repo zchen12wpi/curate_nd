@@ -22,7 +22,7 @@ class NotificationMailer < ActionMailer::Base
 
   def recipients_list
     return @list if !@list.blank?
-    @list = YAML.load(File.open(File.join(Rails.root, "config/recipients_list.yml"))).split(" ")
+    @list = Array.wrap(ENV.fetch('CURATE_HELP_NOTIFICATION_RECIPIENT', 'library@nd.edu'))
     return @list
   end
 
