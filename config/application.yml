@@ -6,6 +6,8 @@
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 
+AIRBRAKE_API_KEY: 'fakey-mcfake-face'
+
 # These are keys for the sandbox
 ORCID_APP_ID: 0000-0002-6683-6607
 ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
