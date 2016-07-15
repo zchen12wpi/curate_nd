@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # the environments that are not used to execute the deploy scripts
 group :default do
   gem 'active_attr'
+  gem 'airbrake', '~> 4.2'
   gem 'active_fedora-registered_attributes', '~> 0.2.0'
   gem 'bootstrap-datepicker-rails'
   gem 'breach-mitigation-rails'
