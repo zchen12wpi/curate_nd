@@ -22,7 +22,6 @@ files_to_copy="
     application.yml
     bendo.yml
     database.yml
-    doi.yml
     fedora.yml
     manager_usernames.yml
     redis.yml
