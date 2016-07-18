@@ -68,6 +68,8 @@ module CurateHelper
         else
           markup << %(<li class="attribute #{method_name}"><a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a></li>\n)
         end
+      elsif method_name == :library_collections
+        markup << %(<li class="attribute #{method_name}">#{h(link_to richly_formatted_text(value.title, block: options[:block_formatting]), common_object_path(value.noid))}</li>\n)
       else
         markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</li>\n)
       end
