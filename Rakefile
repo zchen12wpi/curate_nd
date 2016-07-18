@@ -14,7 +14,7 @@ task :test_setup do
 
 end
 desc "run all of the specs"
-task :rspec => :test_setup do
+task :rspec => [:test_setup, 'curatend:lint_erb'] do
   RSpec::Core::RakeTask.new(:__rspec) do |t|
     t.pattern = "./spec/**/*_spec.rb"
   end
