@@ -25,9 +25,6 @@
   <%= curation_concern_attribute_to_html(curation_concern, :publisher,  'Publisher'  ) %>
   <%= curation_concern_attribute_to_html(curation_concern, :rights_holder,   'Assignee') %>
 
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
-
   <tr>
     <th>Access Rights</th>
     <td>
@@ -41,5 +38,8 @@
   <% if curation_concern.type_of_license == 'Independently Licensed' %>
     <%= curation_concern_attribute_to_html(curation_concern, :license, 'License Agreement') %>
   <% end %>
+
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   </tbody>
 </table>

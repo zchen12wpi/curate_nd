@@ -15,8 +15,6 @@
   <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
   <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
   <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   <tr>
     <th>Access Rights</th>
     <td>
@@ -24,5 +22,7 @@
     </td>
   </tr>
   <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   </tbody>
 </table>
