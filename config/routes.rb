@@ -11,9 +11,11 @@ CurateNd::Application.routes.draw do
 
   # Some ETDs are not loading correctly on the curation concern page
   get '/concern/etds/new', to: 'curation_concern/etds#new'
-  get '/concern/etds/:id', to: redirect { |params, request|
-    "/show/#{params[:id]}"
-  }
+  ['etds', 'articles'].each do |curation_concern|
+    get "/concern/#{curation_concern}/:id", to: redirect { |params, request|
+      "/show/#{params[:id]}"
+    }
+  end
   scope module: 'curate' do
     resources 'collections', 'profiles', 'profile_sections', controller: 'collections' do
       collection do
