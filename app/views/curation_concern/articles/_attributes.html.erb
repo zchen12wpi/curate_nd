@@ -17,6 +17,8 @@
     <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
     <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
     <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
     <tr>
       <th>Access Rights</th>
       <td>
@@ -29,7 +31,5 @@
       <%= curation_concern_attribute_to_html(curation_concern, :license, "License Agreement") %>
     <% end %>
     <%= curation_concern_attribute_to_html(curation_concern, :content_format, "Format Type") %>
-    <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
-    <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
   </tbody>
 </table>
