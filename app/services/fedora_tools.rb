@@ -1,29 +1,43 @@
-require 'rsolr'
+require 'rubydora'
 
 class FedoraTools
-  # Check fedora for records since timestamp file
-  def self.changed_since(timestamp_file)
-    re timestamp_file
+
+  # connect to fedora and fetch objects in list
+  # returns array of fedora  objects
+  def self.fetch_list(pid_list)
+    doc_list = []
+  
+    # Try to connect to fedora, and search for the desired item
+    # If either of these actions fail, handle it, and exit.
+    begin
+      fedora_config
+
+      pid_list.each do |element|  
+        doc = @fedora.find(element['id'])
+        doc_list.push(doc) unless doc.nil?
+      end
+    rescue StandardError => e
+      puts "Error: #{e}"
+      exit 1
+    end
+
+    doc_list
   end
 
-  def self.get_fromtime(timestamp_file)
+  # remove objects from the provided lis with a backing bendo element
+  # return the subset
+  def self.records_with_bendo(input_list)
+    output_list = []
+   
+    input_list.each do |record|
+      output_list.push(record) unless record.datastreams['bendo-item'].empty?
+    end
+    output_list
   end
 
-  def self.get_totime
-  end
-
-  def self.get_solr_list(fromtime, totime)
-  end
-
-  def self.rsolr
-    @rsolr ||= RSolr.connect url: solr_url
-  end
-
-  def self.solr_url
-    @solr_url ||= YAML.load(File.open(File.join(Rails.root, "config/solr.yml")))
-    @solr_url[Rails.env]['url']
-  end
-
-  def self.solr_params(fromtime, totime)
+  # get SOLR connect info from solr.yml
+  def self.fedora_config
+    fedora_yaml ||= YAML.load(File.open(File.join(Rails.root, 'config/fedora.yml')))
+    @fedora ||= Rubydora.connect(fedora_yaml[Rails.env])
   end
 end
