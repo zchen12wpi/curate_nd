@@ -58,13 +58,13 @@ module Catalog
     private_class_method :department_label
 
     def self.exactly_one_collection?(params)
-      return false unless params.key?(:f_inclusive) && params[:f_inclusive][collection_key].present?
-      Array.wrap(params[:f_inclusive][collection_key]).count == 1
+      return false unless params.key?(:f) && params[:f][collection_key].present?
+      Array.wrap(params[:f][collection_key]).count == 1
     end
     private_class_method :exactly_one_collection?
 
     def self.collection_label(params)
-      Array.wrap(params[:f_inclusive][collection_key]).first
+      Array.wrap(params[:f][collection_key]).first
     end
     private_class_method :collection_label
 

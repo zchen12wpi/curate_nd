@@ -256,7 +256,7 @@ class CatalogController < ApplicationController
       limit: 9999,
       sort: 'count'
     )
-    config.add_facet_field solr_name(:library_collections, :facetable), label: "Collection", limit: 5, multiple: true
+    config.add_facet_field solr_name(:library_collections, :facetable), label: 'Collection', limit: 5
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type of Work", limit: 5, multiple: true
     config.add_facet_field solr_name(:desc_metadata__creator, :facetable), label: "Creator", helper_method: :creator_name_from_pid, limit: 5
     config.add_facet_field solr_name("desc_metadata__tag", :facetable), label: "Keyword", limit: 5
