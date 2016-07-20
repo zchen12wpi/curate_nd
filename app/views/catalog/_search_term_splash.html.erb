@@ -1,11 +1,11 @@
 <% splash = Catalog::SearchSplashPresenter.call(params) %>
-<% if splash %>
+<% if splash.title %>
   <div class="search-term-splash">
     <h1>
-      <%= splash.html_safe %>
+      <%= splash.title.html_safe %>
     </h1>
   </div>
-  <%= render partial: 'shared/site_search', locals: { placeholder: "Search #{splash}" } %>
+  <%= render partial: 'shared/site_search', locals: { placeholder: "Search #{splash.title}".html_safe } %>
 <% else %>
   <%= render 'shared/site_search' %>
 <% end %>

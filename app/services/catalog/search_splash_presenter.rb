@@ -1,6 +1,7 @@
 require 'catalog/hierarchical_term_label'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/array/wrap'
+require 'ostruct'
 
 module Catalog
   module SearchSplashPresenter
@@ -9,28 +10,31 @@ module Catalog
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
     def self.call(params)
-      if exactly_one_department?(params)
-        department_label(params)
-      elsif exactly_one_collection?(params)
-        collection_label(params)
-      elsif category_present?(params)
+      attributes = case
+      when exactly_one_department?(params)
+        { title: department_label(params) }
+      when exactly_one_collection?(params)
+        { title: collection_label(params) }
+      when category_present?(params)
         if category_match?(params, ['Article'])
-          ARTICLE_SPLASH
+          { title: ARTICLE_SPLASH }
         elsif category_match?(params, ['Dataset'])
-          DATASET_SPLASH
+          { title: DATASET_SPLASH }
         end
-      elsif inclusive_category_present?(params)
+      when inclusive_category_present?(params)
         if inclusive_category_match?(
           params,
           [
             'Doctoral Dissertation',
             "Master's Thesis"
           ])
-          ETD_SPLASH
+          { title: ETD_SPLASH }
         end
       else
         nil
       end
+
+      OpenStruct.new(attributes)
     end
 
     def self.department_key
