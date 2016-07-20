@@ -15,7 +15,7 @@ class ObjectRelationshipReindexerWorker
     begin
       Curate::Indexer.reindex_relationships(pid)
     rescue StandardError => exception
-      Harbinger.call(reporters: [exception], channels: [:database, :logger])
+      Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: {})
       raise exception
     end
   end

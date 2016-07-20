@@ -39,15 +39,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def exception_handler(exception)
-    begin
-      Harbinger.call(reporters: [exception, current_user, request], channels: [:database, :logger])
-    rescue StandardError => e
-      logger.error("Unable to notify Harbinger. #{e.class}: #{e}\n#{e.backtrace.join("\n")}")
-    end
-    super(exception)
-  end
-
   # Brought in to resolve a problem with OmniAuth and other authentications.
   # If we lean entirely on OmniAuth (by migrating Devise-CAS to Omniauth-CAS),
   # then this can go away.

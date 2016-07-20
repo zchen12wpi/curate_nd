@@ -117,6 +117,9 @@ GEM
       tzinfo (~> 0.3.37)
     acts_as_follower (0.2.1)
     addressable (2.3.8)
+    airbrake (4.3.8)
+      builder
+      multi_json
     arel (4.0.2)
     ast (2.2.0)
     awesome_print (1.2.0)
@@ -679,6 +682,7 @@ DEPENDENCIES
   active_attr
   active_fedora-registered_attributes (~> 0.2.0)
   addressable (~> 2.3.5)
+  airbrake (~> 4.2)
   better_errors
   binding_of_caller
   blacklight-hierarchy!
