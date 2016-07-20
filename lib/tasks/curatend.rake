@@ -79,10 +79,17 @@ namespace :curatend do
       Rake::Task['db:schema:load'].invoke
 
       Rake::Task['curatend:ci_spec'].invoke
+      Rake::Task['curatend:lint_erb'].invoke
     end
 
     RSpec::Core::RakeTask.new(:ci_spec) do |t|
       t.pattern = "./spec/**/*_spec.rb"
+    end
+
+    desc "Lint ERB templates"
+    task lint_erb: :environment do
+      returning_value = system("cd #{Rails.root.join('app/views')} && bundle exec rails-erb-lint check")
+      abort "There were linting errors in the ERB templates. See above message(s)." unless returning_value
     end
   end
 end

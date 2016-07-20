@@ -272,6 +272,7 @@ GEM
       activerecord (>= 3.0.0)
     fssm (0.2.10)
     git-version-bump (0.15.1)
+    gli (2.14.0)
     hanami-utils (0.7.1)
     hashie (3.3.2)
     highline (1.6.19)
@@ -460,6 +461,10 @@ GEM
       sprockets-rails (~> 2.0)
     rails-assets-Leaflet--Leaflet.fullscreen (1.0.1)
     rails-assets-leaflet (0.7.7)
+    rails-erb-lint (1.1.6)
+      actionpack (>= 4.0)
+      gli (~> 2.1)
+      rainbow (~> 2.0)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
     rails_autolink (1.1.6)
@@ -734,6 +739,7 @@ DEPENDENCIES
   rails (~> 4.0.2)
   rails-assets-Leaflet--Leaflet.fullscreen!
   rails-assets-leaflet!
+  rails-erb-lint
   rails_autolink
   rails_best_practices
   rake

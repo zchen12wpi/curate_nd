@@ -118,5 +118,6 @@ end
 group :development do
   gem 'meta_request'
   gem 'rubocop', require: false
+  gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
 end
