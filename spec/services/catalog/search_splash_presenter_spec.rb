@@ -66,6 +66,35 @@ module Catalog
         it { is_expected.to be_nil }
       end
 
+      context 'Collections' do
+        context 'one collection' do
+          let(:single_collection_params) do
+            {
+              f: {
+                described_class.collection_key => ['und:1234']
+              }
+            }
+          end
+          subject { described_class.call(single_collection_params) }
+          it { is_expected.to eq('und:1234') }
+        end
+
+        context 'more than one collection' do
+          let(:multiple_collection_params) do
+            {
+              f: {
+                described_class.collection_key => [
+                  'und:1234',
+                  'und:5678'
+                ]
+              }
+            }
+          end
+          subject { described_class.call(multiple_collection_params) }
+          it { is_expected.to be_nil }
+        end
+      end
+
       context 'Articles' do
         let(:article_params) do
           {

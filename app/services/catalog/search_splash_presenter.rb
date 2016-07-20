@@ -9,8 +9,10 @@ module Catalog
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
     def self.call(params)
-      if exactly_one_department(params)
+      if exactly_one_department?(params)
         department_label(params)
+      elsif exactly_one_collection?(params)
+        collection_label(params)
       elsif category_present?(params)
         if category_match?(params, ['Article'])
           ARTICLE_SPLASH
@@ -35,21 +37,36 @@ module Catalog
       :admin_unit_hierarchy_sim
     end
 
+    def self.collection_key
+      :library_collections_sim
+    end
+
     def self.category_key
       :human_readable_type_sim
     end
 
-    def self.exactly_one_department(params)
+    def self.exactly_one_department?(params)
       return false unless params.key?(:f) && params[:f][department_key].present?
       Array.wrap(params[:f][department_key]).count == 1
     end
-    private_class_method :exactly_one_department
+    private_class_method :exactly_one_department?
 
     def self.department_label(params)
       term = Array.wrap(params[:f][department_key]).first
       Catalog::HierarchicalTermLabel.call(term)
     end
     private_class_method :department_label
+
+    def self.exactly_one_collection?(params)
+      return false unless params.key?(:f_inclusive) && params[:f_inclusive][collection_key].present?
+      Array.wrap(params[:f_inclusive][collection_key]).count == 1
+    end
+    private_class_method :exactly_one_collection?
+
+    def self.collection_label(params)
+      Array.wrap(params[:f_inclusive][collection_key]).first
+    end
+    private_class_method :collection_label
 
     def self.category_present?(params)
       params.key?(:f) && params[:f][category_key].present?
