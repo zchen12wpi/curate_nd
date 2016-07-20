@@ -10,10 +10,14 @@
     <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor') %>
     <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
     <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :size, "Size") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :requires, "Requires") %>
     <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation, "Recommeded Citation") %>
     <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
     <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
     <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
     <tr>
       <th>Access Rights</th>
       <td>
