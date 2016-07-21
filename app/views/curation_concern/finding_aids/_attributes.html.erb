@@ -6,6 +6,7 @@
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
+  <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
   <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
   <tr>
     <th>Access Rights</th>
