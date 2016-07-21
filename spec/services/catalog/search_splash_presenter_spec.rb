@@ -76,7 +76,9 @@ module Catalog
               }
             }
           end
-          subject { described_class.call(single_collection_params) }
+          subject do
+            described_class.call(single_collection_params, collection_decorator: described_class::TitleDecorator)
+          end
           its(:title) { is_expected.to eq('und:1234') }
         end
 
@@ -91,7 +93,9 @@ module Catalog
               }
             }
           end
-          subject { described_class.call(multiple_collection_params) }
+          subject do
+            described_class.call(multiple_collection_params, collection_decorator: described_class::TitleDecorator)
+          end
           its(:title) { is_expected.to be_nil }
         end
       end

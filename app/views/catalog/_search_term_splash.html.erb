@@ -6,6 +6,9 @@
     </h1>
   </div>
   <%= render partial: 'shared/site_search', locals: { placeholder: "Search #{splash.title}".html_safe } %>
+  <% if splash.is_a? LibraryCollection %>
+    <%= render partial: '/curation_concern/library_collections/attributes', locals: { curation_concern: splash } %>
+  <% end %>
 <% else %>
   <%= render 'shared/site_search' %>
 <% end %>

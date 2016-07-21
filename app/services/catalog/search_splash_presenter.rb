@@ -1,3 +1,4 @@
+require 'catalog/collection_decorator'
 require 'catalog/hierarchical_term_label'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/array/wrap'
@@ -8,7 +9,7 @@ module Catalog
     DATASET_SPLASH = 'Datasets & Related Materials'.freeze
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
-    def self.call(params, title_decorator: TitleDecorator, collection_decorator: TitleDecorator)
+    def self.call(params, title_decorator: TitleDecorator, collection_decorator: CollectionDecorator)
       if exactly_one_department?(params)
         title_decorator.call(department_label(params))
       elsif exactly_one_collection?(params)
