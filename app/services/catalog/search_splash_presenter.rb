@@ -1,7 +1,6 @@
 require 'catalog/hierarchical_term_label'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/array/wrap'
-require 'ostruct'
 
 module Catalog
   module SearchSplashPresenter
@@ -10,7 +9,7 @@ module Catalog
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
     def self.call(params, title_decorator: TitleDecorator, collection_decorator: TitleDecorator)
-      attributes = case
+      case
       when exactly_one_department?(params)
         title_decorator.call(department_label(params))
       when exactly_one_collection?(params)
@@ -31,10 +30,8 @@ module Catalog
           title_decorator.call(ETD_SPLASH)
         end
       else
-        nil
+        title_decorator.call(nil)
       end
-
-      OpenStruct.new(attributes)
     end
 
     def self.department_key
@@ -51,8 +48,13 @@ module Catalog
 
     module TitleDecorator
       def self.call(attribute)
-        { title: attribute }
+        title_struct.new(attribute)
       end
+
+      def self.title_struct
+        @@title_struct ||= Struct.new(:title)
+      end
+      private_class_method :title_struct
     end
 
     def self.exactly_one_department?(params)
