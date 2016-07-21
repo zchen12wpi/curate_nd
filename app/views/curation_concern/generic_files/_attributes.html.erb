@@ -1,6 +1,6 @@
 <%
   show_characterization ||= true
-  show_bendo_id = current_user.manager?
+  show_bendo_id = current_user.try(:manager?)
 %>
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
