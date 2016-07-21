@@ -1,14 +1,23 @@
 <% splash = Catalog::SearchSplashPresenter.call(params) %>
 <% if splash.title %>
-  <div class="search-term-splash">
-    <h1>
-      <%= splash.title.html_safe %>
-    </h1>
+  <div class="row">
+    <div class="span9 offset3">
+      <div class="search-term-splash">
+        <h1>
+          <%= splash.title.html_safe %>
+        </h1>
+      </div>
+      <%= render partial: 'shared/site_search', locals: { placeholder: "Search #{splash.title}".html_safe } %>
+    </div>
   </div>
-  <%= render partial: 'shared/site_search', locals: { placeholder: "Search #{splash.title}".html_safe } %>
   <% if splash.is_a? LibraryCollection %>
     <%= render partial: '/curation_concern/library_collections/attributes', locals: { curation_concern: splash } %>
   <% end %>
 <% else %>
-  <%= render 'shared/site_search' %>
+  <div class="row">
+    <div class="span9 offset3">
+      <%= render 'shared/site_search' %>
+    </div>
+  </div>
+  <div class="row">
 <% end %>
