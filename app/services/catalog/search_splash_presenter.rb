@@ -9,18 +9,17 @@ module Catalog
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
     def self.call(params, title_decorator: TitleDecorator, collection_decorator: TitleDecorator)
-      case
-      when exactly_one_department?(params)
+      if exactly_one_department?(params)
         title_decorator.call(department_label(params))
-      when exactly_one_collection?(params)
+      elsif exactly_one_collection?(params)
         collection_decorator.call(collection_label(params))
-      when category_present?(params)
+      elsif category_present?(params)
         if category_match?(params, ['Article'])
           title_decorator.call(ARTICLE_SPLASH)
         elsif category_match?(params, ['Dataset'])
           title_decorator.call(DATASET_SPLASH)
         end
-      when inclusive_category_present?(params)
+      elsif inclusive_category_present?(params)
         if inclusive_category_match?(
           params,
           [
