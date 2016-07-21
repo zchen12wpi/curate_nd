@@ -46,14 +46,11 @@ module Catalog
     end
 
     module TitleDecorator
-      def self.call(attribute)
-        title_struct.new(attribute)
-      end
+      TitleStruct = Struct.new(:title)
 
-      def self.title_struct
-        @@title_struct ||= Struct.new(:title)
+      def self.call(attribute)
+        TitleStruct.new(attribute)
       end
-      private_class_method :title_struct
     end
 
     def self.exactly_one_department?(params)
