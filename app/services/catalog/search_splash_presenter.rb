@@ -9,17 +9,17 @@ module Catalog
     DATASET_SPLASH = 'Datasets & Related Materials'.freeze
         ETD_SPLASH = 'Theses & Dissertations'.freeze
 
-    def self.call(params)
+    def self.call(params, title_decorator: TitleDecorator, collection_decorator: TitleDecorator)
       attributes = case
       when exactly_one_department?(params)
-        { title: department_label(params) }
+        title_decorator.call(department_label(params))
       when exactly_one_collection?(params)
-        { title: collection_label(params) }
+        collection_decorator.call(collection_label(params))
       when category_present?(params)
         if category_match?(params, ['Article'])
-          { title: ARTICLE_SPLASH }
+          title_decorator.call(ARTICLE_SPLASH)
         elsif category_match?(params, ['Dataset'])
-          { title: DATASET_SPLASH }
+          title_decorator.call(DATASET_SPLASH)
         end
       when inclusive_category_present?(params)
         if inclusive_category_match?(
@@ -28,7 +28,7 @@ module Catalog
             'Doctoral Dissertation',
             "Master's Thesis"
           ])
-          { title: ETD_SPLASH }
+          title_decorator.call(ETD_SPLASH)
         end
       else
         nil
@@ -47,6 +47,12 @@ module Catalog
 
     def self.category_key
       :human_readable_type_sim
+    end
+
+    module TitleDecorator
+      def self.call(attribute)
+        { title: attribute }
+      end
     end
 
     def self.exactly_one_department?(params)
