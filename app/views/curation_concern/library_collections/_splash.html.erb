@@ -1,0 +1,21 @@
+<a href=#" class="btn btn-link toggle-collection-meta open">
+  Collection Details <i class="chevron"></i>
+</a>
+<div class="row collection-meta">
+  <% if curation_concern.representative.present? %>
+    <div class="span3 collection-meta-sidebar">
+      <%= render partial: '/curation_concern/base/representative_media', locals: { work: curation_concern } %>
+    </div>
+    <div class="span9 collection-meta-content">
+  <% else %>
+    <div class="span9 offset3 collection-meta-content">
+  <% end %>
+    <section class="collection-meta-description">
+      <%= curation_concern_attribute_to_formatted_text(curation_concern, :description, 'Description') %>
+    </section>
+
+    <dl class="collection-meta-attributes">
+      <%# TODO: Collection attributes as definition list %>
+    </dl>
+  </div>
+</div>
