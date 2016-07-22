@@ -5,7 +5,7 @@ class FindingAid < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedContributors
-  include CurationConcern::Embargoable 
+  include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
 
@@ -44,6 +44,8 @@ class FindingAid < ActiveFedora::Base
     datastream: :descMetadata, multiple: false,
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
+    attribute :source,
+      datastream: :descMetadata, multiple: true
 
   private
   def set_visibility_to_open_access
