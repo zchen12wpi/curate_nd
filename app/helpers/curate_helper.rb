@@ -77,14 +77,14 @@ module CurateHelper
         # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
         parsedUri = URI.parse(value) rescue nil
         if parsedUri.nil?
-          markup << %(<#{template[:tag]}> class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</#{template[:tag]}>\n)
+          markup << content_tag(template[:tag], richly_formatted_text(value, block: options[:block_formatting]), class: "attribute #{method_name}")
         else
-          markup << %(<#{template[:tag]}> class="attribute #{method_name}"><a href=#{h(value)} target="_blank">#{h(Sufia.config.cc_licenses_reverse[value])}</a></#{template[:tag]}>\n)
+          markup << content_tag(template[:tag], link_to(Sufia.config.cc_licenses_reverse[value], value, target: '_blank'))
         end
       elsif method_name == :library_collections
-        markup << %(<#{template[:tag]} class="attribute #{method_name}">#{h(link_to richly_formatted_text(value.title, block: options[:block_formatting]), common_object_path(value.noid))}</#{template[:tag]}>\n)
+        markup << content_tag(template[:tag], link_to(richly_formatted_text(value.title, block: options[:block_formatting]), common_object_path(value.noid)), class: "attribute #{method_name}")
       else
-        markup << %(<#{template[:tag]} class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</#{template[:tag]}>\n)
+        markup << content_tag(template[:tag], richly_formatted_text(value, block: options[:block_formatting]), class: "attribute #{method_name}")
       end
     end
     markup << template[:closer]
