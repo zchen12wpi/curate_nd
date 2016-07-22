@@ -5,5 +5,7 @@ Airbrake.configure do |config|
   config.secure  = config.port == 443
   config.user_attributes = [:id, :username]
   config.ignore << "ActiveFedora::RecordNotFound"
+  config.ignore << "ActiveRecord::RecordNotFound"
+  config.ignore << "ActiveFedora::ObjectNotFoundError"
   config.ignore << "URI::InvalidComponentError"
 end
