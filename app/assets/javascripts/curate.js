@@ -38,6 +38,7 @@
 //= require curate/accept_contributor_agreement
 //= require curate/proxy_submission
 //= require curate/content_submission
+//= require curate/collection_details
 //= require handlebars
 //= require curate/img_dimensions_polyfill
 //= require curate/validate_doi
