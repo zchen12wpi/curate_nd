@@ -11,9 +11,16 @@ RSpec.describe LibraryCollection do
       date_created: ['2016-06-10', '2016-06-09'], subject: ['The Subject', 'The Other Subject'], resource_type: ["RT1", 'RT2'],
       rights: ["Rights1", 'Rights2'], identifier: ["ID1", "ID2"], language: ["Lang1", 'Lang2'], tag: ["Tag1", 'Tag2'],
       related_url: ['URL1', 'URL2'], administrative_unit: ["AU1", "AU2"], source: ['Source1', 'Source2'],
-      curator: ['Curator1', 'Curator2'], date: ['Date1', 'Date2']
+      curator: ['Curator1', 'Curator2'], date: ['Date1', 'Date2'],
+      representative: 'und:1234'
     }
   end
+
+  context '#representative' do
+    subject { described_class.new(attributes).representative }
+    it { is_expected.to eq(attributes.fetch(:representative)) }
+  end
+
   context '.human_readable_type' do
     subject { described_class.human_readable_type }
     it { is_expected.to eq('Collection') }

@@ -11,7 +11,7 @@ class LibraryCollection < ActiveFedora::Base
   include CurationConcern::HumanReadableType
 
   has_metadata "descMetadata", type: LibraryCollectionRdfDatastream
-  has_metadata "properties", type: Hydra::Datastream::Properties
+  has_metadata "properties", type: Curate::PropertiesDatastream
 
   has_many :library_collection_members, property: :is_member_of_collection, class_name: "ActiveFedora::Base"
 
@@ -23,7 +23,7 @@ class LibraryCollection < ActiveFedora::Base
   # accepts_nested_attributes_for :record_viewers, allow_destroy: true, reject_if: :all_blank
   # accepts_nested_attributes_for :record_viewer_groups, allow_destroy: true, reject_if: :all_blank
 
-  has_attributes :depositor, datastream: :properties, multiple: false
+  has_attributes :depositor, :representative, datastream: :properties, multiple: false
   has_attributes :title, :date_uploaded, :date_modified, :description,
                  datastream: :descMetadata, multiple: false
   has_attributes :creator, :contributor, :based_near, :part_of, :publisher,
@@ -32,17 +32,8 @@ class LibraryCollection < ActiveFedora::Base
                  :administrative_unit, :source, :curator, :date,
                  datastream: :descMetadata, multiple: true
 
-  has_file_datastream name: "content"
-  has_file_datastream name: "medium"
-  has_file_datastream name: "thumbnail"
-
   def can_be_member_of_collection?(collection)
     collection == self ? false : true
-  end
-
-  def representative_image_url
-    return nil unless thumbnail.content.present?
-    "/downloads/#{self.representative}/thumbnail"
   end
 
   def self.human_readable_type
@@ -62,43 +53,10 @@ class LibraryCollection < ActiveFedora::Base
     super(solr_doc, opts)
     Solrizer.set_field(solr_doc, 'generic_type', human_readable_type, :facetable)
     solr_doc[Solrizer.solr_name('representative', :stored_searchable)] = self.representative
-    solr_doc[Solrizer.solr_name('representative_image_url', :stored_searchable)] = self.representative_image_url
     solr_doc
   end
 
-  def representative
-    to_param
-  end
-
-  # Are these hold outs of the profile section?
-  attr_accessor :mime_type
-  attr_accessor :file
-
   private :date_uploaded=, :date_modified=
-
-  private
-
-  makes_derivatives :generate_derivatives
-
-  before_save :add_file_image
-
-  def add_file_image
-    return unless file
-    self.content.content = file
-    self.mime_type = file.content_type
-    generate_derivatives
-  end
-
-  def generate_derivatives
-    case mime_type
-    when 'image/png', 'image/jpeg', 'image/tiff'
-      transform_datastream(
-        :content,
-        medium: { size: "300x300>", datastream: 'medium' },
-        thumb: { size: "100x100>", datastream: 'thumbnail' }
-      )
-    end
-  end
 
   private
 
