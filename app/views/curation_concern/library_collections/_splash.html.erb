@@ -1,47 +1,64 @@
-<a href=#" class="btn btn-link toggle-collection-meta open">
-  Collection Details <i class="chevron"></i>
-</a>
-<div class="row collection-meta">
-  <% if curation_concern.representative.present? %>
-    <div class="span3 collection-meta-sidebar">
-      <%= render partial: '/curation_concern/base/representative_media', locals: { work: curation_concern } %>
+<div class="collection-actions">
+  <a href="javascript:void(0)" class="btn btn-link toggle-collection-meta open">
+    Collection Details <i class="chevron"></i>
+  </a>
+  <%= link_to 'View Collection Record', common_object_path(curation_concern.noid), class: 'btn btn-link collection-record-link' %>
+</div>
+<div class="collection-meta">
+  <% if curation_concern.library_collections.any? %>
+    <div class="row collection-parents">
+      <div class="span9 offset3">
+        <dl>
+          <dt class="collection-parents__heading">Parent Collections</dt>
+          <% curation_concern.library_collections.each do |parent| %>
+            <dd><%= link_to parent.title, common_object_path(parent.noid) %></dd>
+          <% end %>
+        </dl>
+      </div>
     </div>
-    <div class="span9 collection-meta-content">
-  <% else %>
-    <div class="span9 offset3 collection-meta-content">
   <% end %>
-    <section class="collection-meta-description">
-      <%= curation_concern_attribute_to_formatted_text(curation_concern, :description, 'Description') %>
-    </section>
-
-    <dl class="collection-meta-attributes">
-      <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Curator', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :based_near, 'Based Near', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :part_of, 'Part of', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :publisher, 'Publisher', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :date_created, 'Date Created', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :subject, 'Subject', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :resource_type, 'Resource Type', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :rights, 'Rights', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :identifier, 'Identifier', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :language, 'Language', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :tag, 'Tag', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :related_url, 'Related URL', template: 'dl') %>
-      <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source', template: 'dl') %>
-    </dl>
-
-    <% subcollections = curation_concern.library_collection_members.select { |member| member.is_a? LibraryCollection } %>
-    <% if subcollections.any? %>
-    <div class="collection-subcollections">
-      <%= content_tag :h3, 'Subcollections', class: 'collection-subcollections__heading' %>
-      <ul class="collection-subcollections__listing">
-        <% subcollections.each do |subcollection| %>
-          <li><%= link_to subcollection.title, common_object_path(subcollection.noid) %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="row">
+    <% if curation_concern.representative.present? %>
+      <div class="span3 collection-meta-sidebar">
+        <%= render partial: '/curation_concern/base/representative_media', locals: { work: curation_concern } %>
+      </div>
+      <div class="span9 collection-meta-content">
+    <% else %>
+      <div class="span9 offset3 collection-meta-content">
     <% end %>
+      <section class="collection-meta-description">
+        <%= curation_concern_attribute_to_formatted_text(curation_concern, :description, 'Description') %>
+      </section>
+
+      <dl class="collection-meta-attributes">
+        <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Curator', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :based_near, 'Based Near', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :part_of, 'Part of', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :publisher, 'Publisher', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :date_created, 'Date Created', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :subject, 'Subject', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :resource_type, 'Resource Type', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :rights, 'Rights', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :identifier, 'Identifier', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :language, 'Language', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :tag, 'Tag', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :related_url, 'Related URL', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source', template: 'dl') %>
+      </dl>
+
+      <% subcollections = curation_concern.library_collection_members.select { |member| member.is_a? LibraryCollection } %>
+      <% if subcollections.any? %>
+      <div class="collection-subcollections">
+        <%= content_tag :h3, 'Subcollections', class: 'collection-subcollections__heading' %>
+        <ul class="collection-subcollections__listing">
+          <% subcollections.each do |subcollection| %>
+            <li><%= link_to subcollection.title, common_object_path(subcollection.noid) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>

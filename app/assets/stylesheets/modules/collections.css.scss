@@ -45,10 +45,14 @@
 
 // *New* Collections
 
+.collection-actions {
+  border-bottom: 1px solid $gray-lightest;
+}
+
+.collection-record-link,
 .toggle-collection-meta {
   border: 1px solid $gray-lightest;
   margin-bottom: -1px;
-  padding-right: 1.7em;
   position: relative;
 
   &:active,
@@ -56,6 +60,11 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.toggle-collection-meta {
+  border-color: $gray-lightest $gray-lightest $white;
+  padding-right: 1.7em;
 
   .chevron {
     border-color: $official-blue transparent transparent;
@@ -69,8 +78,12 @@
     width: 0;
   }
 
-  &.collapsed .chevron {
-    transform: rotate(-90deg);
+  &.collapsed {
+    border-color: $gray-lightest;
+
+    .chevron {
+      transform: rotate(-90deg);
+    }
   }
 }
 
@@ -82,10 +95,20 @@
   }
 }
 
+.collection-parents {
+  dt {
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+}
+
 .collection-meta {
   border-bottom: 1px solid $gray-lightest;
-  border-top: 1px solid $gray-lightest;
   padding-top: 1em;
+
+  dd {
+    margin-left: 0;
+  }
 }
 
 .collection-meta-sidebar{
