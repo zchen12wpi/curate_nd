@@ -70,6 +70,14 @@
   }
 }
 
+.no-js .toggle-collection-meta {
+  padding-right: 12px;
+
+  .chevron {
+    display: none;
+  }
+}
+
 .collection-meta {
   border-bottom: 1px solid $gray-lightest;
   border-top: 1px solid $gray-lightest;
