@@ -31,5 +31,17 @@
       <%= curation_concern_attribute_to_html(curation_concern, :related_url, 'Related URL', template: 'dl') %>
       <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source', template: 'dl') %>
     </dl>
+
+    <% subcollections = curation_concern.library_collection_members.select { |member| member.is_a? LibraryCollection } %>
+    <% if subcollections.any? %>
+    <div class="collection-subcollections">
+      <%= content_tag :h3, 'Subcollections', class: 'collection-subcollections__heading' %>
+      <ul class="collection-subcollections__listing">
+        <% subcollections.each do |subcollection| %>
+          <li><%= link_to subcollection.title, common_object_path(subcollection.noid) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
   </div>
 </div>
