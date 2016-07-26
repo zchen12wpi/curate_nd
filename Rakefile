@@ -21,8 +21,10 @@ task :rspec => [:test_setup, 'curatend:lint_erb'] do
   Rake::Task['__rspec'].invoke
 end
 
-task :default => :rspec
-
+Rake::Task['default'].clear rescue true
+task :default do
+  Rake::Task['curatend:travis'].invoke
+end
 
 task :stats => :test_setup
 STATS_DIRECTORIES << %w(Workers                 app/workers)
