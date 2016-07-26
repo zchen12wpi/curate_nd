@@ -107,7 +107,13 @@
   padding-top: 1em;
 
   dd {
+    break-before: avoid-column;
+    break-inside: avoid-column;
     margin-left: 0;
+
+    p {
+      overflow: hidden;
+    }
   }
 }
 
