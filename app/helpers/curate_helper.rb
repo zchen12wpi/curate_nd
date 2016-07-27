@@ -204,4 +204,8 @@ module CurateHelper
     modified_text = CGI.escapeHTML(text)
     CGI.unescapeHTML(CGI.unescapeHTML(modified_text))
   end
+
+  def search_collection_pathbuilder(curation_concern)
+    catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ curation_concern.pid ] } })
+  end
 end
