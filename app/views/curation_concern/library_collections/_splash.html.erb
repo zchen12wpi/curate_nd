@@ -2,14 +2,16 @@
   <a href="javascript:void(0)" class="btn btn-link toggle-collection-meta open">
     Collection Details <i class="chevron"></i>
   </a>
-  <%= link_to 'View Collection Record', common_object_path(curation_concern.noid), class: 'btn btn-link collection-record-link' %>
+  <%= link_to 'Full Record', common_object_path(curation_concern.noid), class: 'btn btn-link collection-record-link' %>
 </div>
 <div class="collection-meta">
   <% if curation_concern.library_collections.any? %>
     <div class="row collection-parents">
       <div class="span9 offset3">
         <dl>
-          <dt class="collection-parents__heading">Parent Collections</dt>
+          <dt class="collection-parents__heading">
+            <%= (curation_concern.library_collections.count == 1) ? 'Parent Collection' : 'Parent Collections' %>
+          </dt>
           <% curation_concern.library_collections.each do |parent| %>
             <dd><%= link_to parent.title, common_object_path(parent.noid) %></dd>
           <% end %>
