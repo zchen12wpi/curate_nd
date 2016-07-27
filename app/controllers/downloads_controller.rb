@@ -25,7 +25,7 @@ class DownloadsController < ApplicationController
     if params[:datastream_id] == 'thumbnail'
       respond_with_default_thumbnail_image
     else
-      super
+      render '/errors/404'
     end
   end
 
