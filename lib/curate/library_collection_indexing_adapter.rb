@@ -67,6 +67,7 @@ module Curate
       solr_document[SOLR_KEY_ANCESTORS] = attributes.fetch(:ancestors)
       solr_document[SOLR_KEY_ANCESTOR_SYMBOLS] = attributes.fetch(:ancestors)
       solr_document[SOLR_KEY_PATHNAMES] = attributes.fetch(:pathnames)
+      solr_document[SOLR_KEY_PATHNAMES_FACETABLE] = attributes.fetch(:pathnames)
 
       ActiveFedora::SolrService.add(solr_document)
       ActiveFedora::SolrService.commit
@@ -80,12 +81,18 @@ module Curate
     # relationship
     SOLR_KEY_ANCESTOR_SYMBOLS = ActiveFedora::SolrService.solr_name(:library_collections_ancestors, :symbol).freeze
     SOLR_KEY_PATHNAMES = ActiveFedora::SolrService.solr_name(:library_collections_pathnames).freeze
+    SOLR_KEY_PATHNAMES_FACETABLE = ActiveFedora::SolrService.solr_name(:library_collections_pathnames, :facetable).freeze
 
     def self.coerce_solr_document_to_index_document(solr_document, pid = solr_document.fetch('id'))
       parent_pids = solr_document.fetch(SOLR_KEY_PARENT_PIDS, [])
       ancestors = solr_document.fetch(SOLR_KEY_ANCESTORS, [])
       pathnames = solr_document.fetch(SOLR_KEY_PATHNAMES, [])
-      Curate::Indexer::Documents::IndexDocument.new(pid: pid, parent_pids: parent_pids, pathnames: pathnames, ancestors: ancestors)
+      Curate::Indexer::Documents::IndexDocument.new(
+        pid: pid,
+        parent_pids: parent_pids,
+        pathnames: pathnames,
+        ancestors: ancestors
+      )
     end
     private_class_method :coerce_solr_document_to_index_document
 
