@@ -5,7 +5,7 @@ class FedoraTools
   # connect to fedora and fetch objects in list
   # returns array of fedora  objects
   def self.fetch_list(pid_list)
-    doc_list = []
+    doc_list = {}
   
     # Try to connect to fedora, and search for the desired item
     # If either of these actions fail, handle it, and exit.
@@ -14,7 +14,7 @@ class FedoraTools
 
       pid_list.each do |element|  
         doc = @fedora.find(element['id'])
-        doc_list.push(doc) unless doc.nil?
+        doc_list[element['id']] = doc unless doc.nil?
       end
     rescue StandardError => e
       puts "Error: #{e}"
@@ -24,13 +24,13 @@ class FedoraTools
     doc_list
   end
 
-  # remove objects from the provided lis with a backing bendo element
+  # remove objects from the provided list without a backing bendo element
   # return the subset
   def self.records_with_bendo(input_list)
     output_list = []
    
-    input_list.each do |record|
-      output_list.push(record) unless record.datastreams['bendo-item'].empty?
+    input_list.each do |pid, record|
+      output_list.push(pid) unless record.datastreams['bendo-item'].empty?
     end
     output_list
   end

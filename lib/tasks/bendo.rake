@@ -6,6 +6,7 @@ namespace :bendo do
   task sync_with_fedora: :environment do
     require 'solr_tools'
     require 'fedora_tools'
+    require 'batch_ingest_tools'
 
     solr_list = SolrTools.changed_since(timestamp_file)
 
@@ -15,13 +16,10 @@ namespace :bendo do
 
     STDERR.puts "#{fedora_list.count} fedora records fetched "
 
-    fedora_list = FedoraTools.records_with_bendo(fedora_list)
+    pid_list = FedoraTools.records_with_bendo(fedora_list)
 
-    STDERR.puts "#{fedora_list.count} fedora records have bendo items "
+    STDERR.puts "#{pid_list.count} fedora records have bendo items "
 
-    fedora_list.each do |record|
-      puts "inline" if record.datastreams['bendo-item'].inline?
-      puts "redirect" if record.datastreams['bendo-item'].redirect?
-    end
+    BatchIngestTools.submit_pidlist(pid_list)
   end
 end
