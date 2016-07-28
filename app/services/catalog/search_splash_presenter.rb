@@ -39,7 +39,8 @@ module Catalog
     end
 
     def self.collection_key
-      :library_collections_sim
+      # see Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE
+      :library_collections_pathnames_hierarchy_with_titles_sim
     end
 
     def self.category_key

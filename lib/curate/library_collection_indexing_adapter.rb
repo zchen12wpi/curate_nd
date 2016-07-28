@@ -1,3 +1,5 @@
+require 'curate/indexer/documents'
+
 module Curate
   # An implementation of the required methods to integrate with the Curate::Indexer gem.
   # @see Curate::Indexer::Adapters::AbstractAdapter
@@ -68,6 +70,7 @@ module Curate
       solr_document[SOLR_KEY_ANCESTOR_SYMBOLS] = attributes.fetch(:ancestors)
       solr_document[SOLR_KEY_PATHNAMES] = attributes.fetch(:pathnames)
       solr_document[SOLR_KEY_PATHNAMES_FACETABLE] = attributes.fetch(:pathnames)
+      solr_document[SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE] = build_pathname_display_hierarchy(attributes.fetch(:pathnames))
 
       ActiveFedora::SolrService.add(solr_document)
       ActiveFedora::SolrService.commit
@@ -82,6 +85,7 @@ module Curate
     SOLR_KEY_ANCESTOR_SYMBOLS = ActiveFedora::SolrService.solr_name(:library_collections_ancestors, :symbol).freeze
     SOLR_KEY_PATHNAMES = ActiveFedora::SolrService.solr_name(:library_collections_pathnames).freeze
     SOLR_KEY_PATHNAMES_FACETABLE = ActiveFedora::SolrService.solr_name(:library_collections_pathnames, :facetable).freeze
+    SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE = ActiveFedora::SolrService.solr_name(:library_collections_pathnames_hierarchy_with_titles, :facetable).freeze
 
     def self.coerce_solr_document_to_index_document(solr_document, pid = solr_document.fetch('id'))
       parent_pids = solr_document.fetch(SOLR_KEY_PARENT_PIDS, [])
@@ -95,6 +99,33 @@ module Curate
       )
     end
     private_class_method :coerce_solr_document_to_index_document
+
+    def self.embed_pid_in_title(pid, title, delimiter: '|')
+      if title.blank?
+        pid
+      else
+        "#{title}#{delimiter}#{pid}"
+      end
+    end
+    private_class_method :embed_pid_in_title
+
+    def self.build_pathname_display_hierarchy(pathnames, delimiter: '/')
+      pathnames = Array.wrap(pathnames)
+      return nil unless pathnames.any?
+      pathnames_with_titles = []
+      pathnames.each do |pathname|
+        pids = Array.wrap(pathname.split(delimiter))
+        pids.pop # we are only interested in parent pids
+        next unless pids.any?
+        objects = pids.collect{ |pid| ActiveFedora::Base.find(pid, cast: true) }
+        objects.count.times do
+          pathnames_with_titles << objects.collect{ |object| embed_pid_in_title(object.pid, object.title) }.join(delimiter)
+          objects.pop
+        end
+      end
+      pathnames_with_titles
+    end
+    private_class_method :build_pathname_display_hierarchy
 
     def self.find_solr_document_by(pid)
       query = ActiveFedora::SolrService.construct_query_for_pids([pid])
