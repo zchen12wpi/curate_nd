@@ -63,7 +63,7 @@ module Catalog
 
     def self.department_label(params)
       term = Array.wrap(params[:f][department_key]).first
-      Catalog::HierarchicalTermLabel.call(term)
+      Catalog::HierarchicalTermLabel::SimpleMapper.call(term)
     end
     private_class_method :department_label
 
