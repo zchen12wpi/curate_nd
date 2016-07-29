@@ -11,7 +11,7 @@ class BatchIngestTools
 
     make_job_id
     create_batch_job
-    add_job_file('reingest_pids', pid_list)
+    add_job_file('fedora-pids', pid_list)
     submit_batch_job
 
   end
