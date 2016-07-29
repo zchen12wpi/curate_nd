@@ -17,7 +17,7 @@ class BatchIngestTools
   end
 
   def self.make_job_id
-    @job_id = Time.now.strftime 'reingest%Y%b%e%H%M'
+    @job_id = Time.now.strftime 'reingest%Y%b%e%H%M%s'
   end
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
