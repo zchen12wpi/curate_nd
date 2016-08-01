@@ -17,15 +17,7 @@ $ bundle install --without headless
 
 ## Testing
 
-First, you will need a running a specific instance of Fedora & SOLR - there are
-XACML policy changes in Fedora related to soft-deletes. This can be done via the
-following commands:
-
-    rake curatend:jetty:start
-
-Once jetty is started, run either of the following
-
-`rake` or `rspec`
+You can run `bundle exec rake` to execute the test suite.
 
 ## Running the application under SSL
 
