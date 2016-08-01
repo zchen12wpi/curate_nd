@@ -1,4 +1,4 @@
-<% if curation_concern.identifier.present? %>
+<% if curation_concern.try(:identifier).present? %>
   <%- remote_service = Hydra::RemoteIdentifier.remote_service(:doi) -%>
   <h2>Digital Object Identifier</h2>
   <p>

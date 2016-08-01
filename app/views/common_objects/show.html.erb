@@ -65,7 +65,7 @@
 <% end %>
 
 <%
-  has_doi = curation_concern.identifier.present?
+  has_doi = curation_concern.try(:identifier).present?
 
   if has_doi
     doi = curation_concern.identifier
