@@ -1,3 +1,4 @@
+<% if curation_concern.respond_to?(:linked_resources) %>
 <%
   editor = can?(:edit, curation_concern)
   with_linked_resources = curation_concern.linked_resources.present?
@@ -49,4 +50,5 @@
       <% end %>
     </div>
   <% end %>
+<% end %>
 <% end %>

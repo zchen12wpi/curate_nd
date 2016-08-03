@@ -6,22 +6,80 @@
 
 <% content_for :page_actions do %>
   <% if display_citation_generation? %>
-    <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn btn-default citation-modal-js' %>
+    <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>
   <% end %>
   <% if can?(:edit, curation_concern) %>
-    <%= link_to 'Edit', edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' %>
+    <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' do %>
+      <i class="icon icon-pencil"></i> Edit
+    <% end %>
+    <%= link_to [:curation_concern, curation_concern], class: 'btn', data: { confirm: "Delete this #{curation_concern.human_readable_type}?" }, method: :delete do %>
+      <i class="icon icon-trash"></i> Delete
+    <% end %>
   <% end %>
 <% end %>
 
-<div class="work-attributes">
+<% details = capture do %>
+  <%# MOVE these partials into the common_objects controller %>
   <%= render "curation_concern/#{curation_concern.class.model_name.plural}/attributes", curation_concern: curation_concern, with_actions: false %>
-</div>
+  <%= render 'curation_concern/base/doi', curation_concern: curation_concern %>
 
-<% case curation_concern %>
-<% when GenericFile %>
-  <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
-<% when LibraryCollection %>
-  <%= render 'curation_concern/library_collections/library_collection_members', curation_concern: curation_concern %>
-<% else %>
+  <% case curation_concern %>
+  <% when GenericFile %>
+    <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
+  <% when LibraryCollection %>
+    <%= render 'curation_concern/library_collections/library_collection_members', curation_concern: curation_concern %>
+  <% end %>
+
   <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'curation_concern/base/related_resources', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'curation_concern/base/related_works', curation_concern: curation_concern, with_actions: true %>
+  <%= render 'curation_concern/base/collections', curation_concern: curation_concern %>
+<% end %>
+
+<% if curation_concern.representative.present? %>
+  <% if curation_concern.is_a? Image %>
+    <div class="row">
+      <div class="work-representation span12">
+        <%= render partial: 'curation_concern/base/image_viewer', locals: { work: curation_concern } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="work-attributes span12">
+        <%= details %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="work-representation span3">
+        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
+      </div>
+      <div class="work-attributes span9">
+        <%= details %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="work-attributes">
+    <%= details %>
+  </div>
+<% end %>
+
+<%
+  has_doi = curation_concern.try(:identifier).present?
+
+  if has_doi
+    doi = curation_concern.identifier
+    pattern = %r{doi:}i
+    if pattern.match(doi)
+      unprefixed_doi = doi.gsub(pattern, '')
+    else
+      unprefixed_doi = doi
+    end
+  end
+%>
+<% if has_doi %>
+  <div class="show-analytics">
+    <hr />
+    <a href="https://plu.mx/notre/a/?doi=<%= unprefixed_doi %>" class="plumx-details" data-hide-when-empty="true" data-site="notre"></a>
+  </div>
 <% end %>
