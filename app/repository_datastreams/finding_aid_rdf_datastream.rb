@@ -48,7 +48,6 @@ class FindingAidRdfDatastream < ActiveFedora::NtriplesRDFDatastream
     map.part(:to => "hasPart", in: RDF::DC)
 
     map.source(to: 'source', in: RDF::DC) do |index|
-      index.type :text
       index.as :stored_searchable, :displayable
     end
   end
