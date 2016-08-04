@@ -50,31 +50,75 @@ module CurateHelper
     construct_page_title(text)
   end
 
-  # options[:include_empty, :block_formatting]
+  # Responsible for rendering, in a consistent manner.
+  #
+  # @param curation_concern
+  # @param method_name [Symbol]
+  # @param label [String] optional
+  # @param options [Hash]
+  # @option include_empty [Boolean] defaults to false
+  # @option block_formatting [Boolean] defaults to false
   def curation_concern_attribute_to_html(curation_concern, method_name, label = nil, options = {})
-    markup = ""
-    label ||= derived_label_for(curation_concern, method_name)
     subject = curation_concern.public_send(method_name)
-    options.reverse_merge!(block_formatting: false)
-    return markup if !subject.present? && !options[:include_empty]
+    return "" if !subject.present? && !options[:include_empty]
+    label ||= derived_label_for(curation_concern, method_name)
+    render_collection_as_tabular_list(subject, method_name, label, options.fetch(:block_formatting, false), options)
+  end
+
+  # Responsible for rendering the tabular list in a consistent manner.
+  #
+  # Note: There are switches based on the method_name provided
+  def render_collection_as_tabular_list(collection, method_name, label, block_formatting, options = {})
+    markup = ""
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
-    [subject].flatten.compact.each do |value|
-      if method_name == :rights
-        # Special treatment for license/rights.  A URL from the Sufia gem's config/sufia.rb is stored in the descMetadata of the
-        # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
-        parsedUri = URI.parse(value) rescue nil
-        if parsedUri.nil?
-          markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</li>\n)
-        else
-          markup << %(<li class="attribute #{method_name}"><a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a></li>\n)
-        end
+    [collection].flatten.compact.each do |value|
+      if respond_to?("__render_tabular_list_item_for_#{method_name}", true) # Need to check for private methods
+        markup << send("__render_tabular_list_item_for_#{method_name}", method_name, value, block_formatting, options)
       else
-        markup << %(<li class="attribute #{method_name}">#{h(richly_formatted_text(value, block: options[:block_formatting]))}</li>\n)
+        markup << __render_tabular_list_item(method_name, value, block_formatting, options)
       end
     end
     markup << %(</ul></td></tr>)
     markup.html_safe
   end
+  private :render_collection_as_tabular_list
+
+  def __render_tabular_list_item(method_name, value, block_formatting, options = {})
+    inner_html = block_given? ? yield : h(richly_formatted_text(value, block: block_formatting))
+    %(<li class="attribute #{method_name}">#{inner_html}</li>\n)
+  end
+  private :__render_tabular_list_item
+
+  def __render_tabular_list_item_for_rights(method_name, value, block_formatting, options = {})
+    # Special treatment for license/rights.  A URL from the Sufia gem's config/sufia.rb is stored in the descMetadata of the
+    # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
+    parsedUri = URI.parse(value) rescue nil
+    if parsedUri.nil?
+      __render_tabular_list_item(method_name, value, block_formatting)
+    else
+      __render_tabular_list_item(method_name, value, block_formatting) do
+        %(<a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a>)
+      end
+    end
+  end
+  private :__render_tabular_list_item_for_rights
+
+  def __render_tabular_list_item_for_tag(method_name, value, block_formatting, options = {})
+    callout_pattern = options.fetch(:callout_pattern, nil)
+    if callout_pattern
+      callout_text = options.fetch(:callout_text)
+      if value =~ callout_pattern
+        __render_tabular_list_item(method_name, value, block_formatting, options) do
+          %(<a href=#{h(value)} target="_blank">#{h(value)}</a> <span class="callout-text">#{callout_text}</span>)
+        end
+      else
+        __render_tabular_list_item(method_name, value, block_formatting, options)
+      end
+    else
+      __render_tabular_list_item(method_name, value, block_formatting, options)
+    end
+  end
+  private :__render_tabular_list_item_for_tag
 
   # options[:block_formatting, :class]
   def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = {})

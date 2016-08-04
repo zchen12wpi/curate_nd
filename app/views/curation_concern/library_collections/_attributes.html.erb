@@ -9,6 +9,13 @@
     <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
     <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor') %>
     <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator') %>
+    <%= curation_concern_attribute_to_html(
+                                            curation_concern,
+                                            :tag,
+                                            "Tag",
+                                            callout_pattern: /\Ahttps?:\/\/collections\.library\.nd\.edu/,
+                                            callout_text: "View this collection in the Library's Digital Exhibits and Collections space."
+                                          ) %>
     <%= curation_concern_attribute_to_html(curation_concern, :based_near, "Based Near") %>
     <%= curation_concern_attribute_to_html(curation_concern, :part_of, "Part of") %>
     <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
@@ -18,7 +25,6 @@
     <%= curation_concern_attribute_to_html(curation_concern, :rights, "Rights") %>
     <%= curation_concern_attribute_to_html(curation_concern, :identifier, "Identifier") %>
     <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
-    <%= curation_concern_attribute_to_html(curation_concern, :tag, "Tag") %>
     <%= curation_concern_attribute_to_html(curation_concern, :related_url, "Related URL") %>
     <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
     <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
