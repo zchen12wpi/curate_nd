@@ -1,0 +1,25 @@
+<%
+  page_title = t("curate.catalog.facet_page_title.#{params[:id]}").html_safe
+  content_for :page_title, "#{page_title} // CurateND"
+%>
+<% content_for :page_header do %>
+  <h1><%= page_title %></h1>
+<% end %>
+<% content_for :main_column_class, 'hierarchical-facet-page span12'  %>
+<div class="hierarchical-value modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3><%= t("curate.catalog.facet_title.#{params[:id]}").html_safe %></h3>
+</div>
+
+<div class="modal-body">
+  <%
+    help_text = t("curate.catalog.help_text.#{params[:id]}").html_safe
+    if help_text.present?
+  %>
+    <p>
+      <%= help_text %>
+    </p>
+  <% end %>
+
+  <%= @departments.render(template: self) %>
+</div>
