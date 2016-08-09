@@ -39,10 +39,6 @@ module Curate::CatalogHelper
     raw text.gsub('&amp;', '&')
   end
 
-  def display_title_without_embedded_id(facet_value)
-    facet_value.split('|').slice(0...-1).join('|')
-  end
-
   private
 
   def type_field

@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/blacklight-hierarchy.git
-  revision: 2724aac40c56bcd04c73446a2d72cfd20c8b048b
+  revision: 2ad01789ec500bf798d85fae63648e5bcf4798bc
   branch: master
   specs:
-    blacklight-hierarchy (0.1.1)
+    blacklight-hierarchy (0.2.0)
       blacklight (~> 4, < 6)
       rails (~> 4.0)
 

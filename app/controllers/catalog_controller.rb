@@ -258,7 +258,6 @@ class CatalogController < ApplicationController
     )
     config.add_facet_field(
       Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE,
-      helper_method: :display_title_without_embedded_id,
       label: 'Collection',
       layout: 'catalog/hierarchy_facet_layout',
       limit: 9999,
@@ -276,8 +275,14 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
     config.facet_display = {
       :hierarchy => {
-        'admin_unit_hierarchy' => [['sim'], ':'],
-        'library_collections_pathnames_hierarchy_with_titles' => [['sim'], '/']
+        'admin_unit_hierarchy' => {
+          fields: ['sim']
+        },
+        'library_collections_pathnames_hierarchy_with_titles' => {
+          fields: ['sim'],
+          delimiter: '/',
+          presenter: Catalog::HierarchicalTermLabel::TitleExtractor
+        }
       }
     }
 
