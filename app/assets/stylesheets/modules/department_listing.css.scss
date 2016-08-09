@@ -1,0 +1,11 @@
+// Show only ND departments on listing page
+// Show ALL departments in facet modal
+.department-listing .h-node {
+  display: none;
+}
+
+#ajax-modal .h-node,
+.department-listing .h-node:first-child,
+.department-listing .h-node .h-node {
+  display: block;
+}
