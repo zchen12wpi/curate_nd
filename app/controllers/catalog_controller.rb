@@ -174,6 +174,39 @@ class CatalogController < ApplicationController
     end
   end
 
+  def departments
+    # Oh Blacklight and your pervasive assumptions about rendering and response objects.
+    # params[:id] should == 'admin_unit_hierarchy_sim'
+    @pagination = get_facet_pagination(params[:id], params)
+    (@response, @document_list) = get_search_results
+    respond_to do |format|
+      # Instead of relying on the Blacklight hierarchy rendering, I want to
+      # leverage the Locabulary hiararchy sorter.
+      format.html do
+        @departments = build_faceted_hierarchy_presenter(@response, 'administrative_units')
+        render layout: 'curate_nd/1_column'
+      end
+      format.json { render json: render_facet_list_as_json }
+
+      # Draw the partial for the "more" facet modal window:
+      # Instead of relying on the Blacklight hierarchy rendering, I want to
+      # leverage the Locabulary hiararchy sorter.
+      format.js do
+        @departments = build_faceted_hierarchy_presenter(@response, 'administrative_units')
+        render layout: false
+      end
+    end
+  end
+
+  def build_faceted_hierarchy_presenter(solr_response, predicate_name)
+    FacetedHierarchyPresenter.new(
+      facet_field_name: params[:id],
+      items: solr_response.facet_by_field_name(params[:id]).items,
+      item_delimiter: ':',
+      predicate_name: predicate_name
+    )
+  end
+
   def self.uploaded_field
     #  system_create_dtsi
     solr_name('desc_metadata__date_uploaded', :stored_sortable, type: :date)

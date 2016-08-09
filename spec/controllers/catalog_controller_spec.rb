@@ -45,4 +45,20 @@ describe CatalogController do
       end
     end
   end
+
+  describe "GET #departments" do
+    let(:user) { FactoryGirl.create(:user) }
+    # Need to have a well defined hierarchy otherwise things fall apart
+    let!(:work1) { FactoryGirl.create(:generic_work, user: user, title:"Work1", subject:"my subject", administrative_unit: "Notre Dame:College of Arts and Letters" ) }
+    let!(:work2) { FactoryGirl.create(:generic_work, user: user, title:"Work2", subject:"my subject", administrative_unit: "Notre Dame" ) }
+
+
+    describe "get hierarchy facet for administrative unit" do
+      it "should be render hierarchy facet" do
+        sign_in user
+        get :departments, id: 'admin_unit_hierarchy_sim'
+        expect(response).to be_success
+      end
+    end
+  end
 end

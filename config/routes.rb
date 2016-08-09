@@ -68,8 +68,9 @@ CurateNd::Application.routes.draw do
   match "show/stub/:id" => "common_objects#show_stub_information", via: :get, as: "common_object_stub_information"
   match 'users/:id/edit' => 'users#edit', via: :get, as: 'edit_user'
   match 'downloads/:id(/:datastream_id)(.:format)' => 'downloads#show', via: :get, as: 'download'
+  match 'catalog/hierarchy/admin_unit_hierarchy_sim/facet' => 'catalog#departments', via: :get, id: 'admin_unit_hierarchy_sim'
   match 'catalog/hierarchy/:id/facet' => 'catalog#hierarchy_facet', via: :get, as: 'catalog_hierarchy_facet'
-  match 'departments' => 'catalog#hierarchy_facet', via: :get, as: 'departments', id: 'admin_unit_hierarchy_sim'
+  match 'departments' => 'catalog#departments', via: :get, as: 'departments', id: 'admin_unit_hierarchy_sim'
 
   scope module: 'bendo' do
     match 'cache_status' => 'file_cache_status#check', via: :get, as: 'bendo_cache_status'
