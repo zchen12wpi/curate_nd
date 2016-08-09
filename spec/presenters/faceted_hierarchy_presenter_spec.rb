@@ -24,12 +24,12 @@ RSpec.describe FacetedHierarchyPresenter do
       end
 
       expect(subject.render(template: template)).to have_tag('ul.facet-hierarchy') do
-        with_tag('.h-node a.facet_select', text: 'Parent')
-        with_tag('.h-node .count', text: 3)
-        with_tag('.h-node .h-node a.facet_select', text: 'Child')
-        with_tag('.h-node .h-node .count', text: 2)
-        with_tag('.h-node .h-node .h-leaf a.facet_select', text: 'Grandchild')
-        with_tag('.h-node .h-node .h-leaf .count', text: 1)
+        with_tag('.h-node.parent a.facet_select', text: 'Parent')
+        with_tag('.h-node.parent .count', text: 3)
+        with_tag('.h-node.parent .h-node a.facet_select', text: 'Child')
+        with_tag('.h-node.parent .h-node .count', text: 2)
+        with_tag('.h-node.parent .h-node .h-leaf a.facet_select', text: 'Grandchild')
+        with_tag('.h-node.parent .h-node .h-leaf .count', text: 1)
       end
     end
   end

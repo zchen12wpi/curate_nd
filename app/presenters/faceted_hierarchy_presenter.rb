@@ -18,17 +18,18 @@ class FacetedHierarchyPresenter
     # I'd prefer to set an instance variable as part of the instantiation of this object, but due to timing, this isn't as easy.
     @template = options.fetch(:template)
     html = "<ul class='facet-hierarchy'>\n"
-    html << items_to_html(roots)
+    html << items_to_html(roots, root: true)
     html << "</ul>"
     html.html_safe
   end
 
   private
 
-  def items_to_html(items)
+  def items_to_html(items, root: false)
     html = ""
     items.each do |item|
       item_class = item.children.any? ? 'h-node' : 'h-leaf'
+      item_class += " #{dom_class_for(item)}" if root
       html << "<li class='#{item_class}'>\n"
       html << template.link_to(label_for(item), href_for(item), class: 'facet_select')
       html << "  <span class='count'>#{item.hits}</span>\n"
@@ -44,6 +45,10 @@ class FacetedHierarchyPresenter
 
   def label_for(item)
     item.hierarchy_facet_label
+  end
+
+  def dom_class_for(item)
+    item.value.downcase.gsub(/[\W]+/, '-')
   end
 
   def href_for(item)
