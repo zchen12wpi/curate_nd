@@ -22,13 +22,9 @@ files_to_copy="
     application.yml
     bendo.yml
     database.yml
-    doi.yml
     fedora.yml
     manager_usernames.yml
-    noids.yml
-    recipients_list.yml
     redis.yml
-    service_dn.yml
     smtp_config.yml
     solr.yml
     work_type_policy_rules.yml

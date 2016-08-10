@@ -1,6 +1,11 @@
 # Register and configure remote identifiers for persisted objects
 Hydra::RemoteIdentifier.configure do |config|
-  doi_credentials = Psych.load_file(Rails.root.join("config/doi.yml").to_s).fetch(Rails.env)
+  doi_credentials = {
+    username: ENV.fetch('DOI_USERNAME'),
+    password: ENV.fetch('DOI_PASSWORD'),
+    shoulder: ENV.fetch('DOI_SHOULDER'),
+    url: ENV.fetch('DOI_URL')
+  }
   config.remote_service(:doi, doi_credentials) do |doi|
     doi.register(SeniorThesis) do |map|
       map.target {|obj| Curate.permanent_url_for(obj) }

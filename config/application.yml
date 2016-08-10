@@ -14,6 +14,18 @@ ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
 cas_base_url: "https://login.nd.edu/cas"
 cas_validate_url: "https://login.nd.edu/cas/serviceValidate"
 
+DOI_USERNAME: apitest
+DOI_PASSWORD: apitest
+DOI_SHOULDER: doi:10.5072/FK2
+DOI_URL: https://ezid.lib.purdue.edu/
+
+CURATE_HELP_NOTIFICATION_RECIPIENT: no-reply@nd.edu
+
+LDAP_HOST: directory.nd.edu
+LDAP_PORT: '636'
+LDAP_ENCRYPTION: simple_tls
+
+
 development:
   cas_base_url: "https://cas.library.nd.edu/cas"
   cas_destination_url: "http://localhost:3000"

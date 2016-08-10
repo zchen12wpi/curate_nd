@@ -22,12 +22,11 @@ Sufia.config do |config|
   # try to load a noids server configuration
   # but it is okay if it doesn't exist
   config.noids = begin
-                   noids_file = YAML.load_file(Rails.root.join("config/noids.yml")).fetch(Rails.env)
                    {
-                     server: noids_file.fetch("server"),
-                     pool: noids_file.fetch("pool")
+                     server: ENV.fetch('NOIDS_SERVER'),
+                     pool: ENV.fetch("NOIDS_POOL")
                    }
-                 rescue Errno::ENOENT, KeyError, NoMethodError
+                 rescue KeyError
                    # file doesn't exist
                    # or yaml file does not define the current environment
                    nil
