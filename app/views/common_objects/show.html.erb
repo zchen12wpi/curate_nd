@@ -6,7 +6,9 @@
 
 <% content_for :page_actions do %>
   <% if curation_concern.is_a? LibraryCollection %>
-    <%= link_to 'Search Inside', search_collection_pathbuilder(curation_concern) , class: 'btn btn-default' %>
+    <%= link_to search_collection_pathbuilder(curation_concern) , class: 'btn btn-default' do %>
+      <i class="icon icon-search"></i> Search Inside
+    <% end %>
   <% end %>
   <% if display_citation_generation? %>
     <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>

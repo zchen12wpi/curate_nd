@@ -205,7 +205,18 @@ module CurateHelper
     CGI.unescapeHTML(CGI.unescapeHTML(modified_text))
   end
 
+  # The "search inside" URL needs an inclusive hierarchy of collection titles and pids.
+  # The full hierarchy is is not stored on the Collection object itself; it is only
+  # available on child objects. However, the full path can be constructed using
+  # metadata from colection itself and information from its Solr Doc. This
+  # method duplicates parts of Curate::LibraryCollectionIndexingAdapter
   def search_collection_pathbuilder(curation_concern)
-    catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ curation_concern.pid ] } })
+    hierarchy_root_field = Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES
+    solr_query_string = ActiveFedora::SolrService.construct_query_for_pids([curation_concern.pid])
+    solr_results = ActiveFedora::SolrService.query(solr_query_string)
+    solr_doc = solr_results.first
+    collection_key_root = solr_doc.fetch(hierarchy_root_field).first
+    collection_key = "#{collection_key_root}/#{curation_concern.title}|#{curation_concern.pid}"
+    catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ collection_key ] } })
   end
 end

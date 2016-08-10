@@ -70,7 +70,9 @@ module Curate
       solr_document[SOLR_KEY_ANCESTOR_SYMBOLS] = attributes.fetch(:ancestors)
       solr_document[SOLR_KEY_PATHNAMES] = attributes.fetch(:pathnames)
       solr_document[SOLR_KEY_PATHNAMES_FACETABLE] = attributes.fetch(:pathnames)
-      solr_document[SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE] = build_pathname_display_hierarchy(attributes.fetch(:pathnames))
+      display_hierarchy = build_pathname_display_hierarchy(attributes.fetch(:pathnames))
+      solr_document[SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES] = display_hierarchy
+      solr_document[SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE] = display_hierarchy
 
       ActiveFedora::SolrService.add(solr_document)
       ActiveFedora::SolrService.commit
@@ -85,6 +87,7 @@ module Curate
     SOLR_KEY_ANCESTOR_SYMBOLS = ActiveFedora::SolrService.solr_name(:library_collections_ancestors, :symbol).freeze
     SOLR_KEY_PATHNAMES = ActiveFedora::SolrService.solr_name(:library_collections_pathnames).freeze
     SOLR_KEY_PATHNAMES_FACETABLE = ActiveFedora::SolrService.solr_name(:library_collections_pathnames, :facetable).freeze
+    SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES = ActiveFedora::SolrService.solr_name(:library_collections_pathnames_hierarchy_with_titles).freeze
     SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE = ActiveFedora::SolrService.solr_name(:library_collections_pathnames_hierarchy_with_titles, :facetable).freeze
 
     def self.coerce_solr_document_to_index_document(solr_document, pid = solr_document.fetch('id'))
