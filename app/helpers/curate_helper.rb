@@ -214,8 +214,10 @@ module CurateHelper
     hierarchy_root_field = Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES
     solr_query_string = ActiveFedora::SolrService.construct_query_for_pids([curation_concern.pid])
     solr_results = ActiveFedora::SolrService.query(solr_query_string)
+    return false unless (solr_results && solr_results.first)
     solr_doc = solr_results.first
-    collection_key_root = solr_doc.fetch(hierarchy_root_field).first
+    collection_key_root = solr_doc.fetch(hierarchy_root_field, []).first
+    return false unless collection_key_root
     collection_key = "#{collection_key_root}/#{curation_concern.title}|#{curation_concern.pid}"
     catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ collection_key ] } })
   end
