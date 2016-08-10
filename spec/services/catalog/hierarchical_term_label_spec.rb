@@ -3,7 +3,7 @@ require 'catalog/hierarchical_term_label'
 
 module Catalog
   module HierarchicalTermLabel
-    RSpec.describe Department do
+    RSpec.describe SimpleMapper do
       describe '.call' do
         context 'empty value' do
           subject { described_class.call('') }
