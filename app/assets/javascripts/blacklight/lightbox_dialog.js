@@ -66,15 +66,21 @@ Blacklight.launch_modal_callback = function() {
     hasSubCollections = ($subCollections.length === 1);
 
     if (hasSubCollections){
-      var $parentElement = $this.parent(),
+    var $parentElement = $this.parent(),
         $countElement = $this.next('.count'),
         countNumber = $countElement.text(),
         targetPath = $this.attr('href'),
-        seeAllBtn = '<a href="'+ targetPath +'" class="btn btn-small see-all">See all '+ countNumber +'</a>';
+        seeAllBtn = '<a href="'+ targetPath +'" class="btn btn-small see-all">See all '+ countNumber +'</a>',
+        hasNoneSelected = ($('.remove', $parentElement).length === 0);
 
       $parentElement.append(seeAllBtn);
       $countElement.remove();
-      $subCollections.hide();
+
+      if (hasNoneSelected){
+        $subCollections.hide();
+      } else {
+        $this.addClass('expanded');
+      }
 
       $this.addClass('can-collapse').on('click', function(e){
         e.preventDefault();
