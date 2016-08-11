@@ -155,31 +155,4 @@ Blacklight.onLoad(function() {
       return  returnValue + option.text;
     }
   }
-
-  // Collapsible hierarchical facet behavior
-  $('.facet-hierarchy.collapsible > .h-node > .facet_select').each(function(){
-    var $this = $(this),
-        $subCollections = $this.siblings('ul'),
-        hasSubCollections = ($subCollections.length === 1);
-
-    if (hasSubCollections){
-      var $parentElement = $this.parent(),
-          $countElement = $this.next('.count'),
-          countNumber = $countElement.text(),
-          targetPath = $this.attr('href'),
-          seeAllBtn = '<a href="'+ targetPath +'" class="btn btn-small see-all">See all '+ countNumber +'</a>';
-
-      $parentElement.append(seeAllBtn);
-      $countElement.remove();
-      $subCollections.hide();
-
-      $this.addClass('can-collapse').on('click', function(e){
-        e.preventDefault();
-
-        $(this)
-          .toggleClass('expanded')
-          .next('ul').slideToggle();
-      });
-    }
-  });
 });
