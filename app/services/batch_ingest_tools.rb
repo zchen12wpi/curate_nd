@@ -9,7 +9,7 @@ class BatchIngestTools
   def self.submit_pidlist(pid_list)
     make_job_id
     create_batch_job
-    add_job_file('fedora-pids', pid_list, false)
+    add_job_file('fedora-pids', pid_list, true)
     task_list = make_task_list
     add_job_file('JOB', task_list, true)
     submit_batch_job
