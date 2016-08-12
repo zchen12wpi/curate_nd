@@ -42,6 +42,7 @@ module Curate
       it 'will iterate through Fedora and yield Curate::Indexer::Documents::PreservationDocument instances' do
         FactoryGirl.create(:document)
         expect { |b| described_class.each_preservation_document(&b) }.to yield_successive_args(
+          Curate::Indexer::Documents::PreservationDocument,
           Curate::Indexer::Documents::PreservationDocument
         )
       end
