@@ -53,8 +53,4 @@ class SolrTools
     STDERR.puts @sorl_url
     @solr_url[Rails.env]['url']
   end
-
-  # build query
-  def self.query_params(_fromtime, _totime)
-  end
 end
