@@ -130,7 +130,7 @@ RSpec.describe CurateHelper do
       it 'will generate the appropriate callout text for the given link' do
         href = "http://collections.library.nd.edu/somewhere"
         curation_concern = double('Curation Concern', tag: ["Hello", href])
-        callout_text = "View this collection in the Library's Digital Exhibits and Collections space."
+        callout_text = "View in DEC"
         output = helper.curation_concern_attribute_to_html(
           curation_concern, :tag, "Tag",
           callout_pattern: /\Ahttp:\/\/collections\.library\.nd\.edu/,

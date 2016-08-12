@@ -1,0 +1,33 @@
+.callout-link {
+  background: $blue-light;
+  color: $official-blue;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 5px 6px 5px 12px;
+  position: relative;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $white;
+    text-decoration: none;
+    background: $official-blue;
+  }
+
+  &::after {
+    border-color: transparent transparent transparent $blue-light;
+    border-style: solid;
+    border-width: 16px 0 16px 16px;
+    content: '';
+    position: absolute;
+    right:-16px;
+    top: 0;
+  }
+
+  &:active::after,
+  &:focus::after,
+  &:hover::after {
+    border-color: transparent transparent transparent $official-blue;
+  }
+}

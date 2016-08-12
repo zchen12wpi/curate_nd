@@ -109,7 +109,7 @@ module CurateHelper
       callout_text = options.fetch(:callout_text)
       if value =~ callout_pattern
         __render_tabular_list_item(method_name, value, block_formatting, options) do
-          %(<a href=#{h(value)} target="_blank">#{h(value)}</a> <span class="callout-text">#{callout_text}</span>)
+          %(<a href="#{h(value)}" class="callout-link" target="_blank"><span class="callout-text">#{callout_text}</span></a>)
         end
       else
         __render_tabular_list_item(method_name, value, block_formatting, options)
