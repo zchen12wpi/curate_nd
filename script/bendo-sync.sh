@@ -9,4 +9,4 @@ cd /home/app/curatend/current
 source /etc/profile.d/ruby.sh
 source ./env-vars
 
-/opt/ruby/current/bin/bundle exec $RAILS_ENV rake bendo:sync_with_fedora 2>&1 >>/home/app/curatend/shared/log/bendo-sync.log
+/opt/ruby/current/bin/bundle exec rake RAILS_ENV=$RAILS_ENV bendo:sync_with_fedora 2>&1 >>/home/app/curatend/shared/log/bendo-sync.log
