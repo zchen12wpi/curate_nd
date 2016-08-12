@@ -57,4 +57,12 @@ class lib_curate::worker {
      class { 'lib_resque_poold':
 	require => Class[["lib_ruby","lib_app_home","lib_redis"]],
      }
+	 
+     # bend-sync crontab
+	cron { 'bendo-sync': 
+		command => '/home/app/curatend/current/script/bendo-sync.sh',
+		user => 'app',
+		hour => 2,
+		minute => 45,
+	}
 }
