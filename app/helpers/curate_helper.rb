@@ -217,8 +217,10 @@ module CurateHelper
     return false unless (solr_results && solr_results.first)
     solr_doc = solr_results.first
     collection_key_root = solr_doc.fetch(hierarchy_root_field, []).first
-    return false unless collection_key_root
-    collection_key = "#{collection_key_root}/#{curation_concern.title}|#{curation_concern.pid}"
+    collection_key = ""
+    collection_key << "#{collection_key_root}/" if collection_key_root.present?
+    collection_key << "#{curation_concern.title}|#{curation_concern.pid}"
+    return false unless collection_key.present?
     catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ collection_key ] } })
   end
 end
