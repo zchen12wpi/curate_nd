@@ -256,6 +256,14 @@ class CatalogController < ApplicationController
       limit: 9999,
       sort: 'count'
     )
+    config.add_facet_field(
+      Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES_FACETABLE,
+      label: 'Collection',
+      layout: 'catalog/hierarchy_facet_layout',
+      limit: 9999,
+      partial: 'catalog/hierarchy_facet',
+      sort: 'count'
+    )
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type of Work", limit: 5, multiple: true
     config.add_facet_field solr_name(:desc_metadata__creator, :facetable), label: "Creator", helper_method: :creator_name_from_pid, limit: 5
     config.add_facet_field solr_name("desc_metadata__tag", :facetable), label: "Keyword", limit: 5
@@ -267,7 +275,14 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
     config.facet_display = {
       :hierarchy => {
-        'admin_unit_hierarchy' => [['sim'], ':']
+        'admin_unit_hierarchy' => {
+          fields: ['sim']
+        },
+        'library_collections_pathnames_hierarchy_with_titles' => {
+          fields: ['sim'],
+          delimiter: '/',
+          presenter: Catalog::HierarchicalTermLabel::TitleExtractor
+        }
       }
     }
 

@@ -1,3 +1,4 @@
+// Legacy Collections
 .collection-listing {
   list-style-type: none;
   margin: 0 0 1em;
@@ -36,4 +37,132 @@
 
 .collection-section-heading + .collection-section-description {
   margin-top: -10px;
+}
+
+.collection-subcollections__heading {
+  margin-top: 0;
+}
+
+// *New* Collections
+
+.collection-actions {
+  border-bottom: 1px solid $gray-lightest;
+}
+
+.collection-record-link,
+.toggle-collection-meta {
+  border: 1px solid $gray-lightest;
+  margin-bottom: -1px;
+  position: relative;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.toggle-collection-meta {
+  border-color: $gray-lightest $gray-lightest $white;
+  padding-right: 1.7em;
+
+  .chevron {
+    border-color: $official-blue transparent transparent;
+    border-style: solid;
+    border-width: 8px 4px 0;
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 0;
+  }
+
+  &.collapsed {
+    border-color: $gray-lightest;
+
+    .chevron {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.no-js .toggle-collection-meta {
+  padding-right: 12px;
+
+  .chevron {
+    display: none;
+  }
+}
+
+.collection-parents {
+  dt {
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+}
+
+.collection-meta {
+  border-bottom: 1px solid $gray-lightest;
+  padding-top: 1em;
+
+  dd {
+    break-before: avoid-column;
+    break-inside: avoid-column;
+    margin-left: 0;
+
+    p {
+      overflow: hidden;
+    }
+  }
+}
+
+.collection-meta-sidebar{
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-align: center;
+
+  img {
+    width: 50%;
+  }
+}
+
+.collection-meta-content {
+  p {
+    max-width: 42em;
+  }
+}
+
+.collection-meta-attributes {
+  column-count: 1;
+  column-gap: 2em;
+
+  dt {
+    border-bottom: 1px solid $gray-lightest;
+    padding-top: .5em;
+  }
+}
+
+.collection-meta + .search-content {
+  padding-top: 1em;
+}
+
+@media(min-width: 400px){
+  .collection-meta-attributes {
+    column-count: 2;
+  }
+}
+
+@media(min-width: 768px){
+  .collection-meta-sidebar{
+    padding-top: 0;
+
+    img {
+      width: 90%;
+    }
+  }
+
+  .collection-meta-attributes {
+    column-count: 3;
+  }
 }

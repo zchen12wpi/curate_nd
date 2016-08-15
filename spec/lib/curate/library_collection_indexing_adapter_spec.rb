@@ -41,7 +41,10 @@ module Curate
     context '.each_preservation_document' do
       it 'will iterate through Fedora and yield Curate::Indexer::Documents::PreservationDocument instances' do
         FactoryGirl.create(:document)
-        expect { |b| described_class.each_preservation_document(&b) }.to yield_with_args(Curate::Indexer::Documents::PreservationDocument)
+        expect { |b| described_class.each_preservation_document(&b) }.to yield_successive_args(
+          Curate::Indexer::Documents::PreservationDocument,
+          Curate::Indexer::Documents::PreservationDocument
+        )
       end
     end
 
@@ -73,10 +76,13 @@ module Curate
         )
       end
     end
+
     context '.write_document_attributes_to_index_layer' do
       it 'will update the underlying solr document' do
+        ancestor = double('Work', pid: 'und:123', title: 'ancestor', inner_object: '', to_solr: { id: 'und:123' })
+        allow(ActiveFedora::Base).to receive(:find).and_return(ancestor)
         work = FactoryGirl.create(:document)
-        attributes = { pid: work.pid, pathnames: ["und:123/#{work.pid}"], ancestors: ["und:123"], parent_pids: ["und:123"] }
+        attributes = { pid: work.pid, pathnames: ["#{ancestor.pid}/#{work.pid}"], ancestors: [ancestor.pid], parent_pids: [ancestor.pid] }
         solr_document = described_class.write_document_attributes_to_index_layer(attributes)
 
         # solr_document = described_class.send(:find_solr_document_by, work.pid)

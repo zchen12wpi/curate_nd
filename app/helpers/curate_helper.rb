@@ -56,66 +56,80 @@ module CurateHelper
   # @param method_name [Symbol]
   # @param label [String] optional
   # @param options [Hash]
-  # @option include_empty [Boolean] defaults to false
-  # @option block_formatting [Boolean] defaults to false
+  # @option include_empty [Boolean] (false)
+  # @option block_formatting [Boolean] (false)
+  # @option callout_text [String, nil] (nil)
+  # @option callout_pattern [Regexp, nil] (nil)
+  # @option template [String] (table) table or dl
   def curation_concern_attribute_to_html(curation_concern, method_name, label = nil, options = {})
     subject = curation_concern.public_send(method_name)
     return "" if !subject.present? && !options[:include_empty]
     label ||= derived_label_for(curation_concern, method_name)
-    render_collection_as_tabular_list(subject, method_name, label, options.fetch(:block_formatting, false), options)
+    render_collection_as_tabular_list(subject, method_name, label, options)
   end
 
   # Responsible for rendering the tabular list in a consistent manner.
   #
   # Note: There are switches based on the method_name provided
-  def render_collection_as_tabular_list(collection, method_name, label, block_formatting, options = {})
-    markup = ""
-    markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
-    [collection].flatten.compact.each do |value|
-      if respond_to?("__render_tabular_list_item_for_#{method_name}", true) # Need to check for private methods
-        markup << send("__render_tabular_list_item_for_#{method_name}", method_name, value, block_formatting, options)
+  def render_collection_as_tabular_list(collection, method_name, label, options = {})
+    block_formatting = options.fetch(:block_formatting, false)
+    template_type = options.fetch(:template, 'table')
+    template = begin
+      if template_type == 'dl'
+        { tag: 'dd', opener: %(<dt>#{label}</dt>), closer: '' }
       else
-        markup << __render_tabular_list_item(method_name, value, block_formatting, options)
+        { tag: 'li', opener: %(<tr><th>#{label}</th>\n<td><ul class="tabular">), closer: '</ul></td></tr>' }
       end
     end
-    markup << %(</ul></td></tr>)
+    markup = ""
+
+    markup << template.fetch(:opener)
+    tag = template.fetch(:tag)
+    [collection].flatten.compact.each do |value|
+      if respond_to?("__render_tabular_list_item_for_#{method_name}", true) # Need to check for private methods
+        markup << send("__render_tabular_list_item_for_#{method_name}", method_name, value, block_formatting, tag, options)
+      else
+        markup << __render_tabular_list_item(method_name, value, block_formatting, tag, options)
+      end
+    end
+    markup << template.fetch(:closer)
     markup.html_safe
   end
   private :render_collection_as_tabular_list
 
-  def __render_tabular_list_item(method_name, value, block_formatting, options = {})
+  def __render_tabular_list_item(method_name, value, block_formatting, tag, options = {})
     inner_html = block_given? ? yield : h(richly_formatted_text(value, block: block_formatting))
-    %(<li class="attribute #{method_name}">#{inner_html}</li>\n)
+    %(<#{tag} class="attribute #{method_name}">#{inner_html}</#{tag}>\n)
   end
   private :__render_tabular_list_item
 
-  def __render_tabular_list_item_for_rights(method_name, value, block_formatting, options = {})
+  def __render_tabular_list_item_for_rights(method_name, value, block_formatting, tag, options = {})
     # Special treatment for license/rights.  A URL from the Sufia gem's config/sufia.rb is stored in the descMetadata of the
     # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
     parsedUri = URI.parse(value) rescue nil
     if parsedUri.nil?
-      __render_tabular_list_item(method_name, value, block_formatting)
+      __render_tabular_list_item(method_name, value, block_formatting, tag, options)
     else
-      __render_tabular_list_item(method_name, value, block_formatting) do
+      __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
         %(<a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a>)
       end
     end
   end
   private :__render_tabular_list_item_for_rights
 
-  def __render_tabular_list_item_for_tag(method_name, value, block_formatting, options = {})
+  def __render_tabular_list_item_for_tag(method_name, value, block_formatting, tag, options = {})
     callout_pattern = options.fetch(:callout_pattern, nil)
     if callout_pattern
       callout_text = options.fetch(:callout_text)
       if value =~ callout_pattern
-        __render_tabular_list_item(method_name, value, block_formatting, options) do
+        __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
           %(<a href="#{h(value)}" class="callout-link" target="_blank"><span class="callout-text">#{callout_text}</span></a>)
         end
       else
-        __render_tabular_list_item(method_name, value, block_formatting, options)
+        __render_tabular_list_item(method_name, value, block_formatting, tag, options)
       end
     else
-      __render_tabular_list_item(method_name, value, block_formatting, options)
+      __render_tabular_list_item(method_name, value, block_formatting, tag, options)
     end
   end
   private :__render_tabular_list_item_for_tag
@@ -232,5 +246,24 @@ module CurateHelper
     return if text.nil?
     modified_text = CGI.escapeHTML(text)
     CGI.unescapeHTML(CGI.unescapeHTML(modified_text))
+  end
+
+  # The "search inside" URL needs an inclusive hierarchy of collection titles and pids.
+  # The full hierarchy is is not stored on the Collection object itself; it is only
+  # available on child objects. However, the full path can be constructed using
+  # metadata from colection itself and information from its Solr Doc. This
+  # method duplicates parts of Curate::LibraryCollectionIndexingAdapter
+  def search_collection_pathbuilder(curation_concern)
+    hierarchy_root_field = Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES
+    solr_query_string = ActiveFedora::SolrService.construct_query_for_pids([curation_concern.pid])
+    solr_results = ActiveFedora::SolrService.query(solr_query_string)
+    return false unless (solr_results && solr_results.first)
+    solr_doc = solr_results.first
+    collection_key_root = solr_doc.fetch(hierarchy_root_field, []).first
+    collection_key = ""
+    collection_key << "#{collection_key_root}/" if collection_key_root.present?
+    collection_key << "#{curation_concern.title}|#{curation_concern.pid}"
+    return false unless collection_key.present?
+    catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ collection_key ] } })
   end
 end

@@ -1,4 +1,10 @@
 <%
+  if params[:id] = 'library_collections_pathnames_hierarchy_with_titles_sim'
+    behavior_class = 'collapsible'
+  else
+    behavior_class = ''
+  end
+
   page_title = t("curate.catalog.facet_page_title.#{params[:id]}").html_safe
   content_for :page_title, "#{page_title} // CurateND"
   content_for :page_header do %>
@@ -20,7 +26,7 @@
     </p>
   <% end %>
 
-  <ul class="facet-hierarchy">
+  <ul class="facet-hierarchy <%= behavior_class %>">
     <%= render_hierarchy(facet_configuration_for_field(params[:id])) %>
   </ul>
 </div>

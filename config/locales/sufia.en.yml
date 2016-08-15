@@ -129,10 +129,13 @@ en:
     catalog:
       facet_title:
         admin_unit_hierarchy_sim: 'Department or Unit'
+        library_collections_pathnames_hierarchy_with_titles_sim: 'Collection'
       facet_page_title:
         admin_unit_hierarchy_sim: 'Browse Materials by Department or Unit'
+        library_collections_pathnames_hierarchy_with_titles_sim: 'Browse Materials by Collection'
       help_text:
         admin_unit_hierarchy_sim: ''
+        library_collections_pathnames_hierarchy_with_titles_sim: ''
     notification_messages:
       edit_bendo_item_warning: "<b>Warning:</b> This item is stored on tape. Any edits made through the web interface may be lost."
       minting_doi: "Your DOI for your work is being requested. It may take a few minutes to generate."

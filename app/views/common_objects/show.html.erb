@@ -5,6 +5,14 @@
 <% end %>
 
 <% content_for :page_actions do %>
+  <% if curation_concern.is_a? LibraryCollection %>
+    <% path = search_collection_pathbuilder(curation_concern) %>
+    <% if path %>
+      <%= link_to path, class: 'btn btn-default' do %>
+        <i class="icon icon-search"></i> Search Inside
+      <% end %>
+    <% end %>
+  <% end %>
   <% if display_citation_generation? %>
     <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>
   <% end %>

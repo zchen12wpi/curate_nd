@@ -7,6 +7,8 @@
   </thead>
   <tbody>
 
+  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
+
   <%= curation_concern_attribute_to_html(curation_concern, :alternate_title,            'Alternate Title') %>
   <%= curation_concern_attribute_to_html(curation_concern, :author,                     'Author') %>
   <%= curation_concern_attribute_to_html(curation_concern, :coauthor,                   'Coauthor') %>
@@ -42,8 +44,6 @@
   <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation,       'Recommended Citation') %>
   <%= curation_concern_attribute_to_html(curation_concern, :local_identifier,           'Local Identifier') %>
 
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
-
   <tr>
     <th>Access Rights</th>
     <td>
@@ -58,6 +58,7 @@
     <%= curation_concern_attribute_to_html(curation_concern, :license, 'License Agreement') %>
   <% end %>
 
-  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
+  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   </tbody>
 </table>
