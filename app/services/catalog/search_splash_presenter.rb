@@ -5,33 +5,32 @@ require 'active_support/core_ext/array/wrap'
 
 module Catalog
   module SearchSplashPresenter
-    ARTICLE_SPLASH = 'Articles & Publications'.freeze
-    DATASET_SPLASH = 'Datasets & Related Materials'.freeze
-        ETD_SPLASH = 'Theses & Dissertations'.freeze
+       ARTICLE_SPLASH = 'Articles & Publications'.freeze
+       COLLECTION_SPLASH = 'Collections'.freeze
+       DATASET_SPLASH = 'Datasets & Related Materials'.freeze
+           ETD_SPLASH = 'Theses & Dissertations'.freeze
 
     def self.call(params, title_decorator: TitleDecorator, collection_decorator: CollectionDecorator)
       if exactly_one_department?(params)
-        title_decorator.call(department_label(params))
+        return title_decorator.call(department_label(params))
       elsif exactly_one_collection?(params)
-        collection_decorator.call(collection_label(params))
+        return collection_decorator.call(collection_label(params))
       elsif category_present?(params)
         if category_match?(params, ['Article'])
-          title_decorator.call(ARTICLE_SPLASH)
+          return title_decorator.call(ARTICLE_SPLASH)
         elsif category_match?(params, ['Dataset'])
-          title_decorator.call(DATASET_SPLASH)
+          return title_decorator.call(DATASET_SPLASH)
         end
       elsif inclusive_category_present?(params)
-        if inclusive_category_match?(
-          params,
-          [
-            'Doctoral Dissertation',
-            "Master's Thesis"
-          ])
-          title_decorator.call(ETD_SPLASH)
+        if inclusive_category_match?(params, 'Doctoral Dissertation', "Master's Thesis")
+          return title_decorator.call(ETD_SPLASH)
+        elsif inclusive_category_match?(params, 'Collection')
+          return title_decorator.call(COLLECTION_SPLASH)
         end
-      else
-        title_decorator.call(nil)
       end
+
+      # A fallback in case we missed any of the above scenarios
+      title_decorator.call(nil)
     end
 
     def self.department_key
@@ -50,8 +49,8 @@ module Catalog
     module TitleDecorator
       TitleStruct = Struct.new(:title)
 
-      def self.call(attribute)
-        TitleStruct.new(attribute)
+      def self.call(title)
+        TitleStruct.new(title)
       end
     end
 
@@ -93,8 +92,8 @@ module Catalog
     end
     private_class_method :inclusive_category_present?
 
-    def self.inclusive_category_match?(params, value)
-      params[:f_inclusive][category_key] == value
+    def self.inclusive_category_match?(params, *values)
+      Array.wrap(params[:f_inclusive][category_key]) == Array.wrap(values)
     end
     private_class_method :inclusive_category_match?
   end
