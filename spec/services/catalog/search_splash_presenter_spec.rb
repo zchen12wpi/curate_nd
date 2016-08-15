@@ -68,6 +68,18 @@ module Catalog
       end
 
       context 'Collections' do
+        context 'an f_inclusive entry that is not accounted for' do
+          let(:inclusive_collection_params) { { f_inclusive: { described_class.category_key => 'Zany' } } }
+          subject { described_class.call(inclusive_collection_params) }
+          its(:title) { is_expected.to be_nil }
+        end
+
+        context 'an f_inclusive entry for Collection' do
+          let(:inclusive_collection_params) { { f_inclusive: { described_class.category_key => 'Collection' } } }
+          subject { described_class.call(inclusive_collection_params) }
+          its(:title) { is_expected.to eq(described_class::COLLECTION_SPLASH) }
+        end
+
         context 'one collection' do
           let(:single_collection_params) do
             {
