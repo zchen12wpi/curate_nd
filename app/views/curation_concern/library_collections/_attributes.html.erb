@@ -6,22 +6,28 @@
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
-  <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :based_near, 'Based Near') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :part_of, 'Part of') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :publisher, 'Publisher') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :date_created, 'Date Created') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :subject, 'Subject') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :resource_type, 'Resource Type') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :rights, 'Rights') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :identifier, 'Identifier') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :language, 'Language') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :tag, 'Tag') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :related_url, 'Related URL') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source') %>
-  <%= decode_administrative_unit(curation_concern, :administrative_unit, 'Departments and Units') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :library_collections, 'Member of') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator') %>
+    <%= curation_concern_attribute_to_html(
+                                            curation_concern,
+                                            :tag,
+                                            "Tag",
+                                            callout_pattern: /\Ahttps?:\/\/collections\.library\.nd\.edu/,
+                                            callout_text: "View in DEC"
+                                          ) %>
+    <%= curation_concern_attribute_to_html(curation_concern, :based_near, "Based Near") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :part_of, "Part of") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :date_created, "Date Created") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :resource_type, "Resource Type") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :rights, "Rights") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :identifier, "Identifier") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :related_url, "Related URL") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
+    <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :library_collections, 'Member of') %>
   </tbody>
 </table>
