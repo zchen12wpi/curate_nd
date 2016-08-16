@@ -34,6 +34,7 @@ CurateNd::Application.routes.draw do
   match 'collections' => 'collections#index', via: :get, as: 'curation_concern_collections'
   get 'collection/:id', to: redirect('collections/%{id}')
   match 'collections/:id' => 'collections#show', via: :get, as: 'curation_concern_collection'
+  match 'collections/:id/edit' => 'collections#edit', via: :get, as: 'edit_curation_concern_collection'
   match 'people/:id' => 'people#show', via: :get, as: 'curation_concern_person'
   match 'people' => 'people#index', via: :get, as: 'curation_concern_people'
 
