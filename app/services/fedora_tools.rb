@@ -27,10 +27,10 @@ class FedoraTools
   # remove objects from the provided list without a backing bendo element
   # return the subset
   def self.records_with_bendo(input_list)
-    output_list = []
+    output_list = {}
    
     input_list.each do |pid, record|
-      output_list.push(pid) unless record.datastreams['bendo-item'].empty?
+      output_list[pid]= record.datastreams['bendo-item'].content  unless record.datastreams['bendo-item'].empty?
     end
     output_list
   end
