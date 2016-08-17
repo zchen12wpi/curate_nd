@@ -139,6 +139,15 @@ RSpec.describe CurateHelper do
         expect(output).to have_tag("tr td ul.tabular li.attribute.tag span.callout-text", text: callout_text, count: 1)
       end
     end
+    context 'for #library_collection' do
+      it 'will generate a link to the collection' do
+        library_collections = [LibraryCollection.new(pid: 'und:123', title: 'Hello'), LibraryCollection.new(pid: 'und:456', title: 'World')]
+        curation_concern = double('Curation Concern', library_collections: library_collections)
+        output = helper.curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of")
+        expect(output).to have_tag("tr td ul.tabular li.attribute.library_collections a[href='/show/123']", text: 'Hello', count: 1)
+        expect(output).to have_tag("tr td ul.tabular li.attribute.library_collections a[href='/show/456']", text: 'World', count: 1)
+      end
+    end
   end
 
   describe '#curation_concern_attribute_to_formatted_text' do
