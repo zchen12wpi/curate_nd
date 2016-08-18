@@ -100,6 +100,10 @@ class Article < ActiveFedora::Base
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
 
+  attribute :relation,
+    hint: "Link to External Content",
+    datastream: :descMetadata, multiple: true
+
   attribute :requires,
     datastream: :descMetadata, multiple: true
 

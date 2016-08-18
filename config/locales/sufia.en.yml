@@ -105,6 +105,7 @@ en:
         publication_date: 'The year in which the resource was published, if it differs from the copyright date, e.g. 1983.'
         edition: 'A description of the resource’s edition, e.g. “2nd edition.”'
         lc_subject: 'The topic of the resource’s content as taken from Library of Congress Subject Headings. Sections of a subject heading may be separated by a space and a pair of hyphens, e.g. “Amnesia -- Fiction.”'
+        relation: 'Link to External Content'
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
       user:

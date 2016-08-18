@@ -140,6 +140,14 @@ module CurateHelper
     end
   end
 
+  def __render_tabular_list_item_for_relation(method_name, value, block_formatting, tag, options)
+    __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
+      %(<a href=#{h(value)} target="_blank"> #{h(value)}</a>)
+    end
+  end
+
+  private :__render_tabular_list_item_for_relation
+
   # options[:block_formatting, :class]
   def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = {})
     markup = ""
