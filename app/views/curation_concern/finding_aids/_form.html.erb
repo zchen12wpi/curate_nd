@@ -6,29 +6,31 @@
     </div>
   <% end -%>
 
-  <%= accordion(accordion_id: 'accordion') do |container| %>
-
-    <%= container.pane("Required Information", class: 'required') do %>
+  <div class="row">
+    <div class="span12">
       <fieldset class="required">
-        <legend>This is what we need to know about your Finding Aid</legend>
         <%= f.input :title, input_html: { class: 'input-xxlarge'}, required: true %>
         <%= f.input :creator, input_html: { class: 'input-xlarge', placeholder: 'George Washington' }, required: true %>
         <%= f.input :source, input_html: { class: 'input-xlarge'}, required: false %>
         <%= f.input :abstract, input_html: { class: 'input-xxxlarge rich-textarea-js', rows: '9' }, as: :text, required: true %>
         <%= f.hidden_field :visibility, value: 'open' %>
       </fieldset>
+    </div>
+  </div>
 
-      <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
-    <% end %>
+    <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
 
     <%= render 'form_descriptive_fields', curation_concern: curation_concern, f: f %>
 
-    <%= container.pane("Files") do %>
-      <%= render "form_files", curation_concern: curation_concern, f: f %>
-      <% if curation_concern.persisted? %>
-        <%= render 'form_manage_related_files', curation_concern: curation_concern, f: f %>
-      <% end %>
-    <% end %>
+    <div class="row with-headroom">
+      <div class="span12">
+        <legend>Files</legend>
+        <%= render "form_files", curation_concern: curation_concern, f: f %>
+        <% if curation_concern.persisted? %>
+          <%= render 'form_manage_related_files', curation_concern: curation_concern, f: f %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="row with-headroom">
       <fieldset id="content-editor">
@@ -53,8 +55,6 @@
         </div>
       </fieldset>
     </div>
-
-  <% end %>
 
   <%= render 'form_contributor_agreement', curation_concern: curation_concern, contributor_agreement: contributor_agreement, f: f %>
 
