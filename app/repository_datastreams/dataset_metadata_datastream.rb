@@ -2,7 +2,7 @@ require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 class DatasetMetadataDatastream < GenericWorkRdfDatastream
   map_predicates do |map|
     map.identifier({to: 'identifier#doi', in: RDF::QualifiedDC}) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable,:facetable
     end
 
     map.doi({to: 'identifier#doi', in: RDF::QualifiedDC})

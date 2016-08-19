@@ -82,7 +82,7 @@ class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.identifier(in: RDF::DC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable,:facetable
     end
 
     map.urn(to: "identifier#other", in: RDF::QualifiedDC) do |index|

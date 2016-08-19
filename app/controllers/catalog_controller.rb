@@ -358,7 +358,7 @@ class CatalogController < ApplicationController
       collection_name = solr_name("desc_metadata__collection_name", :stored_searchable, type: :string)
       contributor_institution_name = solr_name("desc_metadata__contributor_institution", :stored_searchable, type: :string)
       subject_name = solr_name("desc_metadata__subject", :stored_searchable, type: :string)
-      identifier_name = solr_name("desc_metadata__identifier", :stored_searchable, type: :string)
+      identifier_name = solr_name("desc_metadata__identifier", :facetable, type: :string)
       urn  = solr_name("desc_metadata__urn", :stored_searchable, type: :string)
       degree_name  = solr_name("degree_name", :stored_searchable, type: :string)
       degree_disciplines = solr_name("degree_disciplines", :stored_searchable, type: :string)
