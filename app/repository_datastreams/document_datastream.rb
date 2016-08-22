@@ -136,7 +136,7 @@ class DocumentDatastream < GenericWorkRdfDatastream
     map.recommended_citation(to: 'bibliographicCitation', in: RDF::DC)
 
     map.identifier(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable,:facetable
     end
 
     map.doi(to: 'identifier#doi', in: RDF::QualifiedDC)
