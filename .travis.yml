@@ -1,6 +1,11 @@
 language: ruby
 rvm:
   - "2.0.0"
+  - "2.2.2"
+
+matrix:
+  allow_failures:
+    - rvm: "2.2.2"
 
 script: 'bundle exec rake curatend:travis SPEC_OPTS="--tag ~js:true"'
 
