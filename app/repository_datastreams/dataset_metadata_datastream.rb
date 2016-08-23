@@ -50,6 +50,10 @@ class DatasetMetadataDatastream < GenericWorkRdfDatastream
       index.as :stored_searchable
     end
 
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
     map.size({to: "format#extent", in: RDF::QualifiedDC})
   end
 end

@@ -105,5 +105,9 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
 
     map.requires({in: RDF::DC})
 
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
   end
 end

@@ -55,7 +55,7 @@ class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.relation(:in => RDF::DC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.content_format({in: RDF::QualifiedDC, to: 'format#mimetype'})

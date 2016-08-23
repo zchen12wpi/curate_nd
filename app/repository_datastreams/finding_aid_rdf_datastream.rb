@@ -50,5 +50,9 @@ class FindingAidRdfDatastream < ActiveFedora::NtriplesRDFDatastream
     map.source(to: 'source', in: RDF::DC) do |index|
       index.as :stored_searchable, :displayable
     end
+
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
   end
 end

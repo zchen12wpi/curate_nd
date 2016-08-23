@@ -103,6 +103,10 @@ class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
     map.degree(in: RDF::EtdMs, class_name: 'Degree')
 
     map.contributor(in: RDF::DC, class_name: 'Contributor')
+
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
   end
 
   accepts_nested_attributes_for :degree, :contributor
