@@ -135,6 +135,17 @@ class Image < ActiveFedora::Base
     ds.attribute :doi,
       multiple: false,
       editable: false
+
+    ds.attribute :relation,
+       multiple: true,
+       label: "Related Resource(s)",
+       validates: {
+           allow_blank: true,
+           format: {
+               with: URI::regexp(%w(http https ftp)),
+               message: 'must be a valid URL.'
+           }
+       }
   end
 
   attribute :files,

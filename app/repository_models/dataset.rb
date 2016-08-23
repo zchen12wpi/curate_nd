@@ -60,6 +60,14 @@ class Dataset < ActiveFedora::Base
   attribute :collection_name,         datastream: :descMetadata, multiple: true
   attribute :size,                    datastream: :descMetadata, multiple: true
   attribute :requires,                datastream: :descMetadata, multiple: true
+  attribute :relation,                datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        format: {
+            with: URI::regexp(%w(http https ftp)),
+            message: 'must be a valid URL.'
+        }
+    }
 
   attribute :files, multiple: true, form: {as: :file},
             hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."

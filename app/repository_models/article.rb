@@ -102,7 +102,14 @@ class Article < ActiveFedora::Base
 
   attribute :relation,
     hint: "Link to External Content",
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        format: {
+            with: URI::regexp(%w(http https ftp)),
+            message: 'must be a valid URL.'
+        }
+    }
 
   attribute :requires,
     datastream: :descMetadata, multiple: true

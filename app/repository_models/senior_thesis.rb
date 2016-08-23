@@ -111,6 +111,15 @@ class SeniorThesis < ActiveFedora::Base
   attribute :resource_type,
     label: "Archived Content Type",
     datastream: :descMetadata, multiple: false
+  attribute :relation,
+    datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        format: {
+            with: URI::regexp(%w(http https ftp)),
+            message: 'must be a valid URL.'
+        }
+    }
 
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",

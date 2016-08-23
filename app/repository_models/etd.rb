@@ -140,6 +140,16 @@ class Etd < ActiveFedora::Base
     ds.attribute :date_approved,
       multiple: false,
       label: "Approval Date"
+    ds.attribute :relation,
+      multiple: true,
+      label: "Related Resources",
+      validates: {
+          allow_blank: true,
+          format: {
+              with: URI::regexp(%w(http https ftp)),
+              message: 'must be a valid URL.'
+          }
+      }
   end
 
   def doi=(doi)

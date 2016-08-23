@@ -73,5 +73,13 @@ class Patent < ActiveFedora::Base
   attribute :files,
             multiple: true, form: {as: :file}, label: "Upload Files",
             hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
+  attribute :relation, datastream: :descMetadata, multiple: true,
+            validates: {
+                allow_blank: true,
+                format: {
+                    with: URI::regexp(%w(http https ftp)),
+                    message: 'must be a valid URL.'
+                }
+            }
 
 end

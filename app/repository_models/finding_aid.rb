@@ -46,6 +46,8 @@ class FindingAid < ActiveFedora::Base
     validates: { presence: { message: 'You must select a license for your work.' } }
   attribute :source,
     datastream: :descMetadata, multiple: true
+  attribute :relation,
+    datastream: :descMetadata, multiple: true
 
   private
   def set_visibility_to_open_access
