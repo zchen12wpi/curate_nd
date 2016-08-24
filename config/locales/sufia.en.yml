@@ -75,6 +75,7 @@ en:
         repository_name: "The name of the organization or institution that holds the original physical object, if applicable."
         publisher: "An entity responsible for making the original resource available."
         source: "A related resource from which the described resource is derived. The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."
+        relation: "A link or other reference to a related resource that may provide context or additional content related to this resource. In addition to depositing files, you may add links to related resources which add context but which you do not have the rights to deposit. Please consider the stability of the links you provide. Publisher-provided DOIs are preferred. NetID file space is not."
         rights: "Set the license which governs how others may use your files. The main questions are whether others can reuse your work in derivatives, and whether you want attribution as the original creator."
         contributor_institution: "A consistent reference to the Institution that contributes the material."
         format: "The media type of the item. The system stored and registered MIME type of the file uploaded. Comments: This is an automatically system generated field so it does not need to be filled in. The field is present here so that metadata contributor knows how it is captured."
@@ -105,7 +106,6 @@ en:
         publication_date: 'The year in which the resource was published, if it differs from the copyright date, e.g. 1983.'
         edition: 'A description of the resource’s edition, e.g. “2nd edition.”'
         lc_subject: 'The topic of the resource’s content as taken from Library of Congress Subject Headings. Sections of a subject heading may be separated by a space and a pair of hyphens, e.g. “Amnesia -- Fiction.”'
-        relation: 'A link or other reference to a related resource that may provide context or additional content related to this resource.'
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
       user:
