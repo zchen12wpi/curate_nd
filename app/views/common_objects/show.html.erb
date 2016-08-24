@@ -5,14 +5,6 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <% if curation_concern.is_a? LibraryCollection %>
-    <% path = search_collection_pathbuilder(curation_concern) %>
-    <% if path %>
-      <%= link_to path, class: 'btn btn-default' do %>
-        <i class="icon icon-search"></i> Search Inside
-      <% end %>
-    <% end %>
-  <% end %>
   <% if display_citation_generation? %>
     <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>
   <% end %>
@@ -34,13 +26,19 @@
   <% case curation_concern %>
   <% when GenericFile %>
     <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
-  <% when LibraryCollection %>
-    <%= render 'curation_concern/library_collections/library_collection_members', curation_concern: curation_concern %>
   <% end %>
-
   <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
   <%= render 'curation_concern/base/related_works', curation_concern: curation_concern, with_actions: true %>
-  <%= render 'curation_concern/base/collections', curation_concern: curation_concern %>
+  <% if curation_concern.is_a? LibraryCollection %>
+    <% path = search_collection_pathbuilder(curation_concern) %>
+    <% if path %>
+      <%= link_to path, class: 'btn btn-large' do %>
+        <i class="icon icon-search"></i> Browse Objects in the Collection
+      <% end %>
+    <% end %>
+    <% else %>
+      <%= render 'curation_concern/base/collections', curation_concern: curation_concern %>
+  <% end %>
 <% end %>
 
 <% if curation_concern.representative.present? %>
