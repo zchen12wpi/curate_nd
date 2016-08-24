@@ -118,7 +118,6 @@ module CurateHelper
   private :__render_tabular_list_item_for_rights
 
   def __render_tabular_list_item_for_relation(method_name, value, block_formatting, tag, options = {})
-    puts "################ Method: #{method_name.inspect}, value: #{value} block_formatting: #{block_formatting}, tag:#{tag} ####################"
     callout_pattern = options.fetch(:callout_pattern, nil)
     if callout_pattern
       callout_text = options.fetch(:callout_text)

@@ -67,12 +67,6 @@ describe Collection do
     @collection.save
     Collection.find(@collection.pid).description.should == @collection.description
   end
-  it "should have the expected display terms" do
-    @collection.terms_for_display.should == [:part_of, :contributor, :creator, :title, :description, :publisher, :administrative_unit, :curator, :date, :date_created, :date_uploaded, :date_modified, :subject, :language, :rights, :resource_type, :identifier, :based_near, :relation, :related_url, :source]
-  end
-  it "should have the expected edit terms" do
-    @collection.terms_for_editing.should == [:part_of, :contributor, :creator, :title, :description, :publisher, :administrative_unit, :curator, :date, :date_created, :subject, :language, :rights, :resource_type, :identifier, :based_near, :relation, :related_url, :source]
-  end
   it "should not delete member work when deleted" do
     @collection.members = [generic_work1, generic_work2]
     @collection.save
