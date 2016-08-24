@@ -117,7 +117,8 @@ module CurateHelper
   end
   private :__render_tabular_list_item_for_rights
 
-  def __render_tabular_list_item_for_tag(method_name, value, block_formatting, tag, options = {})
+  def __render_tabular_list_item_for_relation(method_name, value, block_formatting, tag, options = {})
+    puts "################ Method: #{method_name.inspect}, value: #{value} block_formatting: #{block_formatting}, tag:#{tag} ####################"
     callout_pattern = options.fetch(:callout_pattern, nil)
     if callout_pattern
       callout_text = options.fetch(:callout_text)
@@ -132,21 +133,13 @@ module CurateHelper
       __render_tabular_list_item(method_name, value, block_formatting, tag, options)
     end
   end
-  private :__render_tabular_list_item_for_tag
+  private :__render_tabular_list_item_for_relation
 
   def __render_tabular_list_item_for_library_collections(method_name, value, block_formatting, tag, options)
     __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
       %(<a href="/show/#{value.noid}">#{h(value.title)}</a>)
     end
   end
-
-  def __render_tabular_list_item_for_relation(method_name, value, block_formatting, tag, options)
-    __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
-      %(<a href=#{h(value)} target="_blank"> #{h(value)}</a>)
-    end
-  end
-
-  private :__render_tabular_list_item_for_relation
 
   # options[:block_formatting, :class]
   def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = {})

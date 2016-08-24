@@ -9,7 +9,7 @@ RSpec.describe LibraryCollection do
       contributor: ['The Contributor', 'The Other Contributor'], based_near: ['The Nearby', 'The Other Nearby'],
       part_of: ['The Part of', 'The Other Part of'], publisher: ['The Publisher', 'The Other Publisher'],
       date_created: ['2016-06-10', '2016-06-09'], subject: ['The Subject', 'The Other Subject'], resource_type: ["RT1", 'RT2'],
-      rights: ["Rights1", 'Rights2'], identifier: ["ID1", "ID2"], language: ["Lang1", 'Lang2'], tag: ["Tag1", 'Tag2'],
+      rights: ["Rights1", 'Rights2'], identifier: ["ID1", "ID2"], language: ["Lang1", 'Lang2'], relation: ["Tag1", 'Tag2'],
       related_url: ['URL1', 'URL2'], administrative_unit: ["AU1", "AU2"], source: ['Source1', 'Source2'],
       curator: ['Curator1', 'Curator2'], date: ['Date1', 'Date2'],
       representative: 'und:1234'

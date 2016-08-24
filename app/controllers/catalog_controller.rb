@@ -266,7 +266,7 @@ class CatalogController < ApplicationController
     )
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type of Work", limit: 5, multiple: true
     config.add_facet_field solr_name(:desc_metadata__creator, :facetable), label: "Creator", helper_method: :creator_name_from_pid, limit: 5
-    config.add_facet_field solr_name("desc_metadata__tag", :facetable), label: "Keyword", limit: 5
+    config.add_facet_field solr_name("desc_metadata__tag", :facetable), label: "Related Resource(s)", limit: 5
     config.add_facet_field solr_name("desc_metadata__subject", :facetable), label: "Subject", limit: 5
     config.add_facet_field solr_name("desc_metadata__language", :facetable), label: "Language", limit: 5
     config.add_facet_field solr_name("desc_metadata__based_near", :facetable), label: "Location", limit: 5
@@ -295,7 +295,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_index_field solr_name("desc_metadata__title", :stored_searchable, type: :string), label: "Title"
     config.add_index_field solr_name("desc_metadata__description", :stored_searchable, type: :string), label: "Description"
-    config.add_index_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), label: "Keyword"
+    config.add_index_field solr_name("desc_metadata__relation", :facetable, type: :string), label: "Related Source(s)"
     config.add_index_field solr_name("desc_metadata__subject", :stored_searchable, type: :string), label: "Subject"
     config.add_index_field solr_name("desc_metadata__creator", :stored_searchable, type: :string), label: "Creator"
     config.add_index_field solr_name("desc_metadata__contributor", :stored_searchable, type: :string), label: "Contributor"
@@ -314,7 +314,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("desc_metadata__title", :stored_searchable, type: :string), label: "Title"
     config.add_show_field solr_name("desc_metadata__description", :stored_searchable, type: :string), label: "Description"
-    config.add_show_field solr_name("desc_metadata__tag", :stored_searchable, type: :string), label: "Keyword"
+    config.add_show_field solr_name("desc_metadata__relation", :stored_searchable, type: :string), label: "Keyword"
     config.add_show_field solr_name("desc_metadata__subject", :stored_searchable, type: :string), label: "Subject"
     config.add_show_field solr_name("desc_metadata__creator", :stored_searchable, type: :string), label: "Creator"
     config.add_show_field solr_name("desc_metadata__contributor", :stored_searchable, type: :string), label: "Contributor"

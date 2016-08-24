@@ -60,7 +60,7 @@ module Hydra
       map.based_near(:in => RDF::FOAF) do |index|
         index.as :stored_searchable, :facetable
       end
-      map.tag(:to => "relation", :in => RDF::DC) do |index|
+      map.relation(:in => RDF::DC) do |index|
         index.as :stored_searchable, :facetable
       end
       map.related_url(:to => "seeAlso", :in => RDF::RDFS)

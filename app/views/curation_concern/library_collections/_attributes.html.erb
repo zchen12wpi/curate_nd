@@ -11,8 +11,8 @@
     <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator') %>
     <%= curation_concern_attribute_to_html(
                                             curation_concern,
-                                            :tag,
-                                            "Tag",
+                                            :relation,
+                                            "Related Resource(s)",
                                             callout_pattern: /\Ahttps?:\/\/collections\.library\.nd\.edu/,
                                             callout_text: "View in DEC"
                                           ) %>
