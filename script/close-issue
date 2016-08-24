@@ -131,5 +131,6 @@ end
 
 # update jira and mark this issue as finished
 if issue_source == :jira
-  `jira transition deployed #{ISSUE_NUMBER} --noedit`
+  system("jira transition qa #{ISSUE_NUMBER} --noedit")
+  exit!(5) unless $?.success?
 end

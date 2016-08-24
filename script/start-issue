@@ -122,6 +122,8 @@ if ISSUE_TITLE.nil?
                     # TODO(dbrower): sometimes this will block waiting for the user to
                     # enter a password. Is better way to handle the situation?
                     document = `jira view #{ISSUE_NUMBER}`
+                    # sometimes there is garbage before the "issue:" line.
+                    document.sub!(/\A[^i]*/, '')
                     issue = YAML.load(document)
                     title = issue["summary"]
                     if title == "<no value>"
@@ -200,6 +202,8 @@ end
 
 # If the commit was successful, assign the issue to us and move into "In Progress"
 if issue_source == :jira
-  `jira take #{ISSUE_NUMBER}`
-  `jira --noedit transition "In Progress" #{ISSUE_NUMBER}`
+  system("jira take #{ISSUE_NUMBER}")
+  exit!(5) unless $?.success?
+  system("jira --noedit transition "In Progress" #{ISSUE_NUMBER}")
+  exit!(5) unless $?.success?
 end
