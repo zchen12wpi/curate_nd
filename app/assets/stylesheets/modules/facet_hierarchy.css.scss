@@ -80,6 +80,26 @@
     padding-bottom: 5px;
   }
 
+  & > .h-leaf,
+  & > .h-node .h-node,
+  & > .h-node .h-leaf {
+    list-style-type: none;
+
+    .facet_select,
+    .selected {
+      font-size: 20px;
+    }
+
+    .count {
+      top: 0;
+    }
+
+    .remove {
+      left: -15px;
+      top: 0;
+    }
+  }
+
   & > .h-node {
     list-style-type: none;
 
@@ -93,24 +113,6 @@
       margin-bottom: 3px;
       padding-bottom: 4px;
       padding-top: 6px;
-    }
-
-    .h-node, .h-leaf {
-      list-style-type: none;
-
-      .facet_select,
-      .selected {
-        font-size: 20px;
-      }
-
-      .count {
-        top: 0;
-      }
-
-      .remove {
-        left: -15px;
-        top: 0;
-      }
     }
 
     .h-node .h-leaf {
