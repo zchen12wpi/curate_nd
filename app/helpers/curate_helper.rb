@@ -134,6 +134,9 @@ module CurateHelper
   end
   private :__render_tabular_list_item_for_relation
 
+  alias __render_tabular_list_item_for_tag __render_tabular_list_item_for_relation
+  private :__render_tabular_list_item_for_tag
+
   def __render_tabular_list_item_for_library_collections(method_name, value, block_formatting, tag, options)
     __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
       %(<a href="/show/#{value.noid}">#{h(value.title)}</a>)
