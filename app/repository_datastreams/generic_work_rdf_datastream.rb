@@ -65,6 +65,10 @@ class GenericWorkRdfDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.source({in: RDF::DC})
 
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
     map.rights(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end

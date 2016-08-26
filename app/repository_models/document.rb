@@ -114,4 +114,12 @@ class Document < GenericWork
   attribute :recommended_citation,       datastream: :descMetadata, multiple: true
   attribute :identifier,                 datastream: :descMetadata, multiple: false
   attribute :doi,                        datastream: :descMetadata, multiple: false
+  attribute :relation,                   datastream: :descMetadata, multiple: true,
+            validates: {
+                allow_blank: true,
+                format: {
+                    with: URI::regexp(%w(http https ftp)),
+                    message: 'must be a valid URL.'
+                }
+            }
 end

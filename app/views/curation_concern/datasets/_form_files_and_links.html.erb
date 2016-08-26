@@ -33,12 +33,5 @@
       <%= render 'file_size_warning' %>
       <%= f.input :files, as: :file %>
     </fieldset>
-
-    <strong class="span1 field-choice">OR</strong>
-
-    <fieldset class="span6">
-      <legend>Link to External Content</legend>
-      <%= f.input :linked_resource_urls, as: :multi_value, label: "External links", input_html: {class: 'input-xlarge'} %>
-    </fieldset>
   </div>
 <% end %>

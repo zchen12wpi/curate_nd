@@ -100,6 +100,17 @@ class Article < ActiveFedora::Base
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
 
+  attribute :relation,
+    hint: "Link to External Content",
+    datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        format: {
+            with: URI::regexp(%w(http https ftp)),
+            message: 'must be a valid URL.'
+        }
+    }
+
   attribute :requires,
     datastream: :descMetadata, multiple: true
 

@@ -28,7 +28,7 @@ class LibraryCollection < ActiveFedora::Base
                  datastream: :descMetadata, multiple: false
   has_attributes :creator, :contributor, :based_near, :part_of, :publisher,
                  :date_created, :subject, :resource_type, :rights,
-                 :identifier, :language, :tag, :related_url,
+                 :identifier, :language, :relation, :related_url,
                  :administrative_unit, :source, :curator, :date,
                  datastream: :descMetadata, multiple: true
 

@@ -126,17 +126,17 @@ RSpec.describe CurateHelper do
       end
     end
 
-    context 'for #tag' do
+    context 'for #relation' do
       it 'will generate the appropriate callout text for the given link' do
         href = "http://collections.library.nd.edu/somewhere"
-        curation_concern = double('Curation Concern', tag: ["Hello", href])
+        curation_concern = double('Curation Concern', relation: ["Hello", href])
         callout_text = "View in DEC"
         output = helper.curation_concern_attribute_to_html(
-          curation_concern, :tag, "Tag",
+          curation_concern, :relation, "Related Resource(s)",
           callout_pattern: /\Ahttp:\/\/collections\.library\.nd\.edu/,
           callout_text: callout_text
         )
-        expect(output).to have_tag("tr td ul.tabular li.attribute.tag span.callout-text", text: callout_text, count: 1)
+        expect(output).to have_tag("tr td ul.tabular li.attribute.relation span.callout-text", text: callout_text, count: 1)
       end
     end
     context 'for #library_collection' do

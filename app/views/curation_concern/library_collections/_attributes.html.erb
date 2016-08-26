@@ -11,10 +11,10 @@
     <%= curation_concern_attribute_to_html(curation_concern, :curator, 'Curator') %>
     <%= curation_concern_attribute_to_html(
                                             curation_concern,
-                                            :tag,
-                                            "Tag",
+                                            :relation,
+                                            "Related Resource(s)",
                                             callout_pattern: /\Ahttps?:\/\/collections\.library\.nd\.edu/,
-                                            callout_text: "View in DEC"
+                                            callout_text: "View on the Digital Exhibits and Collections Site"
                                           ) %>
     <%= curation_concern_attribute_to_html(curation_concern, :based_near, "Based Near") %>
     <%= curation_concern_attribute_to_html(curation_concern, :part_of, "Part of") %>

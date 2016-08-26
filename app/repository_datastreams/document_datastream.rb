@@ -150,5 +150,9 @@ class DocumentDatastream < GenericWorkRdfDatastream
       index.type :date
       index.as :stored_sortable
     end
+
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
   end
 end
