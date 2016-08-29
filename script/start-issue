@@ -95,6 +95,20 @@ else
   exit!(1)
 end
 
+unless system("which jira")
+  $stderr.puts "Expected to find `jira' in your path."
+  $stderr.puts "Run the following:"
+  $stderr.puts "\tbrew tap ndlib/dlt\n\tbrew install go-jira\n\n"
+  exit!(9)
+end
+
+unless File.exist?(File.join(HOME, '.jira.d/config.yml'))
+  $stderr.puts "Expected ~/.jira.d/config.yml to exist"
+  $stderr.puts "Run the following:"
+  $stderr.puts "\tmkdir ~/.jira.d\n\techo 'endpoint: https://jira.library.nd.edu' > ~/.jira.d/config.yml"
+  exit!(10)
+end
+
 # Capture the issue_title
 ISSUE_TITLE = ENV.fetch('ISSUE_TITLE', nil)
 if ISSUE_TITLE.nil?
@@ -139,6 +153,9 @@ if ISSUE_TITLE.nil?
 else
   issue_title = ISSUE_TITLE
 end
+
+# Ensure that we don't have ridiculously long branch names
+issue_title = issue_title[0..30]
 
 # Guard that directories exist
 [:REPOSITORY_PATH].each do |key|
