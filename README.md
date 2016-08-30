@@ -19,6 +19,8 @@ $ bundle install --without headless
 
 You can run `bundle exec rake` to execute the test suite.
 
+You can also boot up jetty (e.g. `bundle exec rake curatend:jetty:start`) and run individual specs via `bundle exec rspec spec/path/to/file_spec.rb`
+
 ## Running the application
 
 Using non-SSL:
