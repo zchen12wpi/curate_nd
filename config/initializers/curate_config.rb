@@ -8,6 +8,7 @@ Curate.configure do |config|
   config.register_curation_concern :image
   config.register_curation_concern :document
   config.register_curation_concern :patent
+  config.register_curation_concern :osf_archive
 
   config.application_root_url = Rails.configuration.application_root_url
 
