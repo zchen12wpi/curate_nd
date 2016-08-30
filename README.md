@@ -19,7 +19,15 @@ $ bundle install --without headless
 
 You can run `bundle exec rake` to execute the test suite.
 
-## Running the application under SSL
+## Running the application
+
+Using non-SSL:
+
+```console
+$ bundle exec rails server
+```
+
+Using SSL:
 
 ```console
 $ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
