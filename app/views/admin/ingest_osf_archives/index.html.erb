@@ -1,38 +1,35 @@
-<% content_for :page_title, construct_page_title('OSF Archive Ingest Jobs', 'Administrative Functions') %>
+<% content_for :page_title, construct_page_title('OSF Project Ingest Jobs', 'Administrative Functions') %>
 <% content_for :page_header do %>
-  <h1>OSF Archive Ingest Jobs</h1>
+  <h1>OSF Project Ingest Jobs</h1>
 
   <ul class="breadcrumb">
     <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
     <li><%= link_to 'Administrative Functions', admin_path %> <span class="divider">/</span></li>
-    <li class="active">OSF Archive Ingest Jobs</li>
+    <li class="active">OSF Project Ingest Jobs</li>
   </ul>
 <% end %>
 
 <table class="table table-striped">
-  <caption class="accessible-hidden">List of All OSF Archive Ingest Jobs</caption>
+  <caption class="accessible-hidden">List of All OSF Project Ingest Jobs</caption>
   <thead>
     <tr>
-      <th>Project URL</th>
       <th>Project Identifier</th>
-      <th>Department</th>
       <th>Owner</th>
-      <th>&nbsp;</th>
+      <th>Status</th>
     </tr>
   </thead>
 
   <tbody>
     <% @archives.each do |archive| %>
       <tr>
-        <td><%= archive.project_url %></td>
         <td><%= archive.project_identifier %></td>
-        <td><%= archive.department %></td>
         <td><%= archive.owner %></td>
+        <td><%= archive.status %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <div class="form-actions">
-  <%= link_to 'Import New OSF Archive', new_admin_ingest_osf_archive_path, class: 'btn btn-primary' %>
+  <%= link_to 'Archive New OSF Project', new_admin_ingest_osf_archive_path, class: 'btn btn-primary' %>
 </div>
