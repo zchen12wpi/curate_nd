@@ -17,11 +17,13 @@ class OsfArchive < ActiveFedora::Base
   def set_default_values
     self.type = 'OSF Archive'
   end
+  private :set_default_values
 
   def set_initial_values
     self.date_modified = Date.today
     self.date_archived = Date.today
   end
+  private :set_initial_values
 
   has_metadata 'descMetadata', type: OsfArchiveDatastream
 
