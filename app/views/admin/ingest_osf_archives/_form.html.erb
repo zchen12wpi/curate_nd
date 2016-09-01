@@ -8,7 +8,7 @@
                 collection: affiliations,
                 input_html: { class: 'input-xlarge' }
     %>
-    <%= render 'curation_concern/base/form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
+    <%= render 'curation_concern/base/form_administrative_unit', curation_concern: curation_concern, required: true, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
     <%= f.input :owner %>
   </div>
 
