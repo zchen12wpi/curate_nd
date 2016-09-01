@@ -1,5 +1,5 @@
 namespace :bendo do
-  # use BENDOSYNC_LASTRUN as lastrun file, if set- default is /home/app/curatend/shared/system/lastrun 
+  # use BENDOSYNC_LASTRUN as lastrun file, if set- default is /home/app/curatend/shared/system/lastrun
   timestamp_file = ENV.has_key?('BENDOSYNC_LASTRUN') ? ENV['BENDOSYNC_LASTRUN'] :  '/home/app/curatend/shared/system/lastrun'.freeze
 
   desc 'Find modified records in SOLR, compare fedora vs bendo, update bendo'
@@ -27,6 +27,6 @@ namespace :bendo do
 
     STDERR.puts "#{pid_list.count} fedora records have bendo items "
 
-    BatchIngestTools.submit_pidlist(pid_list) if pid_list.count > 0
+    BatchIngestor.start_reingest(pid_list) if pid_list.count > 0
   end
 end
