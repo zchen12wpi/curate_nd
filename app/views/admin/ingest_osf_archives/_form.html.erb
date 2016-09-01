@@ -1,0 +1,18 @@
+<%= simple_form_for @archive, url: admin_ingest_osf_archives_path do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :project_identifier, label: 'Project URL or Identifier' %>
+    <%= f.input :affiliation,
+                as: :select,
+                collection: affiliations,
+                input_html: { class: 'input-xlarge' }
+    %>
+    <%= render 'curation_concern/base/form_administrative_unit', curation_concern: curation_concern, required: true, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
+    <%= f.input :owner %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Import', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -96,6 +96,7 @@ CurateNd::Application.routes.draw do
       end
 
       resource :repo_manager, only: [:edit, :update], path: :privledges
+      resources :ingest_osf_archives #, only: [:new, :create, :index, :edit, :update]
     end
 
     constraints CurateND::AdminAPIConstraint do
