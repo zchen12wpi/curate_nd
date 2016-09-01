@@ -23,9 +23,10 @@ describe Admin::IngestOsfArchivesController, type: :controller do
       expect(assigns(:archive)).to eq(archive)
     end
 
-    it 'creates a new archive with the given params' do
-      expect(Admin::IngestOSFArchive).to receive(:new).with(params[:admin_ingest_osf_archive])
+    it 'uses build_with_id_or_url to create the new archive with the given params' do
+      allow(Admin::IngestOSFArchive).to receive(:build_with_id_or_url).with(params[:admin_ingest_osf_archive]).and_return('archive')
       subject
+      expect(assigns(:archive)).to eq('archive')
     end
 
     context 'when the parameters are valid' do
