@@ -58,6 +58,12 @@ class LibraryCollectionRdfDatastream < ActiveFedora::NtriplesRDFDatastream
     map.identifier(:in => RDF::DC) do |index|
       index.as :stored_searchable
     end
+    map.temporal(:in => RDF::DC) do |index|
+      index.as :stored_searchable
+    end
+    map.spatial(:in => RDF::DC) do |index|
+      index.as :stored_searchable
+    end
     map.based_near(:in => RDF::FOAF) do |index|
       index.as :stored_searchable, :facetable
     end
