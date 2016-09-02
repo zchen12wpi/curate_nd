@@ -48,6 +48,8 @@
         <%= curation_concern_attribute_to_html(curation_concern, :relation, 'Related Resource(s)', template: 'dl') %>
         <%= curation_concern_attribute_to_html(curation_concern, :related_url, 'Related URL', template: 'dl') %>
         <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :temporal, 'Temporal Coverage', template: 'dl') %>
+        <%= curation_concern_attribute_to_html(curation_concern, :spatial, 'Spatial Coverage', template: 'dl') %>
       </dl>
 
       <% subcollections = curation_concern.library_collection_members.select { |member| member.is_a? LibraryCollection } %>
