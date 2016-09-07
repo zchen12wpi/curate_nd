@@ -73,7 +73,9 @@ class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
-    map.publication_date({to: 'issued', in: RDF::DC})
+    map.publication_date({to: 'issued', in: RDF::DC}) do |index|
+      index.as :displayable #This is a test to see if it will show up in a way that makes it more useful in Search Results Display than "Created"
+    end
 
     map.is_part_of({to: 'isPartOf', in: RDF::DC}) do |index|
       index.as :stored_searchable
