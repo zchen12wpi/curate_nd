@@ -23,7 +23,6 @@ describe OsfArchive do
       archive.valid?
       expect(archive.date_modified).to eq(Date.today)
       expect(archive.date_archived).to eq(Date.today)
-
     end
   end
 end
