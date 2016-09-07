@@ -70,7 +70,7 @@ class Document < GenericWork
             validates: {
               allow_blank: true,
               format: {
-                with: /(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})/,
+                with: /\A(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})\Z/,
                 message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
               }
             }
