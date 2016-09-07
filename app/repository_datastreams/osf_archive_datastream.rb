@@ -46,6 +46,7 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.date_archived(to: 'dateSubmitted', in: RDF::DC) do |index|
+      index.type :date
       index.as :stored_sortable
     end
 
