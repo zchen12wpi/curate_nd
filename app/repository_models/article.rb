@@ -90,10 +90,10 @@ class Article < ActiveFedora::Base
   attribute :issue,
     hint: "The number or name of the issue in which the article was published.",
     datastream: :descMetadata, multiple: false
-  attribute :pageStart,
+  attribute :page_start,
     hint: "The first page on which your article appears.",
     datastream: :descMetadata, multiple: false
-  attribute :pageEnd,
+  attribute :page_end,
     hint: "The last page on which your article appears.",
     datastream: :descMetadata, multiple: false
   attribute :isbn,
