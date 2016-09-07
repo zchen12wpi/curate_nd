@@ -27,6 +27,16 @@ class OsfArchive < ActiveFedora::Base
 
   has_metadata 'descMetadata', type: OsfArchiveDatastream
 
+  attribute :administrative_unit,
+    datastream: :descMetadata, multiple: true,
+    label: "Departments and Units",
+    hint: "Departments and Units that creator belong to."
+
+  attribute :affiliation,
+    datastream: :descMetadata,
+    hint: "Creator's Affiliation to the Institution.",
+    multiple: false
+
   attribute :creator,
     datastream: :descMetadata, multiple: true
 
