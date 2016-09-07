@@ -107,7 +107,7 @@ class Article < ActiveFedora::Base
         }
       }
   attribute :isbn,
-    hint "If your article was published in a volume with an ISBN, include that here.",
+    hint: "If your article was published in a volume with an ISBN, include that here.",
     datastream: :descMetadata, multiple: false
   attribute :source,
     datastream: :descMetadata, multiple: true
