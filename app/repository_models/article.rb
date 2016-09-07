@@ -96,6 +96,16 @@ class Article < ActiveFedora::Base
   attribute :page_end,
     hint: "The last page on which your article appears.",
     datastream: :descMetadata, multiple: false
+  attribute :num_pages,
+    hint: "The number of pages in your article.",
+    datastream: :descMetadata, multiple: false,
+      validates: {
+        allow_blank: true,
+        format: {
+          with: /\d{1,}/,
+          message: 'Must be a number.'
+        }
+      }
   attribute :isbn,
     hint "If your article was published in a volume with an ISBN, include that here.",
     datastream: :descMetadata, multiple: false
