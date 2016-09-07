@@ -29,7 +29,7 @@ class LibraryCollection < ActiveFedora::Base
   has_attributes :creator, :contributor, :based_near, :part_of, :publisher,
                  :date_created, :subject, :resource_type, :rights,
                  :identifier, :language, :relation, :related_url,
-                 :administrative_unit, :source, :curator, :date,
+                 :administrative_unit, :source, :curator, :date, :temporal, :spatial,
                  datastream: :descMetadata, multiple: true
 
   def can_be_member_of_collection?(collection)

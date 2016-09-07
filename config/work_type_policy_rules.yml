@@ -6,13 +6,15 @@ Dataset:
   open: all
 Document:
   open: all
+Etd:
+  open: all
 FindingAid:
   open: all
 Image:
   open: all
-SeniorThesis:
-  open: all
-Etd:
-  open: all
+OsfArchive:
+  open: nobody
 Patent:
+  open: all
+SeniorThesis:
   open: all

@@ -1,0 +1,35 @@
+<% content_for :page_title, construct_page_title('OSF Project Ingest Jobs', 'Administrative Functions') %>
+<% content_for :page_header do %>
+  <h1>OSF Project Ingest Jobs</h1>
+
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Administrative Functions', admin_path %> <span class="divider">/</span></li>
+    <li class="active">OSF Project Ingest Jobs</li>
+  </ul>
+<% end %>
+
+<table class="table table-striped">
+  <caption class="accessible-hidden">List of All OSF Project Ingest Jobs</caption>
+  <thead>
+    <tr>
+      <th>Project Identifier</th>
+      <th>Owner</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @archives.each do |archive| %>
+      <tr>
+        <td><%= archive.project_identifier %></td>
+        <td><%= archive.owner %></td>
+        <td><%= archive.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="form-actions">
+  <%= link_to 'Archive New OSF Project', new_admin_ingest_osf_archive_path, class: 'btn btn-primary' %>
+</div>
