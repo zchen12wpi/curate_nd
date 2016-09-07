@@ -77,7 +77,7 @@ class Article < ActiveFedora::Base
               allow_blank: true,
               format: {
                 with: /(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})/,
-                message: 'Must be formatted as YYYY or YYYY-MM or YYYY-MM-DD'
+                message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
               }
             }
   attribute :date_uploaded,
