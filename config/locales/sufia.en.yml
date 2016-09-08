@@ -103,9 +103,16 @@ en:
         extent: 'The number of pages in the resource, the resource’s size, or the resource’s duration. E.g. “368 pages,” “2 hours,” or “523 MB.”'
         isbn: 'The resource’s ISBN as 10 or 13 characters—numbers and the letter “x.” May or may not include hyphens, e.g. 978-0-596-52812-6 or 9780596528126'
         local_identifier: 'The resource’s local identifier, generally its library call number.'
-        publication_date: 'The year in which the resource was published, if it differs from the copyright date, e.g. 1983.'
+        publication_date: 'The year, year-month, or year-month-day in which the resource was published, e.g. 1983 or 1992-04-15.'
         edition: 'A description of the resource’s edition, e.g. “2nd edition.”'
         lc_subject: 'The topic of the resource’s content as taken from Library of Congress Subject Headings. Sections of a subject heading may be separated by a space and a pair of hyphens, e.g. “Amnesia -- Fiction.”'
+        volume: 'The number or name of the volume in which an article or other work was published.'
+        issue: 'The number or name of the issue in which an article or other work was published.'
+        page_start: 'The first page in a range of pages for an article, book chapter, or other selection.'
+        page_end: 'The last page in a range of pages for an article, book chapter, or other selection.'
+        num_pages: 'The total number of pages in a work.'
+        eIssn: 'The Electronic ISSN of the resource in which the work appeared.'
+        is_part_of: 'The title of the journal or other composite work in which this work was published.'
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
       user:

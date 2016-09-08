@@ -59,6 +59,10 @@ class Article < ActiveFedora::Base
   attribute :content_format,
     label: "Content Format",
     datastream: :descMetadata, multiple: false
+  attribute :is_part_of,
+    label: "Journal or Other Work Title",
+    hint: "The title of the journal or other work in which the article was published.",
+    datastream: :descMetadata, multiple: false
   attribute :recommended_citation,
     label: "Recommended Citation",
     datastream: :descMetadata, multiple: true
@@ -67,9 +71,43 @@ class Article < ActiveFedora::Base
     label: "When did your finish your Article",
     hint: "This does not need to be exact, but your best guess.",
     datastream: :descMetadata, multiple: false
+  attribute :publication_date,
+    datastream: :descMetadata, multiple: false,
+            validates: {
+              allow_blank: true,
+              format: {
+                with: /\A(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})\Z/,
+                message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
+              }
+            }
   attribute :date_uploaded,
     datastream: :descMetadata, multiple: false
   attribute :date_modified,
+    datastream: :descMetadata, multiple: false
+  attribute :volume,
+    hint: "The number or name of the volume in which the article was published.",
+    datastream: :descMetadata, multiple: false
+  attribute :issue,
+    hint: "The number or name of the issue in which the article was published.",
+    datastream: :descMetadata, multiple: false
+  attribute :page_start,
+    hint: "The first page on which your article appears.",
+    datastream: :descMetadata, multiple: false
+  attribute :page_end,
+    hint: "The last page on which your article appears.",
+    datastream: :descMetadata, multiple: false
+  attribute :num_pages,
+    hint: "The number of pages in your article.",
+    datastream: :descMetadata, multiple: false,
+      validates: {
+        allow_blank: true,
+        format: {
+          with: /\A\d{1,}\Z/,
+          message: 'Must be a number.'
+        }
+      }
+  attribute :isbn,
+    hint: "If your article was published in a volume with an ISBN, include that here.",
     datastream: :descMetadata, multiple: false
   attribute :source,
     datastream: :descMetadata, multiple: true
@@ -91,8 +129,11 @@ class Article < ActiveFedora::Base
     datastream: :descMetadata, multiple: false,
     editable: false
   attribute :issn,
-    datastream: :descMetadata, multiple: true,
+    datastream: :descMetadata, multiple: false,
     editable: true
+  attribute :eIssn,
+    hint: "The electronic ISSN, or eISSN of the publication in which the article appeared.",
+    datastream: :descMetadata, multiple: false
   attribute :doi,
     datastream: :descMetadata, editable: true
   attribute :rights,

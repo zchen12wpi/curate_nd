@@ -1,4 +1,5 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
+require File.expand_path('../../../lib/rdf/bibo', __FILE__)
 class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
 
@@ -52,6 +53,32 @@ class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.rights(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
+    end
+
+    map.volume(:in =>RDF::BIBO)
+
+    map.issue(:in => RDF::BIBO)
+
+    map.page_start({to: 'pageStart', in: RDF::BIBO})
+
+    map.page_end({to: 'pageEnd', in: RDF::BIBO})
+
+    map.num_pages({to: 'numPages', in: RDF::BIBO})
+
+    map.isbn(:in => RDF::BIBO) do |index|
+      index.as :stored_searchable
+    end
+
+    map.eIssn(:in => RDF::BIBO) do |index|
+      index.as :stored_searchable
+    end
+
+    map.publication_date({to: 'issued', in: RDF::DC}) do |index|
+      index.as :displayable #This is a test to see if it will show up in a way that makes it more useful in Search Results Display than "Created"
+    end
+
+    map.is_part_of({to: 'isPartOf', in: RDF::DC}) do |index|
+      index.as :stored_searchable
     end
 
     map.relation(:in => RDF::DC) do |index|
