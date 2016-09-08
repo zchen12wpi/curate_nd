@@ -34,7 +34,10 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
-    map.description(to: 'description', in: RDF::DC)
+    map.description(in: RDF::DC) do |index|
+      index.type :text
+      index.as :stored_searchable
+    end
 
     map.date_created(to: 'created', in: RDF::DC) do |index|
       index.as :stored_searchable

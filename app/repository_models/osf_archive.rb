@@ -71,7 +71,7 @@ class OsfArchive < ActiveFedora::Base
     validates: {presence: { message: 'Department is required.' }}
 
   attribute :description,
-    datastream: :descMetadata, multiple: true,
+    datastream: :descMetadata, multiple: false,
     validates: {presence: { message: 'Your archive must have a description.' }}
 
   attribute :date_created,
