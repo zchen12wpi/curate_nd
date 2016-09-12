@@ -26,7 +26,7 @@ class BatchIngestor
     job_id_prefix = 'osfarchive'
     task_function_name = 'start-osf-archive-ingest'
     content_file_name = 'osf_projects'
-    content_data[:project_url] = get_osf_url(content_data[:project_identifier])
+    content_data[:project_url] = get_osf_url(content_data.fetch(:project_identifier))
     new(job_id_prefix, task_function_name, content_file_name, content_data).submit_ingest
   end
 
@@ -38,7 +38,7 @@ class BatchIngestor
     submit_batch_job
   end
 
-  def get_osf_url(project_identifier)
+  def self.get_osf_url(project_identifier)
     'https://osf.io' + '/' + project_identifier + '/'
   end
 
@@ -51,10 +51,7 @@ class BatchIngestor
 
   # create Contents of JOB file to start reingest in batch ingest system
   def task_list
-    list = {}
-    list['Todo'] = []
-    list['Todo'].push(task_function_name)
-    list
+    { 'Todo' => [task_function_name] }
   end
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
@@ -64,8 +61,7 @@ class BatchIngestor
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Put.new(uri.path)
     response = http.request(request)
-    return true if response.code == '200'
-    report_to_airbrake('create_batch_job', response.code)
+    handle_response('create_batch_job', response)
   end
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
@@ -77,8 +73,7 @@ class BatchIngestor
     request = Net::HTTP::Put.new(uri.path)
     request.body = JSON.generate(data)
     response = http.request(request)
-    return true if response.code == '200'
-    report_to_airbrake('add_job_file', response.code)
+    handle_response('add_job_file', response)
   end
 
   # does POST /jobs/:jobid/queue to start process on batch ingest side
@@ -87,8 +82,12 @@ class BatchIngestor
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     response = http.request_post(uri.path, 'submit')
+    handle_response('submit_batch_job', response)
+  end
+
+  def handle_response(method_name, response)
     return true if response.code == '200'
-    report_to_airbrake('submit_batch_job', response.code)
+    report_to_airbrake(method_name, response.code)
   end
 
   class SubmitError < RuntimeError
