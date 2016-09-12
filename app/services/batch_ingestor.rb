@@ -6,7 +6,7 @@ class BatchIngestor
 
   attr_reader :content_data, :task_function_name, :job_id_prefix, :content_file_name, :job_id
 
-  SERVER_URL = 'http://localhost:15000/jobs/'
+  SERVER_URL = 'http://localhost:15000/jobs/'.freeze
 
   def initialize(job_id_prefix, task_function_name, content_file_name, content_data)
     @job_id_prefix = job_id_prefix
