@@ -4,15 +4,17 @@ require 'time'
 
 class BatchIngestor
 
-  attr_reader :content_data, :task_function_name, :job_id_prefix, :content_file_name, :job_id
+  attr_reader :content_data, :task_function_name, :job_id_prefix, :content_file_name, :job_id, :http
 
-  SERVER_URL = 'http://localhost:15000/jobs/'.freeze
+  SERVER_URL = 'http://localhost:15000/'.freeze
 
   def initialize(job_id_prefix, task_function_name, content_file_name, content_data)
     @job_id_prefix = job_id_prefix
     @task_function_name = task_function_name
     @content_file_name = content_file_name
     @content_data = content_data
+    uri = URI.parse(SERVER_URL)
+    @http = Net::HTTP.new(uri.host, uri.port)
   end
 
   def self.start_reingest(content_data)
@@ -56,21 +58,14 @@ class BatchIngestor
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
   def create_batch_job
-    url = SERVER_URL + job_id
-    uri = URI.parse(url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Put.new(uri.path)
+    request = Net::HTTP::Put.new("/jobs/#{job_id}")
     response = http.request(request)
     handle_response('create_batch_job', response)
   end
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
   def add_job_file(name, data)
-    want_json = true
-    url = SERVER_URL + job_id + '/files/' + name
-    uri = URI.parse(url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Put.new(uri.path)
+    request = Net::HTTP::Put.new("/jobs/#{job_id}/files/#{name}")
     request.body = JSON.generate(data)
     response = http.request(request)
     handle_response('add_job_file', response)
@@ -78,10 +73,7 @@ class BatchIngestor
 
   # does POST /jobs/:jobid/queue to start process on batch ingest side
   def submit_batch_job
-    url = SERVER_URL + job_id + '/queue'
-    uri = URI.parse(url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    response = http.request_post(uri.path, 'submit')
+    response = http.request_post("/jobs/#{job_id}/queue", "submit")
     handle_response('submit_batch_job', response)
   end
 
