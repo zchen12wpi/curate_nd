@@ -11,7 +11,7 @@ end
 RSpec.describe BatchIngestor do
 
   describe '#submit_ingest' do
-    let(:subject) { described_class.new('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm']).submit_ingest }
+    let(:subject) { described_class.new('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'], http: http).submit_ingest }
     let(:response) { instance_double(Net::HTTPResponse, code: '200') }
     let(:http) { instance_double(Net::HTTP, request_post: response) }
 
@@ -20,7 +20,6 @@ RSpec.describe BatchIngestor do
     end
 
     it 'submits 4 correctly ordered requests' do
-      allow(Net::HTTP).to receive(:new).and_return(http)
       expect(http).to receive(:request)
         .with(a_put('/jobs/job_id2011Jan0100001293858000'))
         .and_return(response)
@@ -40,16 +39,14 @@ RSpec.describe BatchIngestor do
       subject
     end
 
+    let(:unsuccessful_response) { instance_double(Net::HTTPResponse, code: 500) }
     it 'will report to Airbrake if response code not 200' do
-      stub_request(:any, 'http://localhost:15000/jobs/job_id2011Jan0100001293858000')
-        .to_return(status: 500)
+      expect(http).to receive(:request).with(kind_of(Net::HTTP::Put)).and_return(unsuccessful_response)
       expect(Airbrake).to receive(:notify_or_ignore)
       expect { subject }.to raise_error("HTTP request failed with status 500")
     end
 
     it 'submits the content data' do
-      allow(Net::HTTP).to receive(:new)
-        .and_return(http)
       allow(http).to receive(:request)
         .and_return(response)
         .at_least(:once)
@@ -61,8 +58,6 @@ RSpec.describe BatchIngestor do
     end
 
     it 'submits the task list' do
-      allow(Net::HTTP).to receive(:new)
-        .and_return(http)
       allow(http).to receive(:request)
         .and_return(response)
         .at_least(:once)
