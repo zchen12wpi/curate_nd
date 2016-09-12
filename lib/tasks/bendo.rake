@@ -6,7 +6,7 @@ namespace :bendo do
   task sync_with_fedora: :environment do
     require 'solr_tools'
     require 'fedora_tools'
-    require 'batch_ingest_tools'
+    require 'batch_ingestor'
 
     solr_list = SolrTools.changed_since(timestamp_file)
 
