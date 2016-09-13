@@ -12,8 +12,8 @@ RSpec.describe BatchIngestor do
 
   describe '.default_job_id_builder' do
     it 'will leverage the current time' do
-      as_of = Time.new(2008,6,21, 13,30,0, "+09:00").utc
-      expect(described_class.default_job_id_builder('prefix', as_of)).to eq('prefix_2008Jun2104301214022600')
+      as_of = Time.new(2016, 9, 13, 14, 25, 42, "+00:00")
+      expect(described_class.default_job_id_builder('prefix', as_of)).to eq('prefix_20160913T142542Z')
     end
   end
 

@@ -44,8 +44,9 @@ class BatchIngestor
     'https://osf.io' + '/' + project_identifier + '/'
   end
 
-  def self.default_job_id_builder(job_id_prefix, as_of = Time.now)
-    time_format = job_id_prefix + '_%Y%b%d%H%M%s'
+  def self.default_job_id_builder(job_id_prefix, as_of = Time.now.utc)
+    # Conforming to ISO 8601 standard [https://en.wikipedia.org/wiki/ISO_8601]
+    time_format = job_id_prefix + '_%Y%m%dT%H%M%SZ'
     return as_of.strftime(time_format)
   end
 
