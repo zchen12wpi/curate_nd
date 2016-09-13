@@ -50,6 +50,19 @@ class BatchIngestor
     return as_of.strftime(time_format)
   end
 
+  def self.get_jobs
+    url = 'http://localhost:15000/jobs'
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    response = http.request_get(uri.path)
+    if response.code == "200"
+      JSON.parse(http.request_get(uri.path).body, symbolize_names: true)
+    else
+      fail "An error occurred while retrieving jobs from the Batch Ingest system."
+    end
+  end
+
   private
 
   def default_http
