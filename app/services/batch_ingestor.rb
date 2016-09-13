@@ -4,7 +4,7 @@ require 'time'
 
 class BatchIngestor
 
-  attr_reader :content_data, :task_function_name, :job_id_prefix, :content_file_name, :job_id, :http
+  attr_reader :content_data, :task_function_name, :job_id_prefix, :content_file_name, :job_id, :http, :job_id_builder
 
   SERVER_URL = 'http://localhost:15000/'.freeze
 
@@ -14,6 +14,7 @@ class BatchIngestor
     @content_file_name = content_file_name
     @content_data = content_data
     @http = options.fetch(:http) { default_http }
+    @job_id_builder = options.fetch(:job_id_builder) { self.class.method(:default_job_id_builder) }
   end
 
   def self.start_reingest(content_data, options = {})
@@ -43,6 +44,11 @@ class BatchIngestor
     'https://osf.io' + '/' + project_identifier + '/'
   end
 
+  def self.default_job_id_builder(job_id_prefix, as_of = Time.now)
+    time_format = job_id_prefix + '_%Y%b%d%H%M%s'
+    return as_of.strftime(time_format)
+  end
+
   private
 
   def default_http
@@ -51,8 +57,7 @@ class BatchIngestor
   end
 
   def make_job_id
-    time_format = job_id_prefix + '%Y%b%d%H%M%s'
-    return Time.now.strftime(time_format)
+    job_id_builder.call(job_id_prefix)
   end
 
   # create Contents of JOB file to start reingest in batch ingest system

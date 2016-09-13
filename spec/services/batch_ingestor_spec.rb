@@ -10,30 +10,36 @@ end
 
 RSpec.describe BatchIngestor do
 
+  describe '.default_job_id_builder' do
+    it 'will leverage the current time' do
+      as_of = Time.new(2008,6,21, 13,30,0, "+09:00").utc
+      expect(described_class.default_job_id_builder('prefix', as_of)).to eq('prefix_2008Jun2104301214022600')
+    end
+  end
+
   describe '#submit_ingest' do
-    let(:subject) { described_class.new('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'], http: http).submit_ingest }
+    let(:subject) do
+      described_class.new('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'], http: http, job_id_builder: job_id_builder).submit_ingest
+    end
     let(:response) { instance_double(Net::HTTPResponse, code: '200') }
     let(:http) { instance_double(Net::HTTP, request_post: response) }
-
-    before(:each) do
-      allow(Time).to receive(:now).and_return(Time.new('2011/01/01'))
-    end
+    let(:job_id_builder) { lambda { |job_id_prefix| "#{job_id_prefix}_mock_id" } }
 
     it 'submits 4 correctly ordered requests' do
       expect(http).to receive(:request)
-        .with(a_put('/jobs/job_id2011Jan0100001293858000'))
+        .with(a_put('/jobs/job_id_mock_id'))
         .and_return(response)
         .ordered
       expect(http).to receive(:request)
-        .with(a_put('/jobs/job_id2011Jan0100001293858000/files/file_name'))
+        .with(a_put('/jobs/job_id_mock_id/files/file_name'))
         .and_return(response)
         .ordered
       expect(http).to receive(:request)
-        .with(a_put('/jobs/job_id2011Jan0100001293858000/files/JOB'))
+        .with(a_put('/jobs/job_id_mock_id/files/JOB'))
         .and_return(response)
         .ordered
       expect(http).to receive(:request_post)
-        .with('/jobs/job_id2011Jan0100001293858000/queue','submit')
+        .with('/jobs/job_id_mock_id/queue','submit')
         .and_return(response)
         .ordered
       subject
