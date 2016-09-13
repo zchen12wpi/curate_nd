@@ -32,6 +32,12 @@ class AccessRenderer
     viewable_groups.include?('registered')
   end
 
+  def viewable_by_institution_today?
+    return false if !viewable?
+    return false if has_embargo? && currently_under_embargo?
+    viewable_groups.include?('registered')
+  end
+
   def embargo_release_date_key
     Hydra.config[:permissions][:embargo_release_date]
   end
