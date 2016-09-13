@@ -109,7 +109,7 @@ RSpec.describe BatchIngestor do
     let(:http) { instance_double(Net::HTTP, request_get: response) }
     let(:subject) { described_class.new(http: http).get_jobs }
 
-    it 'returns symbolized copy of the response from the API' do
+    it 'returns symbolized copy of the response from the API, without any other transformations' do
       expect(subject).to eq(expected_array)
     end
 
