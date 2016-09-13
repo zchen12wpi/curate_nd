@@ -2,10 +2,14 @@ require 'spec_helper'
 
 RSpec::Matchers.define :a_put do |expected_path|
   match { |actual| actual.path == expected_path }
+  description { |actual| "Expected a put to #{expected_path}, got #{actual.path} instead." }
+  failure_message { |actual| "Expected a put to #{expected_path}, got #{actual.path} instead." }
 end
 
 RSpec::Matchers.define :a_put_with do |expected_body|
   match { |actual| actual.body == expected_body }
+  description { |actual| "Expected a put with body of #{expected_body}, got #{actual.body} instead." }
+  failure_message { |actual| "Expected a put with body of #{expected_body}, got #{actual.body} instead." }
 end
 
 RSpec.describe BatchIngestor do
@@ -19,7 +23,7 @@ RSpec.describe BatchIngestor do
 
   describe '#submit_ingest' do
     let(:subject) do
-      described_class.new('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'], http: http, job_id_builder: job_id_builder).submit_ingest
+      described_class.new(http: http, job_id_builder: job_id_builder).submit_ingest('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'])
     end
     let(:response) { instance_double(Net::HTTPResponse, code: '200') }
     let(:http) { instance_double(Net::HTTP, request_post: response) }
@@ -49,7 +53,7 @@ RSpec.describe BatchIngestor do
     it 'will report to Airbrake if response code not 200' do
       expect(http).to receive(:request).with(kind_of(Net::HTTP::Put)).and_return(unsuccessful_response)
       expect(Airbrake).to receive(:notify_or_ignore)
-      expect { subject }.to raise_error("HTTP request failed with status 500")
+      expect { subject }.to raise_error(BatchIngestor::BatchIngestHTTPError)
     end
 
     it 'submits the content data' do
@@ -84,9 +88,11 @@ RSpec.describe BatchIngestor do
   end
 
   it 'appends the content data with a project url' do
-    mock_object = double(submit_ingest: true)
-    expect(described_class).to receive(:new).with('osfarchive', 'start-osf-archive-ingest', 'osf_projects', { project_identifier: 'abcde', project_url: 'https://osf.io/abcde/' }).and_return(mock_object)
+    expect_any_instance_of(described_class).to receive(:submit_ingest).with('osfarchive', 'start-osf-archive-ingest', 'osf_projects', { project_identifier: 'abcde', project_url: 'https://osf.io/abcde/' }).and_return(true)
     described_class.start_osf_archive_ingest( project_identifier: 'abcde')
   end
 
+  describe '#get_jobs' do
+
+  end
 end
