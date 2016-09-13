@@ -51,7 +51,11 @@ class BatchIngestor
   def get_jobs
     response = http.request_get('/jobs')
     handle_response({}, response)
-    JSON.parse(response.body, symbolize_names: true)
+    if response.body.present?
+      JSON.parse(response.body, symbolize_names: true)
+    else
+      []
+    end
   end
 
   private

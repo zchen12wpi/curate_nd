@@ -93,6 +93,50 @@ RSpec.describe BatchIngestor do
   end
 
   describe '#get_jobs' do
+    let(:response_body) do
+      "[
+        { \"job\" : \"Job1\", \"status\" : \"Status1\" },
+        { \"job\" : \"Job2\", \"status\" : \"Status2\" }
+      ]"
+    end
+    let(:expected_array) do
+      [
+        { job: "Job1", status: "Status1" },
+        { job: "Job2", status: "Status2" }
+      ]
+    end
+    let(:response) { instance_double(Net::HTTPResponse, code: '200', body: response_body) }
+    let(:http) { instance_double(Net::HTTP, request_get: response) }
+    let(:subject) { described_class.new(http: http).get_jobs }
 
+    it 'returns symbolized copy of the response from the API' do
+      expect(subject).to eq(expected_array)
+    end
+
+    it 'treats empty string response as an empty list of jobs' do
+      allow(response).to receive(:body).and_return('')
+      expect(subject).to eq([])
+    end
+
+    it 'treats nil response as an empty list of jobs' do
+      allow(response).to receive(:body).and_return(nil)
+      expect(subject).to eq([])
+    end
+
+    it 'handles empty array response' do
+      allow(response).to receive(:body).and_return('[]')
+      expect(subject).to eq([])
+    end
+
+    it 'throws an exception for invalid JSON responses' do
+      allow(response).to receive(:body).and_return('some weird response')
+      expect{ subject }.to raise_error
+    end
+
+    it 'throws an exception if the response code is anything other than a 200 and notifies Airbrake' do
+      allow(response).to receive(:code).and_return('x')
+      expect(Airbrake).to receive(:notify_or_ignore)
+      expect{ subject }.to raise_error(BatchIngestor::BatchIngestHTTPError)
+    end
   end
 end
