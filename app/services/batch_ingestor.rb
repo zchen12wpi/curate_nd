@@ -48,11 +48,14 @@ class BatchIngestor
     submit_batch_job(job_id)
   end
 
-  def get_jobs
+  def get_jobs(filters = { name: /.*/, status: /.*/ })
     response = http.request_get('/jobs')
     handle_response({}, response)
     if response.body.present?
-      JSON.parse(response.body, symbolize_names: true)
+      all_jobs = JSON.parse(response.body, symbolize_names: true)
+      all_jobs.select do |job|
+        filters[:name] =~ job[:job] && filters[:status] =~ job[:status]
+      end
     else
       []
     end

@@ -95,14 +95,18 @@ RSpec.describe BatchIngestor do
   describe '#get_jobs' do
     let(:response_body) do
       "[
-        { \"job\" : \"Job1\", \"status\" : \"Status1\" },
-        { \"job\" : \"Job2\", \"status\" : \"Status2\" }
+        { \"job\" : \"Job1.1\", \"status\" : \"Status1\" },
+        { \"job\" : \"Job1.2\", \"status\" : \"Status2\" },
+        { \"job\" : \"Job2.1\", \"status\" : \"Status1\" },
+        { \"job\" : \"Job2.2\", \"status\" : \"Status2\" }
       ]"
     end
     let(:expected_array) do
       [
-        { job: "Job1", status: "Status1" },
-        { job: "Job2", status: "Status2" }
+        { job: "Job1.1", status: "Status1" },
+        { job: "Job1.2", status: "Status2" },
+        { job: "Job2.1", status: "Status1" },
+        { job: "Job2.2", status: "Status2" }
       ]
     end
     let(:response) { instance_double(Net::HTTPResponse, code: '200', body: response_body) }
@@ -137,6 +141,16 @@ RSpec.describe BatchIngestor do
       allow(response).to receive(:code).and_return('x')
       expect(Airbrake).to receive(:notify_or_ignore)
       expect{ subject }.to raise_error(BatchIngestor::BatchIngestHTTPError)
+    end
+
+    it 'filters to jobs that match the pattern given for job name' do
+      expect(described_class.new(http: http).get_jobs({ name: /Job1/, status: /.*/ })).
+        to eq([{:job=>"Job1.1", :status=>"Status1"}, {:job=>"Job1.2", :status=>"Status2"}])
+    end
+
+    it 'filters to jobs that match the pattern given for job status' do
+      expect(described_class.new(http: http).get_jobs({ name: /.*/, status: /Status1/ })).
+        to eq([{:job=>"Job1.1", :status=>"Status1"}, {:job=>"Job2.1", :status=>"Status1"}])
     end
   end
 end

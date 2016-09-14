@@ -40,8 +40,8 @@ describe Admin::IngestOsfArchivesController, type: :controller do
         subject
       end
 
-      it 'redirects to the index' do
-        expect(subject).to redirect_to(action: :index)
+      it 'redirects to the batch ingest controller, filtering to jobs named osfarchive' do
+        expect(subject).to redirect_to(controller: 'batch_ingest', action: :index, params: { name_filter: 'osfarchive' })
       end
     end
 

@@ -6,9 +6,4 @@ class IngestOSFTools
     @@archive_array ||= []
     @@archive_array.push(archive)
   end
-
-  def self.get_osf_jobs
-    #TODO: Filter for just osf jobs
-    BatchIngestor.new.get_jobs.select { |job| job[:status] != 'success' }
-  end
 end

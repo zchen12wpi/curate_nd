@@ -11,15 +11,10 @@ class Admin::IngestOsfArchivesController < ApplicationController
     @archive = Admin::IngestOSFArchive.build_with_id_or_url(admin_ingest_osf_archive_params)
 
     if @archive.valid? && IngestOSFTools.create_osf_job(@archive)
-      redirect_to admin_ingest_osf_archives_path, notice: 'Project ingest job was successfully created.'
+      redirect_to admin_batch_ingest_index_path(name_filter: 'osfarchive'), notice: 'Project ingest job was successfully created.'
     else
       render :new
     end
-  end
-
-  # GET /admin/ingest_osf_archives
-  def index
-    @archives = IngestOSFTools.get_osf_jobs
   end
 
   private
