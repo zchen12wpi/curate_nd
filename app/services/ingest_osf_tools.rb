@@ -6,9 +6,4 @@ class IngestOSFTools
     @@archive_array ||= []
     @@archive_array.push(archive)
   end
-
-  def self.get_osf_jobs
-    @@archive_array ||= []
-    @@archive_array
-  end
 end
