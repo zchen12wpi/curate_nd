@@ -44,10 +44,10 @@
   </thead>
 
   <tbody>
-    <% @jobs.sort_by!{ |job| [job[:status], job[:job]] }.each do |job| %>
+    <% @jobs.sort_by!{ |job| [job[:Status], job[:Name]] }.each do |job| %>
       <tr>
-        <td><%= job[:job] %></td>
-        <td><%= job[:status] %></td>
+        <td><%= job[:Name] %></td>
+        <td><%= job[:Status] %></td>
       </tr>
     <% end %>
   </tbody>

@@ -54,7 +54,7 @@ class BatchIngestor
     if response.body.present?
       all_jobs = JSON.parse(response.body, symbolize_names: true)
       all_jobs.select do |job|
-        filters[:name] =~ job[:job] && filters[:status] =~ job[:status]
+        filters[:name] =~ job[:Name] && filters[:status] =~ job[:Status]
       end
     else
       []
