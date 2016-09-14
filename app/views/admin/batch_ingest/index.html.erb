@@ -16,8 +16,8 @@
       <th>
         <div>Job Name</div>
         <%= form_tag("/admin/batch_ingest", method: "get", class: 'search-form') do %>
-          <%= hidden_field_tag(:status_filter, @status_filter) %>
-          <%= text_field_tag(:name_filter, @name_filter, class: 'q search-query') %>
+          <%= hidden_field_tag(:status_filter, params[:status_filter]) %>
+          <%= text_field_tag(:name_filter, params[:name_filter], class: 'q search-query') %>
           <button type="submit" class="search-submit" tabindex="2">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="search-icon" viewBox="0 0 28 28" preserveAspectRatio="xMinYMin meet">
               <style type="text/css">
@@ -36,8 +36,8 @@
       <th>
         <div>Status</div>
         <%= form_tag('/admin/batch_ingest', method: "get", :id=>'status_form', style: 'margin-bottom: 10px') do |f| %>
-          <%= hidden_field_tag(:name_filter, @name_filter) %>
-          <%= select_tag "status_filter", options_for_select(['', 'pending', 'success'], @status_filter),  onchange: "$('#status_form').submit();" %>
+          <%= hidden_field_tag(:name_filter, params[:name_filter]) %>
+          <%= select_tag "status_filter", options_for_select(['', 'pending', 'success'], params[:status_filter]),  onchange: "$('#status_form').submit();" %>
         <% end %>
       </th>
     </tr>

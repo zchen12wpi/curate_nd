@@ -35,6 +35,10 @@ class BatchIngestor
     return as_of.strftime(time_format)
   end
 
+  def self.get_jobs(filters = { name: /.*/, status: /.*/ }, options = {})
+    new(options).jobs(filters)
+  end
+
   def initialize(options = {})
     @http = options.fetch(:http) { default_http }
     @job_id_builder = options.fetch(:job_id_builder) { self.class.method(:default_job_id_builder) }
@@ -48,7 +52,7 @@ class BatchIngestor
     submit_batch_job(job_id)
   end
 
-  def get_jobs(filters = { name: /.*/, status: /.*/ })
+  def jobs(filters)
     response = http.request_get('/jobs')
     handle_response({}, response)
     if response.body.present?

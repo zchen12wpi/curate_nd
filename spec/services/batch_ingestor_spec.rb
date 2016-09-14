@@ -93,6 +93,15 @@ RSpec.describe BatchIngestor do
   end
 
   describe '#get_jobs' do
+    let(:subject) { described_class.get_jobs }
+
+    it 'calls #jobs with default filters' do
+      expect_any_instance_of(BatchIngestor).to receive(:jobs).with({:name=>/.*/, :status=>/.*/})
+      subject
+    end
+  end
+
+  describe '#jobs' do
     let(:response_body) do
       "[
         { \"Name\" : \"Job1.1\", \"Status\" : \"Status1\" },
@@ -111,7 +120,7 @@ RSpec.describe BatchIngestor do
     end
     let(:response) { instance_double(Net::HTTPResponse, code: '200', body: response_body) }
     let(:http) { instance_double(Net::HTTP, request_get: response) }
-    let(:subject) { described_class.new(http: http).get_jobs }
+    let(:subject) { described_class.new(http: http).jobs({ name: /.*/, status: /.*/ }) }
 
     it 'returns symbolized copy of the response from the API, without any other transformations' do
       expect(subject).to eq(expected_array)
@@ -144,12 +153,12 @@ RSpec.describe BatchIngestor do
     end
 
     it 'filters to jobs that match the pattern given for job name' do
-      expect(described_class.new(http: http).get_jobs({ name: /Job1/, status: /.*/ })).
+      expect(described_class.new(http: http).jobs({ name: /Job1/, status: /.*/ })).
         to eq([{:Name=>"Job1.1", :Status=>"Status1"}, {:Name=>"Job1.2", :Status=>"Status2"}])
     end
 
     it 'filters to jobs that match the pattern given for job status' do
-      expect(described_class.new(http: http).get_jobs({ name: /.*/, status: /Status1/ })).
+      expect(described_class.new(http: http).jobs({ name: /.*/, status: /Status1/ })).
         to eq([{:Name=>"Job1.1", :Status=>"Status1"}, {:Name=>"Job2.1", :Status=>"Status1"}])
     end
   end
