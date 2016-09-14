@@ -6,7 +6,7 @@
           Assign an EAD
         </legend>
         <p>Select the EAD file which should be displayed for this <%= curation_concern.human_readable_type %>.</p>
-        <%= f.select( :representative, Hash[ curation_concern.generic_files.map {|file| [file.title.first, file.pid] } ] ) %>
+        <%= f.select( :representative, Hash[ curation_concern.generic_files.map {|file| [file.title.try(:first).nil? ? 'file title is missing' : file.title.first, file.pid] } ] ) %>
       </fieldset>
     </div>
   </div>
