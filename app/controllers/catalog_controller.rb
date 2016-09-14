@@ -271,7 +271,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("desc_metadata__language", :facetable), label: "Language", limit: 5
     config.add_facet_field solr_name("desc_metadata__based_near", :facetable), label: "Location", limit: 5
     config.add_facet_field solr_name("desc_metadata__publisher", :facetable), label: "Publisher", limit: 5
-    config.add_facet_field solr_name("desc_metadata__affiliation", :facetable), label: "Affiliation", limit: 5
+    config.add_facet_field solr_name("desc_metadata__affiliation", :facetable), label: "Academic Status", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
     config.facet_display = {
       :hierarchy => {
