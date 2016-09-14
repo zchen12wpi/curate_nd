@@ -19,7 +19,10 @@
       </li>
     <% end %>
     <li><%= link_to 'More Options', deposit_path, class: 'link-to-full-list', role: 'menuitem' %></li>
-    <li class="divider"></li>
-    <li><%= link_to 'Import OSF archive', new_admin_ingest_osf_archive_path %></li>
+
+    <% if CurateND::AdminConstraint.is_admin?(current_user) %>
+      <li class="divider"></li>
+      <li><%= link_to 'Import OSF archive', new_admin_ingest_osf_archive_path %></li>
+    <% end %>
   </ul>
 </div>
