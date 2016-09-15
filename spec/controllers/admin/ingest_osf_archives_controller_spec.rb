@@ -35,8 +35,8 @@ describe Admin::IngestOsfArchivesController, type: :controller do
         allow(Admin::IngestOSFArchive).to receive(:new).and_return(archive)
       end
 
-      it 'uses IngestOSFTools to create a job with the new archive' do
-        expect(IngestOSFTools).to receive(:create_osf_job).with(archive)
+      it 'uses OsfIngestWorker to create a job with the new archive' do
+        expect(OsfIngestWorker).to receive(:create_osf_job).with(archive)
         subject
       end
 
@@ -51,8 +51,8 @@ describe Admin::IngestOsfArchivesController, type: :controller do
         allow(Admin::IngestOSFArchive).to receive(:new).and_return(archive)
       end
 
-      it 'uses IngestOSFTools to create a job with the new archive' do
-        expect(IngestOSFTools).not_to receive(:create_osf_job).with(archive)
+      it 'uses OsfIngestWorker to create a job with the new archive' do
+        expect(OsfIngestWorker).not_to receive(:create_osf_job).with(archive)
         subject
       end
 
@@ -65,7 +65,7 @@ describe Admin::IngestOsfArchivesController, type: :controller do
       before(:each) do
         allow(archive).to receive(:valid?).and_return(true)
         allow(Admin::IngestOSFArchive).to receive(:new).and_return(archive)
-        allow(IngestOSFTools).to receive(:create_osf_job).and_return(false)
+        allow(OsfIngestWorker).to receive(:create_osf_job).and_return(false)
       end
 
       it 're-renders new' do
