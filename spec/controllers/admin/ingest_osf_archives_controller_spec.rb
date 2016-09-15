@@ -14,6 +14,10 @@ describe Admin::IngestOsfArchivesController, type: :controller do
   end
 
   describe '#create' do
+    before(:each) do
+      allow(OsfIngestWorker).to receive(:create_osf_job).with(archive).and_return(true)
+    end
+
     let(:params) { { admin_ingest_osf_archive: { project_identifier: 'id' } } }
     let(:subject) { post :create, params }
 
