@@ -79,19 +79,6 @@ RSpec.describe BatchIngestor do
     end
   end
 
-
-  describe '#get_osf_url' do
-    let(:subject) { described_class.get_osf_url('abcde') }
-    it 'correctly generates a project_url' do
-      expect(subject).to eq('https://osf.io/abcde/')
-    end
-  end
-
-  it 'appends the content data with a project url' do
-    expect_any_instance_of(described_class).to receive(:submit_ingest).with('osfarchive', 'start-osf-archive-ingest', 'osf_projects', { project_identifier: 'abcde', project_url: 'https://osf.io/abcde/' }).and_return(true)
-    described_class.start_osf_archive_ingest( project_identifier: 'abcde')
-  end
-
   describe '#get_jobs' do
     let(:subject) { described_class.get_jobs }
 

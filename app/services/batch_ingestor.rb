@@ -18,15 +18,10 @@ class BatchIngestor
   end
 
   def self.start_osf_archive_ingest(content_data, options = {})
-    job_id_prefix = 'osfarchive'
+    job_id_prefix = options.fetch(:job_id_prefix) { "osfarchive" }
     task_function_name = 'start-osf-archive-ingest'
     content_file_name = 'osf_projects'
-    content_data[:project_url] = get_osf_url(content_data.fetch(:project_identifier))
     new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
-  end
-
-  def self.get_osf_url(project_identifier)
-    'https://osf.io' + '/' + project_identifier + '/'
   end
 
   def self.default_job_id_builder(job_id_prefix, as_of = Time.now.utc)
@@ -76,21 +71,23 @@ class BatchIngestor
   def create_batch_job(job_id)
     request = Net::HTTP::Put.new("/jobs/#{job_id}")
     response = http.request(request)
-    handle_response('create_batch_job', response)
+    handle_response({ request_method: request.method, request_path: request.path }, response)
   end
 
   # does PUT /jobs/:jobid to create data dir on batch ingest side
-  def add_job_file(job_id, name, data)
-    request = Net::HTTP::Put.new("/jobs/#{job_id}/files/#{name}")
+  def add_job_file(job_id, filename, data)
+    request = Net::HTTP::Put.new("/jobs/#{job_id}/files/#{filename}")
     request.body = JSON.generate(data)
     response = http.request(request)
-    handle_response({ task_name: name, method_name: 'add_job_file', job_input: data }, response)
+    handle_response({ request_method: request.method, request_path: request.path, request_body: request.body }, response)
   end
 
   # does POST /jobs/:jobid/queue to start process on batch ingest side
   def submit_batch_job(job_id)
-    response = http.request_post("/jobs/#{job_id}/queue", "submit")
-    handle_response('submit_batch_job', response)
+    request_path = "/jobs/#{job_id}/queue"
+    request_body = "submit"
+    response = http.request_post(request_path, request_body)
+    handle_response({ request_method: 'POST', request_path: request_path, request_body: request_body }, response)
   end
 
   def handle_response(params, response)
@@ -99,7 +96,7 @@ class BatchIngestor
   end
 
   def report_to_airbrake(params, code)
-    exception = BatchIngestHTTPError.new("HTTP request failed with status #{code}")
+    exception = BatchIngestHTTPError.new("HTTP request failed with status #{code} for\n\t#{params.inspect}")
     Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: params)
     raise exception
   end

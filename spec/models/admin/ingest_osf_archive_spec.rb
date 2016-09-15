@@ -6,11 +6,11 @@ describe Admin::IngestOSFArchive do
       project_identifier: 'id',
       administrative_unit: 'admin unit',
       owner: 'owner',
-      affiliation: 'affiliation',
-      status: 'status'
+      affiliation: 'affiliation'
     }
   end
-  let(:subject){ Admin::IngestOSFArchive.new(attributes) }
+  let(:ingest_osf_archive) { described_class.new(attributes) }
+  subject { ingest_osf_archive }
 
   [:project_identifier, :administrative_unit, :owner, :affiliation].each do |attribute|
     it "is invalid when #{attribute} is not present" do
@@ -19,7 +19,29 @@ describe Admin::IngestOSFArchive do
     end
   end
 
-  describe '#build_with_id_or_url' do
+  context '#as_hash' do
+    let(:ingest_osf_archive) { described_class.new(attributes) }
+    subject { ingest_osf_archive.as_hash }
+    it { is_expected.to be_a(Hash) }
+    it "is expected to equal the input attributes along with the project_url" do
+      expect(subject).to eq(attributes.merge(project_url: ingest_osf_archive.project_url))
+    end
+    it "is expected to include the :project_url key" do
+      expect(subject.keys).to include(:project_url)
+    end
+  end
+
+  context '#==' do
+    it 'compares on the objects #as_hash' do
+      object_1 = described_class.new(attributes).as_hash
+      object_2 = described_class.new(attributes).as_hash
+      object_3 = described_class.new({}).as_hash
+      expect(object_1).to eq(object_2)
+      expect(object_2).to_not eq(object_3)
+    end
+  end
+
+  context '#build_with_id_or_url' do
     let(:subject){ Admin::IngestOSFArchive.build_with_id_or_url(attributes) }
 
     it 'uses the id as is when it does not match a url' do

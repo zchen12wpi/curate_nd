@@ -37,7 +37,7 @@
         <div>Status</div>
         <%= form_tag('/admin/batch_ingest', method: "get", :id=>'status_form', style: 'margin-bottom: 10px') do |f| %>
           <%= hidden_field_tag(:name_filter, params[:name_filter]) %>
-          <%= select_tag "status_filter", options_for_select(['', 'pending', 'success'], params[:status_filter]),  onchange: "$('#status_form').submit();" %>
+          <%= select_tag "status_filter", options_for_select(['', 'error', 'processing', 'queue', 'success'], params[:status_filter]),  onchange: "$('#status_form').submit();" %>
         <% end %>
       </th>
     </tr>
