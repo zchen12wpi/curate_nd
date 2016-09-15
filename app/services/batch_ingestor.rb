@@ -18,7 +18,7 @@ class BatchIngestor
   end
 
   def self.start_osf_archive_ingest(content_data, options = {})
-    job_id_prefix = 'osfarchive'
+    job_id_prefix = options.fetch(:job_id_prefix) { "osfarchive" }
     task_function_name = 'start-osf-archive-ingest'
     content_file_name = 'osf_projects'
     new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)

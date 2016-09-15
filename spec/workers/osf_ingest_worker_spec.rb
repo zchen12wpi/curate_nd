@@ -1,15 +1,14 @@
 require 'spec_helper'
 
 RSpec.describe OsfIngestWorker do
-  let(:attributes) { { project_identifier: 'pi1', administrative_unit: 'au1', owner: 'o1', affiliation: 'a1' } }
-  let(:archive) { Admin::IngestOSFArchive.new(attributes) }
+  let(:archive) { Admin::IngestOSFArchive.new(project_identifier: 'pi1', administrative_unit: 'au1', owner: 'o1', affiliation: 'a1') }
   let(:queue) { [] }
   context '.create_osf_job' do
     it 'will enqueue the given archive as a primative and reify' do
       expect(queue).to receive(:push).with(kind_of(described_class)).and_call_original
-      expect(described_class).to receive(:new).with(attributes).and_call_original
+      expect(described_class).to receive(:new).with(archive.as_hash).and_call_original
       described_class.create_osf_job(archive, queue: queue)
-      expect(queue.map(&:attributes)).to eq([attributes])
+      expect(queue.map(&:attributes)).to eq([archive.as_hash])
     end
   end
   context '.default_queue' do
@@ -19,15 +18,17 @@ RSpec.describe OsfIngestWorker do
   end
 
   context '#attributes' do
-    subject { described_class.new(attributes).attributes }
-    it { is_expected.to eq(attributes) }
+    subject { described_class.new(archive.as_hash).attributes }
+    it { is_expected.to eq(archive.as_hash) }
   end
 
   context '#run' do
-    subject { described_class.new(attributes) }
+    subject { described_class.new(archive.as_hash) }
 
     it 'will start an osf archive ingest via the BatchIngestor' do
-      expect(BatchIngestor).to receive(:start_osf_archive_ingest).with(attributes)
+      expect(BatchIngestor).to(
+        receive(:start_osf_archive_ingest).with(archive.as_hash, job_id_prefix: "osfarchive_#{archive.project_identifier}_")
+      )
       subject.run
     end
 
@@ -35,7 +36,7 @@ RSpec.describe OsfIngestWorker do
       exception = RuntimeError.new('OUCH!')
       allow(BatchIngestor).to receive(:start_osf_archive_ingest).and_raise(exception)
       expect(Airbrake).to receive(:notify_or_ignore).with(
-        error_class: exception.class, error_message: exception, parameters: { OsfIngestWorker_attributes: attributes }
+        error_class: exception.class, error_message: exception, parameters: { OsfIngestWorker_attributes: subject.attributes }
       )
       expect { subject.run }.to raise_error(exception)
     end
