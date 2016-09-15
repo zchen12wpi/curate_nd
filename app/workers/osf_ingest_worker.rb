@@ -19,5 +19,10 @@ class OsfIngestWorker
 
   def run
     BatchIngestor.start_osf_archive_ingest(attributes)
+  rescue StandardError => exception
+    Airbrake.notify_or_ignore(
+      error_class: exception.class, error_message: exception, parameters: { OsfIngestWorker_attributes: attributes }
+    )
+    raise exception
   end
 end

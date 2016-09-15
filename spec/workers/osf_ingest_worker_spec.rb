@@ -30,5 +30,14 @@ RSpec.describe OsfIngestWorker do
       expect(BatchIngestor).to receive(:start_osf_archive_ingest).with(attributes)
       subject.run
     end
+
+    it 'will notify airbrake if an exception is encountered' do
+      exception = RuntimeError.new('OUCH!')
+      allow(BatchIngestor).to receive(:start_osf_archive_ingest).and_raise(exception)
+      expect(Airbrake).to receive(:notify_or_ignore).with(
+        error_class: exception.class, error_message: exception, parameters: { OsfIngestWorker_attributes: attributes }
+      )
+      expect { subject.run }.to raise_error(exception)
+    end
   end
 end
