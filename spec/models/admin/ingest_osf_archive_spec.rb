@@ -9,7 +9,8 @@ describe Admin::IngestOSFArchive do
       affiliation: 'affiliation'
     }
   end
-  subject { Admin::IngestOSFArchive.new(attributes) }
+  let(:ingest_osf_archive) { described_class.new(attributes) }
+  subject { ingest_osf_archive }
 
   [:project_identifier, :administrative_unit, :owner, :affiliation].each do |attribute|
     it "is invalid when #{attribute} is not present" do
@@ -19,9 +20,15 @@ describe Admin::IngestOSFArchive do
   end
 
   context '#as_hash' do
-    subject { described_class.new(attributes).as_hash }
+    let(:ingest_osf_archive) { described_class.new(attributes) }
+    subject { ingest_osf_archive.as_hash }
     it { is_expected.to be_a(Hash) }
-    it("is expected to equal the input attributes") { is_expected.to eq(attributes) }
+    it "is expected to equal the input attributes along with the project_url" do
+      expect(subject).to eq(attributes.merge(project_url: ingest_osf_archive.project_url))
+    end
+    it "is expected to include the :project_url key" do
+      expect(subject.keys).to include(:project_url)
+    end
   end
 
   context '#==' do

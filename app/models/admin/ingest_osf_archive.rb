@@ -24,11 +24,18 @@ class Admin::IngestOSFArchive
       project_identifier: project_identifier,
       administrative_unit: administrative_unit,
       owner: owner,
-      affiliation: affiliation
+      affiliation: affiliation,
+      project_url: project_url
     }
   end
 
   def ==(object)
     as_hash == object.as_hash
+  end
+
+  def project_url
+    osf_host_name = ENV.fetch('OSF_HOST_NAME', 'osf.io')
+    osf_scheme = ENV.fetch('OSF_SCHEME', 'https')
+    "#{osf_scheme}://#{osf_host_name}/#{project_identifier}/"
   end
 end

@@ -21,12 +21,7 @@ class BatchIngestor
     job_id_prefix = 'osfarchive'
     task_function_name = 'start-osf-archive-ingest'
     content_file_name = 'osf_projects'
-    content_data[:project_url] = get_osf_url(content_data.fetch(:project_identifier))
     new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
-  end
-
-  def self.get_osf_url(project_identifier)
-    'https://osf.io' + '/' + project_identifier + '/'
   end
 
   def self.default_job_id_builder(job_id_prefix, as_of = Time.now.utc)
