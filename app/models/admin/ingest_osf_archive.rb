@@ -27,4 +27,8 @@ class Admin::IngestOSFArchive
       affiliation: affiliation
     }
   end
+
+  def ==(object)
+    as_hash == object.as_hash
+  end
 end

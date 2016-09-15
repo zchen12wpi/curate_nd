@@ -24,6 +24,16 @@ describe Admin::IngestOSFArchive do
     it("is expected to equal the input attributes") { is_expected.to eq(attributes) }
   end
 
+  context '#==' do
+    it 'compares on the objects #as_hash' do
+      object_1 = described_class.new(attributes).as_hash
+      object_2 = described_class.new(attributes).as_hash
+      object_3 = described_class.new({}).as_hash
+      expect(object_1).to eq(object_2)
+      expect(object_2).to_not eq(object_3)
+    end
+  end
+
   context '#build_with_id_or_url' do
     let(:subject){ Admin::IngestOSFArchive.build_with_id_or_url(attributes) }
 
