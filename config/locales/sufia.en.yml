@@ -125,12 +125,14 @@ en:
       label:
         faculty: "Faculty research and publications"
         staff: "Staff research and publications"
-        graduate: "Graduate research and publications "
-        undergraduate: "Undergraduate research and publications "
+        postdoc: "Postdoctoral research and publications"
+        graduate: "Graduate research and publications"
+        undergraduate: "Undergraduate research and publications"
         other: "Other"
       name:
         faculty: "Faculty"
         staff: "Staff"
+        postdoc: "Postdoc"
         graduate: "Graduate"
         undergraduate: "Undergraduate"
         other: "Other"
