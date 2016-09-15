@@ -5,6 +5,7 @@ class Affiliation
   VALID_ENTITIES = [
       'faculty',
       'staff',
+      'postdoc',
       'graduate',
       'undergraduate',
       'other'
