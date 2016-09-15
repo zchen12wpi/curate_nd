@@ -1,131 +1,133 @@
 <% editor = can?(:edit, curation_concern)%>
 
 <section id="attached-files">
-<% if curation_concern.respond_to?(:generic_files) && curation_concern.generic_files.present? %>
-  <h2>Files</h2>
+<% if curation_concern.respond_to?(:generic_files) %>
 
-  <% files = curation_concern.generic_files %>
+  <% if curation_concern.generic_files.present? %>
+    <h2>Files</h2>
 
-  <% if files.any? %>
-    <article class="file-delay-notice alert alert-info">
-      <%= t('curate.notification_messages.file_retrieval').html_safe %>
-    </article>
-  <% end %>
+    <% files = curation_concern.generic_files %>
 
-  <% if curation_concern.with_empty_contents? %>
-    <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
-  <% end %>
-
-  <% files.each_with_index do |generic_file, index| %>
-    <%
-      content = generic_file.datastreams.fetch('content')
-      bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
-      if bendo_datastream.valid?
-    %>
-      <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-bendo_item_slug="<%= bendo_datastream.item_slug %>">
-      <h3 class="file-title">
-        <%= link_to(
-          generic_file_title(generic_file),
-          recall_bendo_item_path(generic_file.noid),
-          data: {
-            alternate: download_path(generic_file.noid)
-          }
-        ) %>
-      </h3>
-    <% else %>
-      <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
-      <h3 class="file-title">
-        <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
-      </h3>
+    <% if files.any? %>
+      <article class="file-delay-notice alert alert-info">
+        <%= t('curate.notification_messages.file_retrieval').html_safe %>
+      </article>
     <% end %>
 
-      <p><%= render(
-        partial: 'permission_badge',
-        locals: {
-          curation_concern: generic_file,
-          show_date: true
-        }
-      ) %></p>
+    <% if curation_concern.with_empty_contents? %>
+      <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
+    <% end %>
 
-      <figure class="file-thumbnail">
-        <% if bendo_datastream.valid? %>
-          <%= render(
-            partial: '/application/thumbnail',
-            locals: {
-              alternate_href: download_path(generic_file.noid),
-              href: recall_bendo_item_path(generic_file.noid),
-              thumbnail: generic_file
+    <% files.each_with_index do |generic_file, index| %>
+      <%
+        content = generic_file.datastreams.fetch('content')
+        bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
+        if bendo_datastream.valid?
+      %>
+        <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-bendo_item_slug="<%= bendo_datastream.item_slug %>">
+        <h3 class="file-title">
+          <%= link_to(
+            generic_file_title(generic_file),
+            recall_bendo_item_path(generic_file.noid),
+            data: {
+              alternate: download_path(generic_file.noid)
             }
           ) %>
-        <% else %>
-          <%= render(
-            partial: '/application/thumbnail',
-            locals: {
-              href: download_path(generic_file.noid),
-              thumbnail: generic_file
-            }
-          ) %>
-        <% end %>
-      </figure>
+        </h3>
+      <% else %>
+        <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
+        <h3 class="file-title">
+          <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
+        </h3>
+      <% end %>
 
-      <div class="actions">
-        <% if can?(:read, generic_file) %>
-          <%
-            if generic_file.with_empty_content?
-              content_dependent_button_class = 'action btn disabled'
-            else
-              content_dependent_button_class = 'action btn'
-            end
-          %>
+        <p><%= render(
+          partial: 'permission_badge',
+          locals: {
+            curation_concern: generic_file,
+            show_date: true
+          }
+        ) %></p>
 
+        <figure class="file-thumbnail">
           <% if bendo_datastream.valid? %>
-            <%= link_to(
-              recall_bendo_item_path(generic_file.noid),
-              {
-                class: "#{content_dependent_button_class} btn-info",
-                data: {
-                  alternate: download_path(generic_file.noid),
-                  toggle: 'tooltip',
-                  placement: 'top'
-                },
-                title: t('curate.notification_messages.file_retrieval_tooltip'),
-                target: '_blank'
+            <%= render(
+              partial: '/application/thumbnail',
+              locals: {
+                alternate_href: download_path(generic_file.noid),
+                href: recall_bendo_item_path(generic_file.noid),
+                thumbnail: generic_file
               }
-            ) do %>
-              <i class="icon icon-white icon-time"></i> Begin Download
-            <% end %>
+            ) %>
           <% else %>
-            <%= link_to(
-              download_path(generic_file.noid),
-              {
-                class: content_dependent_button_class,
-                target: '_blank'
+            <%= render(
+              partial: '/application/thumbnail',
+              locals: {
+                href: download_path(generic_file.noid),
+                thumbnail: generic_file
               }
-            ) do %>
-              <i class="icon icon-download"></i> Download
+            ) %>
+          <% end %>
+        </figure>
+
+        <div class="actions">
+          <% if can?(:read, generic_file) %>
+            <%
+              if generic_file.with_empty_content?
+                content_dependent_button_class = 'action btn disabled'
+              else
+                content_dependent_button_class = 'action btn'
+              end
+            %>
+
+            <% if bendo_datastream.valid? %>
+              <%= link_to(
+                recall_bendo_item_path(generic_file.noid),
+                {
+                  class: "#{content_dependent_button_class} btn-info",
+                  data: {
+                    alternate: download_path(generic_file.noid),
+                    toggle: 'tooltip',
+                    placement: 'top'
+                  },
+                  title: t('curate.notification_messages.file_retrieval_tooltip'),
+                  target: '_blank'
+                }
+              ) do %>
+                <i class="icon icon-white icon-time"></i> Begin Download
+              <% end %>
+            <% else %>
+              <%= link_to(
+                download_path(generic_file.noid),
+                {
+                  class: content_dependent_button_class,
+                  target: '_blank'
+                }
+              ) do %>
+                <i class="icon icon-download"></i> Download
+              <% end %>
             <% end %>
+
+            <%= link_to 'View Details', curation_concern_generic_file_path(generic_file), class: 'btn' %>
           <% end %>
 
-          <%= link_to 'View Details', curation_concern_generic_file_path(generic_file), class: 'btn' %>
-        <% end %>
-
-        <%= render partial: '/curation_concern/base/grant_temporary_access', locals: { curation_concern: curation_concern, file: generic_file } %>
-      </div>
-  </article>
-  <% end %>
-
-<% elsif editor %>
-  <h2>Files</h2>
-  <p><em>This <%= curation_concern.human_readable_type.downcase %> has no files associated with it.
-    <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
-  </em></p>
-<% end %>
-<% if editor %>
-  <div class="section-actions">
-    <%= link_to new_curation_concern_generic_file_path(curation_concern), class: 'btn' do %>
-      <i class="icon icon-upload"></i> Attach a File
+          <%= render partial: '/curation_concern/base/grant_temporary_access', locals: { curation_concern: curation_concern, file: generic_file } %>
+        </div>
+    </article>
     <% end %>
-  </div>
+
+  <% elsif editor %>
+    <h2>Files</h2>
+    <p><em>This <%= curation_concern.human_readable_type.downcase %> has no files associated with it.
+      <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
+    </em></p>
+  <% end %>
+  <% if editor %>
+    <div class="section-actions">
+      <%= link_to new_curation_concern_generic_file_path(curation_concern), class: 'btn' do %>
+        <i class="icon icon-upload"></i> Attach a File
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 </section>
-
