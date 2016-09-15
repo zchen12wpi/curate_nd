@@ -6,8 +6,10 @@ RSpec.describe OsfIngestWorker do
   let(:queue) { [] }
   context '.create_osf_job' do
     it 'will enqueue the given archive as a primative and reify' do
-      expect(described_class).to receive(:new).and_call_original
+      expect(queue).to receive(:push).with(kind_of(described_class)).and_call_original
+      expect(described_class).to receive(:new).with(attributes).and_call_original
       described_class.create_osf_job(archive, queue: queue)
+      expect(queue.map(&:attributes)).to eq([attributes])
     end
   end
   context '.default_queue' do
@@ -16,9 +18,9 @@ RSpec.describe OsfIngestWorker do
     it { is_expected.to eq(Sufia.queue) }
   end
 
-  context '#archive' do
-    subject { described_class.new(attributes).archive }
-    it { is_expected.to eq(archive) }
+  context '#attributes' do
+    subject { described_class.new(attributes).attributes }
+    it { is_expected.to eq(attributes) }
   end
 
   context '#run' do

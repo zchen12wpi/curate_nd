@@ -2,7 +2,8 @@
 # For now it just manipulates a class variable
 class OsfIngestWorker
   def self.create_osf_job(archive, queue: default_queue)
-    # Do something with the Admin::IngestOSFArchive object
+    # I prefer to push a primitive object into the queue. It ensures that there are not state
+    # mutations between enqueuing and dequeuing; This is important when dealing with an ActiveRecord object
     worker = new(archive.as_hash)
     queue.push(worker)
   end
@@ -11,12 +12,12 @@ class OsfIngestWorker
     Sufia.queue
   end
 
-  attr_reader :archive
+  attr_reader :attributes
   def initialize(attributes = {})
-    @archive = Admin::IngestOSFArchive.new(attributes)
+    @attributes = attributes
   end
 
   def run
-    BatchIngestor.start_osf_archive_ingest(archive.as_hash)
+    BatchIngestor.start_osf_archive_ingest(attributes)
   end
 end
