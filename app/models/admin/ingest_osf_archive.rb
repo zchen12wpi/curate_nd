@@ -1,6 +1,6 @@
 class Admin::IngestOSFArchive
   include ActiveModel::Model
-  attr_accessor :project_identifier, :administrative_unit, :owner, :affiliation, :status
+  attr_accessor :project_identifier, :administrative_unit, :owner, :affiliation
 
   validates :project_identifier, presence: true
   validates :administrative_unit, presence: true
@@ -17,5 +17,14 @@ class Admin::IngestOSFArchive
       attributes[:project_identifier] = match[1] if match && match.length > 1
     end
     new(attributes)
+  end
+
+  def as_hash
+    {
+      project_identifier: project_identifier,
+      administrative_unit: administrative_unit,
+      owner: owner,
+      affiliation: affiliation
+    }
   end
 end

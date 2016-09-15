@@ -6,11 +6,10 @@ describe Admin::IngestOSFArchive do
       project_identifier: 'id',
       administrative_unit: 'admin unit',
       owner: 'owner',
-      affiliation: 'affiliation',
-      status: 'status'
+      affiliation: 'affiliation'
     }
   end
-  let(:subject){ Admin::IngestOSFArchive.new(attributes) }
+  subject { Admin::IngestOSFArchive.new(attributes) }
 
   [:project_identifier, :administrative_unit, :owner, :affiliation].each do |attribute|
     it "is invalid when #{attribute} is not present" do
@@ -19,7 +18,13 @@ describe Admin::IngestOSFArchive do
     end
   end
 
-  describe '#build_with_id_or_url' do
+  context '#as_hash' do
+    subject { described_class.new(attributes).as_hash }
+    it { is_expected.to be_a(Hash) }
+    it("is expected to equal the input attributes") { is_expected.to eq(attributes) }
+  end
+
+  context '#build_with_id_or_url' do
     let(:subject){ Admin::IngestOSFArchive.build_with_id_or_url(attributes) }
 
     it 'uses the id as is when it does not match a url' do
