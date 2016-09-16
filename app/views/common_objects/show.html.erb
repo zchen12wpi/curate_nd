@@ -1,6 +1,10 @@
 <% content_for :page_title, construct_page_title(curation_concern.title, 'Show') if curation_concern.title %>
 <% content_for :page_header do %>
+<% if curation_concern.kind_of?(GenericFile) %>
+  <h1><%= curation_concern.filename %></h1>
+<% else %>
   <h1><%= richly_formatted_text(curation_concern.to_s) %></h1>
+<% end %>
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
