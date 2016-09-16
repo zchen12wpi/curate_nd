@@ -24,10 +24,7 @@ describe Admin::IngestOSFArchive do
     subject { ingest_osf_archive.as_hash }
     it { is_expected.to be_a(Hash) }
     it "is expected to equal the input attributes along with the project_url" do
-      expect(subject).to eq(attributes.merge(project_url: ingest_osf_archive.project_url))
-    end
-    it "is expected to include the :project_url key" do
-      expect(subject.keys).to include(:project_url)
+      expect(subject).to eq(attributes)
     end
   end
 
