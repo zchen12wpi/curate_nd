@@ -1,3 +1,4 @@
+# NOTE: this is for documentation only. Nothing should inherit from GenericWork
 class GenericWork < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles

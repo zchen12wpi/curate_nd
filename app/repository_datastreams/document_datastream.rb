@@ -1,4 +1,6 @@
-class DocumentDatastream < GenericWorkRdfDatastream
+require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
+
+class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
 
     # @book
@@ -98,6 +100,44 @@ class DocumentDatastream < GenericWorkRdfDatastream
       index.as :stored_searchable
     end
 
+    # all types
+    map.title(in: RDF::DC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.affiliation(to: 'creator#affiliation', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.organization(to: 'creator#organization', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.date_created(:to => 'created', :in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.publisher({in: RDF::DC}) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.subject(in: RDF::DC) do |index|
+      index.type :text
+      index.as :stored_searchable
+    end
+
+    map.source({in: RDF::DC})
+
+    map.language({in: RDF::DC}) do |index|
+      index.as :searchable, :facetable
+    end
+
+    map.requires({in: RDF::DC})
+
     map.abstract(to: 'abstract', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
@@ -128,6 +168,10 @@ class DocumentDatastream < GenericWorkRdfDatastream
     end
 
     map.permission(to: 'rights#permissions', in: RDF::QualifiedDC)
+
+    map.rights(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
 
     map.size(to: 'format#extent', in: RDF::QualifiedDC)
 

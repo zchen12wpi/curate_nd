@@ -1,6 +1,18 @@
-class Document < GenericWork
+class Document < ActiveFedora::Base
+  include CurationConcern::Work
+  include CurationConcern::WithGenericFiles
+  include CurationConcern::WithLinkedResources
+  include CurationConcern::WithLinkedContributors
+  include CurationConcern::WithRelatedWorks
+  include CurationConcern::Embargoable
+  include CurationConcern::WithRecordEditors
+  include CurationConcern::WithRecordViewers
+
+  include ActiveFedora::RegisteredAttributes
 
   has_metadata 'descMetadata', type: DocumentDatastream
+
+  include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   self.human_readable_short_description = 'Deposit any text-based document (other than an article).'
 
@@ -33,6 +45,26 @@ class Document < GenericWork
   def human_readable_type
     self.type.present? ? type.titleize :  self.class.human_readable_type
   end
+
+  # brought in from GenericWork
+  attribute :title,
+      datastream: :descMetadata, multiple: false,
+      label: "Title of your Article",
+      validates: {presence: { message: 'Your work must have a title.' }}
+  attribute :administrative_unit,
+      datastream: :descMetadata, multiple: true,
+      label: "Departments and Units",
+      hint: "Departments and Units that creator belong to."
+  attribute :date_created,               datastream: :descMetadata, multiple: false
+  attribute :publisher,                  datastream: :descMetadata, multiple: true
+  attribute :subject,                    datastream: :descMetadata, multiple: true
+  attribute :source,                     datastream: :descMetadata, multiple: true
+  attribute :language,                   datastream: :descMetadata, multiple: true
+  attribute :requires,                   datastream: :descMetadata, multiple: true
+  attribute :rights,
+    datastream: :descMetadata, multiple: false,
+    default: "All rights reserved",
+    validates: { presence: { message: 'You must select a license for your work.' } }
 
   # @book attributes
   attribute :alternate_title,            datastream: :descMetadata, multiple: true
@@ -99,7 +131,6 @@ class Document < GenericWork
 
   attribute :date_uploaded,              datastream: :descMetadata, multiple: false
   attribute :date_modified,              datastream: :descMetadata, multiple: false
-  attribute :alternate_title,            datastream: :descMetadata, multiple: true
   attribute :creator,                    datastream: :descMetadata, multiple: true
   attribute :contributor,                datastream: :descMetadata, multiple: true
   attribute :contributor_institution,    datastream: :descMetadata, multiple: true
@@ -122,4 +153,6 @@ class Document < GenericWork
                     message: 'must be a valid URL.'
                 }
             }
+  attribute :files, multiple: true, form: {as: :file},
+    hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
 end
