@@ -3,105 +3,17 @@ require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
 
-    # @book
-    map.alternate_title(to: 'alternative', in: RDF::DC) do |index|
+  # base attributes
+    map.type(in: RDF::DC) do |index|
+      index.type :text
       index.as :stored_searchable
     end
 
-    # @book
-    map.author(to: 'creator#author', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
-    # @book
-    map.creator(to: 'creator', in: RDF::DC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
-    # @book
-    map.coauthor(to: 'contributor#author', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
-    # @book
-    map.contributor(to: 'contributor', in: RDF::DC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
-    # @book
-    map.editor(to: 'creator#editor', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.contributing_editor(to: 'contributor#editor', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.artist(to: 'creator#artist', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.contributing_artist(to: 'contributor#artist', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.illustrator(to: 'creator#illustrator', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.contributing_illustrator(to: 'contributor#illustrator', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.photographer(to: 'creator#photographer', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.contributing_photographer(to: 'contributor#photographer', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.copyright_date(to: 'dateCopyrighted', in: RDF::DC)
-
-    # @book
-    map.table_of_contents(to: 'description#table_of_contents', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.extent(in: RDF::DC)
-
-    # @book
-    map.isbn(to: 'identifier#isbn', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.local_identifier(to: 'identifier#local', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # @book
-    map.publication_date(to: 'issued', in: RDF::DC)
-
-    # @book
-    map.edition(to: 'isVersionOf#edition', in: RDF::QualifiedDC)
-
-    # @book
-    map.lc_subject(to: 'subject#lcsh', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    # all types
     map.title(in: RDF::DC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.abstract(to: 'abstract', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
@@ -110,10 +22,6 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
-    map.organization(to: 'creator#organization', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
     end
 
@@ -132,27 +40,12 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.source({in: RDF::DC})
 
+    map.relation(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
     map.language({in: RDF::DC}) do |index|
       index.as :searchable, :facetable
-    end
-
-    map.requires({in: RDF::DC})
-
-    map.abstract(to: 'abstract', in: RDF::DC) do |index|
-      index.as :stored_searchable
-    end
-
-    map.type(in: RDF::DC) do |index|
-      index.type :text
-      index.as :stored_searchable
-    end
-
-    map.repository_name(to: 'contributor#repository', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
-    end
-
-    map.collection_name(to: 'relation#ispartof', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
     end
 
     map.temporal_coverage(to: 'temporal', in: RDF::DC) do |index|
@@ -163,8 +56,28 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    map.size(to: 'format#extent', in: RDF::QualifiedDC)
+
+    map.requires({in: RDF::DC})
+
+    map.repository_name(to: 'contributor#repository', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.collection_name(to: 'relation#ispartof', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
     map.contributor_institution(to: 'contributor#institution', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
+    end
+
+    map.recommended_citation(to: 'bibliographicCitation', in: RDF::DC)
+
+    map.doi(to: 'identifier#doi', in: RDF::QualifiedDC)
+
+    map.identifier(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable,:facetable
     end
 
     map.permission(to: 'rights#permissions', in: RDF::QualifiedDC)
@@ -172,18 +85,6 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     map.rights(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
-
-    map.size(to: 'format#extent', in: RDF::QualifiedDC)
-
-    map.format(to: 'format#mimetype', in: RDF::QualifiedDC)
-
-    map.recommended_citation(to: 'bibliographicCitation', in: RDF::DC)
-
-    map.identifier(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable,:facetable
-    end
-
-    map.doi(to: 'identifier#doi', in: RDF::QualifiedDC)
 
     map.date_uploaded(to: 'dateSubmitted', in: RDF::DC) do |index|
       index.type :date
@@ -195,7 +96,87 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_sortable
     end
 
-    map.relation(:in => RDF::DC) do |index|
+  # "Book" only attributes
+    map.alternate_title(to: 'alternative', in: RDF::DC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.author(to: 'creator#author', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.coauthor(to: 'contributor#author', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.editor(to: 'creator#editor', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.contributing_editor(to: 'contributor#editor', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.artist(to: 'creator#artist', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.contributing_artist(to: 'contributor#artist', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.illustrator(to: 'creator#illustrator', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.contributing_illustrator(to: 'contributor#illustrator', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.photographer(to: 'creator#photographer', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.contributing_photographer(to: 'contributor#photographer', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.creator(to: 'creator', in: RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.contributor(to: 'contributor', in: RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.copyright_date(to: 'dateCopyrighted', in: RDF::DC)
+
+    map.table_of_contents(to: 'description#table_of_contents', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.extent(in: RDF::DC)
+
+    map.isbn(to: 'identifier#isbn', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.local_identifier(to: 'identifier#local', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+    map.publication_date(to: 'issued', in: RDF::DC)
+
+    map.edition(to: 'isVersionOf#edition', in: RDF::QualifiedDC)
+
+    map.lc_subject(to: 'subject#lcsh', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
+  # apparently unused(?)
+    map.format(to: 'format#mimetype', in: RDF::QualifiedDC)
+
+    map.organization(to: 'creator#organization', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
     end
   end
