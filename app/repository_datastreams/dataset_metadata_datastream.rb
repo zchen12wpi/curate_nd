@@ -1,11 +1,33 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
-    map.identifier({to: 'identifier#doi', in: RDF::QualifiedDC}) do |index|
-      index.as :stored_searchable,:facetable
+    map.title(in: RDF::DC) do |index|
+      index.as :stored_searchable
     end
 
-    map.doi({to: 'identifier#doi', in: RDF::QualifiedDC})
+    map.rights(:in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.contributor(in: RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.affiliation(to: 'creator#affiliation', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.organization(to: 'creator#organization', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.date_created(:to => 'created', :in => RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
 
     map.date_uploaded(to: "dateSubmitted", in: RDF::DC) do |index|
       index.type :date
@@ -32,15 +54,40 @@ class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.code_list(to: 'description#code_list', in: RDF::QualifiedDC)
 
-    map.recommended_citation({in: RDF::DC, to: 'bibliographicCitation'})
-
     map.temporal_coverage({in: RDF::DC, to: 'temporal'})
 
     map.spatial_coverage({in: RDF::DC, to: 'spatial'})
 
-    map.contributor_institution(to: 'contributor#institution', in: RDF::QualifiedDC)
+    map.creator(in: RDF::DC) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.identifier({to: 'identifier#doi', in: RDF::QualifiedDC}) do |index|
+      index.as :stored_searchable,:facetable
+    end
+
+    map.doi({to: 'identifier#doi', in: RDF::QualifiedDC})
 
     map.permission(to: 'rights#permissions', in: RDF::QualifiedDC)
+
+    map.publisher({in: RDF::DC}) do |index|
+      index.as :stored_searchable, :facetable
+    end
+
+    map.contributor_institution(to: 'contributor#institution', in: RDF::QualifiedDC)
+
+    map.source({in: RDF::DC})
+
+    map.language({in: RDF::DC}) do |index|
+      index.as :searchable, :facetable
+    end
+
+    map.subject(in: RDF::DC) do |index|
+      index.type :text
+      index.as :stored_searchable
+    end
+
+    map.recommended_citation({in: RDF::DC, to: 'bibliographicCitation'})
 
     map.repository_name(to: "contributor#repository", in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
@@ -50,10 +97,12 @@ class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    map.size({to: "format#extent", in: RDF::QualifiedDC})
+
+    map.requires({in: RDF::DC})
+
     map.relation(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
-
-    map.size({to: "format#extent", in: RDF::QualifiedDC})
   end
 end
