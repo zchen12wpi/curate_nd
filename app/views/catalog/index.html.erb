@@ -14,8 +14,8 @@
     </div>
     <%= link_to 'Clear all', catalog_index_path, class: 'btn btn-danger clear-filters' %>
   </div>
-
   <%= render :partial => 'did_you_mean' %>
+<% end %>
 
   <div class="row sort-and-per-page">
     <%= render 'choose_result_format' %>
@@ -23,16 +23,4 @@
   </div>
 
 <%= render 'document_list' %>
-
 <%= render 'results_pagination' %>
-
-<% else %>
-
-  <%= render 'choose_result_format' %>
-  <%= render 'results_pagination' %>
-
-  <%= render 'document_list' %>
-
-  <%= render 'results_pagination' %>
-
-<% end %>
