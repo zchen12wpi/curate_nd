@@ -8,8 +8,6 @@ class BatchIngestor
 
   attr_reader :job_id, :http, :job_id_builder
 
-  SERVER_URL = 'http://localhost:15000/'.freeze
-
   def self.start_reingest(content_data, options = {})
     job_id_prefix = 'reingest'
     task_function_name = 'start-reingest'
@@ -63,7 +61,7 @@ class BatchIngestor
   private
 
   def default_http
-    uri = URI.parse(SERVER_URL)
+    uri = URI.parse(Figaro.env.batch_ingestor_url)
     Net::HTTP.new(uri.host, uri.port)
   end
 

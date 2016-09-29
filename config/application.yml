@@ -8,6 +8,8 @@
 
 AIRBRAKE_API_KEY: 'fakey-mcfake-face'
 
+BATCH_INGESTOR_URL: 'http://localhost:15000/'
+
 # These are keys for the sandbox
 ORCID_APP_ID: 0000-0002-6683-6607
 ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
