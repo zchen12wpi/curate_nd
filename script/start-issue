@@ -213,6 +213,7 @@ begin
     file.puts "[skip ci]"
   end
   $stdout.puts `cd #{REPOSITORY_PATH} && git commit -F #{path_to_commit_message}`
+  $stdout.puts `cd #{REPOSITORY_PATH} && git push -u`
 ensure
   File.unlink(path_to_commit_message) rescue true
 end
