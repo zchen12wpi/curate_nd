@@ -47,11 +47,10 @@ class OsfArchive < ActiveFedora::Base
     datastream: :descMetadata, multiple: false,
     label: 'Original OSF Project',
     validates: {
-      allow_blank: true,
-        format: {
-        with: URI::regexp(%w(http https ftp)),
-        message: 'must be a valid URL.'
-        }
+      format: {
+      with: URI::regexp(%w(http https ftp)),
+      message: 'must be a valid URL.'
+      }
     }
 
   attribute :subject,
