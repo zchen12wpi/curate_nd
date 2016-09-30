@@ -1,9 +1,5 @@
 class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
-    map.identifier({to: 'identifier#doi', in: RDF::QualifiedDC}) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
     map.creator(to: 'creator', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
@@ -22,16 +18,12 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.language(to: 'language', in: RDF::DC)
 
-    map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable, :facetable
-    end
-
     map.affiliation(to: 'creator#affiliation', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
     end
 
-    map.department(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable
+    map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable, :facetable
     end
 
     map.description(in: RDF::DC) do |index|
@@ -40,7 +32,7 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.date_created(to: 'created', in: RDF::DC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.date_modified(to: 'modified', in: RDF::DC) do |index|

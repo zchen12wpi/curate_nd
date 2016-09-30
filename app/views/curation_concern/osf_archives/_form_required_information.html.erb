@@ -2,8 +2,6 @@
   <legend>Required Information</legend>
 
   <%= f.input :title, input_html: { class: 'input-xlarge' } %>
-
-  <%= f.input :creator, as: :multi_value, required: true, input_html: { class: 'input-xlarge' } %>
   <%= f.input :description,
               as: :text,
               required: true,
@@ -13,4 +11,5 @@
               },
               label: 'Description'
   %>
+  <%= f.input :source,               label: "Original OSF Project", input_html: {class: 'input-xlarge', type:'url'} %>
 </fieldset>
