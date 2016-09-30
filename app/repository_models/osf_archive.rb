@@ -95,6 +95,6 @@ class OsfArchive < ActiveFedora::Base
   attribute :doi,
     datastream: :descMetadata, multiple: true
 
-    alias_method :doi, :identifier
-    alias_method :doi=, :identifier=
+    alias_method :identifier, :doi
+    alias_method :identifier=, :doi=
 end
