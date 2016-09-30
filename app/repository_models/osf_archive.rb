@@ -31,11 +31,6 @@ class OsfArchive < ActiveFedora::Base
 
   has_metadata 'descMetadata', type: OsfArchiveDatastream
 
-  attribute :administrative_unit,
-    datastream: :descMetadata, multiple: true,
-    label: "Departments and Units",
-    hint: "Departments and Units that creator belong to."
-
   attribute :affiliation,
     datastream: :descMetadata,
     hint: "Creator's Affiliation to the Institution.",
@@ -69,10 +64,10 @@ class OsfArchive < ActiveFedora::Base
   attribute :language,
     datastream: :descMetadata, multiple: true
 
-  attribute :department,
+  attribute :administrative_unit,
     datastream: :descMetadata, multiple: true,
-    label: "Department",
-    validates: {presence: { message: 'Department is required.' }}
+    label: "Departments and Units",
+    hint: "Departments and Units that creator belong to."
 
   attribute :description,
     datastream: :descMetadata, multiple: false,
@@ -80,6 +75,8 @@ class OsfArchive < ActiveFedora::Base
 
   attribute :date_created,
     datastream: :descMetadata, multiple: false,
+    default: lambda { Date.today.to_s("%Y-%m-%d") },
+    label: "Date object was created in the OSF",
     validates: {presence: { message: 'Created date is required.' }}
 
   attribute :date_modified,
@@ -92,7 +89,9 @@ class OsfArchive < ActiveFedora::Base
     validates: {presence: { message: 'Archived date is required.' }}
 
   attribute :rights,
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: false,
+    default: "All rights reserved",
+    validates: { presence: { message: 'You must select a license for your work.' } }
 
   attribute :doi,
     datastream: :descMetadata, multiple: true
