@@ -14,6 +14,10 @@ class OsfArchive < ActiveFedora::Base
   class_attribute :human_readable_short_description
   self.human_readable_short_description = "Change me."
 
+  def self.human_readable_type
+    'OSF Archive'
+  end
+
   def set_default_values
     self.type = 'OSF Archive'
   end
