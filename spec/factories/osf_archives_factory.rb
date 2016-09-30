@@ -12,6 +12,7 @@ FactoryGirl.define do
     date_created { Date.today }
     date_modified { Date.today }
     date_archived { Date.today }
+    source { 'https://osf.io/xxxxx/' }
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
 
     before(:create) { |work, evaluator|
