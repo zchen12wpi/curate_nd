@@ -1,4 +1,5 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
 class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
     map.creator(to: 'creator', in: RDF::DC) do |index|
@@ -51,5 +52,7 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
     map.doi(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end
+
+    map.alephIdentifier(:in =>RDF::ND)
   end
 end

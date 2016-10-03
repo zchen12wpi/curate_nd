@@ -144,5 +144,7 @@ class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    map.alephIdentifier(:in =>RDF::ND)
+
   end
 end
