@@ -3,6 +3,7 @@ require 'sufia/models/noid'
 class DownloadsController < ApplicationController
   include Sufia::Noid # for normalize_identifier method
   include Hydra::Controller::DownloadBehavior
+  include Hydra::AccessControls
   prepend_before_filter :normalize_identifier, except: [:index, :new, :create]
   with_themed_layout
 
@@ -85,15 +86,24 @@ class DownloadsController < ApplicationController
   end
 
   def handle_access_denied
-    if current_user
-      error_code = '403'
+    if thumbnail_datastream?
+      asset = load_asset
+      if can_download_thumnail?(asset)
+        send_content (asset)
+      else
+        respond_with_default_thumbnail_image
+        return false
+      end
     else
-      error_code = '401'
-    end
-
-    respond_to do |format|
-      format.json { render json: { status: 'ERROR', code: error_code } }
-      format.html { render "/errors/#{error_code}", status: error_code }
+      if current_user
+        error_code = '403'
+      else
+        error_code = '401'
+      end
+      respond_to do |format|
+        format.json { render json: { status: 'ERROR', code: error_code } }
+        format.html { render "/errors/#{error_code}", status: error_code }
+      end
     end
   end
 
@@ -116,5 +126,19 @@ class DownloadsController < ApplicationController
   def thumbnail_datastream?
     params[:datastream_id] == 'thumbnail'
   end
+
+  def can_download_thumnail?(asset)
+    return nd_only_datastream? && (can? :read, asset.parent.pid)
+  end
+
+  def nd_only_datastream?
+    permissions = current_ability.permissions_doc(params[:id])
+    access_key = ActiveFedora::SolrService.solr_name("read_access_group", Hydra::Datastream::RightsMetadata.indexer)
+    return permissions[access_key].present? && permissions[access_key].first.downcase == "registered"
+  end
+
+
+
+
 
 end

@@ -51,7 +51,7 @@ Click OK to remove #{curation_concern} from #{t('sufia.product_name')}, or Cance
 <% else %>
   <div class="row">
     <div class="work-representation span3">
-      <%= render partial: '/application/thumbnail', locals: { thumbnail: curation_concern, width: 'full', href: download_path(curation_concern.noid) } %>
+      <%= render partial: '/application/thumbnail', locals: { thumbnail: curation_concern, width: 'full', href: download_path(curation_concern.noid), parent: parent } %>
     </div>
     <div class="work-attributes span9">
       <%= render 'attributes', curation_concern: curation_concern, show_characterization:true %>
