@@ -3,10 +3,8 @@ module GenericFileHelper
   def generic_file_title(gf)
     if gf.with_empty_content?
       'File Upload Error'
-    elsif can?(:read, gf)
-      gf.to_s
     else
-      'File'
+      gf.to_s
     end
   end
 
