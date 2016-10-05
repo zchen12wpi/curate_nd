@@ -34,6 +34,7 @@
         <%= f.input :subject, input_html: { class: 'input-xlarge' } %>
         <%= f.input :bibliographic_citation, input_html: { class: 'input-xlarge' } %>
         <%= f.input :language, input_html: { class: 'input-xlarge'} %>
+        <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
         <%= f.input :publisher, input_html: { class: 'input-xlarge' } %>
       </fieldset>
     </div>

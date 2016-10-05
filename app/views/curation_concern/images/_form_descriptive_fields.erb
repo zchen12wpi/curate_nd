@@ -31,6 +31,8 @@
           }
         %>
 
+      <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
+
       <%= f.input :temporal_coverage,
                   as: :multi_value,
                   input_html: { class: 'input-xlarge' }
