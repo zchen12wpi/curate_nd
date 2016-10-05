@@ -109,7 +109,6 @@ class DatasetMetadataDatastream < GenericWorkRdfDatastream
     map.relation(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
-    map.size({to: "format#extent", in: RDF::QualifiedDC})
 
     map.alephIdentifier(:in =>RDF::ND)
   end

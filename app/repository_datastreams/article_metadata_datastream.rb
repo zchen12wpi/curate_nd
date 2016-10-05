@@ -1,5 +1,6 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 require File.expand_path('../../../lib/rdf/bibo', __FILE__)
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
 class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
 

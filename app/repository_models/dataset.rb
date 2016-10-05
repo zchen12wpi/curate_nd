@@ -68,6 +68,12 @@ class Dataset < ActiveFedora::Base
             message: 'must be a valid URL.'
         }
     }
+  attribute :alephIdentifier, multiple: true,
+    datastream: :descMetadata,
+    validates: {
+        allow_blank: true,
+        aleph_identifier: true
+    }
 
   attribute :files, multiple: true, form: {as: :file},
             hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."

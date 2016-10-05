@@ -1,5 +1,6 @@
 # NOTE: this is for documentation only. Nothing should inherit from GenericWork
 class GenericWork < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -57,6 +58,11 @@ class GenericWork < ActiveFedora::Base
                     message: 'must be a valid URL.'
                 }
             }
+  attribute :alephIdentifier,         datastream: :descMetadata, multiple: true,
+    validates: {
+      allow_blank: true,
+      aleph_identifier: true
+    }
 
   attribute :files, multiple: true, form: {as: :file},
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
