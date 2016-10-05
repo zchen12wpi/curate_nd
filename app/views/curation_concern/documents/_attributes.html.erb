@@ -34,6 +34,11 @@
   <%= curation_concern_attribute_to_html(curation_concern, :lc_subject,                 'Subject (Library of Congress)') %>
   <%= curation_concern_attribute_to_html(curation_concern, :source,                     'Source') %>
   <%= curation_concern_attribute_to_html(curation_concern, :language,                   'Language') %>
+  <%= curation_concern_attribute_to_html(
+          curation_concern,
+          :alephIdentifier,
+          "Catalog Record"
+      ) %>
   <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage,          'Temporal Coverage') %>
   <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage,           'Spatial Coverage') %>
   <%= curation_concern_attribute_to_html(curation_concern, :size,                       'Size') %>

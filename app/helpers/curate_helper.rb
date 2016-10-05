@@ -137,6 +137,14 @@ module CurateHelper
   alias __render_tabular_list_item_for_tag __render_tabular_list_item_for_relation
   private :__render_tabular_list_item_for_tag
 
+  def __render_tabular_list_item_for_alephIdentifier(method_name, value, block_formatting, tag, options = {})
+      callout_text = "View the library catalog record for this item"
+      __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
+          %(<a href="http://onesearch.library.nd.edu/NDU:nd_campus:ndu_aleph#{h(value)}" target="_blank"><span class="callout-text">#{callout_text} (#{value})</span></a>)
+        end
+  end
+  private :__render_tabular_list_item_for_alephIdentifier
+
   def __render_tabular_list_item_for_library_collections(method_name, value, block_formatting, tag, options)
     __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
       %(<a href="/show/#{value.noid}">#{h(value.title)}</a>)

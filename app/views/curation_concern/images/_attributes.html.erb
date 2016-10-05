@@ -21,6 +21,13 @@
     <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
     <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
     <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
+    <%= curation_concern_attribute_to_html(
+            curation_concern,
+            :alephIdentifier,
+            "Catalog Record",
+            callout_pattern: /\Ahttp?:\/\/onesearch\.library\.nd\.edu\/NDU\:nd_campus\:ndu_aleph/,
+            callout_text: "View the library catalog record for this item"
+        ) %>
     <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
     <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
     <tr>
