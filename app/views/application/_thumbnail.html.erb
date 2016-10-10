@@ -4,7 +4,7 @@
   href = curation_concern_generic_file_path(thumbnail.noid) if href.blank?
   width = 100 if width.blank?
 
-  if can?(:read, thumbnail) && ( thumbnail.image? || thumbnail.pdf? || thumbnail.video? )
+  if can_view_thumnail?(thumbnail,parent) && ( thumbnail.image? || thumbnail.pdf? || thumbnail.video? )
     src = download_path(thumbnail, {datastream_id: 'thumbnail'})
   else
     src = 'curate/default.png'

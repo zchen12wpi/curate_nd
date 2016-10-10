@@ -56,7 +56,8 @@
               locals: {
                 alternate_href: download_path(generic_file.noid),
                 href: recall_bendo_item_path(generic_file.noid),
-                thumbnail: generic_file
+                thumbnail: generic_file,
+                parent: curation_concern
               }
             ) %>
           <% else %>
@@ -64,7 +65,8 @@
               partial: '/application/thumbnail',
               locals: {
                 href: download_path(generic_file.noid),
-                thumbnail: generic_file
+                thumbnail: generic_file,
+                parent: curation_concern
               }
             ) %>
           <% end %>

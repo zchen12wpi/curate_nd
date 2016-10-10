@@ -23,4 +23,8 @@ module ApplicationHelper
   def include_rich_text_editor?
     (['create', 'edit', 'new'].include? params[:action]) && params[:controller].start_with?('curation_concern')
   end
+
+  def can_view_thumnail?(generic_file, parent)
+    return (can?(:read, generic_file) || (generic_file.authenticated_only_access? && can?(:read, parent)))
+  end
 end
