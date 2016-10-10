@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :document, parent: :generic_work, class: Document do
+  factory :document, class: Document do
     ignore do
       user {FactoryGirl.create(:user)}
     end
