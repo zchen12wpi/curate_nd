@@ -11,7 +11,7 @@ class BatchIngestor
   def self.start_reingest(content_data, options = {})
     job_id_prefix = 'reingest'
     task_function_name = 'start-reingest'
-    content_file_name = 'fedora_pids'
+    content_file_name = 'fedora-pids'
     new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
   end
 
