@@ -30,12 +30,12 @@ api = ShareNotify::API.new
 
 overall_record_count = 0
 error_count = 0
-ARGV.each do |csv_filename| 
+ARGV.each do |csv_filename|
   puts "Reading #{csv_filename}"
   file_record_count = 0
   first_line = true
   columns = {} # mapping from column name -> column index for this csv file
-  CSV.foreach(csv_filename) do |row| 
+  CSV.foreach(csv_filename) do |row|
     if first_line
       # first row is the column labels
       row.each_with_index do |label, index|
@@ -56,7 +56,7 @@ ARGV.each do |csv_filename|
     puts "#{overall_record_count} / #{file_record_count} Pushing #{id}"
     document = ShareNotify::PushDocument.new(id, modified)
     document.title = title
-    contributors.each do |name| 
+    contributors.each do |name|
       document.add_contributor(name: name)
     end
 
@@ -68,7 +68,7 @@ ARGV.each do |csv_filename|
     end
 
     response = api.post(document.to_share.to_json)
-    if response.code != 201
+    if response.code != 202
       puts "Received code #{response.code}"
       puts response.body
       exit 1
