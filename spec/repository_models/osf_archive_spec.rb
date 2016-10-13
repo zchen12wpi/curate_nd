@@ -15,14 +15,11 @@ describe OsfArchive do
   describe 'new archive' do
     let(:archive) {OsfArchive.new}
 
-    it 'type is stamped OSF Archive' do
-      expect(archive.type).to eq('OSF Archive')
-    end
-
-    it "should set initialize dates on create" do
+    it "should set initialize dates and stamp type on create" do
       archive.valid?
       expect(archive.date_modified).to eq(Date.today)
       expect(archive.date_archived).to eq(Date.today)
+      expect(archive.type).to eq('OSF Archive')
     end
   end
 end
