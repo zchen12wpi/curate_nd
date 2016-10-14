@@ -1,0 +1,3 @@
+<% if curation_concern.title %>
+  <meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+<% end %>

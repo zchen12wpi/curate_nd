@@ -1,4 +1,9 @@
 <% content_for :page_title, construct_page_title(curation_concern.title, 'Show') if curation_concern.title %>
+
+<% content_for :google_scholar_metadata_tags do %>
+  <%= render "curation_concern/#{curation_concern.class.model_name.plural}/metadata_tags", curation_concern: curation_concern %>
+<% end %>
+
 <% content_for :page_header do %>
 <% if curation_concern.kind_of?(GenericFile) %>
   <h1><%= curation_concern.filename %></h1>
