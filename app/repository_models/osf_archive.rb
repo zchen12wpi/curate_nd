@@ -7,8 +7,6 @@ class OsfArchive < ActiveFedora::Base
   include ActiveFedora::RegisteredAttributes
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
-  after_initialize :set_default_values
-
   before_validation :set_initial_values, on: :create
 
   class_attribute :human_readable_short_description
@@ -18,14 +16,10 @@ class OsfArchive < ActiveFedora::Base
     'OSF Archive'
   end
 
-  def set_default_values
-    self.type = 'OSF Archive'
-  end
-  private :set_default_values
-
   def set_initial_values
     self.date_modified = Date.today
     self.date_archived = Date.today
+    self.type = human_readable_type
   end
   private :set_initial_values
 
