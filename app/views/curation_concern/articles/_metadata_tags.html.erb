@@ -1,3 +1,40 @@
-<% if curation_concern.title %>
-  <meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+
+<!-- metadata tags for Google Scholar -->
+<meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+<% curation_concern.creator.each do |name| %>
+  <meta name="DC.creator" content="<%= StringSanitizer.new(name).sanitize %>">
+<% end %>
+<% if curation_concern.publication_date.present? %>
+  <meta name="prism.publicationDate" content="<%= StringSanitizer.new(curation_concern.publication_date).sanitize %>">
+<% end %>
+<% if curation_concern.is_part_of.present? %>
+  <meta name="citation_journal_title" content="<%= StringSanitizer.new(curation_concern.is_part_of).sanitize %>">
+<% end %>
+<% if curation_concern.issn.present? %>
+  <meta name="prism.issn" content="<%= StringSanitizer.new(curation_concern.issn).sanitize %>">
+<% end %>
+<% if curation_concern.eIssn.present? %>
+  <meta name="prism.eIssn" content="<%= StringSanitizer.new(curation_concern.eIssn).sanitize %>">
+<% end %>
+<% if curation_concern.isbn.present? %>
+  <meta name="prism.isbn" content="<%= StringSanitizer.new(curation_concern.isbn).sanitize %>">
+<% end %>
+<% if curation_concern.volume.present? %>
+  <meta name="citation_volume" content="<%= StringSanitizer.new(curation_concern.volume).sanitize %>">
+<% end %>
+<% if curation_concern.issue.present? %>
+  <meta name="citation_issue" content="<%= StringSanitizer.new(curation_concern.issue).sanitize %>">
+<% end %>
+<% if curation_concern.page_start.present? %>
+  <meta name="prism.startingPage" content="<%= StringSanitizer.new(curation_concern.page_start).sanitize %>">
+<% end %>
+<% if curation_concern.page_end.present? %>
+  <meta name="prism.endingPage" content="<%= StringSanitizer.new(curation_concern.page_end).sanitize %>">
+<% end %>
+<% if curation_concern.generic_files.present? %>
+  <% curation_concern.generic_files.each do |file| %>
+    <% if file.filename.include?('pdf') %>
+      <meta name="citation_pdf_url" content="<%= download_url(file).to_s %>">
+    <% end %>
+  <% end %>
 <% end %>

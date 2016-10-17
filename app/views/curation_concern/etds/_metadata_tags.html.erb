@@ -1,3 +1,17 @@
-<% if curation_concern.title %>
-  <meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+
+<!-- metadata tags for Google Scholar -->
+<meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+<% curation_concern.creator.each do |name| %>
+  <meta name="DC.creator" content="<%= StringSanitizer.new(name).sanitize %>">
+<% end %>
+<% if curation_concern.publication_date.present? %>
+  <meta name="prism.publicationDate" content="<%= StringSanitizer.new(curation_concern.publication_date).sanitize %>">
+<% end %>
+<meta name="citation_dissertation_institution" content="University Of Notre Dame">
+<% if curation_concern.generic_files.present? %>
+  <% curation_concern.generic_files.each do |file| %>
+    <% if file.filename.include?('pdf') %>
+      <meta name="citation_pdf_url" content="<%= download_url(file).to_s %>">
+    <% end %>
+  <% end %>
 <% end %>
