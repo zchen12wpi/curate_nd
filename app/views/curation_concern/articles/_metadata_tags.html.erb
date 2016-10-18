@@ -1,35 +1,35 @@
 
 <!-- metadata tags for Google Scholar -->
-<meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+<meta name="DC.title" content="<%= curation_concern.title %>">
 <% curation_concern.creator.each do |name| %>
-  <meta name="DC.creator" content="<%= StringSanitizer.new(name).sanitize %>">
+  <meta name="DC.creator" content="<%= name %>">
 <% end %>
 <% if curation_concern.publication_date.present? %>
-  <meta name="prism.publicationDate" content="<%= StringSanitizer.new(curation_concern.publication_date).sanitize %>">
+  <meta name="prism.publicationDate" content="<%= curation_concern.publication_date %>">
 <% end %>
 <% if curation_concern.is_part_of.present? %>
-  <meta name="citation_journal_title" content="<%= StringSanitizer.new(curation_concern.is_part_of).sanitize %>">
+  <meta name="citation_journal_title" content="<%= curation_concern.is_part_of %>">
 <% end %>
 <% if curation_concern.issn.present? %>
-  <meta name="prism.issn" content="<%= StringSanitizer.new(curation_concern.issn).sanitize %>">
+  <meta name="prism.issn" content="<%= curation_concern.issn %>">
 <% end %>
 <% if curation_concern.eIssn.present? %>
-  <meta name="prism.eIssn" content="<%= StringSanitizer.new(curation_concern.eIssn).sanitize %>">
+  <meta name="prism.eIssn" content="<%= curation_concern.eIssn %>">
 <% end %>
 <% if curation_concern.isbn.present? %>
-  <meta name="prism.isbn" content="<%= StringSanitizer.new(curation_concern.isbn).sanitize %>">
+  <meta name="prism.isbn" content="<%= curation_concern.isbn %>">
 <% end %>
 <% if curation_concern.volume.present? %>
-  <meta name="citation_volume" content="<%= StringSanitizer.new(curation_concern.volume).sanitize %>">
+  <meta name="citation_volume" content="<%= curation_concern.volume %>">
 <% end %>
 <% if curation_concern.issue.present? %>
-  <meta name="citation_issue" content="<%= StringSanitizer.new(curation_concern.issue).sanitize %>">
+  <meta name="citation_issue" content="<%= curation_concern.issue %>">
 <% end %>
 <% if curation_concern.page_start.present? %>
-  <meta name="prism.startingPage" content="<%= StringSanitizer.new(curation_concern.page_start).sanitize %>">
+  <meta name="prism.startingPage" content="<%= curation_concern.page_start %>">
 <% end %>
 <% if curation_concern.page_end.present? %>
-  <meta name="prism.endingPage" content="<%= StringSanitizer.new(curation_concern.page_end).sanitize %>">
+  <meta name="prism.endingPage" content="<%= curation_concern.page_end %>">
 <% end %>
 <% if curation_concern.generic_files.present? %>
   <% curation_concern.generic_files.each do |file| %>

@@ -1,11 +1,11 @@
 
 <!-- metadata tags for Google Scholar -->
-<meta name="DC.title" content="<%= StringSanitizer.new(curation_concern.title).sanitize %>">
+<meta name="DC.title" content="<%= curation_concern.title %>">
 <% curation_concern.creator.each do |name| %>
-  <meta name="DC.creator" content="<%= StringSanitizer.new(name).sanitize %>">
+  <meta name="DC.creator" content="<%= name %>">
 <% end %>
 <% if curation_concern.publication_date.present? %>
-  <meta name="prism.publicationDate" content="<%= StringSanitizer.new(curation_concern.publication_date).sanitize %>">
+  <meta name="prism.publicationDate" content="<%= curation_concern.publication_date %>">
 <% end %>
 <meta name="citation_dissertation_institution" content="University Of Notre Dame">
 <% if curation_concern.generic_files.present? %>
