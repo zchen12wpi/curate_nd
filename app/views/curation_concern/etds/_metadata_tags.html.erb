@@ -4,8 +4,8 @@
 <% curation_concern.creator.each do |name| %>
   <meta name="DC.creator" content="<%= name %>">
 <% end %>
-<% if curation_concern.publication_date.present? %>
-  <meta name="prism.publicationDate" content="<%= curation_concern.publication_date %>">
+<% if curation_concern.date.present? %>
+  <meta name="prism.publicationDate" content="<%= curation_concern.date %>">
 <% end %>
 <meta name="citation_dissertation_institution" content="University Of Notre Dame">
 <% if curation_concern.generic_files.present? %>
