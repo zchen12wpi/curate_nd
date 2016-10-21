@@ -8,6 +8,7 @@
   <tbody>
   <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
   <%= curation_concern_attribute_to_html(curation_concern, :source, 'Source') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :relation, 'Related Resources') %>
   <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
   <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   <tr>
