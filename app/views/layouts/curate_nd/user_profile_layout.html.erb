@@ -4,7 +4,7 @@
 <% content_for :left_column do %>
   <ul class="nav nav-pills nav-stacked">
     <%= content_tag('li', class: (controller_name == 'users' && action_name == 'edit' ? 'active' : '')) do %>
-      <%= link_to "Edit My Profile", edit_user_path(current_user.id) %>
+      <%= link_to "Edit My Profile", edit_user_registration_path %>
     <% end %>
     <%= content_tag('li', class: (request.path =~ /^\/?orcid/ || action_name == 'orcid_settings' ? 'active' : '')) do %>
       <%= link_to "ORCID Settings", orcid_settings_path %>
