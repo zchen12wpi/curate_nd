@@ -1,6 +1,6 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 require File.expand_path('../../../lib/rdf/nd', __FILE__)
-class DatasetMetadataDatastream < GenericWorkRdfDatastream
+class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
     map.title(in: RDF::DC) do |index|
       index.as :stored_searchable
