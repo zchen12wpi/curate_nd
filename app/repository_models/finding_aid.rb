@@ -1,6 +1,7 @@
 require 'curation_concern/model'
 require 'active_fedora/registered_attributes'
 class FindingAid < ActiveFedora::Base
+  include ActiveModel::Validations
   include ActiveFedora::RegisteredAttributes
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
@@ -48,6 +49,12 @@ class FindingAid < ActiveFedora::Base
     datastream: :descMetadata, multiple: true
   attribute :relation,
     datastream: :descMetadata, multiple: true
+  attribute :alephIdentifier, datastream: :descMetadata, multiple: true,
+    validates: {
+      allow_blank: true,
+      aleph_identifier: true
+    }
+
 
   private
   def set_visibility_to_open_access

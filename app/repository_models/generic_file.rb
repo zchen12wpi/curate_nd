@@ -2,6 +2,7 @@ require File.expand_path("../curation_concern/embargoable", __FILE__)
 require File.expand_path("../../repository_datastreams/file_content_datastream", __FILE__)
 
 class GenericFile < ActiveFedora::Base
+  include ActiveModel::Validations
   include Sufia::ModelMethods
   include Hydra::AccessControls::Permissions
   include CurationConcern::Embargoable # overrides visibility, so must come after Permissions
@@ -18,7 +19,7 @@ class GenericFile < ActiveFedora::Base
   belongs_to :batch, property: :is_part_of, class_name: 'ActiveFedora::Base'
   before_destroy :check_and_clear_parent_representative
 
-  has_metadata "descMetadata", type: GenericFileRdfDatastream
+  has_metadata "descMetadata", type: Sufia::GenericFileRdfDatastream
   has_metadata 'properties', type: Curate::PropertiesDatastream
   has_file_datastream "content", type: FileContentDatastream
   has_file_datastream "thumbnail"
@@ -26,6 +27,11 @@ class GenericFile < ActiveFedora::Base
   has_attributes :owner, :depositor, datastream: :properties, multiple: false
   has_attributes :date_uploaded, :date_modified, datastream: :descMetadata, multiple: false
   has_attributes :creator, :title, datastream: :descMetadata, multiple: true
+  has_attributes :alephIdentifier, datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        aleph_identifier: true
+    }
 
   class_attribute :human_readable_short_description
   self.human_readable_short_description = "An arbitrary single file."

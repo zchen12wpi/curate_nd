@@ -1,4 +1,5 @@
 class Etd < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -149,6 +150,12 @@ class Etd < ActiveFedora::Base
               with: URI::regexp(%w(http https ftp)),
               message: 'must be a valid URL.'
           }
+      }
+    attribute :alephIdentifier,
+      datastream: :descMetadata, multiple: true,
+      validates: {
+          allow_blank: true,
+          aleph_identifier: true
       }
   end
 

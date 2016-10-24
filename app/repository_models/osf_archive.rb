@@ -1,4 +1,5 @@
 class OsfArchive < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::Embargoable
@@ -89,6 +90,13 @@ class OsfArchive < ActiveFedora::Base
   attribute :doi,
     datastream: :descMetadata, multiple: true
 
-    alias_method :identifier, :doi
-    alias_method :identifier=, :doi=
+  attribute :alephIdentifier, datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        aleph_identifier: true
+    }
+
+  alias_method :identifier, :doi
+  alias_method :identifier=, :doi=
+
 end

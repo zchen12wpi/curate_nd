@@ -1,5 +1,6 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 require File.expand_path('../../../lib/rdf/bibo', __FILE__)
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
 class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
 
@@ -141,6 +142,10 @@ class ArticleMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.type(in: RDF::DC) do |index|
       index.type :text
+      index.as :stored_searchable
+    end
+
+    map.alephIdentifier(:in =>RDF::ND) do |index|
       index.as :stored_searchable
     end
 

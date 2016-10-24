@@ -24,6 +24,11 @@
   <%= curation_concern_attribute_to_html(curation_concern, :date_issued,  'Date Issued') %>
   <%= curation_concern_attribute_to_html(curation_concern, :publisher,  'Publisher'  ) %>
   <%= curation_concern_attribute_to_html(curation_concern, :rights_holder,   'Assignee') %>
+  <%= curation_concern_attribute_to_html(
+          curation_concern,
+          :alephIdentifier,
+          "Catalog Record"
+      ) %>
 
   <tr>
     <th>Access Rights</th>

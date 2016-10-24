@@ -13,6 +13,7 @@
         <%= f.input :creator, input_html: { class: 'input-xlarge', placeholder: 'George Washington' }, required: true %>
         <%= f.input :source, input_html: { class: 'input-xlarge'}, required: false %>
         <%= f.input :relation, as: :multi_value, label: "Related Resource(s)", input_html: {class: 'input-xlarge', type: 'url'} %>
+        <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
         <%= f.input :abstract, input_html: { class: 'input-xxxlarge rich-textarea-js', rows: '9' }, as: :text, required: true %>
         <%= f.hidden_field :visibility, value: 'open' %>
       </fieldset>

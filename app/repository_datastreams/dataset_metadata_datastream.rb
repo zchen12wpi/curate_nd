@@ -1,5 +1,6 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
-class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
+class DatasetMetadataDatastream < GenericWorkRdfDatastream
   map_predicates do |map|
     map.title(in: RDF::DC) do |index|
       index.as :stored_searchable
@@ -103,6 +104,10 @@ class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.relation(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
+    end
+
+    map.alephIdentifier(:in =>RDF::ND) do |index|
+      index.as :stored_searchable
     end
   end
 end

@@ -1,4 +1,6 @@
+
 class Article < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -157,6 +159,13 @@ class Article < ActiveFedora::Base
 
   attribute :size,
     datastream: :descMetadata, multiple: true
+
+  attribute :alephIdentifier, multiple: true,
+    datastream: :descMetadata,
+    validates: {
+        allow_blank: true,
+        aleph_identifier: true
+    }
 
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",

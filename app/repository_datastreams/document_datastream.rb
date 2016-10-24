@@ -179,5 +179,9 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     map.organization(to: 'creator#organization', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
     end
+
+    map.alephIdentifier(:in =>RDF::ND) do |index|
+      index.as :stored_searchable
+    end
   end
 end

@@ -150,4 +150,9 @@ class Document < ActiveFedora::Base
   attribute :organization,               datastream: :descMetadata, multiple: true,
             label: 'School & Department',
             hint: 'School and Department that creator belong to.'
+  attribute :alephIdentifier,         datastream: :descMetadata, multiple: true,
+            validates: {
+                allow_blank: true,
+                aleph_identifier: true
+            }
 end

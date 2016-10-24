@@ -1,6 +1,7 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 require File.expand_path('../../../lib/rdf/etd_ms', __FILE__)
 require File.expand_path('../../../lib/rdf/relators', __FILE__)
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
 class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
 
   map_predicates do |map|
@@ -106,6 +107,10 @@ class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
 
     map.relation(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
+    end
+
+    map.alephIdentifier(:in =>RDF::ND) do |index|
+      index.as :stored_searchable
     end
   end
 

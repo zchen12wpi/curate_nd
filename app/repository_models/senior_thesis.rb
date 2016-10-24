@@ -5,6 +5,7 @@ require 'active_fedora/registered_attributes'
 
 class SeniorThesis < ActiveFedora::Base
   include ActiveFedora::RegisteredAttributes
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -119,6 +120,12 @@ class SeniorThesis < ActiveFedora::Base
             with: URI::regexp(%w(http https ftp)),
             message: 'must be a valid URL.'
         }
+    }
+  attribute :alephIdentifier,
+    datastream: :descMetadata, multiple: true,
+    validates: {
+        allow_blank: true,
+        aleph_identifier: true
     }
 
   attribute :files,

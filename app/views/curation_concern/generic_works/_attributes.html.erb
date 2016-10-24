@@ -13,6 +13,11 @@
   <%= curation_concern_attribute_to_html(curation_concern, :bibliographic_citation, "Bibliographic Citation") %>
   <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
   <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
+  <%= curation_concern_attribute_to_html(
+          curation_concern,
+          :alephIdentifier,
+          "Catalog Record"
+      ) %>
   <tr>
     <th>Access Rights</th>
     <td>
