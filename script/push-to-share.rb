@@ -2,6 +2,11 @@
 
 # Push the data in a CSV file to the SHARE push gateway.
 # Parameters can be configured using environment variables.
+#
+# Sample usage is
+#
+#     env SHARE_HOST=https://share.osf.io SHARE_TOKEN=1234567890 ./push-to-share.rb data-file.csv
+#
 
 require 'csv'
 require 'share_notify'
