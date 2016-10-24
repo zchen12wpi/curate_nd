@@ -1,3 +1,22 @@
+<% content_for :google_scholar_metadata_tags do %>
+  <!-- metadata tags for Google Scholar -->
+  <meta name="DC.title" content="<%= curation_concern.title %>">
+  <% curation_concern.creator.each do |name| %>
+    <meta name="DC.creator" content="<%= name %>">
+  <% end %>
+  <% if curation_concern.date.present? %>
+    <meta name="prism.publicationDate" content="<%= curation_concern.date %>">
+  <% end %>
+  <meta name="citation_dissertation_institution" content="University Of Notre Dame">
+  <% if curation_concern.generic_files.present? %>
+    <% curation_concern.generic_files.each do |file| %>
+      <% if file.filename.include?('pdf') %>
+        <meta name="citation_pdf_url" content="<%= download_url(file).to_s %>">
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract, 'Abstract') %>
 
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
