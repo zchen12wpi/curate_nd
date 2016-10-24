@@ -56,6 +56,8 @@ class FindingAidRdfDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
-    map.alephIdentifier(:in =>RDF::ND)
+    map.alephIdentifier(:in =>RDF::ND)  do |index|
+      index.as :stored_searchable
+    end
   end
 end

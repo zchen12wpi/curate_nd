@@ -92,7 +92,9 @@ class SeniorThesisRdfDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.part(:to => "hasPart", in: RDF::DC)
 
-    map.alephIdentifier(:in =>RDF::ND)
+    map.alephIdentifier(:in =>RDF::ND) do |index|
+      index.as :stored_searchable
+    end
 
   end
 end

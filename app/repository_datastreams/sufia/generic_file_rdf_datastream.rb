@@ -52,7 +52,9 @@ module Sufia
         index.as :stored_searchable, :facetable
       end
       map.related_url(:to => "seeAlso", :in => RDF::RDFS)
-      map.alephIdentifier(:in =>RDF::ND)
+      map.alephIdentifier(:in =>RDF::ND)  do |index|
+        index.as :stored_searchable
+      end
     end
     begin
       LocalAuthority.register_vocabulary(self, "subject", "lc_subjects")
