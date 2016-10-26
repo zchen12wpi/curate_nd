@@ -1,0 +1,51 @@
+<%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract, 'Abstract') %>
+
+<table class="table table-striped <%= dom_class(curation_concern) %> attributes">
+  <caption class="table-heading"><h2>Attributes</h2></caption>
+  <thead>
+    <tr><th>Attribute Name</th><th>Values</th></tr>
+  </thead>
+  <tbody>
+    <%= curation_concern_attribute_to_html(curation_concern, :alternate_title, 'Alternate Title') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :creator, 'Creator') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :contributor, 'Contributor') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :is_part_of, 'Journal or Work Title') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :volume, 'Volume') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :issue, 'Issue') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :page_start, 'First Page') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :page_end, 'Last Page') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :num_pages, 'Number of Pages') %>
+    <%= curation_concern_attribute_to_html(curation_concern, :issn, "ISSN") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :eIssn, "eISSN") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :isbn, "ISBN") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :publication_date, "Publication Date") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :publisher, "Publisher") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :date_created, "Date Created") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation, "Bibliographic Citation") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :source, "Source") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :relation, "Related Resource(s)") %>
+    <%= curation_concern_attribute_to_html(
+            curation_concern,
+            :alephIdentifier,
+            "Catalog Record"
+        ) %>
+    <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
+    <tr>
+      <th>Access Rights</th>
+      <td>
+        <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
+      </td>
+    </tr>
+    <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :rights, "Content License") %>
+    <% if curation_concern.type_of_license == "Independently Licensed" %>
+      <%= curation_concern_attribute_to_html(curation_concern, :license, "License Agreement") %>
+    <% end %>
+    <%= curation_concern_attribute_to_html(curation_concern, :content_format, "Format Type") %>
+  </tbody>
+</table>
