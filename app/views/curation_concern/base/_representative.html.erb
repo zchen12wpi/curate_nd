@@ -1,0 +1,39 @@
+<% if work.representative.present? %>
+
+  <% if curation_concern.class == GenericFile %>
+    <% representative_type = curation_concern.parent.class %>
+  <% else %>
+    <% representative_type = curation_concern.class %>
+  <% end %>
+
+  <% if representative_type == Image %>
+    <div class="row">
+      <div class="work-representation span12">
+        <%= render partial: 'curation_concern/base/image_viewer', locals: { work: curation_concern } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="work-attributes span12">
+        <%= details %>
+      </div>
+    </div>
+  <% elsif representative_type == Audio %>
+    <div class="row">
+      <div class="work-representation span12">
+        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
+      </div>
+      <div class="work-attributes span12">
+        <%= details %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="work-representation span3">
+        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
+      </div>
+      <div class="work-attributes span9">
+        <%= details %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

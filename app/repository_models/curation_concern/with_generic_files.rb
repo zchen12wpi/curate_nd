@@ -15,5 +15,9 @@ module CurationConcern
       generic_files.any? {|gf| gf.with_empty_content?}
     end
 
+  # for generic file submission form... "xxxxx is preferred"
+    def preferred_file_format
+      'A PDF copy'
+    end
   end
 end

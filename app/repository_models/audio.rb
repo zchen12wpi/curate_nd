@@ -1,6 +1,4 @@
-
-class Ebucore < ActiveFedora::Base
-  include ActiveModel::Validations
+class Audio < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -12,13 +10,16 @@ class Ebucore < ActiveFedora::Base
 
   include ActiveFedora::RegisteredAttributes
 
-
   has_metadata "descMetadata", type: AudioDatastream
 
   class_attribute :human_readable_short_description
   self.human_readable_short_description = "Deposit an audio recording."
 
   self.indefinite_article = 'an'
+  # we have not specified a preferred format
+  def preferred_file_format
+    ''
+  end
 
   attribute :title,
     datastream: :descMetadata, multiple: false,
@@ -67,9 +68,9 @@ class Ebucore < ActiveFedora::Base
     datastream: :descMetadata, multiple: true,
     hint: "Information about the specific location from which an audio track derives, such as “Disc 2, Track 13.” Information about the larger work should be included in “Part of.”"
   attribute :date_created,
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: false
   attribute :publisher,
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: false
   attribute :publication_date,
     datastream: :descMetadata, multiple: false,
     validates: {
@@ -108,6 +109,10 @@ class Ebucore < ActiveFedora::Base
   attribute :affiliation,
     datastream: :descMetadata, multiple: false,
     hint: "Creator's Affiliation to the Institution."
+  attribute :date_uploaded,
+    datastream: :descMetadata, multiple: false
+  attribute :date_modified,
+    datastream: :descMetadata, multiple: false
   attribute :rights,
       datastream: :descMetadata, multiple: false,
       default: "All rights reserved",
