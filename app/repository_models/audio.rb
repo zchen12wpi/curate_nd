@@ -7,8 +7,8 @@ class Audio < ActiveFedora::Base
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
-
   include ActiveFedora::RegisteredAttributes
+  include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   has_metadata "descMetadata", type: AudioDatastream
 
@@ -113,6 +113,8 @@ class Audio < ActiveFedora::Base
     datastream: :descMetadata, multiple: false
   attribute :date_modified,
     datastream: :descMetadata, multiple: false
+  attribute :doi,
+    datastream: :descMetadata, multiple: true
   attribute :rights,
       datastream: :descMetadata, multiple: false,
       default: "All rights reserved",
@@ -121,4 +123,6 @@ class Audio < ActiveFedora::Base
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
 
+  alias_method :identifier, :doi
+  alias_method :identifier=, :doi=
 end

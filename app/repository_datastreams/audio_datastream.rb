@@ -105,7 +105,7 @@ class AudioDatastream < ActiveFedora::NtriplesRDFDatastream
     map.alephIdentifier(:in =>RDF::ND) do |index|
       index.as :stored_searchable
     end
-    
+
     map.date_uploaded(to: "dateSubmitted", in: RDF::DC) do |index|
       index.type :date
       index.as :stored_sortable
@@ -114,6 +114,10 @@ class AudioDatastream < ActiveFedora::NtriplesRDFDatastream
     map.date_modified(to: "modified", in: RDF::DC) do |index|
       index.type :date
       index.as :stored_sortable
+    end
+    
+    map.doi(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
     end
 
     map.affiliation(to: 'creator#affiliation', in: RDF::QualifiedDC) do |index|
