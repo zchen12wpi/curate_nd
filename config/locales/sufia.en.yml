@@ -121,7 +121,8 @@ en:
         interviewer: 'An entity responsible for the creation of a resource by acting as interviewer or host.'
         interviewee: 'An entity responsible for elements of the resource by responding to an interviewer or host.'
         producer: 'The producer of a work.'
-        duration: "The resource's duration formatted as HH:MM:SS. For purposes of standardization, please include hours as “00” even if the resource is less than an hour long."
+        duration: "The resource's duration formatted as HH:MM:SS. For purposes of standardization, please include hours as '00' even if the resource is less than an hour long."
+        original_media_source: 'Information about the specific location from which an audio track derives, such as "Disc 2, Track 13." Information about the larger work should be included in "Part of."'
         genre: 'The genre(s) to which the object belongs.'
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
