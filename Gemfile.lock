@@ -321,6 +321,9 @@ GEM
       rest-client (~> 1.6.7)
     i18n (0.7.0)
     ice_nine (0.11.1)
+    jbuilder (2.6.0)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     jettywrapper (2.0.3)
       activesupport (>= 3.0.0)
       childprocess
@@ -719,6 +722,7 @@ DEPENDENCIES
   hydra-derivatives (~> 0.0.7)
   hydra-file_characterization (>= 0.2.3)
   hydra-remote_identifier (~> 0.6, >= 0.6.7)
+  jbuilder
   jettywrapper
   jquery-rails
   jshintrb
