@@ -2,6 +2,8 @@
 # deposit. Options are "all", "nobody", or one or more group PIDs.
 Article:
   open: all
+Audio:
+  open: all
 Dataset:
   open: all
 Document:

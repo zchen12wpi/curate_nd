@@ -47,27 +47,7 @@
 <% end %>
 
 <% if curation_concern.representative.present? %>
-  <% if curation_concern.is_a? Image %>
-    <div class="row">
-      <div class="work-representation span12">
-        <%= render partial: 'curation_concern/base/image_viewer', locals: { work: curation_concern } %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="work-attributes span12">
-        <%= details %>
-      </div>
-    </div>
-  <% else %>
-    <div class="row">
-      <div class="work-representation span3">
-        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
-      </div>
-      <div class="work-attributes span9">
-        <%= details %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'curation_concern/base/representative', locals: { work: curation_concern, details: details } %>
 <% else %>
   <div class="work-attributes">
     <%= details %>

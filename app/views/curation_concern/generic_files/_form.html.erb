@@ -5,7 +5,9 @@
         <%= file_size_warning %>
         <legend>
           Attach Your File
-          <small>A PDF copy is preferred.</small>
+          <% if parent.preferred_file_format.present? %>
+            <small><%= parent.preferred_file_format %> is preferred.</small>
+          <% end %>
         </legend>
           <%= f.input :file,
                       as: :file,
