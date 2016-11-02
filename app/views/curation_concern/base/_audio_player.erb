@@ -1,0 +1,13 @@
+<% if can?(:read, generic_file) %>
+  <% if generic_file.audio? %>
+    <audio controls="controls" class="video-js vjs-default-skin" data-setup="{}" preload="auto">
+      <source src="<%= download_path(generic_file, datastream_id: 'ogg') %>" type="audio/ogg" />
+      <source src="<%= download_path(generic_file, datastream_id: 'mp3') %>" type="audio/mpeg" />
+    </audio>
+    <div>
+      <p>
+        If the audio doesn't play, please try another browser or download the file below.
+      </p>
+    </div>
+  <% end %>
+<% end %>

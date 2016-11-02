@@ -1,24 +1,18 @@
 <% if work.representative.present? %>
+
   <% begin %>
-    <% generic_file = GenericFile.load_instance_from_solr(work.representative) %>
-    <% if can?(:read, generic_file) %>
-      <% if generic_file.image? %>
+    <% if work.try(:generic_files) || work.class == GenericFile %>
+      <% if can?(:read, generic_file) && generic_file.image? %>
         <a href="<%= download_path(work.representative) %>" class="colorbox-image">
           <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
         </a>
-      <% elsif generic_file.pdf? || generic_file.video? %>
+      <% elsif can?(:read, generic_file) && (generic_file.pdf? || generic_file.video?) %>
         <a href="<%=download_path(work.representative) %>" target = "_blank">
           <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
         </a>
-      <% elsif generic_file.audio? %>
-        <audio controls="controls" class="video-js vjs-default-skin" data-setup="{}" preload="auto">
-          <source src="<%= download_path(generic_file, datastream_id: 'ogg') %>" type="audio/ogg" />
-          <source src="<%= download_path(generic_file, datastream_id: 'mp3') %>" type="audio/mpeg" />
-          Your browser does not support the audio tag.
-        </audio>
       <% else %>
         <a href="<%= download_path(work.representative) %>" target = "_blank">
-          <%= image_tag 'curate/default.png', class: "canonical-image" %>
+          <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
         </a>
       <% end %>
     <% else %>
@@ -26,9 +20,11 @@
         <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
       </a>
     <% end %>
+
   <% rescue ActiveFedora::ObjectNotFoundError %>
     <%= image_tag 'curate/default.png', class: 'canonical-image' %>
   <% end %>
+
 <% else %>
   <%= image_tag 'curate/default.png', class: "canonical-image" %>
 <% end %>
