@@ -10,6 +10,8 @@ end
 describe 'create DOIs feature', FeatureSupport.options do
   Curate.configuration.registered_curation_concern_types.each do |curation_concern_class_name|
     if  Hydra::RemoteIdentifier.registered?(:doi, curation_concern_class_name.constantize)
+      # This is excluded as we don't yet create an OSF Archive via the Actor
+      next if curation_concern_class_name.constantize == OsfArchive
       context "for #{curation_concern_class_name}" do
         CurationConcern::FactoryHelpers.load_factories_for(self, curation_concern_class_name.constantize)
         let(:curation_concern_class) { curation_concern_class_name.constantize }
