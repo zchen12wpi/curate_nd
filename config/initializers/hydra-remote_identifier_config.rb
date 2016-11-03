@@ -16,7 +16,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.set_identifier { |o,value| o.identifier = value }
     end
 
-    doi.register(Dataset, Image, Document, Article, Etd, Audio, OsfArchive) do |map|
+    doi.register(Dataset, Image, Document, Article, Etd, OsfArchive) do |map|
       map.target {|obj| Curate.permanent_url_for(obj) }
       map.creator {|obj| Array.wrap(obj.creator).collect(&:to_s).join(", ") }
       map.title :title
