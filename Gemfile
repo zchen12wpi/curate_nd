@@ -30,7 +30,7 @@ group :default do
   gem 'hydra-derivatives', '~> 0.0.7'
   gem 'hydra-file_characterization', ">= 0.2.3"
   gem 'hydra-remote_identifier', '~> 0.6', '>= 0.6.7'
-  gem 'jbuilder'
+  gem "json-ld"
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'jshintrb'
