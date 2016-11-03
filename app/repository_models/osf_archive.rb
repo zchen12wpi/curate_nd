@@ -88,7 +88,7 @@ class OsfArchive < ActiveFedora::Base
     validates: { presence: { message: 'You must select a license for your work.' } }
 
   attribute :doi,
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: false
 
   attribute :alephIdentifier, datastream: :descMetadata, multiple: true,
     validates: {

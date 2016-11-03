@@ -1,4 +1,5 @@
 class Audio < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -88,8 +89,6 @@ class Audio < ActiveFedora::Base
     datastream: :descMetadata, multiple: true
   attribute :relation,
     datastream: :descMetadata, multiple: true
-  attribute :alephIdentifier,
-    datastream: :descMetadata, multiple: true
   attribute :relation,
     hint: "Link to External Content",
     datastream: :descMetadata, multiple: true,
@@ -114,7 +113,7 @@ class Audio < ActiveFedora::Base
   attribute :date_modified,
     datastream: :descMetadata, multiple: false
   attribute :doi,
-    datastream: :descMetadata, multiple: true
+    datastream: :descMetadata, multiple: false
   attribute :rights,
       datastream: :descMetadata, multiple: false,
       default: "All rights reserved",
