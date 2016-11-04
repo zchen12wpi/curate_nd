@@ -72,6 +72,10 @@ class AudioDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    map.language({in: RDF::DC}) do |index|
+      index.as :searchable, :facetable
+    end
+
     map.is_part_of({to: 'isPartOf', in: RDF::DC}) do |index|
       index.as :stored_searchable
     end
@@ -115,7 +119,7 @@ class AudioDatastream < ActiveFedora::NtriplesRDFDatastream
       index.type :date
       index.as :stored_sortable
     end
-    
+
     map.doi(to: 'identifier#doi', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable
     end

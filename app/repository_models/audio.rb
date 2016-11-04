@@ -62,6 +62,8 @@ class Audio < ActiveFedora::Base
   attribute :genre,
     datastream: :descMetadata, multiple: true,
     hint: "The genre(s) to which the audio object belongs."
+  attribute :language,
+    datastream: :descMetadata, multiple: true
   attribute :is_part_of,
     datastream: :descMetadata, multiple: true,
     hint: "The larger work, e.g. album, symphony, podcast, of which this audio object is a part. May be a full citation, a URL, or simply a name."
@@ -86,8 +88,6 @@ class Audio < ActiveFedora::Base
       label: "Departments and Units",
       hint: "Departments and Units that creator belong to."
   attribute :source,
-    datastream: :descMetadata, multiple: true
-  attribute :relation,
     datastream: :descMetadata, multiple: true
   attribute :relation,
     hint: "Link to External Content",
