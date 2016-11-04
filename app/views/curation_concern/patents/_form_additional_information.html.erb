@@ -15,6 +15,6 @@
   <%= f.input :language, as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
   <%= f.input :date_issued, label: 'Date Issued', input_html: { class: 'input-xlarge' } %>
-  <%= f.input :publisher, label: 'Publisher (Required for DOI)', as: :multi_value, input_html: { class: 'input-xlarge', id: 'publisher' } %>
+  <%= f.input :publisher, label: 'Publisher', as: :multi_value, input_html: { class: 'input-xlarge', id: 'publisher' } %>
   <%= f.input :rights_holder, label: 'Assignee', as: :multi_value, input_html: { class: 'input-xlarge' } %>
 </fieldset>

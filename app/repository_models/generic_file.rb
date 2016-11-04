@@ -75,7 +75,7 @@ class GenericFile < ActiveFedora::Base
   end
 
   def representative
-    to_param
+    pid
   end
 
   def copy_permissions_from(obj)

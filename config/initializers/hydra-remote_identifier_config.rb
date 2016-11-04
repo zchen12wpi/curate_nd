@@ -16,7 +16,7 @@ Hydra::RemoteIdentifier.configure do |config|
       map.set_identifier { |o,value| o.identifier = value }
     end
 
-    doi.register(Dataset, Image, Document, Article, Etd) do |map|
+    doi.register(Dataset, Image, Document, Article, Etd, OsfArchive) do |map|
       map.target {|obj| Curate.permanent_url_for(obj) }
       map.creator {|obj| Array.wrap(obj.creator).collect(&:to_s).join(", ") }
       map.title :title
@@ -25,5 +25,13 @@ Hydra::RemoteIdentifier.configure do |config|
       map.set_identifier { |o,value| o.identifier = value }
     end
 
+    doi.register(Audio) do |map|
+      map.target {|obj| Curate.permanent_url_for(obj) }
+      map.creator { I18n.t('sufia.institution_name') }
+      map.title :title
+      map.publisher { I18n.t('sufia.institution_name') }
+      map.publicationyear {|o| o.date_uploaded.year }
+      map.set_identifier { |o,value| o.identifier = value }
+    end
   end
 end

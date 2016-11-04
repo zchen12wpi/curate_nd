@@ -1,35 +1,40 @@
 <% if work.representative.present? %>
-
-  <% if curation_concern.class == GenericFile %>
-    <% representative_type = curation_concern.parent.class %>
-  <% else %>
-    <% representative_type = curation_concern.class %>
-  <% end %>
-
-  <% if representative_type == Image %>
-    <div class="row">
-      <div class="work-representation span12">
-        <%= render partial: 'curation_concern/base/image_viewer', locals: { work: curation_concern } %>
+  <% if work.try(:generic_files) || work.class == GenericFile %>
+    <% generic_file = GenericFile.load_instance_from_solr(work.representative) %>
+    <% if can?(:read, generic_file) && generic_file.image? %>
+      <div class="row">
+        <div class="work-representation span12">
+          <%= render partial: 'curation_concern/base/image_viewer', locals: { work: work, generic_file: generic_file } %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="work-attributes span12">
-        <%= details %>
+      <div class="row">
+        <div class="work-attributes span12">
+          <%= details %>
+        </div>
       </div>
-    </div>
-  <% elsif representative_type == Audio %>
-    <div class="row">
-      <div class="work-representation span12">
-        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
+    <% elsif can?(:read, generic_file) && generic_file.audio? %>
+      <div class="row">
+        <div class="work-representation span12">
+          <%= render partial: 'curation_concern/base/audio_player', locals: { work: work, generic_file: generic_file  } %>
+        </div>
+        <div class="work-attributes span12">
+          <%= details %>
+        </div>
       </div>
-      <div class="work-attributes span12">
-        <%= details %>
+    <% else %>
+      <div class="row">
+        <div class="work-representation span3">
+          <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file  } %>
+        </div>
+        <div class="work-attributes span9">
+          <%= details %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% else %>
     <div class="row">
       <div class="work-representation span3">
-        <%= render partial: 'curation_concern/base/representative_media', locals: { work: curation_concern } %>
+        <%= render partial: 'curation_concern/base/representative_media', locals: { work: work } %>
       </div>
       <div class="work-attributes span9">
         <%= details %>

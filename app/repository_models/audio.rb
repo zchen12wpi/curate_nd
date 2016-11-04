@@ -1,4 +1,5 @@
 class Audio < ActiveFedora::Base
+  include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
@@ -7,8 +8,8 @@ class Audio < ActiveFedora::Base
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
-
   include ActiveFedora::RegisteredAttributes
+  include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   has_metadata "descMetadata", type: AudioDatastream
 
@@ -61,6 +62,8 @@ class Audio < ActiveFedora::Base
   attribute :genre,
     datastream: :descMetadata, multiple: true,
     hint: "The genre(s) to which the audio object belongs."
+  attribute :language,
+    datastream: :descMetadata, multiple: true
   attribute :is_part_of,
     datastream: :descMetadata, multiple: true,
     hint: "The larger work, e.g. album, symphony, podcast, of which this audio object is a part. May be a full citation, a URL, or simply a name."
@@ -87,10 +90,6 @@ class Audio < ActiveFedora::Base
   attribute :source,
     datastream: :descMetadata, multiple: true
   attribute :relation,
-    datastream: :descMetadata, multiple: true
-  attribute :alephIdentifier,
-    datastream: :descMetadata, multiple: true
-  attribute :relation,
     hint: "Link to External Content",
     datastream: :descMetadata, multiple: true,
     validates: {
@@ -113,6 +112,8 @@ class Audio < ActiveFedora::Base
     datastream: :descMetadata, multiple: false
   attribute :date_modified,
     datastream: :descMetadata, multiple: false
+  attribute :doi,
+    datastream: :descMetadata, multiple: false
   attribute :rights,
       datastream: :descMetadata, multiple: false,
       default: "All rights reserved",
@@ -121,4 +122,6 @@ class Audio < ActiveFedora::Base
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
 
+  alias_method :identifier, :doi
+  alias_method :identifier=, :doi=
 end
