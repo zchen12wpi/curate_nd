@@ -16,6 +16,10 @@ class Article < ActiveFedora::Base
 
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
+  def to_json_ld
+    DatastreamJsonMapper.call(self)
+  end
+
   class_attribute :human_readable_short_description
   self.human_readable_short_description = "Deposit or reference a preprint or published article."
 
