@@ -77,7 +77,11 @@ class DownloadsController < ApplicationController
       TemporaryAccessToken.use!(params[:token])
       true
     else
-      super
+      # The original logic was `super`, which expanded to `can? :read, datastream.pid`
+      # However, since asset is in theory loaded as part of the before_filter, I'm relying
+      # on that to not duplicate the underlying load_instance_from_solr that could happen in the
+      # permission system.
+      can? :read, @asset || load_asset
     end
   end
 
