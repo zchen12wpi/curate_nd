@@ -13,7 +13,7 @@ class GenericFile < ActiveFedora::Base
   include Sufia::GenericFile::MimeTypes
   include Sufia::GenericFile::Thumbnail
   include Sufia::GenericFile::Derivatives
-
+  include CurationConcern::WithJsonMapper
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   belongs_to :batch, property: :is_part_of, class_name: 'ActiveFedora::Base'

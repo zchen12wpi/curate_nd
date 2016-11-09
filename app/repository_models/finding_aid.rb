@@ -9,7 +9,8 @@ class FindingAid < ActiveFedora::Base
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
-
+  include CurationConcern::WithJsonMapper
+  
   before_create :set_visibility_to_open_access
 
   has_metadata "descMetadata", type: FindingAidRdfDatastream, control_group: 'M'

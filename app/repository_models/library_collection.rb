@@ -9,7 +9,7 @@ class LibraryCollection < ActiveFedora::Base
   include Hydra::AccessControls::WithAccessRight
   include Hydra::Derivatives
   include CurationConcern::HumanReadableType
-
+  include CurationConcern::WithJsonMapper
   has_metadata "descMetadata", type: LibraryCollectionRdfDatastream
   has_metadata "properties", type: Curate::PropertiesDatastream
 

@@ -15,7 +15,8 @@ class SeniorThesis < ActiveFedora::Base
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
-
+  include CurationConcern::WithJsonMapper
+  
   self.human_readable_short_description = "PDFs and other Documents for your Senior Thesis"
 
   has_metadata name: "descMetadata", type: SeniorThesisRdfDatastream, control_group: 'M'

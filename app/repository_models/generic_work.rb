@@ -9,7 +9,7 @@ class GenericWork < ActiveFedora::Base
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
-
+  include CurationConcern::WithJsonMapper
   include ActiveFedora::RegisteredAttributes
 
   has_metadata "descMetadata", type: GenericWorkRdfDatastream
