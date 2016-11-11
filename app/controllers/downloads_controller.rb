@@ -156,8 +156,19 @@ class DownloadsController < ApplicationController
         if redirect_datastream?
           redirect_to datastream.dsLocation
         else
-          send_file_headers! content_options
-          self.response_body = datastream.stream
+          # So I'm not querying the datastream multiple times.
+          copy_of_content_options = content_options
+
+          # If we have a thumbnail request, but for some reason the thumbnail derivative
+          # was not generated, if we were to attempt to send file headers without a :type,
+          # an exception would be thrown.
+          if thumbnail_datastream? && copy_of_content_options[:type].nil?
+            logger.error("ERROR: Unable to render thumbnail datastream for #{datastream.pid}")
+            respond_with_default_thumbnail_image
+          else
+            send_file_headers! copy_of_content_options
+            self.response_body = datastream.stream
+          end
         end
       end
     end
