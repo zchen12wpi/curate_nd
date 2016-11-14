@@ -9,6 +9,7 @@ class Audio < ActiveFedora::Base
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
   include ActiveFedora::RegisteredAttributes
+  include CurationConcern::WithJsonMapper
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
 
   has_metadata "descMetadata", type: AudioDatastream

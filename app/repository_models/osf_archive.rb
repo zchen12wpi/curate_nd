@@ -7,7 +7,8 @@ class OsfArchive < ActiveFedora::Base
   include CurationConcern::WithRecordViewers
   include ActiveFedora::RegisteredAttributes
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
-
+  include CurationConcern::WithJsonMapper
+  
   before_validation :set_initial_values, on: :create
 
   class_attribute :human_readable_short_description
