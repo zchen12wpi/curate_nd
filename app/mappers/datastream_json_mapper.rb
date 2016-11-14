@@ -13,7 +13,6 @@ class DatastreamJsonMapper
       'nd' => 'https://library.nd.edu/ns/terms/',
       'rdfs' => 'http://www.w3.org/2000/01/rdf-schema#',
       'vracore' => 'http://purl.org/vra/',
-      'nd' => 'https://library.nd.edu/ns/terms/',
       'frels' => 'info:fedora/fedora-system:def/relations-external#',
       'ms' => 'http://www.ndltd.org/standards/metadata/etdms/1.1/',
       "fedora-model" => "info:fedora/fedora-system:def/model#",
@@ -136,7 +135,7 @@ class DatastreamJsonMapper
       unless this_access.elements['machine'].elements['group'].nil?
         group_array = []
         this_access.elements['machine'].elements['group'].each do |this_group|
-          group_array << this_group
+          group_array << this_group.to_s
         end
         rights_array[extract_name_for("#{access}-groups")] = group_array
       end
@@ -145,7 +144,7 @@ class DatastreamJsonMapper
       person_array = []
 
       this_access.elements['machine'].elements['person'].each do |this_person|
-        person_array << this_person
+        person_array << this_person.to_s
       end
       rights_array[extract_name_for(access.to_s)] = person_array
     end
@@ -168,7 +167,7 @@ class DatastreamJsonMapper
     xml_doc = REXML::Document.new(ds.datastream_content)
     root = xml_doc.root
     root.each_element do |element|
-      text = element.name.eql?('representative') ? format_text(element.get_text) : element.text
+      text = element.name.eql?('representative') ? format_text(element.get_text) : element.text.to_s
       properties_hash[extract_name_for(element.name)] = text
     end
     fedora_info['properties'] = properties_hash
@@ -222,7 +221,7 @@ class DatastreamJsonMapper
   end
 
   def format_text(text)
-    return {"@id" => text}
+    return {"@id" => text.to_s}
   end
 
   def format_output
@@ -250,5 +249,3 @@ class DatastreamJsonMapper
     DEFAULT_ATTRIBUTES
   end
 end
-
-

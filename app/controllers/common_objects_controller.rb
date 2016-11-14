@@ -22,14 +22,21 @@ class CommonObjectsController < ApplicationController
   rescue_from Hydra::AccessDenied do |exception|
     respond_with curation_concern do |format|
       format.html { render unauthorized_path, status: 401 }
+      format.jsonld { render json: { error: 'Unauthorized' }, status: 401 }
     end
   end
 
   def show
-    respond_with(curation_concern)
+    respond_to do |format|
+      format.html
+      format.jsonld { render json: curation_concern.as_jsonld }
+    end
   end
 
   def show_stub_information
-    respond_with(curation_concern)
+    respond_to do |format|
+      format.html
+      format.jsonld { render json: curation_concern.as_jsonld.slice('@contect', '@id', 'nd:afmodel') }
+    end
   end
 end
