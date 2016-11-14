@@ -4,7 +4,7 @@ class CommonObjectsController < ApplicationController
   include Hydra::Controller::ControllerBehavior
   layout 'common_objects'
 
-  respond_to(:html)
+  respond_to(:html, :jsonld)
   include Sufia::Noid # for normalize_identifier method
   prepend_before_filter :normalize_identifier
   def curation_concern
