@@ -5,6 +5,7 @@ require 'rdf/rdfxml'
 # Mapper to map datastreams to JSON format
 class DatastreamJsonMapper
   CONTEXT = {
+      'und' => File.join(Rails.configuration.application_root_url, 'show/'),
       'bibo' => 'http://purl.org/ontology/bibo/',
       'dc' => 'http://purl.org/dc/terms/',
       'ebucore' => 'http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#',
@@ -49,8 +50,6 @@ class DatastreamJsonMapper
   THUMBNAIL_KEY = "nd:thumbnail".freeze
   CONTENT_MIME_TYPE_KEY = "nd:mimetype".freeze
   CHARACTERIZATION_KEY = "nd:characterization".freeze
-
-  CURATE_DOWNLOAD_URL = "https://curate.nd.edu/downloads"
 
   def self.call(curation_concern, **keywords)
     new(curation_concern, **keywords).call
@@ -101,13 +100,11 @@ class DatastreamJsonMapper
 
   def process_RELSEXT(ds)
     # RELS-EXT is RDF-XML - parse it
-    ctx = CONTEXT.dup
-    ctx.delete('@base') # @base causes problems when converting TO json-ld (it is = "info:/fedora") but info is not a namespace
     graph = RDF::Graph.new
     graph.from_rdfxml(ds.datastream_content)
     rels_ext_hash = nil
     JSON::LD::API.fromRdf(graph) do |expanded|
-      rels_ext_hash = JSON::LD::API.compact(expanded, ctx)
+      rels_ext_hash = JSON::LD::API.compact(expanded, CONTEXT)
     end
     # now strip the info:fedora/ prefix from the URIs
     strip_info_fedora(rels_ext_hash)
@@ -177,7 +174,7 @@ class DatastreamJsonMapper
     content_properties_hash = {}
     content_ds = ds.datastream_content
     bendo_url = bendo_location(content_ds)
-    content_url = CURATE_DOWNLOAD_URL + "/" + strip_namespace(curation_concern.id)
+    content_url = File.join(Rails.configuration.application_root_url, "/downloads/",  strip_namespace(curation_concern.id))
     content_properties_hash[FILENAME_KEY] = ds.label
     content_properties_hash[CONTENT_KEY] = content_url
     content_properties_hash[CONTENT_MIME_TYPE_KEY] =  ds.mimeType
@@ -190,7 +187,7 @@ class DatastreamJsonMapper
   end
 
   def process_thumbnail(ds)
-    thumbnail_url = CURATE_DOWNLOAD_URL + "/" + strip_namespace(curation_concern.id) + "/thumbnail"
+    thumbnail_url = File.join(Rails.configuration.application_root_url, "/downloads/",  strip_namespace(curation_concern.id), "/thumbnail")
     fedora_info['thumbnail'] = {THUMBNAIL_KEY => format_text(thumbnail_url)}
   end
 
