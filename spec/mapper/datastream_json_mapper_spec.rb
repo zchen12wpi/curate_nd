@@ -12,7 +12,7 @@ RSpec.describe DatastreamJsonMapper do
   let(:generic_file) { FactoryGirl.create_generic_file(curation_concern, user) }
 
   let(:expected_article_json){
-    {"@context"=> {"und"=>"#{Rails.configuration.application_root_url}/show/",
+    {"@context"=> {"und"=>File.join(Rails.configuration.application_root_url, '/show/').to_s,
                    "bibo"=>"http://purl.org/ontology/bibo/",
                    "dc"=>"http://purl.org/dc/terms/",
                    "ebucore"=>"http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#",
@@ -50,7 +50,7 @@ RSpec.describe DatastreamJsonMapper do
   }
 
   let(:expected_generic_file_json){
-    {"@context"=> {"und"=>"#{Rails.configuration.application_root_url}/show/",
+    {"@context"=> {"und"=>File.join(Rails.configuration.application_root_url, '/show/').to_s,
                    "bibo"=>"http://purl.org/ontology/bibo/",
                    "dc"=>"http://purl.org/dc/terms/",
                    "ebucore"=>"http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#",
@@ -77,12 +77,12 @@ RSpec.describe DatastreamJsonMapper do
      "dc:modified"=> {"@value"=>"#{generic_file.date_modified.strftime("%FZ")}", "@type"=>"http://www.w3.org/2001/XMLSchema#date"},
      "isPartOf" => "#{curation_concern.id}",
      "nd:accessEdit" => ["#{user.username}"],
-     "nd:content" => "#{Rails.configuration.application_root_url}/downloads/#{strip_namespace(generic_file.pid)}",
+     "nd:content" => File.join(Rails.configuration.application_root_url, '/downloads/', strip_namespace(generic_file.pid)).to_s,
      "nd:depositor" => "#{user.username}",
      "nd:filename" => "#{generic_file.filename}",
      "nd:mimetype" => "#{generic_file.content.mimeType}",
      "nd:owner" => "#{user.username}",
-     "nd:thumbnail" => {"@id"=>"#{Rails.configuration.application_root_url}/downloads/#{strip_namespace(generic_file.pid)}/thumbnail"}
+     "nd:thumbnail" => {"@id"=>File.join(Rails.configuration.application_root_url, '/downloads/', strip_namespace(generic_file.pid), '/thumbnail').to_s}
     }
   }
 
