@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'active_fedora/test_support'
 describe Collection do
 
+  it_behaves_like 'with_json_mapper'
 
   let(:user) { FactoryGirl.create(:user) }
   let(:generic_work1) { FactoryGirl.create(:generic_work, user: user, title:"My Work 1")}

@@ -5,6 +5,7 @@ require 'rdf/rdfxml'
 # Mapper to map datastreams to JSON format
 class DatastreamJsonMapper
   CONTEXT = {
+      'und' => File.join(Rails.configuration.application_root_url, 'show/'),
       'bibo' => 'http://purl.org/ontology/bibo/',
       'dc' => 'http://purl.org/dc/terms/',
       'ebucore' => 'http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#',
@@ -13,7 +14,6 @@ class DatastreamJsonMapper
       'nd' => 'https://library.nd.edu/ns/terms/',
       'rdfs' => 'http://www.w3.org/2000/01/rdf-schema#',
       'vracore' => 'http://purl.org/vra/',
-      'nd' => 'https://library.nd.edu/ns/terms/',
       'frels' => 'info:fedora/fedora-system:def/relations-external#',
       'ms' => 'http://www.ndltd.org/standards/metadata/etdms/1.1/',
       "fedora-model" => "info:fedora/fedora-system:def/model#",
@@ -50,8 +50,6 @@ class DatastreamJsonMapper
   THUMBNAIL_KEY = "nd:thumbnail".freeze
   CONTENT_MIME_TYPE_KEY = "nd:mimetype".freeze
   CHARACTERIZATION_KEY = "nd:characterization".freeze
-
-  CURATE_DOWNLOAD_URL = "https://curate.nd.edu/downloads"
 
   def self.call(curation_concern, **keywords)
     new(curation_concern, **keywords).call
@@ -102,13 +100,11 @@ class DatastreamJsonMapper
 
   def process_RELSEXT(ds)
     # RELS-EXT is RDF-XML - parse it
-    ctx = CONTEXT.dup
-    ctx.delete('@base') # @base causes problems when converting TO json-ld (it is = "info:/fedora") but info is not a namespace
     graph = RDF::Graph.new
     graph.from_rdfxml(ds.datastream_content)
     rels_ext_hash = nil
     JSON::LD::API.fromRdf(graph) do |expanded|
-      rels_ext_hash = JSON::LD::API.compact(expanded, ctx)
+      rels_ext_hash = JSON::LD::API.compact(expanded, CONTEXT)
     end
     # now strip the info:fedora/ prefix from the URIs
     strip_info_fedora(rels_ext_hash)
@@ -136,7 +132,7 @@ class DatastreamJsonMapper
       unless this_access.elements['machine'].elements['group'].nil?
         group_array = []
         this_access.elements['machine'].elements['group'].each do |this_group|
-          group_array << this_group
+          group_array << this_group.to_s
         end
         rights_array[extract_name_for("#{access}-groups")] = group_array
       end
@@ -145,7 +141,7 @@ class DatastreamJsonMapper
       person_array = []
 
       this_access.elements['machine'].elements['person'].each do |this_person|
-        person_array << this_person
+        person_array << this_person.to_s
       end
       rights_array[extract_name_for(access.to_s)] = person_array
     end
@@ -168,7 +164,7 @@ class DatastreamJsonMapper
     xml_doc = REXML::Document.new(ds.datastream_content)
     root = xml_doc.root
     root.each_element do |element|
-      text = element.name.eql?('representative') ? format_text(element.get_text) : element.text
+      text = element.name.eql?('representative') ? format_text(element.get_text) : element.text.to_s
       properties_hash[extract_name_for(element.name)] = text
     end
     fedora_info['properties'] = properties_hash
@@ -178,7 +174,7 @@ class DatastreamJsonMapper
     content_properties_hash = {}
     content_ds = ds.datastream_content
     bendo_url = bendo_location(content_ds)
-    content_url = CURATE_DOWNLOAD_URL + "/" + strip_namespace(curation_concern.id)
+    content_url = File.join(Rails.configuration.application_root_url, "/downloads/",  strip_namespace(curation_concern.id))
     content_properties_hash[FILENAME_KEY] = ds.label
     content_properties_hash[CONTENT_KEY] = content_url
     content_properties_hash[CONTENT_MIME_TYPE_KEY] =  ds.mimeType
@@ -191,7 +187,7 @@ class DatastreamJsonMapper
   end
 
   def process_thumbnail(ds)
-    thumbnail_url = CURATE_DOWNLOAD_URL + "/" + strip_namespace(curation_concern.id) + "/thumbnail"
+    thumbnail_url = File.join(Rails.configuration.application_root_url, "/downloads/",  strip_namespace(curation_concern.id), "/thumbnail")
     fedora_info['thumbnail'] = {THUMBNAIL_KEY => format_text(thumbnail_url)}
   end
 
@@ -222,7 +218,7 @@ class DatastreamJsonMapper
   end
 
   def format_text(text)
-    return {"@id" => text}
+    return {"@id" => text.to_s}
   end
 
   def format_output
@@ -250,5 +246,3 @@ class DatastreamJsonMapper
     DEFAULT_ATTRIBUTES
   end
 end
-
-
