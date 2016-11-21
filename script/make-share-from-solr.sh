@@ -61,7 +61,7 @@ fi
 
 set -e
 
-mkdir results
+mkdir -p results
 
 # We download the records as json instead of csv for two reasons
 #
@@ -70,9 +70,9 @@ mkdir results
 #
 # Fortunately, we can then convert the json into a csv file at the end!
 
-for OFFSET in $(seq 0 1000 25000); do
+for OFFSET in $(seq 0 1000 27000); do
     echo "Fetching 1000 at offset $OFFSET..."
-    curl --silent "$SOLR_URL/select?q=*%3A*&start=$OFFSET&rows=1000&fl=id%2Csystem_create_dtsi%2Csystem_modified_dtsi%2Cobject_state_ssi%2Cactive_fedora_model_ssi%2Chuman_readable_type_tesim%2Cdepositor_tesim%2Cread_access_group_ssim%2Cdesc_metadata__title_tesim%2Cdesc_metadata__creator_tesim&wt=json" > results/$OFFSET.json
+    curl --silent "$SOLR_URL/select?q=*%3A*&start=$OFFSET&rows=1000&fl=id%2Csystem_create_dtsi%2Csystem_modified_dtsi%2Cobject_state_ssi%2Cactive_fedora_model_ssi%2Chuman_readable_type_tesim%2Cdepositor_tesim%2Cread_access_group_ssim%2Cdesc_metadata__title_tesim%2Cdesc_metadata__creator_tesim%2Cdesc_metadata__abstract_tesim%2Cdesc_metadata__description_tesim%2Cdesc_metadata__identifier_tesim&wt=json" > results/$OFFSET.json
 done
 
 TARGET_CURATE="curate-$(date '+%Y%m%d').json"

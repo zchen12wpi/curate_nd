@@ -55,12 +55,15 @@ ARGV.each do |csv_filename|
     id = row[columns["id"]]
     modified = row[columns["system_modified_dtsi"]]
     title = row[columns["desc_metadata__title_tesim"]]
+    abstract = row[columns["desc_metadata__abstract_tesim"]]
+    description = row[columns["desc_metadata__description_tesim"]]
     contributors = row[columns["desc_metadata__creator_tesim"]]
     contributors = (contributors || "").split("|")
 
     puts "#{overall_record_count} / #{file_record_count} Pushing #{id}"
     document = ShareNotify::PushDocument.new(id, modified)
     document.title = title
+    document.description = [abstract, description].join('')
     contributors.each do |name|
       document.add_contributor(name: name)
     end
