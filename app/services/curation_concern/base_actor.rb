@@ -60,8 +60,7 @@ module CurationConcern
       return curation_concern.apply_doi_assignment_strategy(self) do |*|
         curation_concern.save &&
         (block_given? ? yield : true) &&
-        apply_access_permissions &&
-        Curate.relationship_reindexer.call(curation_concern.pid)
+        apply_access_permissions
       end
     end
 

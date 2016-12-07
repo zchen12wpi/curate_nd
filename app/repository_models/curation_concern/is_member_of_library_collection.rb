@@ -15,5 +15,13 @@ module CurationConcern
       solr_doc[Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PARENT_PIDS] = self.library_collection_ids
       solr_doc
     end
+
+
+    def update_index
+      super
+      Curate.relationship_reindexer.call(self.pid)
+    end
+
+
   end
 end
