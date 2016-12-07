@@ -35,7 +35,6 @@ shared_examples 'is_a_curation_concern_actor' do |curation_concern_class, curati
       }
 
       it 'should be successful in updating attributes' do
-        expect(Curate.relationship_reindexer).to receive(:call).and_return(true)
         expect(subject.create).to eq(true)
 
         expect(curation_concern).to be_persisted
