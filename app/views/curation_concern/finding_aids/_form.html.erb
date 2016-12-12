@@ -58,6 +58,12 @@
       </fieldset>
     </div>
 
+  <div class="row with-headroom">
+    <div class="span12">
+      <%= render "form_content_license", curation_concern: curation_concern, f: f %>
+    </div>
+  </div>
+
   <%= render 'form_contributor_agreement', curation_concern: curation_concern, contributor_agreement: contributor_agreement, f: f %>
 
   <div class="row">
