@@ -1,7 +1,19 @@
 <% if work.representative.present? %>
   <% if work.try(:generic_files) || work.class == GenericFile %>
     <% generic_file = GenericFile.load_instance_from_solr(work.representative) %>
-    <% if can?(:read, generic_file) && generic_file.image? %>
+
+<!-- if representative file is audio, regardless of class, use audio player -->
+    <% if can?(:read, generic_file) && generic_file.audio? %>
+      <div class="row">
+        <div class="work-representation span12">
+          <%= render partial: 'curation_concern/base/audio_player', locals: { work: work, generic_file: generic_file  } %>
+        </div>
+        <div class="work-attributes span12">
+          <%= details %>
+        </div>
+      </div>
+<!-- else if Image class and representative file is image -->
+    <% elsif can?(:read, generic_file) && generic_file.image? && (work.class == Image || work.class == GenericFile) %>
       <div class="row">
         <div class="work-representation span12">
           <%= render partial: 'curation_concern/base/image_viewer', locals: { work: work, generic_file: generic_file } %>
@@ -12,15 +24,7 @@
           <%= details %>
         </div>
       </div>
-    <% elsif can?(:read, generic_file) && generic_file.audio? %>
-      <div class="row">
-        <div class="work-representation span12">
-          <%= render partial: 'curation_concern/base/audio_player', locals: { work: work, generic_file: generic_file  } %>
-        </div>
-        <div class="work-attributes span12">
-          <%= details %>
-        </div>
-      </div>
+<!-- else use basic logic -->
     <% else %>
       <div class="row">
         <div class="work-representation span3">
@@ -31,6 +35,7 @@
         </div>
       </div>
     <% end %>
+<!-- else if no generic file use basic logic -->
   <% else %>
     <div class="row">
       <div class="work-representation span3">
