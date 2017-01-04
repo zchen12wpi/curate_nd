@@ -44,9 +44,9 @@ class AsJsonldMapper
   }
 
   DEFAULT_ATTRIBUTES = {
-      'read' => "nd:accessRead".freeze,
-      'read-groups' => "nd:accessReadGroup".freeze,
-      'edit' => "nd:accessEdit".freeze,
+      'read-person' => "nd:accessRead".freeze,
+      'read-group' => "nd:accessReadGroup".freeze,
+      'edit-person' => "nd:accessEdit".freeze,
       'edit-groups' => "nd:accessEditGroup".freeze,
       'embargo' => "nd:accessEmbargoDate".freeze,
       'depositor' => "nd:depositor".freeze,
@@ -142,43 +142,25 @@ class AsJsonldMapper
     # the access array may have read or edit elements
     # each of these elements may contain group or person elements
     xml_doc = REXML::Document.new(ds.datastream_content)
-    rights = {}
-    embargo_date_array = []
     root = xml_doc.root
 
     %w(read edit).each do |access|
       this_access = root.elements["//access[@type=\'#{access}\']"]
 
       next if this_access.nil?
-
-      unless this_access.elements['machine'].elements['group'].nil?
-        group_array = []
-        this_access.elements['machine'].elements['group'].each do |this_group|
-          group_array << this_group.to_s
+      %w(group person).each do |access_via|
+        next if this_access.elements['machine'].elements[access_via].nil?
+        access_predicate_name = extract_context_name_for("#{access}-#{access_via}")
+        this_access.elements['machine'].elements[access_via].each do |access_via_element|
+          graph << RDF::Statement.new(curation_concern_uri_term, access_predicate_name, access_via_element.to_s)
         end
-        rights[extract_context_name_for("#{access}-groups")] = group_array
       end
-
-      next if this_access.elements['machine'].elements['person'].nil?
-      person_array = []
-
-      this_access.elements['machine'].elements['person'].each do |this_person|
-        person_array << this_person.to_s
-      end
-      rights[extract_context_name_for(access.to_s)] = person_array
     end
 
     unless root.elements['embargo'].elements['machine'].elements['date'].nil?
+      embargo_predicate_name = extract_context_name_for("embargo")
       root.elements['embargo'].elements['machine'].elements['date'].each do |this_embargo|
-        embargo_date_array << this_embargo
-      end
-      rights[extract_context_name_for("embargo")] = embargo_date_array unless embargo_date_array.blank?
-    end
-
-    # Build the rights
-    rights.each do |key, values|
-      Array.wrap(values).each do |value|
-        graph << RDF::Statement.new(curation_concern_uri_term, key, value)
+        graph << RDF::Statement.new(curation_concern_uri_term, embargo_predicate_name, this_embargo.to_s)
       end
     end
   end
