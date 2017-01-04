@@ -3,7 +3,7 @@ module CurationConcern
     extend ActiveSupport::Concern
 
     def as_jsonld
-      DatastreamJsonMapper.call(self)
+      AsJsonldMapper.call(self)
     end
   end
 end
