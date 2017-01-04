@@ -88,14 +88,6 @@ class Image < ActiveFedora::Base
       label: 'Recommended Citation',
       multiple: true
 
-    ds.attribute :repository_name,
-      label: 'Repository Name',
-      multiple: true
-
-    ds.attribute :collection_name,
-      label: 'Collection Name',
-      multiple: true
-
     ds.attribute :temporal_coverage,
       label: 'Temporal Coverage',
       multiple: true
@@ -333,7 +325,7 @@ class Image < ActiveFedora::Base
       ds.attribute :vra_place_of_site,
       	label: 'Place of Site',
       	multiple: true
-  
+
 
   end
 
