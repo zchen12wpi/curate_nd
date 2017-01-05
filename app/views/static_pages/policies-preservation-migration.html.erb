@@ -2,7 +2,7 @@
 <% content_for :page_title, construct_page_title('Preservation and Migration // Policies // CurateND') %>
 <% content_for :page_header do %>
 <div class="policy-header">
-  <h1 class="center">Content Format Preservation</h1>
+  <h1 class="center">CurateND Content Format Preservation</h1>
      <h1 class="center">and Migration Policy</h1>
   <nav class="return-to-policy-list">
     <%= link_to 'Return to Policies Listing', policies_path %>
@@ -13,7 +13,7 @@
 <article class="policy">
   <p class="effective-date">Effective Date: <time datetime="2015-07-16">July 16, 2015</time></p>
 
-  <p>Except for content withdrawn as a result of either the <%= link_to 'Retention and Review Policy', named_policy_path('retention-review') %> or the <%= link_to 'Content Withdrawal Policy', named_policy_path('content-withdrawal') %>, CurateND will provide a basic level of preservation for content deposited. This level of preservation includes multiple, geographically diverse copies of content, secure storage, file corruption detection and repair (fixity checking), regular migration to newer storage media as needed, and a persistent identifier for the content and its metadata.</p>
+  <p>Except for content withdrawn as a result of either the <%= link_to 'Retention and Review Policy', named_policy_path('retention-review') %> or the Content Withdrawal Policy, CurateND will provide a basic level of preservation for content deposited. This level of preservation includes multiple, geographically diverse copies of content, secure storage, file corruption detection and repair (fixity checking), regular migration to newer storage media as needed, and a persistent identifier for the content and its metadata.</p>
 
   <p>The original deposited files may be copied or enhanced to provide ongoing access or to ensure long-term preservation of the content. Periodic format reviews of deposited content will be done to determine if content migration is needed; if so, CurateND will attempt to migrate content using current best practices and standards in digital preservation.</p>
 
@@ -21,5 +21,5 @@
 
   <p>Some file formats, such as executable programs and files relying on specific hardware/software environments, will require additional evaluation because the access environment also must be considered in making a preservation determination.</p>
 
-  <p>A few files may have additional copies in or be exported to other repositories, such as HathiTrust, or APTrust. Criteria for choosing the export locations for a file are given in the <%= link_to 'Preservation Export and Replication Policy', named_policy_path('export-replication') %>.</p>
+  <p>A few files may have additional copies in or be exported to other repositories, such as HathiTrust, or APTrust. Criteria for choosing the export locations for a file are given in the <%= link_to 'Preservation Export and Replication Policy', named_policy_path('backup-location') %>.</p>
 </article>
