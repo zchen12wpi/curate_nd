@@ -132,11 +132,11 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
     	index.as :stored_searchable
     end
 
-    map.is_part_of({to: 'isPartOf', in: RDF::QualifiedDC}) do |index|
+    map.is_part_of({to: 'isPartOf', in: RDF::DC}) do |index|
     	index.as :stored_searchable
     end
 
-    map.is_version_of({to: 'isVersionOf', in: RDF::QualifiedDC})
+    map.is_version_of({to: 'isVersionOf', in: RDF::DC})
 
     map.vra_depth({to: 'depth', in: RDF::VRACore})
 
@@ -156,7 +156,7 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
 
     map.vra_was_produced({to: 'wasProduced', in: RDF::VRACore})
 
-    map.date_issued ({ to: 'issued', in: RDF::QualifiedDC})
+    map.date_issued ({ to: 'issued', in: RDF::DC})
 
     map.vra_plan_for({to: 'planFor', in: RDF::VRACore}) do |index|
     	index.as :stored_searchable
