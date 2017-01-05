@@ -6,6 +6,7 @@ describe OsfArchive do
   it { should have_unique_field(:title) }
   it { should have_unique_field(:source) }
   it { should have_unique_field(:type) }
+  it { should have_unique_field(:osf_project_identifier) }
 
   it_behaves_like 'is_a_curation_concern_model'
   it_behaves_like 'with_access_rights'

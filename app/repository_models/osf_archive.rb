@@ -49,6 +49,10 @@ class OsfArchive < ActiveFedora::Base
       }
     }
 
+  attribute :osf_project_identifier,
+    datastream: :descMetadata, multiple: false,
+    label: 'OSF Project Identifier'
+
   attribute :subject,
     datastream: :descMetadata, multiple: true
 
