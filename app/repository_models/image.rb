@@ -218,7 +218,7 @@ class Image < ActiveFedora::Base
       	label: 'Production Date',
       	multiple: false
 
-      ds.attribute :issued,
+      ds.attribute :date_issued,
       	label: 'Publication Date',
       	multiple: false
 

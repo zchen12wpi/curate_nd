@@ -155,7 +155,7 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
 
     map.vra_was_produced({to: 'wasProduced', in: RDF::VRACore})
 
-    map.issued ({in: RDF::QualifiedDC})
+    map.date_issued ({ to: 'issued', in: RDF::QualifiedDC})
 
     map.vra_plan_for({to: 'planFor', in: RDF::VRACore}) do |index|
     	index.as :stored_searchable
