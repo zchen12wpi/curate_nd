@@ -131,11 +131,11 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
     	index.as :stored_searchable
     end
 
-    map.is_part_of ({to : 'isPartOf', in RDF::QualifiedDC}) do |index|
+    map.is_part_of({to: 'isPartOf', in: RDF::QualifiedDC}) do |index|
     	index.as :stored_searchable
     end
 
-    map.is_version_of ({to : 'isVersionOf' in RDF::QualifiedDC})
+    map.is_version_of({to: 'isVersionOf', in: RDF::QualifiedDC})
 
     map.vra_depth({to: 'depth', in: RDF::VRACore})
 
