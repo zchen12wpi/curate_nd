@@ -8,7 +8,7 @@ class OsfArchive < ActiveFedora::Base
   include ActiveFedora::RegisteredAttributes
   include CurationConcern::RemotelyIdentifiedByDoi::Attributes
   include CurationConcern::WithJsonMapper
-  
+
   before_validation :set_initial_values, on: :create
 
   class_attribute :human_readable_short_description
@@ -41,7 +41,7 @@ class OsfArchive < ActiveFedora::Base
 
   attribute :source,
     datastream: :descMetadata, multiple: false,
-    label: 'Original OSF Project',
+    label: 'Original OSF URL',
     validates: {
       format: {
       with: URI::regexp(%w(http https ftp)),
