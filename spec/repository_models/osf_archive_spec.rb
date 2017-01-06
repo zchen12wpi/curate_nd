@@ -14,14 +14,27 @@ describe OsfArchive do
   it_behaves_like 'is_embargoable'
   it_behaves_like 'with_json_mapper'
 
-  describe 'new archive' do
+  describe 'new archive (after validation)' do
     let(:archive) {OsfArchive.new}
 
-    it "should set initialize dates and stamp type on create" do
+    it "should set initialize dates" do
       archive.valid?
       expect(archive.date_modified).to eq(Date.today)
       expect(archive.date_archived).to eq(Date.today)
-      expect(archive.type).to eq('OSF Archive')
+    end
+
+    [
+      { attributes: { osf_project_identifier: "abcde", source: 'https://osf.io/abcde' }, type: 'OSF Project' },
+      { attributes: { osf_project_identifier: "12345", source: 'https://osf.io/abcde' }, type: 'OSF Registration' },
+      { attributes: { osf_project_identifier: "", source: 'https://osf.io/abcde' }, type: 'OSF Project' },
+      { attributes: { osf_project_identifier: "", source: "" }, type: nil },
+      { attributes: { osf_project_identifier: "12345", source: "" }, type: 'OSF Registration' }
+    ].each_with_index do |data, index|
+      it "will assign dc:type of #{data.fetch(:type).inspect} for attributes #{data.fetch(:attributes).inspect} (Scenario ##{index})" do
+        osf_archive = OsfArchive.new(data.fetch(:attributes))
+        osf_archive.valid? # required because we are setting via before validation
+        expect(osf_archive.type).to eq(data.fetch(:type))
+      end
     end
   end
 
@@ -75,7 +88,7 @@ describe OsfArchive do
       jsonld = osf_archive.as_jsonld
       # Ensuring that the as_jsonld contains the correct relationship
       expect(jsonld.fetch('@context').fetch('pav')).to eq('http://purl.org/pav/')
-      expect(jsonld.fetch('@context').fetch('previousVersion')).to eq('http://purl.org/pav/previousVersion')
+      expect(jsonld.fetch('@context').fetch('previousVersion')).to eq('pav:previousVersion')
       expect(jsonld.fetch("previousVersion")).to eq({"@id" => previous_version.pid})
 
       # Ensuring that we have a meaningful RELS-EXT

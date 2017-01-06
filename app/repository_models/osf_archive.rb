@@ -55,9 +55,29 @@ class OsfArchive < ActiveFedora::Base
   def set_initial_values
     self.date_modified = Date.today
     self.date_archived = Date.today
-    self.type = human_readable_type
+    determine_type_and_osf_project_identifier
   end
   private :set_initial_values
+
+  def determine_type_and_osf_project_identifier
+    if osf_project_identifier.present?
+      if osf_project_identifier == osf_source_slug
+        self.type = "OSF Project"
+      else
+        self.type = "OSF Registration"
+      end
+    else
+      if osf_source_slug.present?
+        self.osf_project_identifier = osf_source_slug
+        self.type = "OSF Project"
+      end
+    end
+  end
+  private :determine_type_and_osf_project_identifier
+
+  def osf_source_slug
+    self.source.to_s.split('/').last
+  end
 
   has_metadata 'descMetadata', type: OsfArchiveDatastream
 
