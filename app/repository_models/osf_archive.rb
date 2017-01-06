@@ -54,7 +54,7 @@ class OsfArchive < ActiveFedora::Base
 
   def set_initial_values
     self.date_modified = Date.today
-    self.date_archived = Date.today
+    self.date_archived ||= Date.today
     determine_type_and_osf_project_identifier
   end
   private :set_initial_values
