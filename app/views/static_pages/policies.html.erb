@@ -35,8 +35,22 @@ policies in the same order.
 <section class="curatend-policies policy-list">
   <%= link_to named_policy_path('mission'), class: 'policy-anchor' do %>
   <h2 class="policy-heading">
-    Mission
+    CurateND Mission
     <small class="effective-date">Effective Date: <time datetime="2015-01-16">January 16, 2015</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('authoritative-source'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Authoritative Source Location Policy
+    <small class="effective-date">Effective Date: <time datetime="2016-11-18">November 18, 2016</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('preservation-migration'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Content Format Preservation and Migration Policy
+    <small class="effective-date">Effective Date: <time datetime="2015-07-16">July 16, 2015</time></small>
   </h2>
   <% end %>
 
@@ -54,9 +68,16 @@ policies in the same order.
   </h2>
   <% end %>
 
+  <%= link_to named_policy_path('disaster-recovery'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Disaster Recovery Policy
+    <small class="effective-date">Effective Date: <time datetime="2016-08-30">August 30, 2016</time></small>
+  </h2>
+  <% end %>
+
   <%= link_to named_policy_path('support'), class: 'policy-anchor' do %>
   <h2 class="policy-heading">
-    General Support Policy
+    General Support Policy for Depositors
     <small class="effective-date">Effective Date: <time datetime="2015-07-7">July 7, 2015</time></small>
   </h2>
   <% end %>
@@ -68,10 +89,31 @@ policies in the same order.
   </h2>
   <% end %>
 
+  <%= link_to named_policy_path('fees'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Policy on Deposit and Access Fees
+    <small class="effective-date">Effective Date: <time datetime="2016-12-19">December 19, 2016</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('backup-location'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Preservation Backup and Alternate Location Policy
+    <small class="effective-date">Effective Date: <time datetime="2016-07-08">July 8, 2016</time></small>
+  </h2>
+  <% end %>
+
   <%= link_to named_policy_path('retention-review'), class: 'policy-anchor' do %>
   <h2 class="policy-heading">
     Retention and Review Policy
     <small class="effective-date">Effective Date: <time datetime="2015-06-10">June 10, 2016</time></small>
+  </h2>
+  <% end %>
+
+  <%= link_to named_policy_path('succession-plan'), class: 'policy-anchor' do %>
+  <h2 class="policy-heading">
+    Succession Planning Policy
+    <small class="effective-date">Effective Date: <time datetime="2016-10-09">October 09, 2016</time></small>
   </h2>
   <% end %>
 </section>
