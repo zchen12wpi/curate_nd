@@ -1,3 +1,16 @@
+# Models two "types" of OSF Archives:
+#
+# * OSF Project
+# * OSF Registration
+#
+# The OSF Registration is a "snapshot" of an OSF Project. The Registration has a URL
+# separate from the OSF Project; It points back to the OSF Project. In theory, if
+# we ingest the same OSF Registration we will have the same information; In practice,
+# some of the data for the registration may point to external sources that have changed
+# between ingests of that OSF Registration.
+#
+# The OSF Project is a living/mutable source. It represents the current state of the project.
+# When we ingest an OSF Project, that current state is captured.
 class OsfArchive < ActiveFedora::Base
   include ActiveModel::Validations
   include CurationConcern::Work
@@ -11,11 +24,32 @@ class OsfArchive < ActiveFedora::Base
 
   before_validation :set_initial_values, on: :create
 
+  belongs_to :previousVersion, property: :previousVersion, class_name: "OsfArchive"
+
   class_attribute :human_readable_short_description
   self.human_readable_short_description = "Change me."
 
   def self.human_readable_type
     'OSF Archive'
+  end
+
+  # These are included as convenience for developers.
+  SOLR_KEY_OSF_PROJECT_IDENTIFIER = 'desc_metadata__osf_project_identifier_tesim'.freeze
+  SOLR_KEY_ARCHIVED_DATE = 'desc_metadata__date_archived_dtsi'.freeze
+  SOLR_KEY_SOURCE = 'desc_metadata__source_tesim'.freeze
+
+  # Retrieve all archived versions of the source project (including registrations)
+  # in date_archived descending order.
+  #
+  # @return [Array<OsfArchive>]
+  # @see ./spec/repository_models/osf_archive_spec.rb
+  def archived_versions_of_source_project
+    @archived_versions_of_source_project ||= begin
+      conditions = { SOLR_KEY_OSF_PROJECT_IDENTIFIER => osf_project_identifier }
+      options = { sort: "#{SOLR_KEY_ARCHIVED_DATE} desc" }
+      solr_results = self.class.find_with_conditions(conditions, options)
+      ActiveFedora::SolrService.reify_solr_results(solr_results, load_from_solr: true)
+    end
   end
 
   def set_initial_values

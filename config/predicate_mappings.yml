@@ -5,6 +5,7 @@
   fedora-model: info:fedora/fedora-system:def/model#
   fedora-relations-model: info:fedora/fedora-system:def/relations-external#
   hydramata-rel: http://projecthydra.org/ns/relations#
+  pav: 'http://purl.org/pav/'
 
 # namespace mappings---
 # you can add specific mappings for your institution by providing the following:
@@ -49,6 +50,8 @@
     :is_deployment_of: isDeploymentOf
     :has_service: hasService
     :has_model: hasModel
+  http://purl.org/pav/:
+    :previousVersion: previousVersion
   http://www.openarchives.org/OAI/2.0/:
     :oai_item_id: itemID
   http://projecthydra.org/ns/relations#:
