@@ -40,7 +40,8 @@ class AsJsonldMapper
       "isPartOf".to_sym => {"@id" => "frels:isPartOf", "@type" => "@id" },
       "isMemberOfCollection".to_sym => {"@id" => "frels:isMemberOfCollection", "@type" => "@id" },
       "isEditorOf".to_sym => {"@id" => "hydra:isEditorOf", "@type" => "@id" },
-      "hasMember".to_sym => {"@id" => "frels:hasMember", "@type" => "@id" }
+      "hasMember".to_sym => {"@id" => "frels:hasMember", "@type" => "@id" },
+      'previousVersion'.to_sym => 'http://purl.org/pav/previousVersion'
   }
 
   DEFAULT_ATTRIBUTES = {

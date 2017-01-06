@@ -75,7 +75,8 @@ describe OsfArchive do
       jsonld = osf_archive.as_jsonld
       # Ensuring that the as_jsonld contains the correct relationship
       expect(jsonld.fetch('@context').fetch('pav')).to eq('http://purl.org/pav/')
-      expect(jsonld.fetch("pav:previousVersion")).to eq({"@id" => previous_version.pid})
+      expect(jsonld.fetch('@context').fetch('previousVersion')).to eq('http://purl.org/pav/previousVersion')
+      expect(jsonld.fetch("previousVersion")).to eq({"@id" => previous_version.pid})
 
       # Ensuring that we have a meaningful RELS-EXT
       rels_ext = osf_archive.datastreams.fetch('RELS-EXT').content
