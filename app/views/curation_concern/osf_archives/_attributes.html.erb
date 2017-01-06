@@ -32,3 +32,29 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>Archived Versions of OSF Project</h2>
+<table class="table table-striped <%= dom_class(curation_concern) %> related-to-works with-headroom">
+  <caption class="table-heading">
+    <p>CurateND Works that are different snapshots of the same OSF Project.</p>
+  </caption>
+  <thead>
+  <tr>
+    <th>CurateND Identifier</th>
+    <th>Date Archived</th>
+    <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% curation_concern.archived_versions_of_source_project.each do |archived_version| %>
+    <tr class="referenced_by_works attributes">
+      <td class="attribute noid">
+        <% link_class = (archived_version.pid == curation_concern.pid ? "current-work" : "another-work") %>
+        <%= link_to(archived_version.noid, polymorphic_path([:curation_concern, archived_version]), class: link_class) %>
+      </td>
+      <td class="attribute date_archived"><%= archived_version.date_archived.strftime('%Y-%m-%d') %></td>
+      <td><%= archived_version.pid == curation_concern.pid ? 'This Work' : '&nbsp;'.html_safe %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
