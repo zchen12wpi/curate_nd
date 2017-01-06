@@ -136,7 +136,7 @@ en:
         vra_height: 'The physical object’s height, including unit of measurement, whether inches, centimeters, or other.'
         vra_length: 'The physical object’s length, including unit of measurement, whether inches, centimeters, or other.'
         vra_width: 'The physical object’s width, including unit of measurement, whether inches, centimeters, or other.'
-        vra_weight: 'The physical object’s weight, including unit of measurement, whether inches, centimeters, or other.'
+        vra_weight: 'The physical object’s weight, including unit of measurement, whether pounds, kilograms, or other.'
         vra_was_performed: 'A date on which the work was performed.'
         vra_was_presented: 'A date on which the work was presented.'
         vra_was_produced: 'The date on which the work was produced.'
