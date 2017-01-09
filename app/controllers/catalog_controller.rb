@@ -358,6 +358,7 @@ class CatalogController < ApplicationController
       collection_name = solr_name("desc_metadata__collection_name", :stored_searchable, type: :string)
       contributor_institution_name = solr_name("desc_metadata__contributor_institution", :stored_searchable, type: :string)
       subject_name = solr_name("desc_metadata__subject", :stored_searchable, type: :string)
+      author_name = solr_name("desc_metadata__author", :stored_searchable, type: :string)
       identifier_name = solr_name("desc_metadata__identifier", :facetable, type: :string)
       urn  = solr_name("desc_metadata__urn", :stored_searchable, type: :string)
       degree_name  = solr_name("degree_name", :stored_searchable, type: :string)
@@ -369,7 +370,7 @@ class CatalogController < ApplicationController
       administrative_unit = "admin_unit_tesim"
       aleph_identifier = solr_name("desc_metadata__alephIdentifier", :stored_searchable, type: :string)
       field.solr_parameters = {
-        :qf => "#{title_name} #{label_name} noid_tsi file_format_tesim #{contributor_name} #{abstract_name} #{description_name} #{creator_name} #{administrative_unit} #{publisher_name} #{language_name} #{collection_name} #{contributor_institution_name} #{subject_name} #{identifier_name} #{urn} #{degree_name} #{degree_disciplines} #{contributors} #{degree_department_acronyms} #{date_created} #{source} #{aleph_identifier}",
+        :qf => "#{title_name} #{label_name} noid_tsi file_format_tesim #{contributor_name} #{abstract_name} #{description_name} #{creator_name} #{author_name} #{administrative_unit} #{publisher_name} #{language_name} #{collection_name} #{contributor_institution_name} #{subject_name} #{identifier_name} #{urn} #{degree_name} #{degree_disciplines} #{contributors} #{degree_department_acronyms} #{date_created} #{source} #{aleph_identifier}",
         :pf => "#{title_name}"
       }
     end
