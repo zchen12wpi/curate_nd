@@ -48,3 +48,13 @@
     }
   }
 }
+
+.table.related-to-works {
+  .selected-row {
+    border: 2px solid $blue-light;
+  }
+
+  .modifier.current {
+    width: 3em;
+  }
+}
