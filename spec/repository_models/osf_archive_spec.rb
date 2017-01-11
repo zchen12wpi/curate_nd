@@ -46,7 +46,7 @@ describe OsfArchive do
         :osf_archive,
         source: "https://osf.io/#{osf_project_identifier}",
         osf_project_identifier: osf_project_identifier,
-        date_archived: 2.days.ago
+        date_archived: '2016-11-1'
       )
     end
     let!(:current_version) do
@@ -55,7 +55,7 @@ describe OsfArchive do
         previousVersion: previous_version,
         source: "https://osf.io/#{osf_project_identifier}",
         osf_project_identifier: osf_project_identifier,
-        date_archived: 1.days.ago
+        date_archived: '2016-12-1'
       )
     end
     let!(:project_registration) do
@@ -63,7 +63,7 @@ describe OsfArchive do
         :osf_archive,
         source: "https://osf.io/#{osf_registration_identifier}",
         osf_project_identifier: osf_project_identifier,
-        date_archived: 0.days.ago
+        date_archived: '2016-12-15'
       )
     end
 
@@ -82,7 +82,7 @@ describe OsfArchive do
       # Ensuring #archived_versions_of_source_project
       archived_versions_of_source_project = osf_archive.archived_versions_of_source_project
       expect(archived_versions_of_source_project).to eq([
-        previous_version, current_version, project_registration
+        project_registration, current_version, previous_version
       ])
 
       jsonld = osf_archive.as_jsonld
