@@ -12,7 +12,10 @@ FactoryGirl.define do
     date_created { Date.today }
     date_modified { Date.today }
     date_archived { Date.today }
+    # the source and osf_project_identifier are related
     source { 'https://osf.io/xxxxx/' }
+    osf_project_identifier { 'xxxxx' }
+
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
 
     before(:create) { |work, evaluator|

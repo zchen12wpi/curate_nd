@@ -9,7 +9,8 @@
     <%= curation_concern_attribute_to_html(curation_concern, :date_created, 'Date Created') %>
     <%= curation_concern_attribute_to_html(curation_concern, :subject, "Subject") %>
     <%= curation_concern_attribute_to_html(curation_concern, :date_archived, "Archive Date") %>
-    <%= curation_concern_attribute_to_html(curation_concern, :source, "Original OSF Project") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :source, "Original OSF URL") %>
+    <%= curation_concern_attribute_to_html(curation_concern, :osf_project_identifier, "OSF Project Identifier") %>
     <%= curation_concern_attribute_to_html(curation_concern, :language, "Language") %>
     <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
     <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
@@ -29,5 +30,31 @@
     <% if curation_concern.type_of_license == "Independently Licensed" %>
       <%= curation_concern_attribute_to_html(curation_concern, :license, "License Agreement") %>
     <% end %>
+  </tbody>
+</table>
+
+<h2>Version History</h2>
+<table class="table table-striped <%= dom_class(curation_concern) %> related-to-works with-headroom">
+  <caption class="table-heading">
+    <p>These are different snapshots of the same OSF Project.</p>
+  </caption>
+  <thead>
+  <tr>
+    <th>&nbsp;</th>
+    <th>CurateND Identifier</th>
+    <th>Date Archived</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% curation_concern.archived_versions_of_source_project.each do |archived_version| %>
+    <% is_viewing_version = (archived_version.pid == curation_concern.pid) %>
+    <tr class="referenced_by_works attributes <%= 'selected-row' if is_viewing_version %>">
+      <td class="modifier current"><%= is_viewing_version ? 'Viewing' : '&nbsp;'.html_safe %></td>
+      <td class="attribute noid">
+        <%= link_to_unless(is_viewing_version, archived_version.noid, polymorphic_path([:curation_concern, archived_version])) %>
+      </td>
+      <td class="attribute date_archived"><%= content_tag :time, archived_version.date_archived.strftime('%Y-%m-%d'), datetime: archived_version.date_archived.iso8601 %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>

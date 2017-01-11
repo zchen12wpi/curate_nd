@@ -31,6 +31,7 @@ class AsJsonldMapper
       'vracore'.to_sym => 'http://purl.org/vra/',
       'frels'.to_sym => 'info:fedora/fedora-system:def/relations-external#',
       'ms'.to_sym => 'http://www.ndltd.org/standards/metadata/etdms/1.1/',
+      'pav'.to_sym => 'http://purl.org/pav/',
       "fedora-model".to_sym => "info:fedora/fedora-system:def/model#",
       "hydra".to_sym => "http://projecthydra.org/ns/relations#",
       "hasModel".to_sym => {"@id" => "fedora-model:hasModel", "@type" => "@id" },
@@ -40,7 +41,7 @@ class AsJsonldMapper
       "isMemberOfCollection".to_sym => {"@id" => "frels:isMemberOfCollection", "@type" => "@id" },
       "isEditorOf".to_sym => {"@id" => "hydra:isEditorOf", "@type" => "@id" },
       "hasMember".to_sym => {"@id" => "frels:hasMember", "@type" => "@id" },
-      "previousVersion".to_sym => "http://purl.org/pav/previousVersion"
+      'previousVersion'.to_sym => 'http://purl.org/pav/previousVersion'
   }
 
   DEFAULT_ATTRIBUTES = {
