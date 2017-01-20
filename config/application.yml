@@ -10,6 +10,10 @@ AIRBRAKE_API_KEY: 'fakey-mcfake-face'
 
 BATCH_INGESTOR_URL: 'http://localhost:15000/'
 
+# Examples only... actual values used are in secrets:
+CURATE_HELP_NOTIFICATION_RECIPIENT: no-reply@nd.edu
+CURATE_HELP_NOTIFICATION_DEFAULT_SENDER: library@nd.edu
+
 # These are keys for the sandbox
 ORCID_APP_ID: 0000-0002-6683-6607
 ORCID_APP_SECRET: e1ff26a2-d889-40be-bd41-acac09214cae
@@ -21,7 +25,6 @@ DOI_PASSWORD: apitest
 DOI_SHOULDER: doi:10.5072/FK2
 DOI_URL: https://ezid.lib.purdue.edu/
 
-CURATE_HELP_NOTIFICATION_RECIPIENT: no-reply@nd.edu
 
 LDAP_HOST: directory.nd.edu
 LDAP_PORT: '636'
