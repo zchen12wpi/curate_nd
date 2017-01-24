@@ -11,7 +11,7 @@ AIRBRAKE_API_KEY: 'fakey-mcfake-face'
 BATCH_INGESTOR_URL: 'http://localhost:15000/'
 
 # Examples only... actual values used are in secrets:
-CURATE_HELP_NOTIFICATION_RECIPIENT: no-reply@nd.edu
+CURATE_HELP_NOTIFICATION_RECIPIENT: library@nd.edu,nddev@service-now.com
 CURATE_HELP_NOTIFICATION_DEFAULT_SENDER: library@nd.edu
 
 # These are keys for the sandbox
