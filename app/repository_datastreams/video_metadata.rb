@@ -79,9 +79,7 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
     map.is_part_of({to: 'isPartOf', in: RDF::DC}) do |index|
       index.as :stored_searchable
     end
-
-    map.original_media_source(to: 'isDerivedFrom', in: RDF::Ebucore)
-
+    
     #date recorded
     map.date_created(to: 'created', :in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
