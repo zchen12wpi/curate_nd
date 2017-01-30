@@ -25,7 +25,8 @@ module CurateHelper
     begin
       p = Person.load_instance_from_solr(value.split("/").last)
     rescue => e
-      logger.warn("WARN: Helper method create_name_from_pid raised an error when loading #{value}.  Error was #{e}")
+      # DLTP-793 This message was filling the production logs- use it only in debug (production log_level is info)
+      logger.debug("DEBUG: Helper method create_name_from_pid raised an error when loading #{value}.  Error was #{e}")
     end
     return p.nil? ? value : p.name
   end
