@@ -12,5 +12,4 @@ class CurationConcern::VideosController < CurationConcern::GenericWorksControlle
     curation_concern.record_viewer_groups.build
   end
   protected :setup_form
-
 end
