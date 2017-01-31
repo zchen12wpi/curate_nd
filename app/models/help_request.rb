@@ -26,7 +26,9 @@ class HelpRequest < ActiveRecord::Base
   end
 
   def sender_email
-    user.try(:email) || email || I18n.t('sufia.help_email')
+    return user.email if user.try(:email)
+    return email if email.present?
+    ENV.fetch('CURATE_HELP_NOTIFICATION_DEFAULT_SENDER')
   end
 
   def user_name
