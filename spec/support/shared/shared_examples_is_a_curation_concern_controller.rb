@@ -18,7 +18,7 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
   def path_to_curation_concern
     # This fails with a ActionController::UrlGenerationError if the
     # curation_concern didn't save
-    public_send("curation_concern_#{curation_concern_type_underscore}_path", controller.curation_concern)
+    public_send("common_object_path", controller.curation_concern)
   end
 
   if optionally_include_specs(actions, :show)

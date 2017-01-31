@@ -22,7 +22,9 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
 
   def after_create_response
     report_notification_messages
-    respond_with([:curation_concern, curation_concern])
+    respond_with([:curation_concern, curation_concern]) do |wants|
+      wants.html { redirect_to common_object_path(curation_concern) }
+    end
   end
 
   def report_notification_messages
@@ -91,7 +93,9 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
     if actor.visibility_changed?
       redirect_to confirm_curation_concern_permission_path(curation_concern)
     else
-      respond_with([:curation_concern, curation_concern])
+      respond_with([:curation_concern, curation_concern]) do |wants|
+        wants.html { redirect_to common_object_path(curation_concern) }
+      end
     end
   end
   protected :after_update_response
