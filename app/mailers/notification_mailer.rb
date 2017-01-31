@@ -21,8 +21,7 @@ class NotificationMailer < ActionMailer::Base
   end
 
   def recipients_list
-    return @list if !@list.blank?
-    @list = Array.wrap(ENV.fetch('CURATE_HELP_NOTIFICATION_RECIPIENT', 'library@nd.edu'))
+    @list ||= Array.wrap(ENV.fetch('CURATE_HELP_NOTIFICATION_RECIPIENT'))
     return @list
   end
 
