@@ -24,12 +24,12 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     #director(s)
-    map.director(to: 'drt', in RDF::Relators) do |index|
+    map.director(to: 'drt', in: RDF::Relators) do |index|
       index.as :stored_searchable
     end
 
     #screenwriter(s)
-    map.screenwriter(to: 'aus', in RDF::Relators) do |index|
+    map.screenwriter(to: 'aus', in: RDF::Relators) do |index|
       index.as :stored_searchable
     end
 
