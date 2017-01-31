@@ -1,7 +1,6 @@
 module CurateHelper
-
   def support_email_link(options = {})
-    mail_to(t('sufia.help_email'), t('sufia.help_email'), {subject: t('sufia.help_email_subject')}.merge(options)).html_safe
+    mail_to(t('sufia.help_email'), t('sufia.help_email'), { subject: t('sufia.help_email_subject') }.merge(options)).html_safe
   end
 
   def file_size_warning
@@ -9,30 +8,30 @@ module CurateHelper
   end
 
   # Loads the object and returns its title
-  def collection_title_from_pid  value
+  def collection_title_from_pid(value)
     begin
       c = Collection.load_instance_from_solr(value)
     rescue => e
       logger.warn("WARN: Helper method collection_title_from_pid raised an error when loading #{value}.  Error was #{e}")
     end
-    return c.nil? ? value : c.title
+    c.nil? ? value : c.title
   end
 
   # Loads the person object and returns their name
   # In this case, the value is in the format: info:fedora/<PID>
   # So used split
-  def creator_name_from_pid value
+  def creator_name_from_pid(value)
     begin
-      p = Person.load_instance_from_solr(value.split("/").last)
+      p = Person.load_instance_from_solr(value.split('/').last)
     rescue => e
       # DLTP-793 This message was filling the production logs- use it only in debug (production log_level is info)
       logger.debug("DEBUG: Helper method create_name_from_pid raised an error when loading #{value}.  Error was #{e}")
     end
-    return p.nil? ? value : p.name
+    p.nil? ? value : p.name
   end
 
   def construct_page_title(*elements)
-    (elements.flatten.compact + [application_name]).join(" // ")
+    (elements.flatten.compact + [application_name]).join(' // ')
   end
 
   def curation_concern_page_title(curation_concern)
@@ -45,9 +44,7 @@ module CurateHelper
 
   def default_page_title
     text = controller_name.singularize.titleize
-    if action_name
-      text = "#{action_name.titleize} " + text
-    end
+    text = "#{action_name.titleize} " + text if action_name
     construct_page_title(text)
   end
 
@@ -64,7 +61,7 @@ module CurateHelper
   # @option template [String] (table) table or dl
   def curation_concern_attribute_to_html(curation_concern, method_name, label = nil, options = {})
     subject = curation_concern.public_send(method_name)
-    return "" if !subject.present? && !options[:include_empty]
+    return '' if !subject.present? && !options[:include_empty]
     label ||= derived_label_for(curation_concern, method_name)
     render_collection_as_tabular_list(subject, method_name, label, options)
   end
@@ -82,7 +79,7 @@ module CurateHelper
         { tag: 'li', opener: %(<tr><th>#{label}</th>\n<td><ul class="tabular">), closer: '</ul></td></tr>' }
       end
     end
-    markup = ""
+    markup = ''
 
     markup << template.fetch(:opener)
     tag = template.fetch(:tag)
@@ -98,7 +95,7 @@ module CurateHelper
   end
   private :render_collection_as_tabular_list
 
-  def __render_tabular_list_item(method_name, value, block_formatting, tag, options = {})
+  def __render_tabular_list_item(method_name, value, block_formatting, tag, _options = {})
     inner_html = block_given? ? yield : h(richly_formatted_text(value, block: block_formatting))
     %(<#{tag} class="attribute #{method_name}">#{inner_html}</#{tag}>\n)
   end
@@ -107,7 +104,11 @@ module CurateHelper
   def __render_tabular_list_item_for_rights(method_name, value, block_formatting, tag, options = {})
     # Special treatment for license/rights.  A URL from the Sufia gem's config/sufia.rb is stored in the descMetadata of the
     # curation_concern.  If that URL is valid in form, then it is used as a link.  If it is not valid, it is used as plain text.
-    parsedUri = URI.parse(value) rescue nil
+    parsedUri = begin
+                  URI.parse(value)
+                rescue
+                  nil
+                end
     if parsedUri.nil?
       __render_tabular_list_item(method_name, value, block_formatting, tag, options)
     else
@@ -139,10 +140,10 @@ module CurateHelper
   private :__render_tabular_list_item_for_tag
 
   def __render_tabular_list_item_for_alephIdentifier(method_name, value, block_formatting, tag, options = {})
-      callout_text = "View the library catalog record for this item"
-      __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
-          %(<a href="http://onesearch.library.nd.edu/NDU:nd_campus:ndu_aleph#{h(value)}" target="_blank"><span class="callout-text">#{callout_text} (#{value})</span></a>)
-        end
+    callout_text = 'View the library catalog record for this item'
+    __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
+      %(<a href="http://onesearch.library.nd.edu/NDU:nd_campus:ndu_aleph#{h(value)}" target="_blank"><span class="callout-text">#{callout_text} (#{value})</span></a>)
+    end
   end
   private :__render_tabular_list_item_for_alephIdentifier
 
@@ -154,7 +155,7 @@ module CurateHelper
 
   # options[:block_formatting, :class]
   def curation_concern_attribute_to_formatted_text(curation_concern, method_name, label = nil, options = {})
-    markup = ""
+    markup = ''
     label ||= derived_label_for(curation_concern, method_name)
     subject = curation_concern.public_send(method_name)
     options.reverse_merge!(block_formatting: true, class: 'descriptive-text')
@@ -200,11 +201,13 @@ module CurateHelper
       return asset
     end
   end
+
   def polymorphic_path_for_asset(asset)
-    return polymorphic_path(polymorphic_path_args(asset))
+    polymorphic_path(polymorphic_path_args(asset))
   end
+
   def edit_polymorphic_path_for_asset(asset)
-    return edit_polymorphic_path(polymorphic_path_args(asset))
+    edit_polymorphic_path(polymorphic_path_args(asset))
   end
 
   # This converts a collection of objects to a 2 dimensional array having keys accessed via the key_method on the objects
@@ -232,19 +235,23 @@ module CurateHelper
 
   def extract_dom_label_class_and_link_title(document)
     hash = document.stringify_keys
-    dom_label_class, link_title = "label-important", "Private"
+    dom_label_class = 'label-important'
+    link_title = 'Private'
     if hash[Hydra.config[:permissions][:read][:group]].present?
       if hash[Hydra.config[:permissions][:read][:group]].include?('public')
         if hash[Hydra.config[:permissions][:embargo_release_date]].present?
-          dom_label_class, link_title = 'label-warning', 'Open Access with Embargo'
+          dom_label_class = 'label-warning'
+          link_title = 'Open Access with Embargo'
         else
-          dom_label_class, link_title = 'label-success', 'Open Access'
+          dom_label_class = 'label-success'
+          link_title = 'Open Access'
         end
       elsif hash[Hydra.config[:permissions][:read][:group]].include?('registered')
-        dom_label_class, link_title = "label-info", t('sufia.institution_name')
+        dom_label_class = 'label-info'
+        link_title = t('sufia.institution_name')
       end
     end
-    return dom_label_class, link_title
+    [dom_label_class, link_title]
   end
   private :extract_dom_label_class_and_link_title
 
@@ -275,13 +282,13 @@ module CurateHelper
     hierarchy_root_field = Curate::LibraryCollectionIndexingAdapter::SOLR_KEY_PATHNAME_HIERARCHY_WITH_TITLES
     solr_query_string = ActiveFedora::SolrService.construct_query_for_pids([curation_concern.pid])
     solr_results = ActiveFedora::SolrService.query(solr_query_string)
-    return false unless (solr_results && solr_results.first)
+    return false unless solr_results && solr_results.first
     solr_doc = solr_results.first
     collection_key_root = solr_doc.fetch(hierarchy_root_field, []).first
-    collection_key = ""
+    collection_key = ''
     collection_key << "#{collection_key_root}/" if collection_key_root.present?
     collection_key << "#{curation_concern.title}|#{curation_concern.pid}"
     return false unless collection_key.present?
-    catalog_index_path({ f: { ::Catalog::SearchSplashPresenter.collection_key => [ collection_key ] } })
+    catalog_index_path(f: { ::Catalog::SearchSplashPresenter.collection_key => [collection_key] })
   end
 end
