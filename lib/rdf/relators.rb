@@ -11,5 +11,8 @@ module RDF
     property :ive
     property :prf
     property :pro
+    property :aus
+    property :prn
+    property :drt
   end
 end

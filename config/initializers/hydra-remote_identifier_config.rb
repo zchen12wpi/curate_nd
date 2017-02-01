@@ -33,5 +33,13 @@ Hydra::RemoteIdentifier.configure do |config|
       map.publicationyear {|o| o.date_uploaded.year }
       map.set_identifier { |o,value| o.identifier = value }
     end
+    doi.register(Video) do |map|
+      map.target {|obj| Curate.permanent_url_for(obj) }
+      map.creator { I18n.t('sufia.institution_name') }
+      map.title :title
+      map.publisher { I18n.t('sufia.institution_name') }
+      map.publicationyear {|o| o.date_uploaded.year }
+      map.set_identifier { |o,value| o.identifier = value }
+    end
   end
 end

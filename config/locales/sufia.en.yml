@@ -114,7 +114,7 @@ en:
         num_pages: 'The total number of pages in a work.'
         eIssn: 'The Electronic ISSN of the resource in which the work appeared.'
         is_part_of: 'The larger work (journal, symphony, book, etc.) of which this individual item forms a part.'
-        performer: 'A performer of the work, whether singer, speaker, voice actor, musician, or other role.'
+        performer: 'A performer of the work, whether actor, singer, speaker, voice actor, musician, or other role.'
         composer: 'The composer of a work.'
         conductor: 'The conductor of a work.'
         work_author: 'The author of text or other material used in the work. Use Composer for works of music.'
@@ -166,6 +166,9 @@ en:
         vra_place_of_publication: 'The location where this item or object was published.'
         vra_place_of_repository: 'A location holding originals of this item or object.'
         vra_place_of_site: 'The location of the site where the artwork exists.'
+        director: "A person responsible for the general management and supervision of a play, filmed performance, a radio or television program, etc."
+        screenwriter: "An author of a screenplay, script, or scene."
+        production_company: "An organization that is responsible for financial, technical, and organizational management of a production for stage, screen, audio recording, television, webcast, etc."
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
       user:
