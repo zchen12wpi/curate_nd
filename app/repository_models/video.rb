@@ -44,6 +44,9 @@ class Video < ActiveFedora::Base
   attribute :interviewee,
     datastream: :descMetadata, multiple: true,
     hint: "An entity responsible for elements of the resource by responding to an interviewer or host."
+  attribute :speaker,
+    datastream: :descMetadata, multiple: true,
+    hint: "A performer contributing to a resource by speaking words, such as a lecture, speech, etc."
   attribute :producer,
     datastream: :descMetadata, multiple: true,
     hint: "The producer of a work."

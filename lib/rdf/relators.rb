@@ -14,5 +14,6 @@ module RDF
     property :aus
     property :prn
     property :drt
+    property :spk
   end
 end
