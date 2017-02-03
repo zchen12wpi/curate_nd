@@ -11,11 +11,13 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.source(to: 'source', in: RDF::DC) do |index|
-      index.as :stored_searchable
+      index.type :string
+      index.as :stored_sortable
     end
 
     map.osf_project_identifier(to: 'osfProjectIdentifier', in: RDF::ND) do |index|
-      index.as :stored_searchable
+      index.type :string
+      index.as :stored_sortable
     end
 
     map.subject(to: 'subject', in: RDF::DC) do |index|

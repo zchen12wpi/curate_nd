@@ -34,9 +34,9 @@ class OsfArchive < ActiveFedora::Base
   end
 
   # These are included as convenience for developers.
-  SOLR_KEY_OSF_PROJECT_IDENTIFIER = 'desc_metadata__osf_project_identifier_tesim'.freeze
+  SOLR_KEY_OSF_PROJECT_IDENTIFIER = 'desc_metadata__osf_project_identifier_ssi'.freeze
   SOLR_KEY_ARCHIVED_DATE = 'desc_metadata__date_archived_dtsi'.freeze
-  SOLR_KEY_SOURCE = 'desc_metadata__source_tesim'.freeze
+  SOLR_KEY_SOURCE = 'desc_metadata__source_ssi'.freeze
 
   # Retrieve all archived versions of the source project (including registrations)
   # in date_archived descending order.
