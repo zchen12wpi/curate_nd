@@ -40,6 +40,10 @@
           <dt>Interviewee(s):</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__interviewee_tesim') %></dd>
         <% end %>
+        <% if solr_doc.has?('desc_metadata__speaker_tesim') %>
+          <dt>Speaker(s):</dt>
+          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__speaker_tesim') %></dd>
+        <% end %>
         <% if solr_doc.has?('desc_metadata__producer_tesim') %>
           <dt>Producer(s):</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__producer_tesim') %></dd>
