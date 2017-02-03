@@ -169,6 +169,7 @@ en:
         director: "A person responsible for the general management and supervision of a play, filmed performance, a radio or television program, etc."
         screenwriter: "An author of a screenplay, script, or scene."
         production_company: "An organization that is responsible for financial, technical, and organizational management of a production for stage, screen, audio recording, television, webcast, etc."
+        speaker: "A performer contributing to a resource by speaking words, such as a lecture, speech, etc."
       profile_connection:
         text: "Search the following ORCID fields: IDs, names, emails, DOIs, work titles, and keywords. Any ORCID fields marked as private may be skipped."
       user:

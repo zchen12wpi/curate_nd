@@ -43,6 +43,11 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    #Speaker(s)
+    map.speaker(to: 'spk', in: RDF::Relators) do |index|
+      index.as :stored_searchable
+    end
+
     #Producer(s)
     map.producer(to: 'pro', in: RDF::Relators) do |index|
       index.as :stored_searchable
