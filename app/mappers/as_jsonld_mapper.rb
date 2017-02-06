@@ -19,6 +19,11 @@ class AsJsonldMapper
   end
 
   # The keys need to be symbols to prevent the RDF library from balking.
+  # Without symbolized keys, we end up with the following exception
+  # ```console
+  #   RuntimeError:
+  #     can't add a new key into hash during iteration
+  # ```
   CONTEXT = {
       'und'.to_sym => File.join(Rails.configuration.application_root_url, 'show/'),
       'bibo'.to_sym => 'http://purl.org/ontology/bibo/',
@@ -32,27 +37,27 @@ class AsJsonldMapper
       'frels'.to_sym => 'info:fedora/fedora-system:def/relations-external#',
       'ms'.to_sym => 'http://www.ndltd.org/standards/metadata/etdms/1.1/',
       'pav'.to_sym => 'http://purl.org/pav/',
-      "fedora-model".to_sym => "info:fedora/fedora-system:def/model#",
-      "hydra".to_sym => "http://projecthydra.org/ns/relations#",
-      "hasModel".to_sym => {"@id" => "fedora-model:hasModel", "@type" => "@id" },
-      "hasEditor".to_sym => {"@id" => "hydra:hasEditor", "@type" => "@id" },
-      "hasEditorGroup".to_sym => {"@id" => "hydra:hasEditorGroup", "@type" => "@id" },
-      "isPartOf".to_sym => {"@id" => "frels:isPartOf", "@type" => "@id" },
-      "isMemberOfCollection".to_sym => {"@id" => "frels:isMemberOfCollection", "@type" => "@id" },
-      "isEditorOf".to_sym => {"@id" => "hydra:isEditorOf", "@type" => "@id" },
-      "hasMember".to_sym => {"@id" => "frels:hasMember", "@type" => "@id" },
+      'fedora-model'.to_sym => 'info:fedora/fedora-system:def/model#',
+      'hydra'.to_sym => 'http://projecthydra.org/ns/relations#',
+      'hasModel'.to_sym => { '@id' => 'fedora-model:hasModel', '@type' => '@id' },
+      'hasEditor'.to_sym => { '@id' => 'hydra:hasEditor', '@type' => '@id' },
+      'hasEditorGroup'.to_sym => { '@id' => 'hydra:hasEditorGroup', '@type' => '@id' },
+      'isPartOf'.to_sym => { '@id' => 'frels:isPartOf', '@type' => '@id' },
+      'isMemberOfCollection'.to_sym => { '@id' => 'frels:isMemberOfCollection', '@type' => '@id' },
+      'isEditorOf'.to_sym => { '@id' => 'hydra:isEditorOf', '@type' => '@id' },
+      'hasMember'.to_sym => { '@id' => 'frels:hasMember', '@type' => '@id' },
       'previousVersion'.to_sym => 'http://purl.org/pav/previousVersion'
   }
 
   DEFAULT_ATTRIBUTES = {
-      'read-person' => "nd:accessRead".freeze,
-      'read-group' => "nd:accessReadGroup".freeze,
-      'edit-person' => "nd:accessEdit".freeze,
-      'edit-groups' => "nd:accessEditGroup".freeze,
-      'embargo' => "nd:accessEmbargoDate".freeze,
-      'depositor' => "nd:depositor".freeze,
-      'owner' => "nd:owner".freeze,
-      'representative' => "nd:representativeFile".freeze
+      'read-person' => 'nd:accessRead'.freeze,
+      'read-group' => 'nd:accessReadGroup'.freeze,
+      'edit-person' => 'nd:accessEdit'.freeze,
+      'edit-groups' => 'nd:accessEditGroup'.freeze,
+      'embargo' => 'nd:accessEmbargoDate'.freeze,
+      'depositor' => 'nd:depositor'.freeze,
+      'owner' => 'nd:owner'.freeze,
+      'representative' => 'nd:representativeFile'.freeze
   }
 
   AF_MODEL_KEY = "nd:afmodel".freeze
@@ -77,7 +82,9 @@ class AsJsonldMapper
   def call
     process_datastreams
     json_document = strip_info_fedora_prefix(generate_json_output)
-    JSON.parse(json_document)
+    json = JSON.parse(json_document)
+    json['@context'] = unescape_json_context(json['@context'])
+    json
   end
 
   private
@@ -87,6 +94,21 @@ class AsJsonldMapper
   end
 
   attr_accessor :curation_concern, :attribute_map, :graph, :curation_concern_uri_term
+
+  REGEXP_FOR_UNESCAPED_JSON = /\{[^\}]*\}/.freeze
+
+  # Because the Hash in the above context is being converted to a string via JSON::LD::Context::TermDefinition initialization,
+  # I need a method to convert that String back into a hash.
+  def unescape_json_context(context)
+    context.each_with_object({}) do |(context_key, context_value) , new_context|
+      if context_value =~ REGEXP_FOR_UNESCAPED_JSON
+        new_context[context_key] = JSON.load(context_value.gsub('=>', ': '))
+      else
+        new_context[context_key] = context_value
+      end
+      new_context
+    end
+  end
 
   def process_datastreams
     curation_concern.datastreams.each do |dsname, ds|

@@ -75,14 +75,31 @@ describe AsJsonldMapper do
     described_class.call(curation_concern)
   end
 
-  context 'convert all article datastreams into json'do
-    subject { described_class.new(curation_concern).call.except("@context") }
-    it { is_expected.to eq(expected_article_json) }
+  describe 'convert all article datastreams into json'do
+    let(:json) { described_class.new(curation_concern).call }
+
+    it 'will be as expected' do
+      expect(json.except("@context")).to eq(expected_article_json)
+      json.fetch("@context").each do |key, value|
+        # There should not be an escaped hash as a context value
+        if value.is_a?(String)
+          expect(value).to_not(match(described_class::REGEXP_FOR_UNESCAPED_JSON), %(Expected key: "#{key}" to not have an escaped Hash. Got #{value.inspect}))
+        end
+      end
+    end
   end
 
-  context 'convert all generic file datastreams into json'do
-    subject { described_class.new(generic_file).call.except("@context") }
-    it { is_expected.to eq(expected_generic_file_json) }
-  end
+  describe 'convert all article generic_file into json'do
+    let(:json) { described_class.new(generic_file).call }
 
+    it 'will be as expected' do
+      expect(json.except("@context")).to eq(expected_generic_file_json)
+      json.fetch("@context").each do |key, value|
+        # There should not be an escaped hash as a context value
+        if value.is_a?(String)
+          expect(value).to_not(match(described_class::REGEXP_FOR_UNESCAPED_JSON), %(Expected key: "#{key}" to not have an escaped Hash. Got #{value.inspect}))
+        end
+      end
+    end
+  end
 end
