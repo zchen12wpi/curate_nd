@@ -75,8 +75,8 @@ describe OsfArchive do
 
       # Ensuring a well configured SOLR
       to_solr = osf_archive.to_solr
-      expect(to_solr.fetch(OsfArchive::SOLR_KEY_SOURCE)).to eq([osf_archive.source])
-      expect(to_solr.fetch(OsfArchive::SOLR_KEY_OSF_PROJECT_IDENTIFIER)).to eq([osf_project_identifier])
+      expect(to_solr.fetch(OsfArchive::SOLR_KEY_SOURCE)).to eq(osf_archive.source)
+      expect(to_solr.fetch(OsfArchive::SOLR_KEY_OSF_PROJECT_IDENTIFIER)).to eq(osf_project_identifier)
       expect(to_solr.key?(OsfArchive::SOLR_KEY_ARCHIVED_DATE)).to eq(true)
 
       # Ensuring #archived_versions_of_source_project
