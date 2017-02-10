@@ -10,7 +10,10 @@
   <tbody>
     <tr>
       <th>Parent Work</th>
-      <td><%= link_to curation_concern.parent, polymorphic_path([:curation_concern, curation_concern.parent]) %></td>
+      <td>
+        <%# Bug fix as per DLTP-749, link to parent throws 500 error for collections %>
+        <%= link_to parent, common_object_path(curation_concern.parent.noid) %>
+      </td>
     </tr>
     <tr>
       <th>Title</th>
