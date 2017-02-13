@@ -9,7 +9,7 @@ module CurationConcern
       when 'new', 'create'
         add_breadcrumb "New #{curation_concern.human_readable_type}", request.path
       else
-        add_breadcrumb curation_concern.human_readable_type, polymorphic_path([:curation_concern, curation_concern])
+        add_breadcrumb curation_concern.human_readable_type, common_object_path(curation_concern)
         add_breadcrumb action_name.titleize, request.path
       end
     end

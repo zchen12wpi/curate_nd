@@ -1,5 +1,5 @@
 <% solr_doc          ||= document.inner_object.solr_doc                                                    %>
-<% title_link_target ||= polymorphic_path([:curation_concern, document])                                   %>
+<% title_link_target ||= common_object_path(document) %>
 <% if document.respond_to?(:name) %>
   <% title_link_text   ||= document.name %>
 <% else %>
@@ -42,5 +42,3 @@
     <% end %>
   </div>
 </div>
-
-

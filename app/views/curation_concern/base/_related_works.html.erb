@@ -13,7 +13,7 @@
       <tbody>
       <% curation_concern.related_works.each do |related_work| %>
         <tr class="referenced_by_works attributes">
-          <td class="attribute title"><%= link_to related_work.title, polymorphic_path([:curation_concern, related_work]) %></td>
+          <td class="attribute title"><%= link_to related_work.title, common_object_path(related_work) %></td>
         </tr>
       <% end %>
       </tbody>
@@ -46,7 +46,7 @@
       <tbody>
       <% curation_concern.referenced_by_works.each do |related_work| %>
         <tr class="referenced_by_works attributes">
-          <td class="attribute title"><%= link_to related_work.title, polymorphic_path([:curation_concern, related_work]) %></td>
+          <td class="attribute title"><%= link_to related_work.title, common_object_path(related_work) %></td>
         </tr>
       <% end %>
       </tbody>

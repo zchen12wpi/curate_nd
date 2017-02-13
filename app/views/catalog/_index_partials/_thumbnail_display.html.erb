@@ -1,4 +1,4 @@
-<% title_link_target ||= polymorphic_path([:curation_concern, document]) %>
+<% title_link_target ||= common_object_path(document) %>
 <% if document.respond_to?(:representative_image_url) && document.representative_image_url.present? %>
   <%= link_to title_link_target do %>
     <div class="thumbnail-wrapper">

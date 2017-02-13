@@ -15,7 +15,7 @@
 <% if curation_concern.persisted? %>
 <p><em>Files are managed from the <%= link_to(
   "#{curation_concern.human_readable_type.downcase} record view",
-  polymorphic_path([:curation_concern, curation_concern])
+    common_object_path(curation_concern)
   )%>.
   <% unless curation_concern.generic_files.present? %>
     <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
