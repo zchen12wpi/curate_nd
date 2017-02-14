@@ -2,6 +2,8 @@
 # whether a user is authorized to create a given work type.
 #
 # Rules are defined in config/work_type_policy_rules.yml
+#
+# @see Ability for implementation details (./app/models/ability.rb)
 class WorkTypePolicy
   def initialize(user: current_user, policy_rules: WORK_TYPE_POLICY_RULES)
     self.user = user
