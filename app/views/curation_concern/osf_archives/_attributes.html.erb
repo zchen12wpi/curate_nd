@@ -51,7 +51,7 @@
     <tr class="referenced_by_works attributes <%= 'selected-row' if is_viewing_version %>">
       <td class="modifier current"><%= is_viewing_version ? 'Viewing' : '&nbsp;'.html_safe %></td>
       <td class="attribute noid">
-        <%= link_to_unless(is_viewing_version, archived_version.noid, polymorphic_path([:curation_concern, archived_version])) %>
+        <%= link_to_unless(is_viewing_version, archived_version.noid, common_object_path(archived_version)) %>
       </td>
       <td class="attribute date_archived"><%= content_tag :time, archived_version.date_archived.strftime('%Y-%m-%d'), datetime: archived_version.date_archived.iso8601 %></td>
     </tr>

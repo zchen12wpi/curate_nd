@@ -24,9 +24,9 @@
       ) %>
       <%# TODO Cancel button behavior should be context aware.
         Going back to the dashboard isn't always the expected behavior. %>
-      <%= link_to 'Cancel', polymorphic_path([:curation_concern, parent]), class: 'btn btn-link' %>
+      <%= link_to 'Cancel', common_object_path(parent), class: 'btn btn-link' %>
     <% unless curation_concern.new_record? -%>
-      <%= link_to 'Go to File Record View', polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-info pull-right' %>
+      <%= link_to 'Go to File Record View', common_object_path(curation_concern), class: 'btn btn-info pull-right' %>
     <% end -%>
     </div>
   </div>
