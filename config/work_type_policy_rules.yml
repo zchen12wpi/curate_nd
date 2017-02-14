@@ -9,7 +9,7 @@ Dataset:
 Document:
   open: all
 Etd:
-  open: all
+  open: nobody
 FindingAid:
   open: all
 Image:

@@ -1,5 +1,14 @@
 Curate.configure do |config|
   # Injected via `rails g curate:work SeniorThesis`
+
+  # ***************************************************************************************************************************************
+  # ***************************************************************************************************************************************
+  #
+  # Note: These are all of the curation concerns. They are a superset of what can be self-deposited.
+  # To remove something from self-deposit, see WorkTypePolicy (./app/models/work_type_policy.rb)
+  #
+  # ***************************************************************************************************************************************
+  # ***************************************************************************************************************************************
   config.register_curation_concern :senior_thesis
   config.register_curation_concern :finding_aid
   config.register_curation_concern :etd
