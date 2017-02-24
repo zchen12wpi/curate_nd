@@ -7,4 +7,4 @@ export PATH=/opt/ruby/current/bin:$PATH
 
 source /home/app/curatend/current/script/get-env.sh
 cd $RAILS_ROOT
-bundle exec unicorn -D -E deployment -c $RAILS_ROOT/config/unicorn.rb
+bundle exec unicorn -D -E $RAILS_ENV -c $RAILS_ROOT/config/unicorn.rb
