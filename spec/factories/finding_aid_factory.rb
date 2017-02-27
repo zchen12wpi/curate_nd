@@ -8,7 +8,7 @@ FactoryGirl.define do
     date_uploaded { Date.today }
     date_modified { Date.today }
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
-    rights { Sufia.config.cc_licenses.keys.first.dup }
+    rights { Copyright.default_persisted_value }
     sequence(:creator) {|n|["Creator Name#{n}"]}
     abstract 'Hello World!'
     before(:create) { |work, evaluator|

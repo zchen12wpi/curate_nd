@@ -5,7 +5,7 @@ FactoryGirl.define do
     end
     sequence(:title) {|n| "Title #{n}"}
     # Do we want to have a description in here too?
-    rights { Sufia.config.cc_licenses.keys.first.dup }
+    rights { Copyright.default_persisted_value }
     date_uploaded { Date.today }
     date_modified { Date.today }
     creator { ["Some Body"] }

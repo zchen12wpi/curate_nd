@@ -34,27 +34,6 @@ Sufia.config do |config|
 
   config.max_days_between_audits = 7
 
-  config.cc_licenses = {
-    'Creative Commons BY 4.0' => 'https://creativecommons.org/licenses/by/4.0/',
-    'Creative Commons BY-SA 4.0' => 'https://creativecommons.org/licenses/by-sa/4.0/',
-    'Creative Commons BY-ND 4.0' => 'https://creativecommons.org/licenses/by-nd/4.0/',
-    'Creative Commons BY-NC 4.0' => 'https://creativecommons.org/licenses/by-nc/4.0/',
-    'Creative Commons BY-NC-SA 4.0' => 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
-    'Creative Commons BY-NC-ND 4.0' => 'https://creativecommons.org/licenses/by-nc-nd/4.0/',
-    'Creative Commons BY 3.0 United States' => 'http://creativecommons.org/licenses/by/3.0/us/',
-    'Creative Commons BY 3.0 Unported' => 'https://creativecommons.org/licenses/by/3.0/',
-    'Creative Commons BY-SA 3.0 United States' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
-    'Creative Commons BY-NC 3.0 United States' => 'http://creativecommons.org/licenses/by-nc/3.0/us/',
-    'Creative Commons BY-ND 3.0 United States' => 'http://creativecommons.org/licenses/by-nd/3.0/us/',
-    'Creative Commons BY-NC-ND 3.0 United States' => 'http://creativecommons.org/licenses/by-nc-nd/3.0/us/',
-    'Creative Commons BY-NC-SA 3.0 United States' => 'http://creativecommons.org/licenses/by-nc-sa/3.0/us/',
-    'Public Domain Mark 1.0' => 'http://creativecommons.org/publicdomain/mark/1.0/',
-    'CC0 1.0 Universal' => 'http://creativecommons.org/publicdomain/zero/1.0/',
-    'All rights reserved' => 'All rights reserved'
-  }
-
-  config.cc_licenses_reverse = Hash[*config.cc_licenses.to_a.flatten.reverse]
-
   config.permission_levels = {
     "Choose Access"=>"none",
     "View/Download" => "read",
