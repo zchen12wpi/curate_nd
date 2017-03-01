@@ -5,7 +5,7 @@ FactoryGirl.define do
     end
     sequence(:title) {|n| "Title #{n}"}
     type { "OSF Archive"}
-    rights { Sufia.config.cc_licenses.keys.first.dup }
+    rights { Copyright.default_persisted_value }
     creator { ["Some Body"] }
     administrative_unit { ["Some Department"] }
     description { ["An OSF archive"] }

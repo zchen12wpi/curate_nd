@@ -113,7 +113,7 @@ module CurateHelper
       __render_tabular_list_item(method_name, value, block_formatting, tag, options)
     else
       __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
-        %(<a href=#{h(value)} target="_blank"> #{h(Sufia.config.cc_licenses_reverse[value])}</a>)
+        %(<a href=#{h(value)} target="_blank"> #{h(Copyright.label_from_uri(value))}</a>)
       end
     end
   end
