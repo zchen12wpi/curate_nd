@@ -32,7 +32,7 @@ local_user: &local_user
   <<: *mysql_settings
   <<: *mysql_connection
   username: root
-  password:
+  password: <%= ENV["PASSWORD"] %>
 
 development: &development
   <<: *local_user
@@ -55,4 +55,3 @@ ci: &ci
 
 ci_remote_purl_database:
   <<: *ci
-

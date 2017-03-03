@@ -35,7 +35,6 @@ class Document < ActiveFedora::Base
     'Press Release',
     'Report',
     'Software',
-    'Video',
     'White Paper'
   ].freeze
 
