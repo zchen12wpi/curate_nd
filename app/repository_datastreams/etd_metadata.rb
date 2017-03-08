@@ -96,7 +96,7 @@ class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
 
     map.subject(in: RDF::DC) do |index|
       index.type :text
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.country(in: RDF::QualifiedDC, to: 'publisher#country')

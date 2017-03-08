@@ -21,7 +21,7 @@ class OsfArchiveDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     map.subject(to: 'subject', in: RDF::DC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.type(in: RDF::DC)
