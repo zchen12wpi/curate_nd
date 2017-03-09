@@ -71,7 +71,7 @@ class ImageMetadata < ActiveFedora::NtriplesRDFDatastream
     map.doi(to: "identifier#doi", in: RDF::QualifiedDC)
 
     map.subject(in: RDF::DC) do |index|
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.type(in: RDF::DC)

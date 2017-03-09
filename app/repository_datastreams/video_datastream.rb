@@ -70,7 +70,7 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.subject(to: 'subject', in: RDF::DC) do |index|
       index.type :text
-      index.as :stored_searchable
+      index.as :stored_searchable, :facetable
     end
 
     map.genre(to: 'hasGenre', in: RDF::Ebucore) do |index|

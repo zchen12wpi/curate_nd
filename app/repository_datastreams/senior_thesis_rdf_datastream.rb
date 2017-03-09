@@ -28,7 +28,7 @@ class SeniorThesisRdfDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.subject(in: RDF::DC) do |index|
       index.type :text
-      index.as :stored_searchable, :displayable
+      index.as :stored_searchable, :displayable, :facetable
     end
 
     map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
@@ -98,4 +98,3 @@ class SeniorThesisRdfDatastream < ActiveFedora::NtriplesRDFDatastream
 
   end
 end
-
