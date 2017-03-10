@@ -139,6 +139,23 @@ module CurateHelper
   alias __render_tabular_list_item_for_tag __render_tabular_list_item_for_relation
   private :__render_tabular_list_item_for_tag
 
+  def __render_tabular_list_item_for_source(method_name, value, block_formatting, tag, options = {})
+    callout_pattern = options.fetch(:callout_pattern, nil)
+    if callout_pattern
+      callout_text = options.fetch(:callout_text)
+      if value =~ callout_pattern
+        __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
+          %(<a href="#{h(value)}" class="callout-link" target="_blank"><span class="callout-text">#{callout_text}</span></a>)
+        end
+      else
+        __render_tabular_list_item(method_name, value, block_formatting, tag, options)
+      end
+    else
+      __render_tabular_list_item(method_name, value, block_formatting, tag, options)
+    end
+  end
+  private :__render_tabular_list_item_for_source
+
   def __render_tabular_list_item_for_alephIdentifier(method_name, value, block_formatting, tag, options = {})
     callout_text = 'View the library catalog record for this item'
     __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
