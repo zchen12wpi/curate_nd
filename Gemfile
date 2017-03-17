@@ -21,6 +21,7 @@ group :default do
   gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
+  gem 'figaro'
   gem 'flipper'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
   gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
