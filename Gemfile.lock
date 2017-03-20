@@ -713,6 +713,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   devise_masquerade
   factory_girl_rails (~> 4.2.0)
+  figaro
   flipper
   harbinger!
   httparty
@@ -781,4 +782,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.12.5
+   1.14.2
