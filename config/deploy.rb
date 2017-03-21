@@ -245,20 +245,24 @@ RAILS_ROOT=#{current_path}
   end
 
   def run_puppet(option_string)
-    run %Q{sudo puppet apply --modulepath=/home/app/curatend/current/puppet/modules:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { 'lib_curate::#{option_string}': }"}
+    run %Q{sudo puppet apply --modulepath=/home/app/curatend/current/puppet/modules:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { '#{option_string}': }"}
   end
 
   desc "Run puppet using the modules supplied by the application"
   task :puppet, :roles => [:app, :work] do
-    run_puppet('standalone')
+    run_puppet('lib_curate::standalone')
   end
 
   task :puppet_server, :roles => :app do
-    run_puppet('server')
+    run_puppet('lib_curate::server')
   end
 
   task :puppet_worker, :roles => :work do
-    run_puppet('worker')
+    run_puppet('lib_curate::worker')
+  end
+
+  task :noid_server, :roles => :app do
+    run_puppet('lib_noids')
   end
 
   desc "Have all new requests to be redirected to a 503 page"
