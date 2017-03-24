@@ -19,9 +19,8 @@ module CurationConcern
     SOLR_KEY_VIEWER_PIDS = ActiveFedora::SolrService.solr_name(:record_viewers).freeze
     SOLR_KEY_VIEWER_GROUP_PIDS = ActiveFedora::SolrService.solr_name(:record_viewer_groups).freeze
 
-    # These are the easy record_editor relationships that can be solrized without the full anctics of crawling the relationship graph.
-    #
-    # TODO Curate::EditorIndexingAdapter.write_document_attributes_to_index_layer
+
+    # TODO Need Curate::EditorIndexingAdapter.write_document_attributes_to_index_layer?
     def to_solr(solr_doc={}, opts={})
       super(solr_doc, opts)
       solr_doc[SOLR_KEY_EDITOR_PIDS] = self.record_editor_ids
@@ -34,10 +33,8 @@ module CurationConcern
 
     def update_index
       super
-      #TODO
+      #TODO Check if there need to be indexer module
       Curate.relationship_reindexer.call(self.pid)
     end
-
-
   end
 end

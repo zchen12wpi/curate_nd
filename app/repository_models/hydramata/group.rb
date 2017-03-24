@@ -9,8 +9,6 @@ class Hydramata::Group < ActiveFedora::Base
   class_attribute :human_readable_short_description
 
   has_and_belongs_to_many :members, class_name: "::Person", property: :has_member, inverse_of: :is_member_of
-  #has_and_belongs_to_many :works, class_name: "::ActiveFedora::Base", property: :is_editor_group_of, inverse_of: :has_editor_group
-  #has_and_belongs_to_many :view_works, class_name: "::ActiveFedora::Base", property: :is_viewer_group_of, inverse_of: :has_viewer_group
   has_many :works, property: :has_editor_group, class_name: "ActiveFedora::Base"
   has_many :view_works, property: :has_viewer_group, class_name: "ActiveFedora::Base"
   before_destroy :remove_associations
