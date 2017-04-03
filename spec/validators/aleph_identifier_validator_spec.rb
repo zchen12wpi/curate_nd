@@ -12,6 +12,7 @@ describe AlephIdentifierValidator do
       validates :aleph_identifier, aleph_identifier: true
     end
   end
+
   subject { validatable.new }
 
   before do
@@ -26,13 +27,11 @@ describe AlephIdentifierValidator do
       ' 123456 '
     ] }
     it { expect(subject.errors.messages).to eq :aleph_identifier => [
-      'Cannot have leading or trailing spaces',
-      'Cannot have leading or trailing spaces',
-      'Cannot have leading or trailing spaces'
+      described_class::WHITESPACE_ERROR_MESSAGE,
+      described_class::WHITESPACE_ERROR_MESSAGE,
+      described_class::WHITESPACE_ERROR_MESSAGE
     ] }
   end
-
-
 
   context 'valid Catalog numbers' do
     let(:aleph_identifier) do
@@ -55,11 +54,11 @@ describe AlephIdentifierValidator do
       ]
     end
     it { expect(subject.errors.messages).to eq :aleph_identifier => [
-      'Invalid Aleph Identifier Number',
-      'Invalid Aleph Identifier Number',
-      'Invalid Aleph Identifier Number',
-      'Invalid Aleph Identifier Number',
-      'Invalid Aleph Identifier Number'
+      described_class::FORMAT_ERROR_MESSAGE,
+      described_class::FORMAT_ERROR_MESSAGE,
+      described_class::FORMAT_ERROR_MESSAGE,
+      described_class::FORMAT_ERROR_MESSAGE,
+      described_class::FORMAT_ERROR_MESSAGE
     ] }
   end
 
