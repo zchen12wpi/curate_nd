@@ -42,6 +42,8 @@ class AsJsonldMapper
       'hasModel'.to_sym => { '@id' => 'fedora-model:hasModel', '@type' => '@id' },
       'hasEditor'.to_sym => { '@id' => 'hydra:hasEditor', '@type' => '@id' },
       'hasEditorGroup'.to_sym => { '@id' => 'hydra:hasEditorGroup', '@type' => '@id' },
+      'hasViewer'.to_sym=>{'@id'=>'hydra:hasViewer', '@type'=>'@id'},
+      'hasViewerGroup'.to_sym=>{'@id'=>'hydra:hasViewerGroup', '@type'=>'@id'},
       'isPartOf'.to_sym => { '@id' => 'frels:isPartOf', '@type' => '@id' },
       'isMemberOfCollection'.to_sym => { '@id' => 'frels:isMemberOfCollection', '@type' => '@id' },
       'isEditorOf'.to_sym => { '@id' => 'hydra:isEditorOf', '@type' => '@id' },
