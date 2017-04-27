@@ -1,10 +1,14 @@
 <!-- make sure representative file is available for use -->
-<% work.check_and_clear_representative %>
-<% if work.representative.present? && (generic_file = GenericFile.load_instance_from_solr(work.representative)) %>
-  <% if can?(:read, generic_file) %>
-    <% if generic_file.image? %>
-      <div id="image-viewer"></div>
-      <%= image_tag download_path(work.representative), id: 'image-viewer-content', class: 'canonical-image' %>
+<% begin %>
+  <% if work.representative.present? && (generic_file = GenericFile.load_instance_from_solr(work.representative)) %>
+    <% if can?(:read, generic_file) %>
+      <% if generic_file.image? %>
+        <div id="image-viewer"></div>
+        <%= image_tag download_path(work.representative), id: 'image-viewer-content', class: 'canonical-image' %>
+      <% end %>
     <% end %>
   <% end %>
+<% rescue ActiveFedora::ObjectNotFoundError => e%>
+  <% Airbrake.notify(error_class: e.class, error_message: e, parameters: { curation_concern: work }) %>
+  <% image_tag 'curate/default.png', class: 'canonical-image' %>
 <% end %>

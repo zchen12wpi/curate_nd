@@ -66,6 +66,52 @@ module CurateHelper
     render_collection_as_tabular_list(subject, method_name, label, options)
   end
 
+  def thumbnail_display_for_document(curation_concern, title_link, _options = {})
+    begin
+      file = ActiveFedora::Base.load_instance_from_solr(curation_concern.representative)
+      markup = ''
+      markup << %(<a href=\"#{title_link}\">)
+      if(can_view_thumnail?(file, curation_concern) )
+        markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
+      else
+        markup << %(<div class="thumbnail-wrapper">)
+        markup << %(<span class="canonical-image"></span>)
+        markup << %(</div>)
+      end
+        markup << %(</a>)
+        markup.html_safe
+    rescue ActiveFedora::ObjectNotFoundError => exception
+      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}")
+      Airbrake.notify(
+          error_class: exception.class, error_message: exception, parameters: { curation_concern: curation_concern }
+      )
+      image_tag 'curate/default.png', class: "canonical-image"
+    end
+  end
+
+  def render_attributes(attributes_html, markup, span)
+    markup << %(<div class="work-attributes #{span}">)
+    markup << attributes_html
+    markup << %(</div>)
+    markup.html_safe
+  end
+
+  def rescue_from_object_not_found(curation_concern, attributes_html, exception)
+    logger.error("Could not find representative pid for work: #{curation_concern.pid.inspect}")
+    Airbrake.notify(
+        error_class: exception.class, error_message: exception, parameters: { curation_concern: curation_concern }
+    )
+    markup = ''
+    markup << %(<div class="row">)
+    markup << %( <div class="work-representation span3">)
+    markup << image_tag('curate/default.png', class: "canonical-image")
+    markup << %(  </div>)
+    render_attributes(attributes_html, markup, "span9")
+    markup << %(</div>)
+    markup << %(</div>)
+    markup.html_safe
+  end
+
   # Responsible for rendering the tabular list in a consistent manner.
   #
   # Note: There are switches based on the method_name provided
