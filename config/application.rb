@@ -30,6 +30,7 @@ module CurateNd
     config.autoload_paths += %W(
       #{config.root}/app/builders
       #{config.root}/app/constraints
+      #{config.root}/app/exceptions
       #{config.root}/app/repository_models
       #{config.root}/app/repository_datastreams
       #{config.root}/app/repository_models/concerns

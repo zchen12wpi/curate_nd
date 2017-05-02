@@ -66,6 +66,56 @@ module CurateHelper
     render_collection_as_tabular_list(subject, method_name, label, options)
   end
 
+  def thumbnail_display_for_document(curation_concern, title_link, _options = {})
+    begin
+      file = ActiveFedora::Base.load_instance_from_solr(curation_concern.representative)
+      markup = ''
+      markup << %(<a href=\"#{title_link}\">)
+      if(can_view_thumnail?(file, curation_concern) )
+        markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
+      else
+        markup << %(<div class="thumbnail-wrapper">)
+        markup << %(<span class="canonical-image"></span>)
+        markup << %(</div>)
+      end
+        markup << %(</a>)
+        markup.html_safe
+    rescue ActiveFedora::ObjectNotFoundError => e
+      exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, curation_concern)
+      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}, message:#{exception.inspect}")
+      Airbrake.notify_or_ignore(
+          error_class: exception.class,
+          error_message: "#{exception}: Problem encountered in rendering representative image.",
+          parameters: {
+              curation_concern: curation_concern.pid
+          }
+      )
+      image_tag 'curate/default.png', class: "canonical-image"
+    end
+  end
+
+  def rescue_from_representative_missing(curation_concern, attributes_html, exception)
+    logger.error("Could not find representative pid for work: #{curation_concern.pid.inspect}")
+    Airbrake.notify_or_ignore(
+        error_class: exception.class,
+        error_message: "#{exception}: Problem encountered in rendering representative image.",
+        parameters: {
+            curation_concern: curation_concern.pid
+        }
+    )
+    markup = ''
+    markup << %(<div class="row">)
+    markup << %( <div class="work-representation span3">)
+    markup << image_tag('curate/default.png', class: "canonical-image")
+    markup << %(  </div>)
+    markup << %(<div class="work-attributes span9">)
+    markup << attributes_html
+    markup << %(</div>)
+    markup << %(</div>)
+    markup << %(</div>)
+    markup.html_safe
+  end
+
   # Responsible for rendering the tabular list in a consistent manner.
   #
   # Note: There are switches based on the method_name provided

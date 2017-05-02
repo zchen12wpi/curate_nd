@@ -6,15 +6,7 @@
     </div>
   <% end %>
 <% elsif document.respond_to?(:representative) && document.representative.present? %>
-  <%= link_to title_link_target do  %>
-    <% if((file = ActiveFedora::Base.load_instance_from_solr(document.representative)) && can_view_thumnail?(file,document) ) %>
-      <%= image_tag(download_path(document.representative,  'thumbnail'), html_options = { class: "canonical-image" }) %>
-    <% else %>
-      <div class="thumbnail-wrapper">
-        <span class="canonical-image"></span>
-      </div>
-    <% end %>
-  <% end %>
+  <%= thumbnail_display_for_document(document, title_link_target) %>
 <% elsif document.persisted? %>
   <%= link_to title_link_target do  %>
     <div class="thumbnail-wrapper">

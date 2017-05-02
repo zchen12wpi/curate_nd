@@ -1,5 +1,4 @@
 <% if work.representative.present? %>
-
   <% begin %>
     <% if work.try(:generic_files) || work.class == GenericFile %>
       <% if can?(:read, generic_file) && generic_file.image? %>
@@ -20,11 +19,11 @@
         <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
       </a>
     <% end %>
-
-  <% rescue ActiveFedora::ObjectNotFoundError %>
+  <% rescue ActiveFedora::ObjectNotFoundError => e %>
+    <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
+    <% Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: { curation_concern: work }) %>
     <%= image_tag 'curate/default.png', class: 'canonical-image' %>
   <% end %>
-
 <% else %>
   <%= image_tag 'curate/default.png', class: "canonical-image" %>
 <% end %>

@@ -1,8 +1,15 @@
-<% if work.representative.present? && (generic_file = GenericFile.load_instance_from_solr(work.representative)) %>
-  <% if can?(:read, generic_file) %>
-    <% if generic_file.image? %>
-      <div id="image-viewer"></div>
-      <%= image_tag download_path(work.representative), id: 'image-viewer-content', class: 'canonical-image' %>
+<!-- make sure representative file is available for use -->
+<% begin %>
+  <% if work.representative.present? && (generic_file = GenericFile.load_instance_from_solr(work.representative)) %>
+    <% if can?(:read, generic_file) %>
+      <% if generic_file.image? %>
+        <div id="image-viewer"></div>
+        <%= image_tag download_path(work.representative), id: 'image-viewer-content', class: 'canonical-image' %>
+      <% end %>
     <% end %>
   <% end %>
+<% rescue ActiveFedora::ObjectNotFoundError => e%>
+  <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
+  <% Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: { curation_concern: work }) %>
+  <% image_tag 'curate/default.png', class: 'canonical-image' %>
 <% end %>
