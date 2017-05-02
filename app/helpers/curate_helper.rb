@@ -80,33 +80,37 @@ module CurateHelper
       end
         markup << %(</a>)
         markup.html_safe
-    rescue ActiveFedora::ObjectNotFoundError => exception
-      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}")
-      Airbrake.notify(
-          error_class: exception.class, error_message: exception, parameters: { curation_concern: curation_concern }
+    rescue ActiveFedora::ObjectNotFoundError => e
+      exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, curation_concern)
+      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}, message:#{exception.inspect}")
+      Airbrake.notify_or_ignore(
+          error_class: exception.class,
+          error_message: "#{exception}: Problem encountered in rendering representative image.",
+          parameters: {
+              curation_concern: curation_concern.pid
+          }
       )
       image_tag 'curate/default.png', class: "canonical-image"
     end
   end
 
-  def render_attributes(attributes_html, markup, span)
-    markup << %(<div class="work-attributes #{span}">)
-    markup << attributes_html
-    markup << %(</div>)
-    markup.html_safe
-  end
-
-  def rescue_from_object_not_found(curation_concern, attributes_html, exception)
+  def rescue_from_representative_missing(curation_concern, attributes_html, exception)
     logger.error("Could not find representative pid for work: #{curation_concern.pid.inspect}")
-    Airbrake.notify(
-        error_class: exception.class, error_message: exception, parameters: { curation_concern: curation_concern }
+    Airbrake.notify_or_ignore(
+        error_class: exception.class,
+        error_message: "#{exception}: Problem encountered in rendering representative image.",
+        parameters: {
+            curation_concern: curation_concern.pid
+        }
     )
     markup = ''
     markup << %(<div class="row">)
     markup << %( <div class="work-representation span3">)
     markup << image_tag('curate/default.png', class: "canonical-image")
     markup << %(  </div>)
-    render_attributes(attributes_html, markup, "span9")
+    markup << %(<div class="work-attributes span9">)
+    markup << attributes_html
+    markup << %(</div>)
     markup << %(</div>)
     markup << %(</div>)
     markup.html_safe

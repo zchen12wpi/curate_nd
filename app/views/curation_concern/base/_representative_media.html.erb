@@ -20,7 +20,8 @@
       </a>
     <% end %>
   <% rescue ActiveFedora::ObjectNotFoundError => e %>
-    <% Airbrake.notify(error_class: e.class, error_message: e, parameters: { curation_concern: work }) %>
+    <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
+    <% Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: { curation_concern: work }) %>
     <%= image_tag 'curate/default.png', class: 'canonical-image' %>
   <% end %>
 <% else %>

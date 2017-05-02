@@ -47,6 +47,7 @@
       </div>
     <% end %>
   <% rescue ActiveFedora::ObjectNotFoundError => e%>
-    <%= rescue_from_object_not_found(work, details, e) %>
+    <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
+    <%= rescue_from_representative_missing(work, details, exception) %>
   <% end %>
 <% end %>
