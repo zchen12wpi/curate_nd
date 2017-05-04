@@ -45,16 +45,17 @@ group :default do
   gem 'logstash-logger'
   gem 'mini_magick', '~> 3.8'
   gem 'morphine'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.18'
   gem 'namae'
   gem 'net-ldap'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
-  gem 'orcid', github: 'projecthydra-labs/orcid'
+  #gem 'orcid', github: 'banurekha/orcid'
+  gem 'orcid', path: '../uclib/orcid'
   gem 'qa'
   gem 'rails', '~>4.0.2'
   gem 'rails_autolink'
-  gem 'rake'
+  gem 'rake', '~> 11.0'
   gem 'redcarpet'
   gem 'resque-pool'
   gem 'roboto'
@@ -68,6 +69,8 @@ group :default do
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
+  gem 'deprecation', '~>0.2.2'
+
 end
 
 group :headless do
