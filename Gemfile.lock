@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/locabulary.git
-  revision: f5873d4810ce07c6a23d7c61a7d134e3ab5e0482
+  revision: b883f466f1666cc10ae6e2b96ca0dc245d236153
   branch: master
   specs:
     locabulary (0.7.0)
@@ -647,7 +647,7 @@ GEM
     thread_safe (0.3.6)
     tilt (1.4.1)
     trollop (1.16.2)
-    tzinfo (0.3.52)
+    tzinfo (0.3.53)
     uber (0.0.15)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
@@ -782,4 +782,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.14.2
+   1.14.6
