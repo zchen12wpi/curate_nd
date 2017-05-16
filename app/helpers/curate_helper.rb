@@ -337,7 +337,7 @@ module CurateHelper
   def escape_html_for_solr_text(text)
     return if text.nil?
     modified_text = CGI.escapeHTML(text)
-    CGI.unescapeHTML(CGI.unescapeHTML(modified_text))
+    richly_formatted_text(CGI.unescapeHTML(CGI.unescapeHTML(modified_text)))
   end
 
   # The "search inside" URL needs an inclusive hierarchy of collection titles and pids.
