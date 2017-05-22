@@ -24,14 +24,14 @@ EOS
   exit 2
 end
 
-share_host = ENV["SHARE_HOST"] || "https://staging-share-registration.osf.io"
+share_host = ENV["SHARE_HOST"] || "https://staging-share.osf.io"
 share_token = ENV["SHARE_TOKEN"]
 
 puts "Using SHARE_HOST=#{share_host}"
 puts "Using SHARE_TOKEN=#{share_token}"
 
 ShareNotify.configure "host" => share_host, "token" => share_token
-api = ShareNotify::API.new
+api = ShareNotify::ApiV2.new
 
 overall_record_count = 0
 error_count = 0
@@ -75,7 +75,7 @@ ARGV.each do |csv_filename|
       next
     end
 
-    response = api.post(document.to_share.to_json)
+    response = api.upload_record(document)
     if response.code != 202
       puts "Received code #{response.code}"
       puts response.body

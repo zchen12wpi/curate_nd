@@ -51,6 +51,14 @@ GIT
       json (~> 1.8)
       rest-client (~> 1.6)
 
+GIT
+  remote: git://github.com/projecthydra-labs/share_notify.git
+  revision: db62a7f74ebe1675d3ae7d826a72ada48e72bdeb
+  specs:
+    share_notify (0.2.0)
+      activesupport
+      httparty
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -567,9 +575,6 @@ GEM
     sexp_processor (4.9.0)
     sextant (0.2.4)
       rails (>= 3.2)
-    share_notify (0.2.0)
-      activesupport
-      httparty
     simple_form (3.0.4)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -759,7 +764,7 @@ DEPENDENCIES
   scss-lint
   select2-rails
   sextant
-  share_notify (~> 0.2)
+  share_notify!
   simple_form (~> 3.0.1)
   simplecov
   sufia-models (~> 3.4.0)

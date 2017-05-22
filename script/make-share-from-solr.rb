@@ -1,25 +1,9 @@
 #!/usr/bin/env ruby
 
-# Create list of all objects from SOLR index, and place into CSV files.
+# Create list of all objects from SOLR index, and place into a CSV file.
 #
+# The file will have a name in the form `curate-for-share-YYYYMMDD.csv`.
 # Labels for the columns are in the first row of the CSV file.
-# The generated CSV files have names in the following
-# forms where the number is the date the script was run.
-#
-#  * `all-20160419.csv`
-#  * `curate-20160419.csv`
-#  * `curate-non-etd-20160419.csv`
-#
-# The first CSV file contains a list of every object in SOLR.
-#
-# The second CSV file contains a list of items which are CurateND specific. It
-# filters on those items whose id starts with `und:`. This file exists to work
-# around a bug which indexes _everything_ in fedora into solr, even items with
-# different namespaces.
-#
-# The third CSV file contains a list of all non-ETDs Works in CurateND. It is a
-# little hackish, and may miss something. (suggestions on a better way to do
-# this are welcome).
 #
 # Set the environmental variable `SOLR_URL` to point to the solr index to query
 # Set the environmental variable `PID_NAMESPACE` to change the namespace
@@ -41,15 +25,15 @@
 #
 # Example usage:
 #
-#     ./make-csv-of-solr.rb
+#     ./make-share-from-solr.rb
 #
 # OR
 #
-#     env PID_NAMESPACE="temp:" ./make-csv-of-solr.rb
+#     env PID_NAMESPACE="temp:" ./make-share-from-solr.rb
 #
 # OR
 #
-#     env SOLR_URL="https://solr41prod.example.com:8443/solr/curate" ./make-csv-of-solr.rb
+#     env SOLR_URL="https://solr41prod.example.com:8443/solr/curate" ./make-share-from-solr.rb
 
 require "date"
 require "rsolr"
@@ -76,7 +60,11 @@ class SolrToShare
     return nil unless record["id"].start_with?(PID_NAMESPACE)
 
     # remove Etd and GenericFiles and other unwanted objects
-    return nil if %w(Etd GenericFile Person Profile ProfileSection LinkedResource Hydramata::Group).include?(record["active_fedora_model_ssi"])
+    return nil if %w(Etd FindingAid GenericFile Person Profile ProfileSection LinkedResource Hydramata::Group).include?(record["active_fedora_model_ssi"])
+
+    # remove non-public items
+    read_groups = record["read_access_group_ssim"]
+    return nil unless !read_groups.nil? && read_groups.include?("public")
 
     # convert each id into a URL
     record["id"] = record["id"].sub(/^[^:]*:/, "https://curate.nd.edu/show/")
@@ -118,7 +106,6 @@ class SolrToShare
         new_record = process_record(record)
         if !new_record.nil?
           puts new_record.to_json
-          return
         end
       end
       break if docs.length < ROW_COUNT
