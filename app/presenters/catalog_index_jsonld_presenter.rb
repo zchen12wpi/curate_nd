@@ -95,6 +95,7 @@ class CatalogIndexJsonldPresenter
     end
 
     def total_pages
+      return 1 if total_results == 0
       (total_results / items_per_page.to_f).ceil
     end
 
@@ -125,7 +126,11 @@ class CatalogIndexJsonldPresenter
         return nil if first_page?
         build_pagination_url(query_parameters.merge('page' => prev_page))
       when :last
-        build_pagination_url(query_parameters.merge('page' => total_pages))
+        if total_pages == 1
+          build_pagination_url(query_parameters.except('page'))
+        else
+          build_pagination_url(query_parameters.merge('page' => total_pages))
+        end
       when :first then
         build_pagination_url(query_parameters.except('page'))
       end

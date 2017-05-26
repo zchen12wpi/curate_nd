@@ -125,6 +125,70 @@ RSpec.describe CatalogIndexJsonldPresenter::Pager do
     end
   end
 
+  describe 'in case where no results were returned' do
+    let(:response) do
+      { 'response' => { 'docs' => [], 'numFound' => 0, 'start' => 0 }, 'responseHeader' => { 'params' => { 'rows' => 12 } } }
+    end
+    let(:query_parameters) { { 'somebody' => 'to-love' } }
+
+    its(:total_results) { is_expected.to eq(0) }
+    its(:total_pages) { is_expected.to eq(1) }
+    its(:start) { is_expected.to eq(0) }
+    its(:page) { is_expected.to eq(1) }
+    its(:items_per_page) { is_expected.to eq(12) }
+    its(:first_page?) { is_expected.to eq(true) }
+    its(:last_page?) { is_expected.to eq(true) }
+    its(:prev_page) { is_expected.to eq(nil) }
+    its(:next_page) { is_expected.to eq(nil) }
+
+    context '#pagination_url_for' do
+      it 'will be the URL without page # for :first' do
+        expect(subject.pagination_url_for(:first)).to eq("http://test.host/catalog.json?somebody=to-love")
+      end
+      it 'will be the URL for :previous' do
+        expect(subject.pagination_url_for(:previous)).to eq(false)
+      end
+      it 'will be the URL with the next page for :next' do
+        expect(subject.pagination_url_for(:next)).to eq(false)
+      end
+      it 'will be the URL with the last page for :last' do
+        expect(subject.pagination_url_for(:last)).to eq("http://test.host/catalog.json?somebody=to-love")
+      end
+    end
+  end
+
+  describe 'in case results returned is smaller than page size' do
+    let(:response) do
+      { 'response' => { 'docs' => [], 'numFound' => 5, 'start' => 0 }, 'responseHeader' => { 'params' => { 'rows' => 12 } } }
+    end
+    let(:query_parameters) { { 'somebody' => 'to-love' } }
+
+    its(:total_results) { is_expected.to eq(5) }
+    its(:total_pages) { is_expected.to eq(1) }
+    its(:start) { is_expected.to eq(0) }
+    its(:page) { is_expected.to eq(1) }
+    its(:items_per_page) { is_expected.to eq(12) }
+    its(:first_page?) { is_expected.to eq(true) }
+    its(:last_page?) { is_expected.to eq(true) }
+    its(:prev_page) { is_expected.to eq(nil) }
+    its(:next_page) { is_expected.to eq(nil) }
+
+    context '#pagination_url_for' do
+      it 'will be the URL without page # for :first' do
+        expect(subject.pagination_url_for(:first)).to eq("http://test.host/catalog.json?somebody=to-love")
+      end
+      it 'will be the URL for :previous' do
+        expect(subject.pagination_url_for(:previous)).to eq(false)
+      end
+      it 'will be the URL with the next page for :next' do
+        expect(subject.pagination_url_for(:next)).to eq(false)
+      end
+      it 'will be the URL with the last page for :last' do
+        expect(subject.pagination_url_for(:last)).to eq("http://test.host/catalog.json?somebody=to-love")
+      end
+    end
+  end
+
   describe 'at the end of the pagination' do
     let(:response) do
       { 'response' => { 'docs' => [], 'numFound' => 11, 'start' => 11 }, 'responseHeader' => { 'params' => { 'rows' => 2 } } }
