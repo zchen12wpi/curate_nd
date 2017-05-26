@@ -10,7 +10,28 @@ RSpec.describe CatalogIndexJsonldPresenter do
     subject { presenter.as_jsonld }
     it { is_expected.to be_a(Hash) }
     it 'returns a Ruby hash that is a JSON-LD document' do
-      expect(subject.fetch('@context').fetch("deri")).to eq(described_class::CONTEXT.fetch(:deri))
+      expected = {"@context"=>
+        {"xsd"=>"http://www.w3.org/2001/XMLSchema#",
+         "deri"=>"http://sindice.com/vocab/search#",
+         "und"=>"http://localhost:3000/show/",
+         "dc"=>"http://purl.org/dc/terms/",
+         "deri:first"=>{"@type"=>"@id"},
+         "deri:last"=>{"@type"=>"@id"},
+         "deri:previous"=>{"@type"=>"@id"},
+         "deri:next"=>{"@type"=>"@id"},
+         "deri:itemsPerPage"=>{"@type"=>"xsd:integer"},
+         "deri:totalResults"=>{"@type"=>"xsd:integer"}},
+       "@graph"=>
+        [{"@id"=>"http://test.host/catalog.json",
+          "deri:itemsPerPage"=>2,
+          "deri:totalResults"=>12,
+          "deri:first"=>"http://test.host/catalog.json",
+          "deri:last"=>"http://test.host/catalog.json?page=6",
+          "deri:next"=>"http://test.host/catalog.json?page=2"},
+         {"@id"=>"und:m039k356t2q", "dc:title"=>"Work1"},
+         {"@id"=>"und:dr26xw4309w", "dc:title"=>"Work2"}]
+      }
+      expect(subject).to eq(expected)
     end
   end
 
@@ -19,6 +40,19 @@ RSpec.describe CatalogIndexJsonldPresenter do
     it { is_expected.to be_a(String) }
     it 'returns a JSON document that can be parsed to a Ruby hash' do
       expect(JSON.parse(subject)).to be_a(Hash)
+    end
+    it 'makes the correct (and pretty) NTriples' do
+      expected = [
+        %(<http://test.host/catalog.json> <http://sindice.com/vocab/search#first> <http://test.host/catalog.json> .),
+        %(<http://test.host/catalog.json> <http://sindice.com/vocab/search#itemsPerPage> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .),
+        %(<http://test.host/catalog.json> <http://sindice.com/vocab/search#last> <http://test.host/catalog.json?page=6> .),
+        %(<http://test.host/catalog.json> <http://sindice.com/vocab/search#next> <http://test.host/catalog.json?page=2> .),
+        %(<http://test.host/catalog.json> <http://sindice.com/vocab/search#totalResults> "12"^^<http://www.w3.org/2001/XMLSchema#integer> .),
+        %(<http://localhost:3000/show/m039k356t2q> <http://purl.org/dc/terms/title> "Work1" .),
+        %(<http://localhost:3000/show/dr26xw4309w> <http://purl.org/dc/terms/title> "Work2" .)
+      ]
+      actual = JSON::LD::Reader.new(subject).dump(:ntriples).split("\n").sort
+      expect(actual).to eq(expected.sort)
     end
   end
 end

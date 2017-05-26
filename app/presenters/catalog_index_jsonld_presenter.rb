@@ -1,69 +1,71 @@
 # Responsible for generating the JSON-LD results from a Blacklight search response
 class CatalogIndexJsonldPresenter
   CONTEXT = {
-    deri: "http://sindice.com/vocab/search#".freeze,
-    und: File.join(Rails.configuration.application_root_url, 'show/').freeze,
-    dc: 'http://purl.org/dc/terms/'.freeze
+    'xsd' => "http://www.w3.org/2001/XMLSchema#".freeze,
+    'deri' => "http://sindice.com/vocab/search#".freeze,
+    'und' => File.join(Rails.configuration.application_root_url, 'show/').freeze,
+    'dc' => 'http://purl.org/dc/terms/'.freeze,
+    'deri:first' => { '@type' => '@id' },
+    'deri:last' => { '@type' => '@id' },
+    'deri:previous' => { '@type' => '@id' },
+    'deri:next' => { '@type' => '@id' },
+    'deri:itemsPerPage' => { '@type' => 'xsd:integer' },
+    'deri:totalResults' => { '@type' => 'xsd:integer' }
   }
-  attr_reader :raw_response, :request_url, :documents, :graph, :pager, :query_parameters
+  attr_reader :raw_response, :request_url, :documents, :pager, :query_parameters
 
-  def initialize(raw_response, request_url, query_parameters, graph: default_graph)
+  def initialize(raw_response, request_url, query_parameters)
     @raw_response = raw_response
     @request_url = RDF::URI.new(request_url)
     @documents = raw_response.fetch('response').fetch('docs')
     @query_parameters = query_parameters
     @pager = Pager.new(self)
-    @graph = graph
+    build_jsonld!
   end
   delegate :total_results, :start, :items_per_page, to: :pager
 
   # @return [String] the JSON document
   def to_jsonld
-    add_elements_to_graph
-    transform_graph_to_jsonld
+    JSON.dump(@jsonld)
   end
 
   # @return [Hash] a Ruby Hash of the JSON document
   def as_jsonld
-    JSON.parse(to_jsonld)
+    @jsonld
   end
 
   private
 
-  def add_elements_to_graph
-    add_pagination_to_graph
-    add_documents_to_graph
+  def build_jsonld!
+    jsonld = { "@context" => CONTEXT, "@graph" => [] }
+    add_pagination_to_graph(jsonld)
+    add_documents_to_graph(jsonld)
+    @jsonld = jsonld
   end
 
-  def add_pagination_to_graph
-    graph << RDF::Statement.new(request_url, 'deri:itemsPerPage', items_per_page)
-    graph << RDF::Statement.new(request_url, 'deri:totalResults', total_results)
+  def add_pagination_to_graph(jsonld)
+    pagination_object = {
+      '@id' => request_url.to_s,
+      'deri:itemsPerPage' => items_per_page,
+      'deri:totalResults' => total_results,
+    }
     [:first, :last, :previous, :next].each do |pagination_method|
       pager.pagination_url_for(pagination_method) do |url|
-        graph << RDF::Statement.new(request_url, "deri:#{pagination_method}", url)
+        pagination_object["deri:#{pagination_method}"] = url.to_s
       end
     end
+    jsonld['@graph'] << pagination_object
   end
 
-  def add_documents_to_graph
+  def add_documents_to_graph(jsonld)
     documents.each do |document|
-      document_uri = RDF::URI.new(document.fetch("id"))
-      graph << RDF::Statement.new(request_url, 'deri:result', document_uri)
       dc_title = document.fetch('desc_metadata__title_tesim').first
-      graph << RDF::Statement.new(document_uri, 'dc:title', dc_title)
+      document_object = {
+        "@id" => document.fetch('id'),
+        "dc:title" => dc_title
+      }
+      jsonld['@graph'] << document_object
     end
-  end
-
-  def transform_graph_to_jsonld
-    JSON::LD::Writer.buffer(prefixes: CONTEXT) do |writer|
-      graph.each_statement do |statement|
-      writer << statement
-      end
-    end
-  end
-
-  def default_graph
-    RDF::Graph.new
   end
 
   class Pager
