@@ -17,9 +17,15 @@ class CatalogIndexJsonldPresenter
   end
   delegate :total_results, :start, :items_per_page, to: :pager
 
-  def as_jsonld
+  # @return [String] the JSON document
+  def to_jsonld
     add_elements_to_graph
-    JSON.parse(transform_graph_to_jsonld)
+    transform_graph_to_jsonld
+  end
+
+  # @return [Hash] a Ruby Hash of the JSON document
+  def as_jsonld
+    JSON.parse(to_jsonld)
   end
 
   private

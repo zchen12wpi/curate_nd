@@ -8,8 +8,17 @@ RSpec.describe CatalogIndexJsonldPresenter do
 
   describe '#as_jsonld' do
     subject { presenter.as_jsonld }
+    it { is_expected.to be_a(Hash) }
     it 'returns a Ruby hash that is a JSON-LD document' do
       expect(subject.fetch('@context').fetch("deri")).to eq(described_class::CONTEXT.fetch(:deri))
+    end
+  end
+
+  describe '#to_jsonld' do
+    subject { presenter.to_jsonld }
+    it { is_expected.to be_a(String) }
+    it 'returns a JSON document that can be parsed to a Ruby hash' do
+      expect(JSON.parse(subject)).to be_a(Hash)
     end
   end
 end

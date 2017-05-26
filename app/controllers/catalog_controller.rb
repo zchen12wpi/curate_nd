@@ -171,7 +171,7 @@ class CatalogController < ApplicationController
       format.rss  { render :layout => false }
       format.atom { render :layout => false }
       format.json { render json: render_search_results_as_json }
-      format.jsonld { render json: CatalogIndexJsonldPresenter.new(@response, request.url, request.query_parameters).as_jsonld }
+      format.jsonld { render text: CatalogIndexJsonldPresenter.new(@response, request.url, request.query_parameters).to_jsonld, layout: false }
     end
   end
 
