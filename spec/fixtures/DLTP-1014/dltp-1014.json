@@ -1,0 +1,183 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 6,
+    "params": {
+      "f.admin_unit_hierarchy_sim.facet.sort": "count",
+      "f.desc_metadata__tag_sim.facet.limit": "6",
+      "facet.field": [
+        "admin_unit_hierarchy_sim",
+        "library_collections_pathnames_hierarchy_with_titles_sim",
+        "{!ex=human_readable_type_sim}human_readable_type_sim",
+        "desc_metadata__creator_sim",
+        "desc_metadata__tag_sim",
+        "desc_metadata__subject_sim",
+        "desc_metadata__language_sim",
+        "desc_metadata__based_near_sim",
+        "desc_metadata__publisher_sim",
+        "desc_metadata__affiliation_sim",
+        "file_format_sim"
+      ],
+      "qt": "search",
+      "f.file_format_sim.facet.limit": "6",
+      "sort": "score desc, desc_metadata__date_uploaded_dtsi desc",
+      "fq": [
+        "edit_access_group_ssim:public OR discover_access_group_ssim:public OR read_access_group_ssim:public OR edit_access_group_ssim:registered OR discover_access_group_ssim:registered OR read_access_group_ssim:registered OR edit_access_person_ssim:username-1 OR discover_access_person_ssim:username-1 OR read_access_person_ssim:username-1",
+        "(*:* NOT embargo_release_date_dtsi:[NOW TO *]) OR (embargo_release_date_dtsi:[NOW TO *] AND depositor_tesim:username-1)",
+        "-has_model_ssim:\"info:fedora/afmodel:FileAsset\"",
+        "-_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:GenericFile\"",
+        "-_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:Profile\"",
+        "-_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:ProfileSection\"",
+        "-_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:LinkedResource\"",
+        "-_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:Hydramata_Group\""
+      ],
+      "rows": "2",
+      "f.desc_metadata__subject_sim.facet.limit": "6",
+      "f.desc_metadata__based_near_sim.facet.limit": "6",
+      "f.library_collections_pathnames_hierarchy_with_titles_sim.facet.limit": "10000",
+      "f.human_readable_type_sim.facet.limit": "6",
+      "f.desc_metadata__creator_sim.facet.limit": "6",
+      "qf": [
+        "desc_metadata__title_tesim",
+        "desc_metadata__name_tesim"
+      ],
+      "f.desc_metadata__publisher_sim.facet.limit": "6",
+      "f.library_collections_pathnames_hierarchy_with_titles_sim.facet.sort": "count",
+      "f.desc_metadata__affiliation_sim.facet.limit": "6",
+      "f.admin_unit_hierarchy_sim.facet.limit": "10000",
+      "wt": "ruby",
+      "facet": "true",
+      "f.desc_metadata__language_sim.facet.limit": "6"
+    }
+  },
+  "response": {
+    "numFound": 12,
+    "start": 0,
+    "maxScore": 1,
+    "docs": [
+      {
+        "system_create_dtsi": "2017-05-26T12:46:01Z",
+        "system_modified_dtsi": "2017-05-26T12:46:02Z",
+        "object_state_ssi": "A",
+        "active_fedora_model_ssi": "GenericWork",
+        "id": "und:m039k356t2q",
+        "object_profile_ssm": [
+          "{\"datastreams\":{\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2017-05-26T12:46:01Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":316,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:m039k356t2q+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"properties\":{\"dsLabel\":null,\"dsVersionID\":\"properties.0\",\"dsCreateDate\":\"2017-05-26T12:46:01Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":82,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:m039k356t2q+properties+properties.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2017-05-26T12:46:01Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":556,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:m039k356t2q+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2017-05-26T12:46:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":801,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:m039k356t2q+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"}},\"objLabel\":null,\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2017-05-26T12:46:01Z\",\"objLastModDate\":\"2017-05-26T12:46:01Z\",\"objDissIndexViewURL\":\"http://localhost:8983/fedora-test/objects/und%3Am039k356t2q/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"http://localhost:8983/fedora-test/objects/und%3Am039k356t2q/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+        ],
+        "depositor_tesim": [
+          "username-1"
+        ],
+        "read_access_group_ssim": [
+          "registered"
+        ],
+        "edit_access_person_ssim": [
+          "username-1"
+        ],
+        "desc_metadata__title_tesim": [
+          "Work1"
+        ],
+        "desc_metadata__rights_tesim": [
+          "All rights reserved"
+        ],
+        "desc_metadata__date_uploaded_dtsi": "2017-05-26T00:00:00Z",
+        "desc_metadata__date_modified_dtsi": "2017-05-26T00:00:00Z",
+        "desc_metadata__subject_tesim": [
+          "my subject"
+        ],
+        "desc_metadata__administrative_unit_tesim": [
+          "Notre Dame:College of Arts and Letters:Africana Studies"
+        ],
+        "desc_metadata__contributor_tesim": [
+          "Some Body"
+        ],
+        "desc_metadata__creator_tesim": [
+          "The Creator"
+        ],
+        "has_model_ssim": [
+          "info:fedora/afmodel:GenericWork"
+        ],
+        "noid_tsi": "m039k356t2q",
+        "human_readable_type_tesim": [
+          "Generic Work"
+        ],
+        "timestamp": "2017-05-26T12:46:02.181Z",
+        "score": 1
+      },
+      {
+        "system_create_dtsi": "2017-05-26T12:46:02Z",
+        "system_modified_dtsi": "2017-05-26T12:46:03Z",
+        "object_state_ssi": "A",
+        "active_fedora_model_ssi": "GenericWork",
+        "id": "und:dr26xw4309w",
+        "object_profile_ssm": [
+          "{\"datastreams\":{\"RELS-EXT\":{\"dsLabel\":\"Fedora Object-to-Object Relationship Metadata\",\"dsVersionID\":\"RELS-EXT.0\",\"dsCreateDate\":\"2017-05-26T12:46:02Z\",\"dsState\":\"A\",\"dsMIME\":\"application/rdf+xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"X\",\"dsSize\":316,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:dr26xw4309w+RELS-EXT+RELS-EXT.0\",\"dsLocationType\":null,\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"properties\":{\"dsLabel\":null,\"dsVersionID\":\"properties.0\",\"dsCreateDate\":\"2017-05-26T12:46:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":82,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:dr26xw4309w+properties+properties.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"rightsMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"rightsMetadata.0\",\"dsCreateDate\":\"2017-05-26T12:46:02Z\",\"dsState\":\"A\",\"dsMIME\":\"text/xml\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":556,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:dr26xw4309w+rightsMetadata+rightsMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"},\"descMetadata\":{\"dsLabel\":null,\"dsVersionID\":\"descMetadata.0\",\"dsCreateDate\":\"2017-05-26T12:46:03Z\",\"dsState\":\"A\",\"dsMIME\":\"text/plain\",\"dsFormatURI\":null,\"dsControlGroup\":\"M\",\"dsSize\":801,\"dsVersionable\":true,\"dsInfoType\":null,\"dsLocation\":\"und:dr26xw4309w+descMetadata+descMetadata.0\",\"dsLocationType\":\"INTERNAL_ID\",\"dsChecksumType\":\"DISABLED\",\"dsChecksum\":\"none\"}},\"objLabel\":null,\"objOwnerId\":\"fedoraAdmin\",\"objModels\":[\"info:fedora/fedora-system:FedoraObject-3.0\"],\"objCreateDate\":\"2017-05-26T12:46:02Z\",\"objLastModDate\":\"2017-05-26T12:46:02Z\",\"objDissIndexViewURL\":\"http://localhost:8983/fedora-test/objects/und%3Adr26xw4309w/methods/fedora-system%3A3/viewMethodIndex\",\"objItemIndexViewURL\":\"http://localhost:8983/fedora-test/objects/und%3Adr26xw4309w/methods/fedora-system%3A3/viewItemIndex\",\"objState\":\"A\"}"
+        ],
+        "depositor_tesim": [
+          "username-1"
+        ],
+        "read_access_group_ssim": [
+          "registered"
+        ],
+        "edit_access_person_ssim": [
+          "username-1"
+        ],
+        "desc_metadata__title_tesim": [
+          "Work2"
+        ],
+        "desc_metadata__rights_tesim": [
+          "All rights reserved"
+        ],
+        "desc_metadata__date_uploaded_dtsi": "2017-05-26T00:00:00Z",
+        "desc_metadata__date_modified_dtsi": "2017-05-26T00:00:00Z",
+        "desc_metadata__subject_tesim": [
+          "my subject"
+        ],
+        "desc_metadata__administrative_unit_tesim": [
+          "Notre Dame:College of Arts and Letters:Africana Studies"
+        ],
+        "desc_metadata__contributor_tesim": [
+          "Some Body"
+        ],
+        "desc_metadata__creator_tesim": [
+          "The Creator"
+        ],
+        "has_model_ssim": [
+          "info:fedora/afmodel:GenericWork"
+        ],
+        "noid_tsi": "dr26xw4309w",
+        "human_readable_type_tesim": [
+          "Generic Work"
+        ],
+        "timestamp": "2017-05-26T12:46:03.157Z",
+        "score": 1
+      }
+    ]
+  },
+  "facet_counts": {
+    "facet_queries": {},
+    "facet_fields": {
+      "admin_unit_hierarchy_sim": [
+        "Notre Dame:College of Arts and Letters:Africana Studies",
+        2
+      ],
+      "library_collections_pathnames_hierarchy_with_titles_sim": [],
+      "human_readable_type_sim": [
+        "Generic Work",
+        2
+      ],
+      "desc_metadata__creator_sim": [
+        "The Creator",
+        2
+      ],
+      "desc_metadata__tag_sim": [],
+      "desc_metadata__subject_sim": [],
+      "desc_metadata__language_sim": [],
+      "desc_metadata__based_near_sim": [],
+      "desc_metadata__publisher_sim": [],
+      "desc_metadata__affiliation_sim": [],
+      "file_format_sim": []
+    },
+    "facet_dates": {},
+    "facet_ranges": {}
+  }
+}
