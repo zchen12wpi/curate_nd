@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe CatalogIndexJsonldPresenter do
   let(:raw_response) { JSON.parse(File.read(Rails.root.join("spec/fixtures/DLTP-1014/dltp-1014.json"))) }
   let(:request_url) { 'http://test.host/catalog.json' }
-  let(:query_parameters) { { } }
+  let(:query_parameters) { { "page" => "1" } }
   let(:presenter) { described_class.new(raw_response, request_url, query_parameters) }
 
   describe '#as_jsonld' do
@@ -97,7 +97,7 @@ RSpec.describe CatalogIndexJsonldPresenter::Pager do
     let(:response) do
       { 'response' => { 'docs' => [], 'numFound' => 11, 'start' => 5 }, 'responseHeader' => { 'params' => { 'rows' => 2 } } }
     end
-    let(:query_parameters) { { 'page' => 3, 'somebody' => 'to-love' } }
+    let(:query_parameters) { { 'page' => "3", 'somebody' => 'to-love' } }
 
     its(:total_results) { is_expected.to eq(11) }
     its(:total_pages) { is_expected.to eq(6) }
@@ -193,7 +193,7 @@ RSpec.describe CatalogIndexJsonldPresenter::Pager do
     let(:response) do
       { 'response' => { 'docs' => [], 'numFound' => 11, 'start' => 11 }, 'responseHeader' => { 'params' => { 'rows' => 2 } } }
     end
-    let(:query_parameters) { { 'page' => 6, 'somebody' => 'to-love' } }
+    let(:query_parameters) { { 'page' => "6", 'somebody' => 'to-love' } }
 
     its(:total_results) { is_expected.to eq(11) }
     its(:total_pages) { is_expected.to eq(6) }

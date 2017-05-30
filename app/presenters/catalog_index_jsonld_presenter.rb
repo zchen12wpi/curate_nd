@@ -72,9 +72,9 @@ class CatalogIndexJsonldPresenter
     def initialize(presenter)
       @presenter = presenter
       @total_results = raw_response.fetch('response').fetch('numFound').to_i
-      @start = raw_response.fetch('response').fetch('start')
+      @start = raw_response.fetch('response').fetch('start').to_i
       @items_per_page = raw_response.fetch('responseHeader').fetch('params').fetch('rows').to_i
-      @page = query_parameters.fetch('page', 1)
+      @page = query_parameters.fetch('page', 1).to_i
       @request_url_without_params = File.join(request_url.root.to_s, request_url.path)
     end
     attr_reader :presenter, :total_results, :start, :items_per_page, :page, :request_url_without_params
