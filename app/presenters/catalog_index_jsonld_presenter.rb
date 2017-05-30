@@ -59,7 +59,7 @@ class CatalogIndexJsonldPresenter
 
   def add_documents_to_graph(jsonld)
     documents.each do |document|
-      dc_title = document.fetch('desc_metadata__title_tesim').first
+      dc_title = Array.wrap(document.fetch('desc_metadata__title_tesim', 'title-not-found' )).first
       document_object = {
         "@id" => document.fetch('id'),
         "dc:title" => dc_title
