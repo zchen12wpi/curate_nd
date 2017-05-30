@@ -50,8 +50,8 @@ group :default do
   gem 'net-ldap'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
-  #gem 'orcid', github: 'banurekha/orcid'
-  gem 'orcid', path: '../uclib/orcid'
+  gem 'orcid', path: '../ndlib/orcid'
+  #gem 'orcid', github: 'projecthydra-labs/orcid'
   gem 'qa'
   gem 'rails', '~>4.0.2'
   gem 'rails_autolink'

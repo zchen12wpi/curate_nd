@@ -52,7 +52,7 @@ GIT
       rest-client (~> 1.6)
 
 PATH
-  remote: ../uclib/orcid
+  remote: ../ndlib/orcid
   specs:
     orcid (0.9.1)
       devise-multi_auth (~> 0.1)
