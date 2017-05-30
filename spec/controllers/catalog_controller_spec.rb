@@ -22,6 +22,19 @@ describe CatalogController do
         work_json.should == {"pid"=>work1.pid, "title"=> "#{work1.title} (#{work1.human_readable_type})"}
       end
     end
+
+    describe "with format :jsonld" do
+      before do
+        sign_in user
+        xhr :get, :index, format: :jsonld
+        response.should be_success
+      end
+      it "should return json" do
+        json = JSON.parse(response.body)
+        expect(json.fetch("@context")).to be_a(Hash)
+        expect(json.fetch("@graph").first).to be_a(Hash)
+      end
+    end
   end
 
   describe "hierarchy_facet" do
