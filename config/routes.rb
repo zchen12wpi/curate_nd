@@ -136,6 +136,7 @@ CurateNd::Application.routes.draw do
   get 'beta',  to: redirect('/')
   get 'contribute', to: 'static_pages#contribute'
   get 'faqs',  to: 'static_pages#faqs'
+  get 'faq',  to: redirect('/faqs')
   get 'orcid_settings', to: 'user_profiles#orcid_settings'
   get 'policies', to: 'static_pages#policies'
   get 'policies/:policyname', to: 'static_pages#policies', as: :named_policy
