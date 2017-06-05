@@ -94,7 +94,7 @@ http_interactions:
   recorded_at: Mon, 11 Aug 2014 21:30:38 GMT
 - request:
     method: get
-    uri: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora-test/describe?xml=true
+    uri: http://127.0.0.1:8983/fedora-test/describe?xml=true
     body:
       encoding: US-ASCII
       string: ''
@@ -130,7 +130,7 @@ http_interactions:
   recorded_at: Mon, 11 Aug 2014 21:30:38 GMT
 - request:
     method: get
-    uri: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora-test/objects/und:071k?format=xml
+    uri: http://127.0.0.1:8983/fedora-test/objects/und:071k?format=xml
     body:
       encoding: US-ASCII
       string: ''
