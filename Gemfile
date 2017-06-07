@@ -11,7 +11,8 @@ group :default do
   gem 'breadcrumbs_on_rails'
   gem 'browser'
   gem 'chronic', '>= 0.10.2'
-  gem 'citeproc-ruby', '~> 1.1'
+  gem 'citeproc-ruby', '1.1.0'
+  gem 'citeproc', '1.0.2'
   gem 'csl-styles', '~> 1.0'
   gem 'curate-indexer'
   gem 'custom_configuration'
@@ -45,16 +46,17 @@ group :default do
   gem 'logstash-logger'
   gem 'mini_magick', '~> 3.8'
   gem 'morphine'
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.18'
   gem 'namae'
   gem 'net-ldap'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
-  gem 'orcid', github: 'projecthydra-labs/orcid'
+  #gem 'orcid', path: '../ndlib/orcid'
+  gem 'orcid', github: 'ndlib/orcid'
   gem 'qa'
   gem 'rails', '~>4.0.2'
   gem 'rails_autolink'
-  gem 'rake'
+  gem 'rake', '~> 11.0'
   gem 'redcarpet'
   gem 'resque-pool'
   gem 'roboto'
@@ -68,6 +70,8 @@ group :default do
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
+  gem 'deprecation', '~>0.2.2'
+
 end
 
 group :headless do
@@ -93,9 +97,9 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~>4.2.0'
   gem 'poltergeist', '~> 1.5'
-  gem 'rspec-html-matchers', '~>0.6'
-  gem 'rspec-its', '~> 1.0'
-  gem 'rspec-rails', '~>3.0'
+  gem 'rspec-html-matchers', '~>0.6.1'
+  gem 'rspec-its', '~> 1.0.1'
+  gem 'rspec-rails', '~>3.0.2'
   gem 'test_after_commit'
   gem 'vcr'
   gem 'webmock'
