@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/orcid.git
-  revision: 217bcfaf18bad163899eead2d9aec49d36ca198b
+  revision: 2ad39a2eaa8ff3dd449a099ae85a9ebd2f3615ad
   specs:
     orcid (0.9.1)
       devise-multi_auth (~> 0.1)
@@ -319,7 +319,7 @@ GEM
     hydra-remote_identifier (0.6.7)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
-    i18n (0.8.1)
+    i18n (0.8.4)
     ice_nine (0.11.2)
     jettywrapper (2.0.4)
       activesupport (>= 3.0.0)
