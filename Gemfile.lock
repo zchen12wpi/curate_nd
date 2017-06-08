@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/orcid.git
-  revision: 2ad39a2eaa8ff3dd449a099ae85a9ebd2f3615ad
+  revision: ee2106c6c5b6bc6b51cc37e9c5f96055521d3da9
   specs:
     orcid (0.9.1)
       devise-multi_auth (~> 0.1)
