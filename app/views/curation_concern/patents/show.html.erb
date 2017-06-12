@@ -17,6 +17,9 @@
       <i class="icon icon-trash"></i> Delete
     <% end %>
   <% end %>
+  <% if RepoManager.with_active_privileges?(current_user) %>
+    <%= link_to 'Reindex this Item', admin_reindex_pid_path(curation_concern.id) , class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
 
 <% details = capture do %>
