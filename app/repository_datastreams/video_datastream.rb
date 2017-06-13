@@ -94,7 +94,9 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
-    map.publication_date({to: 'issued', in: RDF::DC})
+    map.publication_date({to: 'issued', in: RDF::DC}) do |index|
+      index.as :stored_searchable
+    end
 
     map.administrative_unit(to: 'creator#administrative_unit', in: RDF::QualifiedDC) do |index|
       index.as :stored_searchable, :facetable
