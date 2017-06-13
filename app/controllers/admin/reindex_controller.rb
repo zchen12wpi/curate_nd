@@ -18,6 +18,13 @@ module Admin
       head :ok
     end
 
+    def reindex_pid
+      reindexer = Admin::Reindex.new([params[:id]])
+      reindexer.add_to_work_queue
+      flash[:notice] = "Successfully add to reindex queue for '#{params[:id]}'."
+      redirect_to(request.env["HTTP_REFERER"] || catalog_index_path)
+    end
+
     private
 
     # try to parse a json array out of input

@@ -105,6 +105,8 @@ CurateNd::Application.routes.draw do
       post "add_to_collection", to: "add_to_collection#submit"
     end
 
+    match 'reindex/:id' => 'reindex#reindex_pid', via: :get, as: 'reindex_pid'
+
     constraints CurateND::AdminAccessTokenConstraint do
       resources :temporary_access_tokens, path: 'access_tokens'
     end
