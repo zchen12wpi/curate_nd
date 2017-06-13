@@ -165,7 +165,9 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
-    map.publication_date(to: 'issued', in: RDF::DC)
+    map.publication_date(to: 'issued', in: RDF::DC) do |index|
+      index.as :stored_searchable
+    end
 
     map.edition(to: 'isVersionOf#edition', in: RDF::QualifiedDC)
 

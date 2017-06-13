@@ -30,6 +30,10 @@ class DatasetMetadataDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
+    map.publication_date({to: 'issued', in: RDF::DC}) do |index|
+      index.as :stored_searchable
+    end
+
     map.date_uploaded(to: "dateSubmitted", in: RDF::DC) do |index|
       index.type :date
       index.as :stored_sortable

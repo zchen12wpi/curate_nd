@@ -56,6 +56,10 @@
           <dt>Contributor(s):</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__contributor_tesim') %></dd>
         <% end %>
+        <% if solr_doc.has?('desc_metadata__publication_date_tesim') %>
+          <dt>Date Published:</dt>
+          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__publication_date_tesim') %></dd>
+        <% end %>
 
       </dl>
 
