@@ -54,37 +54,76 @@
       <li><%= link_to 'Succession Planning Policy', named_policy_path('succession-plan') %></li>
     </ul>
 
-    <h2 id="getting-started">Getting Started</h2>
+    <h2 id="getting-started">Getting Started Guides</h2>
     <ul>
-      <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">How do I set up my account?</a></li>
-      <li><a href="https://docs.google.com/document/d/1Prr8vto_3xXfk4Ki_S1lL2XJi6yKI-dyTLA33dXZ5hA/pub">How do I deposit a work?</a></li>
-      <li><a href="https://docs.google.com/a/nd.edu/document/d/1JwZ6NXduQmsSJi5c8CnlQzkYeAX03adsgY0q5diy-B0/pub">How do I relate a work?</a></li>
-      <li><a href="https://docs.google.com/document/d/1N2itt5_9ZraokPqvbC_Dau2KVPdkonlcPAwqF80bFqw/pub">How do I delete a work?</a></li>
-      <li><a href="https://docs.google.com/a/nd.edu/document/d/1fV4XoImyLFxMoUC5t2fIi0_4Ym5mPCyudyhMGbffYNs/pub">How do I create a collection?</a></li>
-      <li><a href="https://docs.google.com/document/d/1ZCHnGU2h2fRmxUtLOBfOjdqBCOG9abAcQrS_Dm34KbY/pub">How do I update my user profile?</a></li>
-      <li><a href="https://docs.google.com/a/nd.edu/document/d/10gJ2924B9LtMoG9FpKNZXGgGO1cSyxq1mvLI1Yolst8/pub">How do I assign a delegate?</a></li>
-      <li><a href="https://docs.google.com/document/d/1qDUmRHcGaCurbWZuMqZXR4X1SWVABFVvn-miLvPHMGo/pub">How do I create a group?</a></li>
+      <li><a href="https://docs.google.com/document/d/1Sb3Sw_oqQBZX3J4yz0PltsgS2FnPSyLF1ULRzi8SmRA/pub">Setting up your account</a></li>
+      <li><a href="https://docs.google.com/document/d/1Prr8vto_3xXfk4Ki_S1lL2XJi6yKI-dyTLA33dXZ5hA/pub">Depositing a work</a></li>
+      <li><a href="https://docs.google.com/document/d/1JwZ6NXduQmsSJi5c8CnlQzkYeAX03adsgY0q5diy-B0/pub">Relating a work</a></li>
+      <li><a href="https://docs.google.com/document/d/1N2itt5_9ZraokPqvbC_Dau2KVPdkonlcPAwqF80bFqw/pub">Deleting work</a></li>
+      <li><a href="https://docs.google.com/document/d/1fV4XoImyLFxMoUC5t2fIi0_4Ym5mPCyudyhMGbffYNs/pub">Creating a collection</a></li>
+      <li><a href="https://docs.google.com/document/d/1ZCHnGU2h2fRmxUtLOBfOjdqBCOG9abAcQrS_Dm34KbY/pub">Updating your user profile</a></li>
+      <li><a href="https://docs.google.com/document/d/10gJ2924B9LtMoG9FpKNZXGgGO1cSyxq1mvLI1Yolst8/pub">Assigning a delegate</a></li>
+      <li><a href="https://docs.google.com/document/d/1qDUmRHcGaCurbWZuMqZXR4X1SWVABFVvn-miLvPHMGo/pub">Creating a group</a></li>
     </ul>
 
     <h2 id="common-questions">Common Questions</h3>
     <% contact_curatend_support = link_to 'contact CurateND support', new_help_request_path, class: 'help-report-problem request-help' %>
     <dl>
+      <dt>What is CurateND?</dt>
+      <dd>
+        CurateND is the institutional repository for the University of Notre Dame.
+        It is for preserving and providing access to scholarship (e.g. articles, manuscripts, research data), pedagogical materials, and other
+        scholarly material the university has acquired (e.g. digitization of rare books, and the back catalog of the Notre Dame Press).
+        One of the largest collections is the <a href="/catalog?f_inclusive[human_readable_type_sim][]=Doctoral+Dissertation&f_inclusive[human_readable_type_sim][]=Master's+Thesis">Electronic Dissertations and Theses</a> since 2005.
+      </dd>
+
+      <dt>Who may use CurateND?</dt>
+      <dd>
+        Anyone in the world may access the public content in CurateND.
+        People who have an valid NetID may log in to deposit items and to view files marked as "Notre Dame Only".
+      </dd>
+
+      <dt>Do I need a special account to log in to CurateND?</dt>
+      <dd>
+      No. Since CurateND is tied in to the central campus login, anyone with a valid university NetID may log in using the same NetID and password
+      used for other campus services, such as email.
+      </dd>
+
+      <dt>Can anyone outside of ND deposit works?</dt>
+      <dd>No. Only people with a valid NetID can can deposit items.
+      If you don't have a valid NetID and the items you would like to deposit either were done with a project affiliated with Notre Dame,
+      or were done while you yourself were at Notre Dame, please <%= contact_curatend_support %> about the possibility of deposit.
+      </dd>
+
+      <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
+      <dd>
+        Anyone in the world can always view and download public content in CurateND.
+        People who leave or graduate from Notre Dame can only upload content and view private items until their university NetID is deactivated,
+        which usually happens a few months after leaving.
+        If you need continual access for some reason, you would need to find someone on campus to sponsor you to keep your NetID active.
+      </dd>
+
+      <dt>How long is long term?</dt>
+      <dd>
+        Long term means in perpetuity.
+        CurateND intends to keep publicly available items for as long as possible, and if something should happen to the University of Notre Dame
+        we will transfer content to other repositories for safe keeping.
+        Because of this, when depositing items into CurateND, one should try to provide enough context so that the content will make sense to those viewing them in 10 or 50 years.
+      </dd>
+
       <dt>What are persistent URLs?</dt>
       <dd>
-        A persistent URL is a URL that does not break.
+        A persistent URL (PURL) is a URL that does not break.
         It is expected to work and return documents from CurateND for a long time, where a &ldquo;long time&rdquo; is more than ten years.
+        On CurateND, the URLs in the form <tt>https://curate.nd.edu/show/XXXXX</tt> and <tt>https://curate.nd.edu/download/XXXXX</tt>, where <tt>XXXXX</tt> is an
+        11 character identifier, are considered PURLs, and will be preserved even as the rest of the website evolves.
       </dd>
 
       <dt>What is a DOI?</dt>
       <dd>
         This is an acronym for <em>digital object identifier</em>, and it is a long-term identifier for a work.
-        A DOI can be turned into a persistent URL by prefixing it with <tt>http://dx.doi.org/</tt>.
-        Any item in CurateND that has a value for <b>publisher</b> can be assigned a DOI.
-      </dd>
-
-      <dt>How long is long term?</dt>
-      <dd>
-        Compared to books, computers are the mere infants on the block, but that said, &ldquo;long term&rdquo; when it comes to computers is measured in decades.
+        A DOI can be turned into a persistent URL by prefixing it with <tt>https://doi.org/</tt>.
+        Any item in CurateND that has the <b>publisher</b> field filled out can be assigned a DOI.
       </dd>
 
       <dt>What is a Creative Commons license?</dt>
@@ -102,16 +141,16 @@
           <%= render :partial => "curation_concern/base/license_modal" %>
         </p>
 
-      <dt>How does someone find something that was self-submitted?</dt>
+      <dt>How does one find something that was self-submitted?</dt>
       <dd>
         Try searching for your work from inside CurateND itself.
-        You will need to log-in if your work is not visible to the public.
+        You will need to log in if your work is not visible to the public.
       </dd>
 
-      <dt>How do I load large numbers of collections or files?</dt>
+      <dt>How do I deposit a large number of collections or files?</dt>
       <dd>
-        The batch ingest of files is still in development.
         If you have a large number of files&mdash;more than a dozen or so&mdash;please <%= contact_curatend_support %>, and we can work with you directly.
+        We have tools that can upload and organize large groups of files easily.
       </dd>
 
       <dt>Is there a priority list or order for what can be archived?</dt>
@@ -123,9 +162,12 @@
 
       <dt>What does preservation mean? Can anyone edit the documents I deposit?</dt>
       <dd>
-        Preservation means we are concerned about keeping your files intact, now and tomorrow.
-        We keep copies of your files, and we make sure they do not change over time.
-        We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to translate your files into more modern formats. Additionally, we never edit your content. And files are never deleted; new versions are stored alongside the old ones (with some exceptions).
+        Preservation means we are concerned about keeping your files intact both today and tomorrow.
+        To do this we keep copies of your files, and we make sure they do not change over time.
+        If a copy should have an error or disappear, we will replace it using another copy.
+        We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to migrate your files into more modern formats.
+        Files and content is never deleted&mdash;new versions are stored alongside the old ones.
+        And we never edit your submitted files.
       </dd>
 
       <dt>What is the process for digitizing collections from departments?</dt>
@@ -140,9 +182,9 @@
         Content that is deposited into CurateND is examined for various characteristics such as completeness and academic integrity.
       </dd>
 
-      <dt>How can I keep a work private, but still allow collaborators outside campus to view it?</dt>
+      <dt>How can I keep a work private, but still allow collaborators unaffiliated with the university to view it?</dt>
       <dd>
-        For now outside collaborators are not able to do anything except read public content from the repository.
+        For now external collaborators can only view public content in the repository.
       </dd>
 
       <dt>Is there a work type for unpublished materials?</dt>
@@ -151,49 +193,40 @@
         Pick the format that most closely matches your unpublished materials when depositing them.
       </dd>
 
-      <dt>Can anyone outside of ND deposit works?</dt>
-      <dd>No.</dd>
-
-      <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
-      <dd>
-        As long as the person retains a NetID, they have the ability to view private content and to upload items to CurateND.
-        Everyone in the world always has the ability to read public content in CurateND.
-      </dd>
-
       <dt>Can one search by academic department?</dt>
       <dd>
-        No, not yet.
+        <a href="/departments">Yes</a>.
       </dd>
 
-      <dt>Can one export a profile page?</dt>
-      <dd>
-        No, this is not a feature of the repository.
-      </dd>
-
-      <dt>Will CurateND be indexed by search engines?</dt>
+      <dt>Is CurateND indexed by search engines?</dt>
       <dd>
         Yes.
       </dd>
 
       <dt>What is the difference between an article and a document?</dt>
       <dd>
-        An article is a type of document.
+        An article is a specific type of document.
         Other types of documents may include a poster, an image, a spreadsheet, etc.
-      </dd>
-
-      <dt>Can I put links to my CurateND profile page on other webpages?</dt>
-      <dd>
-        Yes, please do. The URL to your profile page is a persistent URL.
-      </dd>
-
-      <dt>Can contributors outside Notre Dame create their own researcher profile?</dt>
-      <dd>
-        No, not at this time.
       </dd>
 
       <dt>Is research done at the university property of the university or researcher?</dt>
       <dd>
-        It depends on the exact situation, but in general faculty research output is the property of the author.
+        This is a complicated question depending on the exact nature of your work and the kinds of items in your
+        research output (e.g. articles, software, data sets).
+
+        See <a href="http://policy.nd.edu/assets/203012/intellectualpropertypolicy.pdf">University Policy on Intellectual Property</a> for guidance.
+        Section 2.2 may be the most useful:
+        <quote>
+        The University owns all copyrightable materials (including computer programs, software, or
+multi-media productions) that are works made for hire under copyright law or that are
+developed pursuant to University Work unless otherwise provided in this policy. Consistent
+with long-standing academic tradition, the University does not normally claim ownership of
+works such as textbooks, articles, papers, scholarly monographs, or artistic works. Creators
+therefore retain copyright in such works, unless such works are created under a grant or
+sponsored program that specifies ownership rights in some entity other than the Creator, such
+works are the subject of a contract modifying ownership rights, or rights in such works are
+otherwise addressed in this policy.
+        </quote>
       </dd>
     </dl>
   </article>
