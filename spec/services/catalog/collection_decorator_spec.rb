@@ -22,6 +22,24 @@ module Catalog
         it { is_expected.to eq('und:1234') }
       end
 
+      context 'with a hash' do
+        let(:params) do
+          {
+            "action" => "index",
+            "controller" => "catalog",
+            "f" => {
+              "library_collections_pathnames_hierarchy_with_titles_sim" => {
+                "0" => "Institute for Latino Studies Sponsored Research and Publications Archive|und:j098z893451"
+              }
+            }
+          }
+        end
+        # Applying logic of app/services/catalog/search_splash_presenter.rb
+        let(:value) { [params['f']['library_collections_pathnames_hierarchy_with_titles_sim']].first }
+        subject { described_class.call(value, data_source: described_class::FakeAdapter) }
+        it { is_expected.to eq('und:j098z893451') }
+      end
+
       context 'with tile and embedded pid' do
         let(:single_slug) { 'Helpful Title|und:1337' }
         subject { described_class.call(single_slug, data_source: described_class::FakeAdapter) }
