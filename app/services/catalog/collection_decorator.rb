@@ -7,14 +7,24 @@ module Catalog
 
     def self.pid_from_scope(scope, delimiter: '/')
       return '' if scope.nil? || scope.empty?
-      slug = scope.split(delimiter).last
+      slug = split_scope(scope, delimiter: delimiter).last
       extract_id(slug)
     end
 
     def self.title_from_scope(scope, delimiter: '/')
       return '' if scope.nil? || scope.empty?
-      slug = scope.split(delimiter).last
+      slug = split_scope(scope, delimiter: delimiter).last
       extract_title(slug)
+    end
+
+    # @note I'm checking Hash in this case as the tests are very fast (and I don't want to load ActionController::Parameters for those tests)
+    # @see ./lib/curate/action_controller-parameters_spec.rb for assertion that ActionController::Parameters is a Hash
+    def self.split_scope(scope, delimiter: '/')
+      if scope.is_a?(Hash)
+        split_scope(scope.values.first, delimiter: delimiter)
+      else
+        scope.split(delimiter)
+      end
     end
 
     def self.extract_id(slug, delimiter: '|')
