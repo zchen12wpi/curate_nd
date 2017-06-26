@@ -15,6 +15,19 @@ class LibraryCollection < ActiveFedora::Base
 
   has_many :library_collection_members, property: :is_member_of_collection, class_name: "ActiveFedora::Base"
 
+  # @return [Array<ActiveFedora::Base>]
+  # @note Pardon the inefficiency, however, I'm leveraging the underlying adapter for determining subcollections; It assumes we have a SOLR document already in SOLR
+  # @note This will not work on a non-indexed object!
+  # @see ./spec/lib/curate/library_collection_indexing_adapter_spec.rb for unit tests
+  def subcollections
+    @subcollections ||= begin
+      # collector = []
+      document = Curate::LibraryCollectionIndexingAdapter.find_index_document_by(pid)
+      results = Curate::LibraryCollectionIndexingAdapter.raw_child_documents_of(document, LibraryCollection)
+      ActiveFedora::SolrService.reify_solr_results(results)
+    end
+  end
+
   include CurationConcern::IsMemberOfLibraryCollection
 
   # include CurationConcern::WithRecordViewers

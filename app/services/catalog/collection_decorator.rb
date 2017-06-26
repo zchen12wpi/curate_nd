@@ -22,6 +22,8 @@ module Catalog
     def self.split_scope(scope, delimiter: '/')
       if scope.is_a?(Hash)
         split_scope(scope.values.first, delimiter: delimiter)
+      elsif scope.is_a?(Array)
+        split_scope(scope.first, delimiter: delimiter)
       else
         scope.split(delimiter)
       end

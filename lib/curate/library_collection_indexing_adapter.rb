@@ -42,16 +42,27 @@ module Curate
 
     # @api public
     # @param document [Curate::Indexer::Documents::IndexDocument]
+    # @param curation_concern_type [nil, ActiveFedora::Base] filter on this and only this type of curation concern
     # @yield Curate::Indexer::Documents::IndexDocument
-    def self.each_child_document_of(parent_document, &block)
-      # Need to find all documents that have ancestors equal to one or more of the given parent_document's pathnames
-      pathname_query = parent_document.pathnames.map do |pathname|
-        "_query_:\"{!raw f=#{SOLR_KEY_ANCESTOR_SYMBOLS}}#{pathname.gsub('"', '\"')}\""
-      end.join(" OR ")
-      results = ActiveFedora::SolrService.query(pathname_query)
-      results.each do |solr_document|
+    def self.each_child_document_of(parent_document, curation_concern_type = nil, &block)
+      raw_child_documents_of(parent_document, curation_concern_type).each do |solr_document|
         yield(coerce_solr_document_to_index_document(solr_document))
       end
+    end
+
+    # @api private
+    # @param document [Curate::Indexer::Documents::IndexDocument]
+    # @param curation_concern_type [nil, ActiveFedora::Base] filter on this and only this type of curation concern
+    # @return [Hash] A raw response document from SOLR
+    def self.raw_child_documents_of(parent_document, curation_concern_type = nil)
+      type_query = "_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:#{curation_concern_type}\""
+      # Need to find all documents that have ancestors equal to one or more of the given parent_document's pathnames
+      pathname_query = parent_document.pathnames.map do |pathname|
+        text = "_query_:\"{!raw f=#{SOLR_KEY_ANCESTOR_SYMBOLS}}#{pathname.gsub('"', '\"')}\""
+        text += " AND #{type_query}" if curation_concern_type
+        text
+      end.join(" OR ")
+      ActiveFedora::SolrService.query(pathname_query)
     end
 
     # @api public

@@ -52,7 +52,7 @@
         <%= curation_concern_attribute_to_html(curation_concern, :spatial, 'Spatial Coverage', template: 'dl') %>
       </dl>
 
-      <% subcollections = curation_concern.library_collection_members.select { |member| member.is_a? LibraryCollection } %>
+      <% subcollections = curation_concern.subcollections %>
       <% if subcollections.any? %>
       <div class="collection-subcollections">
         <%= content_tag :h3, 'Subcollections', class: 'collection-subcollections__heading' %>
