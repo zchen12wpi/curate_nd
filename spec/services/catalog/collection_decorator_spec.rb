@@ -40,6 +40,23 @@ module Catalog
         it { is_expected.to eq('und:j098z893451') }
       end
 
+      context 'with an encoded array' do
+        let(:params) do
+          {
+            "action" => "index",
+            "controller" => "catalog",
+            "f" => {
+              "library_collections_pathnames_hierarchy_with_titles_sim" =>
+                ["Architectural Lantern Slides|und:qf85n873j6m/Architectural Lantern Slides of Italy|und:3b591833f4b"]
+            }
+          }
+        end
+        # Applying logic of app/services/catalog/search_splash_presenter.rb
+        let(:value) { [params['f']['library_collections_pathnames_hierarchy_with_titles_sim']].first }
+        subject { described_class.call(value, data_source: described_class::FakeAdapter) }
+        it { is_expected.to eq('und:3b591833f4b') }
+      end
+
       context 'with tile and embedded pid' do
         let(:single_slug) { 'Helpful Title|und:1337' }
         subject { described_class.call(single_slug, data_source: described_class::FakeAdapter) }
