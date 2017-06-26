@@ -75,6 +75,29 @@ module Curate
           Curate::Indexer::Documents::IndexDocument
         )
       end
+
+      it 'will allows filtering by class name and retrieves the SOLR document by PID and return a Curate::Indexer::Documents::IndexDocument' do
+        collection = FactoryGirl.create(:library_collection)
+        described_class.write_document_attributes_to_index_layer(
+          pid: collection.pid, pathnames: [collection.pid], ancestors: [], parent_pids: []
+        )
+        subcollection = FactoryGirl.create(:library_collection, library_collection_ids: [collection.id])
+        document = FactoryGirl.create(:document, library_collection_ids: [collection.id])
+        [subcollection, document].each do |work|
+          described_class.write_document_attributes_to_index_layer(
+            pid: work.pid, pathnames: ["#{collection.pid}/#{work.pid}"], ancestors: [collection.pid], parent_pids: [collection.pid]
+          )
+        end
+        collection_index_document = described_class.find_index_document_by(collection.pid)
+        child_pids = []
+        children = []
+        described_class.each_child_document_of(collection_index_document, subcollection.class) do |doc|
+          children << doc
+          child_pids << doc.pid
+        end
+        expect(child_pids).to eq([subcollection.pid])
+        expect(collection.subcollections).to eq([subcollection])
+      end
     end
 
     context '.write_document_attributes_to_index_layer' do
