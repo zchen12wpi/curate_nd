@@ -23,6 +23,7 @@ module RDF
     property 'creator#local'.to_sym
     property 'creator#organization'.to_sym
     property 'creator#photographer'.to_sym
+    property 'creator#repository'.to_sym
     property 'date#approved'.to_sym
     property 'date#created'.to_sym
     property 'date#digitized'.to_sym
@@ -57,6 +58,5 @@ module RDF
     property 'subject#cpc'.to_sym
     property 'subject#ipc'.to_sym
     property 'title#alternate'.to_sym
-    property 'type'.to_sym
   end
 end

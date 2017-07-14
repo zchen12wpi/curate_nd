@@ -15,5 +15,6 @@ module RDF
     property :prn
     property :drt
     property :spk
+    property :isb # for Catholic Documents; :issued_by
   end
 end
