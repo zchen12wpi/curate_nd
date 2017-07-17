@@ -24,7 +24,6 @@ class Document < ActiveFedora::Base
     'Book Chapter',
     'Book',
     'Brochure',
-    'Catholic Document',
     'Document',
     'Letter',
     'Manuscript',
