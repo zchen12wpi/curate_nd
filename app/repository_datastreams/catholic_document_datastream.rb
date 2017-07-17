@@ -127,5 +127,9 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.type :date
       index.as :stored_sortable
     end
+
+    map.alephIdentifier(:in =>RDF::ND) do |index|
+      index.as :stored_searchable
+    end
   end
 end
