@@ -23,13 +23,27 @@ You can also boot up jetty (e.g. `bundle exec rake curatend:jetty:start`) and ru
 
 ## Running the application
 
-Using non-SSL:
+Before you start the web-server you'll need to make sure Fedora and SOLR are running. Use the following command:
+
+```console
+$ bundle exec rake curatend:jetty:start
+```
+
+You may also need to make sure that mySQL is running as well:
+
+```console
+$ mysql.server start
+```
+
+### Getting Your Rails Application Running
+
+In most cases, you won't need SSL, so use the following command:
 
 ```console
 $ bundle exec rails server
 ```
 
-Using SSL:
+If you do need SSL, use this command:
 
 ```console
 $ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
