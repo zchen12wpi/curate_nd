@@ -1,4 +1,4 @@
-class Document < ActiveFedora::Base
+class CatholicDocument < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
