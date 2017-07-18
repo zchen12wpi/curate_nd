@@ -2,7 +2,8 @@ module Catalog
   module ConstraintPresenter
     module ProxyDecorator
       def self.call(value)
-        value
+        sanitized = ActionView::Base.white_list_sanitizer.sanitize(value, {})
+        ERB::Util.html_escape(sanitized).try(:html_safe)
       end
     end
 
@@ -17,7 +18,7 @@ module Catalog
         key = options[:classes].last
         CONSTRAINT_CLASS_PRESENTER_MAP[key].call(value)
       else
-        value
+        ProxyDecorator.call(value)
       end
     end
   end
