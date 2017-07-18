@@ -4,6 +4,9 @@ Article:
   open: all
 Audio:
   open: all
+CatholicDocument:
+  open: all
+# open: und:0z708w3573q
 Dataset:
   open: all
 Document:
