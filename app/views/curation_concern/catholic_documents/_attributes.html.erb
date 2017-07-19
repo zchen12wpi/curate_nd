@@ -1,5 +1,3 @@
-<%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract, 'Abstract') %>
-
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
   <thead>
@@ -7,54 +5,33 @@
   </thead>
   <tbody>
 
-  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
-
-  <%= curation_concern_attribute_to_html(curation_concern, :alternate_title,            'Alternate Title') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :author,                     'Author') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :coauthor,                   'Coauthor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :editor,                     'Editor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributing_editor,        'Contributing Editor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :artist,                     'Artist') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributing_artist,        'Contributing Artist') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :illustrator,                'Illustrator') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributing_illustrator,   'Contributing Illustrator') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :photographer,               'Photographer') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributing_photographer,  'Contributing Photographer') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :creator,                    'Creator') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributor,                'Contributor') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :date_created,               'Date Created') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :copyright_date,             'Copyright Date') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :table_of_contents,          'Table of Contents') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :extent,                     'Extent') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :isbn,                       'ISBN') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :publisher,                  'Publisher') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :publication_date,           'Publication Date') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :edition,                    'Edition') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :subject,                    'Subject') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :lc_subject,                 'Subject (Library of Congress)') %>
-  <%= curation_concern_attribute_to_html(
-                                          curation_concern,
-                                          :source,
-                                          "Source",
-                                          callout_pattern: /\Ahttps?:\/\/undpress\.nd\.edu/,
-                                          callout_text: "Purchase through the University of Notre Dame Press"
-                                        ) %>
-  <%= curation_concern_attribute_to_html(curation_concern, :relation, "Related Resource(s)") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :alternate_title,             'Alternate Title') %>
+  <%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract,                    'Description') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :creator,                     'Author') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :issued_by,                   'Issued By') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :promulgated_by,              'Promulgated By') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :date_issued,                 'Date Published') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :date,                        'Date Issued') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :promulgated_date,            'Date Promulgated') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :subject,                     'Subjects') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :extent,                      'Number of Pages') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage,           'Spatial Coverage') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage,          'Temporal Coverage') %>
   <%= curation_concern_attribute_to_html(curation_concern, :language,                   'Language') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :repository_name,            'Repository') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :publisher,                  'Publisher') %>
+  <%= curation_concern_attribute_to_html(curation_concern,
+  :source,                     'Source') %>
+  <%= curation_concern_attribute_to_html(curation_concern,
+  :rights_holder,              'Rights Holder') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :copyright_date,             'Copyright Date') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :requires,                   'Requires') %>
   <%= curation_concern_attribute_to_html(
           curation_concern,
           :alephIdentifier,
           "Catalog Record"
       ) %>
-  <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage,          'Temporal Coverage') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage,           'Spatial Coverage') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :size,                       'Size') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :requires,                   'Requires') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :repository_name,            'Repository Name') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :collection_name,            'Collection Name') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :contributor_institution,    'Contributor Institution') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :recommended_citation,       'Recommended Citation') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :local_identifier,           'Local Identifier') %>
 
   <tr>
     <th>Access Rights</th>

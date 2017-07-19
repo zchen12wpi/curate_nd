@@ -1,27 +1,4 @@
 <fieldset class="required">
   <legend>Required Information</legend>
-  <%= f.input(
-    :type,
-    collection: Document.valid_types,
-    required: true,
-    input_html: {
-      class: 'input-xlarge'
-    }
-  )%>
-
-  <%= f.input(
-    :title,
-    input_html: {
-      class: 'input-xlarge'
-    }
-  )%>
-
-  <%= f.input(
-    :abstract,
-    as: :text,
-    input_html: {
-      class: 'input-xxxlarge rich-textarea-js',
-      rows: '14'
-    }
-  ) %>
+  <%= f.input :title, input_html: { class: 'input-xxlarge'}, required: true %>
 </fieldset>

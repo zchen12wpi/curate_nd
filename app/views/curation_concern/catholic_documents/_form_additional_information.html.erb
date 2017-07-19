@@ -1,49 +1,34 @@
 <fieldset class="optional prompt">
   <legend>Additional Information</legend>
+  <%= f.input :alternate_title,            label: 'Alternate Title', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+
+  <%= f.input :abstract, input_html: { class: 'input-xxlarge rich-textarea-js', rows: '9' }, as: :text %>
+
   <%= f.input :affiliation,
               label: 'Academic Status',
               as: :select,
               collection: affiliations,
               input_html: { class: 'input-xlarge' }
   %>
-
   <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
 
-  <%= f.input :alternate_title,            label: 'Alternate Title', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :author,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :coauthor,                   as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :editor,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :contributing_editor,        label: 'Contributing Editor', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :artist,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :contributing_artist,        label: 'Contributing Artist', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :illustrator,                as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :contributing_illustrator,   label: 'Contributing Illustrator', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :photographer,               as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :contributing_photographer,  label: 'Contributing Photographer', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :creator,                    as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :contributor,                as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :date_created,               label: 'Date Created', input_html: { class: 'input-xlarge datepicker' } %>
-  <%= f.input :copyright_date,             label: 'Copyright Date', placeholder: 'YYYY', input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :table_of_contents,          input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :extent,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :isbn,                       as: :multi_value, label: 'ISBN', input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :local_identifier,           label: 'Local Identifier', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :publisher,                  label: 'Publisher (Required for DOI)', as: :multi_value, input_html: { class: 'input-xlarge', id: 'publisher' } %>
-  <%= f.input :publication_date,           label: 'Publication Date', placeholder: 'YYYY', input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :edition,                    input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :subject,                    as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :lc_subject,                 label: 'Subject (Library of Congress)', as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
-  <%= f.input :source,                     as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :relation,                   as: :multi_value, label: "Related Resource(s)", input_html: {class: 'input-xlarge', type: 'url'} %>
-  <%= f.input :language,                   as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
-  <%= f.input :temporal_coverage,          label: 'Temporal Coverage', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :spatial_coverage,           label: 'Spatial Coverage', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :size,                       as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :requires,                   as: :multi_value, input_html: { class: 'input-xlarge' } %>
 
-  <%= f.input :repository_name,            label: 'Repository Name', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :collection_name,            label: 'Collection Name', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :contributor_institution,    label: 'Contributor Institution', as: :multi_value, input_html: { class: 'input-xlarge' } %>
-  <%= f.input :recommended_citation,       label: 'Recommended Citation', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :creator, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :issued_by, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :promulgated_by, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :date_issued, placeholder: 'YYYY', input_html: { class: 'input-xlarge datepicker' } %>
+  <%= f.input :date, placeholder: 'YYYY', input_html: { class: 'input-xlarge datepicker' } %>
+  <%= f.input :promulgated_date, placeholder: 'YYYY', input_html: { class: 'input-xlarge datepicker' } %>
+  <%= f.input :subject, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :extent, label: 'Number of Pages', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :spatial_coverage, label: 'Spatial Coverage', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :temporal_coverage, label: 'Temporal Coverage', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :language, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :repository_name, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :publisher, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :source, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :rights_holder, label: 'Rights Holder', input_html: { class: 'input-xxlarge rich-textarea-js', rows: '4' }, as: :text %>
+  <%= f.input :copyright_date,             label: 'Copyright Date', placeholder: 'YYYY', input_html: { class: 'input-xlarge' } %>
+  <%= f.input :requires, as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
 </fieldset>
