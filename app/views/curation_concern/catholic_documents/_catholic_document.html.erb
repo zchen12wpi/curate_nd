@@ -1,5 +1,5 @@
 <%# This is a search result view %>
-<% solr_doc = article.inner_object.solr_doc %>
+<% solr_doc = catholic_document.inner_object.solr_doc %>
 <li id="document_<%= catholic_document.noid %>" class="search-result">
 
   <%= render :partial => 'catalog/_index_partials/identifier_and_action', locals: {document: catholic_document, counter: catholic_document_counter} %>
@@ -7,7 +7,7 @@
   <div class="row-fluid">
 
     <div class="span2">
-      <%= render :partial => 'catalog/_index_partials/thumbnail_display', locals: {document: article} %>
+      <%= render :partial => 'catalog/_index_partials/thumbnail_display', locals: {document: catholic_document} %>
     </div>
 
     <div class="span10">

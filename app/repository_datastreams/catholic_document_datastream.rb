@@ -10,7 +10,7 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     # Alternate Title
-    map.alternate_title(to: 'alternative' in: RDF::DC) do |index|
+    map.alternate_title(to: 'alternative', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
@@ -30,20 +30,20 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     # Promulgated By
-    map.promulgated_by(to: promulgatingBody, in: =>RDF::ND) do |index|
+    map.promulgated_by(to: 'promulgatingBody', in: RDF::ND) do |index|
       index.as :stored_searchable
     end
 
     # Date Pubished
-    map.date_issued(:to => 'issued', :in => RDF::DC)
+    map.date_issued(to: 'issued', in: RDF::DC)
 
     # Date Issued
-    map.date(:to => 'date', :in => RDF::DC) do |index|
+    map.date(to: 'date', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
     # Date Promulgated
-    map.promulgated_date(:to => 'valid', :in => RDF::DC) do |index|
+    map.promulgated_date(to: 'valid', in: RDF::DC) do |index|
       index.as :stored_searchable
     end
 
@@ -92,7 +92,7 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     map.source({in: RDF::DC})
     # Rights Holder
 
-    map.rights_holder(:to => 'rightsHolder', :in => RDF::DC)
+    map.rights_holder(to: 'rightsHolder', in: RDF::DC)
 
     # Copyright Date
     map.copyright_date(to: 'dateCopyrighted', in: RDF::DC)
@@ -114,7 +114,7 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
-    map.rights(:in => RDF::DC) do |index|
+    map.rights(in: RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
 
@@ -128,7 +128,7 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_sortable
     end
 
-    map.alephIdentifier(:in =>RDF::ND) do |index|
+    map.alephIdentifier(in: RDF::ND) do |index|
       index.as :stored_searchable
     end
   end

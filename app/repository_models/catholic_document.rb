@@ -2,7 +2,6 @@ class CatholicDocument < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
-  include CurationConcern::WithLinkedContributors
   include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
@@ -38,11 +37,12 @@ class CatholicDocument < ActiveFedora::Base
     hint: 'The person, family, corporate body, or other entity who issued the work.'
   attribute :promulgated_by,
     datastream: :descMetadata, multiple: true,
-    label: 'Promulgated By'
+    label: 'Promulgated By',
     hint: 'The person, family, corporate body, or entity who promulgated the work.'
+  # This is weird, but the date issued doesn't have to do with Publication for this, so this is just a labeling thing. The dc:issued will be the actual publication date...
   attribute :date_issued,
     datastream: :descMetadata, multiple: false,
-    label: 'Date Published'
+    label: 'Date Published',
     validates: {
       allow_blank: true,
       format: {
@@ -50,9 +50,10 @@ class CatholicDocument < ActiveFedora::Base
         message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
       }
     }
+  # It's a labeling thing.
   attribute :date,
     datastream: :descMetadata, multiple: false,
-    label: 'Date Issued'
+    label: 'Date Issued',
     validates: {
       allow_blank: true,
       format: {
@@ -60,9 +61,9 @@ class CatholicDocument < ActiveFedora::Base
         message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
       }
     }
-  attribute :valid,
+  attribute :promulgated_date,
     datastream: :descMetadata, multiple: false,
-    label: 'Date Promulgated'
+    label: 'Date Promulgated',
     validates: {
       allow_blank: true,
       format: {
@@ -71,10 +72,10 @@ class CatholicDocument < ActiveFedora::Base
       }
     }
   attribute :subject,
-    label: 'Subjects'
+    label: 'Subjects',
     datastream: :descMetadata, multiple: true
   attribute :extent,
-    label: 'Number of Pages'
+    label: 'Number of Pages',
     datastream: :descMetadata, multiple: false
   attribute :spatial_coverage,
     datastream: :descMetadata, multiple: true
@@ -83,7 +84,7 @@ class CatholicDocument < ActiveFedora::Base
   attribute :language,
     datastream: :descMetadata, multiple: true
   attribute :type,
-    datastream: :descMetadata, multiple: false,
+    datastream: :descMetadata, multiple: false
   attribute :repository_name,
     datastream: :descMetadata, multiple: true
   attribute :publisher,
@@ -91,26 +92,27 @@ class CatholicDocument < ActiveFedora::Base
   attribute :source,
     datastream: :descMetadata, multiple: true
   attribute :rights_holder,
-    datastream: :descMetadata, multiple: true,
+    datastream: :descMetadata, multiple: false,
     label: 'Rights Holder',
     hint: 'A statement about entities who own the rights to the material along with any additional information about contact or use.'
   attribute :copyright_date,
-    datastream: :descMetadata, multiple: true,
+    datastream: :descMetadata, multiple: false,
     validates: {
       allow_blank: true,
       format: {
-        with: /\A(\d{4}-\d{2}-\d{2}|\d{4}-\d{2}|\d{4})\Z/,
-        message: 'Must be a four-digit year or year-month/year-month-day formatted as YYYY or YYYY-MM or YYYY-MM-DD.'
+        with: /\d{4}/,
+        message: 'must be a four-digit year'
       }
     }
   attribute :requires,
     datastream: :descMetadata, multiple: true
   attribute :administrative_unit,
-      datastream: :descMetadata, multiple: true,
-      label: "Departments and Units",
-      hint: "Departments and Units that creator belong to."
-  attribute :affiliation,                datastream: :descMetadata, multiple: false,
-            hint: 'Creator’s Affiliation to the Institution.'
+    datastream: :descMetadata, multiple: true,
+    label: "Departments and Units",
+    hint: "Departments and Units that creator belong to."
+  attribute :affiliation,
+    datastream: :descMetadata, multiple: false,
+    hint: 'Creator’s Affiliation to the Institution.'
   attribute :doi,
     datastream: :descMetadata, multiple: false
   attribute :rights,

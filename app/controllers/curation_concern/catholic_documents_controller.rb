@@ -1,4 +1,4 @@
-class CurationConcern::DocumentsController < CurationConcern::GenericWorksController
+class CurationConcern::CatholicDocumentsController < CurationConcern::GenericWorksController
   self.curation_concern_type = CatholicDocument
 
   def setup_form
