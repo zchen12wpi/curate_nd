@@ -38,8 +38,10 @@ development:
   cas_base_url: "https://cas.library.nd.edu/cas"
   cas_destination_url: "http://localhost:3000"
   cas_follow_url: "http://localhost:3000"
-  NOIDS_SERVER: "localhost:13001"
-  NOIDS_POOL: "test"
+  # Commented out because these create the requirement to start the noids server
+  # in order to run in localhost. 
+  # NOIDS_SERVER: "localhost:13001"
+  # NOIDS_POOL: "test"
   ORCID_PERSISTENT_TOKENS_ENABLED: "false"
   ORCID_REDIRECT_URI: "uri"
   ORCID_SITE_URL: "orcid url"
