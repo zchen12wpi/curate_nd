@@ -2,7 +2,6 @@ class CatholicDocument < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
-  include CurationConcern::WithRelatedWorks
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers

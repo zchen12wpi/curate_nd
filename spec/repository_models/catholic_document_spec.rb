@@ -8,7 +8,6 @@ describe CatholicDocument do
   it_behaves_like 'is_a_curation_concern_model'
   it_behaves_like 'with_access_rights'
   it_behaves_like 'can_be_a_member_of_library_collections'
-  it_behaves_like 'with_related_works'
   it_behaves_like 'is_embargoable'
   it_behaves_like 'with_json_mapper'
 
