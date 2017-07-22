@@ -88,6 +88,9 @@ module ActiveFedora
       # exception
       def find(*args)
         super
+      rescue Rubydora::FedoraInvalidRequest, RestClient::BadRequest => e
+        logger.info(e.inspect)
+        raise ActiveObjectNotFoundError.new(e, *args)
       rescue RestClient::Unauthorized => e
         raise ActiveObjectNotFoundError.new(e, *args)
       end
