@@ -109,9 +109,6 @@ class CatholicDocument < ActiveFedora::Base
     datastream: :descMetadata, multiple: true,
     label: "Departments and Units",
     hint: "Departments and Units that creator belong to."
-  attribute :affiliation,
-    datastream: :descMetadata, multiple: false,
-    hint: 'Creator’s Affiliation to the Institution.'
   attribute :doi,
     datastream: :descMetadata, multiple: false
   attribute :rights,

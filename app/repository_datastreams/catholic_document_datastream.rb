@@ -38,14 +38,10 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     map.date_issued(to: 'issued', in: RDF::DC)
 
     # Date Issued
-    map.date(to: 'date', in: RDF::DC) do |index|
-      index.as :stored_searchable
-    end
+    map.date(to: 'date', in: RDF::DC)
 
     # Date Promulgated
-    map.promulgated_date(to: 'valid', in: RDF::DC) do |index|
-      index.as :stored_searchable
-    end
+    map.promulgated_date(to: 'valid', in: RDF::DC)
 
     #Subjects
     map.subject(in: RDF::DC) do |index|
@@ -55,19 +51,12 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
 
     # Number of pages
     map.extent(to: 'extent', in: RDF::DC)
-    map.language({in: RDF::DC}) do |index|
-      index.as :searchable, :facetable
-    end
 
     # Spacial Coverage
-    map.spatial_coverage(to: 'spatial', in: RDF::DC) do |index|
-      index.as :stored_searchable
-    end
+    map.spatial_coverage(to: 'spatial', in: RDF::DC)
 
     # Temporal Coverage
-    map.temporal_coverage(to: 'temporal', in: RDF::DC) do |index|
-      index.as :stored_searchable
-    end
+    map.temporal_coverage(to: 'temporal', in: RDF::DC)
 
     # Language
     map.language({in: RDF::DC}) do |index|
@@ -84,9 +73,7 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     map.repository_name(to: 'creator#repository', in: RDF::QualifiedDC)
 
     # Publisher
-    map.publisher({in: RDF::DC}) do |index|
-      index.as :stored_searchable, :facetable
-    end
+    map.publisher({in: RDF::DC})
 
     # Source
     map.source({in: RDF::DC})
