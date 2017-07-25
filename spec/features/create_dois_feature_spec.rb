@@ -22,7 +22,6 @@ describe 'create DOIs feature', FeatureSupport.options do
             "public_#{curation_concern_class_name.underscore}",
             doi_assignment_strategy: :mint_doi,
             creator: ['A Special Creator'],
-            contributor: [],
             publisher: ['University of Notre Dame']
           )
         }
