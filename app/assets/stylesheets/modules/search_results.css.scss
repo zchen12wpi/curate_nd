@@ -69,11 +69,12 @@
 
   .resource-type {
     margin-bottom: 0;
-    position: absolute;
+    position: relative;
     right: 0;
     text-align: center;
     top: 0;
     width: 80%;
+    float: right;
   }
 
   .modal {
