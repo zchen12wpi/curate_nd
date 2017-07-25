@@ -35,7 +35,9 @@ class CatholicDocumentDatastream < ActiveFedora::NtriplesRDFDatastream
     end
 
     # Date Pubished
-    map.date_issued(to: 'issued', in: RDF::DC)
+    map.date_issued(to: 'issued', in: RDF::DC) do |index|
+      index.as :stored_searchable
+    end
 
     # Date Issued
     map.date(to: 'date', in: RDF::DC)
