@@ -18,6 +18,7 @@ Curate.configure do |config|
   config.register_curation_concern :video
   config.register_curation_concern :image
   config.register_curation_concern :document
+  config.register_curation_concern :catholic_document
   config.register_curation_concern :patent
   config.register_curation_concern :osf_archive
 

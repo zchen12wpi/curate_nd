@@ -4,6 +4,8 @@ Article:
   open: all
 Audio:
   open: all
+CatholicDocument:
+  open: all
 Dataset:
   open: all
 Document:
