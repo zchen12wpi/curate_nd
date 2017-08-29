@@ -48,3 +48,7 @@ If you do need SSL, use this command:
 ```console
 $ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
 ```
+
+## Release Documentation
+
+See the [release documentation](https://docs.google.com/a/nd.edu/document/d/16weRctSzt8Iw2y55nwOKPBSgGDO_4lgti3CxaW3P2pc/edit?usp=sharing) for building a release.
