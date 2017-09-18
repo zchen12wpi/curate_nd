@@ -329,8 +329,8 @@ module CurateHelper
 
   def richly_formatted_text(text, options = {})
     return if text.blank?
-    options.reverse_merge!(block: false)
-    markup = Curate::TextFormatter.call(text: text.to_s, block: options[:block])
+    options.reverse_merge!(block: false, title: false)
+    markup = Curate::TextFormatter.call(text: text.to_s, block: options[:block], title: options[:title])
     markup.html_safe unless markup.nil?
   end
 

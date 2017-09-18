@@ -1,7 +1,7 @@
 <% content_for :page_title, curation_concern_page_title(curation_concern) %>
 
 <% content_for :page_header do %>
-  <h1><%= richly_formatted_text(curation_concern.to_s) %></h1>
+  <h1><%= richly_formatted_text(curation_concern.to_s, title: true) %></h1>
   <span class="human-readable-type"><%= curation_concern.human_readable_type %></span>
 <% end %>
 
