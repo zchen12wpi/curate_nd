@@ -57,12 +57,29 @@ module Curate
       end
     end
 
+    context 'title renderer' do
+      it 'handles with leading numbers' do
+        text = <<-eos.strip_heredoc
+          5. Poursuite de la fouille de l’abri Castanet (Secteur nord, coupe Peyrony) : 2007 et 2008
+        eos
+        expect(subject.call(text: text, title: true)).to eq('5. Poursuite de la fouille de l’abri Castanet (Secteur nord, coupe Peyrony) : 2007 et 2008')
+      end
+
+      it 'substitutes markdown italics and bold for HTML italics and strong' do
+        text = <<-eos.strip_heredoc
+          5. *Poursuite* de la fouille de l’abri Castanet (__Secteur nord__, coupe Peyrony) : 2007 et _2008_
+        eos
+        expect(subject.call(text: text, title: true)).to eq('5. <em>Poursuite</em> de la fouille de l’abri Castanet (<strong>Secteur nord</strong>, coupe Peyrony) : 2007 et <em>2008</em>')
+      end
+    end
+
     context 'inline text' do
       it 'does not support numerical ordered lists' do
         text = <<-eos.strip_heredoc
             1. Numerical ordered lists start with a letter and a period
             2. They can have more than one item
         eos
+        expect(subject.call(text: text)).to eq('')
         expect(subject.call(text: text)).to_not have_tag('li')
       end
 
