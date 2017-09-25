@@ -7,7 +7,7 @@ class SourceCalloutAttributeRenderer
       callout_text: "Purchase through the University of Notre Dame Press"
     }, {
       callout_pattern: /\Ahttps?:\/\/rbsc\.library\.nd\.edu\/finding_aids\//,
-      callout_text: "See the Rare Books and Special Collections page for more details on this record"
+      callout_text: "View this finding aid on the Rare Books and Special Collections Website"
     }
   ]
 
