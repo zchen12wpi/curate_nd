@@ -190,19 +190,7 @@ module CurateHelper
   private :__render_tabular_list_item_for_tag
 
   def __render_tabular_list_item_for_source(method_name, value, block_formatting, tag, options = {})
-    callout_pattern = options.fetch(:callout_pattern, nil)
-    if callout_pattern
-      callout_text = options.fetch(:callout_text)
-      if value =~ callout_pattern
-        __render_tabular_list_item(method_name, value, block_formatting, tag, options) do
-          %(<a href="#{h(value)}" class="callout-link" target="_blank"><span class="callout-text">#{callout_text}</span></a>)
-        end
-      else
-        __render_tabular_list_item(method_name, value, block_formatting, tag, options)
-      end
-    else
-      __render_tabular_list_item(method_name, value, block_formatting, tag, options)
-    end
+    SourceCalloutAttributeRenderer.render(view_context: self, method_name: method_name, value: value, block_formatting: block_formatting, tag: tag, options: options)
   end
   private :__render_tabular_list_item_for_source
 
