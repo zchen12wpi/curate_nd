@@ -36,16 +36,16 @@ OSF_SCHEME: 'https'
 
 development:
   cas_base_url: "https://cas.library.nd.edu/cas"
-  cas_destination_url: "http://localhost:3000"
-  cas_follow_url: "http://localhost:3000"
+  cas_destination_url: "https://localhost:3000"
+  cas_follow_url: "https://localhost:3000"
   # Commented out because these create the requirement to start the noids server
-  # in order to run in localhost. 
+  # in order to run in localhost.
   # NOIDS_SERVER: "localhost:13001"
   # NOIDS_POOL: "test"
   ORCID_PERSISTENT_TOKENS_ENABLED: "false"
-  ORCID_REDIRECT_URI: "uri"
-  ORCID_SITE_URL: "orcid url"
-  ORCID_TOKEN_URL: "token url"
-  ORCID_REMOTE_SIGNIN_URL: "signin_url"
-  ORCID_HOST_URL: "host url"
-  ORCID_AUTHORIZE_URL: "Authorize url"
+  ORCID_REDIRECT_URI: "https://localhost:3000/users/auth/orcid/callback"
+  ORCID_SITE_URL: "https://sandbox.orcid.org"
+  ORCID_TOKEN_URL: "https://sandbox.orcid.org/oauth/token"
+  ORCID_REMOTE_SIGNIN_URL: "https://sandbox.orcid.org/signin/auth.json"
+  ORCID_HOST_URL: "https://sandbox.orcid.org"
+  ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"

@@ -21,6 +21,7 @@ require 'flipper/adapters/memory'
 module CurateNd
   class Application < Rails::Application
     require 'curate'
+    require 'orcid'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -1,6 +1,5 @@
 CurateNd::Application.routes.draw do
   mount_roboto
-  mount Orcid::Engine => "/orcid"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
@@ -30,6 +29,14 @@ CurateNd::Application.routes.draw do
     match 'profile' => 'user_profiles#show', via: :get, as: 'user_profile'
   end
   #resources :downloads, only: [:show]
+
+  scope module: 'orcid', path: 'orcid' do
+    resource :profile_request, only: [:show, :new, :create, :destroy]
+    resources :profile_connections, only: [:new, :create, :index]
+
+    get 'create_orcid', to: 'create_profile#create'
+    get "disconnect", to: "profile_connections#destroy"
+  end
 
   match 'collections' => 'collections#index', via: :get, as: 'curation_concern_collections'
   get 'collection/:id', to: redirect('collections/%{id}')
