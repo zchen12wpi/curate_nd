@@ -35,10 +35,10 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/locabulary.git
-  revision: b883f466f1666cc10ae6e2b96ca0dc245d236153
+  revision: 638728ce45c16b1072bfc3ec79f31ecdda767765
   branch: master
   specs:
-    locabulary (0.7.0)
+    locabulary (0.7.1)
       activesupport (~> 4.0)
       dry-configurable (~> 0.1.7)
       json (~> 1.8)
@@ -319,7 +319,7 @@ GEM
     hydra-remote_identifier (0.6.7)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
-    i18n (0.8.4)
+    i18n (0.8.6)
     ice_nine (0.11.2)
     jettywrapper (2.0.4)
       activesupport (>= 3.0.0)
@@ -373,7 +373,7 @@ GEM
     minitest (4.7.5)
     mono_logger (1.1.0)
     morphine (0.1.1)
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.3.21)
