@@ -49,3 +49,4 @@ development:
   ORCID_REMOTE_SIGNIN_URL: "https://sandbox.orcid.org/signin/auth.json"
   ORCID_HOST_URL: "https://sandbox.orcid.org"
   ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"
+  ORCID_SEARCH_URL: "https://sandbox.orcid.org/orcid-search/quick-search"

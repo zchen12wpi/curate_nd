@@ -8,7 +8,7 @@
     </a>
   </p>
   <p>
-    <%= link_to t('orcid/profile_connection.look_up_your_existing_orcid', scope: 'helpers.label', target: :_blank), new_profile_connection_path(profile_connection:{text: default_search_text}) %>
+    <%= link_to t('orcid/profile_connection.look_up_your_existing_orcid', scope: 'helpers.label'), "#{Orcid.provider.search_url}?searchQuery=#{default_search_text}", target: :_blank %>
   </p>
   <p>
     <%= form_for(profile_connection, as: :profile_connection, url: profile_connections_path, method: :post) do |f| %>

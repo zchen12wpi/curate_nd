@@ -50,6 +50,13 @@ module Orcid
         end
       end
 
+      attr_writer :search_url
+      def search_url
+        @search_url ||= store.fetch('ORCID_SEARCH_URL') do
+          "https://sandbox.orcid.org/orcid-search/quick-search"
+        end
+      end
+
       attr_writer :authorize_url
       def authorize_url
         @authorize_url ||= store.fetch('ORCID_AUTHORIZE_URL') do
