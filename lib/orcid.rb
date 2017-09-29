@@ -114,6 +114,8 @@ module Orcid
       uri = URI.parse(Orcid.provider.token_url)
       request = Net::HTTP::Post.new(uri)
       request["Accept"] = "application/json"
+      # Note there is no redirect_uri here, since we won't follow it anyway and having one
+      # can cause an error if we use an invalid redirect. Less brittle to just leave it off
       request.set_form_data( "client_id" => provider.id,
            "client_secret" => provider.secret,
            "grant_type" => "authorization_code",

@@ -7,17 +7,4 @@
       Create or Connect your ORCID iD
     </a>
   </p>
-  <p>
-    <%= link_to t('orcid/profile_connection.look_up_your_existing_orcid', scope: 'helpers.label'), "#{Orcid.provider.search_url}?searchQuery=#{default_search_text}", target: :_blank %>
-  </p>
-  <p>
-    <%= form_for(profile_connection, as: :profile_connection, url: profile_connections_path, method: :post) do |f| %>
-      <%# Note the `scope: 'helpers.label'` option is the default for the label, but I want to call those specifically out %>
-      <%= f.label :orcid_profile_id, t('orcid/profile_connection.orcid_profile_id', scope: 'helpers.label') %>
-      <%= f.text_field :orcid_profile_id, class:"orcid-input" %>
-      <button type="submit" class="search-submit btn btn-primary" id="keyword-search-submit" tabindex="2">
-        <span class="orcid-connect"><%= t('orcid/profile_connection.connect_button_text', scope: 'helpers.label') %></span>
-      </button>
-    <% end %>
-  </p>
 </div>

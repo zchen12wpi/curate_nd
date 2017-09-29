@@ -13,7 +13,6 @@ module Orcid
 
       unless Orcid.auth_user_with_code(params[:code], current_user) then
         flash[:error] = "Something went wrong when trying to retrieve your ORCID iD. Please try again later."
-        logger.error "Error retrieving ORCID iD: #{response.body}"
       end
 
       redirect_to(orcid_settings_path)
