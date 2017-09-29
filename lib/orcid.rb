@@ -106,4 +106,38 @@ module Orcid
   def use_relative_model_naming?
     true
   end
+
+  # Creates a profile connection using an authorization code for the users
+  # ORCID account.
+  # See https://members.orcid.org/api/tutorial/read-orcid-records#readlim
+  def auth_user_with_code(code, user)
+      uri = URI.parse(Orcid.provider.token_url)
+      request = Net::HTTP::Post.new(uri)
+      request["Accept"] = "application/json"
+      request.set_form_data( "client_id" => provider.id,
+           "client_secret" => provider.secret,
+           "grant_type" => "authorization_code",
+           "code" => code )
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
+        http.request(request)
+      end
+
+      if(response.kind_of? Net::HTTPSuccess) then
+        response_json = JSON.parse(response.body)
+        auth = {
+          user: user,
+          provider: "orcid",
+          uid: response_json["orcid"],
+          credentials: {
+            token: response_json["access_token"],
+            refresh_token: response_json["refresh_token"]
+          }
+        }
+        Devise::MultiAuth::CaptureSuccessfulExternalAuthentication.call(user, auth)
+        return true
+      else
+        logger.error "Error retrieving ORCID iD: #{response.body}"
+      end
+      return false
+  end
 end

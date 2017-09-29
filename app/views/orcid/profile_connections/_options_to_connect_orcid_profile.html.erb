@@ -2,7 +2,7 @@
 <% default_search_text = '' unless defined?(default_search_text) %>
 <div class="options-to-connect-orcid-profile">
   <p>
-    <a id="connect-orcid-link" class="btn btn-default" target="_blank" href= <%=on_demand_url(current_user)%>>
+    <a id="connect-orcid-link" class="btn btn-default" href= <%= on_demand_url(current_user)%>>
       <img id="orcid-id-logo" src="http://orcid.org/sites/default/files/images/orcid_16x16.png" width='16' height='16' alt="ORCID logo"/>
       Create or Connect your ORCID iD
     </a>

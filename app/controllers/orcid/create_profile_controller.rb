@@ -5,20 +5,18 @@ module Orcid
     before_filter :authenticate_user!
 
     def create
-      uri = URI.parse(Orcid.provider.token_url)
-
-      request = Net::HTTP::Post.new(uri)
-      request["Accept"] = "application/json"
-      request.set_form_data( "client_id" => ENV['ORCID_APP_ID'],
-           "client_secret" => ENV['ORCID_APP_SECRET'],
-           "grant_type" => "authorization_code",
-           "code" => params[:code],
-           "redirect_uri" => config.application_root_url ) 
-      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
-        http.request(request)
+      if(params[:error] == "access_denied") then
+        # if we get here, then orcid has redirected here when the user has denied access to the app
+        flash[:error] = "You must authorize the application to read your ORCID profile."
+        return redirect_to(orcid_settings_path)
       end
 
-      redirect_to(user_omniauth_authorize_path(:orcid))
+      unless Orcid.auth_user_with_code(params[:code], current_user) then
+        flash[:error] = "Something went wrong when trying to retrieve your ORCID iD. Please try again later."
+        logger.error "Error retrieving ORCID iD: #{response.body}"
+      end
+
+      redirect_to(orcid_settings_path)
     end
   end
 end
