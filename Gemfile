@@ -51,8 +51,6 @@ group :default do
   gem 'net-ldap'
   gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
-  #gem 'orcid', path: '../ndlib/orcid'
-  gem 'orcid', github: 'ndlib/orcid'
   gem 'qa'
   gem 'rails', '~>4.0.2'
   gem 'rails_autolink'
@@ -76,6 +74,16 @@ end
 
 group :headless do
   gem 'clamav'
+end
+
+group :orcid do
+  gem 'railties', '~> 4.0'
+  gem 'omniauth-orcid', '0.6'
+  gem 'mappy'
+  gem 'virtus'
+  gem 'email_validator'
+  gem 'omniauth-oauth2', '< 1.4'
+  gem 'hashie', '3.4.6'
 end
 
 # Hack to work around some bundler strangeness
