@@ -1,0 +1,102 @@
+<div id="fixity_body">
+  <form action="/admin/fixity" method="get">
+    <div class="control-group string">
+      <span class="control-label">Item:</span>
+      <input name="item" class="controls string input-xlarge" v-model="filters.Item" placeholder="id00000x">
+    </div>
+    <div class="control-group string">
+      <span class="control-label">Start Date:</span>
+      <input name="scheduled_time_start" class="controls string input-xlarge" v-model="filters.Scheduled_time_start">
+    </div>
+    <div class="control-group string">
+      <span class="control-label">End Date:</span>
+      <input name="scheduled_time_end" class="controls string input-xlarge" v-model="filters.Scheduled_time_end">
+    </div>
+    <div class="control-group string">
+      <span class="control-label">Status:</span>
+      <select name="status" v-model="filters.Status.selected">
+        <option disabled value="">Please select one</option>
+        <option v-for="option in filters.Status.options" v-bind:value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+    </div>
+    <div class="control-group">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+  <table class="table table-striped table-sortable">
+    <thead>
+      <tr>
+        <th v-bind:class="sortClass('Id')" v-on:click="changeSort('Id')">Id</th>
+        <th v-bind:class="sortClass('Item')" v-on:click="changeSort('Item')">Item</th>
+        <th v-bind:class="sortClass('Scheduled_time')" v-on:click="changeSort('Scheduled_time')">Scheduled Time</th>
+        <th v-bind:class="sortClass('Status')" v-on:click="changeSort('Status')">Status</th>
+        <th v-bind:class="sortClass('Notes')" v-on:click="changeSort('Notes')">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="entry in sortedEntries">
+        <td>{{ entry.Id }}</td>
+        <td>{{ entry.Item }}</td>
+        <td>{{ entry.Scheduled_time }}</td>
+        <td>{{ entry.Status }}</td>
+        <td>{{ entry.Notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= javascript_include_tag "https://unpkg.com/vue" %>
+<%= javascript_tag defer: 'defer' do -%>
+  var vueApp = new Vue({
+    el: '#fixity_body',
+    data() {
+      return {
+        entries: JSON.parse('<%= raw(@fixity_results.to_json) %>'),
+        sortField: 'Id',
+        sortDirection: -1,
+        filters: {
+          Item: null,
+          Scheduled_time_start: this.timeToday(0,0,0,0),
+          Scheduled_time_end: this.timeToday(23,59,59,999),
+          Status: {
+            selected: '',
+            options: [
+              { text: 'Ok', value: 'ok' },
+              { text: 'Error', value: 'error' },
+              { text: 'Scheduled', value: 'scheduled' },
+              { text: 'Mismatched', value: 'mismatched' }
+            ]
+          },
+        }
+      }
+    },
+    computed: {
+      sortedEntries: function () {
+        // For now this just sorts as a string. May need to do dates at some point
+        return this.entries.sort((a, b) => this.sortDirection * a[this.sortField].localeCompare(b[this.sortField]))
+      }
+    },
+    methods: {
+      changeSort: function (field) {
+        if(this.sortField === field)
+          this.sortDirection *= -1
+        else {
+          this.sortDirection = 1
+          this.sortField = field
+        }
+      },
+      sortClass: function (field) {
+        if(this.sortField === field)
+          return this.sortDirection === 1 ? 'asc' : 'desc'
+        return ''
+      },
+      timeToday: function (h, m, s, ms) {
+        var date = new Date()
+        date.setHours(h, m, s, ms)
+        return date.toISOString()
+      }
+    }
+  })
+<% end -%>
