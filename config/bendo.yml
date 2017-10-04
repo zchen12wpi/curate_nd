@@ -1,5 +1,6 @@
 development:
   url: 'http://localhost:14000'
+  api_key: ''
 test:
   url: 'http://localhost:14000'
 ci:
