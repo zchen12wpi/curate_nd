@@ -32,3 +32,4 @@ spec/*.zip
 spec/jetty_generator
 .tag
 .tags
+.byebug_history

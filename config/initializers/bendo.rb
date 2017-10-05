@@ -29,6 +29,6 @@ module Bendo
   end
 
   def api_key()
-    @@api_key ||= config.fetch('api_key')
+    @@api_key ||= ENV.fetch('bendo_api_key')
   end
 end
