@@ -1,3 +1,5 @@
+require 'faraday'
+
 module Bendo
   module Services
     class FixityChecks
