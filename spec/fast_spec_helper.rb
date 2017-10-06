@@ -1,3 +1,6 @@
+require 'active_support'
+require 'active_support/core_ext'
+
 unless defined?(Rails) # If we are in a Rails context this is overkill.
   Dir[File.expand_path('../../app/*', __FILE__)].each do |dir|
     $LOAD_PATH << dir

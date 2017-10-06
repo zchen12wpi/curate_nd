@@ -50,3 +50,4 @@ development:
   ORCID_HOST_URL: "https://sandbox.orcid.org"
   ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"
   ORCID_SEARCH_URL: "https://sandbox.orcid.org/orcid-search/quick-search"
+  bendo_api_key: ''
