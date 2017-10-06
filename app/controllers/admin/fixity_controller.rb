@@ -4,7 +4,7 @@ class Admin::FixityController < ApplicationController
   def index
     results = Bendo::Services::FixityChecks.call(params: clean_params)
 
-    if results.status === 200
+    if results.status == 200
       @fixity_results = results.body
     else
       @fixity_results = []
@@ -12,7 +12,7 @@ class Admin::FixityController < ApplicationController
 
     respond_to do |format|
       format.html do
-        flash[:error] = "Something went wrong when retrieving records from Bendo." unless results.status === 200
+        flash[:error] = "Something went wrong when retrieving records from Bendo." unless results.status == 200
       end
 
       format.json do

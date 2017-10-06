@@ -15,7 +15,7 @@ module Bendo
         conn = Faraday.new url: url, headers: { 'X-Api-Key' => Bendo.api_key() }
         result = conn.get
         # A Bendo response body is only valid json if success
-        body = result.status === 200 ? JSON.parse(result.body) : result.body
+        body = result.status == 200 ? JSON.parse(result.body) : result.body
         Response.new(result.status, body)
       end
 
