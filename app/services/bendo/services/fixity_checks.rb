@@ -12,7 +12,7 @@ module Bendo
       def get(params: params)
         query_params = transform_params(params: params).compact.join("&")
         url = Bendo.fixity_url() + "?#{query_params}"
-        conn = Faraday.new url: url, headers: { 'X-Api-Key' => Bendo.api_key() }
+        conn = Faraday.new url: url, headers: { 'X-Api-Key' => Bendo.api_key(), 'Accept-Encoding' => "application/json" }
         result = conn.get
         # A Bendo response body is only valid json if success
         body = result.status == 200 ? JSON.parse(result.body) : result.body
