@@ -32,7 +32,7 @@ module Bendo
 
           it 'calls bendo with the api key' do
             subject
-            expect(WebMock).to have_requested(:get, fixity_url).with(headers: { 'X-Api-Key' => api_key })
+            expect(WebMock).to have_requested(:get, fixity_url).with(headers: { 'X-Api-Key' => api_key, 'Accept-Encoding' => "application/json" })
           end
         end
 
