@@ -19,9 +19,9 @@
           <dt>Inventor(s):</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__creator_tesim') %></dd>
         <% end %>
-        <% if solr_doc.has?('desc_metadata__patent_number') %>
-          <dt>Patent Numbers:</dt>
-          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__patent_nymber_tesim') %></dd>
+        <% if solr_doc.has?('desc_metadata__patent_number_tesim') %>
+          <dt>Patent Number:</dt>
+          <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__patent_number_tesim') %></dd>
         <% end %>
         <% if solr_doc.has?('desc_metadata__description_tesim') %>
           <dt>Description:</dt>
