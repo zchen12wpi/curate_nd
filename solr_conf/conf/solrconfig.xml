@@ -136,6 +136,8 @@
     </lst>
   </searchComponent>
 
+  <requestHandler name="/admin/luke" class="solr.admin.LukeRequestHandler" />
+
   <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 
   <requestDispatcher handleSelect="true" >
