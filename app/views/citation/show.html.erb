@@ -1,5 +1,5 @@
 <%
- content_for :page_title, construct_page_title("#{curation_concern.title} // Citation")
+ content_for :page_title, construct_page_title(curation_concern.title, "Citation")
  content_for :page_header, content_tag('h1', "Cite &ldquo;#{curation_concern.title}&rdquo;".html_safe)
 %>
 
