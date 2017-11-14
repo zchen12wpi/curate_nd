@@ -156,4 +156,5 @@ CurateNd::Application.routes.draw do
   get '422', to: 'static_pages#error', default: { status_code: '422' }
   get '413', to: 'static_pages#error', default: { status_code: '413' }
 
+  get '/s/:slug', to: redirect('http://link.library.nd.edu/%{slug}', status: 302)
 end
