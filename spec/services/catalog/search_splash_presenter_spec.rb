@@ -11,6 +11,12 @@ module Catalog
         its(:title) { is_expected.to eq(nil) }
       end
 
+      context '' do
+        let(:top_level_department_params) { { f: { admin_unit_hierarchy_sim: { '0' => "University of Notre Dame"} } } }
+        subject { described_class.call(top_level_department_params) }
+        its(:title) { is_expected.to eq('University of Notre Dame') }
+      end
+
       context 'one top-level department' do
         let(:top_level_department_params) do
           {

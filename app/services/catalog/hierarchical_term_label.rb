@@ -13,12 +13,17 @@ module Catalog
         'University of Notre Dame:Hesburgh Libraries:General' => 'Hesburgh Libraries General Collection'
       }
 
+      # @note I'm checking Hash in this case as the tests are very fast (and I don't want to load ActionController::Parameters for those tests)
+      # @see ./lib/curate/action_controller-parameters_spec.rb for assertion that ActionController::Parameters is a Hash
+      # @see https://github.com/ndlib/curate_nd/commit/67b95db10ce73809d04bcbb71a7afa5910e22a9f for related update
+      # @see ./app/services/catalog/collection_decorator.rb for related change
       def self.call(value, term: :department)
-        values_for(term).fetch(value, fallback(value))
+        value = value.is_a?(Hash) ? value.values.first : value
+        values_for(term).fetch(value) { fallback(value) }
       end
 
       def self.values_for(term)
-        map_name = "#{term.upcase}_LABEL_MAP"
+        map_name = "#{term.to_s.upcase}_LABEL_MAP"
         if self.const_defined?(map_name)
           self.const_get(map_name)
         else
