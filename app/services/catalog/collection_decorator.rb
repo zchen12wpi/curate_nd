@@ -19,6 +19,7 @@ module Catalog
 
     # @note I'm checking Hash in this case as the tests are very fast (and I don't want to load ActionController::Parameters for those tests)
     # @see ./lib/curate/action_controller-parameters_spec.rb for assertion that ActionController::Parameters is a Hash
+    # @see ./app/services/catalog/hierarchical_term_label.rb for related changeb
     def self.split_scope(scope, delimiter: '/')
       if scope.is_a?(Hash)
         split_scope(scope.values.first, delimiter: delimiter)
