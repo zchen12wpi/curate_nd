@@ -20,6 +20,7 @@ dependencies:
   - redis
   - purl
   - doi
+  - link.library.nd.edu
 hosts: # These can be pulled from the Capistrano file?
   - curate.library.nd.edu
   - curatepprd.library.nd.edu
