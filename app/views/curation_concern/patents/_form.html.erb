@@ -1,4 +1,4 @@
-<%= simple_form_for [:curation_concern, curation_concern] do |f| %>
+<%= simple_form_for [:curation_concern, curation_concern], :html => { :onsubmit => "return validate(this);", "data-model-name" => curation_concern.class.model_name.singular } do |f| %>
 
   <% if f.error_notification -%>
     <div class="alert alert-error fade in">
