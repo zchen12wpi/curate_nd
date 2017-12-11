@@ -1,4 +1,4 @@
-<%= curation_concern_form_for [:curation_concern, curation_concern] do |f| %>
+<%= curation_concern_form_for [:curation_concern, curation_concern], :html => { :onsubmit => "return validateCurationConcernForm(this);", "data-model-name" => curation_concern.class.model_name.singular } do |f| %>
   <% if f.error_notification -%>
     <div class="alert alert-error fade in">
       <strong>Wait don't go!</strong> There was a problem with your submission. Please review the errors below:

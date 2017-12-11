@@ -21,6 +21,15 @@ You can run `bundle exec rake` to execute the test suite.
 
 You can also boot up jetty (e.g. `bundle exec rake curatend:jetty:start`) and run individual specs via `bundle exec rspec spec/path/to/file_spec.rb`
 
+### Testing of Specific Curation Concern Types
+
+The deposit page shows only the curation concern types that you are authorized to create. These options are generated from /config/work_type_policy_rules.yml.
+
+Certain curation concern types are never created interactively:
+* ETDs are now created via Sipity. If they are authorized through the work_type_policy_rules, they still cannot be added because they require Degree options to exist in the database (EtdVocabulary table) which map to the degrees in /config/etd_degree_map.yml. No routes exist to add new etd_vocabularies, however there is an etd_vocabularies_controller which could be used.
+* OSF Archives are imported via an option on the deposit menu.
+
+
 ## Running the application
 
 Before you start the web-server you'll need to make sure Fedora and SOLR are running. Use the following command:
