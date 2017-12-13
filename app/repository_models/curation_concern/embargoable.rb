@@ -42,7 +42,6 @@ module CurationConcern
       end
     end
 
-
     def write_embargo_release_date
       if defined?(@embargo_release_date)
         embargoable_persistence_container.embargo_release_date = @embargo_release_date
@@ -63,5 +62,11 @@ module CurationConcern
       @embargo_release_date || embargoable_persistence_container.embargo_release_date
     end
 
+    # override method from Hydra::AccessControls::Visibility so the registered group gets removed when changing to public access
+    def public_visibility!
+      visibility_will_change! unless visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+      self.datastreams["rightsMetadata"].permissions({:group=>Hydra::AccessControls::AccessRight::PERMISSION_TEXT_VALUE_PUBLIC}, "read")
+      self.datastreams["rightsMetadata"].permissions({:group=>Hydra::AccessControls::AccessRight::PERMISSION_TEXT_VALUE_AUTHENTICATED}, "none")
+    end
   end
 end
