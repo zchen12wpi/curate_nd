@@ -1,5 +1,9 @@
 @import 'global-variables';
 
+.fixity-body {
+  display: grid;
+}
+
 .table {
   .accessibility-placeholder {
     padding: 0;
