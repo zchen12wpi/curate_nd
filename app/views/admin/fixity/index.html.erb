@@ -44,7 +44,7 @@
   <table class="table table-striped table-sortable">
     <thead>
       <tr>
-        <th v-bind:class="sortClass('')" v-on:click="changeSort('ID')">ID</th>
+        <th v-bind:class="sortClass('ID')" v-on:click="changeSort('ID')">ID</th>
         <th v-bind:class="sortClass('Item')" v-on:click="changeSort('Item')">Item</th>
         <th v-bind:class="sortClass('Scheduled_time')" v-on:click="changeSort('Scheduled_time')">Scheduled Time</th>
         <th v-bind:class="sortClass('Status')" v-on:click="changeSort('Status')">Status</th>
