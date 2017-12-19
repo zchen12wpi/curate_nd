@@ -21,7 +21,7 @@
   </head>
   <body>
     <% unless Rails.env.production? %>
-      <p class="environment-notice"><strong>WARNING: </strong> This site is running in <%= Rails.env %>. Data will not be changed.</p>
+      <p class="environment-notice"><strong>WARNING: </strong> This site is running in <%= Rails.env %>. Production data will not be changed.</p>
     <% end %>
 
     <%= render :partial => '/shared/repo_manager_controls', formats: [:html] %>
