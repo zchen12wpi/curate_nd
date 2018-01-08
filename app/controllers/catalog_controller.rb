@@ -383,7 +383,7 @@ class CatalogController < ApplicationController
       source = solr_name("desc_metadata__source", :stored_searchable, type: :string)
       administrative_unit = "admin_unit_tesim"
       aleph_identifier = solr_name("desc_metadata__alephIdentifier", :stored_searchable, type: :string)
-      patent_number = solr_name("desc_metadata__patent_number", :stored_searchable, type: :string)
+      patent_number = "desc_metadata__patent_number_tesim"
       field.solr_parameters = {
         :qf => "#{title_name} #{label_name} noid_tsi file_format_tesim #{contributor_name} #{abstract_name} #{description_name} #{creator_name} #{author_name} #{administrative_unit} #{publisher_name} #{language_name} #{collection_name} #{contributor_institution_name} #{subject_name} #{identifier_name} #{urn} #{degree_name} #{degree_disciplines} #{contributors} #{degree_department_acronyms} #{date_created} #{source} #{aleph_identifier} #{patent_number}",
         :pf => "#{title_name}"
