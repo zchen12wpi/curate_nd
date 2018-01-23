@@ -200,8 +200,8 @@ en:
         admin_unit_hierarchy_sim: 'Department or Unit'
         library_collections_pathnames_hierarchy_with_titles_sim: 'Collection'
       facet_page_title:
-        admin_unit_hierarchy_sim: 'Browse Materials by Department or Unit'
-        library_collections_pathnames_hierarchy_with_titles_sim: 'Browse Materials by Collection'
+        admin_unit_hierarchy_sim: 'Browse Items by Department or Unit'
+        library_collections_pathnames_hierarchy_with_titles_sim: 'Browse Items by Collection'
       help_text:
         admin_unit_hierarchy_sim: ''
         library_collections_pathnames_hierarchy_with_titles_sim: ''
