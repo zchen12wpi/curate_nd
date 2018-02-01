@@ -33,6 +33,35 @@ puts "Using SHARE_TOKEN=#{share_token}"
 ShareNotify.configure "host" => share_host, "token" => share_token
 api = ShareNotify::ApiV2.new
 
+# map curate work types to approporate SHARE work types
+# a SHARE work of type nil means to not submit the item
+#
+# Possible SHARE types:
+# CreativeWork, DataSet, Patent, Poster, Presentation, Publication
+# Article, Book, ConferencePaper, Dissertation, Preprint, Project,
+# Registration, Report, Thesis, WorkingPaper, Repository, Retraction, Software
+typemap = {
+  "Senior Thesis": "",
+  "Dataset": "DataSet",
+  "Article": "Article",
+  "Document": "",
+  "Image": nil,
+  "Presentation": "Presentation",
+  "White Paper": "Report",
+  "Book": "Book",
+  "Collection": nil,
+  "Software": "Software",
+  "Audio": nil,
+  "Report": "Report",
+  "Video": nil,
+  "Pamphlet": nil,
+  "Newsletter": nil,
+  "Book Chapter": "Book",
+  "OSF Archive": "Project",
+  "Patent": "Patent"
+}
+
+
 overall_record_count = 0
 error_count = 0
 ARGV.each do |csv_filename|
@@ -59,10 +88,18 @@ ARGV.each do |csv_filename|
     description = row[columns["desc_metadata__description_tesim"]]
     contributors = row[columns["desc_metadata__creator_tesim"]]
     contributors = (contributors || "").split("|")
+    type = typemap.fetch(row[columns["human_readable_type_tesim"]], "")
+    # nil == skip this work, "" == idk what this is
+    next if type.nil?
+    if type == ""
+      puts "Unknown Curate work type #{row[columns['human_readable_type_tesim']]}"
+      type = "CreativeWork"
+    end
 
     puts "#{overall_record_count} / #{file_record_count} Pushing #{id}"
     document = ShareNotify::PushDocument.new(id, modified)
     document.title = title
+    document.type = type
     document.description = [abstract, description].join('')
     contributors.each do |name|
       document.add_contributor(name: name)
