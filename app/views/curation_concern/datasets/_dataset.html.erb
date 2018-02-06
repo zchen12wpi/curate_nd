@@ -13,7 +13,7 @@
     <div class="span10">
       <dl class="attribute-list">
         <% if solr_doc.has?('desc_metadata__creator_tesim') %>
-          <dt>Creators(s):</dt>
+          <dt>Creator(s):</dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__creator_tesim') %></dd>
         <% end %>
 
