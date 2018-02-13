@@ -53,7 +53,7 @@ GIT
 
 GIT
   remote: git://github.com/samvera-labs/share_notify.git
-  revision: db62a7f74ebe1675d3ae7d826a72ada48e72bdeb
+  revision: e9503c730e9488a0253bdc9a628f2926d5379008
   specs:
     share_notify (0.2.0)
       activesupport
@@ -273,7 +273,7 @@ GEM
     hike (1.2.3)
     hooks (0.3.6)
       uber (~> 0.0.4)
-    httparty (0.15.6)
+    httparty (0.16.0)
       multi_xml (>= 0.5.2)
     hydra-access-controls (6.4.2)
       active-fedora (~> 6.7)
@@ -310,7 +310,7 @@ GEM
     hydra-remote_identifier (0.6.7)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
-    i18n (0.9.3)
+    i18n (0.9.4)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jettywrapper (2.0.4)
