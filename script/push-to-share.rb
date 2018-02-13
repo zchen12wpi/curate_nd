@@ -41,28 +41,29 @@ api = ShareNotify::ApiV2.new
 # Article, Book, ConferencePaper, Dissertation, Preprint, Project,
 # Registration, Report, Thesis, WorkingPaper, Repository, Retraction, Software
 typemap = {
-  "Senior Thesis": "",
-  "Dataset": "DataSet",
-  "Article": "Article",
-  "Document": "",
-  "Image": nil,
-  "Presentation": "Presentation",
-  "White Paper": "Report",
-  "Book": "Book",
-  "Collection": nil,
-  "Software": "Software",
-  "Audio": nil,
-  "Report": "Report",
-  "Video": nil,
-  "Pamphlet": nil,
-  "Newsletter": nil,
-  "Book Chapter": "Book",
-  "OSF Archive": "Project",
-  "Patent": "Patent"
+  "Senior Thesis" => "Publication",
+  "Dataset" => "DataSet",
+  "Article" => "Article",
+  "Document" => "Publication",
+  "Image" => nil,
+  "Presentation" => "Presentation",
+  "White Paper" => "Report",
+  "Book" => "Book",
+  "Collection" => nil,
+  "Software" => "Software",
+  "Audio" => nil,
+  "Report" => "Report",
+  "Video" => nil,
+  "Pamphlet" => "Publication",
+  "Newsletter" => "Publication",
+  "Book Chapter" => "Book",
+  "OSF Archive" => "Project",
+  "Patent" => "Patent"
 }
 
 
 overall_record_count = 0
+push_count = 0
 error_count = 0
 ARGV.each do |csv_filename|
   puts "Reading #{csv_filename}"
@@ -118,7 +119,8 @@ ARGV.each do |csv_filename|
       puts response.body
       exit 1
     end
+    push_count += 1
   end
 end
 
-puts "Finished. #{overall_record_count} records, #{error_count} errors"
+puts "Finished. #{overall_record_count} records, #{push_count} pushed to SHARE, #{error_count} errors"
