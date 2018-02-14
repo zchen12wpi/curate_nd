@@ -51,6 +51,14 @@ GIT
       json (~> 1.8)
       rest-client (~> 1.6)
 
+GIT
+  remote: git://github.com/samvera-labs/share_notify.git
+  revision: e9503c730e9488a0253bdc9a628f2926d5379008
+  specs:
+    share_notify (0.2.0)
+      activesupport
+      httparty
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -265,7 +273,7 @@ GEM
     hike (1.2.3)
     hooks (0.3.6)
       uber (~> 0.0.4)
-    httparty (0.14.0)
+    httparty (0.16.0)
       multi_xml (>= 0.5.2)
     hydra-access-controls (6.4.2)
       active-fedora (~> 6.7)
@@ -302,7 +310,8 @@ GEM
     hydra-remote_identifier (0.6.7)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
-    i18n (0.8.6)
+    i18n (0.9.4)
+      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jettywrapper (2.0.4)
       activesupport (>= 3.0.0)
@@ -356,7 +365,7 @@ GEM
     minitest (4.7.5)
     mono_logger (1.1.0)
     morphine (0.1.1)
-    multi_json (1.12.2)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.3.21)
@@ -567,9 +576,6 @@ GEM
     sexp_processor (4.9.0)
     sextant (0.2.4)
       rails (>= 3.2)
-    share_notify (0.2.0)
-      activesupport
-      httparty
     simple_form (3.0.4)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -759,7 +765,7 @@ DEPENDENCIES
   scss-lint
   select2-rails
   sextant
-  share_notify (~> 0.2)
+  share_notify!
   simple_form (~> 3.0.1)
   simplecov
   sufia-models (~> 3.4.0)
