@@ -34,8 +34,17 @@
   <% case curation_concern %>
   <% when GenericFile %>
     <%= link_to 'Download this File', download_path(curation_concern), class: 'btn btn-default' %>
+  <% when FindingAid %>
+    <%# Only display file list of finding aids to editors. See DLTP-1304 %>
+    <% if can?(:edit, curation_concern) %>
+      <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
+    <% else %>
+      <h2>Files</h2>
+      <p><em>The file list for this item is only viewable by item editors.</em></p>
+    <% end %>
+  <% else %>
+    <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
   <% end %>
-  <%= render 'curation_concern/base/related_files', curation_concern: curation_concern, with_actions: true %>
   <%= render 'curation_concern/base/related_works', curation_concern: curation_concern, with_actions: true %>
   <% if curation_concern.is_a? LibraryCollection %>
     <% path = search_collection_pathbuilder(curation_concern) %>
