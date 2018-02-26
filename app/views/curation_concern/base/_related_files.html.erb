@@ -6,8 +6,8 @@
   <% if curation_concern.generic_files.present? %>
     <h2>Files</h2>
 
-    <% (@response, files) = curation_concern.generic_files_page(params[:files_page].to_i, params[:files_per_page].to_i) %>
-    
+    <% (files_solr_response, files) = curation_concern.generic_files_page(params[:files_page].to_i, params[:files_per_page].to_i) %>
+
     <% if files.any? %>
       <article class="file-delay-notice alert alert-info">
         <%= t('curate.notification_messages.file_retrieval').html_safe %>
@@ -117,7 +117,7 @@
     </article>
     <% end %>
     <div class="pager">
-      <%= paginate_rsolr_response @response, :outer_window => 2, :theme => 'blacklight', param_name: :files_page %>
+      <%= paginate_rsolr_response files_solr_response, :outer_window => 2, :theme => 'blacklight', param_name: :files_page, solr_response: files_solr_response %>
     </div>
   <% elsif editor %>
     <h2>Files</h2>
