@@ -9,7 +9,13 @@
   </div>
   <div class="span9">
     <%= render 'attributes', curation_concern: curation_concern %>
-    <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
+    <%# Only display file list to editors. See DLTP-1304 %>
+    <% if can?(:edit, curation_concern) %>
+      <%= render 'related_files', curation_concern: curation_concern, with_actions: true %>
+    <% else %>
+      <h2>Files</h2>
+      <p><em>The file list for this item is only viewable by item editors.</em></p>
+    <% end %>
     <%# NOTE: FindingAid doesn't implement related works or related resources %>
   </div>
 </div>
