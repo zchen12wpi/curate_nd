@@ -124,8 +124,18 @@ module BlacklightFacetExtras
         options[:locals][:solr_field] ||= display_facet.name
         options[:locals][:solr_fname] ||= display_facet.name # DEPRECATED
         options[:locals][:facet_field] ||= facet_configuration_for_field(display_facet.name)
-        options[:locals][:display_facet] ||= display_facet
+        if display_facet.name == "human_readable_type_sim"
+          options[:locals][:display_facet] ||= exclude_facet_items(display_facet, ["Person"])
+        else
+          options[:locals][:display_facet] ||= display_facet
+        end
         render(options)
+      end
+
+      # Creates a copy of a facet and excludes items with values that are in the exclude_list
+      def exclude_facet_items(facet_field, exclude_list)
+        filtered_items = facet_field.items.select {|i| !exclude_list.include?(i.value) }
+        Blacklight::SolrResponse::Facets::FacetField.new(facet_field.name, filtered_items)
       end
     end
   end
@@ -173,6 +183,31 @@ class CatalogController < ApplicationController
       format.json { render json: render_search_results_as_json }
       format.jsonld { render text: CatalogIndexJsonldPresenter.new(@response, request.url, request.query_parameters).to_jsonld, layout: false }
     end
+  end
+
+  # This is a direct copy of get_facet_pagination in gems/blacklight-4.5.0/lib/blacklight/solr_helper.rb,
+  # with an added bit for filtering out Person values from the facet values for "Type of Work", since
+  # there does not seem to be a supported way of doing this in blacklight 4.5.0
+  def get_facet_pagination(facet_field, user_params=params || {}, extra_controller_params={})
+
+    solr_params = solr_facet_params(facet_field, user_params, extra_controller_params)
+
+    # Make the solr call
+    response =find(blacklight_config.qt, solr_params)
+
+    limit = solr_params[:"f.#{facet_field}.facet.limit"] -1
+    items = response.facets.first.items
+    items = items.select {|i| i.value != "Person" } if facet_field == "human_readable_type_sim"
+
+    # Actually create the paginator!
+    # NOTE: The sniffing of the proper sort from the solr response is not
+    # currently tested for, tricky to figure out how to test, since the
+    # default setup we test against doesn't use this feature.
+    return     Blacklight::Solr::FacetPaginator.new(items,
+      :offset => solr_params[:"f.#{facet_field}.facet.offset"],
+      :limit => limit,
+      :sort => response["responseHeader"]["params"][:"f.#{facet_field}.facet.sort"] || response["responseHeader"]["params"]["facet.sort"]
+    )
   end
 
   def hierarchy_facet
