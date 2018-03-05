@@ -1,3 +1,4 @@
+<% download_permission = can? :read, thumbnail %>
 <%
   alternate_href = '' if alternate_href.blank?
   captured = '' if captured.blank?
@@ -15,7 +16,11 @@
   link_options[:data]  = { alternate: alternate_href } unless alternate_href.blank?
 %>
 
-<%= link_to href, link_options do %>
+<% if download_permission %>
+  <%= link_to href, link_options do %>
+    <%= image_tag(src, width: width, class: 'thumbnail') %>
+    <%= captured %>
+  <% end %>
+<% else %>
   <%= image_tag(src, width: width, class: 'thumbnail') %>
-  <%= captured %>
 <% end %>
