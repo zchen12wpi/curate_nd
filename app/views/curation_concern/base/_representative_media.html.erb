@@ -9,10 +9,12 @@
         <a href="<%=download_path(work.representative) %>" target = "_blank">
           <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
         </a>
-      <% else %>
+      <% elsif can?(:read, generic_file) %>
         <a href="<%= download_path(work.representative) %>" target = "_blank">
           <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
         </a>
+      <% else %>
+        <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
       <% end %>
     <% else %>
       <a href="<%= download_path(work.representative) %>" target = "_blank">
