@@ -59,52 +59,52 @@ RepositoryAdministrator.usernames.each do |username|
   RepoManager.find_or_create_by!(username: username, active: true)
 end
 
-pp "Things with no files"
+print "Things with no files\n"
 attributes = { creator: foo_user.username, abstract: 'Article abstract', title: 'Article with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Article, CurationConcern::ArticleActor, 'article_with_no_files', foo_user, attributes)
 
 # TODO: This is currently duplicating. Need to figure out what field to use for find in find_or_create
 attributes = { creator: foo_user.username, description: 'Audio description', title: 'Audio with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Audio, CurationConcern::AudioActor, 'audio_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, title: 'Catholic Document with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(CatholicDocument, CurationConcern::CatholicDocumentActor, 'catholicdoc_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, description: 'Dataset description', title: 'Dataset with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Dataset, CurationConcern::DatasetActor, 'dataset_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, title: 'Document with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Document, CurationConcern::DocumentActor, 'document_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, title: 'Finding Aid with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(FindingAid, CurationConcern::FindingAidActor, 'findingaid_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, description: 'Image description', title: 'Image with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Image, CurationConcern::ImageActor, 'image_with_no_files', foo_user, attributes)
 
 # TODO: There is no :identifier field on patents. Can't use current implementation of find_or_create
 #attributes = { creator: foo_user.username, description: 'Patent description', title: 'Patent with no files' }
-#pp attributes[:title]
+#print "#{attributes[:title]}\n"
 #find_or_create(Patent, CurationConcern::PatentActor, 'patent_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, description: 'Senior Thesis description', title: 'Senior Thesis with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(SeniorThesis, CurationConcern::SeniorThesisActor, 'seniorthesis_with_no_files', foo_user, attributes)
 
 attributes = { creator: foo_user.username, description: 'Video description', title: 'Video with no files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 find_or_create(Video, CurationConcern::VideoActor, 'video_with_no_files', foo_user, attributes)
 
-pp "Things with files"
+print "Things with files\n"
 article_attributes = { creator: foo_user.username, abstract: 'Abstract', title: 'Article with many files' }
-pp attributes[:title]
+print "#{attributes[:title]}\n"
 article = find_or_create(Article, CurationConcern::ArticleActor, 'article_with_many_files', foo_user, article_attributes)
 15.times do |i|
   seeds_file.fake_file_name = "article_with_many_files.generic_files_#{i}"
