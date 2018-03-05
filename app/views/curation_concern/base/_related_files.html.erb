@@ -18,6 +18,7 @@
       <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
     <% end %>
     <% files.each_with_index do |generic_file, index| %>
+      <% download_permission = can? :read, generic_file %>
       <%
         content = generic_file.datastreams.fetch('content')
         bendo_datastream = Bendo::DatastreamPresenter.new(datastream: content)
@@ -25,7 +26,8 @@
       %>
         <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>" data-bendo_item_slug="<%= bendo_datastream.item_slug %>">
         <h3 class="file-title">
-          <%= link_to(
+          <%= link_to_if(
+            download_permission,
             generic_file_title(generic_file),
             recall_bendo_item_path(generic_file.noid),
             data: {
@@ -36,7 +38,7 @@
       <% else %>
         <article id="file-<%= index %>" class="attached-file <%= dom_class(generic_file) %> <%= alert_class(generic_file) %>">
         <h3 class="file-title">
-          <%= link_to generic_file_title(generic_file), download_path(generic_file.noid) %>
+          <%= link_to_if download_permission, generic_file_title(generic_file), download_path(generic_file.noid) %>
         </h3>
       <% end %>
 
@@ -72,7 +74,7 @@
         </figure>
 
         <div class="actions">
-          <% if can?(:read, generic_file) %>
+          <% if download_permission %>
             <%
               if generic_file.with_empty_content?
                 content_dependent_button_class = 'action btn disabled'
