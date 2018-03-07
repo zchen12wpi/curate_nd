@@ -132,6 +132,8 @@ end
 
 # update jira and mark this issue as finished
 if issue_source == :jira
-  system("jira transition qa #{ISSUE_NUMBER} --noedit")
+  # the transition "code complete", or "complete", takes the issue to
+  # "Ready to Deploy for QA"
+  system("jira transition complete #{ISSUE_NUMBER} --noedit")
   exit!(5) unless $?.success?
 end
