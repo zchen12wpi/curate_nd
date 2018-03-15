@@ -35,11 +35,10 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/locabulary.git
-  revision: 638728ce45c16b1072bfc3ec79f31ecdda767765
-  branch: master
+  revision: 4781a516d1108dd3b6c3c888859246066cc15fcf
   specs:
-    locabulary (0.7.1)
-      activesupport (~> 4.0)
+    locabulary (0.7.2)
+      activesupport (>= 4.0, < 6.0)
       dry-configurable (~> 0.1.7)
       json (~> 1.8)
 
@@ -310,7 +309,7 @@ GEM
     hydra-remote_identifier (0.6.7)
       activesupport (>= 3.2.13, < 5.0)
       rest-client (~> 1.6.7)
-    i18n (0.9.4)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jettywrapper (2.0.4)
@@ -723,7 +722,7 @@ DEPENDENCIES
   json-ld
   kaminari!
   libv8 (~> 3.16.14.3)
-  locabulary!
+  locabulary (= 0.7.2)!
   lograge
   logstash-event
   logstash-logger
