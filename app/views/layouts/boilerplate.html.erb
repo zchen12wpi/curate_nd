@@ -20,6 +20,8 @@
     <%= render :partial => '/ga', :formats => [:html] -%>
   </head>
   <body>
+    <script type="text/javascript">var _monsido = _monsido || [];             _monsido.push(['_setDomainToken', 'PHxwIeNkUqLdDIH8iu9lVA']);             _monsido.push(['_withStatistics', 'true']);</script>
+    <script src="//cdn.monsido.com/tool/javascripts/monsido.js"></script>
     <% unless Rails.env.production? %>
       <p class="environment-notice"><strong>WARNING: </strong> This site is running in <%= Rails.env %>. Production data will not be changed.</p>
     <% end %>
