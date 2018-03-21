@@ -16,10 +16,12 @@ module CurationConcern
     # and the second is an array of GenericFiles
     def generic_files_page(page, per_page)
       escaped_uri = ActiveFedora::SolrService.escape_uri_for_query(internal_uri)
+      escaped_model = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/afmodel:GenericFile")
       q = "is_part_of_ssim:#{escaped_uri}"
+      fq = "has_model_ssim:#{escaped_model}"
       per_page = per_page > 0 ? per_page : 10
       start = page > 0 ? (page - 1) * per_page : 0
-      request_params = { start: start, rows: per_page }
+      request_params = { fq: fq, start: start, rows: per_page }
       solr_response = ActiveFedora::SolrService.query(q, raw: true, **request_params)
       page = Blacklight::SolrResponse.new(solr_response, request_params)
       generic_file_streams = ActiveFedora::SolrService.reify_solr_results(solr_response['response']['docs'])
