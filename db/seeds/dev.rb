@@ -50,52 +50,52 @@ create_account(user_with_profile)
 user_without_profile = create_user('userwithoutprofile@example.com', 'userwithoutprofile', 'foobarbaz')
 seeds_file = MockFile.new(__FILE__, 'text/plain', false)
 
-print "Things with no files\n"
+puts "Things with no files"
 attributes = { creator: user_with_profile.username, abstract: 'Article abstract', title: 'Article with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Article, CurationConcern::ArticleActor, 'article_with_no_files', user_with_profile, attributes)
 
 # TODO: This is currently duplicating. Need to figure out what field to use for find in find_or_create
 attributes = { creator: user_with_profile.username, description: 'Audio description', title: 'Audio with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Audio, CurationConcern::AudioActor, 'audio_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, title: 'Catholic Document with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(CatholicDocument, CurationConcern::CatholicDocumentActor, 'catholicdoc_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, description: 'Dataset description', title: 'Dataset with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Dataset, CurationConcern::DatasetActor, 'dataset_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, title: 'Document with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Document, CurationConcern::DocumentActor, 'document_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, title: 'Finding Aid with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(FindingAid, CurationConcern::FindingAidActor, 'findingaid_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, description: 'Image description', title: 'Image with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Image, CurationConcern::ImageActor, 'image_with_no_files', user_with_profile, attributes)
 
 # TODO: There is no :identifier field on patents. Can't use current implementation of find_or_create
 #attributes = { creator: user_with_profile.username, description: 'Patent description', title: 'Patent with no files' }
-#print "#{attributes[:title]}\n"
+#puts "#{attributes[:title]}"
 #find_or_create(Patent, CurationConcern::PatentActor, 'patent_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, description: 'Senior Thesis description', title: 'Senior Thesis with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(SeniorThesis, CurationConcern::SeniorThesisActor, 'seniorthesis_with_no_files', user_with_profile, attributes)
 
 attributes = { creator: user_with_profile.username, description: 'Video description', title: 'Video with no files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 find_or_create(Video, CurationConcern::VideoActor, 'video_with_no_files', user_with_profile, attributes)
 
-print "Things with files\n"
+puts "Things with files"
 article_attributes = { creator: user_with_profile.username, abstract: 'Abstract', title: 'Article with many files' }
-print "#{attributes[:title]}\n"
+puts "#{attributes[:title]}"
 article = find_or_create(Article, CurationConcern::ArticleActor, 'article_with_many_files', user_with_profile, article_attributes)
 15.times do |i|
   seeds_file.fake_file_name = "article_with_many_files.generic_files_#{i}"
