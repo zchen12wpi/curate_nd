@@ -35,9 +35,9 @@ GIT
 
 GIT
   remote: git://github.com/ndlib/locabulary.git
-  revision: 3f9ba337510087ef7abf8088b8d55fc3db9247d2
+  revision: 58c043c93dfcfc9a030f8b1840ea1c12488a27c4
   specs:
-    locabulary (0.7.3)
+    locabulary (0.7.4)
       activesupport (>= 4.0, < 6.0)
       dry-configurable (~> 0.1.7)
       json (~> 1.8)
@@ -722,7 +722,7 @@ DEPENDENCIES
   json-ld
   kaminari!
   libv8 (~> 3.16.14.3)
-  locabulary (= 0.7.3)!
+  locabulary (= 0.7.4)!
   lograge
   logstash-event
   logstash-logger
@@ -779,4 +779,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
