@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    ensure_user_has_profile(resource) if resource.is_a?(User)
     session[:previous_url] || root_path
   end
 
@@ -50,4 +51,14 @@ class ApplicationController < ActionController::Base
     send("new_#{scope}_session_path")
   end
   helper_method :new_session_path
+
+  # Creates an associated Person and Profile if none exists after the User logs in.
+  # This is a stop gap to handle https://jira.library.nd.edu/browse/DLTP-1354. We should
+  # remove this once we remove Person and/or Profile objects.
+  def ensure_user_has_profile(user)
+    unless user.person && user.person.profile.present?
+      account = Account.to_adapter.get!(user.id)
+      update_status = account.update_with_password({ "name" => user.username })
+    end
+  end
 end
