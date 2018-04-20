@@ -38,6 +38,11 @@ Before you start the web-server you'll need to make sure Fedora and SOLR are run
 $ bundle exec rake curatend:jetty:start
 ```
 
+You can also run Fedora and Solr via Docker:
+```console
+$ docker run -p 8983:8983 -t ndlib/curate-jetty
+```
+
 You may also need to make sure that mySQL is running as well:
 
 ```console
@@ -56,6 +61,21 @@ If you do need SSL, use this command:
 
 ```console
 $ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
+```
+
+### Rebuilding curate-jetty Docker image
+
+To rebuild the Docker image for running jetty, use the following command:
+
+```console
+docker build . -t ndlib/curate-jetty
+```
+
+To push your image to Dockerhub:
+
+```console
+docker login
+docker push ndlib/curate-jetty
 ```
 
 ## Release Documentation

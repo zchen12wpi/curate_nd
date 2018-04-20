@@ -1,0 +1,5 @@
+.git
+tmp
+# Don't need gems for now, since we're only doing jetty.
+# Will probably need to remove this if we create a rails image
+vendor/bundle
