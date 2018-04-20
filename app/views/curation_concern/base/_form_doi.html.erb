@@ -48,9 +48,9 @@
         </label>
       <%- end -%>
       <label class="radio">
-        <input type="radio" name="<%= f.object_name %>[doi_assignment_strategy]" id="<%= f.object_name %>_doi_assignment_strategy_<%= CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW  %>" value="<%= CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW %>" <% if curation_concern.doi_assignment_strategy == CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW %> checked="true"<% end %> />
+        <input type="radio" name="<%= f.object_name %>[doi_assignment_strategy]" id="<%= f.object_name %>_doi_assignment_strategy_<%= CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW  %>" value="<%= CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW %>" <% if curation_concern.doi_assignment_strategy == CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW %><% end %> checked/>
         <span class="label-text">
-          Leave the DOI field blank. It can be created later.
+          Leave the DOI field blank. One can be created later.
         </span>
       </label>
     </div>
