@@ -47,15 +47,27 @@ module CurationConcern
 
 protected
 
-    # A searchable date field that is derived from the (text) field date_created
+    # A single searchable/sortable date field that is derived from other (text) fields
     def add_derived_date_created(solr_doc)
-      if self.respond_to?(:date_created)
-        self.class.create_and_insert_terms('date_created_derived', derived_dates, [:dateable], solr_doc)
+      # The derived date is assigned based on a priority sequence of:
+      # Publication Date -> Date Issued -> Date Created
+      # This seems to be a global pattern for these fields across all models,
+      # so I'm putting this here. If this changes, then it may make sense to move
+      # this logic into the individual model's to_solr methods.
+      # See ticket DLTP-1258
+      derived_dates = case true
+      when self.respond_to?(:publication_date)
+        parse_dates(publication_date)
+      when self.respond_to?(:date_issued)
+        parse_dates(date_issued)
+      when self.respond_to?(:date_created)
+        parse_dates(date_created)
       end
+      self.class.create_and_insert_terms('date_created_derived', derived_dates, [:dateable], solr_doc)
     end
 
-    def derived_dates
-      Array.wrap(date_created).each_with_object([]) do |date, mem|
+    def parse_dates(source_dates)
+      Array.wrap(source_dates).each_with_object([]) do |date, mem|
         mem << Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
         mem
       end
