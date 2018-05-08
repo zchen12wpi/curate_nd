@@ -237,7 +237,7 @@ class CatalogController < ApplicationController
   end
 
   def self.created_field
-    solr_name('date_created_derived_dtsim', :stored_sortable , type: :date)
+    solr_name('date_created_derived', :stored_searchable , type: :date)
   end
 
   def self.search_config
@@ -598,7 +598,6 @@ class CatalogController < ApplicationController
     config.add_sort_field "#{uploaded_field} asc", label: "Sort by oldest upload"
     config.add_sort_field "#{modified_field} desc", label: "Sort by newest modification"
     config.add_sort_field "#{modified_field} asc", label: "Sort by oldest modification"
-
 
 
     # If there are more than this many search results, no spelling ("did you

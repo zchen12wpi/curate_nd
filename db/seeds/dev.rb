@@ -49,9 +49,12 @@ user_with_profile = create_user('userwithprofile@example.com', 'userwithprofile'
 create_account(user_with_profile)
 user_without_profile = create_user('userwithoutprofile@example.com', 'userwithoutprofile', 'foobarbaz')
 seeds_file = MockFile.new(__FILE__, 'text/plain', false)
+date_created = 1.month.ago.strftime("%Y-%m-%d")
+publication_date = 1.year.ago.strftime("%Y-%m-%d")
+date_issued = 9.months.ago.strftime("%Y-%m-%d")
 
 puts "Things with no files"
-attributes = { creator: user_with_profile.username, abstract: 'Article abstract', title: 'Article with no files' }
+attributes = { creator: user_with_profile.username, abstract: 'Article abstract', title: 'Article with no files', date_created: date_created, publication_date: publication_date }
 puts "#{attributes[:title]}"
 find_or_create(Article, CurationConcern::ArticleActor, 'article_with_no_files', user_with_profile, attributes)
 
@@ -64,11 +67,11 @@ attributes = { creator: user_with_profile.username, title: 'Catholic Document wi
 puts "#{attributes[:title]}"
 find_or_create(CatholicDocument, CurationConcern::CatholicDocumentActor, 'catholicdoc_with_no_files', user_with_profile, attributes)
 
-attributes = { creator: user_with_profile.username, description: 'Dataset description', title: 'Dataset with no files' }
+attributes = { creator: user_with_profile.username, description: 'Dataset description', title: 'Dataset with no files', date_created: date_created }
 puts "#{attributes[:title]}"
 find_or_create(Dataset, CurationConcern::DatasetActor, 'dataset_with_no_files', user_with_profile, attributes)
 
-attributes = { creator: user_with_profile.username, title: 'Document with no files' }
+attributes = { creator: user_with_profile.username, title: 'Document with no files', date_created: date_created, publication_date: publication_date }
 puts "#{attributes[:title]}"
 find_or_create(Document, CurationConcern::DocumentActor, 'document_with_no_files', user_with_profile, attributes)
 
@@ -76,7 +79,7 @@ attributes = { creator: user_with_profile.username, title: 'Finding Aid with no 
 puts "#{attributes[:title]}"
 find_or_create(FindingAid, CurationConcern::FindingAidActor, 'findingaid_with_no_files', user_with_profile, attributes)
 
-attributes = { creator: user_with_profile.username, description: 'Image description', title: 'Image with no files' }
+attributes = { creator: user_with_profile.username, description: 'Image description', title: 'Image with no files', date_created: date_created }
 puts "#{attributes[:title]}"
 find_or_create(Image, CurationConcern::ImageActor, 'image_with_no_files', user_with_profile, attributes)
 
@@ -89,12 +92,12 @@ attributes = { creator: user_with_profile.username, description: 'Senior Thesis 
 puts "#{attributes[:title]}"
 find_or_create(SeniorThesis, CurationConcern::SeniorThesisActor, 'seniorthesis_with_no_files', user_with_profile, attributes)
 
-attributes = { creator: user_with_profile.username, description: 'Video description', title: 'Video with no files' }
+attributes = { creator: user_with_profile.username, description: 'Video description', title: 'Video with no files', date_created: date_created, publication_date: publication_date }
 puts "#{attributes[:title]}"
 find_or_create(Video, CurationConcern::VideoActor, 'video_with_no_files', user_with_profile, attributes)
 
 puts "Things with files"
-article_attributes = { creator: user_with_profile.username, abstract: 'Abstract', title: 'Article with many files' }
+article_attributes = { creator: user_with_profile.username, abstract: 'Abstract', title: 'Article with many files', publication_date: publication_date }
 puts "#{attributes[:title]}"
 article = find_or_create(Article, CurationConcern::ArticleActor, 'article_with_many_files', user_with_profile, article_attributes)
 15.times do |i|
