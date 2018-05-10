@@ -5,7 +5,11 @@ RUN wget https://github.com/ndlib/hydra-jetty/archive/xacml-updates-for-curate-w
 RUN unzip -d . -qo xacml-updates-for-curate-with-solr-updates.zip
 
 RUN rm xacml-updates-for-curate-with-solr-updates.zip
+
+# Copy all application specific configs
 COPY config/jetty.yml /hydra-jetty-xacml-updates-for-curate-with-solr-updates
+COPY solr_conf/conf/ /hydra-jetty-xacml-updates-for-curate-with-solr-updates/solr/development-core/conf/
+COPY solr_conf/conf/ /hydra-jetty-xacml-updates-for-curate-with-solr-updates/solr/test-core/conf/
 
 ENV JETTY_HOME /hydra-jetty-xacml-updates-for-curate-with-solr-updates
 WORKDIR /hydra-jetty-xacml-updates-for-curate-with-solr-updates
