@@ -8,9 +8,6 @@
     <li><%= link_to 'My Collections', collections_path,                                                      class: 'my-collections', role: 'menuitem' %></li>
     <li><%= link_to 'My Groups',      hydramata_groups_path,                                                 class: 'my-groups',      role: 'menuitem' %></li>
     <li><%= link_to 'My Profile',     user_profile_path,                                                     class: 'my-account',     role: 'menuitem' %></li>
-    <% if current_user.repository_noid? %>
-    <li><%= link_to 'My Delegates',   person_depositors_path(current_user.repository_noid),                  class: 'my-proxies',     role: 'menuitem' %></li>
-    <% end %>
     <% if CurateND::AdminConstraint.is_admin?(current_user) %>
     <li class="divider"></li>
     <li><%= link_to 'Repository Administration', admin_path, role: 'menuitem' %></li>
