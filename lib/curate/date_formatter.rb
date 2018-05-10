@@ -8,7 +8,7 @@ module Curate
       if is_a_year?(date_string)
         Date.new(date_string.to_i)
       else
-        date = Chronic.parse(date_string)
+        date = Chronic.parse(date_string, ambiguous_year_future_bias: 100)
         date.to_date if date
       end
     end
