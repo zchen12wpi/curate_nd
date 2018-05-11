@@ -55,22 +55,21 @@ protected
       # so I'm putting this here. If this changes, then it may make sense to move
       # this logic into the individual model's to_solr methods.
       # See ticket DLTP-1258
-      derived_dates = case true
+      derived_date = case true
       when self.respond_to?(:publication_date)
-        parse_dates(publication_date)
+        parse_date(publication_date)
       when self.respond_to?(:date_issued)
-        parse_dates(date_issued)
+        parse_date(date_issued)
+      when self.respond_to?(:date)
+        parse_date(date)
       when self.respond_to?(:date_created)
-        parse_dates(date_created)
+        parse_date(date_created)
       end
-      self.class.create_and_insert_terms('date_created_derived', derived_dates, [:dateable], solr_doc)
+      self.class.create_and_insert_terms('date_created_derived', derived_date, [:stored_sortable], solr_doc)
     end
 
-    def parse_dates(source_dates)
-      Array.wrap(source_dates).each_with_object([]) do |date, mem|
-        mem << Curate::DateFormatter.parse(date.to_s).to_s unless date.blank?
-        mem
-      end
+    def parse_date(source_date)
+      Curate::DateFormatter.parse(source_date.to_s) unless source_date.blank?
     end
 
     def index_collection_pids(solr_doc)

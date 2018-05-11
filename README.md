@@ -45,8 +45,7 @@ $ docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty
 
 And to stop Fedora/Solr if using Docker:
 ```console
-docker stop curate-jetty
-docker rm curate-jetty
+docker stop curate-jetty && docker rm curate-jetty
 ```
 
 You may also need to make sure that mySQL is running as well:

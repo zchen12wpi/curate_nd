@@ -96,7 +96,7 @@
     <dynamicField name="*_dtim" type="date" stored="false" indexed="true" multiValued="true"/>
     <dynamicField name="*_dts" type="date" stored="true" indexed="false" multiValued="false"/>
     <dynamicField name="*_dtsm" type="date" stored="true" indexed="false" multiValued="true"/>
-    <dynamicField name="*_dtsi" type="date" stored="true" indexed="true" multiValued="false"/>
+    <dynamicField name="*_dtsi" type="date" stored="true" indexed="true" multiValued="false" sortMissingLast="true"/>
     <dynamicField name="*_dtsim" type="date" stored="true" indexed="true" multiValued="true"/>
 
     <!-- trie date (_dtt...) (for faster range queries) -->

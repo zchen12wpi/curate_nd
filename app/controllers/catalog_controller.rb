@@ -237,7 +237,7 @@ class CatalogController < ApplicationController
   end
 
   def self.created_field
-    solr_name('date_created_derived', :stored_searchable , type: :date)
+    solr_name('date_created_derived', :stored_sortable, type: :date)
   end
 
   def self.search_config
