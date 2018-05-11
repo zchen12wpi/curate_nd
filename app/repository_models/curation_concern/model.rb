@@ -60,6 +60,8 @@ protected
         parse_date(publication_date)
       when self.respond_to?(:date_issued)
         parse_date(date_issued)
+      when self.respond_to?(:date)
+        parse_date(date)
       when self.respond_to?(:date_created)
         parse_date(date_created)
       end
