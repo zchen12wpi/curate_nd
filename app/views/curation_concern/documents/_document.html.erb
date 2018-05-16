@@ -18,6 +18,10 @@
             <dt>Author(s):</dt>
             <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__author_tesim') %></dd>
           <% end %>
+          <% if solr_doc.has?('desc_metadata__editor_tesim') %>
+            <dt>Editor(s):</dt>
+            <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__editor_tesim') %></dd>
+          <% end %>
         <% else %>
           <% if solr_doc.has?('desc_metadata__creator_tesim') %>
             <dt>Author(s):</dt>
