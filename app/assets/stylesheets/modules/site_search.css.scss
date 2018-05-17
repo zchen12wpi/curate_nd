@@ -25,22 +25,39 @@
   }
 }
 
-.search-query-form {
+.search-query-list {
+  line-height: 1.5em;
   margin-bottom: .3em;
   padding-left: 1em;
 
-  .search-scope {
-    display: block;
-    line-height: 1.5em;
-    margin-bottom: .3em;
-
-    input {
-      margin-top: 0;
-    }
+  // Renders the blue outer circle for the active item
+  .active-item::before {
+    content: "•";
+    float: left;
+    margin-left: -25px;
+    font-size: 4em;
+    color: #3b99fc;
   }
 
-  .label-text {
-    padding-left: .3em;
+  // Removes the normal list item bullet from active items
+  .active-item {
+    display: block;
+    line-height: 1.7em;
+  }
+
+  // Renders the grey outer circle for the inactive item
+  .inactive-item::before {
+    content: "•";
+    float: left;
+    margin-left: -25px;
+    font-size: 4em;
+    color: #d3d3d3;
+  }
+
+  // Removes the normal list item bullet from inactive items
+  .inactive-item {
+    display: block;
+    line-height: 1.7em;
   }
 }
 

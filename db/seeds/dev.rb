@@ -52,6 +52,11 @@ seeds_file = MockFile.new(__FILE__, 'text/plain', false)
 date_created = 1.month.ago.strftime("%Y-%m-%d")
 publication_date = 1.year.ago.strftime("%Y-%m-%d")
 date_issued = 9.months.ago.strftime("%Y-%m-%d")
+# Make sure all users are created before this step
+everyone_group = Hydramata::Group.new(title: "Everyone", depositor: user_with_profile.username, description: "")
+User.all.each { |u| everyone_group.add_member(u.person) }
+test_group = Hydramata::Group.new(title: "Test Group", depositor: user_with_profile.username, description: "")
+test_group.add_member(user_with_profile.person)
 
 puts "Things with no files"
 attributes = { creator: user_with_profile.username, abstract: 'Article abstract', title: 'Article with no files', date_created: date_created, publication_date: publication_date }
@@ -74,6 +79,16 @@ find_or_create(Dataset, CurationConcern::DatasetActor, 'dataset_with_no_files', 
 attributes = { creator: user_with_profile.username, title: 'Document with no files', date_created: date_created, publication_date: publication_date }
 puts "#{attributes[:title]}"
 find_or_create(Document, CurationConcern::DocumentActor, 'document_with_no_files', user_with_profile, attributes)
+
+attributes = { creator: user_with_profile.username, title: 'Document that everyone can edit', date_created: date_created, publication_date: publication_date }
+puts "#{attributes[:title]}"
+d = find_or_create(Document, CurationConcern::DocumentActor, 'document_everyone_can_edit', user_with_profile, attributes)
+d.add_record_editor_groups([everyone_group])
+
+attributes = { creator: user_with_profile.username, title: 'Document that everyone and test group can edit', date_created: date_created, publication_date: publication_date }
+puts "#{attributes[:title]}"
+d = find_or_create(Document, CurationConcern::DocumentActor, 'document_everyone_test_can_edit', user_with_profile, attributes)
+d.add_record_editor_groups([everyone_group, test_group])
 
 attributes = { creator: user_with_profile.username, title: 'Finding Aid with no files' }
 puts "#{attributes[:title]}"
