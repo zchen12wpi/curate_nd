@@ -12,6 +12,7 @@ module CurationConcern
       self.permissions_attributes = [{ name: group.pid, access: 'read',
                                        type: 'group' }]
       self.save!
+      group.works.delete(self) if group.works.include?(self)
       group.view_works << self
       group.save!
     end
@@ -25,7 +26,7 @@ module CurationConcern
 
     def remove_record_viewer_group(group)
       return unless read_groups.include?(group.pid)
-      read_groups.delete(group)
+      record_viewer_groups.delete(group)
       self.read_groups = read_groups - [group.pid]
       self.save!
       group.view_works.delete(self)
