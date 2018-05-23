@@ -15,6 +15,9 @@ module Admin
         format.json { render json: { message: 'Applying Editor permissions. Please hold.' } }
       end
     end
+
+    private
+
     def get_json_hash(input)
       json = JSON.parse(input)
       return nil unless json.is_a?(Hash)
