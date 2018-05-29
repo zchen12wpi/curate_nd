@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: curate_nd_test
+  jetty:
+    image: ndlib/curate-jetty
+    ports:
+      - "8983:8983"

@@ -54,21 +54,6 @@ namespace :curatend do
       end
     end
 
-    desc 'Run specs on travis'
-    task :travis do
-      ENV['RAILS_ENV'] = 'ci'
-      ENV['TRAVIS'] = '1'
-      Rails.env = 'ci'
-      Rake::Task['curatend:jetty:init'].invoke
-
-      jetty_params = Jettywrapper.load_config
-      error = Jettywrapper.wrap(jetty_params) do
-        Rake::Task['curatend:ci'].invoke
-      end
-      raise "test failures: #{error}" if error
-    end
-
-
     desc "Execute Continuous Integration build (docs, tests with coverage)"
     task :ci do
       ENV['RAILS_ENV'] = 'ci'
