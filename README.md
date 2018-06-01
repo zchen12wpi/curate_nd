@@ -43,6 +43,11 @@ You can also run Fedora and Solr via Docker:
 $ docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty
 ```
 
+Or with pre-generated development seed data:
+```console
+docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty-devseed
+```
+
 And to stop Fedora/Solr if using Docker:
 ```console
 docker stop curate-jetty && docker rm curate-jetty
@@ -89,6 +94,20 @@ To push your image to Dockerhub:
 ```console
 docker login
 docker push ndlib/curate-jetty
+```
+
+To rebuild the image with pre-generated seed data:
+```console
+# First reset to the base image
+docker stop curate-jetty && docker rm curate-jetty
+docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty
+# Run seed scripts from the project root directory
+bundle exec rake db:schema:load db:seed:dev
+# Commit these changes to your image
+docker commit curate-jetty ndlib/curate-jetty-devseed
+# Push it up as the dev seed image
+docker login
+docker push ndlib/curate-jetty-devseed
 ```
 
 ## Release Documentation

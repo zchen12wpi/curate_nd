@@ -17,6 +17,17 @@ module CurateHelper
     c.nil? ? value : c.title
   end
 
+  # Gets the user friendly group title by id. Note: This implementation does not support multiples,
+  # ex: "und:groupid1 OR und:groupid2"
+  def group_name_from_pid(value)
+    begin
+      group = Hydramata::Group.load_instance_from_solr(value)
+    rescue => e
+      logger.debug("DEBUG: Helper method group_name_from_pid raised an error when loading #{value}.  Error was #{e}")
+    end
+    group.nil? ? value : group.title
+  end
+
   # Loads the person object and returns their name
   # In this case, the value is in the format: info:fedora/<PID>
   # So used split

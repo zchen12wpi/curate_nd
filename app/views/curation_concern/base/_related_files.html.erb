@@ -3,20 +3,19 @@
 <section id="attached-files">
 <% if curation_concern.respond_to?(:generic_files) %>
 
-  <% if curation_concern.generic_files.present? %>
+  <% (files_solr_response, files) = curation_concern.generic_files_page(params[:files_page].to_i, params[:files_per_page].to_i) %>
+
+  <% if files.any? %>
     <h2>Files</h2>
 
-    <% (files_solr_response, files) = curation_concern.generic_files_page(params[:files_page].to_i, params[:files_per_page].to_i) %>
+    <article class="file-delay-notice alert alert-info">
+      <%= t('curate.notification_messages.file_retrieval').html_safe %>
+    </article>
 
-    <% if files.any? %>
-      <article class="file-delay-notice alert alert-info">
-        <%= t('curate.notification_messages.file_retrieval').html_safe %>
-      </article>
-    <% end %>
-
-    <% if curation_concern.with_empty_contents? %>
+    <% if files.any? {|gf| gf.with_empty_content?} %>
       <div class="alert"><strong>Hey!</strong> It looks like there is a problem with one of these files.</div>
     <% end %>
+
     <% files.each_with_index do |generic_file, index| %>
       <% download_permission = can? :read, generic_file %>
       <%
