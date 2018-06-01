@@ -66,6 +66,34 @@ module BlacklightFacetExtras
         end
       end
 
+      # Renders the "My X" and "All X" links in the Views sidebar
+      def render_view_filters(user_params = params)
+        mine_selected = (user_params["works"] == 'mine')
+
+        localized_params = user_params.deep_dup
+        localized_params["works"] = "mine"
+        my_works_class = (mine_selected ? "active-item" : "inactive-item")
+        my_works = content_tag :li, { class: my_works_class } do
+          link_to url_for(localized_params) do
+            content_tag :span, "My #{catalog_type}"
+          end
+        end
+
+        localized_params["f"].select! { |f| f != "edit_access_group_ssim" } if localized_params.include?("f")
+        localized_params["works"] = "all"
+        all_works_class = (!mine_selected ? "active-item" : "inactive-item")
+        all_works = content_tag :li, { class: all_works_class } do
+          link_to url_for(localized_params) do
+            content_tag :span, "All #{catalog_type}"
+          end
+        end
+
+        content = []
+        content << all_works
+        content << my_works
+        content.join("\n").html_safe
+      end
+
       def render_constraints_filters(localized_params = params)
         return "".html_safe if localized_params[:f].blank? && localized_params[:f_inclusive].blank?
         content = []
@@ -152,6 +180,7 @@ class CatalogController < ApplicationController
 
   # These before_filters apply the hydra access controls
   before_filter :enforce_show_permissions, :only=>:show
+  CatalogController.solr_search_params_logic += [:remove_group_facets]
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
   # Enforce embargo on all Solr queries
@@ -218,6 +247,18 @@ class CatalogController < ApplicationController
     end
   end
 
+  # Group facet is added by default to preserve it's order in the list, but we only want to
+  # show it when the user is viewing "My Works". This removes the facet when not viewing "My Works".
+  # If there is a way to dynamically add it to the config based on a user param and specify the order,
+  # then we can invert this logic to add instead of remove
+  def remove_group_facets(solr_parameters, user_params)
+    only_mine = (user_params["works"] == 'mine')
+    if !only_mine
+      user_params["f"].delete "edit_access_group_ssim" if user_params["f"] && user_params["f"].include?("edit_access_group_ssim")
+      blacklight_config.facet_fields.delete "edit_access_group_ssim" if blacklight_config.facet_fields && blacklight_config.facet_fields.include?("edit_access_group_ssim")
+    end
+  end
+
   def build_faceted_hierarchy_presenter(solr_response, predicate_name)
     FacetedHierarchyPresenter.new(
       facet_field_name: params[:id],
@@ -272,6 +313,7 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
+    config.add_facet_field "edit_access_group_ssim", label: "My Groups", limit: 5, multiple: false, helper_method: :group_name_from_pid
     config.add_facet_field(
       solr_name('admin_unit_hierarchy', :facetable),
       label: 'Department or Unit',
