@@ -40,7 +40,7 @@ describe GroupEditorPIDsWorker do
       editor_pid = group.pid
       pids = []
       worker = GroupEditorPIDsWorker.new(editor_pid,pids)
-      expect{worker.run}.to raise_error("PIDs is required")
+      expect{worker.run}.to raise_error("WorkPIDs is required")
     end
 
   end

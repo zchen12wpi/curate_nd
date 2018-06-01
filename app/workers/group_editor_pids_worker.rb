@@ -5,7 +5,7 @@ class GroupEditorPIDsWorker
 # JSON input file is expected to have the following format:
 # {
 #   "EditorPID": "editor_pid"
-#   "PIDs": ["list", "of", "pids"]
+#   "WorkPIDs": ["list", "of", "pids"]
 # }
 # After JSON received, set array of pids editor needs applied to
 # loop through pids, add editor_pid to pids
@@ -24,20 +24,14 @@ class GroupEditorPIDsWorker
 
   def check_pids
     raise "EditorPID is required" if editor_pid.empty?
-    raise "PIDs is required" if pids.empty?
+    raise "WorkPIDs is required" if pids.empty?
   end
 
   def batch_assign_editor
-    editwork = Hydramata::Group.find(editor_pid)
+    editor_group = Hydramata::Group.find(editor_pid)
     @pids.each do |pid|
       work = ActiveFedora::Base.find(pid, cast: true)
-      if work.respond_to?(:generic_files)
-        if !work.edit_groups.include?(editor_pid)
-          work.edit_groups += [editor_pid]
-          work.save!
-          editwork.works << work
-        end
-      end
+      work.add_record_editor_group(editor_group)
     end
   end
 
