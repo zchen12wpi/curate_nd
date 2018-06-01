@@ -21,11 +21,11 @@ module CurateHelper
   # ex: "und:groupid1 OR und:groupid2"
   def group_name_from_pid(value)
     begin
-      p = Hydramata::Group.load_instance_from_solr(value)
+      group = Hydramata::Group.load_instance_from_solr(value)
     rescue => e
       logger.debug("DEBUG: Helper method group_name_from_pid raised an error when loading #{value}.  Error was #{e}")
     end
-    p.nil? ? value : p.title
+    group.nil? ? value : group.title
   end
 
   # Loads the person object and returns their name

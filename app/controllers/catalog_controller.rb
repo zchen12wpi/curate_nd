@@ -254,10 +254,8 @@ class CatalogController < ApplicationController
   def remove_group_facets(solr_parameters, user_params)
     only_mine = (user_params["works"] == 'mine')
     if !only_mine
-      # Remove the groups facet
       user_params["f"].delete "edit_access_group_ssim" if user_params["f"] && user_params["f"].include?("edit_access_group_ssim")
       blacklight_config.facet_fields.delete "edit_access_group_ssim" if blacklight_config.facet_fields && blacklight_config.facet_fields.include?("edit_access_group_ssim")
-      #solr_parameters[:"facet.field"].select! { |field| field != "{!ex=edit_access_group_ssim}edit_access_group_ssim" }
     end
   end
 
