@@ -22,12 +22,8 @@ class DoiMintingWorker
   end
 
   def run
-    doi_request_object = ActiveFedora::Base.find( pid, cast: true )
-    self.class.doi_remote_service.mint(doi_request_object)
-    doi_request_object.save
-  end
-
-  def self.doi_remote_service
-    Hydra::RemoteIdentifier.remote_service(:doi)
+    obj = ActiveFedora::Base.find( pid, cast: true )
+    obj.identifier = Doi::Datacite.mint(obj)
+    obj.save
   end
 end
