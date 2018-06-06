@@ -27,6 +27,7 @@ class GenericFile < ActiveFedora::Base
   has_attributes :owner, :depositor, datastream: :properties, multiple: false
   has_attributes :date_uploaded, :date_modified, datastream: :descMetadata, multiple: false
   has_attributes :creator, :title, datastream: :descMetadata, multiple: true
+  has_attributes :description, datastream: :descMetadata, multiple: false
   has_attributes :alephIdentifier, datastream: :descMetadata, multiple: true,
     validates: {
         allow_blank: true,
