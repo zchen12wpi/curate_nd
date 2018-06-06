@@ -12,6 +12,7 @@ module CurationConcern
       self.permissions_attributes = [{ name: group.pid, access: 'edit',
                                        type: 'group' }]
       self.save!
+      group.view_works.delete(self) if group.view_works.include?(self)
       group.works << self
       group.save!
     end
