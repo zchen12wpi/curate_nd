@@ -26,6 +26,12 @@
         <% if solr_doc.has?('desc_metadata__date_created_tesim') %>
           <dt>Date Created: </dt>
           <dd><%= render_index_field_value(document: solr_doc, field: 'desc_metadata__date_created_tesim') %></dd>
+        <% elsif document.try(:date_created) %>
+          <dt>Date Created: </dt>
+          <dd><%= document.date_created %></dd>
+        <% elsif document.try(:created) %>
+          <dt>Date Created: </dt>
+          <dd><%= document.created %></dd>
         <% end %>
       </dl>
 
