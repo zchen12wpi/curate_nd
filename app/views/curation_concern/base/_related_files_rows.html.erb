@@ -1,0 +1,41 @@
+<% bendo_datastream = Bendo::DatastreamPresenter.new(datastream: generic_file.datastreams.fetch('content')) %>
+<tr class="attributes">
+  <td class="attribute attribute-thumbnail">
+    <% if bendo_datastream.valid? %>
+      <%= render(
+        partial: '/application/thumbnail',
+        locals: {
+          width: 75,
+          alternate_href: download_path(generic_file.noid),
+          href: recall_bendo_item_path(generic_file.noid),
+          thumbnail: generic_file,
+          parent: curation_concern
+        }
+      ) %>
+    <% else %>
+      <%= render(
+        partial: '/application/thumbnail',
+        locals: {
+          width: 75,
+          href: download_path(generic_file.noid),
+          thumbnail: generic_file,
+          parent: curation_concern
+        }
+      ) %>
+    <% end %>
+  </td>
+  <td class="attribute attribute-filename"><%= generic_file.filename %></td>
+  <td class="attribute attribute-description"><%= generic_file.description %></td>
+  <td class="attribute attribute-size"><%= generic_file.characterization_terms[:file_size].first.to_i %></td>
+  <td class="attribute attribute-type"><%= generic_file.characterization_terms[:mime_type] %></td>
+  <td class="attribute attribute-access">
+    <%= render(
+      partial: 'permission_badge',
+      locals: {
+        curation_concern: generic_file,
+        show_date: true
+      }
+    ) %>
+  </td>
+  <td class="actions"><%= render '/curation_concern/base/related_file_actions', curation_concern: curation_concern, generic_file: generic_file, bendo_datastream: bendo_datastream %></td>
+</tr>
