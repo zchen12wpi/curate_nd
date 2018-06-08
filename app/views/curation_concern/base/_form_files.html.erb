@@ -1,4 +1,4 @@
 <fieldset>
   <%= render 'file_size_warning' %>
-  <%= f.input :files, as: :file %>
+  <%= f.input :files, as: :file, input_html: {multiple: true} %>
 </fieldset>
