@@ -111,6 +111,7 @@ CurateNd::Application.routes.draw do
     constraints CurateND::AdminAPIConstraint do
       post "reindex", to: "reindex#reindex"
       post "add_to_collection", to: "add_to_collection#submit"
+      post "assign_group", to: "batch_edit#assign_group"
     end
 
     match 'reindex/:id' => 'reindex#reindex_pid', via: :get, as: 'reindex_pid'
