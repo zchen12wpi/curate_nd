@@ -19,7 +19,7 @@
     <fieldset class="span5">
       <legend>Upload a File</legend>
       <%= render 'file_size_warning' %>
-      <%= f.input :files, as: :file %>
+      <%= f.input :files, as: :file, input_html: {multiple: true} %>
     </fieldset>
   </div>
 <% end %>
