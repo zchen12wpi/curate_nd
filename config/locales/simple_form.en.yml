@@ -13,7 +13,7 @@ en:
     # Labels and hints examples
     labels:
       defaults:
-        files: 'Upload a file (you can add more later)'
+        files: 'Upload files (you can choose multiple or add more later)'
     #     password: 'Password'
     #   user:
     #     new:
@@ -36,4 +36,3 @@ en:
 
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-

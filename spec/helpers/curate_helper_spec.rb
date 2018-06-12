@@ -7,12 +7,6 @@ RSpec.describe CurateHelper do
     end
   end
 
-  context '#file_size_warning' do
-    it 'should render a mailto link' do
-      expect(helper.file_size_warning).to match(%r{<a href="mailto})
-    end
-  end
-
   context '#collection_title_from_pid' do
     let(:value) { 'abc' }
     let(:collection) { double(title: 'Title') }

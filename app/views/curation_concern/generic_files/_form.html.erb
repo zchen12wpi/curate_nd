@@ -2,9 +2,8 @@
   <div class="row">
     <div class="span6">
       <fieldset class="required">
-        <%= file_size_warning %>
         <legend>
-          Attach Your File
+          Attach Your Files
           <% if parent.preferred_file_format.present? %>
             <small><%= parent.preferred_file_format %> is preferred.</small>
           <% end %>
@@ -12,7 +11,7 @@
           <%= f.input :file,
                       as: :file,
                       input_html: {multiple: true},
-                      label: 'Upload a file'
+                      label: 'Upload files'
           %>
       </fieldset>
     </div>

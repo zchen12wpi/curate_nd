@@ -3,10 +3,6 @@ module CurateHelper
     mail_to(t('sufia.help_email'), t('sufia.help_email'), { subject: t('sufia.help_email_subject') }.merge(options)).html_safe
   end
 
-  def file_size_warning
-    "<strong>Note - For files larger than #{t('sufia.supported_file_upload_size')} please contact #{support_email_link.html_safe} for assistance.</strong>".html_safe
-  end
-
   # Loads the object and returns its title
   def collection_title_from_pid(value)
     begin

@@ -17,8 +17,7 @@
 <% else %>
   <div class="row">
     <fieldset class="span5">
-      <legend>Upload a File</legend>
-      <%= render 'file_size_warning' %>
+      <legend>Upload Files</legend>
       <%= f.input :files, as: :file, input_html: {multiple: true} %>
     </fieldset>
   </div>
