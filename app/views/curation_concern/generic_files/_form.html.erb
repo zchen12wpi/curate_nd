@@ -10,7 +10,8 @@
         </legend>
           <%= f.input :file,
                       as: :file,
-                      label: 'Upload a file'
+                      input_html: {multiple: true},
+                      label: 'Upload files'
           %>
       </fieldset>
     </div>
