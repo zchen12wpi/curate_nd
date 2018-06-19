@@ -4,12 +4,10 @@ module CurationConcern
     def create
       # Get the list of files, then for each file, go through the creation process
       files = attributes.delete(:file).to_a
-      times = 0
-      while times < files.length do
-        @file = files[times]
-        attach_files && download_create_cloud_resources &&
-        apply_access_permissions
-        times += 1
+      files.each do |file|
+        @file = file
+        attach_file && download_create_cloud_resources &&
+            apply_access_permissions
       end
       return true
     end
@@ -45,7 +43,7 @@ module CurationConcern
       end
     end
 
-    def attach_files
+    def attach_file
         generic_file = GenericFile.new
         generic_file.file = @file
         generic_file.label = @file.original_filename
