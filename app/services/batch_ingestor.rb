@@ -11,15 +11,27 @@ class BatchIngestor
   def self.start_reingest(content_data, options = {})
     job_id_prefix = 'reingest'
     task_function_name = 'start-reingest'
-    content_file_name = 'fedora-pids'
-    new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
+    content_map = {}
+    content_map['fedora-pids'] = content_data
+    new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
+  end
+
+  def self.submit_fedora_only(work_files, generic_files, options ={})
+    job_id_prefix = 'fedora-only'
+    task_function_name = 'start-fedora-only'
+    content_map = {}
+    content_map['works-pids']= work_files
+    content_map['genericfile-pids']= generic_files
+    new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
   end
 
   def self.start_osf_archive_ingest(content_data, options = {})
     job_id_prefix = options.fetch(:job_id_prefix) { "osfarchive" }
     task_function_name = 'start-osf-archive-ingest'
     content_file_name = 'osf_projects'
-    new(options).submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
+    content_map = {}
+    content_map['osf_projects'] = content_data
+    new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
   end
 
   def self.default_job_id_builder(job_id_prefix, as_of = Time.now.utc)
@@ -37,10 +49,12 @@ class BatchIngestor
     @job_id_builder = options.fetch(:job_id_builder) { self.class.method(:default_job_id_builder) }
   end
 
-  def submit_ingest(job_id_prefix, task_function_name, content_file_name, content_data)
+  def submit_ingest(job_id_prefix, task_function_name, content_map)
     job_id = job_id_builder.call(job_id_prefix)
     create_batch_job(job_id)
-    add_job_file(job_id, content_file_name, content_data)
+    content_map.each do |file_name, file_data|
+      add_job_file(job_id, file_name, file_data)
+    end
     add_job_file(job_id, 'JOB', { 'Todo' => [task_function_name] })
     submit_batch_job(job_id)
   end
