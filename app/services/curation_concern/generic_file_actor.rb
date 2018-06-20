@@ -2,7 +2,14 @@ module CurationConcern
   class GenericFileActor < CurationConcern::BaseActor
 
     def create
-      super { update_file  && download_create_cloud_resources }
+      # Get the list of files, then for each file, go through the creation process
+      files = attributes.delete(:file).to_a
+      files.each do |file|
+        @file = file
+        attach_file && download_create_cloud_resources &&
+            apply_access_permissions
+      end
+      return true
     end
 
     def update
@@ -35,6 +42,46 @@ module CurationConcern
         true
       end
     end
+
+    def attach_file
+        generic_file = GenericFile.new
+        generic_file.file = @file
+        generic_file.label = @file.original_filename
+        generic_file.batch = curation_concern
+        Sufia::GenericFile::Actions.create_metadata(
+          generic_file, user, curation_concern.parent.pid
+        )
+        generic_file.embargo_release_date = curation_concern.parent.embargo_release_date
+        generic_file.visibility = visibility
+        CurationConcern::Utility.attach_file(generic_file, user, @file)
+    end
+
+    def add_cloud_resources
+      cloud_resources.all? do |resource|
+        attach_cloud_resource(resource)
+      end
+    end
+
+    def attach_cloud_resource(cloud_resource)
+      return true if ! cloud_resource.present?
+      file_path=cloud_resource.download_content_from_host
+      if  valid_file?(file_path)
+        cloud_resource = File.open(file_path)
+        generic_file = GenericFile.new
+        generic_file.file = cloud_resource
+        generic_file.label = @file.filename
+        Sufia::GenericFile::Actions.create_metadata(
+            generic_file, user, curation_concern.pid
+        )
+        generic_file.embargo_release_date = curation_concern.embargo_release_date
+        generic_file.visibility = visibility
+        CurationConcern::Utility.attach_file(generic_file, user, cloud_resource,File.basename(cloud_resource))
+        File.delete(cloud_resource)
+      end
+    rescue ActiveFedora::RecordInvalid
+      false
+    end
+
 
     def update_version
       version_to_revert = attributes.delete(:version)

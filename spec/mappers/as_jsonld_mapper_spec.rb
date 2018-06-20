@@ -57,6 +57,7 @@ describe AsJsonldMapper do
     {
       "@id"=>"#{generic_file.id}",
       "nd:afmodel"=>"#{generic_file.class.name}",
+      "dc:creator"=>"#{user.username}",
       "dc:dateSubmitted"=> {"@value"=>"#{generic_file.date_uploaded.strftime("%FZ")}", "@type"=>"http://www.w3.org/2001/XMLSchema#date"},
       "dc:modified"=> {"@value"=>"#{generic_file.date_modified.strftime("%FZ")}", "@type"=>"http://www.w3.org/2001/XMLSchema#date"},
       "frels:isPartOf" => {"@id" => curation_concern.id},
@@ -65,7 +66,6 @@ describe AsJsonldMapper do
       "nd:depositor" => "#{user.username}",
       "nd:filename" => "#{generic_file.filename}",
       "nd:mimetype" => "#{generic_file.content.mimeType}",
-      "nd:owner" => "#{user.username}",
       "nd:thumbnail" => {"@id"=>File.join(Rails.configuration.application_root_url, '/downloads/', generic_file.noid, '/thumbnail').to_s}
     }
   end
