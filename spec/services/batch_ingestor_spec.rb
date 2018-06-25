@@ -23,7 +23,9 @@ RSpec.describe BatchIngestor do
 
   describe '#submit_ingest' do
     let(:subject) do
-      described_class.new(http: http, job_id_builder: job_id_builder).submit_ingest('job_id', 'task', 'file_name', ['abcde', 'defgh', 'ijklm'])
+      content_map = {}
+      content_map['file_name'] = ['abcde', 'defgh', 'ijklm']
+      described_class.new(http: http, job_id_builder: job_id_builder).submit_ingest('job_id', 'task', content_map )
     end
     let(:response) { instance_double(Net::HTTPResponse, code: '200') }
     let(:http) { instance_double(Net::HTTP, request_post: response) }
