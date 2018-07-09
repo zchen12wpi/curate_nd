@@ -64,7 +64,7 @@ class FedoraTools
     output_list = {}
    
     input_list.each do |pid, record|
-      output_list[pid]= pid if is_work( record.models[record.models.length - 1])
+	    output_list[pid]= pid.gsub("und:","") if is_work( record.models[record.models.length - 1])
     end
     output_list
   end
