@@ -249,6 +249,9 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.3)
     execjs (2.7.0)
+    ezid-client (1.8.0)
+      hashie (~> 3.4, >= 3.4.3)
+      nokogiri
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -705,6 +708,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   devise_masquerade
   email_validator
+  ezid-client (~> 1.8)
   factory_girl_rails (~> 4.2.0)
   figaro
   flipper
@@ -779,4 +783,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.0
+   1.16.2

@@ -60,9 +60,8 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
 
           expect(response.body).to have_tag('.promote-doi .control-group') do
             input_name = "#{curation_concern_class.model_name.singular}[doi_assignment_strategy]"
-            remote_service = Hydra::RemoteIdentifier.remote_service(:doi)
-            if remote_service.registered?(controller.curation_concern)
-              with_tag('input', with: { name: input_name, type: 'radio', value: remote_service.accessor_name })
+            if curation_concern_class.ancestors.include?(CurationConcern::RemotelyIdentifiedByDoi::Attributes)
+              with_tag('input', with: { name: input_name, type: 'radio', value: CurationConcern::RemotelyIdentifiedByDoi::GET_ONE })
             end
             with_tag('input', with: { name: input_name, type: 'radio', value: CurationConcern::RemotelyIdentifiedByDoi::NOT_NOW } )
             with_tag('input', with: { name: input_name, type: 'radio', value: CurationConcern::RemotelyIdentifiedByDoi::ALREADY_GOT_ONE } )

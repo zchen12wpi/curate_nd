@@ -15,7 +15,7 @@ shared_examples 'remotely_identified' do |remote_service_name|
 
       it 'mints!', VCR::SpecSupport(cassette_name: "remotely_identified_#{remote_service_name}_mint_#{described_class.name.underscore}") do
         expect {
-          Hydra::RemoteIdentifier.mint(remote_service_name, subject)
+          Doi::Datacite.mint(remote_service_name, subject)
         }.to change(subject, :identifier).from(nil)
       end
     end

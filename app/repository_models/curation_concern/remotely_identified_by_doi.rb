@@ -1,6 +1,7 @@
 module CurationConcern
   module RemotelyIdentifiedByDoi
 
+    GET_ONE = 'get_one'
     NOT_NOW = 'not_now'
     ALREADY_GOT_ONE = 'already_got_one'
 
@@ -29,11 +30,11 @@ module CurationConcern
         end
 
         def doi_remote_service
-          @doi_remote_service ||= DoiMintingWorker.doi_remote_service
+          @doi_remote_service ||= Doi::Datacite
         end
 
         def remote_doi_assignment_strategy?
-          doi_assignment_strategy.to_s == doi_remote_service.accessor_name.to_s
+          doi_assignment_strategy == CurationConcern::RemotelyIdentifiedByDoi::GET_ONE
         end
 
         def doi_minting_worker
