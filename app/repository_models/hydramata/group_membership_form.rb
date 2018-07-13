@@ -73,7 +73,9 @@ class Hydramata::GroupMembershipForm
     self.members.each do |member|
       group.reload
       if member[:action] == 'create'
-        add_member( person( member[:person_id] ), member[:role] )
+        person_id = member[:person_id]
+        person_id = FindOrCreateUser.call(member[:person_name]).person.id unless person_id.present?
+        add_member( person( person_id ), member[:role] )
       elsif member[:action] == 'destroy'
         group.remove_member( person( member[:person_id] ) )
       elsif member[:action] == 'none'
