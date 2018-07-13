@@ -32,34 +32,45 @@ Certain curation concern types are never created interactively:
 
 ## Running the application
 
-Before you start the web-server you'll need to make sure Fedora and SOLR are running. Use the following command:
+### 1. Start dependencies
+Before you start the web-server you'll need to make sure Fedora and SOLR are running.
+
+#### With Docker
+
+You can run MySQL, Fedora and Solr via Docker:
+
+```console
+$ docker-compose up -d
+```
+
+#### Without Docker
+
+Start Fedora and SOLR via jetty:
 
 ```console
 $ bundle exec rake curatend:jetty:start
 ```
 
-You can also run Fedora and Solr via Docker:
-```console
-$ docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty
-```
-
-Or with pre-generated development seed data:
-```console
-docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty-devseed
-```
-
-And to stop Fedora/Solr if using Docker:
-```console
-docker stop curate-jetty && docker rm curate-jetty
-```
-
-You may also need to make sure that mySQL is running as well:
+Start MySQL:
 
 ```console
 $ mysql.server start
 ```
 
-### Getting Your Rails Application Running
+### 2. Initialize the database
+Load the database schema into MySQL:
+
+```console
+bundle exec rake db:schema:load
+```
+
+To seed database with test data (skip this step when using Docker):
+
+```console
+bundle exec db:seed:dev
+```
+
+### 3. Start Rails
 
 In most cases, you will need SSL, so use this command:
 
@@ -73,15 +84,7 @@ If you don't need SSL, use the following command:
 $ bundle exec rails server
 ```
 
-
-
-To seed database with test data:
-
-```console
-bundle exec rake db:schema:load db:seed:dev
-```
-
-### Rebuilding curate-jetty Docker image
+## Rebuilding curate-jetty Docker image
 
 To rebuild the Docker image for running jetty, use the following command:
 
