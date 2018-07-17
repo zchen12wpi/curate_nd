@@ -1,0 +1,5348 @@
+[
+  {
+    "work_id": "00000001v32",
+    "catalog_system_number": "004506336",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-17",
+    "oclc_number": 963943499
+  },
+  {
+    "work_id": "00000001x72",
+    "catalog_system_number": "004593795",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 986240657
+  },
+  {
+    "work_id": "02870v85263",
+    "catalog_system_number": "004330772",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 939420681
+  },
+  {
+    "work_id": "02870v8534q",
+    "catalog_system_number": "004396993",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 949266686
+  },
+  {
+    "work_id": "02870v85681",
+    "catalog_system_number": "004593592",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 986229110
+  },
+  {
+    "work_id": "05741r6909c",
+    "catalog_system_number": "004701017",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200429
+  },
+  {
+    "work_id": "08612n51m8d",
+    "catalog_system_number": "004319543",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 938982170
+  },
+  {
+    "work_id": "08612n51m9r",
+    "catalog_system_number": "004330995",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 939514427
+  },
+  {
+    "work_id": "08612n5286w",
+    "catalog_system_number": "004647015",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-07",
+    "oclc_number": 1003321808
+  },
+  {
+    "work_id": "0c483j34z29",
+    "catalog_system_number": "004436840",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956382755
+  },
+  {
+    "work_id": "0c483j34z71",
+    "catalog_system_number": "004498045",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-21",
+    "oclc_number": 963857844
+  },
+  {
+    "work_id": "0c483j35215",
+    "catalog_system_number": "004581061",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985514145
+  },
+  {
+    "work_id": "0c483j35k1t",
+    "catalog_system_number": "004702484",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-12",
+    "oclc_number": 1015373856
+  },
+  {
+    "work_id": "0g354f18610",
+    "catalog_system_number": "004330683",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-29",
+    "oclc_number": 939397885
+  },
+  {
+    "work_id": "0g354f18t80",
+    "catalog_system_number": "004647162",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1003529644
+  },
+  {
+    "work_id": "0g354f18v4x",
+    "catalog_system_number": "004748827",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-12",
+    "oclc_number": 1031469321
+  },
+  {
+    "work_id": "0k225b01g2w",
+    "catalog_system_number": "004330679",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 939396453
+  },
+  {
+    "work_id": "0k225b01h9m",
+    "catalog_system_number": "004491967",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-15",
+    "oclc_number": 962935925
+  },
+  {
+    "work_id": "0k225b01m3g",
+    "catalog_system_number": "004593838",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 986241578
+  },
+  {
+    "work_id": "0k225b0243d",
+    "catalog_system_number": "004701037",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015201931
+  },
+  {
+    "work_id": "0p096685d0x",
+    "catalog_system_number": "004643050",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1002219544
+  },
+  {
+    "work_id": "0p096685d49",
+    "catalog_system_number": "004701024",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-11",
+    "oclc_number": 1015200595
+  },
+  {
+    "work_id": "0r96736814f",
+    "catalog_system_number": "004330671",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 939395696
+  },
+  {
+    "work_id": "0r967368222",
+    "catalog_system_number": "004399171",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-17",
+    "oclc_number": 949904253
+  },
+  {
+    "work_id": "0r96736826f",
+    "catalog_system_number": "004432816",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-22",
+    "oclc_number": 953969061
+  },
+  {
+    "work_id": "0v838051971",
+    "catalog_system_number": "004330672",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-04",
+    "oclc_number": 939396133
+  },
+  {
+    "work_id": "0v838051b2m",
+    "catalog_system_number": "004391752",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948026947
+  },
+  {
+    "work_id": "0v838051b60",
+    "catalog_system_number": "004412034",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-14",
+    "oclc_number": 951686421
+  },
+  {
+    "work_id": "0v838051c2x",
+    "catalog_system_number": "004511358",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-28",
+    "oclc_number": 964450823
+  },
+  {
+    "work_id": "0v838051f47",
+    "catalog_system_number": "004539913",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-02",
+    "oclc_number": 974489817
+  },
+  {
+    "work_id": "0v838051z88",
+    "catalog_system_number": "004791840",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035767096
+  },
+  {
+    "work_id": "0z708w34k6k",
+    "catalog_system_number": "004331401",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-24",
+    "oclc_number": 939552853
+  },
+  {
+    "work_id": "0z708w34k7x",
+    "catalog_system_number": "004330693",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-05",
+    "oclc_number": 939398095
+  },
+  {
+    "work_id": "0z708w34n04",
+    "catalog_system_number": "004459108",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-21",
+    "oclc_number": 958937602
+  },
+  {
+    "work_id": "12579s17w99",
+    "catalog_system_number": "004434831",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-03",
+    "oclc_number": 954753735
+  },
+  {
+    "work_id": "1544bp0187c",
+    "catalog_system_number": "004539679",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-02",
+    "oclc_number": 974374430
+  },
+  {
+    "work_id": "1544bp01892",
+    "catalog_system_number": "004593800",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 986240726
+  },
+  {
+    "work_id": "1544bp01q5q",
+    "catalog_system_number": "004642748",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1002211202
+  },
+  {
+    "work_id": "1544bp01s71",
+    "catalog_system_number": "004641836",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-23",
+    "oclc_number": 1001809028
+  },
+  {
+    "work_id": "1544bp01t18",
+    "catalog_system_number": "004791362",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035635434
+  },
+  {
+    "work_id": "1831cj84d8r",
+    "catalog_system_number": "004331424",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-16",
+    "oclc_number": 939553069
+  },
+  {
+    "work_id": "1831cj84f09",
+    "catalog_system_number": "004330677",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-04",
+    "oclc_number": 939396449
+  },
+  {
+    "work_id": "1831cj84k0j",
+    "catalog_system_number": "004580337",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-02",
+    "oclc_number": 985112910
+  },
+  {
+    "work_id": "1831cj85267",
+    "catalog_system_number": "004627136",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053781
+  },
+  {
+    "work_id": "1831cj8530g",
+    "catalog_system_number": "004700234",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-06",
+    "oclc_number": 1014125619
+  },
+  {
+    "work_id": "1831cj85325",
+    "catalog_system_number": "004791363",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035635691
+  },
+  {
+    "work_id": "1c18df67q0n",
+    "catalog_system_number": "004331065",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 939524912
+  },
+  {
+    "work_id": "1c18df67r2n",
+    "catalog_system_number": "004436841",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956382761
+  },
+  {
+    "work_id": "1c18df67t9p",
+    "catalog_system_number": "004541978",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-08",
+    "oclc_number": 974924808
+  },
+  {
+    "work_id": "1c18df68c15",
+    "catalog_system_number": "004701022",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200479
+  },
+  {
+    "work_id": "1c18df68c3v",
+    "catalog_system_number": "004791797",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035764595
+  },
+  {
+    "work_id": "1j92g734d13",
+    "catalog_system_number": "004541981",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-08",
+    "oclc_number": 974924521
+  },
+  {
+    "work_id": "1r66j100t4s",
+    "catalog_system_number": "004330681",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-22",
+    "oclc_number": 939397213
+  },
+  {
+    "work_id": "1r66j100v5f",
+    "catalog_system_number": "004412033",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-13",
+    "oclc_number": 951685959
+  },
+  {
+    "work_id": "1r66j100v6s",
+    "catalog_system_number": "004436843",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956382705
+  },
+  {
+    "work_id": "1r66j100z3p",
+    "catalog_system_number": "004540108",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-06",
+    "oclc_number": 974641114
+  },
+  {
+    "work_id": "1v53jw84345",
+    "catalog_system_number": "004330686",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 939397925
+  },
+  {
+    "work_id": "1v53jw8435h",
+    "catalog_system_number": "004331124",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 939531298
+  },
+  {
+    "work_id": "1v53jw8442s",
+    "catalog_system_number": "004397065",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-10",
+    "oclc_number": 949367293
+  },
+  {
+    "work_id": "1v53jw84763",
+    "catalog_system_number": "004581225",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985605580
+  },
+  {
+    "work_id": "1v53jw84r73",
+    "catalog_system_number": "004737549",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-23",
+    "oclc_number": 1029554521
+  },
+  {
+    "work_id": "1v53jw84r8f",
+    "catalog_system_number": "004792053",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035946769
+  },
+  {
+    "work_id": "1z40ks67c78",
+    "catalog_system_number": "004332958",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-05",
+    "oclc_number": 939559380
+  },
+  {
+    "work_id": "1z40ks67d8x",
+    "catalog_system_number": "004432796",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-22",
+    "oclc_number": 953968172
+  },
+  {
+    "work_id": "1z40ks67h8v",
+    "catalog_system_number": "004570086",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-21",
+    "oclc_number": 983779901
+  },
+  {
+    "work_id": "1z40ks6817f",
+    "catalog_system_number": "004699214",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-04",
+    "oclc_number": 1013976543
+  },
+  {
+    "work_id": "1z40ks68194",
+    "catalog_system_number": "004791826",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035765950
+  },
+  {
+    "work_id": "2227mp50p4d",
+    "catalog_system_number": "004394536",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948603269
+  },
+  {
+    "work_id": "2227mp50p5r",
+    "catalog_system_number": "004397607",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-11",
+    "oclc_number": 949714234
+  },
+  {
+    "work_id": "2227mp50s8q",
+    "catalog_system_number": "004598276",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987377880
+  },
+  {
+    "work_id": "2227mp5183m",
+    "catalog_system_number": "004625763",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 995852507
+  },
+  {
+    "work_id": "2514nk33x76",
+    "catalog_system_number": "004332881",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 939554730
+  },
+  {
+    "work_id": "2514nk33z03",
+    "catalog_system_number": "004331961",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-03",
+    "oclc_number": 939554705
+  },
+  {
+    "work_id": "2514nk3400p",
+    "catalog_system_number": "004434555",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 954480699
+  },
+  {
+    "work_id": "2801pg1768w",
+    "catalog_system_number": "004331126",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 939531486
+  },
+  {
+    "work_id": "2801pg17c0p",
+    "catalog_system_number": "004581242",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985610346
+  },
+  {
+    "work_id": "2801pg17w0b",
+    "catalog_system_number": "004701023",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200585
+  },
+  {
+    "work_id": "2b88qc00j27",
+    "catalog_system_number": "004436842",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956382844
+  },
+  {
+    "work_id": "2b88qc0136v",
+    "catalog_system_number": "004612504",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-06",
+    "oclc_number": 992977544
+  },
+  {
+    "work_id": "2f75r783t8k",
+    "catalog_system_number": "004498025",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-21",
+    "oclc_number": 963856443
+  },
+  {
+    "work_id": "2j62s467216",
+    "catalog_system_number": "004331409",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 939552946
+  },
+  {
+    "work_id": "2j62s467634",
+    "catalog_system_number": "004593846",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 986242472
+  },
+  {
+    "work_id": "2n49t150c4c",
+    "catalog_system_number": "004412181",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-15",
+    "oclc_number": 951750621
+  },
+  {
+    "work_id": "2n49t15106x",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "2r36tx33n8n",
+    "catalog_system_number": "004460519",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-27",
+    "oclc_number": 959610412
+  },
+  {
+    "work_id": "2r36tx33r5j",
+    "catalog_system_number": "004595367",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987001831
+  },
+  {
+    "work_id": "2r36tx3482f",
+    "catalog_system_number": "004642124",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-10",
+    "oclc_number": 1001952563
+  },
+  {
+    "work_id": "2r36tx3485g",
+    "catalog_system_number": "004709934",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-08",
+    "oclc_number": 1018472308
+  },
+  {
+    "work_id": "2v23vt16w5c",
+    "catalog_system_number": "004332882",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 939554941
+  },
+  {
+    "work_id": "2v23vt16x2n",
+    "catalog_system_number": "004377311",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-15",
+    "oclc_number": 946751322
+  },
+  {
+    "work_id": "2v23vt16x7c",
+    "catalog_system_number": "004436865",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-03",
+    "oclc_number": 956382935
+  },
+  {
+    "work_id": "2v23vt17j8k",
+    "catalog_system_number": "004792021",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035849453
+  },
+  {
+    "work_id": "2z10wq00556",
+    "catalog_system_number": "004331447",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 939553840
+  },
+  {
+    "work_id": "2z10wq00t7s",
+    "catalog_system_number": "004701094",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-11",
+    "oclc_number": 1015238829
+  },
+  {
+    "work_id": "2z10wq00t9g",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "3197xk83g21",
+    "catalog_system_number": "004336404",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-03",
+    "oclc_number": 942759352
+  },
+  {
+    "work_id": "3197xk83k81",
+    "catalog_system_number": "004598496",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987438491
+  },
+  {
+    "work_id": "3197xk83k9c",
+    "catalog_system_number": "004602945",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988943215
+  },
+  {
+    "work_id": "3484zg66q8v",
+    "catalog_system_number": "004332888",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-22",
+    "oclc_number": 939555173
+  },
+  {
+    "work_id": "3484zg66r54",
+    "catalog_system_number": "004395080",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948675485
+  },
+  {
+    "work_id": "3484zg66s0q",
+    "catalog_system_number": "004434344",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 954467821
+  },
+  {
+    "work_id": "3484zg67c9c",
+    "catalog_system_number": "004699137",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-04",
+    "oclc_number": 1013929905
+  },
+  {
+    "work_id": "3484zg67d0k",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "37720c5050m",
+    "catalog_system_number": "004560887",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-19",
+    "oclc_number": 983204067
+  },
+  {
+    "work_id": "37720c50p2z",
+    "catalog_system_number": "004791026",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035420203
+  },
+  {
+    "work_id": "3b59183389h",
+    "catalog_system_number": "004332884",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 939554987
+  },
+  {
+    "work_id": "3b59183390q",
+    "catalog_system_number": "004332896",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-24",
+    "oclc_number": 939555914
+  },
+  {
+    "work_id": "3b591833x9d",
+    "catalog_system_number": "004647236",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-12",
+    "oclc_number": 1003642081
+  },
+  {
+    "work_id": "3b591833z1z",
+    "catalog_system_number": "004710518",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-12",
+    "oclc_number": 1019680584
+  },
+  {
+    "work_id": "3f462516k8j",
+    "catalog_system_number": "004395410",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948749037
+  },
+  {
+    "work_id": "3f462516q32",
+    "catalog_system_number": "004602940",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988942797
+  },
+  {
+    "work_id": "3f46251774b",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "3j333199v95",
+    "catalog_system_number": "004396449",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948809071
+  },
+  {
+    "work_id": "3j333200h1v",
+    "catalog_system_number": "004648412",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-18",
+    "oclc_number": 1004270993
+  },
+  {
+    "work_id": "3n203x8343r",
+    "catalog_system_number": "004333407",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-29",
+    "oclc_number": 940499123
+  },
+  {
+    "work_id": "3n203x8345f",
+    "catalog_system_number": "004332956",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 939559049
+  },
+  {
+    "work_id": "3n203x8360b",
+    "catalog_system_number": "004511343",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-21",
+    "oclc_number": 964450301
+  },
+  {
+    "work_id": "3n203x8384b",
+    "catalog_system_number": "004595467",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987004003
+  },
+  {
+    "work_id": "3n203x83s1z",
+    "catalog_system_number": "004642060",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-10",
+    "oclc_number": 1001823418
+  },
+  {
+    "work_id": "3n203x83s5b",
+    "catalog_system_number": "004788117",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033408130
+  },
+  {
+    "work_id": "3n203x83s6p",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "3r074t66d33",
+    "catalog_system_number": "004332959",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-17",
+    "oclc_number": 939559350
+  },
+  {
+    "work_id": "3r074t66h2p",
+    "catalog_system_number": "004526388",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-01-10",
+    "oclc_number": 968156960
+  },
+  {
+    "work_id": "3r074t6727n",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "3t945q49p7h",
+    "catalog_system_number": "004333032",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-07",
+    "oclc_number": 939600081
+  },
+  {
+    "work_id": "3t945q50b75",
+    "catalog_system_number": "004736565",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-15",
+    "oclc_number": 1028995211
+  },
+  {
+    "work_id": "3x816m32z6q",
+    "catalog_system_number": "004316606",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 937813045
+  },
+  {
+    "work_id": "41687h16949",
+    "catalog_system_number": "004515573",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965831680
+  },
+  {
+    "work_id": "41687h16c89",
+    "catalog_system_number": "004561158",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-21",
+    "oclc_number": 983466448
+  },
+  {
+    "work_id": "44558c99h70",
+    "catalog_system_number": "004333014",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-16",
+    "oclc_number": 939598586
+  },
+  {
+    "work_id": "44558c99p04",
+    "catalog_system_number": "004602946",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988943327
+  },
+  {
+    "work_id": "44558d0057f",
+    "catalog_system_number": "004647160",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-11",
+    "oclc_number": 1003529480
+  },
+  {
+    "work_id": "44558d00594",
+    "catalog_system_number": "004702486",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-12",
+    "oclc_number": 1015373961
+  },
+  {
+    "work_id": "44558d0061p",
+    "catalog_system_number": "004792061",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035947944
+  },
+  {
+    "work_id": "47429883g29",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "4f16c249c04",
+    "catalog_system_number": "004333413",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-16",
+    "oclc_number": 940499300
+  },
+  {
+    "work_id": "4f16c25007w",
+    "catalog_system_number": "004642423",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1002073572
+  },
+  {
+    "work_id": "4j03cz32n4w",
+    "catalog_system_number": "004333034",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-11",
+    "oclc_number": 939601391
+  },
+  {
+    "work_id": "4j03cz32p9x",
+    "catalog_system_number": "004512475",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-02",
+    "oclc_number": 964934952
+  },
+  {
+    "work_id": "4j03cz3395d",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "4m90dv15x27",
+    "catalog_system_number": "004331134",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-14",
+    "oclc_number": 939531710
+  },
+  {
+    "work_id": "4m90dv1624f",
+    "catalog_system_number": "004596389",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987265417
+  },
+  {
+    "work_id": "4q77fq9966f",
+    "catalog_system_number": "004333052",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-07",
+    "oclc_number": 939602808
+  },
+  {
+    "work_id": "4q77fq9976r",
+    "catalog_system_number": "004436838",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-09",
+    "oclc_number": 956382712
+  },
+  {
+    "work_id": "4q77fq9981b",
+    "catalog_system_number": "004513993",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965550346
+  },
+  {
+    "work_id": "4q77fq99b5b",
+    "catalog_system_number": "004595471",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987004262
+  },
+  {
+    "work_id": "4q77fq99b6p",
+    "catalog_system_number": "004561137",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-20",
+    "oclc_number": 983464105
+  },
+  {
+    "work_id": "4q77fq99v08",
+    "catalog_system_number": "004615785",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-19",
+    "oclc_number": 994205286
+  },
+  {
+    "work_id": "4t64gm82g49",
+    "catalog_system_number": "004333084",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-14",
+    "oclc_number": 939631152
+  },
+  {
+    "work_id": "4t64gm82h1k",
+    "catalog_system_number": "004370251",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-30",
+    "oclc_number": 945730951
+  },
+  {
+    "work_id": "4x51hh65r8r",
+    "catalog_system_number": "004333224",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 939922935
+  },
+  {
+    "work_id": "4x51hh65t3n",
+    "catalog_system_number": "004515316",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800282
+  },
+  {
+    "work_id": "4x51hh66233",
+    "catalog_system_number": "004626490",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 999312675
+  },
+  {
+    "work_id": "5138jd4916q",
+    "catalog_system_number": "004333091",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 939639480
+  },
+  {
+    "work_id": "5138jd4958n",
+    "catalog_system_number": "004595473",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987004004
+  },
+  {
+    "work_id": "5138jd49p3k",
+    "catalog_system_number": "004638156",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-26",
+    "oclc_number": 1001466815
+  },
+  {
+    "work_id": "5425k932999",
+    "catalog_system_number": "004333079",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-17",
+    "oclc_number": 939627442
+  },
+  {
+    "work_id": "5425k932b0h",
+    "catalog_system_number": "004333081",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-14",
+    "oclc_number": 939628698
+  },
+  {
+    "work_id": "5425k932c5j",
+    "catalog_system_number": "004513408",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-01",
+    "oclc_number": 965450962
+  },
+  {
+    "work_id": "5425k933011",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "5712m615k81",
+    "catalog_system_number": "004333519",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 940506583
+  },
+  {
+    "work_id": "5712m615m1x",
+    "catalog_system_number": "004333185",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-07",
+    "oclc_number": 939910161
+  },
+  {
+    "work_id": "5712m615m59",
+    "catalog_system_number": "004372551",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-01",
+    "oclc_number": 946323466
+  },
+  {
+    "work_id": "5712m616755",
+    "catalog_system_number": "004636309",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-11",
+    "oclc_number": 1000519395
+  },
+  {
+    "work_id": "5999n298x7t",
+    "catalog_system_number": "004515315",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800423
+  },
+  {
+    "work_id": "5999n29911z",
+    "catalog_system_number": "004595475",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987004364
+  },
+  {
+    "work_id": "5999n299j39",
+    "catalog_system_number": "004792066",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035948097
+  },
+  {
+    "work_id": "5d86nz8250r",
+    "catalog_system_number": "004333095",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-22",
+    "oclc_number": 939646097
+  },
+  {
+    "work_id": "5d86nz8292p",
+    "catalog_system_number": "004595769",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-12",
+    "oclc_number": 987220789
+  },
+  {
+    "work_id": "5d86nz82f80",
+    "catalog_system_number": "004612532",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-06",
+    "oclc_number": 992978249
+  },
+  {
+    "work_id": "5h73pv65f3v",
+    "catalog_system_number": "004334009",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-14",
+    "oclc_number": 940756809
+  },
+  {
+    "work_id": "5h73pv65f46",
+    "catalog_system_number": "004333444",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940504469
+  },
+  {
+    "work_id": "5h73pv6635q",
+    "catalog_system_number": "004784446",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032375981
+  },
+  {
+    "work_id": "5m60qr49b9v",
+    "catalog_system_number": "004625865",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 997244875
+  },
+  {
+    "work_id": "5q47rn3216c",
+    "catalog_system_number": "004433159",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 954055775
+  },
+  {
+    "work_id": "5t34sj1587g",
+    "catalog_system_number": "004336348",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-09",
+    "oclc_number": 942739142
+  },
+  {
+    "work_id": "5t34sj15x19",
+    "catalog_system_number": "004626487",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 999310583
+  },
+  {
+    "work_id": "5t34sj15x7c",
+    "catalog_system_number": "004733103",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-12",
+    "oclc_number": 1028239469
+  },
+  {
+    "work_id": "5t34sj15x8q",
+    "catalog_system_number": "004791800",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035764899
+  },
+  {
+    "work_id": "5x21td98j83",
+    "catalog_system_number": "004333469",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-09",
+    "oclc_number": 940504835
+  },
+  {
+    "work_id": "5x21td98k3p",
+    "catalog_system_number": "004396453",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948809532
+  },
+  {
+    "work_id": "5x21td98p70",
+    "catalog_system_number": "004595474",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-11",
+    "oclc_number": 987004343
+  },
+  {
+    "work_id": "5x21td9964w",
+    "catalog_system_number": "004636010",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-10",
+    "oclc_number": 1000386279
+  },
+  {
+    "work_id": "6108v981t8z",
+    "catalog_system_number": "004334078",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-20",
+    "oclc_number": 940800798
+  },
+  {
+    "work_id": "6108v982g3d",
+    "catalog_system_number": "004642081",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1001928440
+  },
+  {
+    "work_id": "6395w66545j",
+    "catalog_system_number": "004395089",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948680857
+  },
+  {
+    "work_id": "6395w66579v",
+    "catalog_system_number": "004576299",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 985003052
+  },
+  {
+    "work_id": "6395w665s12",
+    "catalog_system_number": "004791830",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035766203
+  },
+  {
+    "work_id": "6682x348f37",
+    "catalog_system_number": "004464022",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-10-06",
+    "oclc_number": 959983420
+  },
+  {
+    "work_id": "6682x34915g",
+    "catalog_system_number": "004626928",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 999728516
+  },
+  {
+    "work_id": "6969z031p2d",
+    "catalog_system_number": "004333504",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-07",
+    "oclc_number": 940505184
+  },
+  {
+    "work_id": "6969z031p6s",
+    "catalog_system_number": "004372533",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-05",
+    "oclc_number": 946317973
+  },
+  {
+    "work_id": "6d56zw15k7w",
+    "catalog_system_number": "004642727",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1002210822
+  },
+  {
+    "work_id": "6d56zw15m45",
+    "catalog_system_number": "004791983",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035848747
+  },
+  {
+    "work_id": "6h440r98720",
+    "catalog_system_number": "004333917",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-04",
+    "oclc_number": 940560767
+  },
+  {
+    "work_id": "6h440r9874p",
+    "catalog_system_number": "004333531",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940507993
+  },
+  {
+    "work_id": "6h440r98782",
+    "catalog_system_number": "004373167",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-12",
+    "oclc_number": 946514276
+  },
+  {
+    "work_id": "6h440r9883n",
+    "catalog_system_number": "004416820",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-21",
+    "oclc_number": 952027460
+  },
+  {
+    "work_id": "6m311n81j7k",
+    "catalog_system_number": "004471789",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-10-24",
+    "oclc_number": 961213694
+  },
+  {
+    "work_id": "6m311n81n4g",
+    "catalog_system_number": "004596385",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987262847
+  },
+  {
+    "work_id": "6m311n81t0n",
+    "catalog_system_number": "004625762",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 995852488
+  },
+  {
+    "work_id": "6m311n8249t",
+    "catalog_system_number": "004619980",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-26",
+    "oclc_number": 995162344
+  },
+  {
+    "work_id": "6m311n8252q",
+    "catalog_system_number": "004670774",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-28",
+    "oclc_number": 1004957532
+  },
+  {
+    "work_id": "6q182j64s68",
+    "catalog_system_number": "004333544",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940508599
+  },
+  {
+    "work_id": "6q182j65f3d",
+    "catalog_system_number": "004669648",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-22",
+    "oclc_number": 1004739818
+  },
+  {
+    "work_id": "6q182j65f7s",
+    "catalog_system_number": "004792057",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035946996
+  },
+  {
+    "work_id": "6t053f4826m",
+    "catalog_system_number": "004334242",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-21",
+    "oclc_number": 941130030
+  },
+  {
+    "work_id": "6t053f48q1s",
+    "catalog_system_number": "004625764",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 995852510
+  },
+  {
+    "work_id": "6w924b31b8t",
+    "catalog_system_number": "004333562",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940509273
+  },
+  {
+    "work_id": "6w924b3209b",
+    "catalog_system_number": "004792074",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035948645
+  },
+  {
+    "work_id": "70795714n3s",
+    "catalog_system_number": "004370371",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-01",
+    "oclc_number": 945770456
+  },
+  {
+    "work_id": "70795714n8h",
+    "catalog_system_number": "004424538",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-12",
+    "oclc_number": 953453122
+  },
+  {
+    "work_id": "70795714p1d",
+    "catalog_system_number": "004470599",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-10-13",
+    "oclc_number": 961103931
+  },
+  {
+    "work_id": "7079571583n",
+    "catalog_system_number": "004614850",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-12",
+    "oclc_number": 993603176
+  },
+  {
+    "work_id": "7079571590x",
+    "catalog_system_number": "004792168",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": 1035956212
+  },
+  {
+    "work_id": "73666397x01",
+    "catalog_system_number": "004333988",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940576894
+  },
+  {
+    "work_id": "73666397x63",
+    "catalog_system_number": "004398608",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-10",
+    "oclc_number": 949846821
+  },
+  {
+    "work_id": "7366639819b",
+    "catalog_system_number": "004598357",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987380959
+  },
+  {
+    "work_id": "79407w64h1d",
+    "catalog_system_number": "004424280",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-07",
+    "oclc_number": 953414212
+  },
+  {
+    "work_id": "79407w64m4c",
+    "catalog_system_number": "004610752",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-30",
+    "oclc_number": 992709851
+  },
+  {
+    "work_id": "7d278s47s85",
+    "catalog_system_number": "004515317",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800425
+  },
+  {
+    "work_id": "7d278s48c7c",
+    "catalog_system_number": "004626929",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999728361
+  },
+  {
+    "work_id": "7h149p31536",
+    "catalog_system_number": "004596406",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987265730
+  },
+  {
+    "work_id": "7m01bk1495q",
+    "catalog_system_number": "004333901",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-09",
+    "oclc_number": 940555314
+  },
+  {
+    "work_id": "7m01bk14c0m",
+    "catalog_system_number": "004515135",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965618831
+  },
+  {
+    "work_id": "7m01bk14x9p",
+    "catalog_system_number": "004615411",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-14",
+    "oclc_number": 993878244
+  },
+  {
+    "work_id": "7m01bk14z6z",
+    "catalog_system_number": "004791835",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035766396
+  },
+  {
+    "work_id": "7p88cf97q5g",
+    "catalog_system_number": "004598311",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987379238
+  },
+  {
+    "work_id": "7p88cf98773",
+    "catalog_system_number": "004792081",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035948729
+  },
+  {
+    "work_id": "7s75db80v7g",
+    "catalog_system_number": "004333900",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-08",
+    "oclc_number": 940554710
+  },
+  {
+    "work_id": "7s75db80w6f",
+    "catalog_system_number": "004425136",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-12",
+    "oclc_number": 953584333
+  },
+  {
+    "work_id": "7s75db81h38",
+    "catalog_system_number": "004627084",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1000048107
+  },
+  {
+    "work_id": "7w62f764543",
+    "catalog_system_number": "004399169",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-16",
+    "oclc_number": 949904252
+  },
+  {
+    "work_id": "7w62f764632",
+    "catalog_system_number": "004515312",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-05",
+    "oclc_number": 965800428
+  },
+  {
+    "work_id": "8049g447f8v",
+    "catalog_system_number": "004422295",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-06",
+    "oclc_number": 953100342
+  },
+  {
+    "work_id": "8049g447j8s",
+    "catalog_system_number": "004598364",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987381009
+  },
+  {
+    "work_id": "8336h130t9p",
+    "catalog_system_number": "004597090",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987303577
+  },
+  {
+    "work_id": "8336h131b6k",
+    "catalog_system_number": "004636016",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-10",
+    "oclc_number": 1000386867
+  },
+  {
+    "work_id": "8336h131c15",
+    "catalog_system_number": "004791842",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035767377
+  },
+  {
+    "work_id": "8623hx1411g",
+    "catalog_system_number": "004433383",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954195304
+  },
+  {
+    "work_id": "8c97kp80k2w",
+    "catalog_system_number": "004425156",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-01",
+    "oclc_number": 953584942
+  },
+  {
+    "work_id": "8c97kp80p2t",
+    "catalog_system_number": "004561142",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-20",
+    "oclc_number": 983464667
+  },
+  {
+    "work_id": "8c97kp8164f",
+    "catalog_system_number": "004792140",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": 1035955083
+  },
+  {
+    "work_id": "8g84mk63v9c",
+    "catalog_system_number": "004517486",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-20",
+    "oclc_number": 966447776
+  },
+  {
+    "work_id": "8k71ng4739d",
+    "catalog_system_number": "004372584",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-08",
+    "oclc_number": 946357625
+  },
+  {
+    "work_id": "8p58pc31109",
+    "catalog_system_number": "004626939",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999728597
+  },
+  {
+    "work_id": "8s45q813n4k",
+    "catalog_system_number": "004334098",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-14",
+    "oclc_number": 940806016
+  },
+  {
+    "work_id": "8s45q813n68",
+    "catalog_system_number": "004334101",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-27",
+    "oclc_number": 940808573
+  },
+  {
+    "work_id": "8s45q813p6k",
+    "catalog_system_number": "004424278",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-01",
+    "oclc_number": 953414176
+  },
+  {
+    "work_id": "8s45q813s6h",
+    "catalog_system_number": "004581056",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-03",
+    "oclc_number": 985512889
+  },
+  {
+    "work_id": "8s45q81494r",
+    "catalog_system_number": "004676842",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-10-19",
+    "oclc_number": 1007135918
+  },
+  {
+    "work_id": "8s45q814984",
+    "catalog_system_number": "004791792",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035763260
+  },
+  {
+    "work_id": "8w32r496z76",
+    "catalog_system_number": "004421756",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-01",
+    "oclc_number": 953032755
+  },
+  {
+    "work_id": "8w32r497k2b",
+    "catalog_system_number": "004626935",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999728447
+  },
+  {
+    "work_id": "9019s18068c",
+    "catalog_system_number": "004334106",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-31",
+    "oclc_number": 940811276
+  },
+  {
+    "work_id": "9019s180v6k",
+    "catalog_system_number": "004677269",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-10-23",
+    "oclc_number": 1007537018
+  },
+  {
+    "work_id": "9306sx63h46",
+    "catalog_system_number": "004372512",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-05",
+    "oclc_number": 946312543
+  },
+  {
+    "work_id": "9306sx63j5v",
+    "catalog_system_number": "004513337",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965386528
+  },
+  {
+    "work_id": "9306sx63m9v",
+    "catalog_system_number": "004599306",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987492835
+  },
+  {
+    "work_id": "9306sx6451b",
+    "catalog_system_number": "004792078",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035948777
+  },
+  {
+    "work_id": "9593tt46s16",
+    "catalog_system_number": "004334212",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-14",
+    "oclc_number": 940994187
+  },
+  {
+    "work_id": "9593tt47f2q",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "9880vq30618",
+    "catalog_system_number": "004599295",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987487852
+  },
+  {
+    "work_id": "9c67wm13c83",
+    "catalog_system_number": "004515318",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800609
+  },
+  {
+    "work_id": "9c67wm13z71",
+    "catalog_system_number": "004627721",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1000151436
+  },
+  {
+    "work_id": "9g54xg96m82",
+    "catalog_system_number": "004393961",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 948290405
+  },
+  {
+    "work_id": "9g54xg96n9q",
+    "catalog_system_number": "004515323",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800577
+  },
+  {
+    "work_id": "9g54xg97856",
+    "catalog_system_number": "004792058",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035947762
+  },
+  {
+    "work_id": "9k41zc80h9t",
+    "catalog_system_number": "004626931",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999728524
+  },
+  {
+    "work_id": "9p29086371k",
+    "catalog_system_number": "004513714",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965486329
+  },
+  {
+    "work_id": "9p290863t7x",
+    "catalog_system_number": "004792166",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": 1035955954
+  },
+  {
+    "work_id": "9s161546g1b",
+    "catalog_system_number": "004372419",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-07",
+    "oclc_number": 946163199
+  },
+  {
+    "work_id": "9s161546h20",
+    "catalog_system_number": "004515569",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965831595
+  },
+  {
+    "work_id": "9w032229q8h",
+    "catalog_system_number": "004334819",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-17",
+    "oclc_number": 941967806
+  },
+  {
+    "work_id": "9w032229v93",
+    "catalog_system_number": "004600518",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-25",
+    "oclc_number": 988087525
+  },
+  {
+    "work_id": "b2773t9699c",
+    "catalog_system_number": "004425048",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-13",
+    "oclc_number": 953578003
+  },
+  {
+    "work_id": "b2773t96d99",
+    "catalog_system_number": "004597378",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987376031
+  },
+  {
+    "work_id": "b2773t96x47",
+    "catalog_system_number": "004642364",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1002064586
+  },
+  {
+    "work_id": "b5644q79k0b",
+    "catalog_system_number": "004334243",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-09-14",
+    "oclc_number": 941131079
+  },
+  {
+    "work_id": "b5644q79m6q",
+    "catalog_system_number": "004515150",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-08",
+    "oclc_number": 965626518
+  },
+  {
+    "work_id": "b5644q8065d",
+    "catalog_system_number": "004627137",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053912
+  },
+  {
+    "work_id": "bc386h46488",
+    "catalog_system_number": "004396451",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948808954
+  },
+  {
+    "work_id": "bc386h4658k",
+    "catalog_system_number": "004515265",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-09",
+    "oclc_number": 965798277
+  },
+  {
+    "work_id": "bc386h4682f",
+    "catalog_system_number": "004593497",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-05",
+    "oclc_number": 986222282
+  },
+  {
+    "work_id": "bc386h46s3f",
+    "catalog_system_number": "004737339",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-22",
+    "oclc_number": 1029353058
+  },
+  {
+    "work_id": "bg257d29f3x",
+    "catalog_system_number": "004423839",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-07",
+    "oclc_number": 953412525
+  },
+  {
+    "work_id": "bk128912r0r",
+    "catalog_system_number": "004513346",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965387345
+  },
+  {
+    "work_id": "bk128913993",
+    "catalog_system_number": "004627132",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 1000053722
+  },
+  {
+    "work_id": "bk128913b51",
+    "catalog_system_number": "004737533",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-23",
+    "oclc_number": 1029547920
+  },
+  {
+    "work_id": "bk128913b6c",
+    "catalog_system_number": "004788137",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-27",
+    "oclc_number": 1033410936
+  },
+  {
+    "work_id": "bn999595z5c",
+    "catalog_system_number": "004334244",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-09-28",
+    "oclc_number": 941131696
+  },
+  {
+    "work_id": "bn999596007",
+    "catalog_system_number": "004373246",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-12",
+    "oclc_number": 946529360
+  },
+  {
+    "work_id": "bv73bz62j73",
+    "catalog_system_number": "004432840",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 953970401
+  },
+  {
+    "work_id": "bv73bz62k31",
+    "catalog_system_number": "004515320",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800611
+  },
+  {
+    "work_id": "bv73bz6359n",
+    "catalog_system_number": "004792142",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": 1035955353
+  },
+  {
+    "work_id": "bz60cv45s9j",
+    "catalog_system_number": "004334246",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-15",
+    "oclc_number": 941133579
+  },
+  {
+    "work_id": "c247dr2934s",
+    "catalog_system_number": "004372525",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-07",
+    "oclc_number": 946316781
+  },
+  {
+    "work_id": "c247dr2945f",
+    "catalog_system_number": "004515327",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-08",
+    "oclc_number": 965800706
+  },
+  {
+    "work_id": "c534fn1305j",
+    "catalog_system_number": "004627140",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053954
+  },
+  {
+    "work_id": "c534fn1312t",
+    "catalog_system_number": "004792205",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035956929
+  },
+  {
+    "work_id": "c821gh95n7n",
+    "catalog_system_number": "004396995",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949266820
+  },
+  {
+    "work_id": "c821gh95p7z",
+    "catalog_system_number": "004515329",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-08",
+    "oclc_number": 965800741
+  },
+  {
+    "work_id": "c821gh96865",
+    "catalog_system_number": "004641813",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1001807395
+  },
+  {
+    "work_id": "c821gh9693f",
+    "catalog_system_number": "004791793",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035763551
+  },
+  {
+    "work_id": "cc08hd78x28",
+    "catalog_system_number": "004334843",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-09-28",
+    "oclc_number": 941974510
+  },
+  {
+    "work_id": "cf95j96279s",
+    "catalog_system_number": "004515321",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-06",
+    "oclc_number": 965800576
+  },
+  {
+    "work_id": "cf95j962v1m",
+    "catalog_system_number": "004677217",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-10-24",
+    "oclc_number": 1007523515
+  },
+  {
+    "work_id": "cj82k645g24",
+    "catalog_system_number": "004334214",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-04",
+    "oclc_number": 940998548
+  },
+  {
+    "work_id": "cj82k645g9j",
+    "catalog_system_number": "004372530",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-06",
+    "oclc_number": 946317761
+  },
+  {
+    "work_id": "cj82k645m42",
+    "catalog_system_number": "004581052",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985512080
+  },
+  {
+    "work_id": "cj82k64639d",
+    "catalog_system_number": "004641946",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1001812181
+  },
+  {
+    "work_id": "cj82k64645b",
+    "catalog_system_number": "004746863",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-10",
+    "oclc_number": 1031034002
+  },
+  {
+    "work_id": "cj82k64646p",
+    "catalog_system_number": "004792060",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1035947884
+  },
+  {
+    "work_id": "cn69m328s1f",
+    "catalog_system_number": "004396990",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949266297
+  },
+  {
+    "work_id": "cn69m328w5r",
+    "catalog_system_number": "004560126",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-13",
+    "oclc_number": 982482641
+  },
+  {
+    "work_id": "cn69m329d30",
+    "catalog_system_number": "004692718",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-13",
+    "oclc_number": 1011355544
+  },
+  {
+    "work_id": "cn69m329d7c",
+    "catalog_system_number": "004791343",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035632958
+  },
+  {
+    "work_id": "cr56n012218",
+    "catalog_system_number": "004376799",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-14",
+    "oclc_number": 946636685
+  },
+  {
+    "work_id": "cr56n01256x",
+    "catalog_system_number": "004576288",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 985000075
+  },
+  {
+    "work_id": "cr56n012p1v",
+    "catalog_system_number": "004642108",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-24",
+    "oclc_number": 1001950314
+  },
+  {
+    "work_id": "cv43nv95b32",
+    "catalog_system_number": "004395157",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948684252
+  },
+  {
+    "work_id": "cv43nv95b8s",
+    "catalog_system_number": "004437219",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-10",
+    "oclc_number": 956458013
+  },
+  {
+    "work_id": "cv43nv95f7c",
+    "catalog_system_number": "004597347",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987330927
+  },
+  {
+    "work_id": "cv43nv95z9q",
+    "catalog_system_number": "004791364",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035635787
+  },
+  {
+    "work_id": "cz30pr79730",
+    "catalog_system_number": "004643267",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 1002569835
+  },
+  {
+    "work_id": "cz30pr79792",
+    "catalog_system_number": "004784453",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032388268
+  },
+  {
+    "work_id": "d217qn61w5p",
+    "catalog_system_number": "004395094",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948681188
+  },
+  {
+    "work_id": "d217qn61x50",
+    "catalog_system_number": "004513994",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965550614
+  },
+  {
+    "work_id": "d217qn62j1g",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "d504rj45509",
+    "catalog_system_number": "004334247",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-09-30",
+    "oclc_number": 941135619
+  },
+  {
+    "work_id": "d504rj45551",
+    "catalog_system_number": "004375607",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-13",
+    "oclc_number": 946607913
+  },
+  {
+    "work_id": "d504rj4556c",
+    "catalog_system_number": "004395092",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948680927
+  },
+  {
+    "work_id": "d504rj45s5m",
+    "catalog_system_number": "004642419",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 1002073519
+  },
+  {
+    "work_id": "d504rj45t1j",
+    "catalog_system_number": "004787095",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032441825
+  },
+  {
+    "work_id": "d791sf28f3c",
+    "catalog_system_number": "004334274",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-02-26",
+    "oclc_number": 941157884
+  },
+  {
+    "work_id": "d791sf28f7r",
+    "catalog_system_number": "004394525",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948602332
+  },
+  {
+    "work_id": "d791sf28g72",
+    "catalog_system_number": "004513423",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965454152
+  },
+  {
+    "work_id": "d791sf28k1x",
+    "catalog_system_number": "004643264",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-17",
+    "oclc_number": 1002625578
+  },
+  {
+    "work_id": "d791sf2933j",
+    "catalog_system_number": "004792145",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": 1035955844
+  },
+  {
+    "work_id": "db78tb12b7f",
+    "catalog_system_number": "004642082",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 1001906123
+  },
+  {
+    "work_id": "df65v695012",
+    "catalog_system_number": "004334482",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-16",
+    "oclc_number": 941239186
+  },
+  {
+    "work_id": "df65v695132",
+    "catalog_system_number": "004425023",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-13",
+    "oclc_number": 953576445
+  },
+  {
+    "work_id": "df65v695n1z",
+    "catalog_system_number": "004689331",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-10-27",
+    "oclc_number": 1008567071
+  },
+  {
+    "work_id": "df65v695n5b",
+    "catalog_system_number": "004792072",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035948491
+  },
+  {
+    "work_id": "dj52w378903",
+    "catalog_system_number": "004396459",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948810038
+  },
+  {
+    "work_id": "dj52w378b0d",
+    "catalog_system_number": "004514002",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965551353
+  },
+  {
+    "work_id": "dj52w378d4d",
+    "catalog_system_number": "004598341",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987379666
+  },
+  {
+    "work_id": "dj52w378w9g",
+    "catalog_system_number": "004615764",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-19",
+    "oclc_number": 994155209
+  },
+  {
+    "work_id": "dj52w378x6r",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "dn39x061j3n",
+    "catalog_system_number": "004336350",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-22",
+    "oclc_number": 942740248
+  },
+  {
+    "work_id": "dn39x061j9q",
+    "catalog_system_number": "004368056",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-21",
+    "oclc_number": 945197340
+  },
+  {
+    "work_id": "dn39x061k0x",
+    "catalog_system_number": "004377325",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-15",
+    "oclc_number": 946754365
+  },
+  {
+    "work_id": "dn39x061p5k",
+    "catalog_system_number": "004599297",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987489130
+  },
+  {
+    "work_id": "dn39x06250g",
+    "catalog_system_number": "004619939",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-24",
+    "oclc_number": 995051257
+  },
+  {
+    "work_id": "dn39x06260s",
+    "catalog_system_number": "004627023",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 999820032
+  },
+  {
+    "work_id": "dn39x06263t",
+    "catalog_system_number": "004691596",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-07",
+    "oclc_number": 1010500034
+  },
+  {
+    "work_id": "dn39x062676",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "dr26xw44t6k",
+    "catalog_system_number": "004334822",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-12",
+    "oclc_number": 941968451
+  },
+  {
+    "work_id": "dr26xw44v2h",
+    "catalog_system_number": "004395188",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948692371
+  },
+  {
+    "work_id": "dv13zs2842v",
+    "catalog_system_number": "004372531",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-06",
+    "oclc_number": 946317437
+  },
+  {
+    "work_id": "dv13zs2853h",
+    "catalog_system_number": "004515311",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-09",
+    "oclc_number": 965800398
+  },
+  {
+    "work_id": "dv13zs28r2f",
+    "catalog_system_number": "004626784",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 999607881
+  },
+  {
+    "work_id": "dz010p11c7z",
+    "catalog_system_number": "004334826",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 941968712
+  },
+  {
+    "work_id": "dz010p1203f",
+    "catalog_system_number": "004643045",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 1002219487
+  },
+  {
+    "work_id": "dz010p1216s",
+    "catalog_system_number": "004689330",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-10-27",
+    "oclc_number": 1008567097
+  },
+  {
+    "work_id": "f1881j94q5f",
+    "catalog_system_number": "004513723",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965500247
+  },
+  {
+    "work_id": "f1881j94s9f",
+    "catalog_system_number": "004580898",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 985370035
+  },
+  {
+    "work_id": "f1881j9594n",
+    "catalog_system_number": "004618355",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-24",
+    "oclc_number": 994684789
+  },
+  {
+    "work_id": "f1881j95b1x",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "f4752f77x8x",
+    "catalog_system_number": "004334831",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-22",
+    "oclc_number": 941969773
+  },
+  {
+    "work_id": "f4752f77z6j",
+    "catalog_system_number": "004396994",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 949266758
+  },
+  {
+    "work_id": "f4752f78002",
+    "catalog_system_number": "004424757",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-13",
+    "oclc_number": 953529104
+  },
+  {
+    "work_id": "f4752f78k83",
+    "catalog_system_number": "004692589",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-08",
+    "oclc_number": 1011094701
+  },
+  {
+    "work_id": "f7623b61c1w",
+    "catalog_system_number": "004596383",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987262413
+  },
+  {
+    "work_id": "f7623b61c3k",
+    "catalog_system_number": "004601679",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-26",
+    "oclc_number": 988396829
+  },
+  {
+    "work_id": "f7623b61v6z",
+    "catalog_system_number": "004627138",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053906
+  },
+  {
+    "work_id": "f7623b61w37",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "fb494744h72",
+    "catalog_system_number": "004393174",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948211134
+  },
+  {
+    "work_id": "fb494744h8d",
+    "catalog_system_number": "004394068",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-29",
+    "oclc_number": 948298692
+  },
+  {
+    "work_id": "fb494744t3g",
+    "catalog_system_number": "004636091",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 1000389797
+  },
+  {
+    "work_id": "fb49474552h",
+    "catalog_system_number": "004709932",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-18",
+    "oclc_number": 1018472338
+  },
+  {
+    "work_id": "fb494745546",
+    "catalog_system_number": "004787267",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-27",
+    "oclc_number": 1032616753
+  },
+  {
+    "work_id": "ff365427s8g",
+    "catalog_system_number": "004391247",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947838274
+  },
+  {
+    "work_id": "ff365427t32",
+    "catalog_system_number": "004425340",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-11",
+    "oclc_number": 953692920
+  },
+  {
+    "work_id": "ff365427t4d",
+    "catalog_system_number": "004437218",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-10",
+    "oclc_number": 956457839
+  },
+  {
+    "work_id": "ff365427x19",
+    "catalog_system_number": "004542843",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-14",
+    "oclc_number": 976009702
+  },
+  {
+    "work_id": "ff365427x30",
+    "catalog_system_number": "004570207",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-24",
+    "oclc_number": 983835128
+  },
+  {
+    "work_id": "ff365428d8b",
+    "catalog_system_number": "004620389",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-27",
+    "oclc_number": 995356023
+  },
+  {
+    "work_id": "fj236111645",
+    "catalog_system_number": "004598315",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987379216
+  },
+  {
+    "work_id": "fj236111q55",
+    "catalog_system_number": "004788138",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033411049
+  },
+  {
+    "work_id": "fn106w94c19",
+    "catalog_system_number": "004398607",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-06",
+    "oclc_number": 949846845
+  },
+  {
+    "work_id": "fn106w94d1m",
+    "catalog_system_number": "004515325",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965800686
+  },
+  {
+    "work_id": "fn106w9500t",
+    "catalog_system_number": "004627141",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053981
+  },
+  {
+    "work_id": "fn106w95077",
+    "catalog_system_number": "004792174",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035956331
+  },
+  {
+    "work_id": "fq977s77r68",
+    "catalog_system_number": "004599299",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987490184
+  },
+  {
+    "work_id": "fq977s7887j",
+    "catalog_system_number": "004787634",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-27",
+    "oclc_number": 1032811837
+  },
+  {
+    "work_id": "ft848p60x8k",
+    "catalog_system_number": "004447734",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-20",
+    "oclc_number": 958841167
+  },
+  {
+    "work_id": "ft848p6117f",
+    "catalog_system_number": "004576304",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-28",
+    "oclc_number": 985003948
+  },
+  {
+    "work_id": "ft848p6168b",
+    "catalog_system_number": "004625761",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 995851826
+  },
+  {
+    "work_id": "ft848p61j5d",
+    "catalog_system_number": "004691622",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-07",
+    "oclc_number": 1010503053
+  },
+  {
+    "work_id": "ft848p61j73",
+    "catalog_system_number": "004709933",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-19",
+    "oclc_number": 1018472414
+  },
+  {
+    "work_id": "fx719k4464j",
+    "catalog_system_number": "004395085",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948677737
+  },
+  {
+    "work_id": "g158bg27g9n",
+    "catalog_system_number": "004424281",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-07",
+    "oclc_number": 953414224
+  },
+  {
+    "work_id": "g158bg27h5k",
+    "catalog_system_number": "004515566",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-07",
+    "oclc_number": 965831449
+  },
+  {
+    "work_id": "g158bg27m14",
+    "catalog_system_number": "004600315",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-24",
+    "oclc_number": 988027543
+  },
+  {
+    "work_id": "g445cc10r65",
+    "catalog_system_number": "004397241",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949664629
+  },
+  {
+    "work_id": "g445cc11c8q",
+    "catalog_system_number": "004700235",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-06",
+    "oclc_number": 1014150172
+  },
+  {
+    "work_id": "g445cc11d1m",
+    "catalog_system_number": "004789821",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-07",
+    "oclc_number": 1034800408
+  },
+  {
+    "work_id": "g732d794172",
+    "catalog_system_number": "004395096",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948681345
+  },
+  {
+    "work_id": "g732d794219",
+    "catalog_system_number": "004430389",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-15",
+    "oclc_number": 953735956
+  },
+  {
+    "work_id": "g732d79422n",
+    "catalog_system_number": "004439269",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-19",
+    "oclc_number": 957002694
+  },
+  {
+    "work_id": "g732d794517",
+    "catalog_system_number": "004570083",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-21",
+    "oclc_number": 983779660
+  },
+  {
+    "work_id": "g732d794g8f",
+    "catalog_system_number": "004610547",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-27",
+    "oclc_number": 992173443
+  },
+  {
+    "work_id": "g732d794n69",
+    "catalog_system_number": "004620396",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 995356060
+  },
+  {
+    "work_id": "g732d794p27",
+    "catalog_system_number": "004771272",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032262472
+  },
+  {
+    "work_id": "g732d794p3k",
+    "catalog_system_number": "004791848",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035767570
+  },
+  {
+    "work_id": "gb19f47791b",
+    "catalog_system_number": "004334759",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-24",
+    "oclc_number": 941932153
+  },
+  {
+    "work_id": "gb19f47797d",
+    "catalog_system_number": "004390780",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947501254
+  },
+  {
+    "work_id": "gb19f477f4m",
+    "catalog_system_number": "004603694",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-06",
+    "oclc_number": 989125054
+  },
+  {
+    "work_id": "gf06g160q3t",
+    "catalog_system_number": "004597053",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987300936
+  },
+  {
+    "work_id": "gf06g161685",
+    "catalog_system_number": "004617259",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-21",
+    "oclc_number": 994608786
+  },
+  {
+    "work_id": "gf06g16175f",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "gh93gx43v4s",
+    "catalog_system_number": "004336363",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-16",
+    "oclc_number": 942744771
+  },
+  {
+    "work_id": "gh93gx43w0q",
+    "catalog_system_number": "004378453",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-19",
+    "oclc_number": 946938791
+  },
+  {
+    "work_id": "gh93gx44049",
+    "catalog_system_number": "004561139",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-20",
+    "oclc_number": 983464482
+  },
+  {
+    "work_id": "gh93gx44h6n",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "gm80ht27s0n",
+    "catalog_system_number": "004618363",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 994862407
+  },
+  {
+    "work_id": "gm80ht27s6q",
+    "catalog_system_number": "004788613",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033411645
+  },
+  {
+    "work_id": "gq67jq10f2k",
+    "catalog_system_number": "004395144",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948682821
+  },
+  {
+    "work_id": "gq67jq1128h",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "gt54kk93q36",
+    "catalog_system_number": "004395097",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-03",
+    "oclc_number": 948681387
+  },
+  {
+    "work_id": "gt54kk93q7k",
+    "catalog_system_number": "004432972",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 953994596
+  },
+  {
+    "work_id": "gt54kk94b2q",
+    "catalog_system_number": "004643085",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 1002301626
+  },
+  {
+    "work_id": "gt54kk94b8s",
+    "catalog_system_number": "004788615",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033411877
+  },
+  {
+    "work_id": "gx41mg77386",
+    "catalog_system_number": "004601687",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-30",
+    "oclc_number": 988397755
+  },
+  {
+    "work_id": "gx41mg77m34",
+    "catalog_system_number": "004619981",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-26",
+    "oclc_number": 995162432
+  },
+  {
+    "work_id": "h128nc6084r",
+    "catalog_system_number": "004391294",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947843814
+  },
+  {
+    "work_id": "h128nc60853",
+    "catalog_system_number": "004397613",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949716326
+  },
+  {
+    "work_id": "h128nc60c9d",
+    "catalog_system_number": "004597372",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987368039
+  },
+  {
+    "work_id": "h128nc60x08",
+    "catalog_system_number": "004788657",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033618739
+  },
+  {
+    "work_id": "h415p843h8w",
+    "catalog_system_number": "004338119",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-03",
+    "oclc_number": 944032051
+  },
+  {
+    "work_id": "h415p843p2c",
+    "catalog_system_number": "004603451",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-05",
+    "oclc_number": 989063033
+  },
+  {
+    "work_id": "h702q526t7x",
+    "catalog_system_number": "004395514",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948759096
+  },
+  {
+    "work_id": "h702q527g2c",
+    "catalog_system_number": "004771522",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032303058
+  },
+  {
+    "work_id": "h702q527g3q",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "h989r21038b",
+    "catalog_system_number": "004395403",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948747796
+  },
+  {
+    "work_id": "hd76rx93c73",
+    "catalog_system_number": "004368075",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-21",
+    "oclc_number": 945199304
+  },
+  {
+    "work_id": "hd76rx93c8f",
+    "catalog_system_number": "004390777",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947492216
+  },
+  {
+    "work_id": "hd76rx93d31",
+    "catalog_system_number": "004432623",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-21",
+    "oclc_number": 953870146
+  },
+  {
+    "work_id": "hd76rx93d5q",
+    "catalog_system_number": "004439568",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-22",
+    "oclc_number": 957154526
+  },
+  {
+    "work_id": "hh63st7789q",
+    "catalog_system_number": "004627730",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 1000151787
+  },
+  {
+    "work_id": "hm50tq59z5v",
+    "catalog_system_number": "004433202",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954140172
+  },
+  {
+    "work_id": "hq37vm43827",
+    "catalog_system_number": "004517079",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-19",
+    "oclc_number": 966444892
+  },
+  {
+    "work_id": "ht24wh26h7q",
+    "catalog_system_number": "004433214",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954148600
+  },
+  {
+    "work_id": "ht24wh26h9d",
+    "catalog_system_number": "004440037",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-24",
+    "oclc_number": 957233967
+  },
+  {
+    "work_id": "ht24wh2747k",
+    "catalog_system_number": "004712151",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-18",
+    "oclc_number": 1020068502
+  },
+  {
+    "work_id": "ht24wh2748x",
+    "catalog_system_number": "004791407",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035640528
+  },
+  {
+    "work_id": "hx11xd09s3d",
+    "catalog_system_number": "004378544",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-19",
+    "oclc_number": 946944658
+  },
+  {
+    "work_id": "hx11xd10d3r",
+    "catalog_system_number": "004627733",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 1000151848
+  },
+  {
+    "work_id": "j098z89319g",
+    "catalog_system_number": "004336986",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-26",
+    "oclc_number": 943120468
+  },
+  {
+    "work_id": "j098z893p9c",
+    "catalog_system_number": "004712133",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-11",
+    "oclc_number": 1020067418
+  },
+  {
+    "work_id": "j3860576b5m",
+    "catalog_system_number": "004391280",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 947843624
+  },
+  {
+    "work_id": "j3860576c06",
+    "catalog_system_number": "004425238",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-15",
+    "oclc_number": 953621991
+  },
+  {
+    "work_id": "j3860576z56",
+    "catalog_system_number": "004644977",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 1003131513
+  },
+  {
+    "work_id": "j386057701d",
+    "catalog_system_number": "004771287",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032262889
+  },
+  {
+    "work_id": "j386057702r",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "j6731259m7c",
+    "catalog_system_number": "004396725",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949020624
+  },
+  {
+    "work_id": "j6731259r1j",
+    "catalog_system_number": "004598312",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987379178
+  },
+  {
+    "work_id": "j9601z42w7r",
+    "catalog_system_number": "004390778",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947494651
+  },
+  {
+    "work_id": "j9601z4312j",
+    "catalog_system_number": "004580335",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 985112563
+  },
+  {
+    "work_id": "j9601z43j3j",
+    "catalog_system_number": "004788637",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033602774
+  },
+  {
+    "work_id": "jd472v2654b",
+    "catalog_system_number": "004337983",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-16",
+    "oclc_number": 944023342
+  },
+  {
+    "work_id": "jd472v26592",
+    "catalog_system_number": "004395404",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-04",
+    "oclc_number": 948747847
+  },
+  {
+    "work_id": "jd472v26639",
+    "catalog_system_number": "004432815",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-22",
+    "oclc_number": 953969005
+  },
+  {
+    "work_id": "jd472v26s89",
+    "catalog_system_number": "004627731",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 1000151588
+  },
+  {
+    "work_id": "jh343r09f4d",
+    "catalog_system_number": "004337980",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-21",
+    "oclc_number": 944023290
+  },
+  {
+    "work_id": "jh343r09f94",
+    "catalog_system_number": "004390779",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947497525
+  },
+  {
+    "work_id": "jh343r09g0b",
+    "catalog_system_number": "004396997",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-06",
+    "oclc_number": 949266955
+  },
+  {
+    "work_id": "jh343r1035d",
+    "catalog_system_number": "004788650",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033604640
+  },
+  {
+    "work_id": "jh343r1036r",
+    "catalog_system_number": "004747104",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-11",
+    "oclc_number": 1031277897
+  },
+  {
+    "work_id": "jh343r10373",
+    "catalog_system_number": "004791401",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035639902
+  },
+  {
+    "work_id": "jm214m92r7h",
+    "catalog_system_number": "004439493",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-19",
+    "oclc_number": 957123234
+  },
+  {
+    "work_id": "jm214m92v5r",
+    "catalog_system_number": "004599302",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987491285
+  },
+  {
+    "work_id": "jm214m92v7f",
+    "catalog_system_number": "004603931",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-07",
+    "oclc_number": 989159352
+  },
+  {
+    "work_id": "jm214m93c0z",
+    "catalog_system_number": "004646819",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1003288312
+  },
+  {
+    "work_id": "jq085h7604s",
+    "catalog_system_number": "004336979",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 943092734
+  },
+  {
+    "work_id": "jq085h76112",
+    "catalog_system_number": "004394024",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948296885
+  },
+  {
+    "work_id": "jq085h76n6c",
+    "catalog_system_number": "004712150",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-15",
+    "oclc_number": 1020068352
+  },
+  {
+    "work_id": "jq085h76n82",
+    "catalog_system_number": "004787085",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032399219
+  },
+  {
+    "work_id": "js956d59d73",
+    "catalog_system_number": "004560374",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-18",
+    "oclc_number": 982664506
+  },
+  {
+    "work_id": "js956d59x21",
+    "catalog_system_number": "004636070",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000388190
+  },
+  {
+    "work_id": "js956d59x83",
+    "catalog_system_number": "004788641",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-01",
+    "oclc_number": 1033602786
+  },
+  {
+    "work_id": "jw82794370g",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "k0698626g4x",
+    "catalog_system_number": "004615891",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-19",
+    "oclc_number": 994210868
+  },
+  {
+    "work_id": "k3569309463",
+    "catalog_system_number": "004395415",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948749486
+  },
+  {
+    "work_id": "k3569309808",
+    "catalog_system_number": "004570209",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-24",
+    "oclc_number": 983835184
+  },
+  {
+    "work_id": "k6439z92f18",
+    "catalog_system_number": "004433203",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 954141560
+  },
+  {
+    "work_id": "k6439z92h9n",
+    "catalog_system_number": "004545408",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-30",
+    "oclc_number": 980315412
+  },
+  {
+    "work_id": "k6439z9316j",
+    "catalog_system_number": "004638152",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-14",
+    "oclc_number": 1001466655
+  },
+  {
+    "work_id": "k930bv75p0p",
+    "catalog_system_number": "004338036",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-03",
+    "oclc_number": 944029939
+  },
+  {
+    "work_id": "k930bv75p8f",
+    "catalog_system_number": "004396701",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-06",
+    "oclc_number": 948999829
+  },
+  {
+    "work_id": "k930bv75t2m",
+    "catalog_system_number": "004597350",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987331282
+  },
+  {
+    "work_id": "k930bv76b3w",
+    "catalog_system_number": "004790035",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-04",
+    "oclc_number": 1034986786
+  },
+  {
+    "work_id": "kd17cr5903n",
+    "catalog_system_number": "004432973",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 953995516
+  },
+  {
+    "work_id": "kd17cr59358",
+    "catalog_system_number": "004614786",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 993582189
+  },
+  {
+    "work_id": "kd17cr59k8n",
+    "catalog_system_number": "004642084",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 1001949430
+  },
+  {
+    "work_id": "kd17cr59m5x",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "kh04dn4272j",
+    "catalog_system_number": "004338103",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-25",
+    "oclc_number": 944031455
+  },
+  {
+    "work_id": "kh04dn42747",
+    "catalog_system_number": "004338112",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-23",
+    "oclc_number": 944031619
+  },
+  {
+    "work_id": "kh04dn42805",
+    "catalog_system_number": "004397017",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-10",
+    "oclc_number": 949271820
+  },
+  {
+    "work_id": "kh04dn42c4g",
+    "catalog_system_number": "004597351",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987331347
+  },
+  {
+    "work_id": "kk91fj25h90",
+    "catalog_system_number": "004370203",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-30",
+    "oclc_number": 945699329
+  },
+  {
+    "work_id": "kk91fj25j7m",
+    "catalog_system_number": "004439516",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-22",
+    "oclc_number": 957130436
+  },
+  {
+    "work_id": "kk91fj26502",
+    "catalog_system_number": "004643051",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 1002219360
+  },
+  {
+    "work_id": "kp78gf08t27",
+    "catalog_system_number": "004398914",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949875991
+  },
+  {
+    "work_id": "kp78gf08t6m",
+    "catalog_system_number": "004433023",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 953999002
+  },
+  {
+    "work_id": "ks65h992q2v",
+    "catalog_system_number": "004647235",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-08",
+    "oclc_number": 1003642074
+  },
+  {
+    "work_id": "kw52j675b6d",
+    "catalog_system_number": "004338327",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 944035631
+  },
+  {
+    "work_id": "kw52j675c2b",
+    "catalog_system_number": "004370244",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-29",
+    "oclc_number": 945728630
+  },
+  {
+    "work_id": "kw52j675c3p",
+    "catalog_system_number": "004390790",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947505623
+  },
+  {
+    "work_id": "kw52j675c41",
+    "catalog_system_number": "004396991",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949266166
+  },
+  {
+    "work_id": "kw52j675g8b",
+    "catalog_system_number": "004593500",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-08",
+    "oclc_number": 986222175
+  },
+  {
+    "work_id": "m039k359848",
+    "catalog_system_number": "004627134",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-02",
+    "oclc_number": 1000053704
+  },
+  {
+    "work_id": "m039k359906",
+    "catalog_system_number": "004788943",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-02",
+    "oclc_number": 1033675821
+  },
+  {
+    "work_id": "m326m041x59",
+    "catalog_system_number": "004391505",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 947896871
+  },
+  {
+    "work_id": "m326m041x6n",
+    "catalog_system_number": "004396466",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948809884
+  },
+  {
+    "work_id": "m326m041z0w",
+    "catalog_system_number": "004433204",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 954141672
+  },
+  {
+    "work_id": "m326m042203",
+    "catalog_system_number": "004598503",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987438631
+  },
+  {
+    "work_id": "m613mw25b31",
+    "catalog_system_number": "004610144",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 992147782
+  },
+  {
+    "work_id": "m613mw25r5f",
+    "catalog_system_number": "004620004",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 995165165
+  },
+  {
+    "work_id": "m613mw25t6d",
+    "catalog_system_number": "004642076",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-27",
+    "oclc_number": 1001926682
+  },
+  {
+    "work_id": "m900ns08g8k",
+    "catalog_system_number": "004395508",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948758693
+  },
+  {
+    "work_id": "m900ns08h2t",
+    "catalog_system_number": "004433201",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954139503
+  },
+  {
+    "work_id": "m900ns08m2r",
+    "catalog_system_number": "004599307",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987494194
+  },
+  {
+    "work_id": "m900ns09431",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-18",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "mc87pn91r8k",
+    "catalog_system_number": "004390783",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947503098
+  },
+  {
+    "work_id": "mc87pn91r9x",
+    "catalog_system_number": "004396678",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948982319
+  },
+  {
+    "work_id": "mc87pn91w2r",
+    "catalog_system_number": "004544101",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-21",
+    "oclc_number": 978251101
+  },
+  {
+    "work_id": "mc87pn92d5q",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "mg74qj7524v",
+    "catalog_system_number": "004433025",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 953999721
+  },
+  {
+    "work_id": "mg74qj7554s",
+    "catalog_system_number": "004602944",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988942355
+  },
+  {
+    "work_id": "mg74qj75n9v",
+    "catalog_system_number": "004643038",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1002219260
+  },
+  {
+    "work_id": "mk61rf58z66",
+    "catalog_system_number": "004791341",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035632739
+  },
+  {
+    "work_id": "mp48sb41m1q",
+    "catalog_system_number": "004377322",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-15",
+    "oclc_number": 946754082
+  },
+  {
+    "work_id": "mp48sb41m84",
+    "catalog_system_number": "004440260",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-26",
+    "oclc_number": 957348111
+  },
+  {
+    "work_id": "mp48sb41q51",
+    "catalog_system_number": "004575986",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 984992879
+  },
+  {
+    "work_id": "mp48sb41q6c",
+    "catalog_system_number": "004640563",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-17",
+    "oclc_number": 1001564544
+  },
+  {
+    "work_id": "mp48sb41q82",
+    "catalog_system_number": "004625696",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 995848324
+  },
+  {
+    "work_id": "ms35t724v5v",
+    "catalog_system_number": "004466260",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-23",
+    "oclc_number": 960638871
+  },
+  {
+    "work_id": "ms35t72506q",
+    "catalog_system_number": "004597052",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987300868
+  },
+  {
+    "work_id": "ms35t725h20",
+    "catalog_system_number": "004620392",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-27",
+    "oclc_number": 995355811
+  },
+  {
+    "work_id": "ms35t725h82",
+    "catalog_system_number": "004790072",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-07",
+    "oclc_number": 1034988043
+  },
+  {
+    "work_id": "mw22v40853t",
+    "catalog_system_number": "004390786",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947504333
+  },
+  {
+    "work_id": "mw22v40858j",
+    "catalog_system_number": "004433206",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954141888
+  },
+  {
+    "work_id": "mw22v40888g",
+    "catalog_system_number": "004598318",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987378813
+  },
+  {
+    "work_id": "mw22v408901",
+    "catalog_system_number": "004610093",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 992145655
+  },
+  {
+    "work_id": "mw22v408s7s",
+    "catalog_system_number": "004702487",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-13",
+    "oclc_number": 1015373992
+  },
+  {
+    "work_id": "n009w091f5k",
+    "catalog_system_number": "004394526",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948602434
+  },
+  {
+    "work_id": "n009w091f9z",
+    "catalog_system_number": "004433209",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954147597
+  },
+  {
+    "work_id": "n009w091g1h",
+    "catalog_system_number": "004459100",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-21",
+    "oclc_number": 958937286
+  },
+  {
+    "work_id": "n009w091j9w",
+    "catalog_system_number": "004576220",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 984998222
+  },
+  {
+    "work_id": "n009w092301",
+    "catalog_system_number": "004771529",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032303539
+  },
+  {
+    "work_id": "n296ww74q6s",
+    "catalog_system_number": "004396996",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 949266599
+  },
+  {
+    "work_id": "n296ww74r01",
+    "catalog_system_number": "004433267",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-27",
+    "oclc_number": 954168377
+  },
+  {
+    "work_id": "n583xs5807g",
+    "catalog_system_number": "004394097",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-29",
+    "oclc_number": 948306607
+  },
+  {
+    "work_id": "n583xs58n0z",
+    "catalog_system_number": "004701923",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-12",
+    "oclc_number": 1015312674
+  },
+  {
+    "work_id": "n583xs58n2n",
+    "catalog_system_number": "004790063",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-04",
+    "oclc_number": 1034987484
+  },
+  {
+    "work_id": "n870zp4180m",
+    "catalog_system_number": "004444957",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 958279308
+  },
+  {
+    "work_id": "n870zp41d2j",
+    "catalog_system_number": "004598466",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987437201
+  },
+  {
+    "work_id": "nc580k24j8v",
+    "catalog_system_number": "004391301",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-22",
+    "oclc_number": 947844349
+  },
+  {
+    "work_id": "nc580k24p3c",
+    "catalog_system_number": "004599309",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987495301
+  },
+  {
+    "work_id": "nc580k2564n",
+    "catalog_system_number": "004789767",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-06",
+    "oclc_number": 1034692203
+  },
+  {
+    "work_id": "ng451g08f94",
+    "catalog_system_number": "004643107",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-28",
+    "oclc_number": 1002303444
+  },
+  {
+    "work_id": "ng451g08g6d",
+    "catalog_system_number": "004792495",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-17",
+    "oclc_number": 1036985484
+  },
+  {
+    "work_id": "nk322b9134k",
+    "catalog_system_number": "004470607",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 961103917
+  },
+  {
+    "work_id": "nk322b9141v",
+    "catalog_system_number": "004397002",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 949268089
+  },
+  {
+    "work_id": "nk322b91457",
+    "catalog_system_number": "004433047",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-26",
+    "oclc_number": 954001719
+  },
+  {
+    "work_id": "nk322b9174t",
+    "catalog_system_number": "004545652",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-31",
+    "oclc_number": 980874202
+  },
+  {
+    "work_id": "nk322b91r65",
+    "catalog_system_number": "004790048",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-07",
+    "oclc_number": 1034987116
+  },
+  {
+    "work_id": "np193774c6m",
+    "catalog_system_number": "004415374",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-16",
+    "oclc_number": 951824293
+  },
+  {
+    "work_id": "np193775112",
+    "catalog_system_number": "004627776",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1000155255
+  },
+  {
+    "work_id": "np19377515f",
+    "catalog_system_number": "004698012",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-29",
+    "oclc_number": 1013543198
+  },
+  {
+    "work_id": "ns064457n8c",
+    "catalog_system_number": "004371263",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-20",
+    "oclc_number": 946035133
+  },
+  {
+    "work_id": "ns064457p3z",
+    "catalog_system_number": "004391948",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948178397
+  },
+  {
+    "work_id": "ns064457p7b",
+    "catalog_system_number": "004433233",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-27",
+    "oclc_number": 954160968
+  },
+  {
+    "work_id": "ns064457s78",
+    "catalog_system_number": "004602900",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-02",
+    "oclc_number": 988940165
+  },
+  {
+    "work_id": "nv935140x66",
+    "catalog_system_number": "004466262",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 960638898
+  },
+  {
+    "work_id": "nv935141272",
+    "catalog_system_number": "004545405",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-30",
+    "oclc_number": 980304670
+  },
+  {
+    "work_id": "nv93514128d",
+    "catalog_system_number": "004599316",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987497028
+  },
+  {
+    "work_id": "nv935141k3b",
+    "catalog_system_number": "004627734",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-07",
+    "oclc_number": 1000151815
+  },
+  {
+    "work_id": "nv935141k7q",
+    "catalog_system_number": "004696465",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-17",
+    "oclc_number": 1012401798
+  },
+  {
+    "work_id": "nz805x24740",
+    "catalog_system_number": "004393967",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948290837
+  },
+  {
+    "work_id": "nz805x2475b",
+    "catalog_system_number": "004395522",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-05",
+    "oclc_number": 948759880
+  },
+  {
+    "work_id": "nz805x2479q",
+    "catalog_system_number": "004437465",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-03",
+    "oclc_number": 956529130
+  },
+  {
+    "work_id": "p2676t07h00",
+    "catalog_system_number": "004491964",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-10-29",
+    "oclc_number": 962936019
+  },
+  {
+    "work_id": "p2676t07h62",
+    "catalog_system_number": "004398912",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-06",
+    "oclc_number": 949875644
+  },
+  {
+    "work_id": "p5547p90s6t",
+    "catalog_system_number": "004394532",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948602925
+  },
+  {
+    "work_id": "p5547p90t1d",
+    "catalog_system_number": "004434370",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-27",
+    "oclc_number": 954478435
+  },
+  {
+    "work_id": "p5547p90x1b",
+    "catalog_system_number": "004598530",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987443213
+  },
+  {
+    "work_id": "p5547p91d6p",
+    "catalog_system_number": "004625797",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 995853717
+  },
+  {
+    "work_id": "p5547p91d71",
+    "catalog_system_number": "004620022",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-27",
+    "oclc_number": 995168874
+  },
+  {
+    "work_id": "p8418k7428v",
+    "catalog_system_number": "004397243",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-11",
+    "oclc_number": 949666491
+  },
+  {
+    "work_id": "p8418k7434s",
+    "catalog_system_number": "004447247",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-16",
+    "oclc_number": 958630539
+  },
+  {
+    "work_id": "p8418k7461p",
+    "catalog_system_number": "004544925",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-27",
+    "oclc_number": 979419792
+  },
+  {
+    "work_id": "p8418k74j7v",
+    "catalog_system_number": "004618365",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-24",
+    "oclc_number": 994869348
+  },
+  {
+    "work_id": "p8418k74q1b",
+    "catalog_system_number": "004696417",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-17",
+    "oclc_number": 1012397919
+  },
+  {
+    "work_id": "p8418k74q31",
+    "catalog_system_number": "004789817",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-07",
+    "oclc_number": 1034797286
+  },
+  {
+    "work_id": "pc289g57c3s",
+    "catalog_system_number": "004433237",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954164592
+  },
+  {
+    "work_id": "pc289g57g3q",
+    "catalog_system_number": "004599401",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": 987573201
+  },
+  {
+    "work_id": "pc289g57s0g",
+    "catalog_system_number": "004633465",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1000297417
+  },
+  {
+    "work_id": "pc289g57z8s",
+    "catalog_system_number": "004627779",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000155442
+  },
+  {
+    "work_id": "pc289g58040",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "pg15bc40m4c",
+    "catalog_system_number": "004491971",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-17",
+    "oclc_number": 962935986
+  },
+  {
+    "work_id": "pg15bc4139q",
+    "catalog_system_number": "004633467",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1000297920
+  },
+  {
+    "work_id": "pg15bc4181h",
+    "catalog_system_number": "004642176",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-24",
+    "oclc_number": 1001957297
+  },
+  {
+    "work_id": "pk02c823x53",
+    "catalog_system_number": "004433248",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-27",
+    "oclc_number": 954165329
+  },
+  {
+    "work_id": "pk02c823z0p",
+    "catalog_system_number": "004512473",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-01",
+    "oclc_number": 964934945
+  },
+  {
+    "work_id": "pk02c824159",
+    "catalog_system_number": "004598452",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987435239
+  },
+  {
+    "work_id": "pk02c824170",
+    "catalog_system_number": "004610172",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 992167162
+  },
+  {
+    "work_id": "pk02c824d00",
+    "catalog_system_number": "004625698",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 995848367
+  },
+  {
+    "work_id": "pk02c824j4m",
+    "catalog_system_number": "004746845",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-21",
+    "oclc_number": 1031030067
+  },
+  {
+    "work_id": "pn89d50756q",
+    "catalog_system_number": "004491831",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-11",
+    "oclc_number": 962921605
+  },
+  {
+    "work_id": "pn89d50762n",
+    "catalog_system_number": "004396992",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949266591
+  },
+  {
+    "work_id": "pn89d507661",
+    "catalog_system_number": "004433236",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-27",
+    "oclc_number": 954161585
+  },
+  {
+    "work_id": "pn89d50792k",
+    "catalog_system_number": "004542605",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-13",
+    "oclc_number": 975485050
+  },
+  {
+    "work_id": "pn89d50796z",
+    "catalog_system_number": "004600072",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": 987910068
+  },
+  {
+    "work_id": "pn89d507t6m",
+    "catalog_system_number": "004715641",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-02-06",
+    "oclc_number": 1022118627
+  },
+  {
+    "work_id": "pr76f190f54",
+    "catalog_system_number": "004470591",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 961103802
+  },
+  {
+    "work_id": "pr76f190h2q",
+    "catalog_system_number": "004471790",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-10-24",
+    "oclc_number": 961213789
+  },
+  {
+    "work_id": "pr76f190k72",
+    "catalog_system_number": "004598527",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987442635
+  },
+  {
+    "work_id": "pr76f190k9r",
+    "catalog_system_number": "004609340",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-23",
+    "oclc_number": 991596769
+  },
+  {
+    "work_id": "pv63fx73r8c",
+    "catalog_system_number": "004433238",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954164588
+  },
+  {
+    "work_id": "pv63fx74c3h",
+    "catalog_system_number": "004627781",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000155311
+  },
+  {
+    "work_id": "pz50gt57072",
+    "catalog_system_number": "004470541",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 960973861
+  },
+  {
+    "work_id": "pz50gt5709r",
+    "catalog_system_number": "004331384",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-16",
+    "oclc_number": 939552527
+  },
+  {
+    "work_id": "pz50gt5710z",
+    "catalog_system_number": "004404834",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-04",
+    "oclc_number": 950881629
+  },
+  {
+    "work_id": "pz50gt5714b",
+    "catalog_system_number": "004393111",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-28",
+    "oclc_number": 948202311
+  },
+  {
+    "work_id": "pz50gt5715p",
+    "catalog_system_number": "004397240",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-06",
+    "oclc_number": 949664599
+  },
+  {
+    "work_id": "q237hq40b04",
+    "catalog_system_number": "004434256",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954341175
+  },
+  {
+    "work_id": "q237hq40f02",
+    "catalog_system_number": "004637485",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-17",
+    "oclc_number": 1001340295
+  },
+  {
+    "work_id": "q524jm23j9p",
+    "catalog_system_number": "004467311",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 960695719
+  },
+  {
+    "work_id": "q524jm23k2k",
+    "catalog_system_number": "004491974",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-08",
+    "oclc_number": 962935079
+  },
+  {
+    "work_id": "q524jm23m1j",
+    "catalog_system_number": "004434708",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954719683
+  },
+  {
+    "work_id": "q524jm23p77",
+    "catalog_system_number": "004538843",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-17",
+    "oclc_number": 973414267
+  },
+  {
+    "work_id": "q524jm23q1g",
+    "catalog_system_number": "004599321",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-18",
+    "oclc_number": 987498765
+  },
+  {
+    "work_id": "q524jm2466t",
+    "catalog_system_number": "004636308",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-10",
+    "oclc_number": 1000519614
+  },
+  {
+    "work_id": "q524jm2472r",
+    "catalog_system_number": "004771526",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032303365
+  },
+  {
+    "work_id": "q811kh06v5p",
+    "catalog_system_number": "004359159",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-03-10",
+    "oclc_number": 944248013
+  },
+  {
+    "work_id": "q811kh0704v",
+    "catalog_system_number": "004613576",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 993259693
+  },
+  {
+    "work_id": "q811kh07981",
+    "catalog_system_number": "004627040",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999821268
+  },
+  {
+    "work_id": "qb98mc9049b",
+    "catalog_system_number": "004397242",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949664950
+  },
+  {
+    "work_id": "qb98mc9053k",
+    "catalog_system_number": "004436866",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-04",
+    "oclc_number": 956382929
+  },
+  {
+    "work_id": "qb98mc90825",
+    "catalog_system_number": "004549051",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-04",
+    "oclc_number": 981916249
+  },
+  {
+    "work_id": "qb98mc90r8k",
+    "catalog_system_number": "004642753",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 1002211240
+  },
+  {
+    "work_id": "qb98mc90s04",
+    "catalog_system_number": "004643613",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-31",
+    "oclc_number": 1002848751
+  },
+  {
+    "work_id": "qb98mc90s4h",
+    "catalog_system_number": "004790016",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-07",
+    "oclc_number": 1034986368
+  },
+  {
+    "work_id": "qf85n873f0m",
+    "catalog_system_number": "004393123",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-28",
+    "oclc_number": 948204539
+  },
+  {
+    "work_id": "qf85n874198",
+    "catalog_system_number": "004636067",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000388217
+  },
+  {
+    "work_id": "qj72p556r1b",
+    "catalog_system_number": "004515789",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-12-12",
+    "oclc_number": 965898230
+  },
+  {
+    "work_id": "qj72p556t40",
+    "catalog_system_number": "004545401",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-29",
+    "oclc_number": 980304669
+  },
+  {
+    "work_id": "qj72p556t5b",
+    "catalog_system_number": "004596360",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987251273
+  },
+  {
+    "work_id": "qj72p557b6m",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "qn59q240014",
+    "catalog_system_number": "004391658",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 947978028
+  },
+  {
+    "work_id": "qn59q24036s",
+    "catalog_system_number": "004600516",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-25",
+    "oclc_number": 988087438
+  },
+  {
+    "work_id": "qr46qz2377s",
+    "catalog_system_number": "004466404",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-30",
+    "oclc_number": 960643900
+  },
+  {
+    "work_id": "qr46qz23c6p",
+    "catalog_system_number": "004557080",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-04",
+    "oclc_number": 982060096
+  },
+  {
+    "work_id": "qr46qz23c71",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "qr46qz23r2q",
+    "catalog_system_number": "004610732",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-30",
+    "oclc_number": 992445923
+  },
+  {
+    "work_id": "qr46qz23w81",
+    "catalog_system_number": "004771599",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032335338
+  },
+  {
+    "work_id": "qv33rv06j44",
+    "catalog_system_number": "004378434",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-18",
+    "oclc_number": 946933583
+  },
+  {
+    "work_id": "qv33rv0753n",
+    "catalog_system_number": "004618366",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 994869356
+  },
+  {
+    "work_id": "qv33rv0759q",
+    "catalog_system_number": "004790913",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035375495
+  },
+  {
+    "work_id": "qz20sq89s9t",
+    "catalog_system_number": "004446422",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-30",
+    "oclc_number": 958421480
+  },
+  {
+    "work_id": "qz20sq89t94",
+    "catalog_system_number": "004432797",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-22",
+    "oclc_number": 953968075
+  },
+  {
+    "work_id": "qz20sq89x8q",
+    "catalog_system_number": "004549046",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-04",
+    "oclc_number": 981915952
+  },
+  {
+    "work_id": "qz20sq90f4r",
+    "catalog_system_number": "004627780",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000155408
+  },
+  {
+    "work_id": "qz20sq90f84",
+    "catalog_system_number": "004699138",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-04",
+    "oclc_number": 1013930661
+  },
+  {
+    "work_id": "r207tm7328m",
+    "catalog_system_number": "004471785",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 961213682
+  },
+  {
+    "work_id": "r207tm73305",
+    "catalog_system_number": "004446160",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-23",
+    "oclc_number": 958369865
+  },
+  {
+    "work_id": "r207tm73r1d",
+    "catalog_system_number": "004790849",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-09",
+    "oclc_number": 1035213059
+  },
+  {
+    "work_id": "r494vh56c68",
+    "catalog_system_number": "004391616",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 947954064
+  },
+  {
+    "work_id": "r494vh5710c",
+    "catalog_system_number": "004699277",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-04",
+    "oclc_number": 1014020512
+  },
+  {
+    "work_id": "r494vh5711q",
+    "catalog_system_number": "004746871",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-11",
+    "oclc_number": 1031034083
+  },
+  {
+    "work_id": "r781wd39n2z",
+    "catalog_system_number": "004470511",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-23",
+    "oclc_number": 960973476
+  },
+  {
+    "work_id": "r781wd39r8z",
+    "catalog_system_number": "004539163",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-24",
+    "oclc_number": 973884201
+  },
+  {
+    "work_id": "r781wd39s26",
+    "catalog_system_number": "004599304",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-16",
+    "oclc_number": 987492474
+  },
+  {
+    "work_id": "r781wd4093z",
+    "catalog_system_number": "004792001",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035848903
+  },
+  {
+    "work_id": "rb68x923k2z",
+    "catalog_system_number": "004697634",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-27",
+    "oclc_number": 1013183340
+  },
+  {
+    "work_id": "rf55z60670r",
+    "catalog_system_number": "004396817",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949042193
+  },
+  {
+    "work_id": "rf55z606v52",
+    "catalog_system_number": "004790100",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-08",
+    "oclc_number": 1034990528
+  },
+  {
+    "work_id": "rj430289g3w",
+    "catalog_system_number": "004468120",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 960853588
+  },
+  {
+    "work_id": "rj430289m5t",
+    "catalog_system_number": "004576219",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 984997939
+  },
+  {
+    "work_id": "rn300z72r4m",
+    "catalog_system_number": "004471786",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-27",
+    "oclc_number": 961213645
+  },
+  {
+    "work_id": "rn300z72s27",
+    "catalog_system_number": "004397610",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-10",
+    "oclc_number": 949712798
+  },
+  {
+    "work_id": "rn300z72w56",
+    "catalog_system_number": "004570275",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-25",
+    "oclc_number": 984128819
+  },
+  {
+    "work_id": "rr171v5627k",
+    "catalog_system_number": "004436652",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-31",
+    "oclc_number": 956363732
+  },
+  {
+    "work_id": "rv042r39991",
+    "catalog_system_number": "004444923",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-06",
+    "oclc_number": 958278855
+  },
+  {
+    "work_id": "rv042r39f7k",
+    "catalog_system_number": "004545636",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-31",
+    "oclc_number": 980873559
+  },
+  {
+    "work_id": "rv042r39f98",
+    "catalog_system_number": "004603696",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-06",
+    "oclc_number": 989125190
+  },
+  {
+    "work_id": "rx913n22k7v",
+    "catalog_system_number": "004444951",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-23",
+    "oclc_number": 958279230
+  },
+  {
+    "work_id": "rx913n22m9v",
+    "catalog_system_number": "004436688",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 956366073
+  },
+  {
+    "work_id": "rx913n2376p",
+    "catalog_system_number": "004636314",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-11",
+    "oclc_number": 1000519722
+  },
+  {
+    "work_id": "rx913n2378c",
+    "catalog_system_number": "004700237",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-06",
+    "oclc_number": 1014142158
+  },
+  {
+    "work_id": "rx913n2380x",
+    "catalog_system_number": "004790851",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-09",
+    "oclc_number": 1035213925
+  },
+  {
+    "work_id": "s1784j0609f",
+    "catalog_system_number": "004545638",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-03-30",
+    "oclc_number": 980872789
+  },
+  {
+    "work_id": "s4655d8949g",
+    "catalog_system_number": "004470589",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 961103765
+  },
+  {
+    "work_id": "s4655d89t0k",
+    "catalog_system_number": "004697537",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-23",
+    "oclc_number": 1012945694
+  },
+  {
+    "work_id": "s7526972g27",
+    "catalog_system_number": "004434954",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 955260986
+  },
+  {
+    "work_id": "s752697327h",
+    "catalog_system_number": "004642690",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1002131476
+  },
+  {
+    "work_id": "s7526973296",
+    "catalog_system_number": "004643109",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-28",
+    "oclc_number": 1002303937
+  },
+  {
+    "work_id": "sb397655q8b",
+    "catalog_system_number": "004391611",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-26",
+    "oclc_number": 947953917
+  },
+  {
+    "work_id": "sb397655v3v",
+    "catalog_system_number": "004601711",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-26",
+    "oclc_number": 988398417
+  },
+  {
+    "work_id": "sb397656c2f",
+    "catalog_system_number": "004697699",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-23",
+    "oclc_number": 1013188208
+  },
+  {
+    "work_id": "sf26833914m",
+    "catalog_system_number": "004436864",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 956382934
+  },
+  {
+    "work_id": "sf268339436",
+    "catalog_system_number": "004557090",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-07",
+    "oclc_number": 982060454
+  },
+  {
+    "work_id": "sf26833944j",
+    "catalog_system_number": "004581054",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-03",
+    "oclc_number": 985512218
+  },
+  {
+    "work_id": "sf268339m9m",
+    "catalog_system_number": "004627781",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000155430
+  },
+  {
+    "work_id": "sf268339n3v",
+    "catalog_system_number": "004698666",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-01",
+    "oclc_number": 1013878411
+  },
+  {
+    "work_id": "sf268339n5j",
+    "catalog_system_number": "004791024",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-09",
+    "oclc_number": 1035419993
+  },
+  {
+    "work_id": "sj13902283h",
+    "catalog_system_number": "004470586",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 961103676
+  },
+  {
+    "work_id": "sj13902290s",
+    "catalog_system_number": "004391744",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948025847
+  },
+  {
+    "work_id": "sj139022x22",
+    "catalog_system_number": "004636310",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-11",
+    "oclc_number": 1000486447
+  },
+  {
+    "work_id": "sn009w05k6r",
+    "catalog_system_number": "004436689",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 956366267
+  },
+  {
+    "work_id": "sq87br88t79",
+    "catalog_system_number": "004467379",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-30",
+    "oclc_number": 960721136
+  },
+  {
+    "work_id": "sq87br88v2w",
+    "catalog_system_number": "004391974",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-28",
+    "oclc_number": 948189590
+  },
+  {
+    "work_id": "sq87br88z66",
+    "catalog_system_number": "004570301",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-25",
+    "oclc_number": 984129570
+  },
+  {
+    "work_id": "sq87br89g2r",
+    "catalog_system_number": "004640564",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-18",
+    "oclc_number": 1001564559
+  },
+  {
+    "work_id": "st74cn7248s",
+    "catalog_system_number": "004432996",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-21",
+    "oclc_number": 953996771
+  },
+  {
+    "work_id": "st74cn72r3n",
+    "catalog_system_number": "004627746",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1000150754
+  },
+  {
+    "work_id": "sx61dj55j0b",
+    "catalog_system_number": "004606546",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-15",
+    "oclc_number": 990183448
+  },
+  {
+    "work_id": "sx61dj5618q",
+    "catalog_system_number": "004700236",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-06",
+    "oclc_number": 1014161246
+  },
+  {
+    "work_id": "t148ff38q0s",
+    "catalog_system_number": "004434263",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 954344924
+  },
+  {
+    "work_id": "t148ff38s9h",
+    "catalog_system_number": "004596388",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-15",
+    "oclc_number": 987265005
+  },
+  {
+    "work_id": "t435gb2231w",
+    "catalog_system_number": "004593488",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-05",
+    "oclc_number": 986221897
+  },
+  {
+    "work_id": "t435gb22k6z",
+    "catalog_system_number": "004689351",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 1008567884
+  },
+  {
+    "work_id": "t722h70577s",
+    "catalog_system_number": "004376906",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-14",
+    "oclc_number": 946726239
+  },
+  {
+    "work_id": "t722h70582c",
+    "catalog_system_number": "004433390",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954204042
+  },
+  {
+    "work_id": "t722h705w1m",
+    "catalog_system_number": "004697933",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-28",
+    "oclc_number": 1013466535
+  },
+  {
+    "work_id": "t722h705w39",
+    "catalog_system_number": "004790105",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-08",
+    "oclc_number": 1034992130
+  },
+  {
+    "work_id": "tb09j388h49",
+    "catalog_system_number": "004416602",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-25",
+    "oclc_number": 951970782
+  },
+  {
+    "work_id": "tb09j388n2v",
+    "catalog_system_number": "004595477",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-12",
+    "oclc_number": 987004289
+  },
+  {
+    "work_id": "tb09j388n36",
+    "catalog_system_number": "004593495",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-05",
+    "oclc_number": 986222159
+  },
+  {
+    "work_id": "td96k071t44",
+    "catalog_system_number": "004432419",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-21",
+    "oclc_number": 953832961
+  },
+  {
+    "work_id": "td96k072d9d",
+    "catalog_system_number": "004626923",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 999728289
+  },
+  {
+    "work_id": "td96k072f40",
+    "catalog_system_number": "004736408",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-01",
+    "oclc_number": 1028979894
+  },
+  {
+    "work_id": "td96k072f5b",
+    "catalog_system_number": "",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": ""
+  },
+  {
+    "work_id": "th83kw5525b",
+    "catalog_system_number": "004416991",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-11-30",
+    "oclc_number": 952181133
+  },
+  {
+    "work_id": "th83kw55349",
+    "catalog_system_number": "004405357",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-01",
+    "oclc_number": 950971243
+  },
+  {
+    "work_id": "th83kw5565k",
+    "catalog_system_number": "004600068",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": 987910009
+  },
+  {
+    "work_id": "tm70ms38g5n",
+    "catalog_system_number": "004548894",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-06",
+    "oclc_number": 981906218
+  },
+  {
+    "work_id": "tm70ms38g60",
+    "catalog_system_number": "004600065",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": 987909938
+  },
+  {
+    "work_id": "tm70ms39016",
+    "catalog_system_number": "004642449",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-08",
+    "oclc_number": 1002074816
+  },
+  {
+    "work_id": "tm70ms39078",
+    "catalog_system_number": "004792019",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035849515
+  },
+  {
+    "work_id": "tq57np21n6w",
+    "catalog_system_number": "004404878",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-25",
+    "oclc_number": 950882873
+  },
+  {
+    "work_id": "tq57np21r75",
+    "catalog_system_number": "004599319",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987497030
+  },
+  {
+    "work_id": "tq57np2286r",
+    "catalog_system_number": "004697926",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-28",
+    "oclc_number": 1013465922
+  },
+  {
+    "work_id": "tt44pk04x8n",
+    "catalog_system_number": "004434234",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-28",
+    "oclc_number": 954335649
+  },
+  {
+    "work_id": "tt44pk0518v",
+    "catalog_system_number": "004602665",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988751075
+  },
+  {
+    "work_id": "tt44pk05j3s",
+    "catalog_system_number": "004633464",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1000297910
+  },
+  {
+    "work_id": "tt44pk05j9v",
+    "catalog_system_number": "004790999",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035390300
+  },
+  {
+    "work_id": "tx31qf8869j",
+    "catalog_system_number": "004437093",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 956441659
+  },
+  {
+    "work_id": "tx31qf88t4d",
+    "catalog_system_number": "004647166",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-09-05",
+    "oclc_number": 1003529755
+  },
+  {
+    "work_id": "v118rb71k5z",
+    "catalog_system_number": "004534825",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-03",
+    "oclc_number": 972349724
+  },
+  {
+    "work_id": "v118rb7241t",
+    "catalog_system_number": "004791012",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035418816
+  },
+  {
+    "work_id": "v405s754w1z",
+    "catalog_system_number": "004600070",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-19",
+    "oclc_number": 987910066
+  },
+  {
+    "work_id": "v692t43812c",
+    "catalog_system_number": "004491585",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-04",
+    "oclc_number": 962749851
+  },
+  {
+    "work_id": "v692t43822p",
+    "catalog_system_number": "004436858",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 956382847
+  },
+  {
+    "work_id": "v979v121d86",
+    "catalog_system_number": "004530182",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-01",
+    "oclc_number": 971129465
+  },
+  {
+    "work_id": "v979v121x8v",
+    "catalog_system_number": "004636672",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-14",
+    "oclc_number": 1001254248
+  },
+  {
+    "work_id": "v979v121z4s",
+    "catalog_system_number": "004790963",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035389845
+  },
+  {
+    "work_id": "vd66vx04k4s",
+    "catalog_system_number": "004491852",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-02",
+    "oclc_number": 962926377
+  },
+  {
+    "work_id": "vd66vx04m43",
+    "catalog_system_number": "004434336",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 954463139
+  },
+  {
+    "work_id": "vd66vx0569c",
+    "catalog_system_number": "004618805",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-25",
+    "oclc_number": 994870344
+  },
+  {
+    "work_id": "vh53ws87v3q",
+    "catalog_system_number": "004470597",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-24",
+    "oclc_number": 961103885
+  },
+  {
+    "work_id": "vh53ws87v6r",
+    "catalog_system_number": "004318807",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-19",
+    "oclc_number": 938856580
+  },
+  {
+    "work_id": "vh53ws87w00",
+    "catalog_system_number": "004394535",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-02",
+    "oclc_number": 948602229
+  },
+  {
+    "work_id": "vh53ws88h47",
+    "catalog_system_number": "004698664",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-01",
+    "oclc_number": 1013878331
+  },
+  {
+    "work_id": "vm40xp7146k",
+    "catalog_system_number": "004466389",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-16",
+    "oclc_number": 960643758
+  },
+  {
+    "work_id": "vm40xp7155j",
+    "catalog_system_number": "004408310",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-02",
+    "oclc_number": 951065777
+  },
+  {
+    "work_id": "vm40xp7156w",
+    "catalog_system_number": "004436847",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 956382701
+  },
+  {
+    "work_id": "vq27zk54d5k",
+    "catalog_system_number": "004468575",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 960967803
+  },
+  {
+    "work_id": "vq27zk54d78",
+    "catalog_system_number": "004491970",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-01",
+    "oclc_number": 962935962
+  },
+  {
+    "work_id": "vq27zk55263",
+    "catalog_system_number": "004711278",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-01-12",
+    "oclc_number": 1019808376
+  },
+  {
+    "work_id": "vq27zk5528s",
+    "catalog_system_number": "004792056",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035946983
+  },
+  {
+    "work_id": "vt150g37r3q",
+    "catalog_system_number": "004498753",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-11-17",
+    "oclc_number": 963861211
+  },
+  {
+    "work_id": "vt150g37t20",
+    "catalog_system_number": "004528818",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-01-24",
+    "oclc_number": 969973163
+  },
+  {
+    "work_id": "vt150g38b38",
+    "catalog_system_number": "004617965",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-24",
+    "oclc_number": 994643821
+  },
+  {
+    "work_id": "vx021c20z71",
+    "catalog_system_number": "004464997",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-23",
+    "oclc_number": 960450648
+  },
+  {
+    "work_id": "vx021c2104k",
+    "catalog_system_number": "004391746",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948026017
+  },
+  {
+    "work_id": "vx021c21099",
+    "catalog_system_number": "004435020",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 955344831
+  },
+  {
+    "work_id": "vx021c21m45",
+    "catalog_system_number": "004636074",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1000388245
+  },
+  {
+    "work_id": "vx021c21m8j",
+    "catalog_system_number": "004700558",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-07",
+    "oclc_number": 1014334973
+  },
+  {
+    "work_id": "vx021c21n03",
+    "catalog_system_number": "004791409",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-14",
+    "oclc_number": 1035640556
+  },
+  {
+    "work_id": "w3763487k04",
+    "catalog_system_number": "004404900",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-31",
+    "oclc_number": 950884849
+  },
+  {
+    "work_id": "w3763487k1g",
+    "catalog_system_number": "004436844",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956382811
+  },
+  {
+    "work_id": "w3763488600",
+    "catalog_system_number": "004701019",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200369
+  },
+  {
+    "work_id": "w6634170t0c",
+    "catalog_system_number": "004471746",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 961212833
+  },
+  {
+    "work_id": "w6634170v2c",
+    "catalog_system_number": "004436852",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-31",
+    "oclc_number": 956382805
+  },
+  {
+    "work_id": "w6634170z1z",
+    "catalog_system_number": "004599313",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-17",
+    "oclc_number": 987496835
+  },
+  {
+    "work_id": "w6634171g3k",
+    "catalog_system_number": "004791031",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035420653
+  },
+  {
+    "work_id": "w9504x54r24",
+    "catalog_system_number": "004701021",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200299
+  },
+  {
+    "work_id": "w9504x54r4t",
+    "catalog_system_number": "004792065",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035948189
+  },
+  {
+    "work_id": "w9504x54r55",
+    "catalog_system_number": "004790140",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-09",
+    "oclc_number": 1035159874
+  },
+  {
+    "work_id": "wd375t37c2k",
+    "catalog_system_number": "004471784",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-03",
+    "oclc_number": 961213687
+  },
+  {
+    "work_id": "wd375t37h4h",
+    "catalog_system_number": "004606547",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-15",
+    "oclc_number": 990183402
+  },
+  {
+    "work_id": "wd375t3809v",
+    "catalog_system_number": "004620391",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-27",
+    "oclc_number": 995355909
+  },
+  {
+    "work_id": "wd375t3814f",
+    "catalog_system_number": "004736409",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-16",
+    "oclc_number": 1028980050
+  },
+  {
+    "work_id": "wh246q21940",
+    "catalog_system_number": "004697929",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-29",
+    "oclc_number": 1013466253
+  },
+  {
+    "work_id": "wh246q2195b",
+    "catalog_system_number": "004736399",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-15",
+    "oclc_number": 1028978525
+  },
+  {
+    "work_id": "wm117m03x4w",
+    "catalog_system_number": "004471782",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 961213356
+  },
+  {
+    "work_id": "wm117m03z15",
+    "catalog_system_number": "004391747",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948026240
+  },
+  {
+    "work_id": "wm117m03z6w",
+    "catalog_system_number": "004439230",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-18",
+    "oclc_number": 956996229
+  },
+  {
+    "work_id": "wm117m04263",
+    "catalog_system_number": "004640565",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-18",
+    "oclc_number": 1001564291
+  },
+  {
+    "work_id": "wp988g87771",
+    "catalog_system_number": "004436692",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 956366582
+  },
+  {
+    "work_id": "wp988g87b6m",
+    "catalog_system_number": "004581048",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985510938
+  },
+  {
+    "work_id": "wp988g87v2w",
+    "catalog_system_number": "004636673",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-15",
+    "oclc_number": 1001253982
+  },
+  {
+    "work_id": "wp988g87v68",
+    "catalog_system_number": "004699202",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-01",
+    "oclc_number": 1013976129
+  },
+  {
+    "work_id": "ws859c70g6x",
+    "catalog_system_number": "004467300",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-21",
+    "oclc_number": 960695151
+  },
+  {
+    "work_id": "ws859c70h36",
+    "catalog_system_number": "004391750",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948026539
+  },
+  {
+    "work_id": "ws859c71494",
+    "catalog_system_number": "004791342",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035632905
+  },
+  {
+    "work_id": "ww72b854d8v",
+    "catalog_system_number": "004702533",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-12",
+    "oclc_number": 1015376461
+  },
+  {
+    "work_id": "x059c53718b",
+    "catalog_system_number": "004470637",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-29",
+    "oclc_number": 961105400
+  },
+  {
+    "work_id": "x059c537604",
+    "catalog_system_number": "004602999",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-01",
+    "oclc_number": 988944430
+  },
+  {
+    "work_id": "x346d220997",
+    "catalog_system_number": "004470722",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-05",
+    "oclc_number": 961117174
+  },
+  {
+    "work_id": "x346d220c13",
+    "catalog_system_number": "004437100",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 956440998
+  },
+  {
+    "work_id": "x346d220z63",
+    "catalog_system_number": "004636530",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-03",
+    "oclc_number": 1000614896
+  },
+  {
+    "work_id": "x346d22100m",
+    "catalog_system_number": "004737303",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-03-22",
+    "oclc_number": 1029353028
+  },
+  {
+    "work_id": "x346d221029",
+    "catalog_system_number": "004791837",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-16",
+    "oclc_number": 1035766868
+  },
+  {
+    "work_id": "x633dz03m21",
+    "catalog_system_number": "004447095",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-02",
+    "oclc_number": 958463498
+  },
+  {
+    "work_id": "x633dz03m7r",
+    "catalog_system_number": "004394512",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-29",
+    "oclc_number": 948600424
+  },
+  {
+    "work_id": "x633dz0435p",
+    "catalog_system_number": "004610173",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-28",
+    "oclc_number": 992167580
+  },
+  {
+    "work_id": "x633dz0481v",
+    "catalog_system_number": "004698013",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-29",
+    "oclc_number": 1013543090
+  },
+  {
+    "work_id": "x920ft87135",
+    "catalog_system_number": "004603727",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-06-07",
+    "oclc_number": 989155807
+  },
+  {
+    "work_id": "xd07gq7052d",
+    "catalog_system_number": "004408910",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 951252549
+  },
+  {
+    "work_id": "xd07gq70543",
+    "catalog_system_number": "004464944",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-03",
+    "oclc_number": 960449648
+  },
+  {
+    "work_id": "xd07gq70930",
+    "catalog_system_number": "004557854",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-11",
+    "oclc_number": 982122614
+  },
+  {
+    "work_id": "xd07gq70s9d",
+    "catalog_system_number": "004643191",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1002308359
+  },
+  {
+    "work_id": "xd07gq70t3n",
+    "catalog_system_number": "004702312",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-14",
+    "oclc_number": 1015344400
+  },
+  {
+    "work_id": "xd07gq70t5b",
+    "catalog_system_number": "004791345",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035632955
+  },
+  {
+    "work_id": "xg94hm53g4f",
+    "catalog_system_number": "004405668",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-01",
+    "oclc_number": 950980726
+  },
+  {
+    "work_id": "xk81jh36q3v",
+    "catalog_system_number": "004446742",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-16",
+    "oclc_number": 958434214
+  },
+  {
+    "work_id": "xk81jh36q46",
+    "catalog_system_number": "004471787",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-28",
+    "oclc_number": 961213544
+  },
+  {
+    "work_id": "xk81jh36q6w",
+    "catalog_system_number": "004467333",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-02",
+    "oclc_number": 960699733
+  },
+  {
+    "work_id": "xk81jh37c1b",
+    "catalog_system_number": "004626762",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-31",
+    "oclc_number": 999607061
+  },
+  {
+    "work_id": "xk81jh37c5q",
+    "catalog_system_number": "004702482",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-12",
+    "oclc_number": 1015373830
+  },
+  {
+    "work_id": "xp68kd2005n",
+    "catalog_system_number": "004470602",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-07",
+    "oclc_number": 961103789
+  },
+  {
+    "work_id": "xp68kd20467",
+    "catalog_system_number": "004580336",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-02",
+    "oclc_number": 985112416
+  },
+  {
+    "work_id": "xp68kd20n8k",
+    "catalog_system_number": "004771534",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-24",
+    "oclc_number": 1032304182
+  },
+  {
+    "work_id": "xs55m90385q",
+    "catalog_system_number": "004467334",
+    "ETD_REVIEWER_SIGNOFF_DATE": "",
+    "oclc_number": 960699579
+  },
+  {
+    "work_id": "xs55m90394p",
+    "catalog_system_number": "004398913",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-05-09",
+    "oclc_number": 949875823
+  },
+  {
+    "work_id": "xs55m903b0m",
+    "catalog_system_number": "004444815",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-09-08",
+    "oclc_number": 958270451
+  },
+  {
+    "work_id": "xw42n586j7p",
+    "catalog_system_number": "004446511",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-29",
+    "oclc_number": 958426488
+  },
+  {
+    "work_id": "xw42n586k0k",
+    "catalog_system_number": "004366882",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-01-29",
+    "oclc_number": 945099004
+  },
+  {
+    "work_id": "xw42n586k4z",
+    "catalog_system_number": "004394027",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-27",
+    "oclc_number": 948296894
+  },
+  {
+    "work_id": "xw42n586k9p",
+    "catalog_system_number": "004434260",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 954343033
+  },
+  {
+    "work_id": "xw42n58766h",
+    "catalog_system_number": "004636522",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-15",
+    "oclc_number": 1000615271
+  },
+  {
+    "work_id": "z029p269v0z",
+    "catalog_system_number": "004491965",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-12-07",
+    "oclc_number": 962936006
+  },
+  {
+    "work_id": "z029p269z90",
+    "catalog_system_number": "004580334",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-01",
+    "oclc_number": 985112542
+  },
+  {
+    "work_id": "z316pz5339d",
+    "catalog_system_number": "004444784",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-20",
+    "oclc_number": 958265971
+  },
+  {
+    "work_id": "z316pz5340m",
+    "catalog_system_number": "004470594",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-06",
+    "oclc_number": 961103881
+  },
+  {
+    "work_id": "z316pz53518",
+    "catalog_system_number": "004436845",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-31",
+    "oclc_number": 956382835
+  },
+  {
+    "work_id": "z316pz53s0h",
+    "catalog_system_number": "004698080",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-11-30",
+    "oclc_number": 1013545376
+  },
+  {
+    "work_id": "z316pz53s26",
+    "catalog_system_number": "004790891",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-08",
+    "oclc_number": 1035374558
+  },
+  {
+    "work_id": "z603qv36h9q",
+    "catalog_system_number": "004539026",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-23",
+    "oclc_number": 973731374
+  },
+  {
+    "work_id": "z603qv36j18",
+    "catalog_system_number": "004581055",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-03",
+    "oclc_number": 985512524
+  },
+  {
+    "work_id": "z890rr19q32",
+    "catalog_system_number": "004437267",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-02",
+    "oclc_number": 956499101
+  },
+  {
+    "work_id": "z890rr19t30",
+    "catalog_system_number": "004570202",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-04-24",
+    "oclc_number": 983834322
+  },
+  {
+    "work_id": "z890rr2098t",
+    "catalog_system_number": "004626950",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-04",
+    "oclc_number": 999729074
+  },
+  {
+    "work_id": "z890rr20b22",
+    "catalog_system_number": "004700646",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1014340710
+  },
+  {
+    "work_id": "zc77sn03333",
+    "catalog_system_number": "004580498",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-02",
+    "oclc_number": 985356835
+  },
+  {
+    "work_id": "zc77sn03m12",
+    "catalog_system_number": "004642107",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-24",
+    "oclc_number": 1001950400
+  },
+  {
+    "work_id": "zg64th86854",
+    "catalog_system_number": "004434951",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-29",
+    "oclc_number": 955258546
+  },
+  {
+    "work_id": "zg64th86c21",
+    "catalog_system_number": "004539024",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-23",
+    "oclc_number": 973731448
+  },
+  {
+    "work_id": "zg64th86w00",
+    "catalog_system_number": "004640525",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-14",
+    "oclc_number": 1001473048
+  },
+  {
+    "work_id": "zg64th86w4c",
+    "catalog_system_number": "004701015",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-08",
+    "oclc_number": 1015200458
+  },
+  {
+    "work_id": "zg64th86w62",
+    "catalog_system_number": "004791018",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-05-10",
+    "oclc_number": 1035419866
+  },
+  {
+    "work_id": "zk51vd69h4j",
+    "catalog_system_number": "004317275",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-07-23",
+    "oclc_number": 938113930
+  },
+  {
+    "work_id": "zk51vd69j56",
+    "catalog_system_number": "004412175",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-09",
+    "oclc_number": 951750352
+  },
+  {
+    "work_id": "zk51vd69n1r",
+    "catalog_system_number": "004539028",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-02-23",
+    "oclc_number": 973731306
+  },
+  {
+    "work_id": "zk51vd69n54",
+    "catalog_system_number": "004581059",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-05-04",
+    "oclc_number": 985513944
+  },
+  {
+    "work_id": "zk51vd7055j",
+    "catalog_system_number": "004698230",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-12-01",
+    "oclc_number": 1013720030
+  },
+  {
+    "work_id": "zp38w953f1h",
+    "catalog_system_number": "004626934",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-01",
+    "oclc_number": 999728541
+  },
+  {
+    "work_id": "zp38w953f36",
+    "catalog_system_number": "004633923",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1000301989
+  },
+  {
+    "work_id": "zs25x636341",
+    "catalog_system_number": "004394524",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-04-29",
+    "oclc_number": 948601829
+  },
+  {
+    "work_id": "zs25x636372",
+    "catalog_system_number": "004409456",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-06-08",
+    "oclc_number": 951437576
+  },
+  {
+    "work_id": "zs25x63638d",
+    "catalog_system_number": "004434258",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-08-01",
+    "oclc_number": 954341717
+  },
+  {
+    "work_id": "zs25x636n1z",
+    "catalog_system_number": "004625693",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-07-28",
+    "oclc_number": 995847854
+  },
+  {
+    "work_id": "zw12z319b6g",
+    "catalog_system_number": "004468175",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2015-08-04",
+    "oclc_number": 960871017
+  },
+  {
+    "work_id": "zw12z319c9t",
+    "catalog_system_number": "004433133",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2016-07-25",
+    "oclc_number": 954043038
+  },
+  {
+    "work_id": "zw12z32004f",
+    "catalog_system_number": "004643047",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2017-08-09",
+    "oclc_number": 1002219416
+  },
+  {
+    "work_id": "zw12z32010c",
+    "catalog_system_number": "004771586",
+    "ETD_REVIEWER_SIGNOFF_DATE": "2018-04-25",
+    "oclc_number": 1032335013
+  }
+]
