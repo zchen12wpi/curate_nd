@@ -23,7 +23,7 @@ module Hydramata::GroupMembershipActionParser
         if value["_destroy"].present? && value["id"].present?
           #remove member
           action << "destroy"
-        elsif value["name"].present? || value["id"].present?
+        elsif value["_new"].present? && value["id"].present?
           #add member
           action << "create"
         else

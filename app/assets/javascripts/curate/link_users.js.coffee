@@ -85,7 +85,7 @@
       template = Handlebars.compile(source)
       template({index: index})
 
-    addExistingUser: ($listItem, value, label) ->
+    addExistingUser: ($listItem, value, label, name) ->
       ## We have multiple places in a view where we need these autocomplete fields
       ## (Work edit view for example), so we don't want to use the first #existing-user-template.
       ## Using .closest isn't working, but this seems to for now.
@@ -93,7 +93,7 @@
       template = Handlebars.compile(source)
       $list = $listItem.closest('ul')
       $('input[required]', $list).removeAttr('required')
-      $listItem.replaceWith template({index: $('li', $list).index($listItem), value: value, label: label})
+      $listItem.replaceWith template({index: $('li', $list).index($listItem), value: value, label: label, name: name})
       _internals.newRow($list)
 
     autocompleteUsers: (el) ->
@@ -105,15 +105,16 @@
           $.getJSON (api), { q: request.term }, ( data, status, xhr) ->
             matches = []
             $.each data.data, (idx, val) ->
-              label = val['uid']+" ("+val['fullname']+")"
-              matches.push {label: label, value: val['id']}
+              name = val['fullname']
+              label = val['uid'] + " (" + name + ")"
+              matches.push {label: label, value: val['id'], name: name}
             response( matches )
         minLength: 2
         focus: ( event, ui ) ->
           $targetElement.val(ui.item.label)
           event.preventDefault()
         select: ( event, ui ) ->
-          _internals.addExistingUser($targetElement.closest('li'), ui.item.value, ui.item.label)
+          _internals.addExistingUser($targetElement.closest('li'), ui.item.value, ui.item.label, ui.item.name)
           $targetElement.val('')
           event.preventDefault()
 

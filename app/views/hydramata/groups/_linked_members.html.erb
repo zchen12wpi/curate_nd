@@ -43,6 +43,8 @@
               <p target="_new">{{label}}</p>
             </span>
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="{{value}}">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][name]" value="{{name}}">
             <span class="field-controls">
               <button class="btn btn-danger remove">
                 <i class="icon-white icon-minus"></i>
