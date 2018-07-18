@@ -40,7 +40,7 @@
           </div>
           <div class="span3">
             <span class="linked-user">
-              <a href="/people/{{value}}" target="_new">{{label}}</a>
+              <p target="_new">{{label}}</p>
             </span>
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}">
             <span class="field-controls">
@@ -79,9 +79,9 @@
             <div class="span3">
               <% if memberField.object.persisted? %>
                 <% if ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
-                  <span class="linked-user current-user"><%=link_to memberField.object.name, memberField.object, target: '_new' %></span>
+                  <span class="linked-user current-user"><%=memberField.object.name %></span>
                 <% else %>
-                  <span class="linked-user"><%=link_to memberField.object.name, memberField.object, target: '_new' %></span>
+                  <span class="linked-user"><%=memberField.object.name %></span>
                 <% end %>
                 <% unless ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
                   <span class="field-controls"></span>
