@@ -1,14 +1,14 @@
 (($, window, document) ->
   $this = undefined
- 
+
   # default settings
   _settings =
     default: 'cool!'
-    
+
   _remover = $("<button class=\"btn btn-danger remove\"><i class=\"icon-white icon-minus\"></i><span>Remove</span></button>")
   _adder   = $("<button class=\"btn btn-success add\"><i class=\"icon-white icon-plus\"></i><span>Add</span></button>")
-  
- 
+
+
   # This is your public API (no leading underscore, see?)
   # All public methods must return $this so your plugin is chainable.
   methods =
@@ -23,37 +23,36 @@
       #
       #  $('.matching-elements, #another-one').foobar()
       #
-      
+
       #This code sets up all the "Add" and "Remove" buttons for the autocomplete fields.
-      
+
       #For each autocomplete set on the page, add the "Add" and "Remove" buttons
       $this.each (index, el) ->
         $('.autocomplete-users').each (index, el) ->
           _internals.autocompleteUsers(el)
-        
+
         #Make sure these buttons have unique id's
         _adder.id = "adder_" + index
         _remover.id = "remover_" + index
-        
-        #Add the "Remove" button       
+        #Add the "Remove" button
         $('.field-wrapper:not(:last-child) .field-controls', this).append(_remover.clone())
-        
+
         #Add the "Add" button
         $('.field-controls:last', this).append(_adder.clone())
-        
+
         #Bind the buttons to onClick events
         $(el).on 'click', 'button.add', (e) ->
           _internals.addToList(this)
         $(el).on 'click', 'button.remove', (e) ->
           _internals.removeFromList(this)
-        
+
       return $this
- 
+
     # This method is often overlooked.
     destroy: ->
       # Do anything to clean it up (nullify references, unbind events…).
       return $this
- 
+
   _internals =
     addToList: (el) ->
       $activeControls = $(el).closest('.field-controls')
@@ -102,10 +101,12 @@
       $targetElement.autocomplete
         source: (request, response) ->
           $targetElement.data('url')
-          $.getJSON $targetElement.data('url'), { q: request.term + "*" }, ( data, status, xhr ) ->
+          api = "//www3.nd.edu/~webdev/utilities/ldap/?callback=?"
+          $.getJSON (api), { q: request.term }, ( data, status, xhr) ->
             matches = []
-            $.each data.response.docs, (idx, val) ->
-              matches.push {label: val['desc_metadata__name_tesim'][0], value: val['id']}
+            $.each data.data, (idx, val) ->
+              label = val['uid']+" ("+val['fullname']+")"
+              matches.push {label: label, value: val['id']}
             response( matches )
         minLength: 2
         focus: ( event, ui ) ->
@@ -116,7 +117,7 @@
           $targetElement.val('')
           event.preventDefault()
 
- 
+
   $.fn.linkUsers = (method) ->
     if methods[method]
       methods[method].apply this, Array::slice.call(arguments, 1)
