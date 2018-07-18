@@ -137,4 +137,5 @@ group :development do
   gem 'rubocop', require: false
   gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
+  gem 'brakeman'
 end
