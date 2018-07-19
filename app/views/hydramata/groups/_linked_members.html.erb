@@ -21,7 +21,7 @@
             <%= select_tag "group_member[edit_users_ids][]", options_for_select(mem_val, ''), prompt: 'Make a Selection', class: 'input-xlarge' %>
           </div>
           <div class="span3">
-            <input class="input-xlarge autocomplete-users" data-url="/people" id="<%=prefix %>_members_attributes_{{index}}_name" name="<%=prefix %>[members_attributes][{{index}}][name]" type="text" value="" />
+            <input class="input-xlarge autocomplete-users" id="<%=prefix %>_members_attributes_{{index}}_name" name="<%=prefix %>[members_attributes][{{index}}][name]" type="text" value="" />
             <span class="field-controls">
               <button class="btn btn-success add">
                 <i class="icon-white icon-plus"></i>
@@ -40,7 +40,7 @@
           </div>
           <div class="span3">
             <span class="linked-user">
-              <p target="_new">{{label}}</p>
+              {{label}}
             </span>
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}">
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="{{value}}">

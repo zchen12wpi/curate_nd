@@ -54,6 +54,8 @@ class CurationConcern::WorkPermission
     end
 
     def self.update_record_editors(work, record_editors, action)
+# TODO: Decide how best to change this action to handle NetID
+      byebug
       collection = decide_action(record_editors, action)
       work.remove_record_editors(collection[:remove].map { |u| user(u) }.compact)
       work.add_record_editors(collection[:create].map { |u| user(u) }.compact)

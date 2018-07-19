@@ -42,6 +42,7 @@ module CurationConcern
 
     # @param user [User] the user account you want to grant edit access to.
     def add_record_editor(user)
+      byebug
       raise ArgumentError, "parameter is #{user.inspect}, expected a kind of User" unless user.is_a?(User)
       record_editors << user.person
       self.permissions_attributes = [{ name: user.user_key, access: 'edit', type: 'person' }] unless depositor == user.user_key
