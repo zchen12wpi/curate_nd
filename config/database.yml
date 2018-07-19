@@ -32,12 +32,12 @@ local_user: &local_user
   <<: *mysql_settings
   <<: *mysql_connection
   username: root
-  password: <%= ENV["PASSWORD"] %>
+  password: password
 
 development: &development
   <<: *local_user
   database: curate_nd_development
-  host:     localhost
+  host:     127.0.0.1
   timeout: 5000
 
 development_remote_purl_database:

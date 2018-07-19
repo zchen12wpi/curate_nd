@@ -73,7 +73,9 @@ class Hydramata::GroupMembershipForm
     self.members.each do |member|
       group.reload
       if member[:action] == 'create'
-        add_member( person( member[:person_id] ), member[:role] )
+        # In the case of create, the person_id refers to a netid from LDAP, not a fedora Person
+        user = FindOrCreateUser.call(member[:person_id], member[:person_name])
+        add_member( user.person, member[:role] )
       elsif member[:action] == 'destroy'
         group.remove_member( person( member[:person_id] ) )
       elsif member[:action] == 'none'

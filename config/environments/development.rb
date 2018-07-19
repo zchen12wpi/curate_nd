@@ -27,7 +27,7 @@ CurateNd::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.application_root_url = "http://localhost:3000"
+  config.application_root_url = "https://localhost:3000"
 
   if ENV['FULL_STACK']
     # require 'clamav'
@@ -45,4 +45,8 @@ CurateNd::Application.configure do
   end
 
   config.logger = Logger.new(STDOUT)
+
+  # Uncomment to enable background jobs in development.
+  # Note: you will also need to run `bundle exec rake resque:pool`
+  #Resque.inline = false
 end

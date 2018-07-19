@@ -22,6 +22,7 @@ group :default do
   gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
+  gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
   gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
@@ -136,4 +137,5 @@ group :development do
   gem 'rubocop', require: false
   gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
+  gem 'brakeman'
 end

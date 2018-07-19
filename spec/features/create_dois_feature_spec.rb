@@ -1,15 +1,8 @@
 require 'spec_helper_features'
 
-VCR.configure do |c|
-  c.ignore_request do |request|
-    doi_uri = URI(Hydra::RemoteIdentifier.configuration.remote_services.fetch(:doi).url)
-    URI(request.uri).host == doi_uri.host
-  end
-end
-
 describe 'create DOIs feature', FeatureSupport.options do
   Curate.configuration.registered_curation_concern_types.each do |curation_concern_class_name|
-    if  Hydra::RemoteIdentifier.registered?(:doi, curation_concern_class_name.constantize)
+    if curation_concern_class_name.constantize.ancestors.include?(CurationConcern::RemotelyIdentifiedByDoi::Attributes)
       # This is excluded as we don't yet create an OSF Archive via the Actor
       next if curation_concern_class_name.constantize == OsfArchive
       context "for #{curation_concern_class_name}" do
@@ -20,7 +13,7 @@ describe 'create DOIs feature', FeatureSupport.options do
         let(:attributes) {
           FactoryGirl.attributes_for(
             "public_#{curation_concern_class_name.underscore}",
-            doi_assignment_strategy: :mint_doi,
+            doi_assignment_strategy: CurationConcern::RemotelyIdentifiedByDoi::GET_ONE,
             creator: ['A Special Creator'],
             publisher: ['University of Notre Dame']
           )
@@ -31,9 +24,8 @@ describe 'create DOIs feature', FeatureSupport.options do
         }
 
         it 'should mint a remote identifier' do
-          expect(curation_concern.identifier).to be_nil
+          expect(Doi::Datacite).to receive(:mint).with(curation_concern)
           subject.create
-          expect(curation_concern.reload.identifier).to_not be_nil
         end
       end
     end
