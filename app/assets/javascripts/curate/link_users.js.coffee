@@ -108,14 +108,18 @@
               name = val['fullname']
               label = val['uid'] + " (" + name + ")"
               matches.push {label: label, value: val['id'], name: name}
+            if(matches.length == 0)
+              matches.push { label: "No matches found.", value: 'not_found' }
             response( matches )
         minLength: 2
         focus: ( event, ui ) ->
-          $targetElement.val(ui.item.label)
+          if(ui.item.value != 'not_found')
+            $targetElement.val(ui.item.label)
           event.preventDefault()
         select: ( event, ui ) ->
-          _internals.addExistingUser($targetElement.closest('li'), ui.item.value, ui.item.label, ui.item.name)
-          $targetElement.val('')
+          if(ui.item.value != 'not_found')
+            _internals.addExistingUser($targetElement.closest('li'), ui.item.value, ui.item.label, ui.item.name)
+            $targetElement.val('')
           event.preventDefault()
 
 
