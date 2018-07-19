@@ -29,8 +29,8 @@
 <div class="group-members">
   <ul class="collection-listing">
     <% @group.members.each do |member| %>
-      <li class='collection-member'><%= link_to member.name, person_path(member) %></li>
+      <% nameLabel = member.name.present? ? member.name : member.user.username %>
+      <li class='collection-member'><%= link_to nameLabel, person_path(member) %></li>
     <% end %>
   </ul>
 </div>
-

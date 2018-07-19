@@ -14,6 +14,11 @@ RSpec.describe FindOrCreateUser do
       expect(subject).to eq(user)
     end
 
+    it 'does not change the name' do
+      subject = FindOrCreateUser.call('existing_user', 'New Name')
+      expect(subject.name).to eq('Existing User')
+    end
+
     context 'and it already has an associated person' do
       let!(:user) { FactoryGirl.create(:user_with_person, username: 'existing_user', name: 'Existing User') }
 
@@ -22,9 +27,19 @@ RSpec.describe FindOrCreateUser do
         FindOrCreateUser.call('existing_user', 'Existing User')
       end
 
+      it 'does not change the person name' do
+        subject = FindOrCreateUser.call('existing_user', 'New Name')
+        expect(subject.person.name).to eq('Existing User')
+      end
+
       it 'does not create a new profile' do
         expect(Profile).not_to receive(:new)
         FindOrCreateUser.call('existing_user', 'Existing User')
+      end
+
+      it 'does not change the profile title' do
+        subject = FindOrCreateUser.call('existing_user', 'New Name')
+        expect(subject.person.profile.title).to eq('Existing User')
       end
     end
 

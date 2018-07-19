@@ -80,10 +80,11 @@
             </div>
             <div class="span3">
               <% if memberField.object.persisted? %>
+                <% nameLabel = memberField.object.name.present? ? memberField.object.name : memberField.object.user.username %>
                 <% if ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
-                  <span class="linked-user current-user"><%=memberField.object.name %></span>
+                  <span class="linked-user current-user"><%= nameLabel %></span>
                 <% else %>
-                  <span class="linked-user"><%=memberField.object.name %></span>
+                  <span class="linked-user"><%= nameLabel  %></span>
                 <% end %>
                 <% unless ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
                   <span class="field-controls"></span>
