@@ -22,6 +22,7 @@
           </div>
           <div class="span3">
             <input class="input-xlarge autocomplete-users" data-url="/people" id="<%=prefix %>_members_attributes_{{index}}_name" name="<%=prefix %>[members_attributes][{{index}}][name]" type="text" value="" />
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="true">
             <span class="field-controls">
               <button class="btn btn-success add">
                 <i class="icon-white icon-plus"></i>
@@ -43,7 +44,7 @@
               <p target="_new">{{label}}</p>
             </span>
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}">
-            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="{{value}}">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="true">
             <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][name]" value="{{name}}">
             <span class="field-controls">
               <button class="btn btn-danger remove">
@@ -90,7 +91,8 @@
                   <span class="field-controls"></span>
                 <% end %>
               <% else %>
-                <%= memberField.text_field :name, class: 'input-xlarge autocomplete-users', 'data-url' => people_path, required: memberField.index == 0  %>
+                <%= memberField.text_field :id, class: 'input-xlarge autocomplete-users', 'data-url' => people_path, required: memberField.index == 0  %>
+                <input type="hidden" name="<%=prefix %>[members_attributes][<%= memberField.index %>][_new]" value="true">
                 <span class="field-controls"></span>
               <% end %>
             </div>
