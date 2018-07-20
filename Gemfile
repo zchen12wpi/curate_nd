@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Ensure that all github access points are via https
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
@@ -25,7 +31,7 @@ group :default do
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
-  gem 'harbinger', git: 'git://github.com/ndlib/harbinger'
+  gem 'harbinger', github: 'ndlib/harbinger'
   gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
   gem 'httparty'
   gem 'hydra-batch-edit', '~> 1.1.1'
@@ -50,7 +56,7 @@ group :default do
   gem 'mysql2', '~> 0.3.18'
   gem 'namae'
   gem 'net-ldap'
-  gem 'noids_client', git: 'git://github.com/ndlib/noids_client'
+  gem 'noids_client', github: 'ndlib/noids_client'
   gem 'nokogiri', "~>1.6.0"
   gem 'qa'
   gem 'rails', '~>4.0.2'
