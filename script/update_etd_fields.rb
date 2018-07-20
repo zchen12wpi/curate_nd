@@ -23,7 +23,7 @@ if ARGV.length < 1
   exit 2
 end
 # Read JSON file
-filename = ARGV[0]
+filename = "SipityAttributes.json"
 @logger.info "Reading JSON File #{filename}"
 file_content = File.read(filename)
 data = JSON.parse(file_content)
