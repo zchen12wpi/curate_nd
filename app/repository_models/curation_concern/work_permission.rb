@@ -28,6 +28,9 @@ class CurationConcern::WorkPermission
         if attributes['id'].present?
           if has_destroy_flag?(attributes)
             sorted[:remove] << attributes['id']
+          elsif has_new_flag?(attributes)
+            user = FindOrCreateUser.call(attributes['id'], attributes['name'])
+            sorted[:create] << user.person.id
           elsif action_type == :create || action_type == :update
             sorted[:create] << attributes['id']
           end
@@ -40,6 +43,10 @@ class CurationConcern::WorkPermission
     private
     def self.has_destroy_flag?(hash)
       ["1", "true"].include?(hash['_destroy'].to_s)
+    end
+
+    def self.has_new_flag?(hash)
+      ["1", "true"].include?(hash['_new'].to_s)
     end
 
     def self.user(person_id)

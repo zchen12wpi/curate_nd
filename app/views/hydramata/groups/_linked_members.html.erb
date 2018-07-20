@@ -21,7 +21,7 @@
             <%= select_tag "group_member[edit_users_ids][]", options_for_select(mem_val, ''), prompt: 'Make a Selection', class: 'input-xlarge' %>
           </div>
           <div class="span3">
-            <input class="input-xlarge autocomplete-users" data-url="/people" id="<%=prefix %>_members_attributes_{{index}}_name" name="<%=prefix %>[members_attributes][{{index}}][name]" type="text" value="" />
+            <input class="input-xlarge autocomplete-users" id="<%=prefix %>_members_attributes_{{index}}_name" name="<%=prefix %>[members_attributes][{{index}}][name]" type="text" value="" />
             <span class="field-controls">
               <button class="btn btn-success add">
                 <i class="icon-white icon-plus"></i>
@@ -40,9 +40,11 @@
           </div>
           <div class="span3">
             <span class="linked-user">
-              <a href="/people/{{value}}" target="_new">{{label}}</a>
+              {{label}}
             </span>
-            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][id]" value="{{value}}" data-attribute-key="id">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][_new]" value="true" data-attribute-key="_new">
+            <input type="hidden" name="<%=prefix %>[members_attributes][{{index}}][name]" value="{{name}}" data-attribute-key="name">
             <span class="field-controls">
               <button class="btn btn-danger remove">
                 <i class="icon-white icon-minus"></i>
@@ -60,7 +62,7 @@
         <li class="field-wrapper input-append">
           <div class="row">
             <%= memberField.hidden_field :id %>
-            <%= memberField.hidden_field :_destroy %>
+            <%= memberField.hidden_field :_destroy, data: { "attribute-key" => "_destroy" }  %>
             <div class="span3 text-center">
               <% mem_val = [['Member', '0'], ['Owner', memberField.object.pid]] %>
               <label class="checkbox inline-checkbox">
@@ -78,10 +80,11 @@
             </div>
             <div class="span3">
               <% if memberField.object.persisted? %>
+                <% nameLabel = memberField.object.name.present? ? memberField.object.name : memberField.object.user.username %>
                 <% if ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
-                  <span class="linked-user current-user"><%=link_to memberField.object.name, memberField.object, target: '_new' %></span>
+                  <span class="linked-user current-user"><%= nameLabel %></span>
                 <% else %>
-                  <span class="linked-user"><%=link_to memberField.object.name, memberField.object, target: '_new' %></span>
+                  <span class="linked-user"><%= nameLabel  %></span>
                 <% end %>
                 <% unless ( @group.edit_users.include?(memberField.object.user_key) && @group.edit_users.size == 1 ) %>
                   <span class="field-controls"></span>
