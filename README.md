@@ -6,8 +6,9 @@ This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
 
 Its primary function is to be a self-deposit interface for our institutional digital repository.
 
-## Installation Notes
+Note: If using Docker, see README_DOCKER.md for instructions.
 
+## Installation Notes
 Installing the clamav gem on OS X is a trying process. It can be safely excluded
 from your development environment
 
@@ -18,12 +19,6 @@ bundle install --without headless
 ## Testing
 
 ### 1. Start dependencies
-#### With Docker
-```console
-docker-compose -f docker-compose-test.yml up -d
-```
-
-#### Without Docker
 ```console
 bundle exec rake curatend:jetty:start
 ```
@@ -53,16 +48,6 @@ Certain curation concern types are never created interactively:
 ### 1. Start dependencies
 Before you start the web-server you'll need to make sure Fedora and SOLR are running.
 
-#### With Docker
-
-You can run MySQL, Fedora and Solr via Docker:
-
-```console
-docker-compose up -d
-```
-
-#### Without Docker
-
 Start Fedora and SOLR via jetty:
 
 ```console
@@ -77,13 +62,11 @@ mysql.server start
 
 ### 2. Initialize the database
 Load the database schema into MySQL:
-
 ```console
 bundle exec rake db:schema:load
 ```
 
-To seed database with test data (skip this step when using Docker):
-
+To seed database with test data:
 ```console
 bundle exec db:seed:dev
 ```
@@ -100,35 +83,6 @@ If you don't need SSL, use the following command:
 
 ```console
 bundle exec rails server
-```
-
-## Rebuilding curate-jetty Docker image
-
-To rebuild the Docker image for running jetty, use the following command:
-
-```console
-docker build . -t ndlib/curate-jetty
-```
-
-To push your image to Dockerhub:
-
-```console
-docker login
-docker push ndlib/curate-jetty
-```
-
-To rebuild the image with pre-generated seed data:
-```console
-# First reset to the base image
-docker stop curate-jetty && docker rm curate-jetty
-docker run -p 8983:8983 -d --name curate-jetty -t ndlib/curate-jetty
-# Run seed scripts from the project root directory
-bundle exec rake db:schema:load db:seed:dev
-# Commit these changes to your image
-docker commit curate-jetty ndlib/curate-jetty-devseed
-# Push it up as the dev seed image
-docker login
-docker push ndlib/curate-jetty-devseed
 ```
 
 ## Release Documentation

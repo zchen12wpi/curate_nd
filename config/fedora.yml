@@ -2,14 +2,19 @@
 # FYI: This file is replaced by a copy for deploys
 # to ci, pre_production, and production.
 #
+<%
+  port = ENV["FEDORA_PORT"] || "8983"
+  host = ENV["FEDORA_HOST"] || "127.0.0.1"
+%>
+
 development:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:8983/fedora
+  url: <%= "http://#{host}:#{port}/fedora" %>
 test: &TEST
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/fedora-test" %>
+  url: <%= "http://#{host}:#{port}/fedora-test" %>
 ci:
   <<: *TEST
 production:
