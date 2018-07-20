@@ -28,6 +28,9 @@ class CurationConcern::WorkPermission
         if attributes['id'].present?
           if has_destroy_flag?(attributes)
             sorted[:remove] << attributes['id']
+          elsif has_new_flag?(attributes)
+            user = FindOrCreateUser.call(attributes['id'], attributes['name'])
+            sorted[:create] << user.person.id
           elsif action_type == :create || action_type == :update
             sorted[:create] << attributes['id']
           end
@@ -42,6 +45,10 @@ class CurationConcern::WorkPermission
       ["1", "true"].include?(hash['_destroy'].to_s)
     end
 
+    def self.has_new_flag?(hash)
+      ["1", "true"].include?(hash['_new'].to_s)
+    end
+
     def self.user(person_id)
       ::User.find_by_repository_id(person_id)
     end
@@ -54,8 +61,6 @@ class CurationConcern::WorkPermission
     end
 
     def self.update_record_editors(work, record_editors, action)
-# TODO: Decide how best to change this action to handle NetID
-      byebug
       collection = decide_action(record_editors, action)
       work.remove_record_editors(collection[:remove].map { |u| user(u) }.compact)
       work.add_record_editors(collection[:create].map { |u| user(u) }.compact)

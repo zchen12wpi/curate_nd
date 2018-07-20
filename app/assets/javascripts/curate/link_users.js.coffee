@@ -72,9 +72,15 @@
       $currentUser = $(el).closest('li')
       $listing = $currentUser.closest('.listing')
       $currentUser.hide()
-      $('input[data-info="not-persisted"]', $currentUser).val('true')
-      # set the destroy flag
-      $('input:not([value])', $currentUser).val('true')
+
+      # Test if this was a newly added entry that the user is now removing or if
+      # this was an existing entry that the user wants to remove
+      $is_new = $('input[data-attribute-key="_new"]', $currentUser)
+      if($is_new && $is_new.val() == 'true')
+        $('input[data-attribute-key="id"]', $currentUser).val('')
+        $is_new.val('false')
+      else
+        $('input[data-attribute-key="_destroy"]', $currentUser).val('true')
       false
 
     newListItem: (index, el) ->

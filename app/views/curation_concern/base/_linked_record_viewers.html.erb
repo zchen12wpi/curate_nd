@@ -21,7 +21,9 @@
       <script id="existing-user-template" type="text/x-handlebars-template">
         <li class="field-wrapper input-append">
           <span class="linked-user">{{label}}</span>
-          <input type="hidden" name="<%=prefix %>[record_viewers_attributes][{{index}}][id]" value="{{value}}" data-info="not-persisted">
+          <input type="hidden" name="<%=prefix %>[record_viewers_attributes][{{index}}][id]" value="{{value}}" data-attribute-key="id" data-info="not-persisted">
+          <input type="hidden" name="<%=prefix %>[record_viewers_attributes][{{index}}][_new]" value="true" data-attribute-key="_new">
+          <input type="hidden" name="<%=prefix %>[record_viewers_attributes][{{index}}][name]" value="{{name}}" data-attribute-key="name">
           <span class="field-controls"><button class="btn btn-danger remove"><i class="icon-white icon-minus"></i><span>Remove</span></button></span>
         </li>
       </script>
@@ -30,7 +32,7 @@
       <%= f.fields_for :record_viewers do |viewer| %>
         <li class="field-wrapper input-append">
           <%= viewer.hidden_field :id %>
-          <%= viewer.hidden_field :_destroy %>
+          <%= viewer.hidden_field :_destroy, data: { "attribute-key" => "_destroy" } %>
           <% if viewer.object.persisted? %>
             <span class="linked-user"><%=viewer.object.name%></span>
           <% else %>

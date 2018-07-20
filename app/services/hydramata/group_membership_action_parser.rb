@@ -20,10 +20,10 @@ module Hydramata::GroupMembershipActionParser
     #validate prescence of required params
     if !params["hydramata_group"]["title"].nil? and !params["hydramata_group"]["description"].nil? and !params["hydramata_group"]["members_attributes"].nil?
       params["hydramata_group"]["members_attributes"].each do |key, value|
-        if value["_destroy"].present? && value["id"].present?
+        if value["_destroy"] == "true" && value["id"].present?
           #remove member
           action << "destroy"
-        elsif value["_new"].present? && value["id"].present?
+        elsif value["_new"] == "true" && value["id"].present?
           #add member
           action << "create"
         else
