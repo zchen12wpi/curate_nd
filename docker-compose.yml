@@ -7,6 +7,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: curate_nd_development
+    volumes:
+      - ./docker/mysql-utf8.cnf:/etc/mysql/conf.d/mysql-utf8.cnf
   jetty:
     image: ndlib/curate-jetty-devseed
     ports:
