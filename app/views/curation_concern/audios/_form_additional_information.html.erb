@@ -29,7 +29,6 @@
   <%= f.input :date_created,            label: 'Date Created', input_html: { class: 'input-xlarge datepicker'} %>
   <%= f.input :publisher,               as: :multi_value, input_html: { class: 'input-xlarge', id: 'publisher' } %>
   <%= f.input :publication_date,        placeholder: 'YYYY-MM', input_html: { class: 'input-xlarge' } %>
-  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
   <%= f.input :source,                  as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :relation,                as: :multi_value, label: "Related Resource(s)", input_html: {class: 'input-xlarge', type:'url'} %>
   <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>

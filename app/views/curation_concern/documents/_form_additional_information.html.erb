@@ -6,9 +6,6 @@
               collection: affiliations,
               input_html: { class: 'input-xlarge' }
   %>
-
-  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
-
   <%= f.input :alternate_title,            label: 'Alternate Title', as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :author,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
   <%= f.input :coauthor,                   as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
