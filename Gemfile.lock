@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/harai/kaminari.git
+  remote: https://github.com/harai/kaminari.git
   revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
   branch: route_prefix_prototype
   specs:
@@ -8,7 +8,7 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
-  remote: git://github.com/jeremyf/devise-multi_auth.git
+  remote: https://github.com/jeremyf/devise-multi_auth.git
   revision: 7835adee2f3f9d84dd876aea15a91ef47e155d3b
   specs:
     devise-multi_auth (0.2.0)
@@ -17,7 +17,7 @@ GIT
       rails (~> 4.0)
 
 GIT
-  remote: git://github.com/ndlib/blacklight-hierarchy.git
+  remote: https://github.com/ndlib/blacklight-hierarchy.git
   revision: 2ad01789ec500bf798d85fae63648e5bcf4798bc
   branch: master
   specs:
@@ -26,7 +26,7 @@ GIT
       rails (~> 4.0)
 
 GIT
-  remote: git://github.com/ndlib/harbinger
+  remote: https://github.com/ndlib/harbinger.git
   revision: f330a0ead6136f9aadbcd0ada1a927b38cec85cd
   specs:
     harbinger (0.2.3)
@@ -34,7 +34,7 @@ GIT
       rails (~> 4.0)
 
 GIT
-  remote: git://github.com/ndlib/locabulary.git
+  remote: https://github.com/ndlib/locabulary.git
   revision: e6b0c55988887f026ea1057c69f2f7123b4cd129
   specs:
     locabulary (0.8.1)
@@ -43,7 +43,7 @@ GIT
       json (~> 1.8)
 
 GIT
-  remote: git://github.com/ndlib/noids_client
+  remote: https://github.com/ndlib/noids_client.git
   revision: 7081fab70968d7c47ca3d1db8a74553082517507
   specs:
     noids_client (0.0.1)
@@ -51,8 +51,8 @@ GIT
       rest-client (~> 1.6)
 
 GIT
-  remote: git://github.com/samvera-labs/share_notify.git
-  revision: e9503c730e9488a0253bdc9a628f2926d5379008
+  remote: https://github.com/samvera-labs/share_notify.git
+  revision: 96c16ab13c596f479f83cb55c70b27309f4d5f2d
   specs:
     share_notify (0.2.0)
       activesupport
