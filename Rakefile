@@ -23,7 +23,7 @@ end
 
 Rake::Task['default'].clear rescue true
 task :default do
-  Rake::Task['curatend:travis'].invoke
+  Rake::Task['curatend:ci'].invoke
 end
 
 task :stats => :test_setup
