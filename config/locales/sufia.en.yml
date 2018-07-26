@@ -213,4 +213,4 @@ en:
       file_retrieval_request_received: "The file retrieval process has been started."
       file_retrieval_in_progress: "Retrieving the file may take several minutes. The download will start automatically when the file is ready."
     group:
-      members: "Owners can add other members to the group. A group must have at least one owner."
+      members: "Owners can add/remove other owners/members. A group by default will have the group creator as the owner."
