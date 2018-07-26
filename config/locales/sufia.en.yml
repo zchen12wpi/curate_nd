@@ -35,7 +35,7 @@ en:
       rights: "Licensing and distribution information governing access to the file. Select from the provided drop-down list."
     work:
       collaborator:
-        legend:         "Collaborators"
+        legend:         "Editors and Viewers"
         caption:        "Who can work with this content?"
         editor:
           name:         "Individual Editors"
@@ -51,7 +51,7 @@ en:
           help:         "These groups can view this work but not make changes."
     collection:
       collaborator:
-        legend:         "Collaborators"
+        legend:         "Editors and Viewers"
         caption:        "Who can view this content before making it public?"
         viewer:
           name:         "Individual Viewers"
