@@ -12,14 +12,32 @@ Installing the clamav gem on OS X is a trying process. It can be safely excluded
 from your development environment
 
 ```console
-$ bundle install --without headless
+bundle install --without headless
 ```
 
 ## Testing
 
-You can run `bundle exec rake` to execute the test suite.
+### 1. Start dependencies
+#### With Docker
+```console
+docker-compose -f docker-compose-test.yml up -d
+```
 
-You can also boot up jetty (e.g. `bundle exec rake curatend:jetty:start`) and run individual specs via `bundle exec rspec spec/path/to/file_spec.rb`
+#### Without Docker
+```console
+bundle exec rake curatend:jetty:start
+```
+
+### 2. Run specs
+To execute the full test suite, run
+```console
+bundle exec rake
+```
+To run individual specs, run
+
+```console
+bundle exec rspec spec/path/to/file_spec.rb
+```
 
 ### Testing of Specific Curation Concern Types
 
@@ -40,7 +58,7 @@ Before you start the web-server you'll need to make sure Fedora and SOLR are run
 You can run MySQL, Fedora and Solr via Docker:
 
 ```console
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 #### Without Docker
@@ -48,13 +66,13 @@ $ docker-compose up -d
 Start Fedora and SOLR via jetty:
 
 ```console
-$ bundle exec rake curatend:jetty:start
+bundle exec rake curatend:jetty:start
 ```
 
 Start MySQL:
 
 ```console
-$ mysql.server start
+mysql.server start
 ```
 
 ### 2. Initialize the database
@@ -75,13 +93,13 @@ bundle exec db:seed:dev
 In most cases, you will need SSL, so use this command:
 
 ```console
-$ bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
+bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
 ```
 
 If you don't need SSL, use the following command:
 
 ```console
-$ bundle exec rails server
+bundle exec rails server
 ```
 
 ## Rebuilding curate-jetty Docker image
