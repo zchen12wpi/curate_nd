@@ -30,6 +30,7 @@
   <ul class="collection-listing">
     <% @group.members.each do |member| %>
       <% nameLabel = member.name.present? ? member.name : member.user.username %>
+      <% nameLabel += @group.edit_users.include?(member.user.username) ? " (Owner)" : ""%>
       <li class='collection-member'><%= link_to nameLabel, person_path(member) %></li>
     <% end %>
   </ul>
