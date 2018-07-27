@@ -68,7 +68,7 @@ bundle exec rake db:schema:load
 
 To seed database with test data:
 ```console
-bundle exec db:seed:dev
+bundle exec rake db:seed:dev
 ```
 
 ### 3. Start Rails
