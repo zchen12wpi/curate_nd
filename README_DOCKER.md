@@ -30,7 +30,7 @@ docker-compose exec rails bundle exec byebug --remote localhost:9876
 To rebuild the Docker image for running jetty, use the following command:
 
 ```console
-docker build . -t ndlib/curate-jetty
+docker build . -t ndlib/curate-jetty -f docker/Dockerfile.jetty
 ```
 
 To push your image to Dockerhub:
