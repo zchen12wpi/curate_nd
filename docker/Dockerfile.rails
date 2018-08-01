@@ -1,0 +1,26 @@
+FROM ruby:2.1.10
+
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs unzip
+
+# Install Fits (which requires java)
+RUN apt-get install -y default-jre
+RUN mkdir /fits
+WORKDIR /fits
+RUN wget https://projects.iq.harvard.edu/files/fits/files/fits-0.6.2.zip
+RUN unzip fits-0.6.2.zip
+RUN chmod 755 /fits/fits-0.6.2/fits.sh
+ENV PATH="/fits/fits-0.6.2:${PATH}"
+
+# Put the installed gems outside of project_root so that the sync volume won't interfere
+RUN mkdir /bundle
+COPY Gemfile /bundle
+COPY Gemfile.lock /bundle
+WORKDIR /bundle
+RUN bundle install  --without headless --path /bundle
+
+RUN mkdir /project_root
+WORKDIR /project_root
+COPY . /project_root
+
+# Gemfile.lock may have changed after bundling, copy it back into the project_root
+RUN cp /bundle/Gemfile.lock /project_root/

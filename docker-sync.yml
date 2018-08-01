@@ -1,0 +1,8 @@
+version: "2"
+
+options:
+  verbose: true
+syncs:
+  curate_nd_rails_sync:
+    src: '.'
+    sync_excludes: ['.git', 'tmp', 'jetty', 'vendor/bundle', 'log']

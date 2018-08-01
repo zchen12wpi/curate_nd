@@ -5,10 +5,15 @@
 
 # This is a sample config file that does not have multiple solr instances. You will also need to be sure to
 # edit the fedora.yml file to match the solr URL for active-fedora.
+<%
+  port = ENV["SOLR_PORT"] || "8983"
+  host = ENV["SOLR_HOST"] || "127.0.0.1"
+%>
+
 development:
-  url: http://localhost:8983/solr/development
+  url: <%= "http://#{host}:#{port}/solr/development" %>
 test: &TEST
-  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/solr/test" %>
+  url: <%= "http://#{host}:#{port}/solr/test" %>
 cucumber:
   <<: *TEST
 ci:
