@@ -10,12 +10,6 @@
     input_html: { class: 'input-xxlarge rich-textarea-js', rows: '9' },
     as: :text
   %>
-  <%= render 'form_administrative_unit',
-    curation_concern: curation_concern,
-    f: f,
-    select_label_id: 'add-to-administrative-unit',
-    button_class: 'btn btn-primary'
-  %>
   <%= f.input :creator, label: 'Author', as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :issued_by, label: 'Issued By', as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :promulgated_by, label: 'Promulgated By', as: :multi_value, input_html: { class: 'input-xlarge' } %>

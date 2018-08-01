@@ -6,7 +6,6 @@
               collection: affiliations,
               input_html: { class: 'input-xlarge' }
   %>
-  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary' %>
   <%= f.input :contributor,             as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :alternate_title,         as: :multi_value, input_html: { class: 'input-xlarge' } %>
   <%= f.input :is_part_of,              label: 'Journal or Work Title', input_html: { class: 'input-xlarge' } %>
