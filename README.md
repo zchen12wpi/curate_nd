@@ -6,7 +6,7 @@ This application will be deployed to [curate.nd.edu](http://curate.nd.edu).
 
 Its primary function is to be a self-deposit interface for our institutional digital repository.
 
-Note: If using Docker, see README_DOCKER.md for instructions.
+Note: If using Docker, see [README_DOCKER.md](./README_DOCKER.md) for instructions.
 
 ## Installation Notes
 Installing the clamav gem on OS X is a trying process. It can be safely excluded
