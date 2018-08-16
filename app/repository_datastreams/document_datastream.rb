@@ -1,4 +1,5 @@
 require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
+require File.expand_path('../../../lib/rdf/nd', __FILE__)
 
 class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
