@@ -25,6 +25,14 @@ docker-compose exec rails bundle exec rspec spec/path/to/file_spec.rb
 docker-compose exec rails bundle exec byebug --remote localhost:9876
 ```
 
+## Rebuilding rails Docker image
+
+Do this when you change Gemfile or Gemfile.lock or anything that Rails won't hotload.
+
+```console
+docker-compose build rails
+```
+
 ## Rebuilding curate-jetty Docker image
 
 To rebuild the Docker image for running jetty, use the following command:
