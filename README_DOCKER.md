@@ -24,6 +24,11 @@ docker-compose exec rails bundle exec rspec spec/path/to/file_spec.rb
 ```console
 docker-compose exec rails bundle exec byebug --remote localhost:9876
 ```
+## Interacting with Rails Command Line
+If you need to open a rails console, run seed scripts, or any of the normal rails activities that you used to do on your terminal, you'll need to first open a shell inside the running rails container:
+```console
+docker-compose exec rails bash
+```
 
 ## Rebuilding rails Docker image
 
