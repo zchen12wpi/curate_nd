@@ -63,7 +63,7 @@ mysql.server start
 ### 2. Initialize the database
 Load the database schema into MySQL:
 ```console
-bundle exec rake db:schema:load
+bundle exec rake db:create db:schema:load
 ```
 
 To seed database with test data:
