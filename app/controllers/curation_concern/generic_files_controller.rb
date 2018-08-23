@@ -84,13 +84,6 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
     end
   end
 
-  def destroy
-    parent = curation_concern.batch
-    flash[:notice] = "Deleted #{curation_concern}"
-    curation_concern.destroy
-    respond_with([:curation_concern, parent])
-  end
-
   register :actor do
     CurationConcern::Utility.actor(curation_concern, current_user, attributes_for_actor)
   end

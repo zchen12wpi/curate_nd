@@ -63,17 +63,4 @@ describe 'generic files routing' do
       )
     )
   end
-
-  it "routes DELETE /concern/container/:parent_id/related_files" do
-    expect(
-      delete: "/concern/generic_files/#{child_id}"
-    ).to(
-      route_to(
-        controller: "curation_concern/generic_files",
-        action: "destroy",
-        id: child_id
-      )
-    )
-  end
-
 end
