@@ -26,18 +26,6 @@
           class: 'itemicon itemedit btn',
           title: "Edit Metadata"
         )%>
-        <% unless document.is_a?(Collection) %>
-          <%= link_to(
-            raw('<i class="icon-trash icon-large"></i>'),
-              [:curation_concern, document],
-              class: 'itemicon itemtrash btn',
-              data: {
-                confirm: "Delete this #{document.human_readable_type}?"
-              },
-              method: :delete,
-              title: "Delete #{document.human_readable_type}"
-            )%>
-        <% end %>
       <% end %>
     <% end %>
   </div>
