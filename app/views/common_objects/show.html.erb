@@ -17,9 +17,6 @@
     <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' do %>
       <i class="icon icon-pencil"></i> Edit
     <% end %>
-    <%= link_to [:curation_concern, curation_concern], class: 'btn', data: { confirm: "Delete this #{curation_concern.human_readable_type}?" }, method: :delete do %>
-      <i class="icon icon-trash"></i> Delete
-    <% end %>
   <% end %>
   <% if RepoManager.with_active_privileges?(current_user) %>
     <%= link_to 'Reindex this Item', admin_reindex_pid_path(curation_concern.id) , class: 'btn btn-primary' %>

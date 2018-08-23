@@ -26,15 +26,6 @@
               <i class="icon icon-pencil"></i> Edit
               <% end %>
             <% end %>
-            <% if can?(:destroy, link) %>
-              <%= link_to(
-                polymorphic_path([:curation_concern, link]),
-                class: 'btn', method: :delete, title: "Delete #{link.to_s.inspect}",
-                data: {confirm: "Deleting #{link.to_s.inspect} from #{t('sufia.product_name')} is permanent. Click OK to delete this from #{t('sufia.product_name')}, or Cancel to cancel this operation"}
-              ) do %>
-              <i class="icon icon-trash"></i> Delete
-              <% end %>
-            <% end %>
           <% end %>
           </li>
         <% end %>

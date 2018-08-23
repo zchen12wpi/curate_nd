@@ -16,7 +16,7 @@ CurateNd::Application.routes.draw do
     }
   end
   scope module: 'curate' do
-    resources 'collections', 'profiles', 'profile_sections', controller: 'collections' do
+    resources 'collections', 'profiles', 'profile_sections', controller: 'collections', except: [:destroy] do
       collection do
         get :add_member_form
         put :add_member
@@ -47,7 +47,7 @@ CurateNd::Application.routes.draw do
 
   namespace :curation_concern, path: :concern do
     Curate.configuration.registered_curation_concern_types.map(&:tableize).each do |container|
-      resources container, except: [:index]
+      resources container, except: [:index, :destroy]
     end
     resources( :permissions, only:[]) do
       member do
@@ -58,7 +58,7 @@ CurateNd::Application.routes.draw do
     resources( :linked_resources, only: [:new, :create], path: 'container/:parent_id/linked_resources')
     resources( :linked_resources, only: [:show, :edit, :update, :destroy])
     resources( :generic_files, only: [:new, :create], path: 'container/:parent_id/generic_files')
-    resources( :generic_files, only: [:show, :edit, :update, :destroy]) do
+    resources( :generic_files, only: [:show, :edit, :update]) do
       member do
         get :versions
         put :rollback

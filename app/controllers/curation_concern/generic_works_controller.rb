@@ -100,20 +100,6 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
   end
   protected :after_update_response
 
-  def destroy
-    title = curation_concern.to_s
-    curation_concern.destroy
-    after_destroy_response(title)
-  end
-
-  def after_destroy_response(title)
-    flash[:notice] = "Deleted #{title}"
-    respond_with { |wants|
-      wants.html { redirect_to catalog_index_path }
-    }
-  end
-  protected :after_destroy_response
-
   register :actor do
     CurationConcern::Utility.actor(curation_concern, current_user, attributes_for_actor)
   end
