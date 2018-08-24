@@ -30,7 +30,7 @@
     <%= curation_concern_attribute_to_html(curation_concern, :alephIdentifier, "Aleph Record Number") %>
     <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
     <tr>
-      <th>Record Visibility</th>
+      <th>Record Visibility and Access</th>
       <td>
         <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
       </td>
