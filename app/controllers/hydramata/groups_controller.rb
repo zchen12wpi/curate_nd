@@ -82,7 +82,7 @@ class Hydramata::GroupsController < ApplicationController
   def after_destroy_response(title)
     flash[:notice] = "Deleted #{title}"
     respond_with { |wants|
-      wants.html { redirect_to catalog_index_path }
+      wants.html { redirect_to hydramata_groups_path }
     }
   end
 
