@@ -13,10 +13,7 @@
   </div>
 </div>
 <% if curation_concern.persisted? %>
-<p><em>Files are managed from the <%= link_to(
-  "#{curation_concern.human_readable_type.downcase} record view",
-    common_object_path(curation_concern)
-  )%>.
+<p><em>Attachments cannot be deleted, please make them private or <a href="/faqs">contact us</a> to have them removed.
   <% unless curation_concern.generic_files.present? %>
     <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
   <% end %>
