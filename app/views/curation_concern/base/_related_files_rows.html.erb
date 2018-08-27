@@ -26,7 +26,8 @@
   </td>
   <td class="attribute attribute-filename"><%= generic_file.filename %></td>
   <td class="attribute attribute-description"><%= generic_file.description %></td>
-  <td class="attribute attribute-size"><%= number_to_human_size(generic_file.characterization_terms[:file_size].first.to_i) %></td>
+  <% file_size = generic_file.characterization_terms[:file_size].first.to_i %>
+  <td class="attribute attribute-size"><%= file_size > 0 ? number_to_human_size(file_size) : raw("Calculating&hellip;") %></td>
   <td class="attribute attribute-type"><%= generic_file.characterization_terms[:mime_type] %></td>
   <td class="attribute attribute-access">
     <%= render(
