@@ -43,6 +43,7 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
     curation_concern.batch = parent
     if actor.create
       curation_concern.update_parent_representative_if_empty(parent)
+      flash[:notice] = "You have uploaded a new file. We are processing it now."
       respond_with([:curation_concern, parent])
     else
       respond_with([:curation_concern, curation_concern]) { |wants|
