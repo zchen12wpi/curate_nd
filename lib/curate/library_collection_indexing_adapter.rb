@@ -55,14 +55,18 @@ module Curate
     # @param curation_concern_type [nil, ActiveFedora::Base] filter on this and only this type of curation concern
     # @return [Hash] A raw response document from SOLR
     def self.raw_child_documents_of(parent_document, curation_concern_type = nil)
+      # gather the list of id's to load solr documents for
+      pid_list = []
+      parent_fedora_object = ActiveFedora::Base.find(parent_document.pid, cast: true)
+      pid_list = parent_fedora_object.library_collection_member_ids if parent_fedora_object.class == LibraryCollection
+
+      # subset the query by type if curation_concern_type
       type_query = "_query_:\"{!raw f=has_model_ssim}info:fedora/afmodel:#{curation_concern_type}\""
-      # Need to find all documents that have ancestors equal to one or more of the given parent_document's pathnames
-      pathname_query = parent_document.pathnames.map do |pathname|
-        text = "_query_:\"{!raw f=#{SOLR_KEY_ANCESTOR_SYMBOLS}}#{pathname.gsub('"', '\"')}\""
-        text += " AND #{type_query}" if curation_concern_type
-        text
-      end.join(" OR ")
-      ActiveFedora::SolrService.query(pathname_query)
+
+      # query Solr for all of the documents included as a member_of_collection parent.
+      child_query = '(' + ActiveFedora::SolrService.construct_query_for_pids(pid_list) + ')'
+      child_query += " AND #{type_query}" if curation_concern_type
+      ActiveFedora::SolrService.query(child_query, rows: pid_list.count)
     end
 
     # @api public
