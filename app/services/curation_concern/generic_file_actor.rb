@@ -32,7 +32,7 @@ module CurationConcern
 
     protected
     def update_file
-      file = attributes.delete(:file)
+      file = Array.wrap(attributes.delete(:file)).first
       title = attributes[:title]
       title ||= file.original_filename if file
       curation_concern.label = title

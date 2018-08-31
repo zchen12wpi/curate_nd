@@ -1,4 +1,10 @@
 <%= simple_form_for [:curation_concern, curation_concern], :html => { :onsubmit => "return validateCurationConcernForm(this);", "data-model-name" => curation_concern.class.model_name.singular } do |f| %>
+<% if request.filtered_parameters["action"] == "edit" %>
+  <% multiple_allowed = false %>
+<% else %>
+  <% multiple_allowed = true %>
+<% end %>
+
   <div class="row">
     <div class="span6">
       <fieldset class="required">
@@ -10,7 +16,7 @@
         </legend>
           <%= f.input :file,
                       as: :file,
-                      input_html: {multiple: true},
+                      input_html: {multiple: multiple_allowed},
                       label: 'Upload files'
           %>
       </fieldset>
