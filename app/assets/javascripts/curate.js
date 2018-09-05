@@ -44,7 +44,6 @@
 //= require curate/img_dimensions_polyfill
 //= require curate/validate_doi
 //= require curate/sort_and_per_page
-//= require curate/read_more
 //= require curate/grid_view_controls
 //= require curate/form_input_mask
 //
