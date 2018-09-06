@@ -303,10 +303,10 @@ module CurateHelper
       if hash[Hydra.config[:permissions][:read][:group]].include?('public')
         if hash[Hydra.config[:permissions][:embargo_release_date]].present?
           dom_label_class = 'label-warning'
-          link_title = 'Open Access with Embargo'
+          link_title = 'Embargo then Public'
         else
           dom_label_class = 'label-success'
-          link_title = 'Open Access'
+          link_title = 'Public'
         end
       elsif hash[Hydra.config[:permissions][:read][:group]].include?('registered')
         dom_label_class = 'label-info'

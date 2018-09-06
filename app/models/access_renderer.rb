@@ -76,7 +76,7 @@ class AccessRenderer
         qualifier = "until #{human_readable_embargo_release_date}"
       elsif publically_viewable?
         dom_label_class = 'label-success'
-        link_title = 'Open Access'
+        link_title = 'Public'
       elsif viewable_by_institution?
         dom_label_class = 'label-info'
         link_title = I18n.t('sufia.institution_name')

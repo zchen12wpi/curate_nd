@@ -231,9 +231,9 @@ RSpec.describe CurateHelper do
     describe 'with a "public" access group' do
       let(:access_policy) { 'public' }
       describe 'without embargo release date' do
-        let(:expected_label) { "Open Access" }
+        let(:expected_label) { "Public" }
         let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC}
-        it 'renders an "Open Access" label' do
+        it 'renders an "Public" label' do
           rendered = helper.link_to_edit_permissions(curation_concern, solr_document)
           expect(rendered).to(
             have_tag("a#permission_#{curation_concern.to_param}") {
@@ -244,10 +244,10 @@ RSpec.describe CurateHelper do
       end
 
       describe 'with an embargo release date' do
-        let(:expected_label) { "Open Access with Embargo" }
+        let(:expected_label) { "Embargo then Public" }
         let(:embargo_release_date) { Date.today.to_s }
         let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC}
-        it 'renders an "Open Access with Embargo" label' do
+        it 'renders an "Embargo then Public" label' do
           rendered = helper.link_to_edit_permissions(curation_concern, solr_document)
           expect(rendered).to(
             have_tag("a#permission_#{curation_concern.to_param}") {
@@ -262,9 +262,9 @@ RSpec.describe CurateHelper do
       # This test is purely speculative to the appropriate labeling behavior and
       # does not account for whether the document is truly accessable; I suppose
       # I'm persisting hash drive development via a Solr document
-      let(:expected_label) { "Open Access" }
+      let(:expected_label) { "Public" }
       let(:access_policy) { 'public registered' }
-      it 'renders an "Open Access" label' do
+      it 'renders an "Public" label' do
         rendered = helper.link_to_edit_permissions(curation_concern, solr_document)
         expect(rendered).to(
           have_tag("a#permission_#{curation_concern.to_param}") {
