@@ -11,8 +11,10 @@ class TermsOfServiceAgreementsController < ApplicationController
   def create
     if user_just_agreed_to_tos?
       current_user.agree_to_terms_of_service!
-      flash[:notice] = "You've agreed to the Terms of Service."
-      redirect_to new_classify_concern_path
+      # The standard use case for users accepting ToS is that they are entering
+      # the system for the first time. As such, the next likely step is filling out their
+      # registration information.
+      redirect_to edit_user_registration_path, notice: "You've agreed to the Terms of Service. Please fill out your account details."
     else
       flash.now[:notice] = "To proceed, you must agree to the Terms of Service."
       render 'new'
