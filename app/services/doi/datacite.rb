@@ -7,11 +7,8 @@ module Doi
 
     def self.normalize_identifier(value)
       value.to_s.strip.
-        sub(/\A#{resolver_url}\/*/, '').
-        sub(/\A\s*doi:\s+/, 'doi:').
-        sub(/\A(\d.*)/, 'doi:\1').
-        sub(/\Adoi\s*:\s*/, 'doi:').
-        sub(/\A(doi:\d*.\d*)\s*\/\s*(\w*)/, '\1/\2')
+        gsub(" ", '').
+        sub(/\A.*10\./, "doi:10.")
     end
 
     def self.remote_uri_for(identifier)

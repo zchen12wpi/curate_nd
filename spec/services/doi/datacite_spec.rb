@@ -1,3 +1,4 @@
+require 'spec_helper'
 
 module Doi
   RSpec.describe Datacite do
@@ -27,58 +28,19 @@ module Doi
     end
 
     describe '#normalize_identifier' do
-      it 'returns only the doi when given a url to the resolver instead of the doi' do
-        expect(subject.normalize_identifier("#{ENV.fetch('DOI_RESOLVER')}/doi:123")).to eq('doi:123')
-      end
-
-      it 'returns the doi with "doi:" prefix if only the numeric identifier is given' do
-        expect(subject.normalize_identifier("10.25626/abc123")).to eq('doi:10.25626/abc123')
-      end
-
-      context 'removes extra spaces in the identifier' do
-        it 'such as " doi:10.25626/abc123"' do
-          expect(subject.normalize_identifier(' doi:10.25626/abc123')).to eq('doi:10.25626/abc123')
+      [
+        ["#{ENV.fetch('DOI_RESOLVER')}/doi:10.123", 'doi:10.123'],
+        ["10.25626/abc123", 'doi:10.25626/abc123'],
+        [" doi:10.25626/abc123", 'doi:10.25626/abc123'],
+        ["doi:10.25626/abc123 ", 'doi:10.25626/abc123'],
+        ["doi: 10.25626/abc123", 'doi:10.25626/abc123'],
+        ["doi: 10.25626 / abc123", 'doi:10.25626/abc123'],
+        ['https://doi:10.123/abc', 'doi:10.123/abc'],
+        ["https://doi.org/10.1002/ppsc.201700420", "doi:10.1002/ppsc.201700420"]
+      ].each do |given, expected|
+        it "normalizes #{given.inspect} to #{expected.inspect}" do
+          expect(subject.normalize_identifier(given)).to eq(expected)
         end
-
-        it 'such as "doi:10.25626/abc123 "' do
-          expect(subject.normalize_identifier('doi:10.25626/abc123 ')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi: 10.25626/abc123"' do
-          expect(subject.normalize_identifier('doi: 10.25626/abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi :10.25626/abc123"' do
-          expect(subject.normalize_identifier('doi :10.25626/abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi : 10.25626/abc123"' do
-          expect(subject.normalize_identifier('doi : 10.25626/abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi:10.25626 /abc123"' do
-          expect(subject.normalize_identifier('doi:10.25626 /abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi:10.25626/ abc123"' do
-          expect(subject.normalize_identifier('doi:10.25626/ abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi:10.25626 / abc123"' do
-          expect(subject.normalize_identifier('doi:10.25626 / abc123')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi:10.25626 / abc123 "' do
-          expect(subject.normalize_identifier('doi:10.25626 / abc123 ')).to eq('doi:10.25626/abc123')
-        end
-
-        it 'such as "doi : 10.25626 / abc123 "' do
-          expect(subject.normalize_identifier('doi : 10.25626 / abc123 ')).to eq('doi:10.25626/abc123')
-        end
-      end
-
-      it 'returns the doi without transformation if it is already correct' do
-        expect(subject.normalize_identifier('doi:10.25626/abc123')).to eq('doi:10.25626/abc123')
       end
     end
 
