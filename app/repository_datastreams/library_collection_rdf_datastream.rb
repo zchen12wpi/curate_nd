@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 require 'active_fedora'
+require File.expand_path('../../../lib/rdf/qualified_dc', __FILE__)
 
 class LibraryCollectionRdfDatastream < ActiveFedora::NtriplesRDFDatastream
   map_predicates do |map|
