@@ -60,8 +60,8 @@ module Curate
       parent_fedora_object = ActiveFedora::Base.find(parent_document.pid, cast: true)
       pid_list = parent_fedora_object.library_collection_member_ids if parent_fedora_object.class == LibraryCollection
 
-      escaped_pid = ActiveFedora::SolrService.escape_uri_for_query(parent_document.pid)
-      qry = "library_collections_tesim:#{escaped_pid}"
+      escaped_pid = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/#{parent_document.pid}")
+      qry = "is_member_of_collection_ssim:#{escaped_pid}"
       fq = "active_fedora_model_ssi:#{curation_concern_type}" unless curation_concern_type.nil?
       request_params = { fq: fq, rows: pid_list.count }
       solr_response = ActiveFedora::SolrService.query(qry, raw: true, **request_params)

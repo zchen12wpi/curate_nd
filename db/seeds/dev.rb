@@ -78,7 +78,7 @@ coll1 = find_or_create_library_collection('test_collection', user_with_profile, 
 
 # make >10 subcollections
 puts "Creating subcollections with a member work"
-12.times do |i|
+3.times do |i|
   attributes = { title: "Test SubCollection #{i}", description: "#{i} subcollection for testing", depositor: user_with_profile.username, creator: user_with_profile.username, contributor: user_with_profile.username, date_created: date_created, visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
   coll = find_or_create_library_collection("test_subcollection_#{i}", user_with_profile, attributes)
   coll1.library_collection_members << coll
