@@ -44,6 +44,19 @@ def find_or_create(model, actor, id, user, params)
   curation_concern
 end
 
+# Creates or finds a library collection by description. If an actor is given, will use the actor to create
+# the object. Otherwise, will just use the new method on the model given
+def find_or_create_library_collection(description, user, params)
+  collection = LibraryCollection.where(desc_metadata__description_tesim: description).first
+  if collection.nil?
+    collection = LibraryCollection.new
+    collection.attributes = params
+    collection.apply_depositor_metadata(user.user_key)
+    collection.save!
+  end
+  collection
+end
+
 # Shared variables
 user_with_profile = create_user('userwithprofile@example.com', 'userwithprofile', 'foobarbaz')
 create_account(user_with_profile)
@@ -58,10 +71,29 @@ User.all.each { |u| everyone_group.add_member(u.person) }
 test_group = Hydramata::Group.new(title: "Test Group", depositor: user_with_profile.username, description: "")
 test_group.add_member(user_with_profile.person)
 
+puts "Creating a collection"
+attributes = { title: "Test Library Collection", description: "A collection for testing", depositor: user_with_profile.username, creator: user_with_profile.username, contributor: user_with_profile.username, date_created: date_created, visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
+puts "#{attributes[:title]}"
+coll1 = find_or_create_library_collection('test_collection', user_with_profile, attributes)
+
+# make >10 subcollections
+puts "Creating subcollections with a member work"
+3.times do |i|
+  attributes = { title: "Test SubCollection #{i}", description: "#{i} subcollection for testing", depositor: user_with_profile.username, creator: user_with_profile.username, contributor: user_with_profile.username, date_created: date_created, visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
+  coll = find_or_create_library_collection("test_subcollection_#{i}", user_with_profile, attributes)
+  coll1.library_collection_members << coll
+
+  3.times do |j|
+    attributes = { creator: user_with_profile.username, abstract: "Article abstract_#{i}_#{j}", title: "Collection member article #{i}-#{j}", date_created: date_created, publication_date: publication_date }
+    article = find_or_create(Article, CurationConcern::ArticleActor, "collection_member_article_#{i}_#{j}", user_with_profile, attributes)
+    coll.library_collection_members << article
+  end
+end
+
 puts "Things with no files"
 attributes = { creator: user_with_profile.username, abstract: 'Article abstract', title: 'Article with no files', date_created: date_created, publication_date: publication_date }
 puts "#{attributes[:title]}"
-find_or_create(Article, CurationConcern::ArticleActor, 'article_with_no_files', user_with_profile, attributes)
+article = find_or_create(Article, CurationConcern::ArticleActor, 'article_with_no_files', user_with_profile, attributes)
 
 # TODO: This is currently duplicating. Need to figure out what field to use for find in find_or_create
 attributes = { creator: user_with_profile.username, description: 'Audio description', title: 'Audio with no files' }
@@ -96,7 +128,7 @@ find_or_create(FindingAid, CurationConcern::FindingAidActor, 'findingaid_with_no
 
 attributes = { creator: user_with_profile.username, description: 'Image description', title: 'Image with no files', date_created: date_created }
 puts "#{attributes[:title]}"
-find_or_create(Image, CurationConcern::ImageActor, 'image_with_no_files', user_with_profile, attributes)
+image = find_or_create(Image, CurationConcern::ImageActor, 'image_with_no_files', user_with_profile, attributes)
 
 # TODO: There is no :identifier field on patents. Can't use current implementation of find_or_create
 #attributes = { creator: user_with_profile.username, description: 'Patent description', title: 'Patent with no files' }
@@ -111,10 +143,15 @@ attributes = { creator: user_with_profile.username, description: 'Video descript
 puts "#{attributes[:title]}"
 find_or_create(Video, CurationConcern::VideoActor, 'video_with_no_files', user_with_profile, attributes)
 
+# add items into the library collection
+puts "Adding things into collection"
+coll1.library_collection_members << [article, image]
+
 puts "Things with files"
 article_attributes = { creator: user_with_profile.username, abstract: 'Abstract', title: 'Article with many files', publication_date: publication_date }
 puts "#{attributes[:title]}"
 article = find_or_create(Article, CurationConcern::ArticleActor, 'article_with_many_files', user_with_profile, article_attributes)
+
 15.times do |i|
   seeds_file.fake_file_name = "article_with_many_files.generic_files_#{i}"
   file_attributes = { batch: article, file: seeds_file }
