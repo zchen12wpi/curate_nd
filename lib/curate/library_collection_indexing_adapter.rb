@@ -53,19 +53,27 @@ module Curate
     # @api private
     # @param document [Curate::Indexer::Documents::IndexDocument]
     # @param curation_concern_type [nil, ActiveFedora::Base] filter on this and only this type of curation concern
+    # @note This is a reindexing process to add the collection data... the items must have been initially indexed to be included.
     # @return [Hash] A raw response document from SOLR
     def self.raw_child_documents_of(parent_document, curation_concern_type = nil)
-      # gather the list of id's to load solr documents for
-      pid_list = []
-      parent_fedora_object = ActiveFedora::Base.find(parent_document.pid, cast: true)
-      pid_list = parent_fedora_object.library_collection_member_ids if parent_fedora_object.class == LibraryCollection
-
       escaped_pid = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/#{parent_document.pid}")
       qry = "is_member_of_collection_ssim:#{escaped_pid}"
       fq = "active_fedora_model_ssi:#{curation_concern_type}" unless curation_concern_type.nil?
-      request_params = { fq: fq, rows: pid_list.count }
-      solr_response = ActiveFedora::SolrService.query(qry, raw: true, **request_params)
-      solr_response['response']['docs']
+
+      rows = 12
+      page = 1
+      total_read = 0
+      solr_response = get_page_from_solr(qry: qry, params: { fq: fq, rows: rows, page: page } )
+      full_response = solr_response['response']['docs']
+
+      loop do
+        total_read += rows
+        break if solr_response['response']['numFound'] <= total_read
+        page += 1
+        solr_response = get_page_from_solr(qry: qry, params: { fq: fq, rows: rows, page: page } )
+        full_response += solr_response['response']['docs']
+      end
+      full_response
     end
 
     # @api public
@@ -149,5 +157,10 @@ module Curate
       ActiveFedora::SolrService.query(query).first
     end
     private_class_method :find_solr_document_by
+
+    def self.get_page_from_solr(qry: qry, params: request_params)
+      ActiveFedora::SolrService.query(qry, raw: true, **params)
+    end
+    private_class_method :get_page_from_solr
   end
 end
