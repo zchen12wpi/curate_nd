@@ -9,19 +9,14 @@ end
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
+  gem 'active_attr'
+  gem 'active_fedora-registered_attributes', '~> 0.2.0'
   gem 'active-fedora', '~> 6.7.0'
   gem 'activerecord-import'
   gem 'activeresource'
-  gem "blacklight", "~> 4.5.0"
-  gem "hydra-head", "~> 6.4.0"
-  gem 'nest', '~> 1.1.1'
-  gem 'noid', '~> 0.6.6'
-  gem 'mailboxer', '~> 0.11.0'
   gem 'acts_as_follower', '>= 0.1.1', '< 0.3'
-
-  gem 'active_attr'
-  gem 'sentry-raven', '~> 2.7'
-  gem 'active_fedora-registered_attributes', '~> 0.2.0'
+  gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
+  gem 'blacklight', "~> 4.5.0"
   gem 'bootstrap-datepicker-rails'
   gem 'breach-mitigation-rails'
   gem 'breadcrumbs_on_rails'
@@ -33,25 +28,26 @@ group :default do
   gem 'curate-indexer'
   gem 'custom_configuration'
   gem 'decent_exposure'
-  gem 'devise', '~>3.2.2'
-  gem 'devise-guests', '~> 0.3'
-  gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
+  gem 'deprecation', '~>0.2.2'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
+  gem 'devise-guests', '~> 0.3'
+  gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
+  gem 'devise', '~>3.2.2'
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
-  gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
   gem 'httparty'
   gem 'hydra-batch-edit', '~> 1.1.1'
   gem 'hydra-collections', '~> 1.3.0'
   gem 'hydra-derivatives', '~> 0.0.7'
   gem 'hydra-file_characterization', "~> 0.3.3"
+  gem 'hydra-head', "~> 6.4.0"
   gem 'hydra-remote_identifier', github: 'samvera-labs/hydra-remote_identifier', ref: '9c03618a34e2177471d4ed858c7898609c097c35'
-  gem "json-ld"
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'jshintrb'
+  gem 'json-ld'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
   # Need rubyracer to run integration tests.....really?!?
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -61,32 +57,38 @@ group :default do
   gem 'lograge'
   gem 'logstash-event'
   gem 'logstash-logger'
+  gem 'mailboxer', '~> 0.11.0'
   gem 'mini_magick', '~> 3.8'
   gem 'morphine'
   gem 'mysql2', '~> 0.3.18'
   gem 'namae'
+  gem 'nest', '~> 1.1.1'
   gem 'net-ldap'
+  gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
-  gem 'nokogiri'
+  gem 'nokogiri', '~> 1.8.5'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
-  gem 'rails', '~> 4.0.2'
   gem 'rails_autolink'
+  gem 'rails-observers', '0.1.2' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; Requires Ruby 2.2.2 for 0.1.5 or greater
+  gem 'rails', '4.1.0'
   gem 'rake', '~> 11.0'
+  gem 'rb-inotify', '~> 0.9.10' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'redcarpet'
-  gem 'redis', '~> 3.3'
+  gem 'redis', '~> 3.3.3' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'resque-pool'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'
   gem 'sanitize', '~> 4.6.3'
   gem 'select2-rails'
+  gem 'sentry-raven', '~> 2.7'
   gem 'share_notify', github: 'samvera-labs/share_notify'
   gem 'simple_form', '~> 3.0.1'
   gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
-  gem 'deprecation', '~>0.2.2'
-
+  gem 'xpath', '~> 2.0.0' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
 end
 
 group :headless do
@@ -109,8 +111,8 @@ end
 # Explicitly require it here.
 gem 'addressable', '~> 2.3.5'
 gem 'coffee-rails', '~> 4.0'
-gem 'compass-rails', '~> 2.0.0'
-gem 'sass-rails',   '~> 4.0'
+gem 'compass-rails'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'rails-assets-leaflet', source: 'https://rails-assets.org'
@@ -134,7 +136,7 @@ group :debug do
   gem 'method_locator'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
-  gem 'byebug'
+  gem 'byebug', '~> 9.0.6' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'quiet_assets'
   gem 'rails_best_practices'
   gem 'sextant'
@@ -145,11 +147,12 @@ end
 
 group :deploy do
   gem 'capistrano', '~> 2.15'
+  gem 'net-ssh', '~> 4.1.0'
 end
 
 group :development do
   gem 'meta_request'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.48.1', require: false # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
   gem 'brakeman'
