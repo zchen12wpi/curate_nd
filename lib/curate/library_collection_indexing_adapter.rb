@@ -61,8 +61,9 @@ module Curate
       fq = "active_fedora_model_ssi:#{curation_concern_type}" unless curation_concern_type.nil?
       # Specifying a number of rows so:
       #   1) it can be changed for development testing with fewer collections, or
-      #   2) to easily know page size to compare to numFound, rather than pulling the 'default' that was used from the solr response.
-      rows = 12
+      #   2) to easily know page size to compare to numFound, rather than pulling the 'default' that was used from the solr response
+      #   3) to select a number large enough to remove the need for the second query in most situations
+      rows = 100
 
       solr_response = get_page_from_solr(qry: qry, params: { fq: fq, rows: rows } )
       total_docs = solr_response['response']['numFound']
