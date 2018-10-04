@@ -59,6 +59,9 @@ module Curate
       escaped_pid = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/#{parent_document.pid}")
       qry = "is_member_of_collection_ssim:#{escaped_pid}"
       fq = "active_fedora_model_ssi:#{curation_concern_type}" unless curation_concern_type.nil?
+      # Specifying a number of rows so:
+      #   1) it can be changed for development testing with fewer collections, or
+      #   2) to easily know page size to compare to numFound, rather than pulling the 'default' that was used from the solr response.
       rows = 12
 
       solr_response = get_page_from_solr(qry: qry, params: { fq: fq, rows: rows } )
