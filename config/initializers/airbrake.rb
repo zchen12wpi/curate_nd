@@ -7,5 +7,6 @@ Airbrake.configure do |config|
   config.ignore << "ActiveFedora::RecordNotFound"
   config.ignore << "ActiveRecord::RecordNotFound"
   config.ignore << "ActiveFedora::ObjectNotFoundError"
+  config.ignore << "ActiveFedora::ActiveObjectNotFoundError"
   config.ignore << "URI::InvalidComponentError"
 end
