@@ -4,11 +4,11 @@
   <% end %>
 </h2>
 <br/>
-<%- if has_any_group? %>
+<% if @response.response["numFound"] > 0 %>
   <%= render_pagination_info @response, :entry_name=>'item' %>
   <%= render_document_index %>
-<%- else %>
+<% else %>
   <div class="span12 main-header">
     <p>You have no groups yet.</p>
   </div>
-<%- end %>
+<% end %>
