@@ -6,8 +6,6 @@
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 
-AIRBRAKE_API_KEY: 'fakey-mcfake-face'
-
 BATCH_INGESTOR_URL: 'http://localhost:15000/'
 
 # Examples only... actual values used are in secrets:
@@ -36,7 +34,7 @@ LDAP_ENCRYPTION: "simple_tls"
 OSF_HOST_NAME: 'osf.io'
 OSF_SCHEME: 'https'
 
-
+SENTRY_DSN: 'fakey-mcfake-face'
 
 development:
   cas_base_url: "https://login-test.cc.nd.edu/cas"
@@ -55,3 +53,5 @@ development:
   ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"
   ORCID_SEARCH_URL: "https://sandbox.orcid.org/orcid-search/quick-search"
   bendo_api_key: ''
+
+  # SENTRY_DSN: 'put something here if you want it for testing'

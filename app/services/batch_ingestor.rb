@@ -104,12 +104,12 @@ class BatchIngestor
 
   def handle_response(params, response)
     return true if response.code.to_s == '200'
-    report_to_airbrake(params, response.code)
+    report_to_error_handler(params, response.code)
   end
 
-  def report_to_airbrake(params, code)
+  def report_to_error_handler(params, code)
     exception = BatchIngestHTTPError.new("HTTP request failed with status #{code} for\n\t#{params.inspect}")
-    Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: params)
+    Raven.capture_exception(exception)
     raise exception
   end
 end

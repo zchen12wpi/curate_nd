@@ -1,5 +1,4 @@
 Figaro.require_keys(
-  'AIRBRAKE_API_KEY',
   'BATCH_INGESTOR_URL',
   'CURATE_HELP_NOTIFICATION_RECIPIENT',
   'CURATE_HELP_NOTIFICATION_DEFAULT_SENDER',
@@ -16,5 +15,6 @@ Figaro.require_keys(
   'OSF_HOST_NAME',
   'OSF_SCHEME',
   'cas_base_url',
-  'cas_validate_url'
+  'cas_validate_url',
+  'SENTRY_DSN'
 )

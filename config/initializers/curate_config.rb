@@ -29,7 +29,7 @@ Curate.configure do |config|
       pid = options.fetch(:pid) || "PID unknown"
       message = options.fetch(:message)|| "Message Missing"
       exception = Exception.new("Problem with: "+pid+","+message)
-      Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: {})
+      Raven.capture_exception(exception, extra: { error_class: exception.class } )
     end
   end
 end

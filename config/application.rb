@@ -83,7 +83,7 @@ module CurateNd
     config.action_dispatch.rescue_responses["Rubydora::RecordNotFound"] = :not_found
 
     Curate.configuration.build_identifier = begin
-      identifier = Rails.root.join('BUILD_IDENTIFIER').read.strip
+      identifier = Rails.root.join('VERSION').read.strip
       unless Rails.env.production?
         identifier += " (#{Rails.env})"
       end
