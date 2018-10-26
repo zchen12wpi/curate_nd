@@ -15,7 +15,7 @@ class ObjectRelationshipReindexerWorker
     begin
       Curate::Indexer.reindex_relationships(pid)
     rescue StandardError => exception
-      Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: {})
+      Raven.capture_exception(exception)
       raise exception
     end
   end

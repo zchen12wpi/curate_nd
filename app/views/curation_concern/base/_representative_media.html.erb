@@ -23,7 +23,7 @@
     <% end %>
   <% rescue ActiveFedora::ObjectNotFoundError => e %>
     <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
-    <% Airbrake.notify_or_ignore(error_class: exception.class, error_message: exception, parameters: { curation_concern: work }) %>
+    <% Raven.capture_exception(exception) %>
     <%= image_tag 'curate/default.png', class: 'canonical-image' %>
   <% end %>
 <% else %>

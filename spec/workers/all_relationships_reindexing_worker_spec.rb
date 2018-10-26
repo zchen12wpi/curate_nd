@@ -9,8 +9,8 @@ RSpec.describe AllRelationshipsReindexerWorker do
       worker.run
     end
 
-    it 'will call Airbrake if an exception is encountered and re-raise the exception' do
-      expect(Airbrake).to receive(:notify_or_ignore)
+    it 'will call Error Handler if an exception is encountered and re-raise the exception' do
+      expect(Raven).to receive(:capture_exception)
       expect(Curate::Indexer).to receive(:reindex_all!).and_raise(RuntimeError)
       expect { worker.run }.to raise_error(RuntimeError)
     end
