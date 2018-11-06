@@ -88,3 +88,7 @@ bundle exec rails server
 ## Release Documentation
 
 See the [release documentation](https://docs.google.com/a/nd.edu/document/d/16weRctSzt8Iw2y55nwOKPBSgGDO_4lgti3CxaW3P2pc/edit?usp=sharing) for building a release.
+
+## Automated Testing
+Testing specs for [curate.nd.edu](http://curate.nd.edu) run with [BrowserStack open source program](https://www.browserstack.com/open-source?ref=pricing)
+ ![BrowserStack](app/assets/images/Browserstack-logo@2x.png)
