@@ -91,4 +91,6 @@ See the [release documentation](https://docs.google.com/a/nd.edu/document/d/16we
 
 ## Automated Testing
 Testing specs for [curate.nd.edu](http://curate.nd.edu) run with [BrowserStack open source program](https://www.browserstack.com/open-source?ref=pricing)
- ![BrowserStack](app/assets/images/Browserstack-logo@2x.png)
+
+
+[![BrowserStack](app/assets/images/Browserstack-logo@2x.png)](https://www.browserstack.com)
