@@ -70,7 +70,7 @@ group :default do
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
   gem 'rails-observers', '0.1.2' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; Requires Ruby 2.2.2 for 0.1.5 or greater
-  gem 'rails', '~> 4.1.2'
+  gem 'rails', '~> 4.1.15'
   gem 'rake', '~> 11.0'
   gem 'rb-inotify', '~> 0.9.10' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
@@ -89,7 +89,7 @@ group :default do
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
-  gem 'xpath', '~> 2.0.0' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'xpath', '~> 2.0' # 3.x requires # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
 end
 
 group :headless do

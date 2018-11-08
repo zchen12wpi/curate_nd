@@ -13,8 +13,8 @@ class CitationController < ApplicationController
   before_filter :curation_concern
   helper_method :curation_concern
 
-  def unauthorized_path
-    'app/views/curation_concern/base/unauthorized'
+  def unauthorized_template
+    'curation_concern/base/unauthorized'
   end
 
   STYLES = {
@@ -44,4 +44,3 @@ class CitationController < ApplicationController
   end
   helper_method :citation_lable
 end
-
