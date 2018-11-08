@@ -2,10 +2,7 @@ language: ruby
 rvm:
   - "2.2.10"
   - "2.3.8"
-
-matrix:
-  allow_failures:
-    - rvm: "2.3.8"
+  - "2.5.3"
 
 script: 'bundle exec rake curatend:ci_prep RAILS_ENV=ci && bundle exec rake spec curatend:lint_erb SPEC_OPTS="--tag ~js:true" RAILS_ENV=ci'
 
