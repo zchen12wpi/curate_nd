@@ -761,7 +761,7 @@ DEPENDENCIES
   poltergeist (~> 1.5)
   qa!
   quiet_assets
-  rails (= 4.1.2)
+  rails (~> 4.1.2)
   rails-assets-Leaflet--Leaflet.fullscreen!
   rails-assets-leaflet!
   rails-erb-lint
