@@ -15,6 +15,16 @@
     input_html: { class: 'input-xxlarge' },
     label: 'Content License'
   %>
+  <% if curation_concern.respond_to?(:permission) %>
+    <%= f.input :permission,
+      as: :text,
+      input_html: {
+        class: 'input-xxxlarge rich-textarea-js',
+        rows: '5'
+      },
+      label: 'Use Permissions'
+    %>
+  <% end %>
 
   <%= render :partial => "curation_concern/base/license_modal" %>
 </fieldset>

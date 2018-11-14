@@ -80,6 +80,7 @@ en:
         relation: "A link or other reference to a related resource that may provide context or additional content related to this resource. In addition to depositing files, you may add links to related resources which add context but which you do not have the rights to deposit. Please consider the stability of the links you provide. Publisher-provided DOIs are preferred. NetID file space is not."
         alephIdentifier: "If this object has a record number in the Aleph catalog, enter the record number here."
         rights: "Set the license which governs how others may use your files. The main questions are whether others can reuse your work in derivatives, and whether you want attribution as the original creator."
+        permission: "A statement explaining how to obtain permission to use these materials. This could include contact information as well as a statement to reference in future publications."
         contributor_institution: "A consistent reference to the Institution that contributes the material."
         format: "The media type of the item. The system stored and registered MIME type of the file uploaded. Comments: This is an automatically system generated field so it does not need to be filled in. The field is present here so that metadata contributor knows how it is captured."
         size: "Size or duration of the resource."

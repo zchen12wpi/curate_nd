@@ -143,7 +143,8 @@ class Article < ActiveFedora::Base
     datastream: :descMetadata, multiple: false,
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
-
+  attribute :permission,
+    datastream: :descMetadata, multiple: false
   attribute :relation,
     hint: "Link to External Content",
     datastream: :descMetadata, multiple: true,
