@@ -22,7 +22,11 @@ class Hydramata::GroupsController < ApplicationController
 
   def index
     params[:per_page] ||= 50
-    Hydramata::GroupsController.solr_search_params_logic -= [:add_access_controls_to_solr_params] if current_user.manager?
+    if current_user.manager?
+      Hydramata::GroupsController.solr_search_params_logic -= [:add_access_controls_to_solr_params]
+    else
+      Hydramata::GroupsController.solr_search_params_logic += [:add_access_controls_to_solr_params]
+    end
     super
   end
 
