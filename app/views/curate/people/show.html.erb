@@ -53,9 +53,11 @@
         <% end %>
       <% end %>
 
-      <% if orcid_profile = Orcid.profile_for(@person.user) %>
-        <dt class="attribute"><%= derived_label_for(@person.user, :orcid_profile_id) %>:</dt>
-        <dd class="value"><%= link_to(orcid_profile.orcid_profile_id, Orcid.url_for_orcid_id(orcid_profile.orcid_profile_id)) %></dd>
+      <% if @person.user %>
+        <% if orcid_profile = Orcid.profile_for(@person.user) %>
+          <dt class="attribute"><%= derived_label_for(@person.user, :orcid_profile_id) %>:</dt>
+          <dd class="value"><%= link_to(orcid_profile.orcid_profile_id, Orcid.url_for_orcid_id(orcid_profile.orcid_profile_id)) %></dd>
+        <% end %>
       <% end %>
 
     </dl>
