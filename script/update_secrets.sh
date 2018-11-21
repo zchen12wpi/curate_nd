@@ -23,7 +23,6 @@ files_to_copy="
     bendo.yml
     database.yml
     fedora.yml
-    manager_usernames.yml
     redis.yml
     smtp_config.yml
     solr.yml
