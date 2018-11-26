@@ -36,7 +36,7 @@ group :default do
   gem 'hydra-batch-edit', '~> 1.1.1'
   gem 'hydra-collections', '~> 1.3.0'
   gem 'hydra-derivatives', '~> 0.0.7'
-  gem 'hydra-file_characterization', ">= 0.2.3"
+  gem 'hydra-file_characterization', "~> 0.3.3"
   gem 'hydra-remote_identifier', github: 'samvera-labs/hydra-remote_identifier', ref: '9c03618a34e2177471d4ed858c7898609c097c35'
   gem "json-ld"
   gem 'jettywrapper'
@@ -63,6 +63,7 @@ group :default do
   gem 'rails-observers', '0.1.2' # required as part of the sufia-models change to point to github: "ndlib/sufia"
   gem 'rake', '~> 11.0'
   gem 'redcarpet'
+  gem 'redis', '~> 3.3'
   gem 'resque-pool'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'
