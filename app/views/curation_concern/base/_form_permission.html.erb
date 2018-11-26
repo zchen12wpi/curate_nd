@@ -15,19 +15,19 @@
 
   <div class="control-group" onchange="embargoDateRequired(event.target.id, '<%= f.object_name %>');">
     <label class="radio">
-      <input type="radio" id="visibility_open" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if !curation_concern.persisted? || (access_controls.viewable? && access_controls.publically_viewable?) %> checked="true"<% end %>/>
+      <input type="radio" id="visibility_open" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC %>" <% if (!curation_concern.persisted? && curation_concern.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC) || (curation_concern.persisted? && access_controls.viewable? && access_controls.publically_viewable?) %> checked="true"<% end %>/>
       <span class="label label-success">Public</span> Visible to the world.
     </label>
     <label class="radio">
-      <input type="radio" id="visibility_embargo" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO %>" <% if curation_concern.persisted? && access_controls.viewable? && access_controls.has_embargo? && access_controls.currently_under_embargo? %> checked="true"<% end %>/>
+      <input type="radio" id="visibility_embargo" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO %>" <% if (!curation_concern.persisted? && curation_concern.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO) || curation_concern.persisted? && access_controls.viewable? && access_controls.has_embargo? && access_controls.currently_under_embargo? %> checked="true"<% end %>/>
       <span class="label label-warning">Embargo then Public</span> Treated as <span class="label label-important">Private</span> until <%= f.input :embargo_release_date, wrapper: :inline, input_html: { placeholder: Date.tomorrow, class: 'input-small datepicker' } %> then it is <span class="label label-success">Public</span>.
     </label>
     <label class="radio">
-      <input type="radio" id="visibility_ndu" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>" <% if curation_concern.persisted? && access_controls.viewable? && access_controls.viewable_by_institution_today? %> checked="true"<% end %> />
+      <input type="radio" id="visibility_ndu" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>" <% if (!curation_concern.persisted? && curation_concern.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED) || curation_concern.persisted? && access_controls.viewable? && access_controls.viewable_by_institution_today? %> checked="true"<% end %> />
       <span class="label label-info"><%=t('sufia.institution_name') %></span> Visible to all <%=t('sufia.institution_name') %> users.
     </label>
     <label class="radio">
-      <input type="radio" id="visibility_restricted" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE%>" <% if curation_concern.persisted? && !access_controls.viewable? %> checked="true"<% end %>/>
+      <input type="radio" id="visibility_restricted" name="<%= f.object_name %>[visibility]" value="<%= Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>" <% if (!curation_concern.persisted? && curation_concern.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE) || curation_concern.persisted? && !access_controls.viewable? %> checked="true"<% end %>/>
       <span class="label label-important">Private</span> Only visible to you and the Editors and Viewers listed below.
     </label>
   </div>
