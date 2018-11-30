@@ -1,7 +1,4 @@
-characterize: 0
-batch_update: 0
-resolrize: 0
-audit: 0
-unzip: 0
-event: 0
-"*": 5
+"zzz_characterize,characterize": 1
+"audio,audit,characterize,collection_adder,doi_miniting_requests,event,help_request_notifications,permissions,resolrize,sufia,unzip,video": 1
+"resolrize,permissions": 2
+"*": 2
