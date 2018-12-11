@@ -3,8 +3,8 @@ require 'copyright'
 
 RSpec.describe Copyright do
   describe '.active' do
-    it 'delegates to Locabulary' do
-      expect(Locabulary).to receive(:active_items_for).with(predicate_name: 'copyright', as_of: kind_of(Time)).and_call_original
+    it 'calls ControlledVocabularyService' do
+      expect(ControlledVocabularyService).to receive(:active_entries_for_predicate_name).with(name: 'copyright').and_call_original
       expect(described_class.active).to be_a(Array)
     end
   end
@@ -33,10 +33,6 @@ RSpec.describe Copyright do
     it 'converts found keys' do
       expect(described_class.persisted_value_for!('All rights reserved')).to eq('All rights reserved')
       expect(described_class.persisted_value_for!('Public Domain Mark 1.0')).to eq('http://creativecommons.org/publicdomain/mark/1.0/')
-    end
-
-    it 'raises an exception when a key is missing' do
-      expect { described_class.persisted_value_for!('Missing!') }.to raise_error(Locabulary::Exceptions::ItemNotFoundError)
     end
   end
 end

@@ -18,7 +18,6 @@
 <% end %>
 
 <%= curation_concern_attribute_to_formatted_text(curation_concern, :abstract, 'Abstract') %>
-
 <table class="table table-striped <%= dom_class(curation_concern) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
   <thead>
@@ -45,7 +44,13 @@
         <tr><th> Degree Discipline </th><td><%= disc %></td></tr>
       <% end %>
     <% end %>
-    <tr><th> Degree Name </th><td><%= DEGREE.fetch('degrees').fetch(degree.name.first, degree.name.first) %></td></tr>
+    <tr>
+      <th> Degree Name </th>
+      <td>
+        <% degree_name_item = ControlledVocabularyService.item_for_predicate_name(name: 'degree', term_key: 'term_label', term_value: degree.name.first, ignore_not_found: true) %>
+        <%= degree_name_item.nil? ? degree.name.first : degree_name_item.term_label %>
+      </td>
+    </tr>
   <% end %>
   <%= curation_concern_attribute_to_html(curation_concern, :code_list, "Banner Code") %>
   <%= curation_concern_attribute_to_html(curation_concern, :date, 'Defense Date') %>
