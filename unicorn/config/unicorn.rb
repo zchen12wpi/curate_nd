@@ -31,5 +31,5 @@ after_fork do |server, worker|
 end
 
 before_exec do |server|
-  ENV["BUNDLE_GEMFILE"] = "#{rails_root}/Gemfile"
+  ENV["BUNDLE_GEMFILE"] = "#{rails_root}/unicorn/Gemfile_unicorn"
 end

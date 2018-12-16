@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    kgio (2.11.2)
+    rack (2.0.6)
+    raindrops (0.19.0)
+    unicorn (4.9.0)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  unicorn (~> 4.0)
+
+BUNDLED WITH
+   1.17.2
