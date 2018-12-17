@@ -92,6 +92,11 @@ GIT
       activesupport
       httparty
 
+PATH
+  remote: lib/logger-1.2.8
+  specs:
+    logger (1.2.8)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -363,7 +368,6 @@ GEM
     jwt (1.5.6)
     kgio (2.11.0)
     libv8 (3.16.14.19)
-    logger (1.2.7)
     lograge (0.5.0)
       actionpack (>= 4, <= 5.1.0)
       activesupport (>= 4, <= 5.1.0)
@@ -731,7 +735,7 @@ DEPENDENCIES
   kaminari!
   libv8 (~> 3.16.14.3)
   locabulary!
-  logger (= 1.2.7)
+  logger (= 1.2.8)!
   lograge
   logstash-event
   logstash-logger

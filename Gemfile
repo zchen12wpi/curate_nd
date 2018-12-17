@@ -47,7 +47,7 @@ group :default do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'libv8', '~> 3.16.14.3'
   gem 'locabulary', github: 'ndlib/locabulary'
-  gem 'logger', '1.2.7'
+  gem 'logger', '1.2.8', path: 'lib/logger-1.2.8'
   gem 'lograge'
   gem 'logstash-event'
   gem 'logstash-logger'
