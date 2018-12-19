@@ -39,7 +39,7 @@ bundle exec rspec spec/path/to/file_spec.rb
 The deposit page shows only the curation concern types that you are authorized to create. These options are generated from /config/work_type_policy_rules.yml.
 
 Certain curation concern types are never created interactively:
-* ETDs are now created via Sipity. If they are authorized through the work_type_policy_rules, they still cannot be added because they require Degree options to exist in the database (EtdVocabulary table) which map to the degrees in /config/etd_degree_map.yml. No routes exist to add new etd_vocabularies, however there is an etd_vocabularies_controller which could be used.
+* ETDs are now created only via Sipity. (However, they can be authorized through the work_type_policy_rules for local testing.)
 * OSF Archives are imported via an option on the deposit menu.
 
 
