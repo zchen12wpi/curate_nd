@@ -17,9 +17,12 @@ class Ability
       end
 
       # Access to ETD-specific functions is limited to names in etd_manager_permission.yml
-      unless EtdManagers.include?(current_user)
-        cannot [:manage], EtdVocabulary
+      if EtdManagers.include?(current_user)
+        can [:manage], EtdVocabulary
+        can [:manage], TemporaryAccessToken
+      else
         cannot [:manage], TemporaryAccessToken
+        cannot [:manage], EtdVocabulary
       end
     end
   end

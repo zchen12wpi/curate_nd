@@ -2,7 +2,7 @@
   Edit // Temporary File Access // Administrative Functions // CurateND
 <% end %>
 <% content_for :page_header do %>
-<h1>Editing Temporary File Access Approval</h1>
+<h1>Renew Temporary File Access</h1>
 
 <ul class="breadcrumb">
   <li><%= link_to 'CurateND Admin', admin_path %> <span class="divider">/</span></li>
@@ -11,18 +11,27 @@
 </ul>
 <% end %>
 
+<h3>Time-Limited URL</h3>
+<dl>
+  <dt>Share the URL with the patron who needs access. It remains valid for <%= TemporaryAccessToken.hours_until_expiry %> hours after its first use.</dt>
+  <dd><form>
+    <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
+  </form></dd>
+  <dt>File ID:</dt>
+  <dd><%= link_to @temporary_access_token.noid, common_object_path(@temporary_access_token.noid) %></dd>
+  <dt>Issued by:</dt>
+  <dd><%= @temporary_access_token.issued_by %></dd>
+  <dt>Expiry Date:</dt>
+  <dd><%= @temporary_access_token.expiry_date.present? ? temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></dd>
+</dl>
+
 <%= simple_form_for([:admin, @temporary_access_token]) do |f| %>
   <%= f.error_notification %>
-
   <fieldset>
-    <div class="control-group">
-      <p>Issued By: <%= @temporary_access_token.issued_by %></p>
-    </div>
-    <%= f.input :noid, label: "File ID (#{ link_to('View File Record', common_object_path(@temporary_access_token.noid))})".html_safe %>
-    <%= f.input :reset_expiry_date, as: :boolean, hint: "When the expiry date is reset the single-use URL will be valid for #{TemporaryAccessToken.hours_until_expiry} hours after its first use." %>
+    <%= f.input :reset_expiry_date, as: :boolean, hint: "When the expiry date is reset, the single-use URL will be valid for #{TemporaryAccessToken.hours_until_expiry} hours after its first use." %>
   </fieldset>
-
   <div class="form-actions">
-    <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
+    <%= f.button :submit, 'Renew Token', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', admin_temporary_access_tokens_path, class: 'btn btn-link' %>
   </div>
 <% end %>

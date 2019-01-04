@@ -116,10 +116,12 @@ CurateNd::Application.routes.draw do
 
     match 'reindex/:id' => 'reindex#reindex_pid', via: :get, as: 'reindex_pid'
 
-    constraints CurateND::AdminAccessTokenConstraint do
-      resources :temporary_access_tokens, path: 'access_tokens'
-    end
+    resources :temporary_access_tokens, path: 'access_tokens', except: [:show]
   end
+
+  # clean up expired tokens
+  post 'admin/temporary_access_tokens/remove_expired_tokens', as: 'admin_remove_expired_tokens'
+  get 'admin/temporary_access_tokens/remove_expired_tokens', controller: 'temporary_access_tokens', action: 'remove_expired_tokens'
 
   # Due to an apparent bug in devise the following routes should be presented
   # in this order

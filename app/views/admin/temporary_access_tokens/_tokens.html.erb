@@ -1,0 +1,31 @@
+<p>
+  <% if @limit_to_id.nil? %>
+    <%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path, class: 'btn btn-success' %>
+  <% else %>
+    <%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path(temporary_access_token: { noid: @limit_to_id } ), class: 'btn btn-success' %>
+  <% end %>
+  <% if can? :manage, TemporaryAccessToken %>
+    <%= link_to 'Remove Expired Tokens', admin_remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+  <% end %>
+</p>
+
+<%= paginate @temporary_access_tokens %>
+
+<p>Share the time-limited URL with the patron who needs access. It remains valid for <%= TemporaryAccessToken.hours_until_expiry %> hours after its first use.</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Time-Limited URL</th>
+      <th>File ID</th>
+      <th>Issued by</th>
+      <th>Created</th>
+      <th>Expiry</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'token_list' %>
+  </tbody>
+</table>
