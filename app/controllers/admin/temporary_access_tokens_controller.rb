@@ -8,9 +8,6 @@ class Admin::TemporaryAccessTokensController < ApplicationController
     @temporary_access_tokens = temporary_access_token_list
   end
 
-  def show
-  end
-
   def new
     @temporary_access_token = TemporaryAccessToken.new(new_temporary_access_token_params)
     create if params.has_key? :temporary_access_token
@@ -48,7 +45,17 @@ class Admin::TemporaryAccessTokensController < ApplicationController
   end
 
   def remove_expired_tokens
-    redirect_to admin_temporary_access_tokens_path, notice: "Don't worry, nothing really happened here."
+    count_destroyed = 0
+    if can? :manage, TemporaryAccessToken
+      TemporaryAccessToken.find_each do |token|
+        if token.obsolete?
+          if token.destroy
+            count_destroyed += 1
+          end
+        end
+      end
+    end
+    redirect_to admin_temporary_access_tokens_path, notice: "Number of tokens removed: #{count_destroyed}"
   end
 
   private

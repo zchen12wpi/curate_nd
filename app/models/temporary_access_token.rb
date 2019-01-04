@@ -61,4 +61,14 @@ class TemporaryAccessToken < ActiveRecord::Base
     assign_attributes(noid: Sufia::Noid.noidify(noid))
   end
   private :strip_pid_namespace
+
+  def obsolete?
+    if expiry_date.nil?
+      # obsolete if never used and not modified in last 90 days
+      return updated_at < Date.today - 90
+    else
+      # obsolete if past expiry_date
+      return expiry_date < Date.today
+    end
+  end
 end

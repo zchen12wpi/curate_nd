@@ -5,7 +5,7 @@
     <%= link_to 'Grant Temporary File Access', new_admin_temporary_access_token_path(temporary_access_token: { noid: @limit_to_id } ), class: 'btn btn-success' %>
   <% end %>
   <% if can? :manage, TemporaryAccessToken %>
-    <%= link_to 'Remove Expired Tokens', admin_remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+    <%= link_to 'Remove Obsolete Tokens', admin_remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'All tokens which are expired or which have not been modified in the last 90 days will be removed. Are you sure?' }, class: 'btn btn-danger pull-right' %>
   <% end %>
 </p>
 
