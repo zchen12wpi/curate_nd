@@ -98,4 +98,36 @@ describe TemporaryAccessToken do
       expect(subject.expiry_date).to be_nil
     end
   end
+
+  context '#obsolete?' do
+    context 'when valid' do
+      before do
+        allow(subject).to receive(:expiry_date).and_return(nil)
+        allow(subject).to receive(:updated_at).and_return(Time.now - 10.days)
+      end
+
+      it 'is not reported as obsolete' do
+        expect(subject.obsolete?).to eq(false)
+      end
+    end
+    context 'when expired' do
+      before do
+        allow(subject).to receive(:expiry_date).and_return(Time.now - 28.hours)
+      end
+
+      it 'is obsolete if over a day old' do
+        expect(subject.obsolete?).to eq(true)
+      end
+    end
+    context 'when unused' do
+      before do
+        allow(subject).to receive(:expiry_date).and_return(nil)
+        allow(subject).to receive(:updated_at).and_return(Time.now - 91.days)
+      end
+
+      it 'is obsolete if not modified in past 90 days' do
+        expect(subject.obsolete?).to eq(true)
+      end
+    end
+  end
 end
