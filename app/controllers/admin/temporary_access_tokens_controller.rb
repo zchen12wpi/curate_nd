@@ -107,7 +107,7 @@ class Admin::TemporaryAccessTokensController < ApplicationController
       return { test: :not_found, valid: false, notice: "Error: Unable to add access token; file #{@temporary_access_token.noid} was not found." }
     end
     # object must be a generic_file
-    return { valid: false, notice: "Error: Unable to add access token; item ID is not a file." } if item_to_access.class != GenericFile
+    return { valid: false, notice: "Error: Unable to add access token; item ID is not a file." } unless item_to_access.is_a? GenericFile
     # must be allowed to edit file or token manager
     return { valid: false, notice: "Error: Not authorized to create token for file #{@temporary_access_token.noid}." } unless (can? :edit, item_to_access) || (can? :manage, TemporaryAccessToken)
     # otherwise valid
