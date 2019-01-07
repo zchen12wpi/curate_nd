@@ -71,4 +71,13 @@ class TemporaryAccessToken < ActiveRecord::Base
       return expiry_date < Date.today
     end
   end
+
+  def user_is_editor(user)
+    return false if user.nil?
+    begin
+      return user.can? :edit, Sufia::Noid.namespaceize(noid)
+    rescue ActiveFedora::ObjectNotFoundError
+      return false
+    end
+  end
 end

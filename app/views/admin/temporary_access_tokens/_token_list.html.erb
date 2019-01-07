@@ -1,5 +1,5 @@
 <% @temporary_access_tokens.each do |temporary_access_token| %>
-  <% if (can? :edit, Sufia::Noid.namespaceize(temporary_access_token.noid)) || (can? :manage, TemporaryAccessToken) %>
+  <% if (can? :manage, TemporaryAccessToken) || (temporary_access_token.user_is_editor(current_user)) %>
     <tr>
       <td>
         <form class="form-slimline">
