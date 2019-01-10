@@ -82,6 +82,8 @@ class EtdMetadata < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
+    map.code_list(to: 'description#code_list', in: RDF::QualifiedDC)
+
     map.identifier(in: RDF::DC) do |index|
       index.as :stored_searchable,:facetable
     end

@@ -118,6 +118,8 @@ class Etd < ActiveFedora::Base
     ds.attribute :publisher,
       hint: "An entity responsible for making the resource available. This is typically the group most directly responsible for digitizing and/or archiving the work.",
       multiple: true
+    ds.attribute :code_list,
+      datastream: :descMetadata, multiple: false
     ds.attribute :coverage_temporal,
       multiple: true,
       label: "Coverage Temporal",
@@ -151,7 +153,7 @@ class Etd < ActiveFedora::Base
               message: 'must be a valid URL.'
           }
       }
-    attribute :alephIdentifier,
+    ds.attribute :alephIdentifier,
       datastream: :descMetadata, multiple: true,
       validates: {
           allow_blank: true,
