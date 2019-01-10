@@ -15,6 +15,9 @@ ENV PATH="/fits/fits-0.6.2:${PATH}"
 RUN mkdir /bundle
 COPY Gemfile /bundle
 COPY Gemfile.lock /bundle
+# This gem is now in the app code, so we need to copy it into the bundle path so bundler can find it
+# See https://github.com/nahi/logger/issues/3 and https://github.com/ndlib/curate_nd/pull/765
+COPY lib/logger-1.2.8 /bundle/lib/logger-1.2.8
 WORKDIR /bundle
 RUN bundle install  --without headless --path /bundle
 
