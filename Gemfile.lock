@@ -55,27 +55,6 @@ GIT
       rails (>= 3.2.13, < 5.0)
 
 GIT
-  remote: https://github.com/ndlib/sufia.git
-  revision: 80c5fd0ff11fc7e6461cf99271c496b9dcc2b9b0
-  branch: v3.4.0-removing-paperclip-usage
-  specs:
-    sufia-models (3.4.0)
-      active-fedora (~> 6.7.0)
-      activerecord-import
-      activeresource
-      acts_as_follower (>= 0.1.1, < 0.3)
-      blacklight (~> 4.5.0)
-      hydra-derivatives (~> 0.0.5)
-      hydra-head (~> 6.4.0)
-      mailboxer (~> 0.11.0)
-      nest (~> 1.1.1)
-      noid (~> 0.6.6)
-      rails (>= 3.2.13, < 5.0)
-      resque (~> 1.23)
-      resque-pool (= 0.3.0)
-      zipruby (= 0.3.6)
-
-GIT
   remote: https://github.com/samvera-labs/hydra-remote_identifier.git
   revision: 9c03618a34e2177471d4ed858c7898609c097c35
   ref: 9c03618a34e2177471d4ed858c7898609c097c35
@@ -679,17 +658,21 @@ GEM
     xml-simple (1.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    zipruby (0.3.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  active-fedora (~> 6.7.0)
   active_attr
   active_fedora-registered_attributes (~> 0.2.0)
+  activerecord-import
+  activeresource
+  acts_as_follower (>= 0.1.1, < 0.3)
   addressable (~> 2.3.5)
   better_errors
   binding_of_caller
+  blacklight (~> 4.5.0)
   blacklight-hierarchy!
   bootstrap-datepicker-rails
   brakeman
@@ -727,6 +710,7 @@ DEPENDENCIES
   hydra-collections (~> 1.3.0)
   hydra-derivatives (~> 0.0.7)
   hydra-file_characterization (~> 0.3.3)
+  hydra-head (~> 6.4.0)
   hydra-remote_identifier!
   jettywrapper
   jquery-rails
@@ -739,6 +723,7 @@ DEPENDENCIES
   lograge
   logstash-event
   logstash-logger
+  mailboxer (~> 0.11.0)
   mappy
   meta_request
   method_locator
@@ -747,7 +732,9 @@ DEPENDENCIES
   morphine
   mysql2 (~> 0.3.18)
   namae
+  nest (~> 1.1.1)
   net-ldap
+  noid (~> 0.6.6)
   noids_client!
   nokogiri
   omniauth-oauth2 (< 1.4)
@@ -759,7 +746,6 @@ DEPENDENCIES
   rails-assets-Leaflet--Leaflet.fullscreen!
   rails-assets-leaflet!
   rails-erb-lint
-  rails-observers (= 0.1.2)
   rails_autolink
   rails_best_practices
   railties (~> 4.0)
@@ -783,7 +769,6 @@ DEPENDENCIES
   share_notify!
   simple_form (~> 3.0.1)
   simplecov
-  sufia-models!
   test_after_commit
   therubyracer (= 0.12.1)
   thin
