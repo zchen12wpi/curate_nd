@@ -4,6 +4,7 @@ module Sufia
       extend ActiveSupport::Concern
 
       included do
+        # Hydra::Derivatives also has "included do"
         include Hydra::Derivatives
 
         makes_derivatives do |obj|
@@ -28,4 +29,3 @@ module Sufia
     end
   end
 end
-

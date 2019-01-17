@@ -2,10 +2,6 @@ module Sufia
   module ModelMethods
     extend ActiveSupport::Concern
 
-    included do
-      include Hydra::ModelMethods
-    end
-
     # OVERRIDE to support Hydra::Datastream::Properties which does not
     #   respond to :depositor_values but :depositor
     # Adds metadata about the depositor to the asset

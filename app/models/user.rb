@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   include Blacklight::User
 
   include Curate::UserBehavior
+  # Adds acts_as_messageable for user mailboxes
+  include Mailboxer::Models::Messageable
 
   def self.search(query = nil)
     if query.to_s.strip.present?

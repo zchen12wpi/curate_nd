@@ -10,6 +10,7 @@ module Sufia
     autoload :Metadata, 'sufia/models/generic_file/metadata'
     autoload :Versions, 'sufia/models/generic_file/versions'
     include Sufia::ModelMethods
+    include Hydra::ModelMethods
     include Sufia::Noid
     include Sufia::GenericFile::MimeTypes
     include Sufia::GenericFile::Thumbnail

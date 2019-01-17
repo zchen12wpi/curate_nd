@@ -8,6 +8,7 @@ module CurationConcern
     end
 
     included do
+      # CurationConcern::Model has "included do"
       include CurationConcern::Model
       include Hydra::AccessControls::Permissions
       include CurationConcern::IsMemberOfLibraryCollection

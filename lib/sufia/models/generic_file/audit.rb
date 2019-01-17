@@ -2,8 +2,6 @@ module Sufia
   module GenericFile
     module Audit
       extend ActiveSupport::Concern
-      included do
-      end
 
       NO_RUNS = 999
 

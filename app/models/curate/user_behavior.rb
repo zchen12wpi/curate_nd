@@ -9,8 +9,6 @@ module Curate
       include Curate::UserBehavior::Delegates
 
       # EVERTHING BELOW HERE ADDED FROM SUFIA::USER
-      # Adds acts_as_messageable for user mailboxes
-      include Mailboxer::Models::Messageable
       # Connects this user object to Blacklight's Bookmarks and Folders.
       include Blacklight::User
       include Hydra::User
