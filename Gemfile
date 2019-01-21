@@ -9,25 +9,6 @@ end
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
-
-  # dependencies brought in via sufia-models:
-  # active-fedora (~> 6.7.0)
-  # activerecord-import
-  # activeresource
-  # acts_as_follower (>= 0.1.1, < 0.3)
-  # blacklight (~> 4.5.0)
-  # hydra-derivatives (~> 0.0.5)
-  # hydra-head (~> 6.4.0)
-  # mailboxer (~> 0.11.0)
-  # nest (~> 1.1.1)
-  # noid (~> 0.6.6)
-  # rails (>= 3.2.13, < 5.0)
-  # resque (~> 1.23)
-  # resque-pool (= 0.3.0)
-  # zipruby (= 0.3.6)
-  # gem 'rails-observers', '0.1.2' # required as part of the sufia-models change to point to github: "ndlib/sufia"
-  # gem 'sufia-models', github: 'ndlib/sufia', branch: 'v3.4.0-removing-paperclip-usage'
-
   gem 'active-fedora', '~> 6.7.0'
   gem 'activerecord-import'
   gem 'activeresource'
@@ -37,7 +18,6 @@ group :default do
   gem 'noid', '~> 0.6.6'
   gem 'mailboxer', '~> 0.11.0'
   gem 'acts_as_follower', '>= 0.1.1', '< 0.3'
-
 
   gem 'active_attr'
   gem 'sentry-raven', '~> 2.7'
