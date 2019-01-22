@@ -2,10 +2,9 @@ module Sufia
   module GenericFile
     module Derivatives
       extend ActiveSupport::Concern
+      include Hydra::Derivatives
 
       included do
-        include Hydra::Derivatives
-
         makes_derivatives do |obj|
           case obj.mime_type
             when *pdf_mime_types
@@ -28,4 +27,3 @@ module Sufia
     end
   end
 end
-

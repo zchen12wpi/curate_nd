@@ -7,8 +7,9 @@ module CurationConcern
       tokens.gsub(/\s+/, "").split(',')
     end
 
+    include CurationConcern::Model
+
     included do
-      include CurationConcern::Model
       include Hydra::AccessControls::Permissions
       include CurationConcern::IsMemberOfLibraryCollection
     end

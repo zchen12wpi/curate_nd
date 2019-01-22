@@ -21,6 +21,7 @@ require 'flipper/adapters/memory'
 module CurateNd
   class Application < Rails::Application
     require 'curate'
+    require 'hydra-access-controls'
     require 'orcid'
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -37,6 +38,9 @@ module CurateNd
       #{config.root}/app/repository_models/concerns
       #{config.root}/app/services
       #{config.root}/app/workers
+      #{config.root}/lib/sufia/models/jobs
+      #{config.root}/app/models/datastreams
+      #{config.root}/app/models/concerns
     )
 
     # Only load the plugins named here, in the order given (default is alphabetical).

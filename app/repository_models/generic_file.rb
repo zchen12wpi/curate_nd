@@ -4,6 +4,7 @@ require File.expand_path("../../repository_datastreams/file_content_datastream",
 class GenericFile < ActiveFedora::Base
   include ActiveModel::Validations
   include Sufia::ModelMethods
+  include Hydra::ModelMethods
   include Hydra::AccessControls::Permissions
   include CurationConcern::Embargoable # overrides visibility, so must come after Permissions
   include Sufia::GenericFile::Characterization

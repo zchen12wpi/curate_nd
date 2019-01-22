@@ -1,6 +1,7 @@
 class LinkedResource < ActiveFedora::Base
   include Hydra::AccessControls::Permissions
   include Sufia::ModelMethods
+  include Hydra::ModelMethods
   include CurationConcern::Model
   include ActiveFedora::RegisteredAttributes
 

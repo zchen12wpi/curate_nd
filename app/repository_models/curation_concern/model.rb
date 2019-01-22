@@ -1,15 +1,31 @@
 module CurationConcern
   module Model
+    extend ActiveSupport::Autoload
     extend ActiveSupport::Concern
 
 
     included do
       include Sufia::ModelMethods
+      include Hydra::ModelMethods
       include Curate::ActiveModelAdaptor
-      include Hydra::Collections::Collectible
+
+      #after_solrize << :index_collection_pids
+      has_many :collections, property: :has_collection_member, :class_name => "ActiveFedora::Base"
+
       include Solrizer::Common
       include CurationConcern::HumanReadableType
+
       include CurationConcern::WithCollaborators
+      has_and_belongs_to_many :record_editors, class_name: "::Person", property: :has_editor
+      accepts_nested_attributes_for :record_editors, allow_destroy: true, reject_if: :all_blank
+      has_and_belongs_to_many :record_editor_groups, class_name: "::Hydramata::Group", property: :has_editor_group
+      accepts_nested_attributes_for :record_editor_groups, allow_destroy: true, reject_if: :all_blank
+
+      has_and_belongs_to_many :record_viewers, class_name: "::Person", property: :has_viewer
+      accepts_nested_attributes_for :record_viewers, allow_destroy: true, reject_if: :all_blank
+      has_and_belongs_to_many :record_viewer_groups, class_name: "::Hydramata::Group", property: :has_viewer_group
+      accepts_nested_attributes_for :record_viewer_groups, allow_destroy: true, reject_if: :all_blank
+
       has_metadata 'properties', type: Curate::PropertiesDatastream
       has_attributes :relative_path, :depositor, :owner, :representative, :license, :type_of_license, datastream: :properties, multiple: false
       class_attribute :human_readable_short_description
@@ -43,6 +59,12 @@ module CurationConcern
 
     def can_be_member_of_collection?(collection)
       collection == self ? false : true
+    end
+
+    def index_collection_pids(solr_doc={})
+      solr_doc[Solrizer.solr_name(:collection, :facetable)] = self.collection_ids
+      solr_doc[Solrizer.solr_name(:collection)] = self.collection_ids
+      solr_doc
     end
 
 protected

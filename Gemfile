@@ -9,6 +9,16 @@ end
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
+  gem 'active-fedora', '~> 6.7.0'
+  gem 'activerecord-import'
+  gem 'activeresource'
+  gem "blacklight", "~> 4.5.0"
+  gem "hydra-head", "~> 6.4.0"
+  gem 'nest', '~> 1.1.1'
+  gem 'noid', '~> 0.6.6'
+  gem 'mailboxer', '~> 0.11.0'
+  gem 'acts_as_follower', '>= 0.1.1', '< 0.3'
+
   gem 'active_attr'
   gem 'sentry-raven', '~> 2.7'
   gem 'active_fedora-registered_attributes', '~> 0.2.0'
@@ -61,7 +71,6 @@ group :default do
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails', '~> 4.0.2'
   gem 'rails_autolink'
-  gem 'rails-observers', '0.1.2' # required as part of the sufia-models change to point to github: "ndlib/sufia"
   gem 'rake', '~> 11.0'
   gem 'redcarpet'
   gem 'redis', '~> 3.3'
@@ -72,7 +81,6 @@ group :default do
   gem 'select2-rails'
   gem 'share_notify', github: 'samvera-labs/share_notify'
   gem 'simple_form', '~> 3.0.1'
-  gem 'sufia-models', github: 'ndlib/sufia', branch: 'v3.4.0-removing-paperclip-usage'
   gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'

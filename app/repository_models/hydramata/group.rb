@@ -1,5 +1,6 @@
 class Hydramata::Group < ActiveFedora::Base
   include Sufia::ModelMethods
+  include Hydra::ModelMethods
   include CurationConcern::HumanReadableType
   include Hydra::AccessControls::Permissions
   include Sufia::Noid

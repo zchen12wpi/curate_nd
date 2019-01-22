@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   include Hydra::User
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
-  # Connects this user object to Sufia behaviors.
-  include Sufia::User
 
   include Curate::UserBehavior
+  # Adds acts_as_messageable for user mailboxes
+  include Mailboxer::Models::Messageable
 
   def self.search(query = nil)
     if query.to_s.strip.present?
