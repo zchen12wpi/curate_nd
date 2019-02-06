@@ -36,6 +36,7 @@ module CurationConcernHelper
   end
 
   private
+
   def request_recipient
     return this_request["access_request_recipient"] if this_request["access_request_method"] == "email"
     # return some metadata field if this_request["access_request_method"] == "metadata"
@@ -47,6 +48,6 @@ module CurationConcernHelper
   end
 
   def access_request_data
-    @access_request_data ||= YAML.load( File.open( Rails.root.join( 'config/access_request_map.yml' ) ) ).freeze
+    TemporaryAccessToken.access_request_data
   end
 end

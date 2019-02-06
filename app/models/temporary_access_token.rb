@@ -80,4 +80,49 @@ class TemporaryAccessToken < ActiveRecord::Base
       return false
     end
   end
+
+  # Prepare error info for access denied w/ token
+  def self.access_request_allowed_for?(token_sha)
+    token = load_token(token_sha)
+    return false if token.this_request.nil?
+    return false if token.request_recipient.nil?
+    return true
+  end
+
+  def self.load_token(token_sha)
+    self.find(token_sha)
+  end
+  private_class_method :load_token
+
+  def self.build_renewal_request_for(token_sha)
+    token = load_token(token_sha)
+    request_subject = "[#{ token.token_file.parent.human_readable_type } Access Request] Renewed Access to File (id: #{token.noid})"
+    request_body = "Previously, I had been granted temporary access to a restricted file in CurateND (id: #{token.noid}). I no longer have access to the file and would like to view it again.\n\nHere is the access token I was given:\n #{token_sha}"
+    request_html = <<-markup
+      <a class="btn btn-default" href="mailto:#{URI.escape(token.request_recipient)}?subject=#{URI.escape(request_subject)}&body=#{URI.escape(request_body)}">Request an Access Extension</a>
+    markup
+  end
+
+  def request_recipient
+    return this_request["access_request_recipient"] if this_request["access_request_method"] == "email"
+    # return some metadata field if this_request["access_request_method"] == "metadata"
+    nil
+  end
+
+  def this_request
+    @this_request ||= access_request_data[parent_class]
+  end
+
+  def token_file
+    @token_file ||= ActiveFedora::Base.load_instance_from_solr(Sufia::Noid.namespaceize(noid))
+  end
+
+  def parent_class
+    @parent_class ||= token_file.parent.class.to_s.downcase
+  end
+
+  # Data file controlling all access requests
+  def access_request_data
+    @@access_request_data ||= YAML.load( File.open( Rails.root.join( 'config/access_request_map.yml' ) ) ).freeze
+  end
 end

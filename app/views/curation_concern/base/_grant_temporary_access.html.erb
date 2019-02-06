@@ -21,7 +21,7 @@
 <% if !file.open_access? %>
   <% if (can? :edit, curation_concern) || (can? :manage, TemporaryAccessToken) %>
     <span class="grant-temporary-access">
-      <%= link_to 'Temporary File Access', admin_temporary_access_tokens_path(temporary_access_token: { noid: file.noid } ), class: 'btn btn-default' %>
+      <%= link_to 'Temporary File Access', admin_temporary_access_tokens_path(temporary_access_token: { noid: file.noid }, limit_to_id: file.noid), class: 'btn btn-default' %>
     </span>
   <% end %>
 <% end %>
