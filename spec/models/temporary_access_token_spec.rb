@@ -99,6 +99,13 @@ describe TemporaryAccessToken do
     end
   end
 
+  context 'revoke!' do
+    it 'should set the expiry date to now' do
+      subject.revoke!
+      expect(subject.expiry_date.to_date).to eq(Date.today)
+    end
+  end
+
   context '#obsolete?' do
     context 'when valid' do
       before do
