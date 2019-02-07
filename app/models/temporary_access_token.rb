@@ -72,6 +72,10 @@ class TemporaryAccessToken < ActiveRecord::Base
     end
   end
 
+  def revoke!
+    update_attribute(:expiry_date, Time.now)
+  end
+
   def user_is_editor(user)
     return false if user.nil?
     begin

@@ -12,7 +12,7 @@
       <td><%= temporary_access_token.expiry_date.present? ? temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></td>
       <td>
         <%= link_to 'Renew', edit_admin_temporary_access_token_path(temporary_access_token, limit_to_id: @limit_to_id), class: 'btn btn-default' %>
-        <%= link_to 'Delete', admin_temporary_access_token_path(temporary_access_token, limit_to_id: @limit_to_id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Revoke', admin_revoke_access_path(sha: temporary_access_token, limit_to_id: @limit_to_id), method: :post, data: { confirm: 'Your token will be immediately expired. Are you sure?' }, class: 'btn btn-danger' %>
       </td>
     </tr>
   <% end %>

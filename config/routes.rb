@@ -119,8 +119,9 @@ CurateNd::Application.routes.draw do
     resources :temporary_access_tokens, path: 'access_tokens', except: [:show]
   end
 
-  # clean up expired tokens
+  # clean up tokens
   post 'admin/temporary_access_tokens/remove_expired_tokens', as: 'admin_remove_expired_tokens'
+  post 'admin/temporary_access_tokens/revoke_access', as: 'admin_revoke_access'
   get 'admin/temporary_access_tokens/remove_expired_tokens', controller: 'temporary_access_tokens', action: 'remove_expired_tokens'
 
   # Due to an apparent bug in devise the following routes should be presented
