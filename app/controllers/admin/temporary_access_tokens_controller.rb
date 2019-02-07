@@ -50,8 +50,9 @@ class Admin::TemporaryAccessTokensController < ApplicationController
   end
 
   def destroy
+    @limit_to_id ||= limit_to_id
     @temporary_access_token.destroy
-    redirect_to admin_temporary_access_tokens_path(limit_to_id: params[:limit_to_id]), notice: 'Temporary access token was successfully deleted.'
+    redirect_to admin_temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully deleted.'
   end
 
   def remove_expired_tokens
