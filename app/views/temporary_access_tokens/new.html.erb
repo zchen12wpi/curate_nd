@@ -15,7 +15,7 @@
   Temporary access URLs expire <%= TemporaryAccessToken.hours_until_expiry %> hours after their first use. They may be used any number of times before expiring. You can only create URLs for files that you have edit rights for.
 </p>
 
-<%= simple_form_for([:admin, @temporary_access_token]) do |f| %>
+<%= simple_form_for(@temporary_access_token) do |f| %>
   <%= f.error_notification %>
 
   <fieldset>

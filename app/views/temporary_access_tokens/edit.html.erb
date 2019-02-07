@@ -26,7 +26,7 @@
   <dd><%= @temporary_access_token.expiry_date.present? ? @temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></dd>
 </dl>
 
-<%= simple_form_for([@temporary_access_token]) do |f| %>
+<%= simple_form_for(@temporary_access_token) do |f| %>
   <%= f.error_notification %>
   <fieldset>
     <%= f.input :reset_expiry_date, as: :boolean, hint: "When the expiry date is reset, the single-use URL will be valid for #{TemporaryAccessToken.hours_until_expiry} hours after its first use.", required: true %>
