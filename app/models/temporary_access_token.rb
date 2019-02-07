@@ -114,19 +114,19 @@ class TemporaryAccessToken < ActiveRecord::Base
   end
 
   def this_request
-    @this_request ||= access_request_data[parent_class]
+    @this_request ||= self.class.access_request_data[parent_class_name]
   end
 
   def token_file
     @token_file ||= ActiveFedora::Base.load_instance_from_solr(Sufia::Noid.namespaceize(noid))
   end
-
-  def parent_class
-    @parent_class ||= token_file.parent.class.to_s.downcase
+``
+  def parent_class_name
+    @parent_class_name ||= token_file.parent.class.to_s.downcase
   end
 
   # Data file controlling all access requests
-  def access_request_data
+  def self.access_request_data
     @@access_request_data ||= YAML.load( File.open( Rails.root.join( 'config/access_request_map.yml' ) ) ).freeze
   end
 end
