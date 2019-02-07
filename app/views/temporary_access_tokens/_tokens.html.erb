@@ -1,11 +1,11 @@
 <p>
   <% if @limit_to_id.nil? %>
-    <%= link_to 'Make New Access Token', new_admin_temporary_access_token_path, class: 'btn btn-success' %>
+    <%= link_to 'Make New Access Token', new_temporary_access_token_path, class: 'btn btn-success' %>
   <% else %>
-    <%= link_to 'Make New Access Token', new_admin_temporary_access_token_path(limit_to_id: @limit_to_id, temporary_access_token: { noid: @limit_to_id } ), class: 'btn btn-success' %>
+    <%= link_to 'Make New Access Token', new_temporary_access_token_path(limit_to_id: @limit_to_id, temporary_access_token: { noid: @limit_to_id } ), class: 'btn btn-success' %>
   <% end %>
   <% if can? :manage, TemporaryAccessToken %>
-    <%= link_to 'Remove Expired Tokens', admin_remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'All tokens which are expired or which have not been modified in the last 90 days will be removed. Are you sure?' }, class: 'btn btn-danger pull-right' %>
+    <%= link_to 'Remove Expired Tokens', remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'All tokens which are expired or which have not been modified in the last 90 days will be removed. Are you sure?' }, class: 'btn btn-danger pull-right' %>
   <% end %>
 </p>
 

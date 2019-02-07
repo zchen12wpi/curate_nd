@@ -10,7 +10,7 @@
     <li class="divider"></li>
     <li>
       <%= link_to 'Temporary Access Grants',
-        admin_temporary_access_tokens_path,
+        temporary_access_tokens_path,
         role: 'menuitem' %>
     </li>
     <% if CurateND::AdminConstraint.is_admin?(current_user) %>

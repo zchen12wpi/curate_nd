@@ -1,4 +1,4 @@
-class Admin::TemporaryAccessTokensController < ApplicationController
+class TemporaryAccessTokensController < ApplicationController
   with_themed_layout('1_column')
 
   before_action :set_temporary_access_token, only: [:show, :edit, :update, :destroy]
@@ -10,7 +10,7 @@ class Admin::TemporaryAccessTokensController < ApplicationController
   end
 
   def new
-    @temporary_access_token = TemporaryAccessToken.new(params)
+    @temporary_access_token = TemporaryAccessToken.new(new_temporary_access_token_params)
     create if params.has_key? :temporary_access_token
   end
 
@@ -24,35 +24,35 @@ class Admin::TemporaryAccessTokensController < ApplicationController
     permitted = validate_create_token
     if permitted[:valid] == true
       if @temporary_access_token.save
-        redirect_to admin_temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully created.'
+        redirect_to temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully created.'
       else
         render action: 'new'
       end
     else
-      redirect_to admin_temporary_access_tokens_path, notice: permitted[:notice]
+      redirect_to temporary_access_tokens_path, notice: permitted[:notice]
     end
   end
 
   def update
     @limit_to_id ||= limit_to_id
     if @temporary_access_token.update(temporary_access_token_params_with_current_user)
-      redirect_to admin_temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully updated.'
+      redirect_to temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully renewed.'
     else
       render action: 'edit'
     end
   end
 
-  def revoke_access
+  def revoke_token_access
     @temporary_access_token = TemporaryAccessToken.find(params[:sha])
     @limit_to_id ||= limit_to_id
     @temporary_access_token.revoke!
-    redirect_to admin_temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully expired.'
+    redirect_to temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully expired.'
   end
 
   def destroy
     @limit_to_id ||= limit_to_id
     @temporary_access_token.destroy
-    redirect_to admin_temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully deleted.'
+    redirect_to temporary_access_tokens_path(limit_to_id: @limit_to_id), notice: 'Temporary access token was successfully deleted.'
   end
 
   def remove_expired_tokens
@@ -66,7 +66,7 @@ class Admin::TemporaryAccessTokensController < ApplicationController
         end
       end
     end
-    redirect_to admin_temporary_access_tokens_path, notice: "Number of tokens removed: #{count_destroyed}"
+    redirect_to temporary_access_tokens_path, notice: "Number of tokens removed: #{count_destroyed}"
   end
 
   private

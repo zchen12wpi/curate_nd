@@ -5,7 +5,7 @@
 <h1>Grant Temporary Access</h1>
 
 <ul class="breadcrumb">
-  <li><%= link_to 'Temporary File Access', admin_temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><%= link_to 'Temporary File Access', temporary_access_tokens_path %> <span class="divider">/</span></li>
   <li><span class="active">New</span></li>
 </ul>
 <% end %>
@@ -24,6 +24,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, 'Create Access URL', class: 'btn btn-danger' %>
-    <span class="action-annotation">Temporary access URLs can be revoked from the <%= link_to 'Temporary Access Grants', admin_temporary_access_tokens_path %> page.</span>
+    <span class="action-annotation">Temporary access URLs can be revoked from the <%= link_to 'Temporary Access Grants', temporary_access_tokens_path %> page.</span>
   </div>
 <% end %>
