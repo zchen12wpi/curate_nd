@@ -35,6 +35,16 @@ module CurationConcernHelper
     return true
   end
 
+  # Validate request renewal after access denied
+  def access_renewal_request_allowed?(token_sha)
+    TemporaryAccessToken.access_request_allowed_for?(token_sha)
+  end
+
+  # Prepare error info for access denied w/ token
+  def build_access_renewal_request(token_sha)
+    TemporaryAccessToken.build_renewal_request_for(token_sha)
+  end
+
   private
 
   def request_recipient

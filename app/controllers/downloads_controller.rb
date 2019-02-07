@@ -174,16 +174,6 @@ class DownloadsController < ApplicationController
     end
   end
 
-  # Prepare error info for access denied w/ token
-  def build_renewal_request
-    TemporaryAccessToken.build_renewal_request_for(params[:token])
-  end
-
-  # Validate request renewal after access denied
-  def access_request_allowed?
-    TemporaryAccessToken.access_request_allowed_for?(params[:token])
-  end
-
   private
 
   def can_download?

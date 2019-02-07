@@ -1,9 +1,8 @@
 <% if params[:token] %>
-  <%# let downloads controller decide whether user can request access extension %>
   <div class="alert alert-warn">
     <p>Your single-use URL has expired or is no longer valid.</p>
-    <% if access_request_allowed? %>
-      <% build_renewal_request.html_safe %>
+    <% if access_renewal_request_allowed?(params:token) %>
+      <% build_renewal_request(params:token).html_safe %>
     <% end %>
   </div>
 <% end %>
