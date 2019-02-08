@@ -120,7 +120,7 @@ class TemporaryAccessToken < ActiveRecord::Base
   def token_file
     @token_file ||= ActiveFedora::Base.load_instance_from_solr(Sufia::Noid.namespaceize(noid))
   end
-``
+
   def parent_class_name
     @parent_class_name ||= token_file.parent.class.to_s.downcase
   end

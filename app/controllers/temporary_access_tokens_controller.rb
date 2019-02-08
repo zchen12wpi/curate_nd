@@ -95,11 +95,9 @@ class TemporaryAccessTokensController < ApplicationController
   end
 
   def temporary_access_token_list
-    if @limit_to_id.nil?
-      TemporaryAccessToken.order(updated_at: :desc).page(params[:page])
-    else
-      TemporaryAccessToken.where(noid: @limit_to_id).order(updated_at: :desc).page(params[:page])
-    end
+    finding_scope = TemporaryAccessToken.order(updated_at: :desc).page(params[:page])
+    finding_scope = finding_scope.where(noid: @limit_to_id) if @limit_to_id.present?
+    finding_scope
   end
 
   def limit_to_id
