@@ -1,0 +1,22 @@
+<% content_for :page_title, construct_page_title('Temporary File Access') %>
+<% content_for :page_header do %>
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <% unless @limit_to_id.nil? %>
+      <li><%= link_to 'Parent Work', polymorphic_path([:curation_concern, @limited_item.parent]) %> <span class="divider">/</span></li>
+      <li><%= link_to 'File', polymorphic_path([:curation_concern, @limited_item]) %> <span class="divider">/</span></li>
+    <% end %>
+    <li><span class="active">Temporary File Access</span></li>
+  </ul>
+
+  <h1>Temporary File Access Grants</h1>
+  <% unless @limit_to_id.nil? %>
+    <h3>
+      for <%= @limited_item.filename %> (<%= @limit_to_id %>)
+    </h3>
+    <%= link_to 'View all files', temporary_access_tokens_path, class: 'btn btn-default' %>
+  <% end %>
+
+<% end %>
+
+<%= render partial: 'tokens' %>

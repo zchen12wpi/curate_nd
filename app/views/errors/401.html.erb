@@ -1,6 +1,6 @@
 <% content_for :page_title, construct_page_title("#{response.status} Unauthorized") %>
 <% content_for :page_header do %>
-  <%= render '/errors/access_denied_alert' %>
   <h1>Unauthorized</h1>
+  <%= render '/errors/access_denied_alert' %>
 <% end %>
 <%= render '/errors/access_denied_body' %>

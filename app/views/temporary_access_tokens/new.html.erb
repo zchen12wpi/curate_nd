@@ -1,0 +1,29 @@
+<% content_for :page_title do %>
+  Grant Temporary Access // CurateND
+<% end %>
+<% content_for :page_header do %>
+<h1>Grant Temporary Access</h1>
+
+<ul class="breadcrumb">
+  <li><%= link_to 'Temporary File Access', temporary_access_tokens_path %> <span class="divider">/</span></li>
+  <li><span class="active">New</span></li>
+</ul>
+<% end %>
+
+<p class="alert alert-waring">
+  A temporary access URL will be generated to allow anyone to download the given file even if it is private.<br/>
+  Temporary access URLs expire <%= TemporaryAccessToken.hours_until_expiry %> hours after their first use. They may be used any number of times before expiring. You can only create URLs for files that you have edit rights for.
+</p>
+
+<%= simple_form_for(@temporary_access_token) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <%= f.input :noid, label: 'Curate ID for the file' %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Create Access URL', class: 'btn btn-danger' %>
+    <span class="action-annotation">Temporary access URLs can be revoked from the <%= link_to 'Temporary Access Grants', temporary_access_tokens_path %> page.</span>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<p>
+  <% if @limit_to_id.nil? %>
+    <%= link_to 'Make New Access Token', new_temporary_access_token_path, class: 'btn btn-success' %>
+  <% else %>
+    <%= link_to 'Make New Access Token', new_temporary_access_token_path(limit_to_id: @limit_to_id, temporary_access_token: { noid: @limit_to_id } ), class: 'btn btn-success' %>
+  <% end %>
+  <% if can? :manage, TemporaryAccessToken %>
+    <%= link_to 'Remove Expired Tokens', remove_expired_tokens_path, method: :remove_expired_tokens, data: { confirm: 'All tokens which are expired or which have not been modified in the last 90 days will be removed. Are you sure?' }, class: 'btn btn-danger pull-right' %>
+  <% end %>
+</p>
+
+<%= paginate @temporary_access_tokens %>
+
+<p>Anyone who has a temporary access link can download the given file regardless of
+the access controls the file has. Links are valid until <%= TemporaryAccessToken.hours_until_expiry %> hours after their first use, at which point they expire. They may be used any number of times before expiring. You can only create Temporary URLs for files for which you have edit rights.</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Temporary Access URL</th>
+      <th>File ID</th>
+      <th>Issued by</th>
+      <th>Created</th>
+      <th>Expiry</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'token_list' %>
+  </tbody>
+</table>
