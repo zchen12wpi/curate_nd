@@ -6,7 +6,6 @@ class FindingAid < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedContributors
-  include Hydra::AccessControls::Permissions # must be prior to embargoable
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers

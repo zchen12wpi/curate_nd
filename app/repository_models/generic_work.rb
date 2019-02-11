@@ -6,7 +6,6 @@ class GenericWork < ActiveFedora::Base
   include CurationConcern::WithLinkedResources
   include CurationConcern::WithLinkedContributors
   include CurationConcern::WithRelatedWorks
-  include Hydra::AccessControls::Permissions # must be prior to embargoable
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers

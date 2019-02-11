@@ -4,7 +4,6 @@ class Etd < ActiveFedora::Base
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
   include CurationConcern::WithRelatedWorks
-  include Hydra::AccessControls::Permissions # must be prior to embargoable
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers
