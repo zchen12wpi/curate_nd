@@ -2,6 +2,7 @@ class CatholicDocument < ActiveFedora::Base
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
   include CurationConcern::WithLinkedResources
+  include Hydra::AccessControls::Permissions # must be prior to embargoable
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers

@@ -15,6 +15,7 @@ class OsfArchive < ActiveFedora::Base
   include ActiveModel::Validations
   include CurationConcern::Work
   include CurationConcern::WithGenericFiles
+  include Hydra::AccessControls::Permissions # must be prior to embargoable
   include CurationConcern::Embargoable
   include CurationConcern::WithRecordEditors
   include CurationConcern::WithRecordViewers

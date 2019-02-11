@@ -35,9 +35,6 @@ module CurationConcern
       before_save :write_embargo_release_date, prepend: true
 
       register :embargoable_persistence_container do
-        unless self.class.included_modules.include?('Hydra::AccessControls::Permissions')
-          self.class.send(:include, Hydra::AccessControls::Permissions)
-        end
         self.datastreams["rightsMetadata"]
       end
     end
