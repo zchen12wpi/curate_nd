@@ -1,4 +1,3 @@
-
 class Article < ActiveFedora::Base
   include ActiveModel::Validations
   include CurationConcern::Work

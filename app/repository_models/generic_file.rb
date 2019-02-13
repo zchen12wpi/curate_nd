@@ -1,6 +1,3 @@
-# require File.expand_path("../curation_concern/embargoable", __FILE__)
-require File.expand_path("../../repository_datastreams/file_content_datastream", __FILE__)
-
 class GenericFile < ActiveFedora::Base
   include ActiveModel::Validations
   include Sufia::ModelMethods

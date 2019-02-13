@@ -1,5 +1,4 @@
 require 'morphine'
-require File.expand_path('../../../validators/date_format_validator', __FILE__)
 module CurationConcern
   module Embargoable
     extend ActiveSupport::Concern

@@ -35,12 +35,13 @@ module CurateNd
       #{config.root}/app/exceptions
       #{config.root}/app/repository_models
       #{config.root}/app/repository_datastreams
-      #{config.root}/app/repository_models/concerns
       #{config.root}/app/services
       #{config.root}/app/workers
-      #{config.root}/lib/sufia/models/jobs
       #{config.root}/app/models/datastreams
       #{config.root}/app/models/concerns
+      #{config.root}/app/validators
+      #{config.root}/lib/sufia/models/jobs
+      #{config.root}/app/repository_models/hydra
     )
 
     # Only load the plugins named here, in the order given (default is alphabetical).

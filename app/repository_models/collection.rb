@@ -1,13 +1,12 @@
-require 'hydra/collection'
-
 class Collection < ActiveFedora::Base
+  include Hydra::AccessControls::Permissions
   include Hydra::Collection
   include CurationConcern::CollectionModel
   include Hydra::Collections::Collectible
   include Hydra::Derivatives
   include CurationConcern::WithRecordViewers
   include CurationConcern::WithJsonMapper
-  
+
   has_file_datastream :name => "content"
   has_file_datastream :name => "medium"
   has_file_datastream :name => "thumbnail"

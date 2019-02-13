@@ -2,7 +2,6 @@ module CurationConcern
   module CollectionModel
     extend ActiveSupport::Concern
 
-    include Hydra::AccessControls::Permissions
     include Hydra::AccessControls::WithAccessRight
     include Sufia::Noid
     include CurationConcern::HumanReadableType
