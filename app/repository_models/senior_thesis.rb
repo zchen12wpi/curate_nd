@@ -1,6 +1,5 @@
 #require 'datastreams/properties_datastream'
 #require_relative './generic_file'
-require 'curation_concern/model'
 require 'active_fedora/registered_attributes'
 
 class SeniorThesis < ActiveFedora::Base

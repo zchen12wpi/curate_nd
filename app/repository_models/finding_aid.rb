@@ -1,4 +1,3 @@
-require 'curation_concern/model'
 require 'active_fedora/registered_attributes'
 class FindingAid < ActiveFedora::Base
   include ActiveModel::Validations
