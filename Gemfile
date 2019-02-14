@@ -75,7 +75,7 @@ group :default do
   gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'redcarpet'
   gem 'redis', '~> 3.3.3' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
-  gem 'resque-pool'
+  gem 'resque-pool', :git => 'git://github.com/nevans/resque-pool.git', :ref => 'bf7a283fa3b3b84237ced38ebac3bfd4e6885166'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'
   gem 'sanitize', '~> 4.6.3'
