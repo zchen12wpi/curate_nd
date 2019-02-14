@@ -1,5 +1,4 @@
 class Collection < ActiveFedora::Base
-  include Hydra::AccessControls::Permissions
   include Hydra::Collection
   include CurationConcern::CollectionModel
   include Hydra::Collections::Collectible
