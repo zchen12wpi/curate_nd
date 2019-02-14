@@ -1,0 +1,39 @@
+<% content_for :page_title do %>
+  Edit // Temporary File Access // CurateND
+<% end %>
+<% content_for :page_header do %>
+<h1>Renew Temporary File Access</h1>
+
+<ul class="breadcrumb">
+  <li><%= link_to 'Temporary File Access', temporary_access_tokens_path(limit_to_id: @limit_to_id) %> <span class="divider">/</span></li>
+  <li><span class="active">Edit</span></li>
+</ul>
+<% end %>
+
+<h3>Temporary Access URL</h3>
+<dl>
+  <p>Anyone who has a temporary access link can download the given file regardless of
+  the access controls the file has. Links are valid until <%= TemporaryAccessToken.hours_until_expiry %> hours after their first use, at which point they expire. They may be used any number of times before expiring.</p>
+  <dt>Share the URL with the patron who needs access.</dt>
+  <dd><form>
+    <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(@temporary_access_token.noid, token: @temporary_access_token.sha) %>">
+  </form></dd>
+  <dt>File ID:</dt>
+  <dd><%= link_to @temporary_access_token.noid, common_object_path(@temporary_access_token.noid) %></dd>
+  <dt>Issued by:</dt>
+  <dd><%= @temporary_access_token.issued_by %></dd>
+  <dt>Expiry Date:</dt>
+  <dd><%= @temporary_access_token.expiry_date.present? ? @temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></dd>
+</dl>
+
+<%= simple_form_for(@temporary_access_token) do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+    <%= f.input :reset_expiry_date, as: :boolean, hint: "When the expiry date is reset, the single-use URL will be valid for #{TemporaryAccessToken.hours_until_expiry} hours after its first use.", required: true %>
+  </fieldset>
+  <div class="form-actions">
+    <%= hidden_field_tag("limit_to_id", @limit_to_id) %>
+    <%= f.button :submit, 'Renew Token', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', temporary_access_tokens_path(limit_to_id: @limit_to_id), class: 'btn btn-link' %>
+  </div>
+<% end %>

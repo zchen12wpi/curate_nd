@@ -1,0 +1,19 @@
+<% @temporary_access_tokens.each do |temporary_access_token| %>
+  <% if (can? :manage, TemporaryAccessToken) || (temporary_access_token.user_is_editor(current_user)) %>
+    <tr>
+      <td>
+        <form class="form-slimline">
+          <input type="text" class="input-autoselect input-xxlarge" value="<%= download_url(temporary_access_token.noid, token: temporary_access_token.sha) %>">
+        </form>
+      </td>
+      <td><%= link_to temporary_access_token.noid, common_object_path(temporary_access_token.noid) %></td>
+      <td><%= temporary_access_token.issued_by %></td>
+      <td><%= temporary_access_token.created_at.strftime('%Y-%m-%d') %></td>
+      <td><%= temporary_access_token.expiry_date.present? ? temporary_access_token.expiry_date.strftime('%Y-%m-%d') : 'Unused' %></td>
+      <td>
+        <%= link_to 'Renew', edit_temporary_access_token_path(temporary_access_token, limit_to_id: @limit_to_id), class: 'btn btn-default' %>
+        <%= link_to 'Revoke', revoke_token_access_path(sha: temporary_access_token, limit_to_id: @limit_to_id), method: :post, data: { confirm: 'Your token will be immediately expired. Are you sure?' }, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

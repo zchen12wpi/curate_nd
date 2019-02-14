@@ -7,6 +7,12 @@
     <li><%= link_to 'My Works',       catalog_index_path(:'f[generic_type_sim][]' => 'Work', works: 'mine'), class: 'my-works',       role: 'menuitem' %></li>
     <li><%= link_to 'Group Administration',      hydramata_groups_path,                                                 class: 'my-groups',      role: 'menuitem' %></li>
     <li><%= link_to 'My Account',     user_profile_path,                                                     class: 'my-account',     role: 'menuitem' %></li>
+    <li class="divider"></li>
+    <li>
+      <%= link_to 'Temporary Access Grants',
+        temporary_access_tokens_path,
+        role: 'menuitem' %>
+    </li>
     <% if CurateND::AdminConstraint.is_admin?(current_user) %>
     <li class="divider"></li>
     <li><%= link_to 'Repository Administration', admin_path, role: 'menuitem' %></li>
