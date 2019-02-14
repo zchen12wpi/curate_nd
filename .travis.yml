@@ -1,13 +1,11 @@
 language: ruby
 rvm:
-  - "2.2.10"
   - "2.3.8"
   - "2.4.5"
   - "2.5.3"
 
 matrix:
   allow_failures:
-    - rvm: "2.2.10"
     - rvm: "2.4.5"
     - rvm: "2.5.3"
 
