@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/nevans/resque-pool.git
-  revision: bf7a283fa3b3b84237ced38ebac3bfd4e6885166
-  ref: bf7a283fa3b3b84237ced38ebac3bfd4e6885166
-  specs:
-    resque-pool (0.7.0.dev)
-      rake
-      resque (>= 1.22, < 3)
-
-GIT
   remote: https://github.com/harai/kaminari.git
   revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
   branch: route_prefix_prototype
@@ -62,6 +53,15 @@ GIT
       faraday
       nokogiri (~> 1.8)
       rails (>= 3.2.13, < 5.0)
+
+GIT
+  remote: https://github.com/ndlib/resque-pool.git
+  revision: bf7a283fa3b3b84237ced38ebac3bfd4e6885166
+  branch: master
+  specs:
+    resque-pool (0.7.0.dev)
+      rake
+      resque (>= 1.22, < 3)
 
 GIT
   remote: https://github.com/samvera-labs/hydra-remote_identifier.git
