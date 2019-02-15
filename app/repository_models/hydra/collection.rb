@@ -3,7 +3,6 @@ module Hydra
     extend ActiveSupport::Concern
     extend ActiveSupport::Autoload
     include Hydra::ModelMethods # for access to apply_depositor_metadata
-    include Hydra::AccessControls::Permissions
     include Hydra::Collections::Collectible
 
     included do

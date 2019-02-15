@@ -1,5 +1,3 @@
-require 'hydra/collection'
-
 class Collection < ActiveFedora::Base
   include Hydra::Collection
   include CurationConcern::CollectionModel
@@ -7,7 +5,7 @@ class Collection < ActiveFedora::Base
   include Hydra::Derivatives
   include CurationConcern::WithRecordViewers
   include CurationConcern::WithJsonMapper
-  
+
   has_file_datastream :name => "content"
   has_file_datastream :name => "medium"
   has_file_datastream :name => "thumbnail"

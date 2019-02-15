@@ -1,5 +1,4 @@
 require 'morphine'
-require File.expand_path('../../../validators/date_format_validator', __FILE__)
 module CurationConcern
   module Embargoable
     extend ActiveSupport::Concern
@@ -35,9 +34,6 @@ module CurationConcern
       before_save :write_embargo_release_date, prepend: true
 
       register :embargoable_persistence_container do
-        unless self.class.included_modules.include?('Hydra::AccessControls::Permissions')
-          self.class.send(:include, Hydra::AccessControls::Permissions)
-        end
         self.datastreams["rightsMetadata"]
       end
     end

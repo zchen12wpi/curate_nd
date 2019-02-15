@@ -15,7 +15,7 @@ module Bendo
           end
         else
           respond_to do |format|
-            format.html { render unauthorized_path, status: :unauthorized }
+            format.html { render unauthorized_template, status: :unauthorized }
             format.json { json_unauthorized_response }
           end
         end
@@ -109,8 +109,8 @@ module Bendo
       )
     end
 
-    def unauthorized_path
-      'app/views/curation_concern/base/unauthorized'
+    def unauthorized_template
+      'curation_concern/base/unauthorized'
     end
 
     def json_delegate_response

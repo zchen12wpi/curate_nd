@@ -55,16 +55,13 @@ namespace :curatend do
     end
 
     desc "Execute Continuous Integration build (docs, tests with coverage)"
-    task :ci do
-      ENV['RAILS_ENV'] = 'ci'
-      Rails.env = 'ci'
+    task :ci => ["environment", "curatend:ci_spec", 'curatend:lint_erb']
+
+    desc "Prepare environment for CI"
+    task :ci_prep => :environment do
       Rake::Task["db:drop"].invoke rescue true
       Rake::Task["db:create"].invoke
-      Rake::Task['environment'].invoke
       Rake::Task['db:schema:load'].invoke
-
-      Rake::Task['curatend:ci_spec'].invoke
-      Rake::Task['curatend:lint_erb'].invoke
     end
 
     RSpec::Core::RakeTask.new(:ci_spec) do |t|

@@ -8,9 +8,9 @@ module CurationConcern
     end
 
     include CurationConcern::Model
+    include Hydra::AccessControls::Permissions
 
     included do
-      include Hydra::AccessControls::Permissions
       include CurationConcern::IsMemberOfLibraryCollection
     end
 

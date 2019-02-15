@@ -14,14 +14,14 @@ class CommonObjectsController < ApplicationController
   helper_method :curation_concern
   helper CommonObjectsHelper
 
-  def unauthorized_path
-    'app/views/curation_concern/base/unauthorized'
+  def unauthorized_template
+    'curation_concern/base/unauthorized'
   end
 
   before_filter :enforce_show_permissions, only: [:show]
   rescue_from Hydra::AccessDenied do |exception|
     respond_with curation_concern do |format|
-      format.html { render unauthorized_path, status: 401 }
+      format.html { render unauthorized_template, status: 401 }
       format.jsonld { render json: { error: 'Unauthorized' }, status: 401 }
     end
   end
