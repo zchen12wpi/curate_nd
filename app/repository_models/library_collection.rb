@@ -37,7 +37,7 @@ class LibraryCollection < ActiveFedora::Base
   # accepts_nested_attributes_for :record_viewer_groups, allow_destroy: true, reject_if: :all_blank
 
   has_attributes :depositor, :representative, datastream: :properties, multiple: false
-  has_attributes :title, :date_uploaded, :date_modified, :description,
+  has_attributes :title, :date_uploaded, :date_modified, :description, :permission,
                  datastream: :descMetadata, multiple: false
   has_attributes :creator, :contributor, :based_near, :part_of, :publisher,
                  :date_created, :subject, :resource_type, :rights,

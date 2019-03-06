@@ -50,6 +50,7 @@ class GenericFileRdfDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
     map.related_url(:to => "seeAlso", :in => RDF::RDFS)
+    map.permission({in: RDF::QualifiedDC, to: 'rights#permissions'})
   end
   begin
     LocalAuthority.register_vocabulary(self, "subject", "lc_subjects")

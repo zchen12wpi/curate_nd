@@ -69,6 +69,9 @@ class Patent < ActiveFedora::Base
   attribute :rights, datastream: :descMetadata, multiple: false,
             default: "All rights reserved",
             validates: { presence: { message: 'You must select a license for your work.' } }
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
   attribute :rights_holder, datastream: :descMetadata, multiple: true,
             label: "Assignee"
   attribute :files,

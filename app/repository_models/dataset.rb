@@ -49,7 +49,9 @@ class Dataset < ActiveFedora::Base
   attribute :creator,                 datastream: :descMetadata, multiple: true
   attribute :identifier,              datastream: :descMetadata, multiple: false
   attribute :doi,                     datastream: :descMetadata, multiple: false
-  attribute :permission,              datastream: :descMetadata, multiple: false
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
   attribute :publisher,               datastream: :descMetadata, multiple: true
   attribute :contributor_institution, datastream: :descMetadata, multiple: true
   attribute :source,                  datastream: :descMetadata, multiple: true

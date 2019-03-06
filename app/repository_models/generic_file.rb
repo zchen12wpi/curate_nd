@@ -38,6 +38,9 @@ class GenericFile < ActiveFedora::Base
   attribute :title,
     datastream: :descMetadata, multiple: false,
     label: "Title of your File"
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
 
   attr_accessor :file, :version
 
