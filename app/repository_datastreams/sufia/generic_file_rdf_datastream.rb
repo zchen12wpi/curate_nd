@@ -55,6 +55,7 @@ module Sufia
       map.alephIdentifier(:in =>RDF::ND)  do |index|
         index.as :stored_searchable
       end
+      map.permission({in: RDF::QualifiedDC, to: 'rights#permissions'})
     end
     begin
       LocalAuthority.register_vocabulary(self, "subject", "lc_subjects")

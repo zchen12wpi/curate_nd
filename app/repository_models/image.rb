@@ -126,6 +126,10 @@ class Image < ActiveFedora::Base
       default: "All rights reserved",
       multiple: false
 
+    ds.attribute :permission,
+      label: "Use Permission",
+      multiple: false
+
     ds.attribute :identifier,
       multiple: false,
       editable: false

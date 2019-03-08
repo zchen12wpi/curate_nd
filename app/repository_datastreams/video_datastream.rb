@@ -136,5 +136,6 @@ class VideoDatastream < ActiveFedora::NtriplesRDFDatastream
     map.rights(:in => RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
+    map.permission({in: RDF::QualifiedDC, to: 'rights#permissions'})
   end
 end

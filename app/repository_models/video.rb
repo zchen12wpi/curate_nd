@@ -118,6 +118,9 @@ class Video < ActiveFedora::Base
       datastream: :descMetadata, multiple: false,
       default: "All rights reserved",
       validates: { presence: { message: 'You must select a license for your work.' } }
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
   attribute :files,
     multiple: true, form: {as: :file}, label: "Upload Files",
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."

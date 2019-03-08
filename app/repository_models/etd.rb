@@ -111,6 +111,9 @@ class Etd < ActiveFedora::Base
       default: "All rights reserved",
       multiple: false,
       validates: { presence: { message: "You must select a license for your #{etd_label}." } }
+    ds.attribute :permission,
+      label: "Use Permission",
+      multiple: false
     ds.attribute :note,
       label: "Note",
       multiple: false,

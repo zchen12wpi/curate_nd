@@ -89,7 +89,9 @@ class Document < ActiveFedora::Base
   attribute :recommended_citation,       datastream: :descMetadata, multiple: true
   attribute :doi,                        datastream: :descMetadata, multiple: false
   attribute :identifier,                 datastream: :descMetadata, multiple: false
-  attribute :permission,                 datastream: :descMetadata, multiple: false
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
   attribute :rights,
     datastream: :descMetadata, multiple: false,
     default: "All rights reserved",

@@ -146,6 +146,10 @@ class OsfArchive < ActiveFedora::Base
     default: "All rights reserved",
     validates: { presence: { message: 'You must select a license for your work.' } }
 
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
+
   attribute :doi,
     datastream: :descMetadata, multiple: false
 

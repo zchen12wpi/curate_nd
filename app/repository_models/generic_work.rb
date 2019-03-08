@@ -63,6 +63,9 @@ class GenericWork < ActiveFedora::Base
       allow_blank: true,
       aleph_identifier: true
     }
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
 
   attribute :files, multiple: true, form: {as: :file},
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."

@@ -94,6 +94,9 @@ class CatholicDocument < ActiveFedora::Base
     datastream: :descMetadata, multiple: false,
     label: 'Rights Holder',
     hint: 'A statement about entities who own the rights to the material along with any additional information about contact or use.'
+  attribute :permission,
+    label: "Use Permission",
+    datastream: :descMetadata, multiple: false
   attribute :copyright_date,
     datastream: :descMetadata, multiple: false,
     validates: {
