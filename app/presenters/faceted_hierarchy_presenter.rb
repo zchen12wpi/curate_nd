@@ -1,5 +1,3 @@
-require 'locabulary'
-
 # Responsible for rendering a FacetedHierarchy. The HTML fragments created are
 # identical to the fragments in blacklight-hierarchy.
 #
@@ -7,10 +5,10 @@ require 'locabulary'
 class FacetedHierarchyPresenter
   def initialize(options = {})
     @facet_field_name = options.fetch(:facet_field_name)
-    @roots = Locabulary.build_ordered_hierarchical_tree(
-      faceted_items: options.fetch(:items),
-      faceted_item_hierarchy_delimiter: options.fetch(:item_delimiter),
-      predicate_name: options.fetch(:predicate_name)
+    @roots = ControlledVocabularyService.build_ordered_hierarchical_tree(
+      name: options.fetch(:predicate_name),
+      items: options.fetch(:items),
+      delimiter: options.fetch(:item_delimiter)
     )
   end
 

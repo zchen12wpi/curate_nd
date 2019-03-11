@@ -1,4 +1,4 @@
-# Responsible for exposing means of looking up a list of copyrights
+# Responsible for exposing means of looking up a list of copyrights from Locabulary
 module Copyright
   PREDICATE_NAME = 'copyright'.freeze
   # @api public
@@ -7,7 +7,7 @@ module Copyright
   #
   # @return [Array<#term_label, #term_uri, #description>]
   def self.active
-    ::Locabulary.active_items_for(predicate_name: PREDICATE_NAME, as_of: Time.zone.now)
+    ControlledVocabularyService.active_entries_for_predicate_name(name: PREDICATE_NAME)
   end
 
   # Returns a key/value pair of active items available for select
@@ -24,10 +24,10 @@ module Copyright
   end
 
   def self.label_from_uri(uri)
-    ::Locabulary.active_label_for_uri(predicate_name: PREDICATE_NAME, term_uri: uri)
+    ControlledVocabularyService.label_from_uri(name: PREDICATE_NAME, uri: uri)
   end
 
   def self.persisted_value_for!(value)
-    ::Locabulary.item_for(predicate_name: PREDICATE_NAME, term_label: value).term_uri
+    ControlledVocabularyService.item_for_predicate_name(name: PREDICATE_NAME, term_key: 'term_label', term_value: value, ignore_not_found: false).term_uri
   end
 end

@@ -39,19 +39,15 @@ class Etd < ActiveFedora::Base
   end
 
   def self.valid_degree_levels
-    EtdVocabulary.values_for("degree_level")
+    ControlledVocabularyService.labels_for_predicate_name(name: "degree_level")
   end
 
   def self.valid_degree_names
-    EtdVocabulary.values_for("degree_name").map{|disc| [disc, degree_acronym_mapper[disc]]}.sort
+    ControlledVocabularyService.labels_for_predicate_name(name: "degree")
   end
 
   def self.valid_degree_disciplines
-    EtdVocabulary.values_for("degree_discipline").sort
-  end
-
-  def self.degree_acronym_mapper
-    DEGREE.fetch('degrees').invert
+    ControlledVocabularyService.labels_for_predicate_name(name: "program_name")
   end
 
   with_options datastream: :descMetadata do |ds|
@@ -205,10 +201,9 @@ class Etd < ActiveFedora::Base
   end
 
   def department_acronyms
-    degree_disciplines.collect{|disc| department_acronym_mapper[disc] }.compact
-  end
-
-  def department_acronym_mapper
-    DEPARTMENT.fetch('departments').invert
+    # degree_disciplines.collect{|disc| department_acronym_mapper[disc] }.compact
+    degree_disciplines.collect do |disc|
+      ControlledVocabularyService.labels_for_predicate_name(name: 'program_name')
+    end.compact
   end
 end

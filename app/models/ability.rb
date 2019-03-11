@@ -16,13 +16,11 @@ class Ability
         cannot :create, work_type.constantize
       end
 
-      # Access to ETD-specific functions is limited to names in etd_manager_permission.yml
+      # Access to temporary access token management is limited to names in etd_manager_permission.yml
       if EtdManagers.include?(current_user)
-        can [:manage], EtdVocabulary
         can [:manage], TemporaryAccessToken
       else
         cannot [:manage], TemporaryAccessToken
-        cannot [:manage], EtdVocabulary
       end
     end
   end

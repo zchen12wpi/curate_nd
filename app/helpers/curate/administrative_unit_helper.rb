@@ -11,7 +11,7 @@ module Curate::AdministrativeUnitHelper
 
     options = ''
 
-    roots = Locabulary.active_hierarchical_roots(predicate_name: 'administrative_units')
+    roots = ControlledVocabularyService.active_hierarchical_roots(name: 'administrative_units')
 
     roots.each do |root|
       root.children.each do |administrative_unit|
