@@ -4,7 +4,7 @@
 
 rails_root = ENV["RAILS_ROOT"]
 working_directory rails_root
-worker_processes 2
+worker_processes 3
 listen "/tmp/curatend.sock.0", backlog: 1024
 timeout 30
 
