@@ -1,6 +1,3 @@
-require 'rdf'
-require 'rdf/rdfxml'
-
 class LocalAuthority < ActiveRecord::Base
   deprecated_attr_accessible :name
 
@@ -8,9 +5,9 @@ class LocalAuthority < ActiveRecord::Base
     # TODO we should add an index on this join table and remove the uniq query
     has_and_belongs_to_many :domain_terms, -> { uniq }
   else
-    has_and_belongs_to_many :domain_terms, :uniq=> true 
+    has_and_belongs_to_many :domain_terms, :uniq=> true
   end
-  
+
   has_many :local_authority_entries
 
   def self.harvest_rdf(name, sources, opts = {})
@@ -72,17 +69,17 @@ class LocalAuthority < ActiveRecord::Base
     return if query.empty?
     lowQuery = query.downcase
     hits = []
-    # move lc_subject into it's own table since being part of the usual structure caused it to be too slow.  
-    # When/if we move to having multiple dictionaries for subject we will need to also do a check for the appropriate dictionary. 
-    if (term == 'subject' && model == 'generic_files') # and local_authoritiy = lc_subject 
+    # move lc_subject into it's own table since being part of the usual structure caused it to be too slow.
+    # When/if we move to having multiple dictionaries for subject we will need to also do a check for the appropriate dictionary.
+    if (term == 'subject' && model == 'generic_files') # and local_authoritiy = lc_subject
         sql = SubjectLocalAuthorityEntry.where("lowerLabel like ?", "#{lowQuery}%").select("label, uri").limit(25).to_sql
         SubjectLocalAuthorityEntry.find_by_sql(sql).each do |hit|
           hits << {:uri => hit.uri, :label => hit.label}
         end
-    else 
+    else
       dterm = DomainTerm.where(:model => model, :term => term).first
       if dterm
-        authorities = dterm.local_authorities.collect(&:id).uniq      
+        authorities = dterm.local_authorities.collect(&:id).uniq
         sql = LocalAuthorityEntry.where("local_authority_id in (?)", authorities).where("lower(label) like ?", "#{lowQuery}%").select("label, uri").limit(25).to_sql
         LocalAuthorityEntry.find_by_sql(sql).each do |hit|
           hits << {:uri => hit.uri, :label => hit.label}
