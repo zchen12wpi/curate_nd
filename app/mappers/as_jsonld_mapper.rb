@@ -1,7 +1,5 @@
 require 'json'
 require 'rexml/document'
-require 'rdf/ntriples'
-require 'rdf/rdfxml'
 
 # This class is responsible for generating a JSON-LD Hash from an ActiveFedora::Base object
 #
