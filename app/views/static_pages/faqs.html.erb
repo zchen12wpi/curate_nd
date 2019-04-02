@@ -15,7 +15,7 @@
   </h1>
 
   <h2>
-    CurateND is a preservation repository managed by the Hesburgh Libraries of Notre Dame.
+    CurateND is the institutional repository for the University of Notre Dame
   </h2>
 </header>
 
@@ -53,7 +53,7 @@
       <li><%= link_to 'Succession Planning Policy', named_policy_path('succession-plan') %></li>
     </ul>
 
-    <h2 id="common-questions">Common Questions</h3>
+    <h2 id="common-questions">Common Questions</h2>
     <% contact_curatend_support = link_to 'contact CurateND support', new_help_request_path, class: 'help-report-problem request-help' %>
     <dl>
       <dt>What is CurateND?</dt>
@@ -64,38 +64,59 @@
         One of the largest collections is the <a href="/catalog?f_inclusive[human_readable_type_sim][]=Doctoral+Dissertation&f_inclusive[human_readable_type_sim][]=Master's+Thesis">Electronic Dissertations and Theses</a> since 2005.
       </dd>
 
+      <dt>How can CurateND help me?</dt>
+      <dd>
+      CurateND helps researchers by providing a place to deposit data, articles, and notes.
+      This lets you make your scholarship available to others without needing to put it on your own website.
+      The links will not break and the content will be available and preserved even after you leave the University.
+      CurateND can provide a DOI, allowing you to cite these items in published scholarship.
+      For example, you can deposit your dataset and then cite it using the DOI that CurateND creates.
+      </dd>
+
       <dt>Who may use CurateND?</dt>
       <dd>
         Anyone in the world may access the public content in CurateND.
-        People who have an valid NetID may log in to deposit items and to view files marked as "Notre Dame Only".
+        People with a valid NetID may log in to deposit items and to view files marked as &ldquo;Notre Dame Only&rdquo;.
       </dd>
 
       <dt>Do I need a special account to log in to CurateND?</dt>
       <dd>
-      No. Since CurateND is tied in to the central campus login, anyone with a valid university NetID may log in using the same NetID and password
+      CurateND uses the central university login service, so you can log in using the same NetID and password
       used for other campus services, such as email.
       </dd>
 
-      <dt>Can anyone outside of ND deposit works?</dt>
-      <dd>No. Only people with a valid NetID can can deposit items.
-      If you don't have a valid NetID and the items you would like to deposit either were done with a project affiliated with Notre Dame,
-      or were done while you yourself were at Notre Dame, please <%= contact_curatend_support %> about the possibility of deposit.
+      <dt>Can people unaffiliated with Notre Dame deposit works?</dt>
+      <dd>Only people with a valid NetID can can deposit items.
+      If you do not have a valid NetID and the items you would like to deposit were done either with a project affiliated with Notre Dame,
+      or while you yourself were at Notre Dame, please <%= contact_curatend_support %> about the possibility of deposit.
       </dd>
 
       <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
       <dd>
-        Anyone in the world can always view and download public content in CurateND.
-        People who leave or graduate from Notre Dame can only upload content and view private items until their university NetID is deactivated,
+        People who leave or graduate from Notre Dame can only upload files or view private items until their university NetID is deactivated,
         which usually happens a few months after leaving.
-        If you need continual access for some reason, you would need to find someone on campus to sponsor you to keep your NetID active.
+        After that, they can still search and view the public content in CurateND.
       </dd>
 
-      <dt>How long is long term?</dt>
+      <dt>Is CurateND indexed by search engines?</dt>
       <dd>
-        Long term means in perpetuity.
-        CurateND intends to keep publicly available items for as long as possible, and if something should happen to the University of Notre Dame
-        we will transfer content to other repositories for safe keeping.
-        Because of this, when depositing items into CurateND, one should try to provide enough context so that the content will make sense to those viewing them in 10 or 50 years.
+        CurateND is indexed by all major search engines.
+      </dd>
+
+      <dt>Will items I deposit appear in the <a href="https://library.nd.edu/">Library Catalog</a>?</dt>
+      <dd>
+      Some items, such as dissertations, are added to the library catalog.
+      Other items, such as publications, are in the catalog because publishers have already provided records for them.
+      In that case, if a copy of the article is available publicly in CurateND, then it will be
+      linked to from the library catalog page for the article.
+      Otherwise, items in CurateND are not automatically added to the library catalog at the moment.
+      </dd>
+
+      <dt>What is a DOI?</dt>
+      <dd>
+      A DOI is an <a href="https://www.doi.org/">international standard (ISO 26324)</a> for identifying electronic documents, such as journal articles or datasets.
+      It is widely used for academic citations since they are designed to persist over the long term.
+      CurateND can either record the DOI of items that already have one (i.e. published articles), or it can assign one upon request.
       </dd>
 
       <dt>What are persistent URLs?</dt>
@@ -106,11 +127,9 @@
         11 character identifier, are considered PURLs, and will be preserved even as the rest of the website evolves.
       </dd>
 
-      <dt>What is a DOI?</dt>
+      <dt>Do I relinquish my rights to my work by depositing it?</dt>
       <dd>
-        This is an acronym for <em>digital object identifier</em>, and it is a long-term identifier for a work.
-        A DOI can be turned into a persistent URL by prefixing it with <tt>https://doi.org/</tt>.
-        Any item in CurateND that has the <b>publisher</b> field filled out can be assigned a DOI.
+        No. You keep all your rights.
       </dd>
 
       <dt>What is a Creative Commons license?</dt>
@@ -128,42 +147,33 @@
           <%= render :partial => "curation_concern/base/license_modal" %>
         </p>
 
-      <dt>How does one find something that was self-submitted?</dt>
+      <dt>How do I deposit a dissertation?</dt>
       <dd>
-        Try searching for your work from inside CurateND itself.
-        You will need to log in if your work is not visible to the public.
+      Submit electronic dissertations for fulfilling Graduate School requirements using <a href="https://deposit.library.nd.edu/areas/etd">this submission portal</a>.
       </dd>
 
       <dt>How do I deposit a large number of collections or files?</dt>
       <dd>
         If you have a large number of files&mdash;more than a dozen or so&mdash;please <%= contact_curatend_support %>, and we can work with you directly.
-        We have tools that can upload and organize large groups of files easily.
+        We have tools to organize and upload large groups of files.
       </dd>
 
-      <dt>Is there a priority list or order for what can be archived?</dt>
+      <dt>How do I find items I have previously deposited?</dt>
       <dd>
-        The short answer to this question is, &ldquo;No&rdquo;.
-        The long answer is, &ldquo;If you are an individual and you have individual things to contribute, then by all means, please do.
-        If you have many things to contribute, then let&rsquo;s work together to get started.&rdquo;
+        Try searching for your work from inside CurateND itself.
+        If any items are not public you will need to log in to see them in the search results.
       </dd>
 
       <dt>What does preservation mean? Can anyone edit the documents I deposit?</dt>
       <dd>
-        Preservation means we are concerned about keeping your files intact both today and tomorrow.
-        To do this we keep copies of your files, and we make sure they do not change over time.
+        Preservation means we are concerned about keeping your files intact in perpetuity.
+        To do this we keep many copies of your files, and we verify that they do not change over time.
         If a copy should have an error or disappear, we will replace it using another copy.
         We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to migrate your files into more modern formats.
-        Files and content is never deleted&mdash;new versions are stored alongside the old ones.
         And we never edit your submitted files.
       </dd>
 
-      <dt>What is the process for digitizing collections from departments?</dt>
-      <dd>
-        The process will vary from department to department.
-        If you have content that needs digitizing before being added to CurateND, please <%= contact_curatend_support %>.
-      </dd>
-
-      <dt>Is there a concern that there will be a lot of junk data submitted? Is there a content review?</dt>
+      <dt>Is there a content review? Is there a concern that there will be a lot of junk data submitted?</dt>
       <dd>
         Yes, there is a review process.
         Content that is deposited into CurateND is examined for various characteristics such as completeness and academic integrity.
@@ -171,23 +181,13 @@
 
       <dt>How can I keep a work private, but still allow collaborators unaffiliated with the university to view it?</dt>
       <dd>
-        For now external collaborators can only view public content in the repository.
-      </dd>
-
-      <dt>Is there a work type for unpublished materials?</dt>
-      <dd>
-        No, items in the repository are centered around specific formats such as articles, books, data sets, collections, etc.
-        Pick the format that most closely matches your unpublished materials when depositing them.
+        External collaborators can only view public content in the repository.
+        If you are actively working with collaborators from different institutions, take a look at the <a href="https://osf.io/">Open Science Framework</a>.
       </dd>
 
       <dt>Can one search by academic department?</dt>
       <dd>
         <a href="/departments">Yes</a>.
-      </dd>
-
-      <dt>Is CurateND indexed by search engines?</dt>
-      <dd>
-        Yes.
       </dd>
 
       <dt>What is the difference between an article and a document?</dt>
@@ -196,10 +196,15 @@
         Other types of documents may include a poster, an image, a spreadsheet, etc.
       </dd>
 
+      <dt>Is there a work type for unpublished materials?</dt>
+      <dd>
+        No, items in the repository are centered around specific formats such as articles, books, data sets, collections, etc.
+        Pick the format that most closely matches your unpublished materials when depositing them.
+      </dd>
+
       <dt>Is research done at the university property of the university or researcher?</dt>
       <dd>
-        This is a complicated question depending on the exact nature of your work and the kinds of items in your
-        research output (e.g. articles, software, data sets).
+        It depends on the exact nature of your work and the kinds of items in your research output (e.g. articles, software, data sets).
 
         See <a href="http://policy.nd.edu/assets/203012/intellectualpropertypolicy.pdf">University Policy on Intellectual Property</a> for guidance.
         Section 2.2 may be the most useful:
