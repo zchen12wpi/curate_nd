@@ -74,7 +74,8 @@ Blacklight.onLoad(function() {
   $('form.new_document, form.edit_document').formInputMask({
     trigger: '#document_type',
     fields: {
-      'Book': 'book-attribute'
+      'Book': 'book-attribute',
+      'Program': 'program-attribute'
     }
   });
   $('.link-users').linkUsers();

@@ -142,6 +142,10 @@ class DocumentDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable
     end
 
+    map.event_speaker(to: 'contributor#speaker', in: RDF::QualifiedDC) do |index|
+      index.as :stored_searchable
+    end
+
     map.creator(to: 'creator', in: RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
