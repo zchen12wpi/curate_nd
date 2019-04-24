@@ -32,6 +32,7 @@ class Document < ActiveFedora::Base
     'Pamphlet',
     'Presentation',
     'Press Release',
+    'Program',
     'Report',
     'Software',
     'White Paper'
@@ -140,6 +141,12 @@ class Document < ActiveFedora::Base
             }
   attribute :edition,                    datastream: :descMetadata, multiple: false
   attribute :lc_subject,                 datastream: :descMetadata, multiple: true
+
+  # @program attributes
+  attribute :event_speaker,
+    datastream: :descMetadata, multiple: true,
+    label: "Speaker",
+    hint: "This property defines the speaker(s) at an event."
 
   # other attributes
 

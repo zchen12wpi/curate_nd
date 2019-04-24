@@ -6,12 +6,13 @@ module RDF
     property 'contributor#advisor'.to_sym
     property 'contributor#artist'.to_sym
     property 'contributor#author'.to_sym
+    property 'contributor#curator'.to_sym
     property 'contributor#editor'.to_sym
     property 'contributor#illustrator'.to_sym
     property 'contributor#institution'.to_sym
     property 'contributor#photographer'.to_sym
     property 'contributor#repository'.to_sym
-    property 'contributor#curator'.to_sym
+    property 'contributor#speaker'.to_sym
     property 'coverage#spatial'.to_sym
     property 'coverage#temporal'.to_sym
     property 'creator#administrative_unit'.to_sym

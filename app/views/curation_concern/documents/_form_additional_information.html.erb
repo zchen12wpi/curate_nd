@@ -7,6 +7,7 @@
               input_html: { class: 'input-xlarge' }
   %>
   <%= f.input :alternate_title,            label: 'Alternate Title', as: :multi_value, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :event_speaker,                    as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'program-attribute' } %>
   <%= f.input :author,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
   <%= f.input :coauthor,                   as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
   <%= f.input :editor,                     as: :multi_value, input_html: { class: 'input-xlarge' }, wrapper_html: { :'data-input-mask' => 'book-attribute' } %>
