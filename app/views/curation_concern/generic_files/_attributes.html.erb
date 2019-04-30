@@ -23,6 +23,7 @@
       <th>Filename</th>
       <td><%= curation_concern.filename %></td>
     </tr>
+    <tr><%= curation_concern_attribute_to_html(curation_concern, :description, 'File Description') %></tr>
     <% if show_bendo_id %>
       <%
         content = curation_concern.datastreams.fetch('content')
