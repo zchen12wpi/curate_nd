@@ -35,11 +35,11 @@ module CurationConcern
       file = Array.wrap(attributes.delete(:file)).first
       title = attributes[:title]
       title ||= file.original_filename if file
-      curation_concern.label = title
+      curation_concern.content.dsLabel = attributes[:filename] unless attributes[:filename].nil?
       if file
         CurationConcern::Utility.attach_file(curation_concern, user, file)
       else
-        true
+        curation_concern.save!
       end
     end
 
