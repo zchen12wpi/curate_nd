@@ -136,6 +136,7 @@ group :debug do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'byebug', '~> 9.0.6' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem "passenger"
   gem 'quiet_assets'
   gem 'rails_best_practices'
   gem 'sextant'
