@@ -115,6 +115,12 @@ CurateNd::Application.routes.draw do
     match 'reindex/:id' => 'reindex#reindex_pid', via: :get, as: 'reindex_pid'
   end
 
+  namespace :api do
+    constraints CurateND::ExternalAPIConstraint do
+      resource :items, only: [:show]
+    end
+  end
+
   # clean up tokens
   resources :temporary_access_tokens, path: 'access_tokens', except: [:show]
   post 'temporary_access_tokens/remove_expired_tokens', as: 'remove_expired_tokens', controller: 'temporary_access_tokens', action: 'remove_expired_tokens'
