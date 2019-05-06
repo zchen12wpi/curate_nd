@@ -1,3 +1,4 @@
+# Starts dependent services only. To additionally start rails, add -f docker-compose-rails.yml
 version: '3'
 services:
   mysql:
@@ -16,33 +17,7 @@ services:
         timeout: 10s
         retries: 5
   jetty:
+    # This probably needs to be separated into an override file when using preseeded data
     image: ndlib/curate-jetty-devseed
     ports:
       - "8983:8983"
-  rails:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.rails
-    command: bash docker/rails_entry.sh
-    environment:
-      BUNDLE_PATH: "/bundle"
-      FEDORA_HOST: jetty
-      FEDORA_PORT: 8983
-      MYSQL_HOST: mysql
-      SOLR_HOST: jetty
-      SOLR_PORT: 8983
-      # Need to pass the user running docker into the container so that
-      # config/admin_usernames.yml pulls in the user as an admin. This is
-      # to replicate existing behavior on OSX and may not work correctly on
-      # another OS
-      USER: #{USER}
-    ports:
-      - "3000:3000"
-    volumes:
-      - curate_nd_rails_sync:/project_root:nocopy
-    depends_on:
-      - mysql
-      - jetty
-volumes:
-  curate_nd_rails_sync:
-    external: true

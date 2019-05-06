@@ -1,0 +1,10 @@
+# Additionally adds a volume that can be used with docker-sync to develop the
+# application inside of docker
+version: '3'
+services:
+  rails:
+    volumes:
+      - curate_nd_rails_sync:/project_root:nocopy
+volumes:
+  curate_nd_rails_sync:
+    external: true
