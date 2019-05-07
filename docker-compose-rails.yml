@@ -1,0 +1,25 @@
+# Additionally adds a rails service that can be used with dependent services. 
+version: '3'
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.rails
+    command: bash docker/rails_entry.sh
+    environment:
+      BUNDLE_PATH: "/bundle"
+      FEDORA_HOST: jetty
+      FEDORA_PORT: 8983
+      MYSQL_HOST: mysql
+      SOLR_HOST: jetty
+      SOLR_PORT: 8983
+      # Need to pass the user running docker into the container so that
+      # config/admin_usernames.yml pulls in the user as an admin. This is
+      # to replicate existing behavior on OSX and may not work correctly on
+      # another OS
+      USER: #{USER}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - jetty
