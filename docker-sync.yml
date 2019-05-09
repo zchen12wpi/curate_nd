@@ -1,6 +1,9 @@
 version: "2"
 
 options:
+  compose-dev-file-path:
+    - 'docker-compose-rails-sync.yml'
+    - 'docker-compose-rails.yml'
   verbose: true
 syncs:
   curate_nd_rails_sync:

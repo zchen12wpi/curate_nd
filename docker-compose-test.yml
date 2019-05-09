@@ -1,3 +1,5 @@
+# Starts dependent services only, with a test database.
+# This file is currently used by Travis to start dependent services
 version: '3'
 services:
   mysql:
