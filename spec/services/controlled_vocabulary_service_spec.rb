@@ -101,12 +101,26 @@ RSpec.describe ControlledVocabularyService do
 
   describe '.active_hierarchical_roots' do
     let(:name) { 'administrative_units' }
-    let(:subject) { described_class.active_hierarchical_roots(name: name) }
+    let(:as_of) { Time.zone.now }
+    let(:subject) { described_class.active_hierarchical_roots(name: name, as_of: as_of) }
 
     it 'calls Locabulary' do
-      expect(Locabulary).to receive(:active_hierarchical_roots).with(predicate_name: name).and_call_original
+      expect(Locabulary).to receive(:active_hierarchical_roots).with(predicate_name: name, as_of: as_of).and_call_original
       expect(subject).to be_a(Array)
       expect(subject.first).to be_a(Locabulary::Items::Base)
+    end
+  end
+
+  describe '.hierarchical_menu_options' do
+    let(:name) { 'administrative_units' }
+    let(:as_of) { Time.zone.now }
+    let(:roots) { described_class.active_hierarchical_roots(name: name, as_of: as_of) }
+    let(:subject) { described_class.hierarchical_menu_options(roots: roots) }
+
+    it 'calls Locabulary' do
+      expect(Locabulary).to receive(:hierarchical_menu_options).with(roots: roots).and_call_original
+      expect(subject).to be_a(Array)
+      expect(subject.first).to be_a(Hash)
     end
   end
 
