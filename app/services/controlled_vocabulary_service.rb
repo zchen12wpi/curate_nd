@@ -52,9 +52,16 @@ class ControlledVocabularyService
   end
 
   # @param name [String] - the predicate name to search
-  # @return [Array] - Array of Locabulary items
-  def self.active_hierarchical_roots(name:)
-    Locabulary.active_hierarchical_roots(predicate_name: name)
+  # @param as_of [Time] - active as of date or :all
+  # @return [Array<Locabulary::Items] - Array of Locabulary items
+  def self.active_hierarchical_roots(name:, as_of: Time.zone.now)
+    Locabulary.active_hierarchical_roots(predicate_name: name, as_of: as_of)
+  end
+
+  # @param roots [Array<Locabulary::Items] - returned from active_hierarchical_roots
+  # @return [Array<Hash] - Formatted hashes for admin unit selection menu
+  def self.hierarchical_menu_options(roots:)
+    Locabulary.hierarchical_menu_options(roots: roots)
   end
 
   # @param name [String] - the predicate name to search
