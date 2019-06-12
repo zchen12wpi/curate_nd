@@ -15,7 +15,12 @@
   </span>
   <div class="controls">
     <% options = "" %>
-    <% options << administrative_unit_option_listing(curation_concern) %>
+    <% if action_name == "edit"
+        as_of = :all
+      else
+        as_of = Time.zone.now
+    end %>
+    <% options << administrative_unit_option_listing(curation_concern, as_of: as_of) %>
     <%=select_tag "#{f.object_name}[administrative_unit][]", options, {prompt: 'Please select one or more; type to search', class: 'input-xxlarge department-select', :size =>10, multiple:true, required: required }  %>
   </div>
 </div>
