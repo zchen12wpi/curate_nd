@@ -9,10 +9,6 @@ end
 # This should be everything except :deploy; And by default, we mean any of
 # the environments that are not used to execute the deploy scripts
 group :default do
-gem 'rack-mini-profiler'
-gem 'flamegraph'
-gem 'stackprof'
-gem 'memory_profiler'
   gem 'meta_request'
   gem 'active_attr'
   gem 'active_fedora-registered_attributes', '~> 0.2.0'
@@ -93,6 +89,10 @@ gem 'memory_profiler'
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
   gem 'xpath', '~> 2.0' # 3.x requires # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'rack-mini-profiler'
+  gem 'flamegraph'
+  gem 'stackprof'
+  gem 'memory_profiler'
 end
 
 group :headless do
