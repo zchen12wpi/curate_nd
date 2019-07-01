@@ -158,7 +158,7 @@ describe Admin::AnnouncementsController do
   end
 
   describe "DELETE dismiss" do
-    let(:user) { double }
+    let(:user) { double('User', username: 'Donald Brower') }
     let(:referrer) { '/' }
     let(:announcement_id) { '1234' }
     it 'creates a dismissal for the current user' do
