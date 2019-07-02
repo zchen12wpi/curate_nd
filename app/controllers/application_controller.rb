@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   before_filter :filter_notify
+  # enable profiling for admin users
+  before_action :enable_profiling
 
   def filter_notify
     # remove error inserted since we are not showing a page before going to web access, this error message always shows up a page too late.
@@ -59,6 +61,13 @@ class ApplicationController < ActionController::Base
     unless user.person && user.person.profile.present?
       account = Account.to_adapter.get!(user.id)
       update_status = account.update_with_password({ "name" => user.username })
+    end
+  end
+
+  # Enables Preformance Profiling for Admin Users
+  def enable_profiling
+    if current_user && CurateND::AdminConstraint.is_admin?(current_user.username)
+      Rack::MiniProfiler.authorize_request
     end
   end
 end
