@@ -99,7 +99,7 @@ module BlacklightFacetExtras
         content = []
         if localized_params[:f]
           localized_params[:f].each_pair do |facet,values|
-            content << render_filter_element(facet, values, localized_params)
+            content << render_filter_element(facet, Array.wrap(values), localized_params)
           end
         end
         if localized_params[:f_inclusive]
