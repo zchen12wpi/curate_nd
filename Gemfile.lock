@@ -406,7 +406,6 @@ GEM
     namae (0.11.3)
     nest (1.1.2)
       redis
-    net-ldap (0.16.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -757,7 +756,6 @@ DEPENDENCIES
   mysql2 (~> 0.3.18)
   namae
   nest (~> 1.1.1)
-  net-ldap
   net-ssh (~> 4.1.0)
   noid (~> 0.6.6)
   noids_client!

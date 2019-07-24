@@ -60,10 +60,4 @@ class User < ActiveRecord::Base
     id
   end
 
-  protected
-
-  def ldap_service
-    @ldap ||= LdapService.new(self)
-  end
-
 end

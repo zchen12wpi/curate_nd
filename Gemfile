@@ -63,7 +63,6 @@ group :default do
   gem 'mysql2', '~> 0.3.18'
   gem 'namae'
   gem 'nest', '~> 1.1.1'
-  gem 'net-ldap'
   gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
   gem 'nokogiri', '~> 1.8.5'
