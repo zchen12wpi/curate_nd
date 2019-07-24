@@ -74,25 +74,18 @@ module CurateHelper
   end
 
   def thumbnail_display_for_document(curation_concern, title_link, _options = {})
+    markup = ''
+    markup << %(<a href=\"#{title_link}\">)
     begin
       file = ActiveFedora::Base.load_instance_from_solr(curation_concern.representative)
-      markup = ''
-      markup << %(<a href=\"#{title_link}\">)
-      if(can_view_thumnail?(file, curation_concern) )
-        markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
-      else
-        markup << %(<div class="thumbnail-wrapper">)
-        markup << %(<span class="canonical-image"></span>)
-        markup << %(</div>)
-      end
-        markup << %(</a>)
-        markup.html_safe
+      markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
     rescue ActiveFedora::ObjectNotFoundError => e
       exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, curation_concern)
-      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}, message:#{exception.inspect}")
       Raven.capture_exception(exception, extra: { curation_concern: curation_concern.pid } )
-      image_tag 'curate/default.png', class: "canonical-image"
+      markup << image_tag('curate/default.png', class: "canonical-image")
     end
+    markup << %(</a>)
+    markup.html_safe
   end
 
   def rescue_from_representative_missing(curation_concern, attributes_html, exception)
