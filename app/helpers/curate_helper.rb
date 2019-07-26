@@ -24,19 +24,6 @@ module CurateHelper
     group.nil? ? value : group.title
   end
 
-  # Loads the person object and returns their name
-  # In this case, the value is in the format: info:fedora/<PID>
-  # So used split
-  def creator_name_from_pid(value)
-    begin
-      p = Person.load_instance_from_solr(value.split('/').last)
-    rescue => e
-      # DLTP-793 This message was filling the production logs- use it only in debug (production log_level is info)
-      logger.debug("DEBUG: Helper method create_name_from_pid raised an error when loading #{value}.  Error was #{e}")
-    end
-    p.nil? ? value : p.name
-  end
-
   def construct_page_title(*elements)
     (elements.flatten.compact + [application_name]).join(' // ')
   end
