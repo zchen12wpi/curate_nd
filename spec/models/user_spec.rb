@@ -75,7 +75,6 @@ describe User do
   let(:another_user){
     @another_user = User.new
     @another_user.username = "test_user"
-    @another_user.stub_chain(:ldap_service, :display_name).and_return(nil)
     @another_user
   }
 
