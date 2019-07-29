@@ -84,11 +84,7 @@ RSpec.configure do |config|
   config.before(:each) do
     ActiveFedora::TestCleaner.start
     DatabaseCleaner.start
-    User.any_instance.stub(:ldap_service).and_return(nil)
-    User.any_instance.stub_chain(:ldap_service, :display_name).and_return(nil)
-    User.any_instance.stub_chain(:ldap_service, :preferred_email).and_return(nil)
     allow_message_expectations_on_nil
-
   end
 
   config.after(:each) do

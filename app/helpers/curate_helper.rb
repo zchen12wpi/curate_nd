@@ -24,19 +24,6 @@ module CurateHelper
     group.nil? ? value : group.title
   end
 
-  # Loads the person object and returns their name
-  # In this case, the value is in the format: info:fedora/<PID>
-  # So used split
-  def creator_name_from_pid(value)
-    begin
-      p = Person.load_instance_from_solr(value.split('/').last)
-    rescue => e
-      # DLTP-793 This message was filling the production logs- use it only in debug (production log_level is info)
-      logger.debug("DEBUG: Helper method create_name_from_pid raised an error when loading #{value}.  Error was #{e}")
-    end
-    p.nil? ? value : p.name
-  end
-
   def construct_page_title(*elements)
     (elements.flatten.compact + [application_name]).join(' // ')
   end
@@ -74,25 +61,18 @@ module CurateHelper
   end
 
   def thumbnail_display_for_document(curation_concern, title_link, _options = {})
+    markup = ''
+    markup << %(<a href=\"#{title_link}\">)
     begin
       file = ActiveFedora::Base.load_instance_from_solr(curation_concern.representative)
-      markup = ''
-      markup << %(<a href=\"#{title_link}\">)
-      if(can_view_thumnail?(file, curation_concern) )
-        markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
-      else
-        markup << %(<div class="thumbnail-wrapper">)
-        markup << %(<span class="canonical-image"></span>)
-        markup << %(</div>)
-      end
-        markup << %(</a>)
-        markup.html_safe
+      markup << %( <img class="canonical-image" src=\"#{download_path(curation_concern.representative,  'thumbnail')}\" alt="Thumbnail">)
     rescue ActiveFedora::ObjectNotFoundError => e
       exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, curation_concern)
-      logger.debug("thumbnail_display_for_document Could not find representative for pid #{curation_concern.pid.inspect}, message:#{exception.inspect}")
       Raven.capture_exception(exception, extra: { curation_concern: curation_concern.pid } )
-      image_tag 'curate/default.png', class: "canonical-image"
+      markup << image_tag('curate/default.png', class: "canonical-image")
     end
+    markup << %(</a>)
+    markup.html_safe
   end
 
   def rescue_from_representative_missing(curation_concern, attributes_html, exception)

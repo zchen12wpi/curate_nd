@@ -20,19 +20,6 @@ RSpec.describe CurateHelper do
     end
   end
 
-  context '#creator_name_from_pid' do
-    let(:value) { 'abc' }
-    let(:collection) { double(name: 'Name') }
-    it 'should load the value and return the name' do
-      Person.should_receive(:load_instance_from_solr).with(value).and_return(collection)
-      expect(helper.creator_name_from_pid(value)).to eq(collection.name)
-    end
-    it 'should attempt to load the value, fail, and return the value' do
-      Person.should_receive(:load_instance_from_solr).with(value).and_return(nil)
-      expect(helper.creator_name_from_pid(value)).to eq(value)
-    end
-  end
-
   it 'has #default_page_title' do
     expect(helper.default_page_title).to(
       eq("#{controller_name.titleize} // #{I18n.t('sufia.product_name')}")
