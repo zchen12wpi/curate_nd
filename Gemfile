@@ -58,7 +58,7 @@ group :default do
   gem 'logstash-event'
   gem 'logstash-logger'
   gem 'mailboxer', '~> 0.11.0'
-  gem 'mini_magick', '~> 3.8'
+  gem 'mini_magick', ">= 4.9.4"
   gem 'morphine'
   gem 'mysql2', '~> 0.3.18'
   gem 'namae'
