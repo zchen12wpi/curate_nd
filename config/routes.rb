@@ -116,10 +116,8 @@ CurateNd::Application.routes.draw do
     match 'reindex/:id' => 'reindex#reindex_pid', via: :get, as: 'reindex_pid'
   end
 
-  namespace :api do
-    get 'items/download/:id', as: 'item_download', controller: 'items', action: 'download'
-    resources :items, only: [:show, :index]
-    resources :access_tokens, only: [:new, :index, :create, :destroy]
+  namespace :adnd do
+    get 'namelist/:id', as: 'activedirectory_namelist', controller: 'activedirectory', action: 'namelist'
   end
 
   # clean up tokens
