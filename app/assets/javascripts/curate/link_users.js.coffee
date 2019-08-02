@@ -113,7 +113,7 @@
             $.each data.people, (idx, val) ->
               name = val['full_name']
               label = val['uid'] + " (" + name + ")"
-              matches.push {label: label, value: val['id'], name: name}
+              matches.push {label: label, value: val['uid'], name: name}
             if(matches.length == 0)
               matches.push { label: "No matches found.", value: 'not_found' }
             response( matches )
