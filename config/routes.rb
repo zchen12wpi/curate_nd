@@ -117,7 +117,7 @@ CurateNd::Application.routes.draw do
   end
 
   namespace :adnd do
-    get 'namelist/:id', as: 'activedirectory_namelist', controller: 'activedirectory', action: 'namelist'
+    get 'namelist', as: 'activedirectory_namelist', controller: 'activedirectory', action: 'namelist'
   end
 
   # clean up tokens
