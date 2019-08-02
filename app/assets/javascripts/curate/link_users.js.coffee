@@ -110,7 +110,7 @@
           api = "/adnd/namelist/?callback=?"
           $.getJSON (api), { q: request.term }, ( data, status, xhr) ->
             matches = []
-            $.each data.people, (idx, val) ->
+            $.each people, (idx, val) ->
               name = val['full_name']
               label = val['uid'] + " (" + name + ")"
               matches.push {label: label, value: val['uid'], name: name}
