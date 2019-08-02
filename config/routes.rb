@@ -129,6 +129,10 @@ CurateNd::Application.routes.draw do
     end
   end
 
+  namespace :adnd do
+    get 'namelist', as: 'activedirectory_namelist', controller: 'activedirectory', action: 'namelist'
+  end
+
   delete 'dismiss_announcement/:id', to: 'admin/announcements#dismiss', as: 'dismiss_announcement'
 
   devise_scope :user do
