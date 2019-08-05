@@ -2,6 +2,7 @@ class ApiAccessToken < ActiveRecord::Base
   self.primary_key = 'sha'
   belongs_to :user
   validates_presence_of :issued_by
+  validates_presence_of :user_id
   validates_uniqueness_of :sha
   before_create :assign_new_sha
   paginates_per 10

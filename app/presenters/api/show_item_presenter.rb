@@ -73,7 +73,8 @@ class Api::ShowItemPresenter
         parsed_data = self.send(method_key, ds)
         data = merge_hashes(data, parsed_data)
       else
-        Rails.logger.error("#{item_id}: unknown datastream #{dsname}")
+        datastream_error = Rails.logger.error("#{item_id}: unknown datastream #{dsname}")
+        Raven.capture_exception(datastream_error)
       end
     end
     data

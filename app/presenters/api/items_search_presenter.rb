@@ -88,11 +88,11 @@ class Api::ItemsSearchPresenter
       # always include any fields which were part of query.
       results_hash = results_hash.merge(load_query_fields)
       # return any additional requested fields
-      if !fields.nil?
+      if fields.present?
         fields.each do |field|
           begin
+             next unless respond_to?("include_#{field}")
             results_hash[field.camelize(:lower)] = self.send("include_#{field}")
-          rescue NoMethodError
           end
         end
       end
