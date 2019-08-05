@@ -18,7 +18,7 @@ module Api
     # POST /api/access_tokens
     def create
       @api_access_token = ApiAccessToken.new(api_access_token_params_with_user)
-      if !@api_access_token.user_id.nil? && @api_access_token.save
+      if @api_access_token.save
         redirect_to api_access_tokens_path, notice: 'Api access token was successfully created.'
       else
         flash[:notice] = 'Api access token was not created.'
@@ -55,7 +55,7 @@ module Api
 
       def new_api_access_token_params
         if params.has_key? :api_access_token
-          params.require(:api_access_token).permit(:user_id, :issued_by)
+          api_access_token_params
         else
           {}
         end
