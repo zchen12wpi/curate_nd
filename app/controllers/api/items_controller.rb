@@ -4,7 +4,7 @@ class Api::ItemsController < CatalogController
   prepend_before_filter :normalize_identifier, only: [:show, :download]
   before_filter :validate_permissions!, only: [:show, :download]
   before_filter :item, only: [:show]
-  before_filter :set_current_user!, only: [:index]
+  before_filter :set_current_user!, only: [:index, :initiate_trx]
 
   self.solr_search_params_logic = [
     :default_solr_parameters,
@@ -28,10 +28,6 @@ class Api::ItemsController < CatalogController
     render json: Api::ShowItemPresenter.new(item, request.url).to_json
   end
 
-  # GET /api/items/new
-  def new
-  end
-
   # GET /api/items/download/1
   def download
     download_noid = Sufia::Noid.noidify(params[:id])
@@ -39,20 +35,17 @@ class Api::ItemsController < CatalogController
     head :ok
   end
 
-  # GET /api/items/1/edit
-  def edit
-  end
-
-  # POST /api/items
-  def create
-  end
-
-  # PATCH/PUT /api/items/1
-  def update
-  end
-
-  # DELETE /api/items/1
-  def destroy
+  # GET /api/upload/new
+  def initiate_trx
+    if @current_user
+      trx_id = ApiTransaction.new_trx_id
+      start_transaction = ApiTransaction.new(trx_id: trx_id, user_id: @current_user.id, trx_status: ApiTransaction.set_status(:new))
+    end
+    if @current_user && start_transaction.save
+      render json: { trx_id: trx_id }, status: :ok
+    else
+      render json: { error: 'Transaction not initiated' }, status: :expectation_failed
+    end
   end
 
   private
