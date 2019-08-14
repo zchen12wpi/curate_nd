@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20190617162652) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "work_id"
   end
 
   add_index "api_access_tokens", ["sha"], name: "index_api_access_tokens_on_sha", unique: true, using: :btree
