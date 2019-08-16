@@ -35,6 +35,10 @@ OSF_SCHEME: 'https'
 
 SENTRY_DSN: 'fakey-mcfake-face'
 
+S3_BUCKET: 'bucket-name'
+AWS_ACCESS_KEY_ID: 'abcde'
+AWS_SECRET_ACCESS_KEY: 'abcde'
+
 development:
   # Commented out because these create the requirement to start the noids server
   # in order to run in localhost.
