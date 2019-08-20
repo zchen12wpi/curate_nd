@@ -9,10 +9,17 @@ class Api::UploadsController < Api::BaseController
   def trx_initiate
     if @current_user
       trx_id = ApiTransaction.new_trx_id
-      start_transaction = ApiTransaction.new(trx_id: trx_id, user_id: @current_user.id, trx_status: ApiTransaction.set_status(:new))
+      #get a work pid for this transaction
+      work_id = Sufia::Noid.noidify(Sufia::IdService.mint)
+      start_transaction = ApiTransaction.new(trx_id: trx_id, work_id: work_id, user_id: @current_user.id, trx_status: ApiTransaction.set_status(:new))
     end
     if @current_user && start_transaction.save
-      render json: { trx_id: trx_id }, status: :ok
+      # s3 bucket connection
+      s3 = Aws::S3::Resource.new(region:'us-east-1')
+      content = s3.bucket(ENV['S3_BUCKET']).object("#{trx_id}/metadata-#{work_pid}.json")
+      metadata.put(body: initial_work_metadata( work_pid), request.body())
+      #copy body of message to bucket
+      render json: { trx_id: trx_id, work_pid: work_pid }, status: :ok
     else
       render json: { error: 'Transaction not initiated' }, status: :expectation_failed
     end
@@ -50,6 +57,18 @@ class Api::UploadsController < Api::BaseController
 
   private
 
+    # create work metadata
+    def initial_work_metadata(work_pid, request_body)
+      if request_body.nil? or bad_json?(request_body) 
+        metadata_hash = {}
+      else
+        metadata_hash = request_body
+      end
+      metadata_hash[:pid] = "und:#{work_pid}"
+      JSON.dump(metadata_hash)
+    end
+
+    # create file metadata
     def initial_file_metadata(file_name, file_pid)
       metadata_hash = {}
       metadata_hash[:pid] = "und:#{file_pid}"
@@ -59,4 +78,11 @@ class Api::UploadsController < Api::BaseController
       metadata_hash[:metadata]['dc:title'] = "#{file_name}"
       JSON.dump(metadata_hash)
     end
+
+    def bad_json?(json)
+      JSON.parse(json)
+	return false
+      rescue JSON::ParserError => e
+        return true
+     end
 end
