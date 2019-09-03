@@ -33,8 +33,8 @@ group :default do
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
   gem 'devise-guests', '~> 0.3'
-  gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
-  gem 'devise', '~>3.2.2'
+  gem 'devise-multi_auth', "0.3.2"
+  gem 'devise', '~>4.1.0'
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
@@ -69,7 +69,7 @@ group :default do
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
   gem 'rails-observers', '0.1.2' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; Requires Ruby 2.2.2 for 0.1.5 or greater
-  gem 'rails', '~> 4.1.15'
+  gem 'rails', '4.2.0'
   gem 'rake', '~> 11.0'
   gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'redcarpet'
@@ -114,7 +114,8 @@ end
 # Explicitly require it here.
 gem 'addressable', '~> 2.3.5'
 gem 'coffee-rails', '~> 4.0'
-gem 'compass-rails'
+gem 'compass-rails', "~> 3.1.0"
+gem 'compass'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
@@ -138,7 +139,6 @@ group :debug do
   gem 'method_source'
   gem 'method_locator'
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'byebug', '~> 9.0.6' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'quiet_assets'
   gem 'rails_best_practices'
@@ -154,6 +154,7 @@ group :deploy do
 end
 
 group :development do
+  gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'rubocop', '~> 0.48.1', require: false # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
