@@ -1,12 +1,10 @@
-<% work_type = curation_concern.human_readable_type %>
-
-<% if work_type == 'Finding Aid' %>
+<% if curation_concern.is_a?(FindingAid) %>
 <h1>Content Moved</h1>
-  <p>This item has been moved to <a href="https://archivesspace.library.nd.edu">archivesspace.library.nd.edu.</p>
+  <p>This item has been moved to <a href="https://archivesspace.library.nd.edu">archivesspace.library.nd.edu.</a></p>
 
 <% else %>
 <h1>Unauthorized</h1>
-  <p>Access to this <%= work_type.downcase %> is restricted.</p>
+  <p>Access to this <%= curation_concern.human_readable_type.downcase %> is restricted.</p>
   <p>ID: <%= curation_concern.noid %></p>
   <p><%= render partial: 'permission_badge', locals: { curation_concern: curation_concern, show_date: true } %></p>
   <% unless current_user -%>
