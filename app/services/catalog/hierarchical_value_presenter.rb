@@ -4,7 +4,7 @@ require 'cgi'
 
 module Catalog
   module HierarchicalValuePresenter
-    def self.call(value: value, opener:'<p>', closer:'</p>', link: false)
+    def self.call(value:, opener:'<p>', closer:'</p>', link: false)
       values = Array.wrap(value)
       if link
         decorator = :decorate_with_links
@@ -18,7 +18,7 @@ module Catalog
     end
 
     def self.decorate_with_links(
-      value: value,
+      value:,
       value_delimiter: '::',
       opener: '<span class="hierarchy">',
       closer: '</span>',
@@ -39,7 +39,7 @@ module Catalog
     end
 
     def self.decorate(
-      value: value,
+      value:,
       delimiter: '::',
       opener: '<span class="hierarchy">',
       closer: '</span>'
