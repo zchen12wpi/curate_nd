@@ -422,8 +422,8 @@ GEM
       backports
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    nokogumbo (1.5.0)
-      nokogiri
+    nokogumbo (2.0.1)
+      nokogiri (~> 1.8, >= 1.8.4)
     nom-xml (1.1.0)
       activesupport (>= 3.2.18)
       i18n
@@ -598,10 +598,10 @@ GEM
       rest-client
     rubyzip (1.2.3)
     safe_yaml (1.0.5)
-    sanitize (4.6.6)
+    sanitize (5.0.0)
       crass (~> 1.0.2)
-      nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4)
+      nokogiri (>= 1.8.0)
+      nokogumbo (~> 2.0)
     sass (3.4.1)
     sass-rails (5.0.7)
       railties (>= 4.0.0, < 6)
@@ -801,7 +801,7 @@ DEPENDENCIES
   rubocop (~> 0.48.1)
   ruby-beautify
   rubydora (~> 1.7.4)
-  sanitize (~> 4.6.3)
+  sanitize
   sass (= 3.4.1)
   sass-rails
   scss-lint
