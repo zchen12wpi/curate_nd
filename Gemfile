@@ -71,7 +71,7 @@ group :default do
   gem 'rails-observers'
   gem 'rails', '4.2.0'
   gem 'rake', '~> 11.0'
-  gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'rdf'
   gem 'redcarpet'
   gem 'redis', '~> 3.3.3' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'resque-pool', github: 'ndlib/resque-pool', branch: 'master'
@@ -87,7 +87,7 @@ group :default do
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
-  gem 'xpath', '~> 2.0' # 3.x requires # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'xpath'
   gem 'rack-mini-profiler'
   gem 'flamegraph'
   gem 'stackprof'
