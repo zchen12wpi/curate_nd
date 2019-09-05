@@ -32,7 +32,7 @@ group :default do
   gem 'deprecation', '~>0.2.2'
   gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
-  gem 'devise-guests', '~> 0.3'
+  gem 'devise-guests', '~> 0.7'
   gem 'devise-multi_auth', "0.3.2"
   gem 'devise', '~>4.7'
   gem 'ezid-client', '~> 1.8'
