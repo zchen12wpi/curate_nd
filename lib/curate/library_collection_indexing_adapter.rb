@@ -157,7 +157,7 @@ module Curate
     end
     private_class_method :find_solr_document_by
 
-    def self.get_page_from_solr(qry: qry, params: request_params)
+    def self.get_page_from_solr(qry:, params: request_params)
       ActiveFedora::SolrService.query(qry, raw: true, **params)
     end
     private_class_method :get_page_from_solr
