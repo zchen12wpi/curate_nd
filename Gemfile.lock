@@ -248,10 +248,10 @@ GEM
       activesupport
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.3.0)
+    devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
+      railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
     devise-guests (0.7.0)
@@ -725,7 +725,7 @@ DEPENDENCIES
   database_cleaner
   decent_exposure
   deprecation (~> 0.2.2)
-  devise (~> 4.3.0)
+  devise (~> 4.4.0)
   devise-guests (~> 0.3)
   devise-multi_auth (= 0.3.2)
   devise_cas_authenticatable
