@@ -77,7 +77,7 @@ group :default do
   gem 'resque-pool', github: 'ndlib/resque-pool', branch: 'master'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'
-  gem 'sanitize', '~> 4.6.3'
+  gem 'sanitize'
   gem 'sass', '3.4.1' # Maybe necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; at 3.4.25, I encountered "undefined method `log_level' for #<ActiveSupport::Logger:0x0000000a736388>"
   gem 'select2-rails'
   gem 'sentry-raven', '~> 2.7'
