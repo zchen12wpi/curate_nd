@@ -68,7 +68,7 @@ group :default do
   gem 'nokogiri', '~> 1.8'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
-  gem 'rails-observers', '0.1.2' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; Requires Ruby 2.2.2 for 0.1.5 or greater
+  gem 'rails-observers'
   gem 'rails', '4.2.0'
   gem 'rake', '~> 11.0'
   gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
