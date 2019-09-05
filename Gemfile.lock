@@ -366,7 +366,6 @@ GEM
       rdf (~> 1.1)
     jwt (2.2.1)
     kgio (2.11.2)
-    libv8 (3.16.14.19)
     lograge (0.11.2)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -528,7 +527,6 @@ GEM
     redis (3.3.5)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
-    ref (2.0.0)
     request_store (1.4.1)
       rack (>= 1.4)
     require_all (2.0.0)
@@ -649,9 +647,6 @@ GEM
     stomp (1.4.8)
     test_after_commit (1.2.2)
       activerecord (>= 3.2, < 5.0)
-    therubyracer (0.12.1)
-      libv8 (~> 3.16.14.0)
-      ref
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -754,7 +749,6 @@ DEPENDENCIES
   jshintrb
   json-ld
   kaminari!
-  libv8 (~> 3.16.14.3)
   locabulary!
   lograge
   logstash-event
@@ -812,7 +806,6 @@ DEPENDENCIES
   simplecov
   stackprof
   test_after_commit
-  therubyracer (= 0.12.1)
   thin
   uglifier (>= 1.0.3)
   unicode

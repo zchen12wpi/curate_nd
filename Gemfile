@@ -50,9 +50,6 @@ group :default do
   gem 'jshintrb'
   gem 'json-ld'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
-  # Need rubyracer to run integration tests.....really?!?
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'libv8', '~> 3.16.14.3'
   gem 'locabulary', github: 'ndlib/locabulary', ref: 'b8ab510dce637d37229d001fedfbc6af1ab510f2'
   gem 'lograge'
   gem 'logstash-event'
@@ -83,7 +80,6 @@ group :default do
   gem 'sentry-raven', '~> 2.7'
   gem 'share_notify', github: 'samvera-labs/share_notify'
   gem 'simple_form', '~> 3.0.1'
-  gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
