@@ -69,7 +69,7 @@ group :default do
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
   gem 'rails-observers'
-  gem 'rails', '4.2.1'
+  gem 'rails', '4.2.2'
   gem 'rake', '~> 11.0'
   gem 'rdf'
   gem 'redcarpet'
