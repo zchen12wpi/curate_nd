@@ -27,10 +27,10 @@ DOI_RESOLVER: "https://handle.test.datacite.org"
 DOI_PORT: "443"
 DOI_USE_SSL: "true"
 
-
 LDAP_HOST: "directory.nd.edu"
 LDAP_PORT: '636'
 LDAP_ENCRYPTION: "simple_tls"
+
 OSF_HOST_NAME: 'osf.io'
 OSF_SCHEME: 'https'
 
@@ -52,6 +52,22 @@ development:
   ORCID_HOST_URL: "https://sandbox.orcid.org"
   ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"
   ORCID_SEARCH_URL: "https://sandbox.orcid.org/orcid-search/quick-search"
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey
   bendo_api_key: ''
 
   # SENTRY_DSN: 'put something here if you want it for testing'
+
+test:
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey

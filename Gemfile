@@ -30,7 +30,6 @@ group :default do
   gem 'custom_configuration'
   gem 'decent_exposure'
   gem 'deprecation', '~>0.2.2'
-  gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
   gem 'devise-guests', '~> 0.7'
   gem 'devise-multi_auth', "0.3.2"
@@ -63,6 +62,7 @@ group :default do
   gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
   gem 'nokogiri', '~> 1.8'
+  gem 'omniauth-oktaoauth'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
   gem 'rails-observers'
@@ -99,7 +99,7 @@ group :orcid do
   gem 'omniauth-orcid', '0.6'
   gem 'mappy'
   gem 'email_validator'
-  gem 'omniauth-oauth2', '< 1.4'
+  gem 'omniauth-oauth2'
   gem 'hashie', '3.4.6'
 end
 

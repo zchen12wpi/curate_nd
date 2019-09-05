@@ -141,9 +141,11 @@ CurateNd::Application.routes.draw do
   devise_scope :user do
     get 'dashboard', to: 'catalog#index', as: :user_root
     get 'admin/accounts/stop_masquerading', to: 'admin/masquerades#back', as: 'stop_masquerading'
+    get 'sign_in', to: redirect("/users/auth/oktaoauth", status: 301), as: :new_user_session
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+  devise_for :users, controllers: { omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
 
   get '/show/citation/:id', to: 'citation#show', as: 'citation'
 
