@@ -617,7 +617,7 @@ GEM
     sexp_processor (4.12.1)
     sextant (0.2.4)
       rails (>= 3.2)
-    simple_form (3.2.1)
+    simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     simplecov (0.17.0)
@@ -802,7 +802,7 @@ DEPENDENCIES
   sentry-raven (~> 2.7)
   sextant
   share_notify!
-  simple_form (~> 3.2.0)
+  simple_form (~> 3.3.0)
   simplecov
   stackprof
   test_after_commit

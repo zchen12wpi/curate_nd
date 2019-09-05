@@ -79,7 +79,7 @@ group :default do
   gem 'select2-rails'
   gem 'sentry-raven', '~> 2.7'
   gem 'share_notify', github: 'samvera-labs/share_notify'
-  gem 'simple_form', '~> 3.2.0'
+  gem 'simple_form', '~> 3.3.0'
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
