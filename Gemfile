@@ -34,7 +34,7 @@ group :default do
   gem 'devise_masquerade'
   gem 'devise-guests', '~> 0.3'
   gem 'devise-multi_auth', "0.3.2"
-  gem 'devise', '~>4.1.0'
+  gem 'devise', '~>4.2.0'
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
