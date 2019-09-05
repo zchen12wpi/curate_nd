@@ -13,7 +13,7 @@ module Catalog
       'filter-library_collections_pathnames_hierarchy_with_titles_sim' => HierarchicalTermLabel::TitleExtractor
     )
 
-    def self.call(value: value, options: options)
+    def self.call(value:, options:)
       if options[:classes].any? && options[:classes].last.present?
         key = options[:classes].last
         CONSTRAINT_CLASS_PRESENTER_MAP[key].call(value)

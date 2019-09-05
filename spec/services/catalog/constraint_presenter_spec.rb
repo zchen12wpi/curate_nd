@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe Catalog::ConstraintPresenter::ProxyDecorator do
   describe '.call' do
     it 'strips script tags' do
-      expect(described_class.call("<script>alert(150)</script>")).to eq('')
+      expect(described_class.call("<script>alert(150)</script>")).not_to include('script')
     end
 
     it 'leaves HTML alone' do
