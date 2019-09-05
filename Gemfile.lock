@@ -617,7 +617,7 @@ GEM
     sexp_processor (4.12.1)
     sextant (0.2.4)
       rails (>= 3.2)
-    simple_form (3.0.4)
+    simple_form (3.1.1)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simplecov (0.17.0)
@@ -726,7 +726,7 @@ DEPENDENCIES
   decent_exposure
   deprecation (~> 0.2.2)
   devise (~> 4.7)
-  devise-guests (~> 0.3)
+  devise-guests (~> 0.7)
   devise-multi_auth (= 0.3.2)
   devise_cas_authenticatable
   devise_masquerade
@@ -802,7 +802,7 @@ DEPENDENCIES
   sentry-raven (~> 2.7)
   sextant
   share_notify!
-  simple_form (~> 3.0.1)
+  simple_form (~> 3.1.0)
   simplecov
   stackprof
   test_after_commit
