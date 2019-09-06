@@ -12,7 +12,7 @@ Blacklight.onLoad(function() {
       var thumbnail_url = response.thumbnail[0].id;
       if(thumbnail_url) {
 
-        var $expand_link = $("<img src='" + thumbnail_url + "' /><p><a href='https://viewer-iiif.library.nd.edu/universalviewer/index.html#?manifest=" + manifest_url+ "'>Expand</a></p>");
+        var $expand_link = $("<img src='" + thumbnail_url + "' /><p><a href='https://viewer-iiif.libraries.nd.edu/universalviewer/index.html#?manifest=" + manifest_url+ "'>Expand</a></p>");
         $work_representation.html($expand_link);
       }
       $this.find(".spinner").hide();
