@@ -24,11 +24,13 @@
 
         <!-- else use basic logic to display representative -->
         <% else %>
-          <div class="row work-representation span12">
-            <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file  } %>
-          </div>
-          <div class="row work-attributes span12">
-            <%= details %>
+          <div class="row">
+            <div class="work-representation span3">
+              <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file  } %>
+            </div>
+            <div class="work-attributes span9">
+              <%= details %>
+            </div>
           </div>
         <% end %>
 
