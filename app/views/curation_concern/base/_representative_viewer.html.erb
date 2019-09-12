@@ -31,7 +31,6 @@
         <div class="work-representation span3">
           <% if gf_read_permission %>
             <% if generic_file.pdf? || generic_file.video? %>
-            <% require 'byebug'; debugger; true %>
               <a href="<%=download_path(work.representative) %>" target = "_blank">
                 <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
               </a>
