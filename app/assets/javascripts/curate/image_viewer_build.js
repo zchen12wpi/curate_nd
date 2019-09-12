@@ -8,7 +8,7 @@ Blacklight.onLoad(function() {
       url: manifest_url,
       type: "GET"
     }).success(function(response) {
-      var $work_representation = $this.find(".work-representation");
+      var $work_representation = $this.find(".iiif-work-representation");
       var thumbnail_url = response.thumbnail[0].id;
       if(thumbnail_url) {
 
@@ -20,7 +20,7 @@ Blacklight.onLoad(function() {
     }).fail(function(response) {
       // Fallback to the CurateND base response
       $this.find(".spinner").hide();
-      $this.find(".work-representation").fadeIn();
+      $this.find(".iiif-work-representation").fadeIn();
     });
   });
 })
