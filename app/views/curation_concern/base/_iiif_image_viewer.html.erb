@@ -3,52 +3,59 @@
   <% begin %>
     <% if work.try(:generic_files) || work.class == GenericFile %>
         <% generic_file = GenericFile.load_instance_from_solr(work.representative) %>
+        <% gf_read_permission = can?(:read, generic_file) %>
         <!-- if representative file is audio, regardless of class, use audio player -->
-        <% if can?(:read, generic_file) && generic_file.audio? %>
-          <div class="row span12">
-            <div class="work-representation">
-              <%= render partial: 'curation_concern/base/audio_player', locals: { work: work, generic_file: generic_file  } %>
-            </div>
+        <% if gf_read_permission && generic_file.audio? %>
+          <div class="row work-representation span12">
+            <%= render partial: 'curation_concern/base/audio_player', locals: { generic_file: generic_file } %>
           </div>
           <div class="row work-attributes span12">
             <%= details %>
           </div>
+
         <!-- else if Image class and representative file is image -->
-        <% elsif can?(:read, generic_file) && generic_file.image? && (work.class == Image || work.class == GenericFile) %>
-          <div class="row span12">
-            <div class="work-representation">
-              <%= render partial: 'curation_concern/base/image_viewer', locals: { work: work, generic_file: generic_file } %>
-            </div>
+        <% elsif gf_read_permission && generic_file.image? && (work.class == Image || work.class == GenericFile) %>
+          <div class="row work-representation span12">
+            <%= render partial: 'curation_concern/base/image_viewer', locals: { generic_file: generic_file } %>
           </div>
           <div class="row work-attributes span12">
             <%= details %>
           </div>
-        <!-- else use basic logic -->
+
+        <!-- else use basic logic to display representative -->
         <% else %>
-          <div class="row span12">
-            <div class="work-representation">
-              <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file  } %>
-            </div>
+          <div class="row work-representation span12">
+            <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file  } %>
           </div>
           <div class="row work-attributes span12">
             <%= details %>
           </div>
         <% end %>
-    <!-- else if no generic file use basic logic -->
+
+    <!-- else no representative -->
     <% else %>
       <div class="row">
-        <div class="span3">
-          <div class="work-representation">
-            <%= render partial: 'curation_concern/base/representative_media', locals: { work: work, generic_file: generic_file } %>
-          </div>
+        <div class="work-representation span3">
+          <%= image_tag('curate/default.png', class: "canonical-image") %>
         </div>
         <div class="work-attributes span9">
           <%= details %>
         </div>
       </div>
     <% end %>
-  <% rescue ActiveFedora::ObjectNotFoundError => e%>
+
+  <!-- error, no representative found for id-->
+  <% rescue ActiveFedora::ObjectNotFoundError => e %>
     <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
-    <%= rescue_from_representative_missing(work, details, exception) %>
+    <% Raven.capture_exception(exception, extra: { curation_concern: work.pid } ) %>
+    <!-- error, no representative -->
+    <div class="row">
+      <div class="work-representation span3">
+        <%= image_tag('curate/default.png', class: "canonical-image") %>
+      </div>
+      <div class="work-attributes span9">
+        <%= details %>
+      </div>
+    </div>
   <% end %>
 </div>
