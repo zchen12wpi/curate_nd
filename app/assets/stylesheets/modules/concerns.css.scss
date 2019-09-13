@@ -12,6 +12,19 @@
 
 .work-representation {
   margin-top: 15px;
+
+  a {
+    display: block;
+  }
+
+  .canonical-image {
+    width: 100%;
+  }
+}
+
+
+.iiif-work-representation {
+  margin-top: 15px;
   display: none;
 
   a {
