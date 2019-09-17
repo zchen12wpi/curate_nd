@@ -9,7 +9,10 @@ module Curate
   describe TextFormatter do
     describe '#call' do
       subject { described_class }
-
+      it 'undesired but known behavior is that "1. Hello" is formatted to an empty string' do
+        text = "1. Hello"
+        expect(subject.call(text: text)).to eq("")
+      end
       it 'allows single newlines in a paragraph' do
         text = <<-eos.strip_heredoc
           If there is a single line break between blocks of text (leaving no
