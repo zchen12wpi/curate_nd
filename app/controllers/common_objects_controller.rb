@@ -54,4 +54,11 @@ class CommonObjectsController < ApplicationController
       format.jsonld { render json: curation_concern.as_jsonld.slice('@contect', '@id', 'nd:afmodel') }
     end
   end
+
+  # This renders a full-size image in the old "leaflet" image viewer in cases where an item doesn't have a iiif manifest.
+  # Note: permission is checked in representative_viewer partial, so to save processing time,permission checking is not duplicated here.
+  def original_viewer
+    @curation_concern = curation_concern
+    render :original_viewer
+  end
 end
