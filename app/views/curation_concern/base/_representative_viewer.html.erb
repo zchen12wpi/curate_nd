@@ -16,12 +16,16 @@
     <!-- else if Image class and representative file is image... use iiif image viewer -->
     <% elsif gf_read_permission && is_image %>
       <div class="image-viewer-integration" data-manifest-url="<%= manifest_url_for(id: work.pid) %>">
-        <div class="spinner"></div>
-        <div class="row iiif-work-representation span12">
-          <%= render partial: 'curation_concern/base/image_viewer', locals: { generic_file: generic_file } %>
-        </div>
-        <div class="row work-attributes span12">
-          <%= details %>
+        <div class="row">
+          <div class="spinner"></div>
+          <div class="iiif-work-representation span3">
+            <a href="/image_viewer/<%= generic_file.noid %>">
+              <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
+              <p>Click to Expand</p></a>
+          </div>
+          <div class="work-attributes span9">
+            <%= details %>
+          </div>
         </div>
       </div>
 

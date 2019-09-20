@@ -70,6 +70,7 @@ CurateNd::Application.routes.draw do
   resources :help_requests, only: [:new, :create]
   resources :classify_concerns, only: [:new, :create]
 
+  get '/image_viewer/:id', controller: 'common_objects', action: 'original_viewer'
   match "show/:id" => "common_objects#show", via: :get, as: "common_object"
   match "show/stub/:id" => "common_objects#show_stub_information", via: :get, as: "common_object_stub_information"
   match 'users/:id/edit' => 'users#edit', via: :get, as: 'edit_user'
