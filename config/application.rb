@@ -103,7 +103,7 @@ module CurateNd
       Devise::RegistrationsController.layout('curate_nd/1_column')
     end
 
-    config.manifest_url_generator = ->(id:) { sprintf("https://presentation-iiif.library.nd.edu/%s/manifest/index.json", id.to_s) }
+    config.manifest_url_generator = ->(id:) { sprintf(Rails.configuration.manifest_builder_url.to_s + "%s/manifest/index.json", id.to_s) }
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
