@@ -15,7 +15,7 @@
 
     <!-- else if Image class and representative file is image... use iiif image viewer -->
     <% elsif gf_read_permission && is_image %>
-      <div class="image-viewer-integration" data-manifest-url="<%= manifest_url_for(id: work.pid) %>">
+      <div class="image-viewer-integration" data-manifest-url="<%= manifest_url_for(id: work.pid) %>" data-manifest-viewer="<%= Rails.configuration.manifest_viewer %>">
         <div class="row">
           <div class="spinner"></div>
           <div class="iiif-work-representation span3">

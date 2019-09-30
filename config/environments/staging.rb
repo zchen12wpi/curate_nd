@@ -40,6 +40,10 @@ CurateNd::Application.configure do
 
   config.application_root_url = "https://localhost"
 
+  # for iiif image viewer
+  config.manifest_viewer = "https://viewer-iiif.libraries.nd.edu/universalviewer/index.html#?manifest="
+  config.manifest_builder_url = "https://presentation-iiif.library.nd.edu/"
+
   config.fits_path = '/opt/fits/current/fits.sh'
 
   begin
