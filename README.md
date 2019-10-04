@@ -76,14 +76,10 @@ bundle exec rake db:seed:dev
 In most cases, you will need SSL, so use this command:
 
 ```console
-bundle exec thin start -p 3000 --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
+bin/rails s
 ```
 
-If you don't need SSL, use the following command:
-
-```console
-bundle exec rails server
-```
+You will need to go to `http://localhost:3000` (yes HTTP, not HTTPS even though SSL is running. Its a new Rails behavior)
 
 ## Release Documentation
 
