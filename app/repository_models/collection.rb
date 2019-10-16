@@ -56,7 +56,7 @@ class Collection < ActiveFedora::Base
   def generate_derivatives
     case mime_type
     when 'image/png', 'image/jpeg', 'image/tiff'
-      transform_datastream :content, { medium: {size: "300x300>", datastream: 'medium'}, thumb: {size: "100x100>", datastream: 'thumbnail'} }
+      transform_datastream :content, { medium: {size: "300x300", datastream: 'medium'} }
     end
   end
 
