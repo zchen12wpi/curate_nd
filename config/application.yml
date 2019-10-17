@@ -15,9 +15,6 @@ CURATE_HELP_NOTIFICATION_DEFAULT_SENDER: curate@nd.edu
 # These are keys for the sandbox
 ORCID_APP_ID: "0000-0002-6683-6607"
 ORCID_APP_SECRET: "e1ff26a2-d889-40be-bd41-acac09214cae"
-cas_base_url: "https://login.nd.edu/cas"
-cas_validate_url: "https://login.nd.edu/cas/serviceValidate"
-
 
 DOI_USERNAME: "ADD THIS TO YOUR ENV"
 DOI_PASSWORD: "ADD THIS TO YOUR ENV"
@@ -37,9 +34,6 @@ OSF_SCHEME: 'https'
 SENTRY_DSN: 'fakey-mcfake-face'
 
 development:
-  cas_base_url: "https://login-test.cc.nd.edu/cas"
-  cas_destination_url: "https://localhost:3000"
-  cas_follow_url: "https://localhost:3000"
   # Commented out because these create the requirement to start the noids server
   # in order to run in localhost.
   # NOIDS_SERVER: "localhost:13001"

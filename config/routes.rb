@@ -101,7 +101,7 @@ CurateNd::Application.routes.draw do
         member { delete :disconnect_orcid_profile}
       end
 
-      resource :repo_manager, only: [:edit, :update], path: :privledges
+      resource :repo_manager, only: [:edit, :update], path: :privileges
       resources :ingest_osf_archives, only: [:new, :create]
       resources :batch_ingest, only: [:index]
       resources :fixity, only: [:index]
@@ -145,7 +145,7 @@ CurateNd::Application.routes.draw do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+  devise_for :users, controllers: { registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
 
   get '/show/citation/:id', to: 'citation#show', as: 'citation'
 

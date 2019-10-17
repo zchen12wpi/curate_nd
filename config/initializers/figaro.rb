@@ -21,7 +21,5 @@ Figaro.require_keys(
   'okta_token_url',
   'OSF_HOST_NAME',
   'OSF_SCHEME',
-  'cas_base_url',
-  'cas_validate_url',
   'SENTRY_DSN'
 )

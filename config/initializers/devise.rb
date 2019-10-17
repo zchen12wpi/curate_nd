@@ -28,9 +28,9 @@ Devise.setup do |config|
   )
 
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
-
   config.case_insensitive_keys = [ :username ]
   config.strip_whitespace_keys = [ :username ]
+  config.authentication_keys = [ :username ]
   config.mailer_sender = 'noreply@nd.edu'
   require 'devise/orm/active_record'
   config.skip_session_storage = [:http_auth]
