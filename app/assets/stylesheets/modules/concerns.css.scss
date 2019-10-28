@@ -22,6 +22,20 @@
   }
 }
 
+
+.iiif-work-representation {
+  margin-top: 15px;
+  display: none;
+
+  a {
+    display: block;
+  }
+
+  .canonical-image {
+    width: 100%;
+  }
+}
+
 .work-attributes {
   .table-heading {
     h2 {

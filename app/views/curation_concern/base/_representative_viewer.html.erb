@@ -1,0 +1,85 @@
+<% begin %>
+  <% if work.try(:generic_files) || work.class == GenericFile %>
+    <% generic_file = GenericFile.load_instance_from_solr(work.representative) %>
+    <% gf_read_permission = can?(:read, generic_file) %>
+    <% is_image = generic_file.image? && (work.class == Image || work.class == GenericFile) %>
+
+    <!-- if representative file is audio, regardless of class, use audio player -->
+    <% if gf_read_permission && generic_file.audio? %>
+      <div class="row work-representation span12">
+        <%= render partial: 'curation_concern/base/audio_player', locals: { generic_file: generic_file } %>
+      </div>
+      <div class="row work-attributes span12">
+        <%= details %>
+      </div>
+
+    <!-- else if Image class and representative file is image... use iiif image viewer -->
+    <% elsif gf_read_permission && is_image %>
+      <div class="image-viewer-integration" data-manifest-url="<%= manifest_url_for(id: work.pid) %>" data-manifest-viewer="<%= Rails.configuration.manifest_viewer %>">
+        <div class="row">
+          <div class="spinner"></div>
+          <div class="iiif-work-representation span3">
+            <a href="/image_viewer/<%= generic_file.noid %>">
+              <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
+              <p>Click to Expand</p></a>
+          </div>
+          <div class="work-attributes span9">
+            <%= details %>
+          </div>
+        </div>
+      </div>
+
+    <!-- else use basic logic to display representative -->
+    <% else %>
+      <div class="row">
+        <div class="work-representation span3">
+          <% if gf_read_permission %>
+            <% if generic_file.pdf? || generic_file.video? %>
+              <a href="<%=download_path(work.representative) %>" target = "_blank">
+                <%= image_tag download_path(generic_file, datastream_id: 'thumbnail'), class: 'representative_image' %>
+              </a>
+            <!-- all other types -->
+            <% else %>
+              <a href="<%= download_path(work.representative) %>" target = "_blank">
+                <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
+              </a>
+            <% end %>
+          <% else %> <!-- else no permission, so representative doesn't include download link -->
+            <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
+          <% end %>
+        </div>
+        <div class="work-attributes span9">
+          <%= details %>
+        </div>
+      </div>
+    <% end %>
+
+  <!-- else if no generic file, use default image -->
+  <!-- Note: library collections go through here -->
+  <% else %>
+    <div class="row">
+      <div class="work-representation span3">
+        <a href="<%= download_path(work.representative) %>" target = "_blank">
+          <%= image_tag download_path(work.representative,'thumbnail'), class: 'representative_image' %>
+        </a>
+      </div>
+      <div class="work-attributes span9">
+        <%= details %>
+      </div>
+    </div>
+  <% end %>
+
+<!-- error, no representative found for id-->
+<% rescue ActiveFedora::ObjectNotFoundError => e %>
+  <% exception = Curate::Exceptions::RepresentativeObjectMissingError.new(e, work)%>
+  <% Raven.capture_exception(exception, extra: { curation_concern: work.pid } ) %>
+  <!-- error, no representative -->
+  <div class="row">
+    <div class="work-representation span3">
+      <%= image_tag('curate/default.png', class: "canonical-image") %>
+    </div>
+    <div class="work-attributes span9">
+      <%= details %>
+    </div>
+  </div>
+<% end %>

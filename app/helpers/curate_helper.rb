@@ -75,22 +75,6 @@ module CurateHelper
     markup.html_safe
   end
 
-  def rescue_from_representative_missing(curation_concern, attributes_html, exception)
-    logger.error("Could not find representative pid for work: #{curation_concern.pid.inspect}")
-    Raven.capture_exception(exception, extra: { curation_concern: curation_concern.pid } )
-    markup = ''
-    markup << %(<div class="row">)
-    markup << %( <div class="work-representation span3">)
-    markup << image_tag('curate/default.png', class: "canonical-image")
-    markup << %(  </div>)
-    markup << %(<div class="work-attributes span9">)
-    markup << attributes_html
-    markup << %(</div>)
-    markup << %(</div>)
-    markup << %(</div>)
-    markup.html_safe
-  end
-
   # Responsible for rendering the tabular list in a consistent manner.
   #
   # Note: There are switches based on the method_name provided
@@ -320,5 +304,10 @@ module CurateHelper
     collection_key << "#{curation_concern.title}|#{curation_concern.pid}"
     return false unless collection_key.present?
     catalog_index_path(f: { ::Catalog::SearchSplashPresenter.collection_key => [collection_key] })
+  end
+
+  # until such a time that the manifest is stored in the item itself, we need to construct it
+  def manifest_url_for(id:)
+    Rails.configuration.manifest_url_generator.call(id: id)
   end
 end

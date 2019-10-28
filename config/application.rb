@@ -77,7 +77,7 @@ module CurateNd
     config.assets.enabled = true
     # Default SASS Configuration, check out https://github.com/rails/sass-rails for details
     config.assets.compress = !Rails.env.development?
-    config.assets.js_compressor = :uglifier
+    config.assets.js_compressor = Uglifier.new(harmony: true)
 
     config.exceptions_app = lambda { |env| ErrorsController.action(:show).call(env) }
     config.action_dispatch.rescue_responses["ActionController::RoutingError"] = :not_found
@@ -102,6 +102,8 @@ module CurateNd
     config.to_prepare do
       Devise::RegistrationsController.layout('curate_nd/1_column')
     end
+
+    config.manifest_url_generator = ->(id:) { sprintf(Rails.configuration.manifest_builder_url.to_s + "%s/manifest/index.json", id.to_s) }
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
