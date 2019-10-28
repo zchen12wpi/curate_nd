@@ -21,11 +21,19 @@ CurateNd::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  # Generate digests for assets URLs
+  config.assets.digest = true
+
   # Do not compress assets
   config.assets.compress = false
 
+  config.assets.compile = true
+
+  # # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  # config.assets.precompile += %w( modernizr.js rich_text_editor.js simplemde.min.css )
+
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = ENV.fetch('ASSET_DEBUG', false)
 
   config.application_root_url = "https://localhost:3000"
 

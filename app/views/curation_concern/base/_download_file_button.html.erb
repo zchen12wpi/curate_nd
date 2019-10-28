@@ -1,0 +1,29 @@
+<div class="actions">
+  <% if bendo_datastream.valid? %>
+    <%= link_to(recall_bendo_item_path(generic_file.noid),
+      {
+        class: "action btn btn-info",
+        data: {
+          alternate: download_path(generic_file.noid),
+          toggle: 'tooltip',
+          placement: 'top'
+        },
+        title: t('curate.notification_messages.file_retrieval_tooltip'),
+        target: '_blank'
+      }
+    ) do %>
+      <i class="icon icon-white icon-time"></i> Begin Download
+    <% end %>
+
+  <% else %>
+    <%= link_to(
+      download_path(generic_file.noid),
+      {
+        class: "action btn",
+        target: '_blank'
+      }
+    ) do %>
+      <i class="icon icon-download"></i> Download File
+    <% end %>
+  <% end %>
+</div>
