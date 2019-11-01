@@ -1,5 +1,6 @@
 require 'aws-sdk-s3'
 require 'json'
+require 'batch_ingestor'
 
 class Api::UploadsController < Api::BaseController
   include Sufia::IdService # for mint method
@@ -83,14 +84,15 @@ class Api::UploadsController < Api::BaseController
 
       # s3 bucket connection
       s3 = Aws::S3::Resource.new(region:'us-east-1')
-      content = s3.bucket(ENV['S3_BUCKET']).object("#{trx_id}/WEBHOOK")
-      #copy body of message to bucket
-      content.put(body: callback_url(trx_id: trx_id))
+      webhook = s3.bucket(ENV['S3_BUCKET']).object("#{trx_id}/WEBHOOK")
+      #copy webhook file to bucket
+      webhook.put(body: callback_url(trx_id: trx_id))
+
+      # Tell Batch Ingestor to upload this transaction
+      BatchIngestor.submit_api_upload( trx_id)
 
       # update trx status
       update_status(trx_id: trx_id, status: :commit)
-
-      # submit for ingest
 
       render json: { trx_id: trx_id }, status: :ok
     else

@@ -34,6 +34,16 @@ class BatchIngestor
     new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
   end
 
+  def self.submit_api_upload( trx_id , options ={})
+    job_id_prefix = 'api-upload'
+    task_function_name = 'start-api-upload'
+    trx_list = {}
+    trx_list['trx_id'] = trx_id
+    content_map = {}
+    content_map['trx_list'] = trx_list
+    new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
+  end
+
   def self.default_job_id_builder(job_id_prefix, as_of = Time.now.utc)
     # Conforming to ISO 8601 standard [https://en.wikipedia.org/wiki/ISO_8601]
     time_format = job_id_prefix + '_%Y%m%dT%H%M%SZ'
