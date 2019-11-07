@@ -2,19 +2,15 @@
 #
 # Copy the preproduction secrets to the correct place for deployment
 #
-# This runs on the worker VM and on the cluster
+# This runs on the worker VM and on the server
 #
 # usage:
-#   ./update_secrets.sh <name of secret repo>
+#   ./update_secrets.sh
 
-secret_repo=$1
+# A prior build step for this environment should have build the confit files for this env,
+# and copied them to /home/app/curatend/shared/config on the target machine
 
-if [ -d $secret_repo ]; then
-    echo "=-=-=-=-=-=-=-= delete $secret_repo"
-    rm -rf $secret_repo
-fi
-echo "=-=-=-=-=-=-=-= git clone $secret_repo"
-git clone "git@git.library.nd.edu:$secret_repo"
+shared_config_dir=/home/app/curatend/shared/secrets
 
 files_to_copy="
     admin_api_keys.yml
@@ -34,13 +30,13 @@ files_to_copy="
 
 for f in $files_to_copy; do
     echo "=-=-=-=-=-=-=-= copy $f"
-    if [ -f $secret_repo/curate_nd/$f ];
+    if [ -f $shared_config_dir/$f ];
     then
-        cp $secret_repo/curate_nd/$f config/$f
+        cp $shared_config_dir/$f config/$f
     else
-        echo "Fatal Error: File $f does not exist in $secret_repo/curate_nd"
+        echo "Fatal Error: File $f does not exist in $shared_config_dir"
         exit 1
     fi
 done
 echo "=-=-=-=-=-=-=-= copy secret_token.rb"
-cp $secret_repo/curate_nd/secret_token.rb config/initializers/secret_token.rb
+cp $shared_config_dir/secret_token.rb config/initializers/secret_token.rb
