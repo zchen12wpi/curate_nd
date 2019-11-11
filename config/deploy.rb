@@ -228,18 +228,9 @@ namespace :maintenance do
 
 end
 
-set(:secret_repo_name) {
-  case rails_env
-  when 'staging' then 'secret_staging'
-  when 'pre_production' then 'secret_pprd'
-  when 'production' then 'secret_prod'
-  end
-}
-
-
 namespace :und do
   task :update_secrets do
-    run "cd #{release_path} && ./script/update_secrets.sh #{secret_repo_name}"
+    run "cd #{release_path} && ./script/update_secrets.sh
   end
 
   desc "Write the current environment values to file on targets"
@@ -251,27 +242,6 @@ RAILS_ROOT=#{current_path}
 
   task :write_build_identifier do
     put "#{branch}", "#{release_path}/BUILD_IDENTIFIER"
-  end
-
-  def run_puppet(option_string)
-    run %Q{sudo puppet apply --modulepath=/home/app/curatend/current/puppet/modules:/global/puppet_standalone/modules:/etc/puppet/modules -e "class { '#{option_string}': }"}
-  end
-
-  desc "Run puppet using the modules supplied by the application"
-  task :puppet, :roles => [:app, :work] do
-    run_puppet('lib_curate::standalone')
-  end
-
-  task :puppet_server, :roles => :app do
-    run_puppet('lib_curate::server')
-  end
-
-  task :puppet_worker, :roles => :work do
-    run_puppet('lib_curate::worker')
-  end
-
-  task :noid_server, :roles => :app do
-    run_puppet('lib_noids')
   end
 
   desc "Have all new requests to be redirected to a 503 page"
@@ -317,8 +287,6 @@ task :staging do
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
   server "#{user}@#{domain}", :app, :work, :web, :db, :primary => true
 
-  # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
-  #before 'bundle:install', 'und:puppet'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -343,8 +311,6 @@ task :pre_production do
   server "app@curatesvrpprd.library.nd.edu", :app, :web, :db, :primary => true
   server "app@curatewkrpprd.library.nd.edu", :work, :primary => true
 
-  # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
-  # before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
   before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
@@ -372,8 +338,6 @@ task :production do
     server "app@curatesvrprod.library.nd.edu", :app, :web, :db, :primary => true
     server "app@curatewkrprod.library.nd.edu", :work, :primary => true
 
-    # disable puppet for now because upgrade to puppet 3.7 breaks the deploy
-    #before 'bundle:install', 'und:puppet_server', 'und:puppet_worker'
     before 'bundle:install', 'solr:configure'
     after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
     after 'deploy', 'deploy:cleanup'
