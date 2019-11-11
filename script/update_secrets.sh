@@ -24,7 +24,6 @@ files_to_copy="
     solr.yml
     work_type_policy_rules.yml
     licensing_permissions.yml
-    newrelic.yml
     etd_manager_usernames.yml
     "
 
