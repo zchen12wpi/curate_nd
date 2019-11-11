@@ -66,7 +66,7 @@ CurateNd::Application.configure do
   config.application_root_url = "https://curate.nd.edu"
 
   # for iiif image viewer
-  config.manifest_viewer = "https://viewer-iiif.libraries.nd.edu/universalviewer/index.html#?manifest="
+  config.manifest_viewer = "https://viewer-iiif.library.nd.edu/universalviewer/index.html#?manifest="
   config.manifest_builder_url = "https://presentation-iiif.library.nd.edu/"
 
   # Log the query plan for queries taking more than this (works
