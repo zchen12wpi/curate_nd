@@ -65,3 +65,12 @@ test:
   okta_redirect_uri: fakey
   okta_site: fakey
   okta_token_url: fakey
+
+ci:
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey
