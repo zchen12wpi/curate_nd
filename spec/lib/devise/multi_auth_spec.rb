@@ -4,13 +4,13 @@ describe Devise::MultiAuth do
 
   context '.oauth_client_for' do
     context 'for registered oauth client' do
-      let(:provider) { 'github' }
+      let(:provider) { 'orcid' }
       subject { described_class.oauth_client_for(provider) }
       its(:client_credentials) { should respond_to :get_token }
     end
 
     context 'for unregistered oauth client' do
-      let(:provider) { 'not_github' }
+      let(:provider) { 'not_orcid' }
       it 'raises an exception' do
         expect {
           described_class.oauth_client_for(provider)

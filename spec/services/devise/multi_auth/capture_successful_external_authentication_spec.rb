@@ -3,7 +3,7 @@ require 'spec_helper'
 module Devise::MultiAuth
   describe CaptureSuccessfulExternalAuthentication do
     context '.call' do
-      let(:user) { FactoryGirl.build_stubbed(:devise_multi_auth_user) }
+      let(:user) { FactoryGirl.create(:user) }
       let(:orcid_profile_id) { '0100-0012' }
       let(:auth) {
         {

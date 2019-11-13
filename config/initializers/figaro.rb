@@ -7,7 +7,6 @@ Figaro.require_keys(
   'DOI_SHOULDER',
   'DOI_USERNAME',
   'DOI_PASSWORD',
-  'DOI_USE_SSL',
   'DOI_RESOLVER',
   'LDAP_HOST',
   'LDAP_PORT',

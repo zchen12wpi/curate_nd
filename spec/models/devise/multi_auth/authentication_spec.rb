@@ -73,7 +73,7 @@ module Devise::MultiAuth
     end
 
     context '.find_user_by_provider_and_uid' do
-      let(:user) { mock_model(User) }
+      let(:user) {FactoryGirl.create(:user) }
       let(:authentication) { described_class.new(user: user) }
 
       it 'returns a user if it matches' do

@@ -22,7 +22,6 @@ DOI_SHOULDER: "doi:10.5072/FK2"
 DOI_HOST: "ez.test.datacite.org"
 DOI_RESOLVER: "https://handle.test.datacite.org"
 DOI_PORT: "443"
-DOI_USE_SSL: "true"
 
 LDAP_HOST: "directory.nd.edu"
 LDAP_PORT: '636'
