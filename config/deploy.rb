@@ -307,8 +307,8 @@ task :pre_production do
   set :dest_solr_confdir, '/global/data/solr/pre_production/curate/conf'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server 'app@curatesvrpprd.library.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrpprd.library.nd.edu', :work, primary: true
+  server 'app@curatesvrpprd.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkrpprd.lc.nd.edu', :work, primary: true
 
   before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
@@ -333,8 +333,8 @@ task :production do
   set :dest_solr_confdir, '/global/data/solr/production/curate/conf'
 
   default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server 'app@curatesvrprod.library.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrprod.library.nd.edu', :work, primary: true
+  server 'app@curatesvrprod.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkrprod.lc.nd.edu', :work, primary: true
 
   before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
