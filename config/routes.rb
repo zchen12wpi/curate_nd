@@ -120,6 +120,12 @@ CurateNd::Application.routes.draw do
     get 'namelist', as: 'activedirectory_namelist', controller: 'activedirectory', action: 'namelist'
   end
 
+  namespace :api do
+    get 'items/download/:id', as: 'item_download', controller: 'items', action: 'download'
+    resources :items, only: [:show, :index]
+    resources :access_tokens, only: [:new, :index, :create, :destroy]
+  end
+
   # clean up tokens
   resources :temporary_access_tokens, path: 'access_tokens', except: [:show]
   post 'temporary_access_tokens/remove_expired_tokens', as: 'remove_expired_tokens', controller: 'temporary_access_tokens', action: 'remove_expired_tokens'
