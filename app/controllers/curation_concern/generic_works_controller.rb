@@ -14,7 +14,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
       after_create_response
     else
       setup_form
-      respond_with([:curation_concern, curation_concern]) do |wants|
+      respond_with(:curation_concern, curation_concern) do |wants|
         wants.html { render 'new', status: :unprocessable_entity }
       end
     end
@@ -22,7 +22,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
 
   def after_create_response
     report_notification_messages
-    respond_with([:curation_concern, curation_concern]) do |wants|
+    respond_with(:curation_concern, curation_concern) do |wants|
       wants.html { redirect_to common_object_path(curation_concern) }
     end
   end
@@ -55,7 +55,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
       # Calling the new action to make sure we are doing our best to preserve
       # the input values; Its a stretch but hopefully it'll work
       self.new
-      respond_with([:curation_concern, curation_concern]) do |wants|
+      respond_with(:curation_concern, curation_concern) do |wants|
         wants.html {
           flash.now[:error] = "You must accept the contributor agreement"
           render 'new', status: :conflict
@@ -82,7 +82,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
       after_update_response
     else
       setup_form
-      respond_with([:curation_concern, curation_concern]) do |wants|
+      respond_with(:curation_concern, curation_concern) do |wants|
         wants.html { render 'edit', status: :unprocessable_entity }
       end
     end
@@ -93,7 +93,7 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
     if actor.visibility_changed?
       redirect_to confirm_curation_concern_permission_path(curation_concern)
     else
-      respond_with([:curation_concern, curation_concern]) do |wants|
+      respond_with(:curation_concern, curation_concern) do |wants|
         wants.html { redirect_to common_object_path(curation_concern) }
       end
     end
