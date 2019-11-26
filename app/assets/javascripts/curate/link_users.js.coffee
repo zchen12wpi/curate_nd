@@ -107,7 +107,7 @@
       $targetElement.autocomplete
         source: (request, response) ->
           $targetElement.data('url')
-          api = "/adnd/namelist?q=?"
+          api = "/adnd/namelist?callback=?"
           $.getJSON (api), { q: request.term }, ( data, status, xhr) ->
             matches = []
             $.each data.data, (idx, val) ->
