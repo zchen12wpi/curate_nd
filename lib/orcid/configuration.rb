@@ -36,7 +36,7 @@ module Orcid
     end
 
     def default_authenticaton_model
-      require 'devise-multi_auth'
+      require 'devise/multi_auth'
       ::Devise::MultiAuth::Authentication
     end
   end

@@ -5,11 +5,11 @@ module Bendo
     class FixityChecks
       Response = Struct.new(:status, :body)
 
-      def self.call(params: params)
+      def self.call(params:)
         new.get(params: params)
       end
 
-      def get(params: params)
+      def get(params:)
         query_params = transform_params(params: params).compact.join("&")
         url = Bendo.fixity_url() + "?#{query_params}"
         conn = Faraday.new url: url, headers: { 'X-Api-Key' => Bendo.api_key(), 'Accept-Encoding' => "application/json" }
@@ -20,7 +20,7 @@ module Bendo
       end
 
       # Transforms from params Curate understands to params that Bendo understands. Inherently whitelists params as well
-      def transform_params(params: params)
+      def transform_params(params:)
         params.map do |k,v|
           new_key = param_map[k]
           new_key.present? ? "#{new_key}=#{v}" : nil

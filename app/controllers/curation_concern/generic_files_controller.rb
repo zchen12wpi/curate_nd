@@ -20,7 +20,7 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
 
   def cloud_resources_valid?
     if params.has_key?(:selected_files) && params[:selected_files].length>1
-      respond_with([:curation_concern, curation_concern]) do |wants|
+      respond_with(:curation_concern, curation_concern) do |wants|
         wants.html {
           flash.now[:error] = "Please select one cloud resource at a time."
           render 'new', status: :unprocessable_entity
@@ -44,9 +44,9 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
     if actor.create
       curation_concern.update_parent_representative_if_empty(parent)
       flash[:notice] = "You have uploaded a new file. We are processing it now."
-      respond_with([:curation_concern, parent])
+      respond_with(:curation_concern, parent)
     else
-      respond_with([:curation_concern, curation_concern]) { |wants|
+      respond_with(:curation_concern, curation_concern) { |wants|
         wants.html { render 'new', status: :unprocessable_entity }
       }
     end
@@ -63,9 +63,9 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
 
   def update
     if actor.update
-      respond_with([:curation_concern, parent])
+      respond_with(:curation_concern, parent)
     else
-      respond_with([:curation_concern, curation_concern]) { |wants|
+      respond_with(:curation_concern, curation_concern) { |wants|
         wants.html { render 'edit', status: :unprocessable_entity }
       }
     end
@@ -77,9 +77,9 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
 
   def rollback
     if actor.rollback
-      respond_with([:curation_concern, curation_concern])
+      respond_with(:curation_concern, curation_concern)
     else
-      respond_with([:curation_concern, curation_concern]) { |wants|
+      respond_with(:curation_concern, curation_concern) { |wants|
         wants.html { render 'versions', status: :unprocessable_entity }
       }
     end

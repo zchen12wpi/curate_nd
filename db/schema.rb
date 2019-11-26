@@ -395,7 +395,6 @@ ActiveRecord::Schema.define(version: 20190503191113) do
     t.datetime "updated_at"
   end
 
-  Foreigner.load
   add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
 
   add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"

@@ -29,7 +29,7 @@ end
 
 RSpec.configure do |config|
   config.include CurateFixtureFileUpload
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers, type: :feature
   config.include Features::SessionHelpers, type: :feature
   config.include Features::CreateWorks, type: :feature

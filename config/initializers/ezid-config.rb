@@ -4,5 +4,4 @@ Ezid::Client.configure do |config|
   config.default_shoulder = ENV.fetch('DOI_SHOULDER')
   config.host = ENV.fetch('DOI_HOST')
   config.port = ENV.fetch('DOI_PORT')
-  config.use_ssl = ENV.fetch('DOI_USE_SSL')
 end
