@@ -15,9 +15,9 @@ class CurationConcern::LinkedResourcesController < CurationConcern::BaseControll
   def create
     curation_concern.batch = parent
     if actor.create
-      respond_with([:curation_concern, parent])
+      respond_with(:curation_concern, parent)
     else
-      respond_with([:curation_concern, curation_concern]) { |wants|
+      respond_with(:curation_concern, curation_concern) { |wants|
         wants.html { render 'new', status: :unprocessable_entity }
       }
     end
@@ -29,9 +29,9 @@ class CurationConcern::LinkedResourcesController < CurationConcern::BaseControll
 
   def update
     if actor.update
-      respond_with([:curation_concern, curation_concern.batch])
+      respond_with(:curation_concern, curation_concern.batch)
     else
-      respond_with([:curation_concern, curation_concern]) { |wants|
+      respond_with(:curation_concern, curation_concern) { |wants|
         wants.html { render 'edit', status: :unprocessable_entity }
       }
     end
@@ -41,7 +41,7 @@ class CurationConcern::LinkedResourcesController < CurationConcern::BaseControll
     parent = curation_concern.batch
     flash[:notice] = "Deleted #{curation_concern}"
     curation_concern.destroy
-    respond_with([:curation_concern, parent])
+    respond_with(:curation_concern, parent)
   end
 
   self.curation_concern_type = LinkedResource

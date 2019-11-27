@@ -18,9 +18,6 @@ CURATE_HELP_NOTIFICATION_DEFAULT_SENDER: curate@nd.edu
 # These are keys for the sandbox
 ORCID_APP_ID: "0000-0002-6683-6607"
 ORCID_APP_SECRET: "e1ff26a2-d889-40be-bd41-acac09214cae"
-cas_base_url: "https://login.nd.edu/cas"
-cas_validate_url: "https://login.nd.edu/cas/serviceValidate"
-
 
 DOI_USERNAME: "ADD THIS TO YOUR ENV"
 DOI_PASSWORD: "ADD THIS TO YOUR ENV"
@@ -28,21 +25,17 @@ DOI_SHOULDER: "doi:10.5072/FK2"
 DOI_HOST: "ez.test.datacite.org"
 DOI_RESOLVER: "https://handle.test.datacite.org"
 DOI_PORT: "443"
-DOI_USE_SSL: "true"
-
 
 LDAP_HOST: "directory.nd.edu"
 LDAP_PORT: '636'
 LDAP_ENCRYPTION: "simple_tls"
+
 OSF_HOST_NAME: 'osf.io'
 OSF_SCHEME: 'https'
 
 SENTRY_DSN: 'fakey-mcfake-face'
 
 development:
-  cas_base_url: "https://login-test.cc.nd.edu/cas"
-  cas_destination_url: "https://localhost:3000"
-  cas_follow_url: "https://localhost:3000"
   # Commented out because these create the requirement to start the noids server
   # in order to run in localhost.
   # NOIDS_SERVER: "localhost:13001"
@@ -55,6 +48,31 @@ development:
   ORCID_HOST_URL: "https://sandbox.orcid.org"
   ORCID_AUTHORIZE_URL: "https://sandbox.orcid.org/oauth/authorize"
   ORCID_SEARCH_URL: "https://sandbox.orcid.org/orcid-search/quick-search"
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey
   bendo_api_key: ''
 
   # SENTRY_DSN: 'put something here if you want it for testing'
+
+test:
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey
+
+ci:
+  okta_auth_server_id: fakey
+  okta_auth_url: fakey
+  okta_client_id: fakey
+  okta_client_secret: fakey
+  okta_redirect_uri: fakey
+  okta_site: fakey
+  okta_token_url: fakey

@@ -101,7 +101,7 @@ CurateNd::Application.routes.draw do
         member { delete :disconnect_orcid_profile}
       end
 
-      resource :repo_manager, only: [:edit, :update], path: :privledges
+      resource :repo_manager, only: [:edit, :update], path: :privileges
       resources :ingest_osf_archives, only: [:new, :create]
       resources :batch_ingest, only: [:index]
       resources :fixity, only: [:index]
@@ -145,11 +145,15 @@ CurateNd::Application.routes.draw do
   devise_scope :user do
     get 'dashboard', to: 'catalog#index', as: :user_root
     get 'admin/accounts/stop_masquerading', to: 'admin/masquerades#back', as: 'stop_masquerading'
+    get 'sign_in', to: redirect("/users/auth/oktaoauth", status: 301), as: :new_user_session
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
+  devise_for :users, controllers: { registrations: :registrations, omniauth_callbacks: 'devise/multi_auth/omniauth_callbacks' }, skip: :masquerades
 
   get '/show/citation/:id', to: 'citation#show', as: 'citation'
+
+  get'/usage/:id(.:format)', to: 'metrics/usage#show', as: 'metrics_usage'
 
   get 'get_started', to: redirect('deposit')
   get 'deposit', to: 'classify_concerns#new'

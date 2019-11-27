@@ -18,11 +18,21 @@ class User < ActiveRecord::Base
     end.order(:username)
   end
 
+  def self.from_omniauth(auth)
+    # This is the nested structure of the token sent back by Okta
+    username = auth.extra.raw_info.netid
+    name = auth.extra.raw_info.name
+    email = auth.extra.raw_info.email
+    # * We need to find/create the user by NetID, then consider registering a corresponding
+    #   Authentication for provider/uid
+    # We then need to save the user and return it
+    user = FindOrCreateUser.call(username, name)
+  end
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :cas_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :masqueradable, :omniauthable, :omniauth_providers => [:orcid]
+  devise :registerable, :rememberable, :trackable, :validatable, :masqueradable, :omniauthable, :omniauth_providers => [:orcid, :oktaoauth]
 
   attr_accessor :password
 
@@ -59,5 +69,4 @@ class User < ActiveRecord::Base
   def to_param
     id
   end
-
 end

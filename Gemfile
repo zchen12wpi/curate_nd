@@ -30,11 +30,9 @@ group :default do
   gem 'custom_configuration'
   gem 'decent_exposure'
   gem 'deprecation', '~>0.2.2'
-  gem 'devise_cas_authenticatable'
   gem 'devise_masquerade'
-  gem 'devise-guests', '~> 0.3'
-  gem 'devise-multi_auth', github: 'jeremyf/devise-multi_auth'
-  gem 'devise', '~>3.2.2'
+  gem 'devise-guests', '~> 0.7'
+  gem 'devise', '~>4.7'
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
@@ -50,44 +48,41 @@ group :default do
   gem 'jshintrb'
   gem 'json-ld'
   gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
-  # Need rubyracer to run integration tests.....really?!?
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'libv8', '~> 3.16.14.3'
   gem 'locabulary', github: 'ndlib/locabulary', ref: 'b8ab510dce637d37229d001fedfbc6af1ab510f2'
   gem 'lograge'
   gem 'logstash-event'
   gem 'logstash-logger'
-  gem 'mailboxer', '~> 0.11.0'
+  gem 'mailboxer', '~> 0.11'
   gem 'mini_magick', ">= 4.9.4"
   gem 'morphine'
   gem 'mysql2', '~> 0.3.18'
   gem 'namae'
-  gem 'nest', '~> 1.1.1'
+  gem 'nest', '~> 1.1'
   gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
   gem 'nokogiri', '~> 1.8'
+  gem 'omniauth-oktaoauth'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
-  gem 'rails-observers', '0.1.2' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; Requires Ruby 2.2.2 for 0.1.5 or greater
-  gem 'rails', '~> 4.1.15'
+  gem 'rails-observers'
+  gem 'rails', '~> 4.2.11.0'
   gem 'rake', '~> 11.0'
-  gem 'rdf', '~> 1.1.1.1' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'rdf'
   gem 'redcarpet'
   gem 'redis', '~> 3.3.3' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'resque-pool', github: 'ndlib/resque-pool', branch: 'master'
   gem 'roboto'
   gem 'rubydora', '~> 1.7.4'
-  gem 'sanitize', '~> 4.6.3'
+  gem 'sanitize'
   gem 'sass', '3.4.1' # Maybe necessary as part of upgrade to Rails 4.1.0; added for ruby versioning; at 3.4.25, I encountered "undefined method `log_level' for #<ActiveSupport::Logger:0x0000000a736388>"
   gem 'select2-rails'
   gem 'sentry-raven', '~> 2.7'
   gem 'share_notify', github: 'samvera-labs/share_notify'
-  gem 'simple_form', '~> 3.0.1'
-  gem 'therubyracer', '0.12.1', platforms: :ruby, require: 'v8'
+  gem 'simple_form', '~> 3.5.0'
   gem 'unicode', :platforms => [:mri_18, :mri_19]
   gem 'unicorn', '~> 4.0'
   gem 'virtus'
-  gem 'xpath', '~> 2.0' # 3.x requires # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
+  gem 'xpath'
   gem 'rack-mini-profiler'
   gem 'flamegraph'
   gem 'stackprof'
@@ -103,7 +98,7 @@ group :orcid do
   gem 'omniauth-orcid', '0.6'
   gem 'mappy'
   gem 'email_validator'
-  gem 'omniauth-oauth2', '< 1.4'
+  gem 'omniauth-oauth2'
   gem 'hashie', '3.4.6'
 end
 
@@ -114,7 +109,8 @@ end
 # Explicitly require it here.
 gem 'addressable', '~> 2.3.5'
 gem 'coffee-rails', '~> 4.0'
-gem 'compass-rails'
+gem 'compass-rails', "~> 3.1.0"
+gem 'compass'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 
@@ -138,7 +134,6 @@ group :debug do
   gem 'method_source'
   gem 'method_locator'
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'byebug', '~> 9.0.6' # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'quiet_assets'
   gem 'rails_best_practices'
@@ -154,6 +149,7 @@ group :deploy do
 end
 
 group :development do
+  gem 'binding_of_caller', :platforms => [:mri_19, :mri_20, :rbx]
   gem 'rubocop', '~> 0.48.1', require: false # Necessary as part of upgrade to Rails 4.1.0; added for ruby versioning
   gem 'rails-erb-lint', require: false
   gem 'scss-lint', require: false
