@@ -107,13 +107,13 @@
       $targetElement.autocomplete
         source: (request, response) ->
           $targetElement.data('url')
-          api = "/adnd/namelist?callback=?"
+          api = "/adnd/namelist?"
           $.getJSON (api), { q: request.term }, ( data, status, xhr) ->
             matches = []
-            $.each data.data, (idx, val) ->
-              name = val['fullname']
+            $.each data.people, (idx, val) ->
+              name = val['full_name']
               label = val['uid'] + " (" + name + ")"
-              matches.push {label: label, value: val['id'], name: name}
+              matches.push {label: label, value: val['uid'], name: name}
             if(matches.length == 0)
               matches.push { label: "No matches found.", value: 'not_found' }
             response( matches )
