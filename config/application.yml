@@ -6,6 +6,9 @@
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 
+AD_API_URL: 'http://exampleurl.com?'
+AD_API_TOKEN: 'thisisyourtoken'
+
 BATCH_INGESTOR_URL: 'http://localhost:15000/'
 
 # Examples only... actual values used are in secrets:
