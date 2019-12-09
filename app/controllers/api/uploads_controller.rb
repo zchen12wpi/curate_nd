@@ -78,7 +78,10 @@ class Api::UploadsController < Api::BaseController
                        sequence: next_sequence },
                status: :ok
       else # invalid metadata, error 406
-        render json: { error: 'Invalid metadata for file' },
+        render json: { error: 'Invalid metadata for file',
+                       file_name: file_name,
+                       file_id: file_pid,
+                       work_id: work_pid },
                status: :not_acceptable
       end
     else # unauthenticated user, error 401
