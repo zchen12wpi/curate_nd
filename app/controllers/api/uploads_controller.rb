@@ -172,10 +172,10 @@ class Api::UploadsController < Api::BaseController
 
     def callback_url(trx_id:)
       # format is https://user_id_hash:trx_id_hash@localhost:3000/uploads/#{trx_id}/callback/ingest_completed.json
-      File.join("#{request.protocol}#{trx_basic_auth}@#{request_domain}","/uploads/#{trx_id}/callback/ingest_completed.json")
+      File.join("#{request.protocol}#{trx_basic_auth(trx_id)}@#{request_domain}","/uploads/#{trx_id}/callback/ingest_completed.json")
     end
 
-    def trx_basic_auth
+    def trx_basic_auth(trx_id)
       "#{Digest::MD5.hexdigest(@current_user.username)}:#{Digest::MD5.hexdigest(trx_id)}"
     end
 
