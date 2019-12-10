@@ -69,17 +69,3 @@
     <%= details %>
   </div>
 <% end %>
-
-<%
-  has_doi = curation_concern.try(:identifier).present?
-
-  if has_doi
-    doi = curation_concern.identifier
-    pattern = %r{doi:}i
-    if pattern.match(doi)
-      unprefixed_doi = doi.gsub(pattern, '')
-    else
-      unprefixed_doi = doi
-    end
-  end
-%>
