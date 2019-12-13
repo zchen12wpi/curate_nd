@@ -127,6 +127,8 @@ class Api::UploadsController < Api::BaseController
       # update trx status
       ApiTransaction.set_status_based_on(trx_id: trx_id, action: :commit)
 
+      BatchIngestor.start_api_ingest( trx_id: trx_id )
+
       # respond ok
       render json: { trx_id: trx_id }, status: :ok
     else # unauthenticated user, error 401
