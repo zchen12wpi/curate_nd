@@ -69,23 +69,3 @@
     <%= details %>
   </div>
 <% end %>
-
-<%
-  has_doi = curation_concern.try(:identifier).present?
-
-  if has_doi
-    doi = curation_concern.identifier
-    pattern = %r{doi:}i
-    if pattern.match(doi)
-      unprefixed_doi = doi.gsub(pattern, '')
-    else
-      unprefixed_doi = doi
-    end
-  end
-%>
-<% if has_doi %>
-  <div class="show-analytics">
-    <hr />
-    <a href="https://plu.mx/notre/a/?doi=<%= unprefixed_doi %>" class="plumx-details" data-hide-when-empty="true" data-site="notre"></a>
-  </div>
-<% end %>
