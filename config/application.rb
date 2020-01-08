@@ -87,6 +87,7 @@ module CurateNd
     config.action_dispatch.rescue_responses["CanCan::AccessDenied"] = :unauthorized
     config.action_dispatch.rescue_responses["Rubydora::RecordNotFound"] = :not_found
     config.action_dispatch.rescue_responses["ActionController::UnknownFormat"] = :not_found
+    config.action_dispatch.rescue_responses["ActionController::UnknownHttpMethod"] = :not_found
 
     Curate.configuration.build_identifier = begin
       identifier = Rails.root.join('VERSION').read.strip
