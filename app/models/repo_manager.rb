@@ -5,7 +5,7 @@ class RepoManager < ActiveRecord::Base
     user = find_by(username: username)
     if user.present?
       user
-    elsif RepositoryAdministrator.include?(username)
+    elsif Admin::AuthorityGroup::RepositoryAdministrator.new.usernames.include?(username)
       find_or_create_by!(username: username, active: false)
     else
       raise ActiveRecord::RecordNotFound

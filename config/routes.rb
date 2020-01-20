@@ -105,6 +105,12 @@ CurateNd::Application.routes.draw do
       resources :ingest_osf_archives, only: [:new, :create]
       resources :batch_ingest, only: [:index]
       resources :fixity, only: [:index]
+
+      resources :authority_groups
+      post 'authority_groups/refresh/:id', as: 'refresh', controller: 'authority_groups', action: 'refresh'
+      get 'authority_groups/refresh/:id', controller: 'authority_groups', action: 'refresh'
+      post 'authority_groups/reinitialize/:id', as: 'reinitialize', controller: 'authority_groups', action: 'reinitialize'
+      get 'authority_groups/reinitialize/:id', controller: 'authority_groups', action: 'reinitialize'
     end
 
     constraints CurateND::AdminAPIConstraint do
@@ -144,7 +150,7 @@ CurateNd::Application.routes.draw do
 
   devise_scope :user do
     get 'dashboard', to: 'catalog#index', as: :user_root
-    get 'admin/accounts/stop_masquerading', to: 'admin/masquerades#back', as: 'stop_masquerading'
+    get 'admin/users/masquerade/back', to: 'admin/masquerades#back', as: 'stop_masquerading'
     get 'sign_in', to: redirect("/users/auth/oktaoauth", status: 301), as: :new_user_session
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end

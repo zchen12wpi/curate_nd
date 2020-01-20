@@ -12,8 +12,7 @@ module CurateND
 
     def is_admin?(user)
       username = user.respond_to?(:username) ? user.username : user.to_s
-      RepositoryAdministrator.include?(username)
+      Admin::AuthorityGroup::RepositoryAdministrator.new.usernames.include?(username)
     end
-
   end
 end

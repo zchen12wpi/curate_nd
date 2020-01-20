@@ -1,0 +1,13 @@
+<% content_for :page_header do %>
+  <h1>New Admin Authority Group</h1>
+
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Authority Groups List', admin_authority_groups_path %> <span class="divider">/</span></li>
+    <li><span class="active">New</span></li>
+  </ul>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_authority_groups_path %>

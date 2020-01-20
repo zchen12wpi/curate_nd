@@ -22,6 +22,7 @@ class Hydramata::GroupsController < ApplicationController
 
   def index
     params[:per_page] ||= 50
+    # admin users should see all groups, so we remove access controls in the search
     if current_user.manager?
       Hydramata::GroupsController.solr_search_params_logic -= [:add_access_controls_to_solr_params]
     else
@@ -31,15 +32,20 @@ class Hydramata::GroupsController < ApplicationController
   end
 
   def new
-    @group = Hydramata::Group.new
+    @group = Hydramata::Group.new(new_group_params)
     setup_form
   end
 
   def create
+    @authority_group = authority_group_for(title: params[:hydramata_group][:title])
     @group_membership = Hydramata::GroupMembershipForm.new( Hydramata::GroupMembershipActionParser.convert_params(params, current_user) )
     if @group_membership.save
       flash[:notice] = "Group created successfully."
-      redirect_to hydramata_groups_path
+      if @authority_group
+        redirect_to edit_admin_authority_group_path( id: @authority_group.id, associated_group_pid: @group_membership.group.id)
+      else
+        redirect_to hydramata_groups_path
+      end
     else
       @group = Hydramata::Group.new
       setup_form
@@ -55,12 +61,24 @@ class Hydramata::GroupsController < ApplicationController
   end
 
   def update
+    @authority_group = authority_group_for(title: params[:hydramata_group][:title])
     @group_membership = Hydramata::GroupMembershipForm.new( Hydramata::GroupMembershipActionParser.convert_params(params, current_user) )
     if @group_membership.save
-      if is_current_user_a_member_of_this_group?(@group_membership.group)
-        redirect_to hydramata_group_path( params[:id] ), notice: "Group updated successfully."
+      if @authority_group
+        # we may get here by creating a new group with multiple members,
+        # which routes through the update method so we have to check if
+        # it was actually a new group
+        if @authority_group.associated_group_pid.blank?
+          redirect_to edit_admin_authority_group_path(id: @authority_group.id, associated_group_pid: @group_membership.group.id)
+        else
+          redirect_to admin_authority_group_path(@authority_group.id)
+        end
       else
-        redirect_to hydramata_groups_path, notice: "Group updated successfully. You are no longer a member of the Group: #{@group_membership.title}"
+        if is_current_user_a_member_of_this_group?(@group_membership.group)
+          redirect_to hydramata_group_path( params[:id] ), notice: "Group updated successfully."
+        else
+          redirect_to hydramata_groups_path, notice: "Group updated successfully. You are no longer a member of the Group: #{@group_membership.title}"
+        end
       end
     else
       @group = Hydramata::Group.find(params[:id])
@@ -71,9 +89,14 @@ class Hydramata::GroupsController < ApplicationController
   end
 
   def destroy
-    title = @group.to_s
-    @group.destroy
-    after_destroy_response(title)
+    if @group.is_authority_group?
+      flash[:error] = "Groups linked to an Authority Group may not be destroyed."
+      redirect_to hydramata_groups_path
+    else
+      title = @group.to_s
+      @group.destroy
+      after_destroy_response(title)
+    end
   end
 
   def setup_form
@@ -94,6 +117,10 @@ class Hydramata::GroupsController < ApplicationController
   protected :after_destroy_response
 
   private
+
+  def new_group_params
+    params.permit(:title, :description)
+  end
 
   def load_and_authorize_group
     id = id_from_params(:id)
@@ -133,5 +160,9 @@ class Hydramata::GroupsController < ApplicationController
   def is_current_user_a_member_of_this_group?(group)
     reload_group = Hydramata::Group.find(group.pid)
     reload_group.members.include?(current_user.person)
+  end
+
+  def authority_group_for(title:)
+    Admin::AuthorityGroup.authority_group_for(auth_group_name: title)
   end
 end
