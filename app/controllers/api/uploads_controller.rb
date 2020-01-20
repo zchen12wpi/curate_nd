@@ -11,7 +11,7 @@ class Api::UploadsController < Api::BaseController
     if @current_user
       trx_id = ApiTransaction.new_trx_id
       work_pid = mint_new_id
-      metadata_formatter = Api::WorkMetadataFormatter.new(content: work_metadata_content_for(work_pid))
+      metadata_formatter = Api::WorkMetadataFormatter.new(content: work_metadata_content_for(work_pid), user: @current_user)
       # validate metadata
       if metadata_formatter.valid?
         # initiate transaction & upload files
@@ -56,7 +56,7 @@ class Api::UploadsController < Api::BaseController
       file_pid = mint_new_id
       next_sequence = next_file_sequence(trx_id: trx_id, file_id: file_pid)
 
-      metadata_formatter = Api::FileMetadataFormatter.new(content: { file_name: file_name, file_id: file_pid, work_id: work_pid } )
+      metadata_formatter = Api::FileMetadataFormatter.new(content: { file_name: file_name, file_id: file_pid, work_id: work_pid }, user: @current_user )
       # validate metadata
       if metadata_formatter.valid?
         # write file from body of message to bucket
