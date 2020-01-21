@@ -14,7 +14,7 @@ module Api
       return false unless work_id
       return false unless file_id
       return false unless file_name
-      return false unless use_name
+      return false unless user_id
       true
     end
 
