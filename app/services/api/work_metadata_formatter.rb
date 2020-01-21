@@ -1,11 +1,11 @@
 module Api
   class WorkMetadataFormatter
-    attr_reader :work_id, :remaining_content, user_id
+    attr_reader :work_id, :remaining_content, :user_id
 
-    def initialize(content:)
+    def initialize(content:, :user)
       @work_id = content[:work_id]
       @remaining_content = content.except(:work_id)
-      @user_id = user_id
+      @user_id = user
     end
 
     def valid?
