@@ -2,7 +2,7 @@ module Api
   class FileMetadataFormatter
     attr_reader :work_id, :file_id, :file_name, :remaining_content, :user_id
 
-    def initialize(content:)
+    def initialize(content:, user:)
       @work_id = content[:work_id]
       @file_id = content[:file_id]
       @file_name = content[:file_name]
