@@ -47,7 +47,7 @@ class Ability
   end
 
   def view_all_works
-    @view_all_works ||= Admin::AuthorityGroup::ViewOnly.new.usernames
+    @view_all_works ||= Admin::AuthorityGroup::ViewAll.new.usernames
   end
   # end Load permission objects
 

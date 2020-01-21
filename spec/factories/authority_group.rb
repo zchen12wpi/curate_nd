@@ -35,11 +35,11 @@ FactoryGirl.define do
     updated_at { Date.today }
   end
 
-  factory :view_only_grp, :class => Admin::AuthorityGroup do
-    auth_group_name { Admin::AuthorityGroup::ViewOnly::AUTH_GROUP_NAME }
-    description { 'View only admin' }
-    controlling_class_name { 'Admin::AuthorityGroup::ViewOnly' }
-    authorized_usernames { Admin::AuthorityGroup::ViewOnly.initialize_usernames.map {|a| %Q(#{a}) }.join(", ") }
+  factory :view_all_grp, :class => Admin::AuthorityGroup do
+    auth_group_name { Admin::AuthorityGroup::ViewAll::AUTH_GROUP_NAME }
+    description { 'Users who can view everything' }
+    controlling_class_name { 'Admin::AuthorityGroup::ViewAll' }
+    authorized_usernames { Admin::AuthorityGroup::ViewAll.initialize_usernames.map {|a| %Q(#{a}) }.join(", ") }
     created_at { Date.today }
     updated_at { Date.today }
   end

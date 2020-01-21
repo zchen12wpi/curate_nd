@@ -34,8 +34,8 @@ users_to_authorize = token_managers.map {|a| %Q(#{a}) }.join(", ")
 
 token_managers = Admin::AuthorityGroup.create_with(description: 'Users with full rights to manage limited access tokens', authorized_usernames: users_to_authorize).find_or_create_by(auth_group_name: 'token_managers', controlling_class_name: "Admin::AuthorityGroup::TokenManager")
 
-# Create view_only admin
-view_only_users = Admin::AuthorityGroup::ViewOnly.initialize_usernames
-users_to_authorize = view_only_users.map {|a| %Q(#{a}) }.join(", ")
+# Create group for users who can view all without edit rights
+view_all_works_users = Admin::AuthorityGroup::ViewAll.initialize_usernames
+users_to_authorize = view_all_works_users.map {|a| %Q(#{a}) }.join(", ")
 
-view_only = Admin::AuthorityGroup.create_with(description: 'Users who can see but not touch things they do not own', authorized_usernames: users_to_authorize).find_or_create_by(auth_group_name: 'view_only', controlling_class_name: "Admin::AuthorityGroup::ViewOnly")
+view_all = Admin::AuthorityGroup.create_with(description: 'Users who can see but not touch things they do not own', authorized_usernames: users_to_authorize).find_or_create_by(auth_group_name: 'view_all', controlling_class_name: "Admin::AuthorityGroup::ViewAll")
