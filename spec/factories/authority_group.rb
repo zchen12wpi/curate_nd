@@ -1,6 +1,13 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  factory :auth_group, :class => Admin::AuthorityGroup do
+    sequence(:auth_group_name) {|n| "Group #{n}"}
+    sequence(:description) {|n| "Test group #{n}"}
+    created_at { Date.today }
+    updated_at { Date.today }
+  end
+
   factory :super_admin_grp, :class => Admin::AuthorityGroup do
     auth_group_name { Admin::AuthorityGroup::SuperAdmin::AUTH_GROUP_NAME }
     description { 'Super admin group' }

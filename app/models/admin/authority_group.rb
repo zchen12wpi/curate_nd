@@ -19,14 +19,14 @@ module Admin
 
     # if given a pid, the associated group must exist.
     def valid_group_pid?
-      return true if associated_group_pid.empty?
+      return true if associated_group_pid.blank?
       return true unless associated_group.nil?
       false
     end
 
     def associated_group
       begin
-        return Hydramata::Group.find(associated_group_pid)
+        return         Hydramata::Group.find(associated_group_pid)
       rescue
         return nil
       end
@@ -51,7 +51,7 @@ module Admin
     end
 
     def initial_user_list
-      return [] if controlling_class_name.empty?
+      return [] if controlling_class_name.blank?
       class_name = controlling_class_name
       class_name.constantize.initialize_usernames
     end

@@ -104,7 +104,7 @@ class Admin::AuthorityGroupsController < ApplicationController
     already_exists = already_exists?(@admin_authority_group.auth_group_name)
 
     # class name is a valid class in app
-    @notice << "Please enter a valid group controlling class name." unless @admin_authority_group.controlling_class_name.empty? || valid_class
+    @notice << "Please enter a valid group controlling class name." unless @admin_authority_group.controlling_class_name.blank? || valid_class
     # group pid is a group
     @notice << "Please enter a valid group pid." unless valid_group
     # cannot duplicate an authority_group_name
