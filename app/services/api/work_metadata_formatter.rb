@@ -5,7 +5,7 @@ module Api
     def initialize(content:)
       @work_id = content[:work_id]
       @remaining_content = content.except(:work_id)
-      @work_id = user_id
+      @user_id = user_id
     end
 
     def valid?
