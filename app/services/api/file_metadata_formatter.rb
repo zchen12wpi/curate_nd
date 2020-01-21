@@ -19,6 +19,7 @@ module Api
     end
 
     def initial_metadata
+      metadata_hash = remaining_content
       metadata_hash['@id'] = "und:#{file_id}"
       metadata_hash['nd:filename'] = "#{file_name}"
       metadata_hash['dc:title'] = "#{file_name}"

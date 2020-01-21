@@ -16,11 +16,11 @@ module Api
 
     def initial_metadata
       metadata_hash = remaining_content
-      metadata_hash['@id'] = "und:#{work_id}"
-      metadata_hash['nd:afmodel'] = "Document"
-      metadata_hash['nd:owner'] = "#{user_id}"
-      metadata_hash['nd:accessEdit'] = "#{user_id}"
-      metadata_hash['nd:accessReadGroup'] = "private"
+      metadata_hash['@id'] = "und:#{work_id}" unless metadata_hash['@id']
+      metadata_hash['nd:afmodel'] = "Document" unless metadata_hash['nd:afmodel']
+      metadata_hash['nd:owner'] = "#{user_id}" unless metadata_hash['nd:owner']
+      metadata_hash['nd:accessEdit'] = "#{user_id}" unless  metadata_hash['nd:accessEdit']
+      metadata_hash['nd:accessReadGroup'] = "private" unless metadata_hash['nd:accessReadGroup']
       JSON.dump(metadata_hash)
     end
   end
