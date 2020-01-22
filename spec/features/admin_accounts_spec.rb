@@ -1,6 +1,9 @@
 require 'spec_helper_features'
 
 describe 'admin accounts behavior', FeatureSupport.options do
+  let!(:admin) { FactoryGirl.create(:admin_grp) }
+  let!(:super_admin) { FactoryGirl.create(:super_admin_grp) }
+
   context 'anonymous user' do
     it 'cannot start masquerading' do
       visit('/admin/accounts/start_masquerading')
@@ -41,7 +44,7 @@ describe 'admin accounts behavior', FeatureSupport.options do
     before(:each) do
       login_as(user)
     end
-    it 'cannot see the /admin/accounts' do
+    it 'can see the /admin/accounts' do
       visit('/admin/accounts')
       expect(page).to_not have_tag('h1', text: 'Page Not Found')
       expect(page).to have_content('Accounts')

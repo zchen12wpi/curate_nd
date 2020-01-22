@@ -1,0 +1,18 @@
+<% content_for :page_title, construct_page_title('Authority Groups') %>
+<% content_for :page_header do %>
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><span class="active">Authority Groups List</span></li>
+  </ul>
+
+   <h1>Authority Groups</h1>
+<% end %>
+
+<div>
+  <h5>
+    <p><b>Authority groups</b> are used to manage permissions throughout the application. Creating a new group will have no effect until there is a related <b>Controlling Class</b> defined in the application. An <b>Authority Group</b> which has a valid <b>Controlling Class</b> cannot be deleted.</p>
+  </h5>
+</div>
+
+<%= render partial: 'groups' %>
+<%= link_to 'Create New Group', new_admin_authority_group_path, { class: "btn btn-success" } %>

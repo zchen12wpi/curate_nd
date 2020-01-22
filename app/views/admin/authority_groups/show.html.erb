@@ -1,0 +1,55 @@
+<% content_for :page_title, construct_page_title('Show Authority Groups') %>
+<% content_for :page_header do %>
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Authority Groups List', admin_authority_groups_path %> <span class="divider">/</span></li>
+    <li><span class="active"><%= link_to 'Show Group', admin_authority_group_path(@admin_authority_group) %></span></li>
+  </ul>
+
+  <h2>Authority Group: <%= @admin_authority_group.auth_group_name %></h2>
+<% end %>
+
+<div>
+  <h5>
+    <p>The <b>Authority Group Name</b> is used to find the <b>Currently Authorized Users</b> for the application functions managed by the <b>Controlling Class</b>. An <b>Authority Group</b> which has a valid <b>Controlling Class</b> cannot be deleted.</p>
+    <p>An <b>Associated Group</b> provides a simple way to maintain the list of <b>Currently Authorized Users</b>. Create or edit an <b>Associated Group</b> with the same name as the <b>Authority Group</b>, and then save the <b>Associated Group</b> ID in the <b>Authority Group</b>. The <b>Associated Group</b> can then be used to populate the <b>Currently Authorized Users</b> via the yellow button below. No changes to authority occur without the second step. <b>Currently Authorized Users</b> can only be updated via an <b>Associated Group</b> or the Re-Initialize option below.</p>
+  </h5>
+</div>
+
+<%= link_to 'Edit Authority Group', edit_admin_authority_group_path(@admin_authority_group), class: 'btn btn-success' %>
+<% if @admin_authority_group.destroyable? %>
+  <%= link_to 'Delete Authority Group', @admin_authority_group, method: :delete, class: "btn btn-danger" %>
+<% end %>
+
+<dl class="attributes">
+  <dt>Description:</dt>
+  <dd><%= @admin_authority_group.description %></dd>
+  <dt>Controlling Class Name:</dt>
+  <dd><%= @admin_authority_group.controlling_class_name %></dd>
+  <dt>Currently Authorized Users:</dt>
+  <dd><%= @admin_authority_group.authorized_usernames %></dd>
+  <br />
+  <dt>Associated Group:</dt>
+  <% associated_group = @admin_authority_group.associated_group %>
+  <% if associated_group %>
+    <dd>Group ID: <%= associated_group.pid %></dd>
+    <dd><%= link_to 'Edit Associated Group', edit_hydramata_group_path(associated_group), class: 'btn btn-success btn-small'%><%= link_to 'Authorize All Users Below', admin_refresh_path(@admin_authority_group), class: 'btn btn-warning btn-small', data: {confirm: 'Are you sure you want to use this group to authorize users?'}  %></dd>
+    <dd>Name: <%= associated_group.title %></dd>
+    <dd>Description: <%= associated_group.description %></dd>
+    <%= render partial: 'associated_group_members' %>
+  <% else %>
+    <dd><%= link_to 'Create Associated Group', new_hydramata_group_path(title: @admin_authority_group.auth_group_name, description: @admin_authority_group.description), class: 'btn btn-primary btn-small' %></dd>
+  <% end %>
+
+  <br />
+  <% list = @admin_authority_group.formatted_initial_list %>
+    <dt>Initial Authorized Users:</dt>
+    <br />
+    <p>The list below shows the users who are defined in the file associated with this group's <b>Controlling Class</b>. This ability to reset the authority to its starting point is most useful for testing, but also provides an option to update authority via a yml file after a deploy.</p>
+    <% if !list.empty? %>
+      <dd><%= @admin_authority_group.formatted_initial_list %></dd>
+    <% else %>
+      <dd>No users found</dd>
+    <% end %>
+    <dd><%= link_to 'Re-Initialize', admin_reinitialize_path(@admin_authority_group), class: 'btn btn-danger btn-small', data: {confirm: 'Are you sure you want to reset to the initial authorized users data?'} %></dd>
+</dl>

@@ -1,0 +1,26 @@
+<% new_record = @admin_authority_group.new_record? %>
+<% change_disallowed = !new_record && @admin_authority_group.class_exists? && (@admin_authority_group.auth_group_name == @admin_authority_group.controlling_class_name.constantize::AUTH_GROUP_NAME) %>
+<%= simple_form_for(@admin_authority_group) do |f| %>
+  <%= f.error_notification %>
+
+   <fieldset>
+    <div class="form-inputs">
+      <%= f.input :auth_group_name, label: "Authority Group Name", hint: "The group name used in code to control authority to functions throughout the application.", disabled: !@admin_authority_group.auth_group_name.blank? && change_disallowed %>
+      <%= f.input :description, hint: "The authority options in the application which are controlled by this group.", input_html: { class: 'input-xxlarge' } %>
+      <%= f.input :controlling_class_name, label: "Controlling Class Name", hint: "The Class in the application which controls loading and use of the Authority Group.", disabled: !@admin_authority_group.controlling_class_name.blank? && change_disallowed %>
+      <%= f.input :associated_group_pid, label: "Associated Group Pid", hint: "First create your group of users, and then enter pid in the format und:xxxxxxxx." %>
+    </div>
+  </fieldset>
+
+   <div class="form-actions">
+     <% if new_record %>
+       <% button_label = "Create Authority Group"  %>
+       <% return_to = admin_authority_groups_path %>
+     <% else %>
+       <% button_label = "Update Authority Group"  %>
+        <% return_to = admin_authority_group_path(@admin_authority_group) %>
+     <% end %>
+     <%= f.button :submit, button_label, class: 'btn btn-danger' %>
+     <%= link_to 'Cancel', return_to, class: 'btn btn-link' %>
+  </div>
+<% end %>

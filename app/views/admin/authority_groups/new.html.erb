@@ -1,0 +1,19 @@
+<% content_for :page_header do %>
+  <h1>New Admin Authority Group</h1>
+
+  <ul class="breadcrumb">
+    <li><%= link_to 'CurateND', root_path %> <span class="divider">/</span></li>
+    <li><%= link_to 'Authority Groups List', admin_authority_groups_path %> <span class="divider">/</span></li>
+    <li><span class="active">New</span></li>
+  </ul>
+<% end %>
+
+<div>
+  <h5>
+    <p><b>Authority groups</b> are used to manage permissions throughout the application. <b>Authority Group Name</b> must be unique and must match the name defined in the <b>Controlling Class</b> if a <b>Controlling Class</b> is given. Creating a new group will have no effect until there is a related <b>Controlling Class</b> defined in the application.</p>
+  </h5>
+</div>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', admin_authority_groups_path %>

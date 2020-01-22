@@ -651,7 +651,7 @@ class CatalogController < ApplicationController
 
     # Override Hydra::PolicyAwareAccessControlsEnforcement
     def gated_discovery_filters
-      if current_user and current_user.manager?
+      if current_user and (current_user.manager? || current_user.can?(:read, :all))
         return []
       end
       super

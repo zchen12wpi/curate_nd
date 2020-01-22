@@ -6,29 +6,59 @@ class Ability
 
   # Note: custom_permissions are assumed to injected into the process as well.
   def custom_permissions
-    @user_work_type_policy ||= WorkTypePolicy.new(user: current_user)
-
     Curate.configuration.registered_curation_concern_types.each do |work_type|
       # Blacklisting Create for work types UNLESS explicitly authorized
-      unless @user_work_type_policy.authorized_for?(work_type)
+      unless user_work_type_policy.authorized_for?(work_type)
         # Show, Edit, Update, and Destroy are determined by the access controls
         # on the work.
         cannot :create, work_type.constantize
       end
 
       # Access to temporary access token management is limited to names in etd_manager_permission.yml
-      if EtdManagers.include?(current_user)
+      if token_managers.include?(current_user.to_s)
         can [:manage], TemporaryAccessToken
       else
         cannot [:manage], TemporaryAccessToken
       end
+
+      if super_administrators.include?(current_user.to_s)
+        can [:manage], Admin::AuthorityGroup
+      else
+        cannot [:manage], Admin::AuthorityGroup
+      end
     end
   end
+
+  # Load permission objects
+  def user_work_type_policy
+    @user_work_type_policy ||= WorkTypePolicy.new(user: current_user)
+  end
+
+  def token_managers
+    @token_managers ||= Admin::AuthorityGroup::TokenManager.new.usernames
+  end
+
+  def super_administrators
+    @super_administrators ||= Admin::AuthorityGroup::SuperAdmin.new.usernames
+  end
+
+  def repository_administrators
+    @repository_administrators ||= Admin::AuthorityGroup::RepositoryAdministrator.new.usernames
+  end
+
+  def view_all_works
+    @view_all_works ||= Admin::AuthorityGroup::ViewAll.new.usernames
+  end
+  # end Load permission objects
 
   def curate_permissions
     alias_action :confirm, :copy, :to => :update
     if current_user.manager?
       can [:discover, :show, :read, :edit, :update, :destroy], :all
+    else
+      if  view_all_works.include?(current_user.to_s)
+        can [:discover, :show, :read], :all
+      end
     end
 
     can [:read, :show], LibraryCollection

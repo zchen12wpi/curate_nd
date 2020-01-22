@@ -1,0 +1,12 @@
+<% @admin_authority_groups.each do |authority_group| %>
+  <tr>
+    <td><%= authority_group.auth_group_name %></td>
+    <td><%= authority_group.description %></td>
+    <td>
+      <%= link_to 'Details', admin_authority_group_path(authority_group.id), class: "btn btn-primary pull-right"%>
+      <% if authority_group.destroyable? %>
+        <%= link_to 'Delete', authority_group, method: :delete, class: "btn btn-danger pull-right" %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

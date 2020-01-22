@@ -6,9 +6,9 @@ class Admin::MasqueradesController < Devise::MasqueradesController
   end
 
   private
-  def after_masquerade_path_for(resource)
-    start_masquerading_admin_accounts_path
+
+  def after_back_masquerade_path_for(resource)
+    '/'
   end
 
 end
-
