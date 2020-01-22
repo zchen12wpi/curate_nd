@@ -33,11 +33,16 @@ class Admin::AuthorityGroupsController < ApplicationController
 
   def update
     @admin_authority_group.assign_attributes(admin_authority_group_params)
-    if valid_update? && @admin_authority_group.save
-      @notice = 'Authority Group was successfully updated.'
-      redirect_to admin_authority_group_path(@admin_authority_group), notice: @notice
-    else
-      flash.now[:error] = (Array.wrap(@notice) << 'Administrative Group was not updated.')
+    begin
+      if valid_update? && @admin_authority_group.save
+        @notice = 'Authority Group was successfully updated.'
+        redirect_to admin_authority_group_path(@admin_authority_group), notice: @notice
+      else
+        flash.now[:error] = (Array.wrap(@notice) << 'Administrative Group was not updated.')
+        render action: 'edit'
+      end
+    rescue ActiveRecord::RecordNotUnique
+      flash.now[:error] = (Array.wrap(@notice) << 'The authority group name must be unique. Please try again.')
       render action: 'edit'
     end
   end
@@ -93,24 +98,28 @@ class Admin::AuthorityGroupsController < ApplicationController
   end
 
   def admin_authority_group_params
-    params.require(:admin_authority_group).permit(:auth_group_name, :description, :controlling_class_name, :associated_group_pid, :authorized_usernames)
+    params.require(:admin_authority_group).permit(:auth_group_name, :description, :controlling_class_name, :associated_group_pid)
   end
 
   def valid_update?
-    @notice = []
-    valid_class = @admin_authority_group.class_exists?
+    # validation preparation
+    class_exists = @admin_authority_group.class_exists?
     valid_group = @admin_authority_group.valid_group_pid?
     valid_name = valid_name_for?(@admin_authority_group)
-    already_exists = already_exists?(@admin_authority_group.auth_group_name)
+    group_name_exists = group_name_exists?(@admin_authority_group.auth_group_name)
+    class_already_used = class_already_in_use?(@admin_authority_group.controlling_class_name)
 
+    # load error messages
+    @notice = []
     # class name is a valid class in app
-    @notice << "Please enter a valid group controlling class name." unless @admin_authority_group.controlling_class_name.blank? || valid_class
+    @notice << "Please enter a valid group controlling class name." unless @admin_authority_group.controlling_class_name.blank? || class_exists
     # group pid is a group
     @notice << "Please enter a valid group pid." unless valid_group
     # cannot duplicate an authority_group_name
-    @notice << 'An Authority Group with this name already exists' if @admin_authority_group.new_record? && already_exists
+    @notice << 'An Authority Group with this name already exists.' if @admin_authority_group.new_record? && group_name_exists
     # if class name given, group name must match name used by class
-    @notice << "Authority Group Name for this controlling class must be '#{@admin_authority_group.controlling_class_name.constantize::AUTH_GROUP_NAME}'" if (valid_name == false && valid_class == true)
+    @notice << "Authority Group Name for this controlling class must be '#{@admin_authority_group.controlling_class_name.constantize::AUTH_GROUP_NAME}'" if (valid_name == false && class_exists == true)
+    @notice << "An Authority Group with this controlling class already exists." if @admin_authority_group.new_record? && class_already_used
     # any errors means invalid authority group
     return false unless @notice.empty?
     true
@@ -124,13 +133,19 @@ class Admin::AuthorityGroupsController < ApplicationController
     @admin_authority_group.authorized_usernames != @new_authorized_usernames
   end
 
-  def already_exists?(group_name)
+  def group_name_exists?(group_name)
     return false if Admin::AuthorityGroup.authority_group_for(auth_group_name: group_name).nil?
+    true
+  end
+
+  def class_already_in_use?(controlling_class_name)
+    return false if controlling_class_name.blank?
+    return false if Admin::AuthorityGroup.find_by(controlling_class_name: controlling_class_name).nil?
     true
   end
 
   def valid_name_for?(authority_group)
     return true if authority_group.class_exists? == false
-    authority_group.auth_group_name == authority_group.controlling_class_name.constantize::AUTH_GROUP_NAME
+    return authority_group.auth_group_name == authority_group.controlling_class_name.constantize::AUTH_GROUP_NAME
   end
 end

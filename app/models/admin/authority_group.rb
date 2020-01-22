@@ -26,7 +26,7 @@ module Admin
 
     def associated_group
       begin
-        return         Hydramata::Group.find(associated_group_pid)
+        return Hydramata::Group.find(associated_group_pid)
       rescue
         return nil
       end
@@ -66,11 +66,8 @@ module Admin
     end
 
     def class_exists?
-      begin
-        controlling_class_name.constantize.is_a?(Class)
-      rescue NameError
-        false
-      end
+      return true if defined? controlling_class_name.constantize::AUTH_GROUP_NAME
+      false
     end
 
     private

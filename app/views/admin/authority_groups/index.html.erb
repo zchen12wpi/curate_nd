@@ -8,6 +8,11 @@
    <h1>Authority Groups</h1>
 <% end %>
 
-<%= link_to 'Create New Group', new_admin_authority_group_path, { class: "btn btn-success" } %>
+<div>
+  <h5>
+    <p><b>Authority groups</b> are used to manage permissions throughout the application. Creating a new group will have no effect until there is a related <b>Controlling Class</b> defined in the application. An <b>Authority Group</b> which has a valid <b>Controlling Class</b> cannot be deleted.</p>
+  </h5>
+</div>
 
 <%= render partial: 'groups' %>
+<%= link_to 'Create New Group', new_admin_authority_group_path, { class: "btn btn-success" } %>
