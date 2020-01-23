@@ -65,8 +65,12 @@ Load the database schema into MySQL:
 ```console
 bundle exec rake db:drop db:create db:schema:load
 ```
+Seed the database with authority groups to give yourself access to the app:
+```console
+bundle exec rake db:seed
+```
 
-To seed database with test data:
+Optional: seed database with sample data:
 ```console
 bundle exec rake db:seed:dev
 ```
