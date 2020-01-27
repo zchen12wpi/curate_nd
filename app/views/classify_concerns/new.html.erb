@@ -40,9 +40,12 @@
           class: "add-button btn btn-primary disabled"
         %>
       </li>
-    <%- end -%>
-    <li class="work-type placeholder" aria-hidden="true"></li>
+    <% end %>
     <li class="work-type placeholder" aria-hidden="true"></li>
     <li class="work-type placeholder" aria-hidden="true"></li>
   </ul>
+
+  <div class="work-type">
+     Are you trying to submit a dissertation to the Graduate School?<%= link_to 'Visit the ETD submission page.', 'https://deposit.library.nd.edu/areas/etd', class: 'btn btn-link', target: "_blank" %>
+  </div>
 </div>
