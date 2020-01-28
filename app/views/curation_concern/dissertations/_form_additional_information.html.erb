@@ -1,10 +1,5 @@
-<fieldset class="required">
-  <legend>Required Information</legend>
-
-  <%= f.input :title,
-    input_html: { class: 'input-xlarge' }
-  %>
-
+<fieldset class="optional prompt">
+  <legend>Additional Information</legend>
   <%= f.input :alternate_title,
     input_html: { class: 'input-xlarge' }
   %>
@@ -40,9 +35,6 @@
 
   <%= render partial: 'curation_concern/base/degree', locals: {f: f, curation_concern: curation_concern} %>
 
-  <% action_name == "new" ? required = true : required = false %>
-  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary', required: required %>
-
   <%= f.input :date,
     label: 'Date of Defense',
     input_html: { class: 'input-xlarge datepicker' }
@@ -67,10 +59,8 @@
     as: :multi_value,
     input_html: { class: 'input-xlarge' }
   %>
-  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
-</fieldset>
 
-<fieldset class="optional prompt">
+  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
 
   <%= f.input :date_created,
     label: 'Cataloged Date',

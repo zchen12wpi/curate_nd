@@ -8,10 +8,12 @@ CatholicDocument:
   open: all
 Dataset:
   open: all
+Dissertation:
+  open: all
 Document:
   open: all
 Etd:
-  open: nobody
+  open: all
 FindingAid:
   open: all
 Image:
@@ -21,6 +23,6 @@ OsfArchive:
 Patent:
   open: all
 SeniorThesis:
-  open: all
+  open: nobody
 Video:
   open: all

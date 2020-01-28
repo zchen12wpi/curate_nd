@@ -21,6 +21,7 @@ Curate.configure do |config|
   config.register_curation_concern :catholic_document
   config.register_curation_concern :patent
   config.register_curation_concern :osf_archive
+  config.register_curation_concern :dissertation
 
   config.application_root_url = Rails.configuration.application_root_url
 
