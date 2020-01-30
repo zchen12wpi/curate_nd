@@ -22,7 +22,8 @@
 
     <% if CurateND::AdminConstraint.is_admin?(current_user) %>
       <li class="divider"></li>
-      <li><%= link_to 'Import OSF archive', new_admin_ingest_osf_archive_path %></li>
+      <li><%= link_to 'Import OSF Archive', new_admin_ingest_osf_archive_path %></li>
     <% end %>
+    <li><%= link_to 'Graduate School Submissions', 'https://deposit.library.nd.edu/areas/etd', target: "_blank" %></li>
   </ul>
 </div>
