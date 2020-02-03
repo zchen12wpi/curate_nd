@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190617162652) do
+ActiveRecord::Schema.define(version: 20190813192509) do
 
   create_table "activity_engine_activities", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -75,11 +75,35 @@ ActiveRecord::Schema.define(version: 20190617162652) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "work_id"
+    t.string   "work_id",    limit: 255
   end
 
   add_index "api_access_tokens", ["sha"], name: "index_api_access_tokens_on_sha", unique: true, using: :btree
   add_index "api_access_tokens", ["user_id"], name: "index_api_access_tokens_on_user_id", using: :btree
+
+  create_table "api_transaction_files", force: :cascade do |t|
+    t.string   "trx_id",       limit: 255, null: false
+    t.string   "file_id",      limit: 255, null: false
+    t.integer  "file_seq_nbr", limit: 4,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "api_transaction_files", ["trx_id", "file_id", "file_seq_nbr"], name: "unique_index", unique: true, using: :btree
+  add_index "api_transaction_files", ["trx_id", "file_id"], name: "index_api_transaction_files_on_trx_id_and_file_id", using: :btree
+
+  create_table "api_transactions", id: false, force: :cascade do |t|
+    t.string   "trx_id",     limit: 255, null: false
+    t.string   "trx_status", limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "work_id",    limit: 255
+  end
+
+  add_index "api_transactions", ["trx_id"], name: "index_api_transactions_on_trx_id", unique: true, using: :btree
+  add_index "api_transactions", ["user_id", "trx_id"], name: "index_api_transactions_on_user_id_and_trx_id", unique: true, using: :btree
+  add_index "api_transactions", ["user_id"], name: "index_api_transactions_on_user_id", using: :btree
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",     limit: 4,   null: false
