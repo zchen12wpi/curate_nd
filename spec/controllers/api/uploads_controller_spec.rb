@@ -8,6 +8,8 @@ describe Api::UploadsController do
   let(:trx) { ApiTransaction.new(trx_id: tid, user_id: user.id, trx_status: "test", work_id: work_id) }
   let(:failed_trx) { double(ApiTransaction) }
   let(:attached_file) { double }
+  let(:successful_response) { instance_double(Net::HTTPResponse, code: '200') }
+  let(:unsuccessful_response) { instance_double(Net::HTTPResponse, code: 500) }
 
   describe '#trx_initiate' do
     context 'with api token which grants access' do
@@ -137,15 +139,33 @@ describe Api::UploadsController do
       before do
         trx.save
         allow(controller).to receive(:callback_url).and_return('some/url')
+        allow(BatchIngestor).to receive(:start_api_ingest).with(tid).and_return(successful_response)
       end
 
       it 'returns 200 and json document' do
         request.headers['X-Api-Token'] = token.sha
         request.headers['HTTP_ACCEPT'] = "application/json"
         post :trx_commit, tid: tid
-        expect(response.status).to eq(200) # ok
-        expect(JSON.parse(response.body).keys).to contain_exactly("trx_id")
         expect(ApiTransaction.find(tid).trx_status).to eq('submitted_for_ingest')
+        expect(JSON.parse(response.body).keys).to contain_exactly("trx_id")
+        expect(response.status).to eq(200) # ok
+      end
+    end
+
+    context 'with Batch Ingestor error' do
+      before do
+        trx.save
+        allow(controller).to receive(:callback_url).and_return('some/url')
+        allow(BatchIngestor).to receive(:start_api_ingest).with(tid).and_return(unsuccessful_response)
+      end
+
+      it 'returns 500 and json document' do
+        request.headers['X-Api-Token'] = token.sha
+        request.headers['HTTP_ACCEPT'] = "application/json"
+        post :trx_commit, tid: tid
+        expect(response.status).to eq(400)
+        expect(JSON.parse(response.body).keys).to contain_exactly("trx_id", "error")
+        expect(response.body).to include("Error submitting ingest request")
       end
     end
 
