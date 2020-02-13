@@ -17,7 +17,6 @@ FactoryGirl.define do
     advisor "Karin Verschoor"
     creator "Somebody Special"
     contributor_attributes({"0"=>{contributor: "Some Body", role: "Some Role"}})
-    degree_attributes [{ "level" => "0", "discipline" => "Computer Science", "name" => "BS" }]
 
 
     before(:create) { |work, evaluator|
