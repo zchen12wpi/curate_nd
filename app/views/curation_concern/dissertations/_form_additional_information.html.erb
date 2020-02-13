@@ -4,11 +4,6 @@
     input_html: { class: 'input-xlarge' }
   %>
 
-  <%= f.input :urn,
-    label: 'URN',
-    input_html: { class: 'input-xlarge' }
-  %>
-
   <%= f.input :creator,
     as: :multi_value,
     label: 'Author',
@@ -33,7 +28,11 @@
     input_html: { class: 'input-xlarge' }
   %>
 
-  <%= render partial: 'curation_concern/base/degree', locals: {f: f, curation_concern: curation_concern} %>
+  <%= f.input :degree_discipline,
+    label: 'Degree Discipline',
+    collection: Dissertation.valid_degree_disciplines,
+    input_html: { class: 'input-xxlarge' }
+  %>
 
   <%= f.input :date,
     label: 'Date of Defense',
@@ -83,18 +82,5 @@
     input_html: { class: 'input-xlarge' }
   %>
 
-  <%= render partial: 'curation_concern/base/contributor', locals: {f: f, curation_concern: curation_concern} %>
-  <%= f.input :note,
-    as: :text,
-    input_html: {
-      class: 'input-xxxlarge rich-textarea-js',
-      rows: '5'
-    }
-  %>
-
-  <%= f.input :code_list,
-    as: :string,
-    label: "Banner Code" ,
-    input_html: { class: 'input-large' }
-  %>
+  <%= render partial: 'contributor', locals: {f: f, curation_concern: curation_concern} %>
 </fieldset>

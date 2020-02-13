@@ -25,6 +25,7 @@
 //= require select2
 //
 //= require manage_repeating_sections
+//= require manage_repeating_dissertation_sections
 //= require manage_repeating_fields
 //= require toggle_details
 //= require help_modal
@@ -72,6 +73,7 @@ Blacklight.onLoad(function() {
   });
   $('.multi_value.control-group').manage_fields();
   $('.table.contributors').manage_sections();
+  $('.table.dissertation_contributors').manage_dissertation_sections();
   $('form.new_document, form.edit_document').formInputMask({
     trigger: '#document_type',
     fields: {

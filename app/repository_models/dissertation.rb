@@ -33,30 +33,17 @@ class Dissertation < ActiveFedora::Base
   end
 
   def human_readable_type
-    degree.map(&:level).flatten.to_sentence
+    self.type.present? ? type.titleize :  self.class.human_readable_type
   end
 
   def preferred_file_format
     ''
   end
 
-  has_attributes :degree, :degree_attributes, datastream: :descMetadata, multiple: true
   has_attributes :contributor, :contributor_attributes, datastream: :descMetadata, multiple: true
-
-  def build_degree
-    descMetadata.degree = [DissertationDatastream::Degree.new(RDF::Repository.new)]
-  end
 
   def build_contributor
     descMetadata.contributor = [DissertationDatastream::Contributor.new(RDF::Repository.new)]
-  end
-
-  def self.valid_degree_levels
-    ControlledVocabularyService.labels_for_predicate_name(name: "degree_level")
-  end
-
-  def self.valid_degree_names
-    ControlledVocabularyService.labels_for_predicate_name(name: "degree")
   end
 
   def self.valid_degree_disciplines
@@ -79,7 +66,9 @@ class Dissertation < ActiveFedora::Base
               datastream: :descMetadata, multiple: true,
               label: "Departments and Units",
               hint: "Departments and Units that creator belong to."
-
+    ds.attribute :degree_discipline, datastream: :descMetadata,
+              label: "Degree Discipline",
+              multiple: false
     ds.attribute :creator,
       multiple: true,
       label: "Author(s)",
@@ -129,15 +118,9 @@ class Dissertation < ActiveFedora::Base
     ds.attribute :permission,
       label: "Use Permission",
       multiple: false
-    ds.attribute :note,
-      label: "Note",
-      multiple: false,
-      hint: " Additional information regarding the thesis. Example: acceptance note of the department"
     ds.attribute :publisher,
       hint: "An entity responsible for making the resource available. This is typically the group most directly responsible for digitizing and/or archiving the work.",
       multiple: true
-    ds.attribute :code_list,
-      datastream: :descMetadata, multiple: false
     ds.attribute :coverage_temporal,
       multiple: true,
       label: "Coverage Temporal",
@@ -151,8 +134,6 @@ class Dissertation < ActiveFedora::Base
     ds.attribute :format,
       multiple: false,
       editable: false
-    ds.attribute :urn,
-      multiple: false
     ds.attribute :date,
       default: lambda { Date.today.to_s("%Y-%m-%d") },
       multiple: false,
@@ -192,10 +173,7 @@ class Dissertation < ActiveFedora::Base
     hint: "CTRL-Click (Windows) or CMD-Click (Mac) to select multiple files."
 
   def to_solr(solr_doc={}, opts={})
-    solr_doc[Solrizer.solr_name('degree_name', :stored_searchable)] = degree_name
-    solr_doc[Solrizer.solr_name('degree_disciplines', :stored_searchable)] = degree_disciplines
     solr_doc[Solrizer.solr_name('contributors', :stored_searchable)] = contributors_list
-    solr_doc[Solrizer.solr_name('degree_department_acronyms', :stored_searchable)] = department_acronyms
     if(cdate = Array.wrap(self.date_created).compact).blank?
       solr_doc[Solrizer.solr_name('desc_metadata__date_created', :stored_searchable)] = cdate.first
     end
@@ -209,20 +187,5 @@ class Dissertation < ActiveFedora::Base
       @contributors_list << con.contributor.first
     end
     @contributors_list
-  end
-
-  def degree_name
-    self.degree.first.name
-  end
-
-  def degree_disciplines
-    self.degree.map {|m| m.discipline }.flatten.compact
-  end
-
-  def department_acronyms
-    # degree_disciplines.collect{|disc| department_acronym_mapper[disc] }.compact
-    degree_disciplines.collect do |disc|
-      ControlledVocabularyService.labels_for_predicate_name(name: 'program_name')
-    end.compact
   end
 end

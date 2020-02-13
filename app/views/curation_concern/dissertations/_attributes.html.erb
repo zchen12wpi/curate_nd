@@ -24,9 +24,8 @@
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
-  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Document Type') %>
+  <%= curation_concern_attribute_to_html(curation_concern, :type,                       'Dissertation Type') %>
   <%= curation_concern_attribute_to_html(curation_concern, :alternate_title, 'Alternate Title') %>
-  <%= curation_concern_attribute_to_html(curation_concern, :urn, 'URN') %>
   <% curation_concern.creator.each do |author| %>
     <tr><th> Author </th><td><%= raw author %></td></tr>
   <% end %>
@@ -38,22 +37,6 @@
       <tr><th> Contributor </th><td><%= contributor.contributor.first %>, <%= contributor.role.first %></td></tr>
     <% end %>
   <% end %>
-  <% curation_concern.degree.each do |degree| %>
-    <tr><th> Degree Level </th><td><%= degree.level.first %></td></tr>
-    <% degree.discipline.each do |disc| %>
-      <% unless disc.blank? %>
-        <tr><th> Degree Discipline </th><td><%= disc %></td></tr>
-      <% end %>
-    <% end %>
-    <tr>
-      <th> Degree Name </th>
-      <td>
-        <% degree_name_item = ControlledVocabularyService.item_for_predicate_name(name: 'degree', term_key: 'term_label', term_value: degree.name.first, ignore_not_found: true) %>
-        <%= degree_name_item.nil? ? degree.name.first : degree_name_item.term_label %>
-      </td>
-    </tr>
-  <% end %>
-  <%= curation_concern_attribute_to_html(curation_concern, :code_list, "Banner Code") %>
   <%= curation_concern_attribute_to_html(curation_concern, :date, 'Defense Date') %>
   <tr><th> Submission Date </th><td><%= curation_concern.date_uploaded %></td></tr>
   <%= curation_concern_attribute_to_html(curation_concern, :country, 'Country') %>
@@ -71,7 +54,7 @@
   <%= curation_concern_attribute_to_html(curation_concern, :embargo_release_date, "Embargo Release Date") %>
   <%= curation_concern_attribute_to_html(curation_concern, :rights, "Content License") %>
   <%= curation_concern_attribute_to_html(curation_concern, :permission, "Use Permissions") %>
-  <%= curation_concern_attribute_to_html(curation_concern, :note, "Note") %>
+  <%= curation_concern_attribute_to_html(curation_concern, :degree_discipline, "Degree Discipline") %>
   <%= decode_administrative_unit(curation_concern, :administrative_unit, "Departments and Units") %>
   <%= curation_concern_attribute_to_html(curation_concern, :library_collections, "Member of") %>
   <%= curation_concern_attribute_to_html(

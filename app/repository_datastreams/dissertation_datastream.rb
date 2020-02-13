@@ -35,6 +35,11 @@ class DissertationDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
+    map.degree_discipline(to: 'discipline', in: RDF::EtdMs) do |index|
+      index.type :text
+      index.as :stored_searchable
+    end
+
     map.advisor(in: RDF::Relators, to: 'ths')
 
     map.abstract(to: "description#abstract", in: RDF::QualifiedDC) do |index|
@@ -48,8 +53,6 @@ class DissertationDatastream < ActiveFedora::NtriplesRDFDatastream
     map.rights(in: RDF::DC) do |index|
       index.as :stored_searchable, :facetable
     end
-
-    map.note(in: RDF::QualifiedDC, to: 'description#note')
 
     map.format(in: RDF::QualifiedDC, to: 'format#mimetype')
 
@@ -87,14 +90,8 @@ class DissertationDatastream < ActiveFedora::NtriplesRDFDatastream
       index.as :stored_searchable, :facetable
     end
 
-    map.code_list(to: 'description#code_list', in: RDF::QualifiedDC)
-
     map.identifier(in: RDF::DC) do |index|
       index.as :stored_searchable,:facetable
-    end
-
-    map.urn(to: "identifier#other", in: RDF::QualifiedDC) do |index|
-      index.as :stored_searchable, :symbol
     end
 
     map.doi(to: "identifier#doi", in: RDF::QualifiedDC) do |index|
@@ -108,8 +105,6 @@ class DissertationDatastream < ActiveFedora::NtriplesRDFDatastream
 
     map.country(in: RDF::QualifiedDC, to: 'publisher#country')
 
-    map.degree(in: RDF::EtdMs, class_name: 'Degree')
-
     map.contributor(in: RDF::DC, class_name: 'Contributor')
 
     map.relation(:in => RDF::DC) do |index|
@@ -122,36 +117,7 @@ class DissertationDatastream < ActiveFedora::NtriplesRDFDatastream
     map.permission({in: RDF::QualifiedDC, to: 'rights#permissions'})
   end
 
-  accepts_nested_attributes_for :degree, :contributor
-  class Degree
-    include ActiveFedora::RdfObject
-
-    map_predicates do |map|
-
-      map.name(in: RDF::EtdMs) do |index|
-        index.type :text
-        index.as :stored_searchable
-      end
-
-      map.level(in: RDF::EtdMs) do |index|
-        index.type :text
-        index.as :stored_searchable
-      end
-
-      map.discipline(in: RDF::EtdMs) do |index|
-        index.type :text
-        index.as :stored_searchable
-      end
-    end
-
-    def persisted?
-      rdf_subject.present?
-    end
-
-    def id
-      rdf_subject.to_s if persisted?
-    end
-  end
+  accepts_nested_attributes_for :contributor
   class Contributor
     include ActiveFedora::RdfObject
 
