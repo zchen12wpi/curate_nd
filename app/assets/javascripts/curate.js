@@ -72,8 +72,8 @@ Blacklight.onLoad(function() {
     }
   });
   $('.multi_value.control-group').manage_fields();
-  $('.table.contributors').manage_sections();
-  $('.table.dissertation_contributors').manage_sections({ worktype: 'dissertation' });
+  $('.table.etd.contributors').manage_sections({ worktype: 'etd' });
+  $('.table.dissertation.contributors').manage_sections({ worktype: 'dissertation' });
   $('form.new_document, form.edit_document').formInputMask({
     trigger: '#document_type',
     fields: {
