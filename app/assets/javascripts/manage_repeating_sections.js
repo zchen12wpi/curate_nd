@@ -7,6 +7,7 @@
 
   $.widget( 'curate.manage_sections', {
     options: {
+      worktype: 'etd',
       change: null,
       add: null,
       remove: null
@@ -66,15 +67,18 @@
                        .first()
                        .children('div')
                        .children('input')
-                       .attr('id', 'etd_contributor_attributes_' + rowNumber + '_contributor')
-                       .attr('name', 'etd[contributor_attributes][' + rowNumber + '][contributor]');
+                       .attr('id',
+                        this.options.worktype + '_contributor_attributes_' + rowNumber + '_contributor')
+                       .attr('name', this.options.worktype + '[contributor_attributes][' + rowNumber + '][contributor]');
 
         var $roleFieldCell = $newField.children('td.role')
                        .last()
                        .children('div')
                        .children('input')
-                       .attr('id', 'etd_contributor_attributes_' + rowNumber + '_role')
-                       .attr('name', 'etd[contributor_attributes][' + rowNumber + '][role]');
+                       .attr('id',
+                       this.options.worktype + '_contributor_attributes_' + rowNumber + '_role')
+                       .attr('name',
+                       this.options.worktype + '[contributor_attributes][' + rowNumber + '][role]');
 
         $nameFieldCell.val('');
         $roleFieldCell.val('');

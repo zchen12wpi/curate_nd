@@ -8,7 +8,7 @@ RSpec.describe DataciteMapper do
     allow(Curate).to receive(:permanent_url_for).and_return('purl')
   end
 
-  [SeniorThesis, Dataset, Image, Document, Article, Etd, CatholicDocument, Audio, Video].each do |model|
+  [SeniorThesis, Dataset, Image, Document, Article, Etd, CatholicDocument, Audio, Video, Dissertation].each do |model|
     context "when called with a #{model}" do
       let(:curation_concern) { model.new(creator: 'Creator', date_uploaded: Date.parse('1/1/1999')) }
 
