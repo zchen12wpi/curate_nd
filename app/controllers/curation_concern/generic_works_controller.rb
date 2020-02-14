@@ -10,9 +10,11 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
     return unless verify_acceptance_of_user_agreement!
     reset_organization_if_necessary
     reset_administrative_unit_if_necessary
-    if actor.create
+    validations = validate_permission_changes
+    if validations[:valid] && actor.create
       after_create_response
     else
+      flash[:error] = validations[:notice]
       setup_form
       respond_with(:curation_concern, curation_concern) do |wants|
         wants.html { render 'new', status: :unprocessable_entity }
@@ -78,9 +80,11 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
   def update
     reset_organization_if_necessary
     reset_administrative_unit_if_necessary
-    if actor.update
+    validations = validate_permission_changes
+    if validations[:valid] && actor.update
       after_update_response
     else
+      flash[:error] = validations[:notice]
       setup_form
       respond_with(:curation_concern, curation_concern) do |wants|
         wants.html { render 'edit', status: :unprocessable_entity }
@@ -126,5 +130,87 @@ class CurationConcern::GenericWorksController < CurationConcern::BaseController
     if params.has_key?(hash_key_for_curation_concern.to_s) && !params[hash_key_for_curation_concern.to_s].has_key?("administrative_unit")
       params[hash_key_for_curation_concern.to_s].merge!('administrative_unit' => [""])
     end
+  end
+
+  private
+
+  def validate_permission_changes
+    # validate combinations of changes with editors & viewers
+    new_editors = collect_perm_changes(find_attributes("record_editors_attributes"))
+    new_viewers = collect_perm_changes(find_attributes("record_viewers_attributes"))
+    valid_editors = valid_editors?(new_editors, new_viewers)
+    return valid_editors unless valid_editors[:valid]
+    valid_viewers = valid_viewers?(new_editors, new_viewers)
+    return valid_viewers unless valid_viewers[:valid]
+
+    new_editor_groups = collect_perm_changes(find_attributes("record_editor_groups_attributes"))
+    new_viewer_groups = collect_perm_changes(find_attributes("record_viewer_groups_attributes"))
+    valid_editor_groups = valid_editor_groups?(new_editor_groups, new_viewer_groups)
+    return valid_editor_groups unless valid_editor_groups[:valid]
+    valid_viewer_groups = valid_viewer_groups?(new_editor_groups, new_viewer_groups)
+    return valid_viewer_groups unless valid_viewer_groups[:valid]
+
+    { valid: true, notice: nil }
+  end
+
+  def valid_editors?(editors, viewers)
+    return { valid: true } unless editors.has_key?(:create)
+    return { valid: true } if editors[:create].empty?
+    editors[:create].each do |id|
+      return { valid: false,
+               notice: 'Attempting to add same user as both editor and viewer' } if (curation_concern.record_viewers.map(&:pid).include?(id) &&
+               !(viewers.has_key?(:remove) && viewers[:remove].include?(id))) ||
+               (viewers.has_key?(:create) && viewers[:create].include?(id))
+    end
+    { valid: true }
+  end
+
+  def valid_editor_groups?(editors, viewers)
+    return { valid: true } unless editors.has_key?(:create)
+    return { valid: true } if editors[:create].empty?
+    editors[:create].each do |id|
+      return { valid: false,
+               notice: 'Attempting to add same group as both editor and viewer' } if
+               (curation_concern.record_viewer_groups.map(&:pid).include?(id) &&
+               !(viewers.has_key?(:remove) && viewers[:remove].include?(id))) ||
+               (viewers.has_key?(:create) && viewers[:create].include?(id))
+    end
+    { valid: true }
+  end
+
+  def valid_viewers?(editors, viewers)
+    return { valid: true } unless viewers.has_key?(:create)
+    return { valid: true } if viewers[:create].empty?
+    viewers[:create].each do |id|
+      return { valid: false,
+               notice: 'Attempting to add same user as both editor and viewer' } if
+               (curation_concern.record_editors.map(&:pid).include?(id) &&
+               !(editors.has_key?(:remove) && editors[:remove].include?(id))) ||
+               (editors.has_key?(:create) && editors[:create].include?(id))
+    end
+    { valid: true }
+  end
+
+  def valid_viewer_groups?(editors, viewers)
+    return { valid: true } unless viewers.has_key?(:create)
+    return { valid: true } if viewers[:create].empty?
+    viewers[:create].each do |id|
+      return { valid: false,
+               notice: 'Attempting to add same group as both editor and viewer' } if (curation_concern.record_editor_groups.map(&:pid).include?(id) &&
+               !(editors.has_key?(:remove) && editors[:remove].include?(id))) ||
+               (editors.has_key?(:create) && editors[:create].include?(id))
+    end
+    { valid: true }
+  end
+
+  def collect_perm_changes(perms_to_validate)
+    CurationConcern::WorkPermission.decide_action(perms_to_validate, params[:action])
+  end
+
+  def find_attributes(attr_key)
+    if params.has_key?(hash_key_for_curation_concern.to_s) && params[hash_key_for_curation_concern.to_s].has_key?(attr_key)
+      return params[hash_key_for_curation_concern.to_s][attr_key]
+    end
+    {}
   end
 end

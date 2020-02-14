@@ -1,16 +1,6 @@
-<fieldset class="required">
-  <legend>Required Information</legend>
-
-  <%= f.input :title,
-    input_html: { class: 'input-xlarge' }
-  %>
-
+<fieldset class="optional prompt">
+  <legend>Additional Information</legend>
   <%= f.input :alternate_title,
-    input_html: { class: 'input-xlarge' }
-  %>
-
-  <%= f.input :urn,
-    label: 'URN',
     input_html: { class: 'input-xlarge' }
   %>
 
@@ -38,10 +28,11 @@
     input_html: { class: 'input-xlarge' }
   %>
 
-  <%= render partial: 'degree', locals: {f: f, curation_concern: curation_concern} %>
-
-  <% action_name == "new" ? required = true : required = false %>
-  <%= render 'form_administrative_unit', curation_concern: curation_concern, f: f, select_label_id: 'add-to-administrative-unit', button_class: 'btn btn-primary', required: required %>
+  <%= f.input :degree_discipline,
+    label: 'Degree Discipline',
+    collection: Dissertation.valid_degree_disciplines,
+    input_html: { class: 'input-xxlarge' }
+  %>
 
   <%= f.input :date,
     label: 'Date of Defense',
@@ -67,10 +58,8 @@
     as: :multi_value,
     input_html: { class: 'input-xlarge' }
   %>
-  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
-</fieldset>
 
-<fieldset class="optional prompt">
+  <%= f.input :alephIdentifier,         as: :multi_value, label: "Aleph Record Number" , input_html: { class: 'input-xlarge' } %>
 
   <%= f.input :date_created,
     label: 'Cataloged Date',
@@ -92,18 +81,6 @@
     as: :multi_value,
     input_html: { class: 'input-xlarge' }
   %>
-  <%= render partial: 'curation_concern/base/contributor', locals: {f: f, curation_concern: curation_concern} %>
-  <%= f.input :note,
-    as: :text,
-    input_html: {
-      class: 'input-xxxlarge rich-textarea-js',
-      rows: '5'
-    }
-  %>
 
-  <%= f.input :code_list,
-    as: :string,
-    label: "Banner Code" ,
-    input_html: { class: 'input-large' }
-  %>
+  <%= render partial: 'curation_concern/base/contributor', locals: {f: f, curation_concern: curation_concern} %>
 </fieldset>

@@ -10,37 +10,37 @@ class CurationConcern::WorkPermission
     true
   end
 
-  private
+  def self.decide_action(attributes_collection, action_type)
+    sorted = { remove: [], create: [] }
+    return sorted unless attributes_collection
 
-    def self.decide_action(attributes_collection, action_type)
-      sorted = { remove: [], create: [] }
-      return sorted unless attributes_collection
-      if attributes_collection.is_a? Hash
-        keys = attributes_collection.keys
-        attributes_collection = if keys.include?('id') || keys.include?(:id)
-          Array(attributes_collection)
-        else
-          attributes_collection.sort_by { |i, _| i.to_i }.map { |_, attributes| attributes }
-        end
+    if attributes_collection.is_a? Hash
+      keys = attributes_collection.keys
+      attributes_collection = if keys.include?('id') || keys.include?(:id)
+        Array(attributes_collection)
+      else
+        attributes_collection.sort_by { |i, _| i.to_i }.map { |_, attributes| attributes }
       end
-
-      attributes_collection.each do |attributes|
-        if attributes['id'].present?
-          if has_destroy_flag?(attributes)
-            sorted[:remove] << attributes['id']
-          elsif has_new_flag?(attributes)
-            user = FindOrCreateUser.call(attributes['id'], attributes['name'])
-            sorted[:create] << user.person.id
-          elsif action_type == :create || action_type == :update
-            sorted[:create] << attributes['id']
-          end
-        end
-      end
-
-      sorted
     end
 
+    attributes_collection.each do |attributes|
+      if attributes['id'].present?
+        if has_destroy_flag?(attributes)
+          sorted[:remove] << attributes['id']
+        elsif has_new_flag?(attributes)
+          user = FindOrCreateUser.call(attributes['id'], attributes['name'])
+          sorted[:create] << user.person.id
+        elsif action_type.to_sym == :create || action_type.to_sym == :update
+          sorted[:create] << attributes['id']
+        end
+      end
+    end
+
+    sorted
+  end
+
     private
+
     def self.has_destroy_flag?(hash)
       ["1", "true"].include?(hash['_destroy'].to_s)
     end
