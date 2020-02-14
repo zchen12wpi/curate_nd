@@ -25,7 +25,6 @@
 //= require select2
 //
 //= require manage_repeating_sections
-//= require manage_repeating_dissertation_sections
 //= require manage_repeating_fields
 //= require toggle_details
 //= require help_modal
