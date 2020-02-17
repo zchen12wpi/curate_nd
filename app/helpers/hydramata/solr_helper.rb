@@ -15,7 +15,7 @@ module Hydramata::SolrHelper
     # logged-in
     if current_user.present?
 
-      unless current_user.manager?
+      unless (current_user.manager? || current_user.can?(:read, :all))
         group_query = ""
 
         # Used to build the group access portion of the query

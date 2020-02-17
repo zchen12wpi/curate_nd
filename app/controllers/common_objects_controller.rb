@@ -33,11 +33,11 @@ class CommonObjectsController < ApplicationController
   # May need to override in catalog_controller as well, but only doing it here for now.
   def enforce_show_permissions(opts={})
     permissions = current_ability.permissions_doc(params[:id])
-    if permissions.under_embargo? && !can?(:edit, permissions)
+    if permissions.under_embargo? && !(can?(:edit, permissions) || can?(:read, :all))
       raise Hydra::AccessDenied.new("This item is under embargo.  You do not have sufficient access privileges to read this document.", :edit, params[:id])
     end
     unless can? :read, curation_concern
-      raise Hydra::AccessDenied.new("You do not have sufficient access privileges to read this document, which has been marked private.", :read, params[:id])
+      raise Hydra::AccessDenied.new("You do not have sufficient access privileges to read this document, which has been marked private.", :show, params[:id])
     end
   end
 
