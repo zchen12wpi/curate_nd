@@ -16,6 +16,14 @@ class BatchIngestor
     new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
   end
 
+  def self.start_api_ingest(trx_id, options = {})
+    job_id_prefix = 'api-ingest'
+    task_function_name = 'start-api-ingest'
+    content_map = {}
+    content_map['api_transactions'] = { "trx_id": "#{trx_id}" }
+    new(options).submit_ingest(job_id_prefix, task_function_name, content_map)
+  end
+
   def self.submit_fedora_only(work_files, generic_files, options ={})
     job_id_prefix = 'fedora-only'
     task_function_name = 'start-fedora-only'
