@@ -1,30 +1,36 @@
 <%= simple_form_for [:curation_concern, curation_concern], :html => { :onsubmit => "return validateCurationConcernForm(this);", "data-model-name" => curation_concern.class.model_name.singular } do |f| %>
-<% if request.filtered_parameters["action"] == "edit" %>
-  <% multiple_allowed = false %>
-  <% file_is_required = false %>
-<% else %>
-  <% multiple_allowed = true %>
-  <% file_is_required = true %>
-<% end %>
+  <% if request.filtered_parameters["action"] == "edit" %>
+    <% multiple_allowed = false %>
+    <% file_is_required = false %>
+  <% else %>
+    <% multiple_allowed = true %>
+    <% file_is_required = true %>
+  <% end %>
+  <% updating_file = curation_concern.persisted? %>
+  <% bendo_file = updating_file ? Bendo::DatastreamPresenter.new(datastream: curation_concern.datastreams.fetch('content')).valid? : false %>
 
   <div class="row">
     <div class="span6">
       <fieldset class="required">
         <legend>
-          <%= curation_concern.persisted? ? "Update Your File" : "Attach Your File" %>
+          <%= updating_file ? "Update Your File" : "Attach Your File" %>
           <% if parent.preferred_file_format.present? %>
             <small><%= parent.preferred_file_format %> is preferred.</small>
           <% end %>
         </legend>
-          <% button_label = curation_concern.persisted? ? "Upload new version" : "Upload files" %>
+        <% button_label = updating_file ? "Upload new version" : "Upload files" %>
+        <% if bendo_file %>
+          <p>This file was originally uploaded using the batch ingest system. Contact the CurateND Support team at <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Requesting assistance updating a file') %> to replace or update the file.</p>
+        <% else %>
           <%= f.input :file,
                       as: :file,
                       input_html: {multiple: multiple_allowed},
                       label: button_label,
                       required: file_is_required
           %>
+        <% end %>
       </fieldset>
-      <% if curation_concern.persisted? %>
+      <% if updating_file %>
         <fieldset class="optional prompt">
           <%= f.input :filename, input_html: { class: 'input-xlarge'} %>
           <%= f.input :description, input_html: { class: 'span6'}  %>
@@ -40,7 +46,7 @@
   <div class="row">
     <div class="span12 form-actions">
       <%= f.submit(
-        (curation_concern.persisted? ? "Update Attached File" : %(Attach to #{parent.human_readable_type})),
+        (updating_file ? "Update Attached File" : %(Attach to #{parent.human_readable_type})),
         class: 'btn btn-primary'
       ) %>
       <%= link_to 'Cancel', common_object_path(parent), class: 'btn btn-link' %>
