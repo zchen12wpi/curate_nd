@@ -1,6 +1,10 @@
 <fieldset id="set-access-controls">
   <legend>
-    Record Visibility and Access
+    <% if curation_concern.is_a?(GenericFile) %>
+      File Access
+    <% else %>
+      Record Visibility
+    <% end %>
   </legend>
 
   <section class="help-block">
@@ -33,7 +37,10 @@
   </div>
 
   <section class="help-block">
-    <p>Both the record and the attached file(s) will have the same visibility by default. The visibilities can be adjusted individually after uploading. <a href="/faqs">Contact us</a> for help or with questions.</p>
+    <% if curation_concern.new? %>
+      <p>Both the record and the attached file(s) will have the same visibility by default. The visibilities can be adjusted individually after uploading.
+    <% end %>
+    <a href="/faqs">Contact us</a> for help or with questions.</p>
   </section>
 
 </fieldset>

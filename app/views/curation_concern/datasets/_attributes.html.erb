@@ -26,7 +26,7 @@
     <%= curation_concern_attribute_to_html(curation_concern, :spatial_coverage, "Spatial Coverage") %>
     <%= curation_concern_attribute_to_html(curation_concern, :temporal_coverage, "Temporal Coverage") %>
     <tr>
-      <th>Record Visibility and Access</th>
+      <th>Record Visibility</th>
       <td>
         <%= render partial: 'permission_badge', locals: { curation_concern: curation_concern } %>
       </td>
