@@ -62,7 +62,7 @@ group :default do
   gem 'nest', '~> 1.1'
   gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
-  gem 'nokogiri', '~> 1.8'
+  gem 'nokogiri', '~> 1.10'
   gem 'omniauth-oktaoauth'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
