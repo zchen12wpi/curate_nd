@@ -22,7 +22,8 @@
           <dt>Description:</dt>
           <dd class="readmore"><%= escape_html_for_solr_text(truncate(render_index_field_value(document: solr_doc, field: 'desc_metadata__description_tesim'), length: 500)).html_safe %></dd>
         <% end %>
-        <%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %>
+        <dt>Record Visibility: </dt>
+        <dd><%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %></dd>
     </div>
   </div>
 </li>
