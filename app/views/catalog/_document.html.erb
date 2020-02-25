@@ -33,7 +33,8 @@
           <dt>Date Created: </dt>
           <dd><%= document.created %></dd>
         <% end %>
-        <%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %>
+        <dt>Record Visibility: </dt>
+        <dd><%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %></dd>
       </dl>
 
       <a href="" title="Click for more details"><i id="expand_<%= noid %>" class="icon-plus icon-large show-details"></i></a>

@@ -25,7 +25,8 @@
           <dt>Date:</dt>
           <dd><%= solr_doc['desc_metadata__date_uploaded_dtsi'].first %></dd>
         <% end %>
-        <%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %>
+        <dt>Record Visibility: </dt>
+        <dd><%= AccessRenderer.new(nil, solr_doc).badge(show_date: false) %></dd>
       </dl>
     </div>
 
