@@ -4,7 +4,7 @@ module Bendo
   class DatastreamPresenter
     attr_reader :datastream
 
-    def initialize(datastream:, service_url: Bendo.url)
+    def initialize(datastream:)
       @datastream = datastream
     end
 
