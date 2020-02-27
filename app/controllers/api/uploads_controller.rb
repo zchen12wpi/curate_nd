@@ -127,7 +127,7 @@ class Api::UploadsController < Api::BaseController
       # update trx status
       ApiTransaction.set_status_based_on(trx_id: trx_id, action: :commit)
       # submit to ingestor
-      ingestor_status = BatchIngestor.start_api_ingest(trx_id).code
+      ingestor_status = BatchIngestor.start_api_ingest(trx_id)
       if ingestor_status == '200'
         render json: { trx_id: trx_id }, status: :ok
       else
