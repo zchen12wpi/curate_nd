@@ -127,12 +127,8 @@ class Api::UploadsController < Api::BaseController
       # update trx status
       ApiTransaction.set_status_based_on(trx_id: trx_id, action: :commit)
       # submit to ingestor
-      ingestor_status = BatchIngestor.start_api_ingest(trx_id).code
-      if ingestor_status == '200'
-        render json: { trx_id: trx_id }, status: :ok
-      else
-        render json: { trx_id: trx_id, error: 'Error submitting ingest request' }, status: :bad_request
-      end
+      BatchIngestor.start_api_ingest(trx_id)
+      render json: { trx_id: trx_id, status: 'Submitted for batch ingest' }, status: :ok
     else # unauthenticated user, error 401
       render json: { error: 'Token is required to authenticate user' },
              status: :unauthorized
