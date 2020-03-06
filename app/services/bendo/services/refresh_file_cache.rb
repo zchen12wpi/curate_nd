@@ -14,6 +14,8 @@ module Bendo
         Response = Struct.new(:status, :body)
 
         def self.call(slugs)
+          # Use a prematurely terminated GET request to warm the Bendo cache
+          #
           # Refreshing the cache is the same processes as requesting a downlowd.
           # The only difference is that the GET request should be closed instead
           # of waiting for all of the body to be sent. The easiest way to do
@@ -32,7 +34,16 @@ module Bendo
                   end
                 end
               end
-            rescue NoMethodError
+            rescue NoMethodError, IOError
+              # Since the connection is closed while the response body is still
+              # being processed the request ends up nil. This causes either an
+              # NoMethodError because read_body tries to check if the request
+              # is `#closed?`. Or an IOError since the next read to the stream
+              # will notice the connection is closed and raise this error.
+              #
+              # Both errors are expected since closing an HTTP GET connection
+              # early is not valid behavior according to the HTTP spec.
+              # https://stackoverflow.com/questions/2180183/how-to-cancel-ruby-nethttp-request
               logger.info "Prematurely and deliberately terminated request for #{uri} to warm the cache"
             end
             memo[item_slug] = status

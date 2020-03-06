@@ -68,13 +68,14 @@ class Api::ShowItemPresenter
     data = {}
     object.datastreams.each do |dsname, ds|
       next if dsname == 'DC'
+      next if dsname == 'owner'
       method_key = "process_#{dsname.gsub('-', '')}".to_sym
       if respond_to?(method_key, true)
         parsed_data = self.send(method_key, ds)
         data = merge_hashes(data, parsed_data)
       else
-        datastream_error = Rails.logger.error("#{item_id}: unknown datastream #{dsname}")
-        Raven.capture_exception(datastream_error)
+        error_message = "#{item_id}: unknown datastream #{dsname}"
+        Raven.capture_exception(error_message)
       end
     end
     data
