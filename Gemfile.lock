@@ -304,6 +304,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
     fastercsv (1.5.5)
     ffi (1.11.1)
     figaro (1.1.1)
@@ -436,6 +438,10 @@ GEM
       activesupport (>= 3.2.18)
       i18n
       nokogiri
+    oai (1.0.1)
+      builder (>= 3.1.0)
+      faraday
+      faraday_middleware
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
       jwt (>= 1.0, < 3.0)
@@ -779,6 +785,7 @@ DEPENDENCIES
   noid (~> 0.6.6)
   noids_client!
   nokogiri (~> 1.10)
+  oai (~> 1.0.0)
   omniauth-oauth2
   omniauth-oktaoauth
   omniauth-orcid (= 0.6)
