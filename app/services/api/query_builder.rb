@@ -6,6 +6,9 @@ class Api::QueryBuilder
     deposit_date: ["system_create_dtsi"],
     modify_date: ["system_modified_dtsi"],
   }.freeze
+  CONFIGURATION_KEY_MAX_VALUE = {
+    rows: Api::ItemsController.blacklight_config.max_per_page
+  }.freeze
 
   AND_SEARCH_SEPARATOR = '^'
   OR_SEARCH_SEPARATOR = ','
@@ -23,6 +26,9 @@ class Api::QueryBuilder
       key = term.to_sym
       if VALID_KEYS_AND_SEARCH_FIELDNAMES[key].present?
         return false unless valid_value(key, value)
+      end
+      if CONFIGURATION_KEY_MAX_VALUE[key].present?
+        return false  if value.to_i > CONFIGURATION_KEY_MAX_VALUE[key].to_i
       end
     end
     return true
