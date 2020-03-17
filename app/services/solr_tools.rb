@@ -22,6 +22,7 @@ class SolrTools
   end
 
   # query solr over the specificied time range
+  # for all und objects that are not af-models of Profiles, People, or Hydramata Groups
   def self.get_solr_list(fromtime, totime)
     docs = []
     start = 0
@@ -29,7 +30,7 @@ class SolrTools
       solr_params = {
         rows: 100,
         start: start,
-        fq: "id: und* AND timestamp:[ #{fromtime} TO #{totime}]",
+        fq: "id: und* AND timestamp:[ #{fromtime} TO #{totime}] AND NOT active_fedora_model_ssi: Person AND NOT active_fedora_model_ssi: Profile* AND NOT active_fedora_model_ssi: Hydramata*",
         fl: 'id'
       }
       start += 100
