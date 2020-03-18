@@ -140,6 +140,7 @@ CurateNd::Application.routes.draw do
 
   # manage ingest callbacks: batch ingest responds with a post
   post 'uploads/:tid/callback/:response', controller: 'admin/callbacks', action: 'callback_response'
+  match "oai", to: "oai#index", via: [:get, :post]
 
   # clean up tokens
   resources :temporary_access_tokens, path: 'access_tokens', except: [:show]
