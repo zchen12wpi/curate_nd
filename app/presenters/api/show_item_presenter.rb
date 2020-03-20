@@ -46,8 +46,8 @@ class Api::ShowItemPresenter
     if item.respond_to?('generic_files')
       relationship_data['containedFiles'] = add_item_files
     end
-    if item.respond_to?('library_collection_members')
-      relationship_data['members'] = add_collection_members
+    if item.is_a?(LibraryCollection)
+      relationship_data['membersUrl'] = url_for(pid: item_id, url_type: :members)
     end
     relationship_data
   end
@@ -65,19 +65,6 @@ class Api::ShowItemPresenter
       file_data << single_file
     end
     file_data
-  end
-
-  def add_collection_members
-    member_data = []
-    item.library_collection_members.each do |member|
-      member_id = Sufia::Noid.noidify(member.id)
-      member_content = {
-        'id' => member_id
-      }
-      single_member = member_content.merge(process_datastreams(member))
-      member_data << single_member
-    end
-    member_data
   end
 
   def process_datastreams(object)
@@ -302,6 +289,8 @@ class Api::ShowItemPresenter
       return File.join(root_url, route_helper.api_item_download_path(id))
     when :thumbnail
       return File.join(root_url, route_helper.api_item_download_path(id), '/thumbnail')
+    when :members
+      return File.join(root_url, "#{route_helper.api_items_path}?part_of=#{id}")
     else # default is show
       return File.join(root_url, route_helper.api_item_path(id))
     end
