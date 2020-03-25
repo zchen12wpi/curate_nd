@@ -34,7 +34,6 @@ class OaiProvider < OAI::Provider::Base
       # gem supports fields = [ :title, :creator, :subject, :description, :publisher, # :contributor, :date, :type, :format, :identifier, # :source, :language, :relation, :coverage, :rights]
 
       # we support fields = [:id, :timestamp, :worktype, :title, :date_uploaded, :creator, :administrative_unit, :abstract, :description, :date_modified]
-
       if record.respond_to?(:format_for_oai)
         oai_record = record.format_for_oai
       else

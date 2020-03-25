@@ -5,4 +5,5 @@ class OaiProvider < OAI::Provider::Base
   admin_email ""
   source_model CurationConcernProvider.new
   sample_id "1"
+  register_format(CurationConcernProvider::CurateFormat.instance)
 end
