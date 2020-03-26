@@ -5,9 +5,12 @@ class OaiProvider < OAI::Provider::Base
       @schema = 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd'
       @namespace = 'http://www.openarchives.org/OAI/2.0/oai_dc/'
       @element_namespace = 'dc'
-      @fields = [ :title, :creator, :subject, :description, :publisher,
-                  :contributor, :date, :type, :format, :identifier,
-                  :source, :language, :relation, :coverage, :rights]
+      # class created to replace DublinCore in order to override fields included in response.
+      @fields = [:identifier, :timestamp, :date_uploaded, :date_modified,
+                 :worktype, :title, :subject, :description, :abstract,
+                 :creator, :publisher, :contributor,
+                 :format, :identifier, :source, :language,
+                 :relation, :coverage, :rights, :administrative_unit]
     end
 
     def header_specification
