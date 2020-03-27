@@ -46,6 +46,9 @@ class Api::ShowItemPresenter
     if item.respond_to?('generic_files')
       relationship_data['containedFiles'] = add_item_files
     end
+    if item.is_a?(LibraryCollection)
+      relationship_data['membersUrl'] = url_for(pid: item_id, url_type: :members)
+    end
     relationship_data
   end
 
@@ -68,13 +71,14 @@ class Api::ShowItemPresenter
     data = {}
     object.datastreams.each do |dsname, ds|
       next if dsname == 'DC'
+      next if dsname == 'owner'
       method_key = "process_#{dsname.gsub('-', '')}".to_sym
       if respond_to?(method_key, true)
         parsed_data = self.send(method_key, ds)
         data = merge_hashes(data, parsed_data)
       else
-        datastream_error = Rails.logger.error("#{item_id}: unknown datastream #{dsname}")
-        Raven.capture_exception(datastream_error)
+        error_message = "#{item_id}: unknown datastream #{dsname}"
+        Raven.capture_exception(error_message)
       end
     end
     data
@@ -285,6 +289,8 @@ class Api::ShowItemPresenter
       return File.join(root_url, route_helper.api_item_download_path(id))
     when :thumbnail
       return File.join(root_url, route_helper.api_item_download_path(id), '/thumbnail')
+    when :members
+      return File.join(root_url, "#{route_helper.api_items_path}?part_of=#{id}")
     else # default is show
       return File.join(root_url, route_helper.api_item_path(id))
     end

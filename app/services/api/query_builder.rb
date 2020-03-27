@@ -1,10 +1,16 @@
 class Api::QueryBuilder
+  include Sufia::Noid
+
   VALID_KEYS_AND_SEARCH_FIELDNAMES = {
     type: ["active_fedora_model_ssi", "desc_metadata__type_tesim"],
     editor: ["edit_access_person_ssim"],
     depositor: ["depositor_tesim"],
     deposit_date: ["system_create_dtsi"],
     modify_date: ["system_modified_dtsi"],
+    part_of: ["library_collections_pathnames_tesim"]
+  }.freeze
+  CONFIGURATION_KEY_MAX_VALUE = {
+    rows: Api::ItemsController.blacklight_config.max_per_page
   }.freeze
 
   AND_SEARCH_SEPARATOR = '^'
@@ -23,6 +29,9 @@ class Api::QueryBuilder
       key = term.to_sym
       if VALID_KEYS_AND_SEARCH_FIELDNAMES[key].present?
         return false unless valid_value(key, value)
+      end
+      if CONFIGURATION_KEY_MAX_VALUE[key].present?
+        return false  if value.to_i > CONFIGURATION_KEY_MAX_VALUE[key].to_i
       end
     end
     return true
@@ -88,6 +97,10 @@ class Api::QueryBuilder
     return "[#{comparison_date.xmlschema} TO *]" if search_data.first == DATE_SEARCH_TERMS.last
     return "[* TO #{comparison_date.xmlschema}]" if search_data.first == DATE_SEARCH_TERMS.first
     "[#{comparison_date.xmlschema.to_s} TO #{(comparison_date + 1.days).xmlschema}]"
+  end
+
+  def filter_by_part_of(term)
+    Sufia::Noid.namespaceize(term)
   end
 
   # builds filter query search for a given key & array of elements

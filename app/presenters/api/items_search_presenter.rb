@@ -146,6 +146,10 @@ class Api::ItemsSearchPresenter
     def include_modify_date
       @item.fetch('system_modified_dtsi', "")
     end
+
+    def include_part_of
+      @item.fetch('library_collections_pathnames_tesim', "")
+    end
   end
 
   class Pager
