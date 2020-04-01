@@ -4,19 +4,19 @@ CurateND has a REST API that you can use to search, download, and upload content
 
 ## Getting Started
 
-# Examples
+## Examples
 
 This section gives a few examples of interacting and doing simple things with the CurateND API.
 
-## Get a file
+### Get a file
 
 If you know the id of the file you want, you can download it by using the download endpoint. The `-O` option saves this to the file `1n79h41832s`.
 
 ~~~sh
-$ curl -O https://curate.nd.edu/api/items/download/1n79h41832s
+$ curl -s -O https://curate.nd.edu/api/items/download/1n79h41832s
 ~~~
 
-## Do a Search
+### Do a Search
 
 This searches for "aristotle sculpture" and returns the first 10 results.
 
@@ -173,14 +173,11 @@ $ curl https://curate.nd.edu/api/items/1j92g734t1t
 }
 ~~~
 
-## Upload a file
+### Upload a file
 
+## Reference
 
-
-
-# Reference
-
-## Data Model
+### Data Model
 
 CurateND represents deposits as a graph of _objects_.
 There is an object to represent the deposit as a whole, as well as additional objects for each individual file.
@@ -202,14 +199,14 @@ Access to specific people or groups can be given explicitly.
 There are also two special groups: `registered` which includes everyone who is logged in to the system,
 and `public` which is everyone accessing the system whether logged in or not.
 
-## Metadata Fields
+### Metadata Fields
 
-## Authentication
+### Authentication
 
 While you can use the API unauthenticated, you will only have access to `Public` items, and you cannot create any works or deposit any files.
 Additionally, all the unauthenticated requests share the same rate-limiting bucket, so the resulting performance is dependent on who else is using the API.
 
-Any valid user account (that is, every valid Notre Dame Netid) can get a unique token to use with the API.
+Any valid user account (that is, every valid Notre Dame NetID) can get a unique token to use with the API.
 Your client should then pass this token to the API using the `X-Api-Token` header.
 For example, if I had the token `ABCD12345` I would pass this token using curl as follows.
 
@@ -217,10 +214,21 @@ For example, if I had the token `ABCD12345` I would pass this token using curl a
 curl -H "x-api-token: ABCD12345" https://curate.nd.edu/api/items
 ~~~
 
-### [how to get token]
+### Getting an API Token
 
+You can get an API token by logging in to CurateND.
+Under the "Manage" menu choose "API Access Tokens".
+Click on the button labeled "Create New Token".
+You will see a token appear in the list.
+That is a token that allows access to CurateND as your NetID.
+Please keep it secure—anyone who has this token can perform actions on CurateND as _you_.
 
 ## Endpoints
+
+This section describes each API endpoint in detail.
+There are some commonalities.
+
+### Headers
 
 General information on using endpoints.
 Error codes.
@@ -234,19 +242,18 @@ Headers.
 
 ### Item information
 
-```
+~~~url
 /api/items/:id
-```
+~~~
 
 ### Item Download
 
-```
+~~~url
 /api/items/download/:id
-```
+~~~
 
 ### Search
 
 ### Create time-limited access link
 
 ### Upload
-
