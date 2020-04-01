@@ -57,42 +57,43 @@
     <dl>
       <dt>What is CurateND?</dt>
       <dd>
-        CurateND is the institutional repository for the University of Notre Dame.
+        CurateND is the institutional repository for the University of Notre Dame managed by Hesburgh Libraries.
         It is for preserving and providing access to scholarship (e.g. articles, manuscripts, research data), pedagogical materials, and other
-        scholarly material the university has acquired (e.g. digitization of rare books, and the back catalog of the Notre Dame Press).
+        scholarly material the university has acquired (e.g. the back catalog of the Notre Dame Press).
         One of the largest collections is the <a href="/catalog?f_inclusive[human_readable_type_sim][]=Doctoral+Dissertation&f_inclusive[human_readable_type_sim][]=Master's+Thesis">Electronic Dissertations and Theses</a> since 2005.
       </dd>
 
       <dt>How can CurateND help me?</dt>
       <dd>
-      CurateND helps researchers by providing a place to deposit data, articles, and notes.
-      This lets you make your scholarship available to others without needing to put it on your own website.
-      The links will not break and the content will be available and preserved even after you leave the University.
-      CurateND can provide a DOI, allowing you to cite these items in published scholarship.
-      For example, you can deposit your dataset and then cite it using the DOI that CurateND creates.
+      CurateND helps researchers by providing a place to deposit data, articles, notes, grant outputs, and publications.
+      <ul>
+        <li>Scholarship deposited can be available to others without needing to put it on your own website. Content will be available and preserved even after you leave the University.</li>
+        <li>CurateND can provide a <a href="https://en.wikipedia.org/wiki/Digital_object_identifier"> Digital Object Identifier (DOI)</a>, allowing you to cite these items in published scholarship. For example, you can deposit your dataset and then cite it using the DOI that CurateND creates.</li>
+        <li>DOIs can be created to submit with grant applications and other publication proposals.</li>
+      </ul>
       </dd>
 
       <dt>Who may use CurateND?</dt>
       <dd>
-        Anyone in the world may access the public content in CurateND.
+        Anyone may access the public content in CurateND.
         People with a valid NetID may log in to deposit items and to view files marked as &ldquo;Notre Dame Only&rdquo;.
       </dd>
 
-      <dt>Do I need a special account to log in to CurateND?</dt>
+      <dt>How do I log in to CurateND?</dt>
       <dd>
-      CurateND uses the central university login service, so you can log in using the same NetID and password
-      used for other campus services, such as email.
+      CurateND uses the central university login service, so you log in with the same NetID and password
+      used for other campus services.
       </dd>
 
       <dt>Can people unaffiliated with Notre Dame deposit works?</dt>
       <dd>Only people with a valid NetID can can deposit items.
       If you do not have a valid NetID and the items you would like to deposit were done either with a project affiliated with Notre Dame,
-      or while you yourself were at Notre Dame, please <%= contact_curatend_support %> about the possibility of deposit.
+      or while you yourself were at Notre Dame, please <%= contact_curatend_support %>.
       </dd>
 
       <dt>Do people who leave or graduate from Notre Dame still have access to CurateND?</dt>
       <dd>
-        People who leave or graduate from Notre Dame can only upload files or view private items until their university NetID is deactivated,
+        People who leave or graduate from Notre Dame can only upload files and view private items until their university NetID is deactivated,
         which usually happens a few months after leaving.
         After that, they can still search and view the public content in CurateND.
       </dd>
@@ -108,7 +109,7 @@
       Other items, such as publications, are in the catalog because publishers have already provided records for them.
       In that case, if a copy of the article is available publicly in CurateND, then it will be
       linked to from the library catalog page for the article.
-      Otherwise, items in CurateND are not automatically added to the library catalog at the moment.
+      Otherwise, items in CurateND are not automatically added to the library catalog at the moment. Please contact <%= contact_curatend_support %> if you would like your item to be discoverable in the catalog.
       </dd>
 
       <dt>What is a DOI?</dt>
@@ -137,15 +138,6 @@
         Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works.
       </dd>
 
-      <dt>What other licensing options are available?</dt>
-      <dd>
-         The button below lists information on each of the licenses available in CurateND.
-      </dd>
-        <p>
-          <a href="#licenseModal" role="button" class="btn fright" data-toggle="modal">Help me choose a license</a>
-          <%= render :partial => "curation_concern/base/license_modal" %>
-        </p>
-
       <dt>How do I deposit a dissertation?</dt>
       <dd>
       Submit electronic dissertations for fulfilling Graduate School requirements using <a href="https://deposit.library.nd.edu/areas/etd">this submission portal</a>.
@@ -153,14 +145,8 @@
 
       <dt>How do I deposit a large number of collections or files?</dt>
       <dd>
-        If you have a large number of files&mdash;more than a dozen or so&mdash;please <%= contact_curatend_support %>, and we can work with you directly.
+        If you have a large number of files&mdash;more than a dozen or so&mdash or large files (greater than 250 MB);please <%= contact_curatend_support %>, and we can work with you directly.
         We have tools to organize and upload large groups of files.
-      </dd>
-
-      <dt>How do I find items I have previously deposited?</dt>
-      <dd>
-        Try searching for your work from inside CurateND itself.
-        If any items are not public you will need to log in to see them in the search results.
       </dd>
 
       <dt>What does preservation mean? Can anyone edit the documents I deposit?</dt>
@@ -168,7 +154,7 @@
         Preservation means we are concerned about keeping your files intact in perpetuity.
         To do this we keep many copies of your files, and we verify that they do not change over time.
         If a copy should have an error or disappear, we will replace it using another copy.
-        We also pay attention to obsolete file formats (e.g. <a href="https://en.wikipedia.org/wiki/WordStar">WordStar</a>), and try to migrate your files into more modern formats.
+        We also pay attention to obsolete file formats, and try to migrate your files into more modern formats.
         And we never edit your submitted files.
       </dd>
 
