@@ -69,6 +69,10 @@ class LibraryCollection < ActiveFedora::Base
     solr_doc
   end
 
+  def terms_for_display
+    self.descMetadata.class.fields
+  end
+
   private :date_uploaded=, :date_modified=
 
   private

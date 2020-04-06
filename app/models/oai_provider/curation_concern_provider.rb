@@ -1,10 +1,12 @@
 class OaiProvider
   class CurationConcernProvider < OAI::Provider::Model
-    def initialize()
-      @limit = nil
+    def initialize(controller: nil)
       @identifier_field = 'identifier'
       @timestamp_field = 'timestamp'
+      @controller = controller
+      @limit = 12
     end
+    attr_reader :controller, :limit
 
     def earliest
       Time.zone.at(0)
@@ -16,9 +18,34 @@ class OaiProvider
 
     def find(selector, options = {})
       if selector == :all
-        raise NotImplementedError.new
+        response_data = begin
+          if options[:resumption_token]
+            options = next_set(options[:resumption_token])
+          end
+          controller.load_data(options.merge(rows: limit))
+        end
+        wrap_results(response_data, options)
       else
         format_response_terms(ActiveFedora::Base.find(selector, cast: true))
+      end
+    end
+
+    def next_set(token_string)
+      token = OAI::Provider::ResumptionToken.parse(token_string)
+      token.to_conditions_hash.merge(page: token.last)
+    end
+
+    def wrap_results(response_data, options)
+      response = response_data.first
+      document_list = response_data.last
+      formatted_results = format_response_list(document_list)
+      if response_data.first.last_page?
+        formatted_results
+      else
+        OAI::Provider::PartialResult.new(
+        formatted_results,
+        OAI::Provider::ResumptionToken.new(options.merge(last: response.next_page))
+      )
       end
     end
 
@@ -32,6 +59,14 @@ class OaiProvider
         response_object[term] = value unless value.blank?
       end
       Struct.new(*response_object.keys).new(*response_object.values)
+    end
+
+    def format_response_list(record_list)
+      formatted_list = []
+      record_list.map(&:to_model).each do |item|
+        formatted_list  << format_response_terms(item)
+      end
+      formatted_list
     end
 
     class CurateFormat < ::OAI::Provider::Metadata::Format
