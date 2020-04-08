@@ -43,7 +43,16 @@ class FedoraTools
     output_list = {}
    
     input_list.each do |pid, record|
-      output_list[pid]= record.datastreams['bendo-item'].content  unless record.datastreams['bendo-item'].empty?
+      output_list[pid]= record  unless record.datastreams['bendo-item'].empty?
+    end
+    output_list
+  end
+
+  def self.setup_bendo_datastreams(input_list)
+    output_list = {}
+   
+    input_list.each do |pid, record|
+      output_list[pid]= record
     end
     output_list
   end
@@ -53,6 +62,30 @@ class FedoraTools
     # parse info:fedora/afmodel:Whatever -> Whatever (use :)
     case afmodel.split(':')[2]
     when "Article", "Dataset", "Document", "Etd", "FindingAid", "Image", "Patent", "SeniorThesis", "Video", "LibraryCollection"
+      return true
+    else
+      return false
+    end
+  end
+
+  # returns trues if fedora afmodel is a Generic File or Linked Resource type, false otherwise
+
+  def self.is_file_or_resource(afmodel)
+    # parse info:fedora/afmodel:Whatever -> Whatever (use :)
+    case afmodel.split(':')[2]
+    when "GenericFile", "LinkedResource"
+      return true
+    else
+      return false
+    end
+  end
+
+  # returns trues if fedora afmodel is a LibraryCollection, false otherwise
+
+  def self.is_library_collection(afmodel)
+    # parse info:fedora/afmodel:Whatever -> Whatever (use :)
+    case afmodel.split(':')[2]
+    when "LibraryCollection"
       return true
     else
       return false

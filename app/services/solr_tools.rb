@@ -5,8 +5,9 @@ require 'time'
 class SolrTools
   # Check SOLR for records since timestamp file
   def self.changed_since(timestamp_file)
+    to_file = ENV.has_key?('BENDOSYNC_TOFILE') ? ENV['BENDOSYNC_TOFILE'] :  '/home/app/curatend/shared/system/totime'.freeze
     from = get_fromtime(timestamp_file)
-    to = get_totime
+    to = get_totime(to_file)
     get_solr_list(from, to)
   end
 
@@ -17,8 +18,10 @@ class SolrTools
     File.mtime(timestamp_file).utc.iso8601
   end
 
-  def self.get_totime
-    'NOW'
+  # add option to set to_time from file (mostly cwforfro special cases and testing)
+  def self.get_totime(timestamp_file)
+    return 'NOW' unless FileTest.exists?(timestamp_file)
+    File.mtime(timestamp_file).utc.iso8601
   end
 
   # query solr over the specificied time range
