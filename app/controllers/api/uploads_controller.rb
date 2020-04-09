@@ -153,9 +153,8 @@ class Api::UploadsController < Api::BaseController
 
     def work_metadata_content_for(work_id)
       # comes in as json in request body
-      content = request.body().to_s
-      metadata_content = {}
-      metadata_content = content if (!content.nil? && valid_json?(content))
+      content = request.body.read
+      metadata_content = parse_json(content)
       metadata_content[:work_id] = work_id
       metadata_content
     end
@@ -187,11 +186,13 @@ class Api::UploadsController < Api::BaseController
       Sufia::Noid.noidify(Sufia::IdService.mint)
     end
 
-    # identify bad json
-    def valid_json?(json)
-      JSON.parse(json)
-       return true
+    # handle content
+    def parse_json(content)
+      return {} if content.nil?
+      begin
+        JSON.parse(content)
       rescue JSON::ParserError => e
-       return false
+        return {}
+      end
     end
 end
