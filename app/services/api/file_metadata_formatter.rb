@@ -29,6 +29,8 @@ module Api
       metadata_hash['@context']['dc'] =  'http://purl.org/dc/terms/'
       metadata_hash['@context']['nd'] =  'https://library.nd.edu/ns/terms/'
       metadata_hash['@context']['und'] = 'https://curate.nd.edu/show/'
+      metadata_hash['content-meta'] = {} unless metadata_hash['content-meta']
+      metadata_hash['content-meta']['label']  = file_name.to_s unless metadata_hash['content-meta']['label']
       metadata_hash['@id'] = "und:#{file_id}"
       metadata_hash['nd:filename'] = file_name.to_s
       metadata_hash['dc:title'] = file_name.to_s
