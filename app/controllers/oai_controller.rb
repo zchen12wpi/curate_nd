@@ -16,10 +16,6 @@ class OaiController < CatalogController
     render body: response, content_type: "text/xml"
   end
 
-  def valid_search_request_syntax?(options)
-    Oai::QueryBuilder.new.valid_request?(options)
-  end
-
   private
 
     def oai_params

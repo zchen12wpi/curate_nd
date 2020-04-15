@@ -4,7 +4,7 @@ class OaiProvider
       @identifier_field = 'identifier'
       @timestamp_field = 'timestamp'
       @controller = controller
-      @limit = 12
+      @limit = 100
     end
     attr_reader :controller, :limit
 
@@ -31,13 +31,17 @@ class OaiProvider
     end
 
     def load_data(options = {})
-      if controller.valid_search_request_syntax?(options)
+      if valid_search_request_syntax?(options)
         controller.params.merge!(options)
         # returns [ Blacklight::SolrResponse, Array(SolrDocument) ]
         (response, document_list) = controller.get_search_results
       else
         return nil
       end
+    end
+
+    def valid_search_request_syntax?(options)
+      Oai::QueryBuilder.new.valid_request?(options)
     end
 
     def next_set(token_string)
