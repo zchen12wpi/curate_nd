@@ -22,11 +22,21 @@ class OaiProvider
           if options[:resumption_token]
             options = next_set(options[:resumption_token])
           end
-          controller.load_data(options.merge(rows: limit))
+          load_data(options.merge(rows: limit))
         end
         wrap_results(response_data, options)
       else
         format_response_terms(ActiveFedora::Base.find(selector, cast: true))
+      end
+    end
+
+    def load_data(options = {})
+      if controller.valid_search_request_syntax?(options)
+        controller.params.merge!(options)
+        # returns [ Blacklight::SolrResponse, Array(SolrDocument) ]
+        (response, document_list) = controller.get_search_results
+      else
+        return nil
       end
     end
 

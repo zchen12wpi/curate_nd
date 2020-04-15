@@ -16,24 +16,14 @@ class OaiController < CatalogController
     render body: response, content_type: "text/xml"
   end
 
-  def load_data(options = {})
-    if valid_search_request_syntax?(options)
-      params.merge!(options)
-      # returns [ Blacklight::SolrResponse, Array(SolrDocument) ]
-      (@response, @document_list) = get_search_results
-    else
-      return nil
-    end
+  def valid_search_request_syntax?(options)
+    Oai::QueryBuilder.new.valid_request?(options)
   end
 
   private
 
     def oai_params
       params.permit(:verb, :identifier, :metadataPrefix, :set, :from, :until, :resumptionToken)
-    end
-
-    def valid_search_request_syntax?(options)
-      Oai::QueryBuilder.new.valid_request?(options)
     end
 
     def build_oai_query(solr_parameters, user_parameters)
