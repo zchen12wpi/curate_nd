@@ -36,7 +36,7 @@ class OaiProvider
         # returns [ Blacklight::SolrResponse, Array(SolrDocument) ]
         (response, document_list) = controller.get_search_results
       else
-        return nil
+        raise OAI::ArgumentException
       end
     end
 
@@ -50,6 +50,7 @@ class OaiProvider
     end
 
     def wrap_results(response_data, options)
+      return nil if response_data.nil?
       response = response_data.first
       document_list = response_data.last
       formatted_results = format_response_list(document_list)
@@ -83,6 +84,25 @@ class OaiProvider
       formatted_list
     end
 
+    def sets
+      sets_array = []
+      Curate.configuration.registered_curation_concern_types.sort.collect(&:constantize).each do |curation_concern|
+        sets_array.push({ spec: "model:#{curation_concern}",
+                       name: curation_concern.to_s,
+                       description: "All model #{curation_concern.human_readable_type} objects" })
+      end
+      LibraryCollection.all.each do |collection|
+        sets_array.push({ spec: "collection:#{collection.id}",
+                       name: "Collection: #{collection.title}",
+                       description: collection.description })
+      end
+      set_list = []
+      sets_array.each do |values|
+        set_list.push(OAI::Set.new(values))
+      end
+      set_list
+    end
+
     class CurateFormat < ::OAI::Provider::Metadata::Format
       def initialize
         @prefix = 'oai_dc' # This prefix is important for registered formats
@@ -90,11 +110,13 @@ class OaiProvider
         @namespace = 'http://www.openarchives.org/OAI/2.0/oai_dc/'
         @element_namespace = 'dc'
         # class created to replace DublinCore in order to override fields included in response.
-        @fields = [:identifier, :timestamp, :date_uploaded, :date_modified,
-                   :worktype, :title, :subject, :description, :abstract,
+        @fields = [:identifier, :worktype, :date_uploaded,
+                   :date_modified, :title, :subject,
+                   :description, :abstract,
                    :creator, :publisher, :contributor,
-                   :format, :identifier, :source, :language,
-                   :relation, :coverage, :rights, :administrative_unit]
+                   :format, :source, :language,
+                   :relation, :coverage, :rights,
+                   :administrative_unit]
       end
 
       def header_specification
