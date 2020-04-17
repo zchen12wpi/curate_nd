@@ -3,7 +3,11 @@ class OaiProvider < OAI::Provider::Base
   repository_url 'http://localhost/provider'
   record_prefix "oai"
   admin_email ""
-  source_model CurationConcernProvider.new
   sample_id "1"
   register_format(CurationConcernProvider::CurateFormat.instance)
+
+  def initialize(controller:)
+    super({ provider_context: :instance_based })
+    self.model= CurationConcernProvider.new(controller: controller)
+  end
 end
