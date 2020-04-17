@@ -10,12 +10,6 @@ class Oai::QueryBuilder
     model: "type"
   }
 
-  attr_reader :current_user
-
-  def initialize
-    @current_user = nil
-  end
-
   def valid_request?(user_parameters)
     user_parameters.each do |term, value|
       (search_key, search_value) = search_terms_for(term, value)
