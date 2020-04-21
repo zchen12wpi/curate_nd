@@ -57,6 +57,7 @@ CurateNd::Application.configure do
   end
 
   config.logger = Logger.new(STDOUT)
+  config.default_oai_limit = 5
 
   # Uncomment to enable background jobs in development.
   # Note: you will also need to run `bundle exec rake resque:pool`

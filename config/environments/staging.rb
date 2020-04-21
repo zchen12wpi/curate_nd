@@ -42,6 +42,7 @@ CurateNd::Application.configure do
   config.manifest_builder_url = "https://presentation-iiif.library.nd.edu/"
 
   config.fits_path = '/opt/fits/current/fits.sh'
+  config.default_oai_limit = 100
 
   begin
     # Why the explicit require? Because the headless workers of pre-production

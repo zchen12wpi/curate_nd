@@ -4,7 +4,11 @@ class OaiProvider
       @identifier_field = 'identifier'
       @timestamp_field = 'timestamp'
       @controller = controller
-      @limit = 100
+      @limit = begin
+        Rails.configuration.default_oai_limit
+      rescue NoMethodError
+        100
+      end
     end
     attr_reader :controller, :limit
 
@@ -26,7 +30,11 @@ class OaiProvider
         end
         wrap_results(response_data, options)
       else
-        format_response_terms(ActiveFedora::Base.find(selector, cast: true))
+        begin
+          format_response_terms(ActiveFedora::Base.find(selector, cast: true))
+        rescue ActiveFedora::ObjectNotFoundError
+          return nil
+        end
       end
     end
 

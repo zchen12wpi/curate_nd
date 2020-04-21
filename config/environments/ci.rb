@@ -34,6 +34,7 @@ CurateNd::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.application_root_url = "http://localhost:3000"
+  config.default_oai_limit = 5
 
   # for iiif image viewer
   config.manifest_viewer = "https://viewer-iiif.library.nd.edu/universalviewer/index.html#?manifest="

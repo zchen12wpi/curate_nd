@@ -42,6 +42,7 @@ CurateNd::Application.configure do
   config.manifest_builder_url = "https://presentation-iiif.library.nd.edu/"
 
   config.bucket_for_ingest = Api::MemoryBucket.new
+  config.default_oai_limit = 1
 
   if ENV['FULL_STACK']
     require 'clamav'
