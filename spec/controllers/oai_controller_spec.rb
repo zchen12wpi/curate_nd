@@ -135,7 +135,7 @@ describe OaiController do
         end
       end
 
-      context 'with set filtering by collection' do
+      context 'with set filtering by collection', with_relationship_indexing: true do
         let(:oai_params) {{ verb: 'ListRecords', metadataPrefix: 'oai_dc', set: "collection:#{collection.id}" }}
         let(:key) { 'identifier' }
         let(:value) { doc.css(key).to_ary.map(&:text).size }
@@ -149,8 +149,7 @@ describe OaiController do
           end
         end
 
-        # note: this is not finding any collection members. articles are apparently not indexed correctly.
-        xit 'returns 200 with the first page of results and a token to next page' do
+        it 'returns 200 with the first page of results and a token to next page' do
           get :index, oai_params
           expect(value).to eq(1)
           expect(token).to be_a(String)
