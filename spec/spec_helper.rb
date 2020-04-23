@@ -88,7 +88,10 @@ RSpec.configure do |config|
   end
 
   config.before do |example|
-    if !example.metadata[:with_relationship_indexing]
+    if example.metadata[:with_relationship_indexing]
+      Curate.configuration.relationship_reindexer = Curate.configuration.default_relationship_reindexer
+      Curate.configuration.all_relationships_reindexer = Curate.configuration.default_all_relationships_reindexer
+    else
       Curate.configuration.relationship_reindexer = lambda { |pid| true }
       Curate.configuration.all_relationships_reindexer = lambda { true }
     end

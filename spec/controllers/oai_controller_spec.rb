@@ -95,15 +95,18 @@ describe OaiController do
 
     context 'for verb ListIdentifiers' do
       let(:oai_params) {{ verb: 'ListIdentifiers' }}
+      let(:new_params) {{ verb: 'ListIdentifiers', resumptionToken: token }}
       let(:key) { 'identifier' }
       let(:value) { doc.css(key).to_ary.map(&:text).size }
       let(:token) { doc.css('resumptionToken').text }
 
-      it 'returns 200 with the first page of identifiers' do
+      it 'returns 200 with the first page of identifiers and a token to paginate to next page' do
         get :index, oai_params
         expect(response).to be_successful
         expect(value).to eq(1)
         expect(token).to be_a(String)
+        get :index, new_params
+        expect(response).to be_successful
       end
     end
 
@@ -123,6 +126,7 @@ describe OaiController do
 
       context 'with required parameters' do
         let(:oai_params) {{ verb: 'ListRecords', metadataPrefix: 'oai_dc' }}
+        let(:new_params) {{ verb: 'ListRecords', resumptionToken: token }}
         let(:key) { 'identifier' }
         let(:value) { doc.css(key).to_ary.map(&:text).size }
         let(:token) { doc.css('resumptionToken').text }
@@ -132,6 +136,8 @@ describe OaiController do
           expect(response).to be_successful
           expect(value).to eq(1)
           expect(token).to be_a(String)
+          get :index, new_params
+          expect(response).to be_successful
         end
       end
 
