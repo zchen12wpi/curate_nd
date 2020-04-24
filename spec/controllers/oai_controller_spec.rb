@@ -126,18 +126,32 @@ describe OaiController do
 
       context 'with required parameters' do
         let(:oai_params) {{ verb: 'ListRecords', metadataPrefix: 'oai_dc' }}
-        let(:new_params) {{ verb: 'ListRecords', resumptionToken: token }}
         let(:key) { 'identifier' }
-        let(:value) { doc.css(key).to_ary.map(&:text).size }
-        let(:token) { doc.css('resumptionToken').text }
 
-        it 'returns 200 with the first page of results and a token to next page' do
+        it 'returns 200 with the first page of results and paginates via tokens' do
+          # get first page and token to second page
           get :index, oai_params
           expect(response).to be_successful
+          doc = Nokogiri::XML.parse(response.body)
+          token = doc.css('resumptionToken').text
+          value = doc.css(key).to_ary.map(&:text).size
           expect(value).to eq(1)
           expect(token).to be_a(String)
-          get :index, new_params
+          expect(token.split(':').last).to eq('2')
+
+          # get second page and token to third page
+          get :index, { verb: 'ListRecords', resumptionToken: token }
           expect(response).to be_successful
+          doc = Nokogiri::XML.parse(response.body)
+          token = doc.css('resumptionToken').text
+          expect(token.split(':').last).to eq('3')
+
+          # get final (third) page
+          get :index, { verb: 'ListRecords', resumptionToken: token }
+          expect(response).to be_successful
+          doc = Nokogiri::XML.parse(response.body)
+          # final page does not have a token
+          expect(doc.css('resumptionToken')).to be_empty
         end
       end
 
