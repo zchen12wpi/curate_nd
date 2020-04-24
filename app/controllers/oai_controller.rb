@@ -1,3 +1,7 @@
+# Oai standards are different than HTTP standards.
+# * standard HTTP codes are available for representing HTTP events
+# * OAI error handling returns 200 when all is OK at HTTP level, along with
+#   an OAI-PMH error to represent something wrong at the OAI-PMH level (e.g. badVerb, etc)
 class OaiController < CatalogController
   self.solr_search_params_logic = [
     :default_solr_parameters,
