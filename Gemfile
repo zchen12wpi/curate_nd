@@ -63,7 +63,7 @@ group :default do
   gem 'noid', '~> 0.6.6'
   gem 'noids_client', github: 'ndlib/noids_client'
   gem 'nokogiri', '~> 1.10'
-  gem "oai", "~> 1.0.0"
+  gem "oai"
   gem 'omniauth-oktaoauth'
   gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'

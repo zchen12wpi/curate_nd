@@ -34,6 +34,7 @@ CurateNd::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.application_root_url = "http://localhost:3000"
+  config.default_oai_limit = 1
 
   # for iiif image viewer
   config.manifest_viewer = "https://viewer-iiif.library.nd.edu/universalviewer/index.html#?manifest="
@@ -42,9 +43,6 @@ CurateNd::Application.configure do
   Curate.configuration.default_antivirus_instance = lambda {|file_path|
     AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
   }
-
-  Curate.configuration.relationship_reindexer = lambda { |pid| true }
-  Curate.configuration.all_relationships_reindexer = lambda { true }
 
   if ENV['TRAVIS']
     Curate.configuration.characterization_runner = lambda { |file_path|

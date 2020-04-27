@@ -42,6 +42,7 @@ CurateNd::Application.configure do
   config.manifest_builder_url = "https://presentation-iiif.library.nd.edu/"
 
   config.bucket_for_ingest = Api::MemoryBucket.new
+  config.default_oai_limit = 1
 
   if ENV['FULL_STACK']
     require 'clamav'
@@ -53,9 +54,6 @@ CurateNd::Application.configure do
     Curate.configuration.default_antivirus_instance = lambda {|file_path|
       AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE
     }
-
-    Curate.configuration.relationship_reindexer = lambda { |pid| true }
-    Curate.configuration.all_relationships_reindexer = lambda { true }
 
     Curate.configuration.characterization_runner = lambda { |file_path|
       Rails.root.join('spec/support/files/default_fits_output.xml').read

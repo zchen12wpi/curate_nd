@@ -10,6 +10,13 @@ module Curate
   end
 
   class Configuration
+    def initialize
+      @all_relationships_reindexer = default_all_relationships_reindexer
+      @relationship_reindexer = default_relationship_reindexer
+    end
+    attr_accessor :all_relationships_reindexer, :relationship_reindexer
+
+
     # An anonymous function that receives a path to a file
     # and returns AntiVirusScanner::NO_VIRUS_FOUND_RETURN_VALUE if no
     # virus is found; Any other returned value means a virus was found
@@ -20,33 +27,21 @@ module Curate
       }
     end
 
-    def all_relationships_reindexer
-      @all_relationships_reindexer || default_all_relationships_reindexer
-    end
-    attr_writer :all_relationships_reindexer
-
     def default_all_relationships_reindexer
-      @default_all_relationships_reindexer ||= lambda {
+      lambda {
         require 'all_relationships_reindexing_worker'
         Sufia.queue.push(AllRelationshipsReindexerWorker.new)
         true
       }
     end
-    private :default_all_relationships_reindexer
-
-    def relationship_reindexer
-      @relationship_reindexer || default_relationship_reindexer
-    end
-    attr_writer :relationship_reindexer
 
     def default_relationship_reindexer
-      @default_relationship_reindexer ||= lambda { |pid|
+      lambda { |pid|
         require 'object_relationship_reindexing_worker'
         Sufia.queue.push(ObjectRelationshipReindexerWorker.new(pid))
         true
       }
     end
-    private :default_relationship_reindexer
 
     # Configure default search options from config/search_config.yml
     attr_writer :search_config
