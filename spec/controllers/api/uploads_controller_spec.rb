@@ -16,7 +16,7 @@ describe Api::UploadsController do
       it 'returns 200 and json document and updates work_id' do
         request.headers['X-Api-Token'] = token.sha
         request.headers['HTTP_ACCEPT'] = "application/json"
-        get :trx_initiate
+        post :trx_initiate
         expect(response).to be_successful
         expect(JSON.parse(response.body).keys).to contain_exactly("trx_id", "work_id")
       end

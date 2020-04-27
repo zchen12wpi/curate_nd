@@ -6,7 +6,7 @@ class Api::UploadsController < Api::BaseController
   attr_reader :bucket
 
   # begin a new work transaction
-  # GET /api/uploads/new
+  # POST /api/uploads/new
   def trx_initiate
     if @current_user
       trx_id = ApiTransaction.new_trx_id

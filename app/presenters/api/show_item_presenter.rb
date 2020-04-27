@@ -207,13 +207,26 @@ class Api::ShowItemPresenter
           predicate = delete_prefix(string: statement.predicate.to_s)
           subject = statement.object.to_s
           if !subject.blank?
-            data[predicate] = use_url_if_is_a_pid(subject, url_type: :show)
+            new_subject = use_url_if_is_a_pid(subject, url_type: :show)
+            if data[predicate].nil?
+              data[predicate] = new_subject
+            else
+              data[predicate] = merge_subjects(data[predicate], new_subject)
+            end
           end
         end
       rescue RDF::ReaderError => e
       end
     end
     data
+  end
+
+  def merge_subjects(subject1, subject2)
+    if subject1.is_a?(Array)
+      return subject1 << subject2
+    else
+      return [subject1, subject2]
+    end
   end
 
   SINGLE_VALUE_KEYS = ['hasModel', 'hasProfile']
