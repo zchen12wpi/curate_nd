@@ -130,7 +130,7 @@ CurateNd::Application.routes.draw do
     get 'items/download/:id', as: 'item_download', controller: 'downloads', action: 'download'
     resources :items, only: [:show, :index]
     resources :access_tokens, only: [:new, :index, :create, :destroy]
-    get 'uploads/new', as: 'trx_initiate', controller: 'uploads', action: 'trx_initiate'
+    match 'uploads/new', as: 'trx_initiate', controller: 'uploads', action: 'trx_initiate', via: [:get, :post]
     post 'uploads/:tid/file/new', as: 'trx_new_file', controller: 'uploads', action: 'trx_new_file'
     post 'uploads/:tid/file/:fid', as: 'trx_append', controller: 'uploads', action: 'trx_append'
     get 'uploads/:tid/status', controller: 'uploads', action: 'trx_status'
