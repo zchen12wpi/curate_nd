@@ -56,6 +56,10 @@ CurateNd::Application.configure do
     }
   end
 
+  # to run characterization, comment out the characterization_runner above, and
+  # uncomment the line below, filling in the path to fits on your system.
+  # config.fits_path = '/usr/local/bin/fits.sh'
+
   config.logger = Logger.new(STDOUT)
   config.default_oai_limit = 5
 

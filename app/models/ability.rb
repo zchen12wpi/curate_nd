@@ -26,6 +26,12 @@ class Ability
       else
         cannot [:manage], Admin::AuthorityGroup
       end
+
+      if repository_administrators.include?(current_user.to_s)
+        can :characterize_file, :all
+      else
+        cannot :characterize_file, :all
+      end
     end
   end
 
