@@ -22,6 +22,9 @@
       <i class="icon icon-pencil"></i> Edit
     <% end %>
   <% end %>
+  <% if curation_concern.is_a?(GenericFile) && can?(:characterize_file, curation_concern) %>
+    <%= link_to 'Characterize File', characterize_path(id: curation_concern.noid) , class: 'btn btn-primary' %>
+  <% end %>
   <% if RepoManager.with_active_privileges?(current_user) %>
     <%= link_to 'Reindex this Item', admin_reindex_pid_path(curation_concern.id) , class: 'btn btn-primary' %>
   <% end %>

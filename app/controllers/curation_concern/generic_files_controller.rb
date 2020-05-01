@@ -85,6 +85,11 @@ class CurationConcern::GenericFilesController < CurationConcern::BaseController
     end
   end
 
+  def characterize_file
+    Sufia.queue.push(CharacterizeJob.new(curation_concern.pid))
+    redirect_to common_object_path(curation_concern)
+  end
+
   register :actor do
     CurationConcern::Utility.actor(curation_concern, current_user, attributes_for_actor)
   end
