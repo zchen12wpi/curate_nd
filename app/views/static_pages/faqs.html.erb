@@ -57,7 +57,6 @@
     <dl>
       <dt>What is CurateND?</dt>
       <dd>
-        CurateND is the institutional repository for the University of Notre Dame managed by Hesburgh Libraries.
         CurateND is the institutional repository for the University of Notre Dame, managed by Hesburgh Libraries.
         It is for preserving and providing access to scholarship (e.g. articles, manuscripts, research data), pedagogical materials, and other
         scholarly material the university has acquired (e.g. the back catalog of the Notre Dame Press).
@@ -99,6 +98,11 @@
         After that, they can still search and view the public content in CurateND.
       </dd>
 
+      <dt>Are there any fees associated with depositing content in CurateND?</dt>
+      <dd>
+        There are no fees associated with depositing content in CurateND. Content that is deposited in CurateND is available without charge. However, some records in CurateND link to externally hosted or enhanced quality resources that may require access fees.
+      </dd>
+
       <dt>Is CurateND indexed by search engines?</dt>
       <dd>
         CurateND is indexed by all major search engines.
@@ -138,7 +142,16 @@
         A Creative Commons license is one of a <a href="http://creativecommons.org/licenses/">set of licenses</a> providing others various degrees of permission for use.
         Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works.
       </dd>
+      
+      <dt>What other licensing options are available?</dt>
 <dd>
+   The button below lists information on each of the licenses available in CurateND.
+</dd>
+  <p>
+    <a href="#licenseModal" role="button" class="btn fright" data-toggle="modal">Help me choose a license</a>
+    <%= render :partial => "curation_concern/base/license_modal" %>
+  </p>
+
 
       <dt>How do I deposit a dissertation?</dt>
       <dd>
