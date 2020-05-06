@@ -1,3 +1,41 @@
+@import 'global-variables';
+
+.page-main.tos {
+  border-bottom: 1px solid $gray-faint;
+}
+
+.tos-page-header {
+  padding: 1em;
+  text-align: center;
+}
+
+.tos-box {
+  max-width: 62em;
+  margin: 1em auto 0;
+  padding: 1em 0 1em;
+
+  .tos-content {
+    border: 1px solid $gray-faint;
+    padding: 1em 1em 1em;
+
+    ul {
+      margin: 0;
+    }
+
+    li {
+      font-size: 18px;
+      line-height: 1.6;
+      list-style: none;
+      text-indent: 0em;
+    }
+
+    .tos-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+
 .terms-of-service-actions {
   line-height: 4.5;
   text-align: center;
