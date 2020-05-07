@@ -1,0 +1,16 @@
+<%
+  content_for :page_title, construct_page_title('Terms Of Service')
+  content_for :page_main_class, 'tos'
+%>
+
+<header class="tos-page-header">
+  <h1 id="terms-of-service">
+    <%= I18n.t('sufia.product_name')%> Terms of Service Agreement
+  </h1>
+</header>
+
+<div class="tos-box">
+  <a href="javascript:window.print()" class="btn print pull-right"><i class="icon icon-print"></i> Print</a>
+</div>
+
+<%= render partial: '/terms_of_service_agreements/tos_content' %>

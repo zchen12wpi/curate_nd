@@ -1,14 +1,10 @@
 <%
-  on_about_page = current_page?(controller: 'static_pages', action: 'about') rescue false
   on_faqs_page = current_page?(controller: 'static_pages', action: 'faqs') rescue false
-
-  about_page_classes = 'btn btn-primary about'
   faq_page_classes = 'btn btn-primary faq'
-
-  about_page_classes << ' active' if on_about_page
   faq_page_classes << ' active' if on_faqs_page
 %>
-<%= link_to 'About', '/about', class: about_page_classes, role: 'menuitem' %>
+
+<%= render 'shared/about' %>
 <% if current_user %>
   <%= render 'shared/add_content' %>
   <%= render 'shared/my_actions' %>

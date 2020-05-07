@@ -44,6 +44,11 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def tos
+    @hide_title = false;
+    render 'terms_of_service', layout: 'curate_nd_home'
+  end
+
   private
 
   def build_help_request
