@@ -31,10 +31,7 @@
 <div class="faq-wrapper">
   <article class="curate-nd-faqs">
     <h2 id="help">Help</h2>
-    <ul>
-      <li>Questions? Contact the CurateND Support team at <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Questions about CurateND') %></li>
-      <li><%= link_to 'Report a Problem', new_help_request_path, class: 'help-report-a-problem request-help' %></li>
-    </ul>
+    <dd>Questions? Contact the CurateND Support team at <%= mail_to('curate@nd.edu', 'curate@nd.edu', subject: 'Questions about CurateND') %> or use the form to <%= link_to 'report a problem.', new_help_request_path, class: 'help-report-a-problem request-help' %></dd>
 
     <h2 id="policies"><%= link_to 'Governing policies', policies_path %></h2>
     <ul>
@@ -137,25 +134,14 @@
         No. You keep all your rights.
       </dd>
 
-      <dt>What is a Creative Commons license?</dt>
+      <dt>What licensing options are available in CurateND?</dt>
       <dd>
-        A Creative Commons license is one of a <a href="http://creativecommons.org/licenses/">set of licenses</a> providing others various degrees of permission for use.
-        Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works.
+        CurateND allows users to assign a license of their choosing. Primarily, these are Creative Commons license, a <a href="http://creativecommons.org/licenses/">set of licenses</a> providing others various degrees of permission for use. Some of these permissions require attribution, allow for commercial use and re-use, or permit others to make derivative works. For more help choosing a license, use the <a href="http://creativecommons.org/choose/">Creative Commons License Chooser tool.</a> For all of the licenses available in CurateND, including non-Creative Commons options, view the <%= link_to 'List of Licensing Options.', licenses_path %>
       </dd>
-      
-      <dt>What other licensing options are available?</dt>
-<dd>
-   The button below lists information on each of the licenses available in CurateND.
-</dd>
-  <p>
-    <a href="#licenseModal" role="button" class="btn fright" data-toggle="modal">Help me choose a license</a>
-    <%= render :partial => "curation_concern/base/license_modal" %>
-  </p>
-
 
       <dt>How do I deposit a dissertation?</dt>
       <dd>
-      Submit electronic dissertations for fulfilling Graduate School requirements using <a href="https://deposit.library.nd.edu/areas/etd">this submission portal</a>.
+        Submit electronic dissertations for fulfilling Graduate School requirements using <a href="https://deposit.library.nd.edu/areas/etd">this submission portal</a>.
       </dd>
 
       <dt>How do I deposit a large number of collections or files?</dt>
@@ -209,15 +195,7 @@
         See <a href="http://policy.nd.edu/assets/203012/intellectualpropertypolicy.pdf">University Policy on Intellectual Property</a> for guidance.
         Section 2.2 may be the most useful:
         <quote>
-        The University owns all copyrightable materials (including computer programs, software, or
-multi-media productions) that are works made for hire under copyright law or that are
-developed pursuant to University Work unless otherwise provided in this policy. Consistent
-with long-standing academic tradition, the University does not normally claim ownership of
-works such as textbooks, articles, papers, scholarly monographs, or artistic works. Creators
-therefore retain copyright in such works, unless such works are created under a grant or
-sponsored program that specifies ownership rights in some entity other than the Creator, such
-works are the subject of a contract modifying ownership rights, or rights in such works are
-otherwise addressed in this policy.
+          The University owns all copyrightable materials (including computer programs, software, or multi-media productions) that are works made for hire under copyright law or that are developed pursuant to University Work unless otherwise provided in this policy. Consistent with long-standing academic tradition, the University does not normally claim ownership of works such as textbooks, articles, papers, scholarly monographs, or artistic works. Creators therefore retain copyright in such works, unless such works are created under a grant or sponsored program that specifies ownership rights in some entity other than the Creator, such works are the subject of a contract modifying ownership rights, or rights in such works are otherwise addressed in this policy.
         </quote>
       </dd>
     </dl>

@@ -49,6 +49,11 @@ class StaticPagesController < ApplicationController
     render 'terms_of_service', layout: 'curate_nd_home'
   end
 
+  def licenses
+    @hide_title = false;
+    render 'licenses', layout: 'curate_nd_home'
+  end
+
   private
 
   def build_help_request
