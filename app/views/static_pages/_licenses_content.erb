@@ -1,14 +1,16 @@
-    <dd><%= t('sufia.product_name') %> offers the following licenses for deposited items.
+    <p><%= t('sufia.product_name') %> offers the following licenses for deposited items.
     The majority come from the set of <a href="http://creativecommons.org/licenses/">Creative Commons licenses</a>.
     See these <a href="https://creativecommons.org/share-your-work/licensing-examples/">examples</a> of
     uses of Creative Commons licenses.
     (The Creative Commons 4.0 licenses are preferred over the 3.0 licenses, but CurateND offers both to choose from.)
-    </dd>
-    <ul>
-      <% Copyright.active.each do |item| %>
-        <li>
-          <dt><%= item.term_label %></dt>
-          <dd><%= item.description %></dd>
-        </li>
-      <% end %>
-    </ul>
+    </p>
+    <dl>
+      <ul>
+        <% Copyright.active.each do |item| %>
+          <li>
+            <dt><%= item.term_label %></dt>
+            <dd><%= item.description %></dd>
+          </li>
+        <% end %>
+      </ul>
+    </dl>
