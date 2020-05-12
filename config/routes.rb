@@ -183,6 +183,7 @@ CurateNd::Application.routes.draw do
   get 'orcid_settings', to: 'user_profiles#orcid_settings'
   get 'policies', to: 'static_pages#policies'
   get 'tos', to: 'static_pages#tos'
+  get 'licenses', to: 'static_pages#licenses'
   get 'policies/:policyname', to: 'static_pages#policies', as: :named_policy
   get '500', to: 'static_pages#error'
   get '502', to: 'static_pages#error', default: { status_code: '502' }

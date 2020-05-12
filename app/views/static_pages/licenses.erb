@@ -1,0 +1,16 @@
+<%
+  content_for :page_title, construct_page_title('CurateNd License Descriptions')
+  content_for :page_main_class, 'licenses'
+%>
+
+<header class="licenses-page-header">
+  <h1 id="curatend-licenses">
+    <%= I18n.t('sufia.product_name')%> License Descriptions
+  </h1>
+</header>
+
+<div class="licenses-wrapper">
+  <div class="licenses-content"">
+    <%= render partial: '/static_pages/licenses_content' %>
+  </div>
+</div>
