@@ -44,7 +44,6 @@ group :default do
   gem 'hydra-derivatives', '~> 0.0.7'
   gem 'hydra-file_characterization', "~> 0.3.3"
   gem 'hydra-head', "~> 6.4.0"
-  gem 'hydra-remote_identifier', github: 'samvera-labs/hydra-remote_identifier', ref: '9c03618a34e2177471d4ed858c7898609c097c35'
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'jshintrb'

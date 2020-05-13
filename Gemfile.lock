@@ -47,15 +47,6 @@ GIT
       resque (>= 1.22, < 3)
 
 GIT
-  remote: https://github.com/samvera-labs/hydra-remote_identifier.git
-  revision: 9c03618a34e2177471d4ed858c7898609c097c35
-  ref: 9c03618a34e2177471d4ed858c7898609c097c35
-  specs:
-    hydra-remote_identifier (0.6.8)
-      activesupport (>= 3.2.13)
-      rest-client (~> 1.8)
-
-GIT
   remote: https://github.com/samvera-labs/share_notify.git
   revision: dc46fa446612afd8074a63cff980ddfa4c04064f
   specs:
@@ -754,7 +745,6 @@ DEPENDENCIES
   hydra-derivatives (~> 0.0.7)
   hydra-file_characterization (~> 0.3.3)
   hydra-head (~> 6.4.0)
-  hydra-remote_identifier!
   jettywrapper
   jquery-rails
   jshintrb
