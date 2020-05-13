@@ -14,7 +14,7 @@
     <% end %>
   </li>
   <% end %>
-<% if paginator.has_next?  %>
+<% if paginator.total_count > paginator.limit  %>
   <li class="more_facets_link">
     <%= link_to 'Show more', params.merge(id: solr_field, action: 'facet'), class: 'btn btn-link more_facets_link' %>
   </li>

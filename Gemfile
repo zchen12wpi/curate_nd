@@ -18,7 +18,7 @@ group :default do
   gem 'acts_as_follower', '>= 0.1.1', '< 0.3'
   gem 'aws-sdk-s3'
   gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
-  gem 'blacklight', "~> 4.5.0"
+  gem 'blacklight', "> 4.5.0", '< 7.0'
   gem 'bootstrap-datepicker-rails'
   gem 'breach-mitigation-rails'
   gem 'breadcrumbs_on_rails'
@@ -49,7 +49,7 @@ group :default do
   gem 'jquery-rails'
   gem 'jshintrb'
   gem 'json-ld'
-  gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
+  gem 'kaminari'
   gem 'locabulary', github: 'ndlib/locabulary', ref: 'b8ab510dce637d37229d001fedfbc6af1ab510f2'
   gem 'lograge'
   gem 'logstash-event'

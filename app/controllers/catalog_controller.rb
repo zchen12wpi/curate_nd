@@ -126,7 +126,7 @@ module BlacklightFacetExtras
           p
         else
           p = super
-          p.delete(:f) if p[:f].empty?
+          p.delete(:f) if p[:f].empty? unless p[:f].nil?
           p
         end
       end
