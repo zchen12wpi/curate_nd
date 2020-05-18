@@ -18,7 +18,7 @@ group :default do
   gem 'acts_as_follower', '>= 0.1.1', '< 0.3'
   gem 'aws-sdk-s3'
   gem 'blacklight-hierarchy', github: 'ndlib/blacklight-hierarchy', branch: 'master'
-  gem 'blacklight', "~> 4.5.0"
+  gem 'blacklight', "> 4.5.0", '< 7.0'
   gem 'bootstrap-datepicker-rails'
   gem 'breach-mitigation-rails'
   gem 'breadcrumbs_on_rails'
@@ -35,6 +35,7 @@ group :default do
   gem 'devise_masquerade'
   gem 'devise-guests', '~> 0.7'
   gem 'devise', '~>4.7'
+  gem 'dry-equalizer', '0.2.2'
   gem 'ezid-client', '~> 1.8'
   gem 'figaro'
   gem 'flipper'
@@ -44,12 +45,11 @@ group :default do
   gem 'hydra-derivatives', '~> 0.0.7'
   gem 'hydra-file_characterization', "~> 0.3.3"
   gem 'hydra-head', "~> 6.4.0"
-  gem 'hydra-remote_identifier', github: 'samvera-labs/hydra-remote_identifier', ref: '9c03618a34e2177471d4ed858c7898609c097c35'
   gem 'jettywrapper'
   gem 'jquery-rails'
   gem 'jshintrb'
   gem 'json-ld'
-  gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
+  gem 'kaminari'
   gem 'locabulary', github: 'ndlib/locabulary', ref: 'b8ab510dce637d37229d001fedfbc6af1ab510f2'
   gem 'lograge'
   gem 'logstash-event'
