@@ -24,7 +24,7 @@
       )%>
     <% end %>
 
-      <%= search_as_hidden_fields(:omit_keys => [:per_page, :sort]) %>
+      <%= render_hash_as_hidden_fields(params_for_search.except(:per_page, :sort)) %>
       <button class="btn btn-primary submit-sort-per-page">
         <i class="icon-refresh icon-white"></i> Update
       </button>
