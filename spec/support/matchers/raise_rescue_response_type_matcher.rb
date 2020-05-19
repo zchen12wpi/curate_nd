@@ -29,14 +29,14 @@ RSpec::Matchers.define :raise_rescue_response_type do |expected_rescue_response|
     "expected to raise an exception with rescue_response #{@expected_rescue_response.inspect}"
   end
 
-  failure_message_for_should do |text|
+  failure_message do |text|
     text = "expected to raise an exception with rescue_response"
     text << " #{@expected_rescue_response.inspect} instead got #{@actual_rescue_response.inspect}"
     text << " (Exception #{@exception.class}: #{@exception})" if @exception
     text
   end
 
-  failure_message_for_should_not do |text|
+  failure_message_when_negated do |text|
     text = "expected to NOT raise an exception with rescue_response"
     text << " #{@expected_rescue_response.inspect} but got #{@actual_rescue_response.inspect}"
     text << " (Exception #{@exception.class}: #{@exception})" if @exception
