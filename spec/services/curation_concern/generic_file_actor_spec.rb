@@ -17,10 +17,10 @@ describe CurationConcern::GenericFileActor do
 
     it "uploads multiple files" do
       actor = CurationConcern::GenericFileActor.new(generic_file, user, file: files)
-      actor.curation_concern.should == generic_file
-      actor.user.should == user
-      actor.attributes['file'].should == files
-      actor.download_create_cloud_resources.should == true
+      expect(actor.curation_concern).to eq generic_file
+      expect(actor.user).to eq user
+      expect(actor.attributes['file']).to eq files
+      expect(actor.download_create_cloud_resources).to eq true
     end
 
   end

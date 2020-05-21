@@ -9,7 +9,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'curate/spec_support'
 
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'webmock/rspec'
@@ -48,7 +47,7 @@ end
 RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.infer_spec_type_from_file_location!
-
+  # config.raise_errors_for_deprecations! # uncomment this to turn deprecations into errors
 
   # When issue https://github.com/ndlib/curate_nd/issues/423 is resolved
   # * Restore config.order = 'random'

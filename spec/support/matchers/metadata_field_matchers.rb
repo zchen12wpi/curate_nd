@@ -19,7 +19,7 @@ end
 RSpec::Matchers.define :have_multivalue_field do |expected_field_name|
   match do |subject|
     expect(subject).to respond_to(expected_field_name)
-    subject.send(expected_field_name).should be_instance_of Array
+    expect(subject.send(expected_field_name)).to be_a(Array)
   end
 
   description do

@@ -26,16 +26,16 @@ describe DownloadsController do
       it 'sends the file without proxy' do
         no_proxy_download
         get :show, id: generic_file.to_param
-        response.should be_success
-        response.headers.keys.include?("X-Accel-Redirect").should be_falsey
-        response.body.should == generic_file.content.content
+        expect(response).to be_success
+        expect(response.headers.keys.include?("X-Accel-Redirect")).to be_falsey
+        expect(response.body).to eq(generic_file.content.content)
       end
       it 'sends the file through proxy' do
         use_proxy_download
         get :show, id: generic_file.to_param
-        response.should be_success
-        response.headers['X-Accel-Redirect'].should == "/download-content/#{generic_file.noid}"
-        response.body.blank?.should be_truthy
+        expect(response).to be_success
+        expect(response.headers['X-Accel-Redirect']).to eq("/download-content/#{generic_file.noid}")
+        expect(response.body.blank?).to be_truthy
       end
     end
   end

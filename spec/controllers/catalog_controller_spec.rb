@@ -14,12 +14,12 @@ describe CatalogController do
       before do
         sign_in user
         xhr :get, :index, format: :json
-        response.should be_success
+        expect(response).to be_success
       end
       it "should return json" do
         json = JSON.parse(response.body)
         work_json = json["docs"].first
-        work_json.should == {"pid"=>work1.pid, "title"=> "#{work1.title} (#{work1.human_readable_type})"}
+        expect(work_json).to eq({ "pid"=>work1.pid, "title"=> "#{work1.title} (#{work1.human_readable_type})" })
       end
     end
 
@@ -27,7 +27,7 @@ describe CatalogController do
       before do
         sign_in user
         xhr :get, :index, format: :jsonld
-        response.should be_success
+        expect(response).to be_success
       end
       it "should return json" do
         json = JSON.parse(response.body)
@@ -48,13 +48,13 @@ describe CatalogController do
     before do
       sign_in user
       xhr :get, :hierarchy_facet, id: 'admin_unit_hierarchy_sim', format: 'js'
-      response.should be_success
+      expect(response).to be_success
     end
 
     describe "get hierarchy facet for administrative unit" do
       it "should be render hierarchy facet" do
         facet = assigns_response.facet_by_field_name('admin_unit_hierarchy_sim')
-        facet.items.size.should >= 1
+        expect(facet.items.size).to be >= 1
       end
     end
   end

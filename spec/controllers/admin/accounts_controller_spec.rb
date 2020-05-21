@@ -7,7 +7,7 @@ describe Admin::AccountsController do
   let(:expected_array) { [user1, user2]}
   context '#index' do
     before(:each) do
-      User.should_receive(:search).with('user').and_return(search_results)
+      allow(User).to receive(:search).with('user').and_return(search_results)
     end
     it 'should get a paginated list of users' do
       get :index, q: 'user'

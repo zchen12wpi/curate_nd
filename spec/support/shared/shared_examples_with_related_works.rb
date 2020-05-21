@@ -13,13 +13,13 @@ shared_examples 'with_related_works' do
     subject.related_works << dataset
     subject.save
     subject.reload
-    subject.related_works.should == [dataset]
-    subject.related_work_ids.should == [dataset.pid]
+    expect(subject.related_works).to eq [dataset]
+    expect(subject.related_work_ids).to eq [dataset.pid]
     subject.related_works << work
-    subject.related_works.should == [dataset, work]
+    expect(subject.related_works).to eq [dataset, work]
     subject.related_works = [work]
     # Deleting via nested_attributes isn't currently supported by AF.  If it was, you could do this:
     #subject.update_attributes(related_works_attributes:[{id:dataset.pid, _delete:true}])
-    subject.related_works.should == [work]
+    expect(subject.related_works).to eq [work]
   end
 end

@@ -35,7 +35,7 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
         it "should show 401 Unauthorized" do
           get :show, id: a_work
           expect(response.status).to eq 401
-          response.should render_template(:unauthorized)
+          expect(response).to render_template(:unauthorized)
         end
       end
       context "someone elses public work" do
@@ -75,12 +75,12 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
   if optionally_include_specs(actions, :create)
     describe "#create" do
       it "should create a work" do
-        controller.curation_concern.stub(:persisted?).and_return(true)
+        allow(controller.curation_concern).to receive(:persisted?).and_return(true)
         controller.curation_concern.inner_object.pid = 'test:123'
         controller.actor = double(:create => true, notification_messages: [])
 
         post :create, accept_contributor_agreement: "accept"
-        response.should redirect_to path_to_curation_concern
+        expect(response).to redirect_to path_to_curation_concern
       end
     end
 
@@ -107,7 +107,7 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
         it "should show 401 Unauthorized" do
           get :edit, id: a_work
           expect(response.status).to eq 401
-          response.should render_template('errors/401')
+          expect(response).to render_template('errors/401')
         end
       end
       context "someone elses public work" do
@@ -115,7 +115,7 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
         it "should show me the page" do
           get :edit, id: a_work
           expect(response.status).to eq 401
-          response.should render_template('errors/401')
+          expect(response).to render_template('errors/401')
         end
       end
     end
@@ -127,13 +127,13 @@ shared_examples 'is_a_curation_concern_controller' do |curation_concern_class, o
       it "should update the work " do
         controller.actor = double(:update => true, :visibility_changed? => false, notification_messages: [])
         patch :update, id: a_work
-        response.should redirect_to path_to_curation_concern
+        expect(response).to redirect_to path_to_curation_concern
       end
       describe "changing rights" do
         it "should prompt to change the files access" do
           controller.actor = double(:update => true, :visibility_changed? => true, notification_messages: [])
           patch :update, id: a_work
-          response.should redirect_to confirm_curation_concern_permission_path(controller.curation_concern)
+          expect(response).to redirect_to confirm_curation_concern_permission_path(controller.curation_concern)
         end
       end
       describe "failure" do

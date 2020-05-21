@@ -127,7 +127,7 @@ group :test do
   gem 'poltergeist', '~> 1.5'
   gem 'rspec-html-matchers', '~>0.6.1'
   gem 'rspec-its', '~> 1.0.1'
-  gem 'rspec-rails', '~>3.0.2'
+  gem 'rspec-rails', '~>3.1.0'
   gem 'test_after_commit'
   gem 'vcr'
   gem 'webmock'
