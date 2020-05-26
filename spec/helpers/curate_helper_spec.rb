@@ -11,11 +11,11 @@ RSpec.describe CurateHelper do
     let(:value) { 'abc' }
     let(:collection) { double(title: 'Title') }
     it 'should load the value and return the title' do
-      Collection.should_receive(:load_instance_from_solr).with(value).and_return(collection)
+      allow(Collection).to receive(:load_instance_from_solr).with(value).and_return(collection)
       expect(helper.collection_title_from_pid(value)).to eq(collection.title)
     end
     it 'should attempt to load the value, fail, and return the value' do
-      Collection.should_receive(:load_instance_from_solr).with(value).and_return(nil)
+      allow(Collection).to receive(:load_instance_from_solr).with(value).and_return(nil)
       expect(helper.collection_title_from_pid(value)).to eq(value)
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_html(object, :things, "Weird")
-      rendered.should render_curation_concern_attribute_html('Weird', collection)
+      expect(rendered).to render_curation_concern_attribute_html('Weird', collection)
     end
 
     it 'handles a string by rendering one <dd>' do
@@ -62,7 +62,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_html(object, :things, "Weird")
-      rendered.should render_curation_concern_attribute_html('Weird', collection)
+      expect(rendered).to render_curation_concern_attribute_html('Weird', collection)
     end
 
     it 'returns a '' for a nil value' do
@@ -76,10 +76,10 @@ RSpec.describe CurateHelper do
     it 'extracts name based on attribute registry' do
       collection = "Hello World"
       object = double('curation_concern', things: collection)
-      object.should_receive(:label_for).with(:things).and_return("Bacon")
+      allow(object).to receive(:label_for).with(:things).and_return("Bacon")
 
       rendered = helper.curation_concern_attribute_to_html(object, :things)
-      rendered.should render_curation_concern_attribute_html('Bacon', collection)
+      expect(rendered).to render_curation_concern_attribute_html('Bacon', collection)
     end
 
     it 'calculates the label based on method name' do
@@ -87,7 +87,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_html(object, :things)
-      rendered.should render_curation_concern_attribute_html('Things', collection)
+      expect(rendered).to render_curation_concern_attribute_html('Things', collection)
     end
 
     it 'returns a '' for an empty array' do
@@ -102,7 +102,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_html(object, :things, "Weird", include_empty: true)
-      rendered.should render_curation_concern_attribute_html('Weird') do
+      expect(rendered).to render_curation_concern_attribute_html('Weird') do
         without_tag('li.attribute.things')
       end
     end
@@ -153,7 +153,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_formatted_text(object, :things)
-      rendered.should have_tag('h2', text: 'Things')
+      expect(rendered).to have_tag('h2', text: 'Things')
     end
 
     it 'handles an array by rendering one <article> per element' do
@@ -161,7 +161,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_formatted_text(object, :things)
-      rendered.should have_tag('article', count: 2)
+      expect(rendered).to have_tag('article', count: 2)
     end
 
     it 'handles a string by rendering one <article> per element' do
@@ -169,7 +169,7 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_formatted_text(object, :things)
-      rendered.should have_tag('article', count: 1)
+      expect(rendered).to have_tag('article', count: 1)
     end
 
     it 'allows a custom class to be set on blocks of text' do
@@ -177,8 +177,8 @@ RSpec.describe CurateHelper do
       object = double('curation_concern', things: collection)
 
       rendered = helper.curation_concern_attribute_to_formatted_text(object, :things, nil, { class: 'custom-class' })
-      rendered.should_not have_tag('article', with: { class: 'descriptive-text' })
-      rendered.should have_tag('article', with: { class: 'custom-class' })
+      expect(rendered).to_not have_tag('article', with: { class: 'descriptive-text' })
+      expect(rendered).to have_tag('article', with: { class: 'custom-class' })
     end
   end
 
@@ -287,6 +287,6 @@ RSpec.describe CurateHelper do
   end
 
   it "should have link for google.com" do
-    helper.auto_link_without_protocols("google.com").should have_link("http://google.com")
+    expect(helper.auto_link_without_protocols("google.com")).to have_link("http://google.com")
   end
 end

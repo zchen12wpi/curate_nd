@@ -60,7 +60,7 @@ describe Curate::CollectionsController do
     end
 
     it "gracefully recovery if no profile exists" do
-      user.profile.should be_nil
+      expect(user.profile).to be_nil
       expect {
         expect {
           post :create, profile_section:  { title: 'test title', description: 'test desc'}, add_to_profile: 'true'
@@ -78,7 +78,7 @@ describe Curate::CollectionsController do
         expect(response).to redirect_to root_path
         expect(flash[:alert]).to eq 'You are not authorized to access this page.'
 
-        collection.reload.should_not be_open_access
+        expect(collection.reload).to_not be_open_access
       end
     end
   end
@@ -91,7 +91,7 @@ describe Curate::CollectionsController do
         expect(response).to redirect_to collection_path(collection)
         expect(flash[:notice]).to eq 'Collection was successfully updated.'
 
-        collection.reload.should be_open_access
+        expect(collection.reload).to be_open_access
       end
     end
   end
@@ -146,11 +146,11 @@ describe Curate::CollectionsController do
 
     describe "#add_member failure" do
       it "prints fail message" do
-        ActiveFedora::Base.stub(:find).and_call_original # Need to do this for cleanup
-        ActiveFedora::Base.stub(:find).with(collection.pid, anything).and_return(collection)
-        ActiveFedora::Base.stub(:find).with(work.pid, anything).and_return(work)
+        allow(ActiveFedora::Base).to receive(:find).and_call_original # Need to do this for cleanup
+        allow(ActiveFedora::Base).to receive(:find).with(collection.pid, anything).and_return(collection)
+        allow(ActiveFedora::Base).to receive(:find).with(work.pid, anything).and_return(work)
 
-        collection.stub(:save).and_return(false)
+        allow(collection).to receive(:save).and_return(false)
 
         put :add_member, collectible_id: work.pid, collection_id: collection.pid
         expect(flash[:error]).to eq 'Unable to add item to collection.'

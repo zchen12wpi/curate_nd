@@ -89,6 +89,8 @@ module CurateNd
     config.action_dispatch.rescue_responses["ActionController::UnknownFormat"] = :not_found
     config.action_dispatch.rescue_responses["ActionController::UnknownHttpMethod"] = :not_found
 
+    config.active_record.raise_in_transactional_callbacks = true
+
     Curate.configuration.build_identifier = begin
       identifier = Rails.root.join('VERSION').read.strip
       unless Rails.env.production?

@@ -79,14 +79,14 @@ module CurateND
         end
       end
 
-      def hint_for_curate_nd
+      def hint_for_curate_nd(wrapper_options)
         return '' unless has_hint?
         template.content_tag('span', class: 'field-hint', role: 'tooltip', id: curate_nd_dom_id('hint')) do
           hint
         end
       end
 
-      def input_for_curate_nd
+      def input_for_curate_nd(wrapper_options)
         @input_html_options[:'aria-labelledby'] = curate_nd_dom_id('label')
         @input_html_options[:'aria-describedby'] = curate_nd_dom_id('hint')
         input

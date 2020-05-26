@@ -15,7 +15,7 @@ describe Admin::IngestOSFArchive do
   [:project_identifier, :administrative_unit, :owner, :affiliation].each do |attribute|
     it "is invalid when #{attribute} is not present" do
       attributes.delete(attribute)
-      subject.should_not be_valid
+      expect(subject).to_not be_valid
     end
   end
 

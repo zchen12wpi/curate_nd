@@ -77,14 +77,14 @@ module Devise::MultiAuth
       let(:authentication) { described_class.new(user: user) }
 
       it 'returns a user if it matches' do
-        described_class.should_receive(:find_by_provider_and_uid).with(provider, uid).and_return(authentication)
+        expect(described_class).to receive(:find_by_provider_and_uid).with(provider, uid).and_return(authentication)
         expect(
           described_class.find_user_by_provider_and_uid(provider, uid)
         ).to eq(user)
       end
 
       it 'returns nil if there are no match' do
-        described_class.should_receive(:find_by_provider_and_uid).with(provider, uid).and_return(nil)
+        expect(described_class).to receive(:find_by_provider_and_uid).with(provider, uid).and_return(nil)
         expect(described_class.find_user_by_provider_and_uid(provider, uid)).to eq(nil)
       end
 

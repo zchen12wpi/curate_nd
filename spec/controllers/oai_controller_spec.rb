@@ -207,7 +207,7 @@ describe OaiController do
         let(:value) { doc.css(key).to_ary.map(&:text).size }
         let(:token) { doc.css('resumptionToken').text }
 
-        it 'returns 200 but all results are filtered out' do
+        it 'returns 200 and first page of results' do
           get :index, oai_params
           expect(value).to eq(1)
           expect(token).to be_a(String)

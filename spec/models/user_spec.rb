@@ -11,22 +11,22 @@ describe User do
   end
 
   it 'should set agree to terms of service' do
-    User.any_instance.stub(:get_value_from_ldap).and_return(nil)
+    allow_any_instance_of(User).to receive(:get_value_from_ldap).and_return(nil)
     user = FactoryGirl.create(:user, agreed_to_terms_of_service: false)
-    user.agreed_to_terms_of_service?.should == false
+    expect(user.agreed_to_terms_of_service?).to eq false
     user.agree_to_terms_of_service!
-    user.agreed_to_terms_of_service?.should == true
+    expect(user.agreed_to_terms_of_service?).to eq true
   end
 
   it 'has a #to_s that is #username' do
-    User.new(username: 'hello').to_s.should == 'hello'
+    expect(User.new(username: 'hello').to_s).to eq 'hello'
   end
 
   describe '#update_with_password' do
     let(:user) { FactoryGirl.create(:user) }
     let(:email) { 'hello@world.com' }
     it 'should update email, if given' do
-      User.any_instance.stub(:get_value_from_ldap).and_return(nil)
+      allow_any_instance_of(User).to receive(:get_value_from_ldap).and_return(nil)
       expect {
         user.update_with_password(email: email)
       }.to change(user, :email).from('').to(email)
@@ -35,7 +35,7 @@ describe User do
 
   describe '.batchuser' do
     it 'persists an instance the first time, then returns the persisted object' do
-      User.any_instance.stub(:get_value_from_ldap).and_return(nil)
+      allow_any_instance_of(User).to receive(:get_value_from_ldap).and_return(nil)
       expect {
         User.batchuser
       }.to change { User.count }.by(1)
@@ -48,7 +48,7 @@ describe User do
 
   describe '.audituser' do
     it 'persists an instance the first time, then returns the persisted object' do
-      User.any_instance.stub(:get_value_from_ldap).and_return(nil)
+      allow_any_instance_of(User).to receive(:get_value_from_ldap).and_return(nil)
       expect {
         User.audituser
       }.to change { User.count }.by(1)

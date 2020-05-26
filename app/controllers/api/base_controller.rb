@@ -34,7 +34,7 @@ class Api::BaseController < CatalogController
 
     def find_token(token_sha)
       begin
-        ApiAccessToken.find(token_sha)
+        ApiAccessToken.find_by(sha: token_sha)
       rescue ActiveRecord::RecordNotFound
         nil
       end

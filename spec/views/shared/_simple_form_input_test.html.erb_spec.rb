@@ -4,7 +4,7 @@ describe 'shared/simple_form_input_test.html.erb' do
   let(:object) { SeniorThesis.new }
   let(:user) { User.new }
   before(:each) do
-    controller.stub(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
     assign(:object, object)
     render partial: 'simple_form_input_test'
   end

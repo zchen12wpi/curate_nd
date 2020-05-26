@@ -4,8 +4,8 @@ describe "application/_announcements" do
 
   let(:current_user) { double }
   before(:each) do
-    controller.stub(:current_user).and_return(current_user)
-    Admin::Announcement.stub(:for).with(current_user).and_return(announcements)
+    allow(controller).to receive(:current_user).and_return(current_user)
+    allow(Admin::Announcement).to receive(:for).with(current_user).and_return(announcements)
   end
 
   context 'without announcements' do

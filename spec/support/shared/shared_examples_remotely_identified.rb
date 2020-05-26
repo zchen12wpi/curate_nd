@@ -24,7 +24,7 @@ shared_examples 'remotely_identified' do |remote_service_name|
         subject { FactoryGirl.build(described_class.name.underscore, attributes: attributes) }
         let(:attributes) { { publisher: [] } }
         it 'fails validation' do
-          subject.should_receive(:remote_doi_assignment_strategy?).and_return(true)
+          expect(subject).to receive(:remote_doi_assignment_strategy?).and_return(true)
           expect(subject).to_not be_valid
           expect(subject.errors[:publisher]).to eq(["is required for remote DOI minting"])
         end

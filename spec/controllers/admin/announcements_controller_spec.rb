@@ -34,7 +34,7 @@ describe Admin::AnnouncementsController do
     it "assigns all admin_announcements as @admin_announcements" do
       announcement = Admin::Announcement.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:admin_announcements).should eq([announcement])
+      expect(assigns(:admin_announcements)).to eq([announcement])
     end
   end
 
@@ -42,14 +42,14 @@ describe Admin::AnnouncementsController do
     it "assigns the requested admin_announcement as @admin_announcement" do
       announcement = Admin::Announcement.create! valid_attributes
       get :show, {:id => announcement.to_param}, valid_session
-      assigns(:admin_announcement).should eq(announcement)
+      expect(assigns(:admin_announcement)).to eq(announcement)
     end
   end
 
   describe "GET new" do
     it "assigns a new admin_announcement as @admin_announcement" do
       get :new, {}, valid_session
-      assigns(:admin_announcement).should be_a_new(Admin::Announcement)
+      expect(assigns(:admin_announcement)).to be_a_new(Admin::Announcement)
     end
   end
 
@@ -57,7 +57,7 @@ describe Admin::AnnouncementsController do
     it "assigns the requested admin_announcement as @admin_announcement" do
       announcement = Admin::Announcement.create! valid_attributes
       get :edit, {:id => announcement.to_param}, valid_session
-      assigns(:admin_announcement).should eq(announcement)
+      expect(assigns(:admin_announcement)).to eq(announcement)
     end
   end
 
@@ -71,29 +71,29 @@ describe Admin::AnnouncementsController do
 
       it "assigns a newly created admin_announcement as @admin_announcement" do
         post :create, {:admin_announcement => valid_attributes}, valid_session
-        assigns(:admin_announcement).should be_a(Admin::Announcement)
-        assigns(:admin_announcement).should be_persisted
+        expect(assigns(:admin_announcement)).to be_a(Admin::Announcement)
+        expect(assigns(:admin_announcement)).to be_persisted
       end
 
       it "redirects to the created admin_announcement" do
         post :create, {:admin_announcement => valid_attributes}, valid_session
-        response.should redirect_to(admin_announcements_url)
+        expect(response).to redirect_to(admin_announcements_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved admin_announcement as @admin_announcement" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Announcement.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Admin::Announcement).to receive(:save).and_return(false)
         post :create, {:admin_announcement => { "message" => "invalid value" }}, valid_session
-        assigns(:admin_announcement).should be_a_new(Admin::Announcement)
+        expect(assigns(:admin_announcement)).to be_a_new(Admin::Announcement)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Announcement.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Admin::Announcement).to receive(:save).and_return(false)
         post :create, {:admin_announcement => { "message" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -106,20 +106,20 @@ describe Admin::AnnouncementsController do
         # specifies that the Admin::Announcement created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Admin::Announcement.any_instance.should_receive(:update).with({ "message" => "MyText" })
+        allow_any_instance_of(Admin::Announcement).to receive(:update).with({ "message" => "MyText" })
         put :update, {:id => announcement.to_param, :admin_announcement => { "message" => "MyText" }}, valid_session
       end
 
       it "assigns the requested admin_announcement as @admin_announcement" do
         announcement = Admin::Announcement.create! valid_attributes
         put :update, {:id => announcement.to_param, :admin_announcement => valid_attributes}, valid_session
-        assigns(:admin_announcement).should eq(announcement)
+        expect(assigns(:admin_announcement)).to eq(announcement)
       end
 
       it "redirects to the admin_announcement" do
         announcement = Admin::Announcement.create! valid_attributes
         put :update, {:id => announcement.to_param, :admin_announcement => valid_attributes}, valid_session
-        response.should redirect_to(admin_announcements_url)
+        expect(response).to redirect_to(admin_announcements_url)
       end
     end
 
@@ -127,17 +127,17 @@ describe Admin::AnnouncementsController do
       it "assigns the admin_announcement as @admin_announcement" do
         announcement = Admin::Announcement.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Announcement.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Admin::Announcement).to receive(:save).and_return(false)
         put :update, {:id => announcement.to_param, :admin_announcement => { "message" => "invalid value" }}, valid_session
-        assigns(:admin_announcement).should eq(announcement)
+        expect(assigns(:admin_announcement)).to eq(announcement)
       end
 
       it "re-renders the 'edit' template" do
         announcement = Admin::Announcement.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Announcement.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Admin::Announcement).to receive(:save).and_return(false)
         put :update, {:id => announcement.to_param, :admin_announcement => { "message" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -153,7 +153,7 @@ describe Admin::AnnouncementsController do
     it "redirects to the admin_announcements list" do
       announcement = Admin::Announcement.create! valid_attributes
       delete :destroy, {:id => announcement.to_param}, valid_session
-      response.should redirect_to(admin_announcements_url)
+      expect(response).to redirect_to(admin_announcements_url)
     end
   end
 
@@ -162,12 +162,11 @@ describe Admin::AnnouncementsController do
     let(:referrer) { '/' }
     let(:announcement_id) { '1234' }
     it 'creates a dismissal for the current user' do
-      controller.stub(:current_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
       request.env["HTTP_REFERER"] = referrer
-      Admin::Announcement.should_receive(:dismiss).with(announcement_id, user).and_return(true)
-
+      allow(Admin::Announcement).to receive(:dismiss).with(announcement_id, user).and_return(true)
       delete :dismiss, {:id => announcement_id}
-      response.should redirect_to(referrer)
+      expect(response).to redirect_to(referrer)
     end
   end
 

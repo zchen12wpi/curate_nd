@@ -17,12 +17,12 @@ describe Collection do
     @collection.destroy
   end
   it "should have a depositor" do
-    @collection.depositor.should == user.user_key
+    expect(@collection.depositor).to eq user.user_key
   end
   it "should allow the depositor to edit and read" do
     ability = Ability.new(user)
-    ability.can?(:read, @collection).should == true
-    ability.can?(:edit, @collection).should == true
+    expect(ability.can?(:read, @collection)).to eq(true)
+    expect(ability.can?(:edit, @collection)).to eq(true)
   end
   it "should be empty by default" do
     expect(@collection.members).to eq([])
@@ -31,7 +31,7 @@ describe Collection do
   it "should have many works" do
     @collection.members = [generic_work1, generic_work2]
     @collection.save
-    Collection.find(@collection.pid).members.should == [generic_work1, generic_work2]
+    expect(Collection.find(@collection.pid).members).to contain_exactly(generic_work1, generic_work2)
   end
   it "should allow new work to be added" do
     @collection.members = [generic_work1]
@@ -39,41 +39,42 @@ describe Collection do
     @collection = Collection.find(@collection.pid)
     @collection.members << generic_work2
     @collection.save
-    Collection.find(@collection.pid).members.should == [generic_work1, generic_work2]
+    expect(Collection.find(@collection.pid).members).to contain_exactly(generic_work1, generic_work2)
   end
   it "should set the date uploaded on create" do
     @collection.save
-    @collection.date_uploaded.should be_kind_of(Date)
+    expect(@collection.date_uploaded).to be_a(Date)
   end
   it "should update the date modified on update" do
     uploaded_date = Date.today
     modified_date = Date.tomorrow
-    Date.stub(:today).and_return(uploaded_date, modified_date)
+    allow(Date).to receive(:today).and_return(uploaded_date)
     @collection.save
-    @collection.date_modified.should == uploaded_date
+    expect(@collection.date_modified).to eq(uploaded_date)
     @collection.members = [generic_work1]
+    allow(Date).to receive(:today).and_return(modified_date)
     @collection.save
-    @collection.date_modified.should == modified_date
+    expect(@collection.date_modified).to eq(modified_date)
     new_generic_work1 = GenericWork.find(generic_work1.pid)
-    new_generic_work1.collections.include?(@collection).should be_truthy
-    new_generic_work1.to_solr[Solrizer.solr_name(:collection)].should == [@collection.id]
+    expect(new_generic_work1.collections.include?(@collection)).to be_truthy
+    expect(new_generic_work1.to_solr[Solrizer.solr_name(:collection)]).to contain_exactly(@collection.id)
   end
   it "should have a title" do
     @collection.title = "title"
     @collection.save
-    Collection.find(@collection.pid).title.should == @collection.title
+    expect(Collection.find(@collection.pid).title).to eq(@collection.title)
   end
   it "should have a description" do
     @collection.description = "description"
     @collection.save
-    Collection.find(@collection.pid).description.should == @collection.description
+    expect(Collection.find(@collection.pid).description).to eq(@collection.description)
   end
   it "should not delete member work when deleted" do
     @collection.members = [generic_work1, generic_work2]
     @collection.save
     @collection.destroy
-    GenericWork.exists?(generic_work1.pid).should be_truthy
-    GenericWork.exists?(generic_work2.pid).should be_truthy
+    expect(GenericWork.exists?(generic_work1.pid)).to be_truthy
+    expect(GenericWork.exists?(generic_work2.pid)).to be_truthy
   end
 
   describe "Collection by another name" do
@@ -97,7 +98,7 @@ describe Collection do
       collection.members << member
       collection.save
       member.reload
-      member.collections.should == [collection]
+      expect(member.collections).to eq [collection]
       collection.destroy
       member.destroy
     end
