@@ -2,7 +2,6 @@
 # When someone makes use of curate in their Rails application
 # Then we should expose those spec support files to that applications
 spec_directory = File.expand_path('../../../spec', __FILE__)
-require "rails/test_help"
 require "rspec/rails"
 require 'factory_girl'
 require 'capybara/poltergeist'
