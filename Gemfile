@@ -40,7 +40,6 @@ group :default do
   gem 'figaro'
   gem 'flipper'
   gem 'httparty'
-  gem 'hydra-batch-edit', '~> 1.1.1'
   gem 'hydra-collections', '~> 1.3.0'
   gem 'hydra-derivatives', '~> 0.0.7'
   gem 'hydra-file_characterization', "~> 0.3.3"
