@@ -6,7 +6,6 @@ require "curate/date_formatter"
 require "curate/text_formatter"
 require 'simple_form'
 require 'bootstrap-datepicker-rails'
-require 'hydra-batch-edit'
 require 'active_fedora/registered_attributes'
 require 'inline_reflection'
 require 'contributors_association'
