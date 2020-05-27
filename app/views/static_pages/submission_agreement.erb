@@ -1,0 +1,16 @@
+<%
+  content_for :page_title, construct_page_title('Submission Agreement')
+  content_for :page_main_class, 'subm-agree'
+%>
+
+<header class="subm-agree-page-header">
+  <h1 id="submission_agreement">
+    <%= I18n.t('sufia.product_name')%> Submission Agreement
+  </h1>
+</header>
+
+<div class="subm-agree-wrapper">
+  <div class="subm-agree-content">
+    <%= render partial: '/curation_concern/base/legally_binding_text' %>
+  </div>
+</div>
