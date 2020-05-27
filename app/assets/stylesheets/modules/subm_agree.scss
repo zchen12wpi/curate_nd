@@ -1,0 +1,62 @@
+@import 'global-variables';
+
+.page-main.subm-agree {
+  border-bottom: 1px solid $gray-faint;
+}
+
+.subm-agree-page-header {
+  padding: 1em;
+  text-align: center;
+}
+
+@media (max-width: 550px) {
+  .subm-agree-page-header h2 {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+}
+
+.subm-agree-wrapper {
+  padding: 0 1em 1em;
+}
+
+.subm-agree-content {
+  background-color: white;
+  border: 1px solid $gray-faint;
+  box-sizing: border-box;
+  margin: 2em auto 0;
+  max-width: 62em;
+  padding: 0 1em 1em;
+
+  h2 {
+    margin-top: 1.5em;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-left: 0;
+    margin-top: 1em;
+  }
+}
+
+@media (min-width: 400px) {
+  .subm-agree-content {
+    padding: 0 2em 2em;
+    margin-bottom: 2em;
+  }
+}
+
+@media (min-width: 768px) {
+  .subm-agree-content {
+    padding: 0 4em 4em;
+    margin-bottom: 6em;
+  }
+}
+
+@media (min-width: 900px) {
+  .subm-agree-page-header {
+    padding: 32px 1em;
+  }
+}

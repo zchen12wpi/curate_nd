@@ -54,6 +54,11 @@ class StaticPagesController < ApplicationController
     render 'licenses', layout: 'curate_nd_home'
   end
 
+  def subm_agree
+    @hide_title = false;
+    render 'submission_agreement', layout: 'curate_nd_home'
+  end
+
   private
 
   def build_help_request
