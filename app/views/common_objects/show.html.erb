@@ -16,8 +16,8 @@
   <% if display_citation_generation? %>
     <%= link_to 'Generate Citation', citation_path(curation_concern) , class: 'btn citation-modal-js' %>
   <% end %>
+  <%= link_to 'Usage Details', metrics_usage_path(id: curation_concern.noid) , class: 'btn btn-default' %>
   <% if has_edit_rights %>
-    <%= link_to 'Usage Details', metrics_usage_path(id: curation_concern.noid) , class: 'btn btn-default' %>
     <%= link_to edit_polymorphic_path([:curation_concern, curation_concern]), class: 'btn btn-default' do %>
       <i class="icon icon-pencil"></i> Edit
     <% end %>
