@@ -301,7 +301,7 @@ class Api::ShowItemPresenter
     when :download
       return File.join(root_url, route_helper.api_item_download_path(id))
     when :thumbnail
-      return File.join(root_url, route_helper.api_item_download_path(id), '/thumbnail')
+      return File.join(root_url, route_helper.download_path(id, {datastream_id: 'thumbnail'}))
     when :members
       return File.join(root_url, "#{route_helper.api_items_path}?part_of=#{id}")
     else # default is show
