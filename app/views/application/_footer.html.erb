@@ -20,7 +20,8 @@
 
       <div class="span4 footer-right">
         <div>
-          <%= link_to image_tag("hesburgh-mark-white.png", alt: "University of Notre Dame Hesburgh Libraries", class: "hesburgh-mark"), "http://library.nd.edu" %>
+          <% image_to_use = (controller_name == "static_pages" && action_name == "home") ? "hesburgh-mark-white.png" : "hesburgh-mark-blue.png" %>
+          <%= link_to image_tag(image_to_use, alt: "University of Notre Dame Hesburgh Libraries", class: "hesburgh-mark"), "http://library.nd.edu" %>
         </div>
       </div>
     </div>
