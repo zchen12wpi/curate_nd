@@ -19,7 +19,11 @@ module Metrics
     # @param pid [String] the noid of an ActiveFedora item
     # @return [Metrics::FedoraAccessEvent::ActiveRecord_Relation]
     def self.all_usage_including_child_objects_for(pid:)
-      usage_events = FedoraAccessEvent.where(pid: FedoraObject.ids_of_object_and_all_child_objects_of(pid: pid))
+      begin
+        usage_events = FedoraAccessEvent.where(pid: FedoraObject.ids_of_object_and_all_child_objects_of(pid: pid))
+      rescue Mysql2::Error
+        nil
+      end
     end
 
     # @param accesses [Metrics::FedoraAccessEvent::ActiveRecord_Relation] Result list of Metrics::FedoraAccessEvent query
@@ -67,8 +71,12 @@ module Metrics
     # t.string   "parent_type",       limit: 255, default: ""
 
     def self.ids_of_object_and_all_child_objects_of(pid:)
-      results = FedoraObject.where(parent_pid: pid).pluck(:pid)
-      results << pid unless results.include?(pid)
+      begin
+        results = FedoraObject.where(parent_pid: pid).pluck(:pid)
+        results << pid unless results.include?(pid)
+      rescue Mysql2::Error
+        return nil
+      end
       results
     end
   end
