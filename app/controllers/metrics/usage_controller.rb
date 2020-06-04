@@ -47,13 +47,12 @@ module Metrics
     # @param usage [Array<FedoraAccessEvent>] an array of Metrics::FedoraAccessEvent
     # @return [Array<UsageItem>] an array of Metrics::UsageItems
     def parse_usage(usage:)
+      pid_list = usage ? usage.all.group(:pid).pluck(:pid) : []
       usage_array = []
-      pid_list = usage.all.group(:pid).pluck(:pid)
       pid_list.each do |pid|
         item_events = usage.where(pid: pid)
         usage_array << UsageItem.new(noid: pid, metrics: item_events) if item_events.any?
       end
-      rescue NoMethodError
       usage_array
     end
   end
