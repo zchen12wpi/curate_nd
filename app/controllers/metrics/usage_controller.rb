@@ -53,6 +53,7 @@ module Metrics
         item_events = usage.where(pid: pid)
         usage_array << UsageItem.new(noid: pid, metrics: item_events) if item_events.any?
       end
+      rescue NoMethodError
       usage_array
     end
   end

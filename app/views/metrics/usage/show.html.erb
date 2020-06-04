@@ -1,5 +1,5 @@
 <% curation_concern = @curation_concern %>
-<% has_edit_rights = current_user.can? :edit, curation_concern %>
+<% has_edit_rights = can? :edit, curation_concern %>
 <% usage_details = @usage_details %>
 
 <% content_for :page_title, construct_page_title(curation_concern.title, "Usage Metrics") if curation_concern.title %>
