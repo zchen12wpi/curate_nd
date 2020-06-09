@@ -23,7 +23,7 @@ module Sufia
       end
 
       module ClassMethods
-        # Specifies a white list of model attributes that can be set via
+        # Specifies an allowed list of model attributes that can be set via
         # mass-assignment.
         #
         # Like +attr_protected+, a role for the attributes is optional,

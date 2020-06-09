@@ -19,7 +19,7 @@ module Bendo
         Response.new(result.status, body)
       end
 
-      # Transforms from params Curate understands to params that Bendo understands. Inherently whitelists params as well
+      # Transforms from params Curate understands to params that Bendo understands. Inherently allow params as well
       def transform_params(params:)
         params.map do |k,v|
           new_key = param_map[k]

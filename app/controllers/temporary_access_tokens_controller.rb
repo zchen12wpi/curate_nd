@@ -73,7 +73,7 @@ class TemporaryAccessTokensController < ApplicationController
     @temporary_access_token ||= TemporaryAccessToken.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
+  # Only allow a trusted parameters through.
   def temporary_access_token_params
     params.require(:temporary_access_token).permit(:noid, :issued_by, :reset_expiry_date, :limit_to_id)
   end
