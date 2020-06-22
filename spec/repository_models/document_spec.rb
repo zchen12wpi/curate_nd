@@ -25,7 +25,7 @@ describe Document do
       end
     end
 
-    it 'non-whitelist types are not valid' do
+    it 'marks denied types as invalid' do
       doc.type = 'Invalid document type'
       doc.valid?
       expect(doc.errors[:type]).to be_present

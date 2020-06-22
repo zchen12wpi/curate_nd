@@ -58,7 +58,7 @@ class Admin::AnnouncementsController < ApplicationController
       @admin_announcement = Admin::Announcement.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameters through.
     def admin_announcement_params
       params.require(:admin_announcement).permit(:message, :start_at, :end_at)
     end
