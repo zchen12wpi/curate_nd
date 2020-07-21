@@ -193,7 +193,7 @@ GEM
     citeproc-ruby (1.1.12)
       citeproc (~> 1.0, >= 1.0.9)
       csl (~> 1.5)
-    clamav (0.4.1)
+    clamav-client (3.2.0)
     cliver (0.3.2)
     code_analyzer (0.5.1)
       sexp_processor
@@ -690,7 +690,7 @@ DEPENDENCIES
   chronic (>= 0.10.2)
   citeproc
   citeproc-ruby (~> 1.1.0)
-  clamav
+  clamav-client
   coffee-rails (~> 4.0)
   csl-styles
   curate-indexer
