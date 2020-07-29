@@ -20,7 +20,7 @@ class Dissertation < ActiveFedora::Base
   self.human_readable_short_description = "Deposit a dissertation."
 
   DISSERTATION_TYPES = [
-    'Architecture Dissertation',
+    'Master of Architecture',
     'Capstone Project'
   ].freeze
 
