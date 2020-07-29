@@ -17,7 +17,10 @@ module ApplicationHelper
   end
 
   def display_citation_generation?
-    !(Rails.env == 'production')
+    # originally the citation button was not live. Keeping this option in case
+    # we change our minds again.
+    # !(Rails.env == 'production')
+    true
   end
 
   def include_rich_text_editor?

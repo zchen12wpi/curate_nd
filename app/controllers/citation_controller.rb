@@ -39,8 +39,8 @@ class CitationController < ApplicationController
     render
   end
 
-  def citation_lable(style)
+  def citation_label(style)
     STYLES[style]
   end
-  helper_method :citation_lable
+  helper_method :citation_label
 end
