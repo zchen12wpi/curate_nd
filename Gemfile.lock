@@ -188,11 +188,11 @@ GEM
       mime-types (>= 1.16)
     childprocess (3.0.0)
     chronic (0.10.2)
-    citeproc (1.0.2)
-      namae (~> 0.8)
-    citeproc-ruby (1.1.0)
-      citeproc (>= 1.0.2, < 2.0)
-      csl (~> 1.4)
+    citeproc (1.0.10)
+      namae (~> 1.0)
+    citeproc-ruby (1.1.12)
+      citeproc (~> 1.0, >= 1.0.9)
+      csl (~> 1.5)
     clamav (0.4.1)
     cliver (0.3.2)
     code_analyzer (0.5.1)
@@ -211,8 +211,8 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
-    csl (1.4.5)
-      namae (~> 0.7)
+    csl (1.5.1)
+      namae (~> 1.0)
     csl-styles (1.0.1.10)
       csl (~> 1.0)
     curate-indexer (0.2.3)
@@ -379,7 +379,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.3.21)
-    namae (0.11.3)
+    namae (1.0.1)
     nest (1.1.2)
       redis
     net-scp (3.0.0)
@@ -688,11 +688,11 @@ DEPENDENCIES
   capistrano (~> 2.15)
   capybara (~> 2.4)
   chronic (>= 0.10.2)
-  citeproc (= 1.0.2)
-  citeproc-ruby (= 1.1.0)
+  citeproc
+  citeproc-ruby (~> 1.1.0)
   clamav
   coffee-rails (~> 4.0)
-  csl-styles (~> 1.0)
+  csl-styles
   curate-indexer
   custom_configuration
   database_cleaner

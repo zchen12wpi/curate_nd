@@ -7,9 +7,9 @@ class Citation
   # maps our internal name to the citeproc style name
   STYLES = {
     apa: "apa",
-    mla: "modern-language-association-with-url",
+    mla: "modern-language-association-7th-edition-underline",
     chicago: "chicago-fullnote-bibliography",
-    harvard: "harvard1",
+    harvard: "harvard-cite-them-right",
     vancouver: "vancouver"
   }
 
@@ -27,7 +27,7 @@ class Citation
   # return html formatted citation in the given style
   def make_citation(style)
     cp_style = STYLES[style]
-    cp = CiteProc::Processor.new(style: cp_style, format:'html')
+    cp = CiteProc::Processor.new(style: cp_style, format: 'html')
     cp.engine.format = 'html'
     cp << item
     result = cp.render(:bibliography, id: item.id, format: 'html')
@@ -102,4 +102,3 @@ class Citation
     nil
   end
 end
-
