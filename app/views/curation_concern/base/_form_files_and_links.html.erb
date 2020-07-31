@@ -1,16 +1,32 @@
+<% persisted = curation_concern.persisted? %>
+<% nbr_files = persisted ? curation_concern.generic_files.count : 0 %>
+<% upload_title = nbr_files == 0 ? "Upload Files" : "Upload Additional Files" %>
+
 <div class="row with-headroom">
   <div class="span12">
     <h2 id="attachments">
       Attachments
     </h2>
+    <% if curation_concern.is_a?(Dataset) and !persisted %>
+      <p class="alert alert-info alert-block">
+        <strong>Improve your Dataset record:</strong><br />
+        If applicable, please attach a code book that describes the nature of the data <em>in addition</em> to the data itself.
+      </p>
+    <% end %>
   </div>
 </div>
-<% if curation_concern.persisted? %>
-<p><em>Attachments cannot be deleted, please make them private or <a href="/faqs">contact us</a> to have them removed.
-  <% unless curation_concern.generic_files.present? %>
+
+<% if persisted %>
+  <p><em>Attachments will be added with the same visibility as your work. They cannot be deleted, but you can make them private or <a href="/faqs">contact us</a> to have them removed.
+  <div class="row">
+    <fieldset class="span5">
+      <legend><%= upload_title %></legend>
+      <%= f.input :files, as: :file, input_html: {multiple: true} %>
+    </fieldset>
+  </div>
+  <% unless nbr_files > 0 %>
     <br />You must attach at least one file to choose a thumbnail for this <%= curation_concern.human_readable_type.downcase %>.
   <% end %>
-</em></p>
 <% else %>
   <div class="row">
     <fieldset class="span5">
