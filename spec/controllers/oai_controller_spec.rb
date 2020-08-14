@@ -33,7 +33,7 @@ describe OaiController do
       it 'returns 200 with ' do
         get :index, oai_params
         expect(response).to be_successful
-        expect(doc.css(key).text).to eq('OaiProvider')
+        expect(doc.css(key).text).to eq('CurateOaiProvider')
       end
     end
 
