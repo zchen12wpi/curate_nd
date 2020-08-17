@@ -243,11 +243,13 @@ describe OaiController do
       let(:oai_params) {{ verb: 'ListMetadataFormats' }}
       let(:key) { 'metadataPrefix' }
       let(:value) { doc.css('metadataPrefix').text }
+      let(:dc_format) { 'oai_dc' }
+      let(:dcterms_format) { 'dcterms' }
 
-      it 'returns 200 with ' do
+      it 'returns 200 and includes all registered metadata formats' do
         get :index, oai_params
         expect(response).to be_successful
-        expect(value).to eq('oai_dc')
+        expect(value).to eq(dc_format + dcterms_format)
       end
     end
   end
