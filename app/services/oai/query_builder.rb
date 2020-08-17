@@ -27,7 +27,9 @@ class Oai::QueryBuilder
     user_parameters.each do |term, value|
       (search_key, search_value) = search_terms_for(term, value)
       if VALID_KEYS_AND_SEARCH_FIELDNAMES[search_key].present?
-        solr_parameters[:fq] += Array.wrap(do_search_for(search_key, search_value))
+        Array.wrap(do_search_for(search_key, search_value)).each do |filter|
+          solr_parameters[:fq] << filter
+        end
       end
     end
     solr_parameters

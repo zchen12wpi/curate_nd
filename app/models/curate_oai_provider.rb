@@ -4,7 +4,6 @@ class CurateOaiProvider < OAI::Provider::Base
   record_prefix "oai"
   admin_email ENV.fetch('CURATE_HELP_NOTIFICATION_RECIPIENT')
   sample_id "und:123456789"
-  register_format(CurationConcernProvider::OAI::Provider::Metadata::DublinCore.instance)
   register_format(CurationConcernProvider::Dcterms.instance)
 
   def initialize(controller:)

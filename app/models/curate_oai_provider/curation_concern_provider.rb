@@ -113,6 +113,9 @@ class CurateOaiProvider
     # used by oai gem to override methods to load the response terms
     # => response_term: :key_in_our_object
     def map_oai_dc
+      # @fields = [ :title, :creator, :subject, :description, :publisher,
+      #         :contributor, :date, :type, :format, :identifier,
+      #         :source, :language, :relation, :coverage, :rights]
       {
         type: :worktype,
         subject: :administrative_unit,
