@@ -51,8 +51,21 @@ describe OaiController do
         end
       end
 
-      context 'with required params' do
+      context 'with required params and metadataPrefix oai_dc' do
         let(:oai_params) { { verb: 'GetRecord', identifier: collection.id, metadataPrefix: 'oai_dc' } }
+        let(:key) { 'request' }
+        let(:attribute) { 'identifier' }
+        let(:value) { doc.css(key).attr(attribute).value }
+
+        it 'returns 200 with item metadata' do
+          get :index, oai_params
+          expect(response).to be_successful
+          expect(value).to eq(collection.id)
+        end
+      end
+
+      context 'with required params and metadataPrefix dcterms' do
+        let(:oai_params) { { verb: 'GetRecord', identifier: collection.id, metadataPrefix: 'dcterms' } }
         let(:key) { 'request' }
         let(:attribute) { 'identifier' }
         let(:value) { doc.css(key).attr(attribute).value }
