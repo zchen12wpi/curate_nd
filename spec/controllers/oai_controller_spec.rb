@@ -84,9 +84,10 @@ describe OaiController do
       let(:value) { doc.css(key).to_ary.map(&:text) }
       let(:model_sets) { Curate.configuration.registered_curation_concern_types.sort.collect(&:constantize).map(&:to_s) }
       let(:collection_sets) { ["Collection: #{collection.title}"] }
-      let(:all_sets) { model_sets + collection_sets }
+      let(:primo_set) { ['Primo'] }
+      let(:all_sets) { model_sets + collection_sets + primo_set }
 
-      it 'returns 200 with ' do
+      it 'returns 200 with all valid sets' do
         get :index, oai_params
         expect(response).to be_successful
         expect(value).to eq(all_sets)
