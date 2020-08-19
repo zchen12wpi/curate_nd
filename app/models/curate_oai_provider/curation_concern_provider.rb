@@ -77,6 +77,8 @@ class CurateOaiProvider
       response_object = record.standardize
       response_object[:timestamp] = response_object[:date_modified].to_time
       response_object[:source] = File.join(Rails.configuration.application_root_url, 'show', record.noid)
+      # NOTE: stripping markdown from the text is necessary to accommodate Primo.
+      #       We’re doing this to accomodate PRIMO’s OAI-PMH Harvesting antics
       response_object[:description] = strip_markdown(response_object[:description]) unless response_object[:description].nil?
       response_object[:title] = strip_markdown(response_object[:title]) unless response_object[:title].nil?
       Struct.new(*response_object.keys).new(*response_object.values)
