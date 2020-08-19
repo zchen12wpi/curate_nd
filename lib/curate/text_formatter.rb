@@ -1,20 +1,27 @@
 require 'redcarpet'
+require 'redcarpet/render_strip'
 require 'sanitize'
 
 module Curate
   module TextFormatter
     module_function
-    def call(text: nil, block: false, title: false)
+    def call(text: nil, block: false, title: false, strip: false)
       return if text.nil?
       if title
         markdown = title_renderer
       elsif block
         markdown = block_renderer
+      elsif strip
+        markdown = markdown_stripper
       else
         markdown = inline_renderer
       end
       html = markdown.render(text)
       Sanitize.fragment(html, Sanitize::Config::RELAXED)
+    end
+
+    def markdown_stripper
+      Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
     end
 
     def title_renderer
