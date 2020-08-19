@@ -77,6 +77,8 @@ class CurateOaiProvider
       response_object = record.standardize
       response_object[:timestamp] = response_object[:date_modified].to_time
       response_object[:source] = File.join(Rails.configuration.application_root_url, 'show', record.noid)
+      response_object[:description] = strip_markdown(response_object[:description]) unless response_object[:description].nil?
+      response_object[:title] = strip_markdown(response_object[:title]) unless response_object[:title].nil?
       Struct.new(*response_object.keys).new(*response_object.values)
     end
 
@@ -108,6 +110,11 @@ class CurateOaiProvider
         set_list.push(OAI::Set.new(values))
       end
       set_list
+    end
+
+    def strip_markdown(text)
+      return if text.blank?
+      Curate::TextFormatter.call(text: text.to_s, strip: true)
     end
 
     # used by oai gem to override methods to load the response terms
