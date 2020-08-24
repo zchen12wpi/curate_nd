@@ -73,10 +73,12 @@ class CurateOaiProvider
     end
 
     def format_response_terms(record)
-      # record.map_to(controller.params["metadataPrefix"])
       response_object = record.standardize
       response_object[:timestamp] = response_object[:date_modified].to_time
-      response_object[:source] = File.join(Rails.configuration.application_root_url, 'show', record.noid)
+      response_object[:source] = show_url_for(record.noid)
+      # merge collection name and id (as a url) both into is_part_of.
+      # There should only be one collection, but for safety, we handle arrays.
+      response_object[:is_part_of] = [response_object[:is_part_of], show_url_for(response_object[:collection_id])].flatten
       # NOTE: stripping markdown from the text is necessary to accommodate Primo.
       #       We’re doing this to accomodate PRIMO’s OAI-PMH Harvesting antics
       response_object[:description] = strip_markdown(response_object[:description]) unless response_object[:description].nil?
@@ -117,6 +119,14 @@ class CurateOaiProvider
     def strip_markdown(text)
       return if text.blank?
       Curate::TextFormatter.call(text: text.to_s, strip: true)
+    end
+
+    def show_url_for(noid)
+      show_url = []
+      Array.wrap(noid).each do |noid|
+        show_url << File.join(Rails.configuration.application_root_url, 'show', noid)
+      end
+      show_url
     end
 
     # used by oai gem to override methods to load the response terms
