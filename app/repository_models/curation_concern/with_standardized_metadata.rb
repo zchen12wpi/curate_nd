@@ -10,7 +10,7 @@ module CurationConcern
       human_readable_type: :worktype,
       title: :title,
       creator: :creator,
-      author: :author,
+      author: :creator,
       abstract: :description,
       description: :description,
       date_uploaded: :date_deposited,
