@@ -10,7 +10,7 @@ module CurationConcern
       human_readable_type: :worktype,
       title: :title,
       creator: :creator,
-      author: :author,
+      author: :creator,
       abstract: :description,
       description: :description,
       date_uploaded: :date_deposited,
@@ -26,7 +26,8 @@ module CurationConcern
       language: :language,
       rights: :rights,
       library_collections: :collection, # look in NESTED_ATTR for key collection
-      collection_title: :is_part_of # call title and return as :is_part_of
+      collection_title: :is_part_of, # call title and return as :is_part_of
+      collection_noid: :collection_id # call noid and return as :collection_id
     }
 
     # a hash storing methods to be called on a returned value that responds to :nested_attributes_options, in order to return a deeper attribute
@@ -34,7 +35,7 @@ module CurationConcern
     NESTED_ATTR = {
       contributor: [:contributor], # [:contributor, :role]
       degree: [], # [:discipline, :level, :name]
-      collection: [:title]
+      collection: [:title, :noid]
     }
 
     # a mapping of each worktype's model into a standard set of attributes
