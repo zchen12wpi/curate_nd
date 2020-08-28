@@ -13,10 +13,11 @@ class Citation
     vancouver: "vancouver"
   }
 
-  attr_reader :curation_concern
+  attr_reader :curation_concern, :item
 
   def initialize(curation_concern)
     @curation_concern = curation_concern
+    @item = build_item
   end
 
   # The view code expects this to return an APA citation
@@ -26,71 +27,77 @@ class Citation
 
   # return html formatted citation in the given style
   def make_citation(style)
-    cp_style = STYLES[style]
-    cp = CiteProc::Processor.new(style: cp_style, format: 'html')
+    cp = CiteProc::Processor.new(style: STYLES[style], format: 'html')
     cp.engine.format = 'html'
     cp << item
+    return nil if item.nil?
     result = cp.render(:bibliography, id: item.id, format: 'html')
-    # for some reason render returns a list
+    # render returns a list
     result.first
   end
 
   private
 
   # the item information we pass to citeproc
-  def item
-    @item ||= begin
-                show_page = common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url)
-                md = {
-                  id: curation_concern.noid,
-                  URL: show_page,
-                  source: show_page,
-                  title: curation_concern.title,
-                }
-                v = date_created
-                md[:issued] = v if v.present?
-                v = creator
-                md[:author] = v if v.present?
-                v = publisher
-                md[:publisher] = v if v.present?
-                v = doi
-                md[:DOI] = v if v.present?
-                CiteProc::Item.new(md)
-              end
+  def build_item
+    begin
+      show_page = common_object_url(curation_concern.noid, host:Rails.configuration.application_root_url)
+      md = {
+        id: curation_concern.noid,
+        URL: show_page,
+        source: show_page,
+        title: curation_concern.title,
+      }
+      val = date_created
+      md[:issued] = val if val.present?
+      val = creator
+      md[:author] = val if val.present?
+      val = publisher
+      md[:publisher] = val if val.present?
+      val = doi
+      md[:DOI] = val if val.present?
+      CiteProc::Item.new(md)
+    rescue TypeError => e
+      Raven.capture_exception(e, extra: { id: curation_concern.pid })
+      nil
+    end
   end
 
   def doi
-    v = try_fields([:doi, :identifier])
-    return nil if v.nil?
-    if v.respond_to?(:select)
+    val = try_fields([:doi, :identifier])
+    return nil if val.blank?
+    if val.respond_to?(:select)
     # try to only keep dois
-      v = v.select { |id| id =~ /\A[^0-9]*?10\./ }.first
+      val = val.select { |id| id =~ /\A[^0-9]*?10\./ }.first
     end
     # remove any doi: prefixes
-    v.sub(/\A.*?10/, "10")
+    val.sub(/\A.*?10/, "10")
   end
 
   def date_created
-    v = try_fields([:date_created, :created])
-    return nil if v.nil?
-    return v if v.is_a? Date
+    val = try_fields([:date_created, :created])
+    return nil if val.blank?
+    return val if val.is_a? Date
+    # In collections, the date is an array
+    val = Array.wrap(val).first
     begin
-      Date.parse(v)
-    rescue ArgumentError
-      # invalid date string
+      Date.parse(val)
+    rescue ArgumentError => e
+      Raven.capture_exception(e, extra: { date: val, id: curation_concern.pid })
+      nil
     end
   end
 
   def creator
-    v = try_fields([:creator])
-    return nil if v.nil?
-    v.join(" and ")
+    val = try_fields([:creator])
+    return nil if val.nil?
+    val.join(" and ")
   end
 
   def publisher
-    v = try_fields([:publisher])
-    return nil if v.nil?
-    v.join(", ")
+    val = try_fields([:publisher])
+    return nil if val.nil?
+    val.join(", ")
   end
 
   def try_fields(fields)

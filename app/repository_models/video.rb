@@ -73,7 +73,7 @@ class Video < ActiveFedora::Base
   attribute :date_created,
     datastream: :descMetadata, multiple: false
   attribute :publisher,
-    datastream: :descMetadata, multiple: false
+    datastream: :descMetadata, multiple: true
   attribute :publication_date,
     datastream: :descMetadata, multiple: false,
     validates: {

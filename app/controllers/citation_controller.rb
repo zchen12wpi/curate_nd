@@ -33,7 +33,8 @@ class CitationController < ApplicationController
     citation = Citation.new(curation_concern)
 
     STYLES.keys.each do |style|
-      @result[style] = citation.make_citation(style)
+      citation_style = citation.make_citation(style)
+      @result[style] = citation_style unless citation_style.nil?
     end
 
     render
