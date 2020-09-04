@@ -78,7 +78,7 @@ class CurateOaiProvider
       response_object[:source] = show_url_for(record.noid)
       # merge collection name and id (as a url) both into is_part_of.
       # There should only be one collection, but for safety, we handle arrays.
-      response_object[:is_part_of] = [response_object[:is_part_of], show_url_for(response_object[:collection_id])].flatten
+      response_object[:is_part_of] = ([response_object[:is_part_of], show_url_for(response_object[:collection_id])].flatten) if response_object.keys.include?(:is_part_of)
       # NOTE: stripping markdown from the text is necessary to accommodate Primo.
       #       We’re doing this to accomodate PRIMO’s OAI-PMH Harvesting antics
       response_object[:description] = strip_markdown(response_object[:description]) unless response_object[:description].nil?
@@ -178,7 +178,7 @@ class CurateOaiProvider
                    :coverage,
                    :rights,
                    :isPartOf,
-                   :bibliograpicCitation]
+                   :bibliographicCitation]
       end
 
       def header_specification
