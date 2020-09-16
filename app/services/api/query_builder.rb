@@ -7,7 +7,8 @@ class Api::QueryBuilder
     depositor: ["depositor_tesim"],
     deposit_date: ["system_create_dtsi"],
     modify_date: ["system_modified_dtsi"],
-    part_of: ["library_collections_pathnames_tesim"]
+    part_of: ["library_collections_pathnames_tesim"],
+    admin_unit: ["admin_unit_hierarchy_sim"]
   }.freeze
   CONFIGURATION_KEY_MAX_VALUE = {
     rows: Api::ItemsController.blacklight_config.max_per_page
@@ -88,6 +89,10 @@ class Api::QueryBuilder
 
   def filter_by_modify_date(term)
     filter_by_date(term)
+  end
+
+  def filter_by_admin_unit(term)
+    term
   end
 
   # allowed formats: "after:2019-01-01", "before:2019-01-01", "2019-01-01"
