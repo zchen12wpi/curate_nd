@@ -4,6 +4,16 @@ class Api::ItemsSearchPresenter
   include Sufia::Noid
   attr_reader :raw_response, :request_url, :documents, :pager, :query_parameters
 
+  VALID_KEYS_AND_SEARCH_FIELDNAMES = {
+    type: ["active_fedora_model_ssi", "desc_metadata__type_tesim"],
+    editor: ["edit_access_person_ssim"],
+    depositor: ["depositor_tesim"],
+    deposit_date: ["system_create_dtsi"],
+    modify_date: ["system_modified_dtsi"],
+    part_of: ["library_collections_pathnames_tesim"],
+    admin_unit: ["desc_metadata__administrative_unit_tesim"]
+  }.freeze
+
   def initialize(raw_response, request_url, query_parameters)
     @raw_response = raw_response
     @request_url = RDF::URI.new(request_url)
@@ -102,7 +112,7 @@ class Api::ItemsSearchPresenter
     def load_query_fields
       hash = {}
       params.keys.each do |key|
-        fields = Api::QueryBuilder::VALID_KEYS_AND_SEARCH_FIELDNAMES[key.to_sym]
+        fields = VALID_KEYS_AND_SEARCH_FIELDNAMES[key.to_sym]
         if fields.present?
           fields.each do |field|
             value = @item.fetch(field, [])
