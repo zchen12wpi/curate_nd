@@ -14,6 +14,7 @@ module CurationConcern
       abstract: :description,
       description: :description,
       date_uploaded: :date_deposited,
+      date_archived: :date_deposited,
       date_modified: :date_modified,
       date_created: :date_created,
       doi: :doi,
