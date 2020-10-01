@@ -63,7 +63,7 @@ CurateNd::Application.configure do
       :executable_path_freshclam => 'freshclam',
       })
     Curate.configuration.default_antivirus_instance = lambda {|file_path|
-      Clamby.safe?(file_path)
+      Clamby.virus?(file_path)
     }
   rescue LoadError => e
     logger.error("#{e.class}: #{e}")
