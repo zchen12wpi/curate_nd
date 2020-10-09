@@ -178,25 +178,6 @@ namespace :worker do
   end
 end
 
-########################
-# solr
-#########################
-
-namespace :solr do
-  task :configure, roles: :app do
-    # this pulls the solr config off the remote machine, parses the yml
-    # then tells the remote machine to copy the solr config to the server
-    # via the global NFS mount, and then pings the solr server to restart it.
-    config = capture("cat #{current_path}/config/solr.yml")
-    require 'uri'
-    solr_core_url = YAML.safe_load(config).fetch(rails_env).fetch('url')
-    uri = URI.parse(solr_core_url)
-    solr_url_reload = "#{uri.scheme}://#{uri.host}:#{uri.port}/solr/admin/cores\?action=RELOAD\&core=curate"
-    run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
-    run "curl #{solr_url_reload}"
-  end
-end
-
 namespace :maintenance do
   task :create_person_records, roles: :app do
     run "cd #{current_path} && bundle exec rails runner #{File.join(current_path, 'script/sync_person_with_user.rb')} -e #{rails_env}"
@@ -305,23 +286,20 @@ end
 
 desc 'Setup for pre-production deploy'
 # new one
-task :pre_production do
+task :prep do
   set :branch,    fetch(:branch, fetch(:tag, 'master'))
-  set :rails_env, 'pre_production'
+  set :rails_env, 'prep'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
-  set :domain,    fetch(:host, 'curatesvrpprd')
+  set :domain,    fetch(:host, 'curatesvr-prep')
   set :bundle_without, %i[development test debug]
   set :shared_directories, %w[log]
   set :shared_files, %w[]
-  set :src_solr_confdir, 'solr_conf/conf'
-  set :dest_solr_confdir, '/global/data/solr/pre_production/curate/conf'
 
   default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:$PATH"
   server 'app@curatesvrpprd.lc.nd.edu', :app, :web, :db, primary: true
   server 'app@curatewkrpprd.lc.nd.edu', :work, primary: true
 
-  before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -340,14 +318,11 @@ task :production do
 
   set :shared_directories, %w[log]
   set :shared_files, %w[]
-  set :src_solr_confdir, 'solr_conf/conf'
-  set :dest_solr_confdir, '/global/data/solr/production/curate/conf'
 
   default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:$PATH"
   server 'app@curatesvrprod.lc.nd.edu', :app, :web, :db, primary: true
   server 'app@curatewkrprod.lc.nd.edu', :work, primary: true
 
-  before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
