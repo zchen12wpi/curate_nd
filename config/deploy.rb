@@ -296,7 +296,8 @@ task :prep do
   set :shared_directories, %w[log]
   set :shared_files, %w[]
 
-  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:$PATH"
+  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
+  default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
   server 'app@curatesvrpprd.lc.nd.edu', :app, :web, :db, primary: true
   server 'app@curatewkrpprd.lc.nd.edu', :work, primary: true
 
@@ -319,7 +320,8 @@ task :production do
   set :shared_directories, %w[log]
   set :shared_files, %w[]
 
-  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:$PATH"
+  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
+  default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
   server 'app@curatesvrprod.lc.nd.edu', :app, :web, :db, primary: true
   server 'app@curatewkrprod.lc.nd.edu', :work, primary: true
 
