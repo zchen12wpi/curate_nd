@@ -298,8 +298,8 @@ task :prep do
 
   default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
   default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
-  server 'app@curatesvrpprd.lc.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrpprd.lc.nd.edu', :work, primary: true
+  server 'app@curatesvr-prep.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkr-prep.lc.nd.edu', :work, primary: true
 
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
@@ -322,8 +322,8 @@ task :production do
 
   default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
   default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
-  server 'app@curatesvrprod.lc.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrprod.lc.nd.edu', :work, primary: true
+  server 'app@curatesvr-prod.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkr-prod.lc.nd.edu', :work, primary: true
 
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
