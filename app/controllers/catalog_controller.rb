@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'blacklight/catalog'
+require 'csv'
 
 # @note This code is a copy of a module from cbeer's (BlacklightFacetExtras gem)[github.com/cbeer/blacklight_facet_extras]
 # I have chosen to paste this directly into the catalog controller to show that
@@ -207,6 +208,7 @@ class CatalogController < ApplicationController
       format.atom { render :layout => false }
       format.json { render json: render_search_results_as_json }
       format.jsonld { render text: CatalogIndexJsonldPresenter.new(@response, request.url, request.query_parameters).to_jsonld, layout: false }
+      format.csv { send_data ExportCsvPresenter.new(@response).to_csv, layout: false, filename: "search-results-#{Time.now}.csv" }
     end
   end
 

@@ -20,6 +20,9 @@
   <div class="row sort-and-per-page">
     <%= render 'choose_result_format' %>
     <%= render 'sort_and_per_page' %>
+    <% if current_user %>
+      <%= link_to "Export to CSV", url_for(params.merge(rows: @response.total, format: :csv)), class: 'btn btn-success pull-right' %>
+    <% end %>
   </div>
 
 <%= render 'document_list' %>
