@@ -33,7 +33,6 @@
 //= require curate/select_works
 //= require curate/link_users
 //= require curate/link_groups
-//= require curate/proxy_rights
 //= require curate/facet_mine
 //= require curate/accept_contributor_agreement
 //= require curate/proxy_submission
@@ -82,7 +81,6 @@ Blacklight.onLoad(function() {
   });
   $('.link-users').linkUsers();
   $('.link-groups').linkGroups();
-  $('.proxy-rights').proxyRights();
 
   // Based on example provided by Greg Kempe (@longhotsummer)
   // https://gist.github.com/longhotsummer/ba9c96bb2abb304e4095ce00df17ae2f
