@@ -284,7 +284,7 @@ task :staging do
   after 'deploy', 'worker:start'
 end
 
-desc 'Setup for pre-production deploy'
+desc 'Setup for prep deploy'
 # new one
 task :prep do
   set :branch,    fetch(:branch, fetch(:tag, 'master'))
