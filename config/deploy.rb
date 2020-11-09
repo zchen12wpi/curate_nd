@@ -7,6 +7,7 @@
 
 set :bundle_roles, %i[app work]
 set :bundle_flags, '--deployment'
+set :ruby_root, '/opt/rh/rh-ruby26'
 require 'bundler/capistrano'
 # see http://gembundler.com/v1.3/deploying.html
 # copied from https://github.com/carlhuda/bundler/blob/master/lib/bundler/deployment.rb
@@ -28,7 +29,7 @@ require 'bundler/capistrano'
 #    set :bundle_dir,      File.join(fetch(:shared_path), 'bundle')
 #    set :bundle_flags,    "--deployment --quiet"
 #    set :bundle_without,  [:development, :test]
-#    set :bundle_cmd,      "bundle" # e.g. "/opt/ruby/bin/bundle"
+#    set :bundle_cmd,      "/opt/rh/rh-ruby26/root/usr/local/bin/bundle" # e.g. "bundle"
 #    set :bundle_roles,    #{role_default} # e.g. [:app, :batch]
 #############################################################
 #  Settings
@@ -53,7 +54,7 @@ set :deploy_via, :remote_cache
 namespace :env do
   desc 'Set command paths'
   task :set_paths do
-    set :bundle_cmd, '/opt/ruby/current/bin/bundle'
+    set :bundle_cmd, "#{ruby_root}/root/usr/local/bin/bundle"
     set :rake, "#{bundle_cmd} exec rake"
   end
 end
@@ -64,7 +65,7 @@ end
 
 desc 'Restart Application'
 task :restart_unicorn, roles: :app do
-  run "#{current_path}/script/reload-unicorn.sh"
+  run '/usr/sbin/sv restart unicorn'
 end
 
 #############################################################
@@ -75,6 +76,15 @@ namespace :db do
   desc 'Run the seed rake task.'
   task :seed, roles: :app do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:seed"
+  end
+end
+
+namespace :db do
+  desc "Create the database, load the schema, and add the db:seeds (NOTE: This will only working in staging, because it will destroy DB data)"
+  task :bootstrap, roles: :app do
+    if rails_env == 'staging'
+      run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} db:create db:schema:load db:seed"
+    end
   end
 end
 
@@ -98,18 +108,32 @@ namespace :deploy do
     run 'which git'
   end
 
-  desc 'Start application in Passenger'
+  desc 'Start Unicorn Rails Server'
   task :start, roles: :app do
     restart_unicorn
   end
 
-  desc 'Restart application in Passenger'
+  desc 'Restart Unicorn Rails Server'
   task :restart, roles: :app do
     restart_unicorn
   end
 
   task :stop, roles: :app do
     # Do nothing.
+  end
+
+  desc 'Cold deploy- set up DB first'
+  task :cold do
+    transaction do
+      update
+      setup_db  #replacing migrate in original
+      start
+     end
+  end
+
+  desc 'Setup DB'
+  task :setup_db, :roles => :app do
+    run "cd #{release_path}; bundle exec rake db:setup RAILS_ENV=#{rails_env}"
   end
 
   desc 'Run the migrate rake task.'
@@ -150,40 +174,7 @@ end
 
 namespace :worker do
   task :start, roles: :work do
-    # TODO: this file contains the same information as the env-vars file created in und:write_env_vars
-    # make a distinction here until we remove the old cluster stuff
-    target_file =
-      if %w[staging pre_production production].include?(rails_env)
-        '/home/app/curatend/resque-pool-info'
-      else
-        '/home/curatend/resque-pool-info'
-      end
-    # the file this writes is essentially the same as the one created
-    # by und:write_env_vars
-    run [
-      "echo \"RESQUE_POOL_ROOT=#{current_path}\" > #{target_file}",
-      "echo \"RESQUE_POOL_ENV=#{fetch(:rails_env)}\" >> #{target_file}",
-      'sudo /sbin/service resque-poold restart'
-    ].join(' && ')
-  end
-end
-
-########################
-# solr
-#########################
-
-namespace :solr do
-  task :configure, roles: :app do
-    # this pulls the solr config off the remote machine, parses the yml
-    # then tells the remote machine to copy the solr config to the server
-    # via the global NFS mount, and then pings the solr server to restart it.
-    config = capture("cat #{current_path}/config/solr.yml")
-    require 'uri'
-    solr_core_url = YAML.safe_load(config).fetch(rails_env).fetch('url')
-    uri = URI.parse(solr_core_url)
-    solr_url_reload = "#{uri.scheme}://#{uri.host}:#{uri.port}/solr/admin/cores\?action=RELOAD\&core=curate"
-    run "cp -rf #{current_path}/#{src_solr_confdir}/* #{dest_solr_confdir}"
-    run "curl #{solr_url_reload}"
+    run '/usr/sbin/sv restart resque-pool'
   end
 end
 
@@ -278,12 +269,13 @@ task :staging do
   set :rails_env, 'staging'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
-  set :domain,    fetch(:host, 'libvirt6.library.nd.edu')
+  set :domain,    fetch(:host, 'curate-test1.lc.nd.edu')
   set :bundle_without, %i[development test debug]
   set :shared_directories, %w[log]
   set :shared_files, %w[]
 
-  default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
+  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
+  default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
   server "#{user}@#{domain}", :app, :work, :web, :db, primary: true
 
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
@@ -292,25 +284,23 @@ task :staging do
   after 'deploy', 'worker:start'
 end
 
-desc 'Setup for pre-production deploy'
+desc 'Setup for prep deploy'
 # new one
-task :pre_production do
+task :prep do
   set :branch,    fetch(:branch, fetch(:tag, 'master'))
-  set :rails_env, 'pre_production'
+  set :rails_env, 'prep'
   set :deploy_to, '/home/app/curatend'
   set :user,      'app'
-  set :domain,    fetch(:host, 'curatesvrpprd')
+  set :domain,    fetch(:host, 'curatesvr-prep')
   set :bundle_without, %i[development test debug]
   set :shared_directories, %w[log]
   set :shared_files, %w[]
-  set :src_solr_confdir, 'solr_conf/conf'
-  set :dest_solr_confdir, '/global/data/solr/pre_production/curate/conf'
 
-  default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server 'app@curatesvrpprd.lc.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrpprd.lc.nd.edu', :work, primary: true
+  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
+  default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
+  server 'app@curatesvr-prep.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkr-prep.lc.nd.edu', :work, primary: true
 
-  before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'
@@ -329,14 +319,12 @@ task :production do
 
   set :shared_directories, %w[log]
   set :shared_files, %w[]
-  set :src_solr_confdir, 'solr_conf/conf'
-  set :dest_solr_confdir, '/global/data/solr/production/curate/conf'
 
-  default_environment['PATH'] = '/opt/ruby/current/bin:$PATH'
-  server 'app@curatesvrprod.lc.nd.edu', :app, :web, :db, primary: true
-  server 'app@curatewkrprod.lc.nd.edu', :work, primary: true
+  default_environment['PATH'] = "#{ruby_root}/root/usr/local/bin:/opt/rh/nodejs010/root/usr/bin:$PATH"
+  default_environment['LD_LIBRARY_PATH'] = "#{ruby_root}/root/lib64:/opt/rh/nodejs010/root/lib64:/opt/rh/v8314/root/lib64:$LD_LIBRARY_PATH"
+  server 'app@curatesvr-prod.lc.nd.edu', :app, :web, :db, primary: true
+  server 'app@curatewkr-prod.lc.nd.edu', :work, primary: true
 
-  before 'bundle:install', 'solr:configure'
   after 'deploy:update_code', 'und:write_env_vars', 'und:write_build_identifier', 'und:update_secrets', 'deploy:symlink_update', 'deploy:migrate', 'db:seed', 'deploy:precompile'
   after 'deploy', 'deploy:cleanup'
   after 'deploy', 'deploy:kickstart'

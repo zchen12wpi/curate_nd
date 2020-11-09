@@ -22,6 +22,10 @@ production:
   <<: *development
   smtp_delivery_method: sendmail
 
-pre_production:
+prep:
+  <<: *development
+  smtp_delivery_method: sendmail
+
+staging:
   <<: *development
   smtp_delivery_method: sendmail

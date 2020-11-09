@@ -3,7 +3,7 @@ require 'morphine'
 # This is a simple wrapper for an underlying scanner; Without it, we'll
 # always going to be running actual anti-virus
 class AntiVirusScanner
-  NO_VIRUS_FOUND_RETURN_VALUE = 0 unless defined?(NO_VIRUS_FOUND_RETURN_VALUE)
+  NO_VIRUS_FOUND_RETURN_VALUE = false unless defined?(NO_VIRUS_FOUND_RETURN_VALUE)
 
   class VirusDetected < RuntimeError
     def initialize(pid, file_path)
