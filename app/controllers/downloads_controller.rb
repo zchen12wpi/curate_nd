@@ -209,7 +209,7 @@ class DownloadsController < ApplicationController
         error_code = '401'
       end
       respond_to do |format|
-        format.json { render json: { status: 'ERROR', code: error_code } }
+        format.json { render json: { status: 'ERROR', code: error_code }, status: error_code }
         format.html { render "/errors/#{error_code}", status: error_code }
       end
     end

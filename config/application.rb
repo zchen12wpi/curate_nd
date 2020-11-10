@@ -5,7 +5,7 @@ require 'rails/all'
 if defined?(Bundler)
   # For each of the values of a hash entry, load the hash key's bundle group
   bundle_environment_aliases = Rails.groups(
-      default: %w(production pre_production staging development test ci),
+      default: %w(production prep staging development test ci),
       headless: %w(development test ci),
       debug: %w(development test),
       ci: %w(test),
