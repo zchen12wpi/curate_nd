@@ -49,7 +49,7 @@ group :default do
   gem 'jshintrb'
   gem 'json-ld'
   gem 'kaminari'
-  gem 'locabulary', github: 'ndlib/locabulary', ref: '75fc0608863e64bc492ae5b2469c947c3cec3422'
+  gem 'locabulary', github: 'ndlib/locabulary', ref: 'b86dfc02c343b91b673e23c3562ea834cc1aebb3'
   gem 'lograge'
   gem 'logstash-event'
   gem 'logstash-logger'
@@ -64,7 +64,6 @@ group :default do
   gem 'nokogiri', '~> 1.10'
   gem "oai"
   gem 'omniauth-oktaoauth'
-  gem 'qa', github: 'ndlib/questioning_authority', branch: 'stable_0_8'
   gem 'rails_autolink'
   gem 'rails-observers'
   gem 'rails', '~> 4.2.11.0'
@@ -92,7 +91,7 @@ group :default do
 end
 
 group :headless do
-  gem 'clamav'
+  gem 'clamby'
 end
 
 group :orcid do

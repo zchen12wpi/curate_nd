@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/ndlib/locabulary.git
-  revision: 75fc0608863e64bc492ae5b2469c947c3cec3422
-  ref: 75fc0608863e64bc492ae5b2469c947c3cec3422
+  revision: b86dfc02c343b91b673e23c3562ea834cc1aebb3
+  ref: b86dfc02c343b91b673e23c3562ea834cc1aebb3
   specs:
     locabulary (0.8.1)
       activesupport (>= 4.0, < 6.0)
@@ -24,18 +24,6 @@ GIT
     noids_client (0.0.1)
       json (~> 1.8)
       rest-client (~> 1.6)
-
-GIT
-  remote: https://github.com/ndlib/questioning_authority.git
-  revision: e1dfeddb3b1f7ea31e1cee1fb225905ed38e5e1b
-  branch: stable_0_8
-  specs:
-    qa (0.8.0)
-      activerecord-import
-      deprecation
-      faraday
-      nokogiri (~> 1.8)
-      rails (>= 3.2.13, < 5.0)
 
 GIT
   remote: https://github.com/ndlib/resque-pool.git
@@ -193,7 +181,7 @@ GEM
     citeproc-ruby (1.1.12)
       citeproc (~> 1.0, >= 1.0.9)
       csl (~> 1.5)
-    clamav (0.4.1)
+    clamby (1.6.6)
     cliver (0.3.2)
     code_analyzer (0.5.1)
       sexp_processor
@@ -690,7 +678,7 @@ DEPENDENCIES
   chronic (>= 0.10.2)
   citeproc
   citeproc-ruby (~> 1.1.0)
-  clamav
+  clamby
   coffee-rails (~> 4.0)
   csl-styles
   curate-indexer
@@ -743,7 +731,6 @@ DEPENDENCIES
   omniauth-oktaoauth
   omniauth-orcid (= 0.6)
   poltergeist (~> 1.5)
-  qa!
   quiet_assets
   rack-mini-profiler
   rails (~> 4.2.11.0)

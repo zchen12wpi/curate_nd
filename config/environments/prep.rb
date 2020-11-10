@@ -63,7 +63,7 @@ CurateNd::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.application_root_url = "https://curatesvrpprd.library.nd.edu"
+  config.application_root_url = "https://curatesvr-prep.library.nd.edu"
 
   # for iiif image viewer
   config.manifest_viewer = "https://viewer-iiif.library.nd.edu/universalviewer/index.html#?manifest="
@@ -81,10 +81,21 @@ CurateNd::Application.configure do
     # are not explicitly requiring clamav; This is because the web application
     # portion of pre-production doesn't know about clamav. Instead of mixing
     # environments, we are going to let the workers fail.
-    require 'clamav'
-    ClamAV.instance.loaddb
+    require 'clamby'
+    Clamby.configure({
+      :check => false,
+      :daemonize => false,
+      :error_clamscan_missing => true,
+      :error_clamscan_client_error => false,
+      :error_file_missing => true,
+      :error_file_virus => false,
+      :output_level => 'medium', # one of 'off', 'low', 'medium', 'high'
+      :executable_path_clamscan => 'clamscan',
+      :executable_path_clamdscan => 'clamdscan',
+      :executable_path_freshclam => 'freshclam',
+      })
     Curate.configuration.default_antivirus_instance = lambda {|file_path|
-      ClamAV.instance.scanfile(file_path)
+      Clamby.virus?(file_path)
     }
   rescue LoadError => e
     logger.error("#{e.class}: #{e}")
