@@ -109,7 +109,6 @@ end
 # being listed in a `bundle list` command on the staging machine.
 # Explicitly require it here.
 gem 'addressable', '~> 2.3.5'
-gem 'coffee-rails', '~> 4.0'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.0.3'
 

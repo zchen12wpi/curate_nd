@@ -23,9 +23,7 @@ CurateNd::Application.routes.draw do
         put :remove_member
       end
     end
-    resources 'people', only: [:show, :index] do
-      resources :depositors, only: [:index, :create, :destroy]
-    end
+    resources 'people', only: [:show, :index]
     match 'profile' => 'user_profiles#show', via: :get, as: 'user_profile'
   end
   #resources :downloads, only: [:show]
